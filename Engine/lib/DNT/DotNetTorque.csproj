@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F08948D7-0E15-408A-B1F6-EC395895656F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WinterLeaf</RootNamespace>
+    <AssemblyName>DotNetTorque</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\DotNetTorque.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>bin\Release\DotNetTorque.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\NativeMethods.cs" />
+    <Compile Include="Classes\SafeNativeMethods.cs" />
+    <Compile Include="Classes\myExtensions.cs" />
+    <Compile Include="Classes\myReflections.cs" />
+    <Compile Include="Classes\Torque_singleton.cs" />
+    <Compile Include="Classes\tsObject.cs" />
+    <Compile Include="Containers\AngAxisF.cs" />
+    <Compile Include="Containers\Box3F.cs" />
+    <Compile Include="Containers\ColorF.cs" />
+    <Compile Include="Containers\ColorI.cs" />
+    <Compile Include="Containers\EaseF.cs" />
+    <Compile Include="Containers\Point2F.cs" />
+    <Compile Include="Containers\Point2I.cs" />
+    <Compile Include="Containers\Point3F.cs" />
+    <Compile Include="Containers\Point4F.cs" />
+    <Compile Include="Containers\Polyhedron.cs" />
+    <Compile Include="Containers\RectF.cs" />
+    <Compile Include="Containers\RectI.cs" />
+    <Compile Include="Containers\RectSpacingI.cs" />
+    <Compile Include="Containers\TransformF.cs" />
+    <Compile Include="Enums\Camera__CameraMotionMode.cs" />
+    <Compile Include="Enums\domUpAxisType.cs" />
+    <Compile Include="Enums\GFXFormat.cs" />
+    <Compile Include="Enums\GuiGraphType.cs" />
+    <Compile Include="Enums\MBButtons.cs" />
+    <Compile Include="Enums\MBIcons.cs" />
+    <Compile Include="Enums\SFXDistanceModel.cs" />
+    <Compile Include="Enums\T3D_Enums.cs" />
+    <Compile Include="Enums\WorldEditor__AlignmentType.cs" />
+    <Compile Include="Enums\SFXStatus.cs" />
+    <Compile Include="Classes\TorqueScriptTemplate.cs" />
+    <Compile Include="Classes\Torque_Class.cs" />
+    <Compile Include="Classes\Torque_Decorations.cs" />
+    <Compile Include="Enums\SceneObjectTypes.cs" />
+    <Compile Include="dnTorque.cs" />
+    <Compile Include="dnTorque_Auto.cs" />
+    <Compile Include="dnTorque_Console.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tsObjects\coActionMap.cs" />
+    <Compile Include="tsObjects\coAdvancedLightBinManager.cs" />
+    <Compile Include="tsObjects\coAIClient.cs" />
+    <Compile Include="tsObjects\coAIConnection.cs" />
+    <Compile Include="tsObjects\coAIPlayer.cs" />
+    <Compile Include="tsObjects\coAITurretShape.cs" />
+    <Compile Include="tsObjects\coAITurretShapeData.cs" />
+    <Compile Include="tsObjects\coArrayObject.cs" />
+    <Compile Include="tsObjects\coBaseMaterialDefinition.cs" />
+    <Compile Include="tsObjects\coBasicClouds.cs" />
+    <Compile Include="tsObjects\coCachedInterfaceExampleComponent.cs" />
+    <Compile Include="tsObjects\coCamera.cs" />
+    <Compile Include="tsObjects\coCameraBookmark.cs" />
+    <Compile Include="tsObjects\coCameraData.cs" />
+    <Compile Include="tsObjects\coCloudLayer.cs" />
+    <Compile Include="tsObjects\coCompoundUndoAction.cs" />
+    <Compile Include="tsObjects\coConsoleLogger.cs" />
+    <Compile Include="tsObjects\coConvexShape.cs" />
+    <Compile Include="tsObjects\coCreatorTree.cs" />
+    <Compile Include="tsObjects\coCubemapData.cs" />
+    <Compile Include="tsObjects\coCustomMaterial.cs" />
+    <Compile Include="tsObjects\coDBDeleteUndoAction.cs" />
+    <Compile Include="tsObjects\coDbgFileView.cs" />
+    <Compile Include="tsObjects\coDBRetargetUndoAction.cs" />
+    <Compile Include="tsObjects\coDebris.cs" />
+    <Compile Include="tsObjects\coDebrisData.cs" />
+    <Compile Include="tsObjects\coDebugDrawer.cs" />
+    <Compile Include="tsObjects\coDecalData.cs" />
+    <Compile Include="tsObjects\coDecalManager.cs" />
+    <Compile Include="tsObjects\coDecalRoad.cs" />
+    <Compile Include="tsObjects\coDICreateUndoAction.cs" />
+    <Compile Include="tsObjects\coDIDeleteUndoAction.cs" />
+    <Compile Include="tsObjects\coDInputManager.cs" />
+    <Compile Include="tsObjects\coDynamicConsoleMethodComponent.cs" />
+    <Compile Include="tsObjects\coEditManager.cs" />
+    <Compile Include="tsObjects\coEditTSCtrl.cs" />
+    <Compile Include="tsObjects\coEventManagerListener.cs" />
+    <Compile Include="tsObjects\coExplodePrefabUndoAction.cs" />
+    <Compile Include="tsObjects\coExplosion.cs" />
+    <Compile Include="tsObjects\coExplosionData.cs" />
+    <Compile Include="tsObjects\coFieldBrushObject.cs" />
+    <Compile Include="tsObjects\coFileDialog.cs" />
+    <Compile Include="tsObjects\coFileObject.cs" />
+    <Compile Include="tsObjects\coFileStreamObject.cs" />
+    <Compile Include="tsObjects\coFilter.cs" />
+    <Compile Include="tsObjects\coFloatCurve.cs" />
+    <Compile Include="tsObjects\coFlyingVehicle.cs" />
+    <Compile Include="tsObjects\coFlyingVehicleData.cs" />
+    <Compile Include="tsObjects\coForcedMaterialMeshMgr.cs" />
+    <Compile Include="tsObjects\coForest.cs" />
+    <Compile Include="tsObjects\coForestBrush.cs" />
+    <Compile Include="tsObjects\coForestBrushElement.cs" />
+    <Compile Include="tsObjects\coForestBrushTool.cs" />
+    <Compile Include="tsObjects\coForestCreateUndoAction.cs" />
+    <Compile Include="tsObjects\coForestDeleteUndoAction.cs" />
+    <Compile Include="tsObjects\coForestEditorCtrl.cs" />
+    <Compile Include="tsObjects\coForestItemData.cs" />
+    <Compile Include="tsObjects\coForestItemSelection.cs" />
+    <Compile Include="tsObjects\coForestTool.cs" />
+    <Compile Include="tsObjects\coForestUndoAction.cs" />
+    <Compile Include="tsObjects\coForestUpdateAction.cs" />
+    <Compile Include="tsObjects\coForestWindEmitter.cs" />
+    <Compile Include="tsObjects\cofxFoliageReplicator.cs" />
+    <Compile Include="tsObjects\cofxShapeReplicatedStatic.cs" />
+    <Compile Include="tsObjects\cofxShapeReplicator.cs" />
+    <Compile Include="tsObjects\coGameBase.cs" />
+    <Compile Include="tsObjects\coGameBaseData.cs" />
+    <Compile Include="tsObjects\coGameConnection.cs" />
+    <Compile Include="tsObjects\coGameTSCtrl.cs" />
+    <Compile Include="tsObjects\coGFXSamplerStateData.cs" />
+    <Compile Include="tsObjects\coGFXStateBlockData.cs" />
+    <Compile Include="tsObjects\coGizmo.cs" />
+    <Compile Include="tsObjects\coGizmoProfile.cs" />
+    <Compile Include="tsObjects\coGroundCoverShaderConstHandles.cs" />
+    <Compile Include="tsObjects\coGroundPlane.cs" />
+    <Compile Include="tsObjects\coGui3DMouseEvent.cs" />
+    <Compile Include="tsObjects\coGuiArrayCtrl.cs" />
+    <Compile Include="tsObjects\coGuiAutoScrollCtrl.cs" />
+    <Compile Include="tsObjects\coGuiBackgroundCtrl.cs" />
+    <Compile Include="tsObjects\coGuiBitmapBorderCtrl.cs" />
+    <Compile Include="tsObjects\coGuiBitmapButtonCtrl.cs" />
+    <Compile Include="tsObjects\coGuiBitmapButtonTextCtrl.cs" />
+    <Compile Include="tsObjects\coGuiBitmapCtrl.cs" />
+    <Compile Include="tsObjects\coGuiBorderButtonCtrl.cs" />
+    <Compile Include="tsObjects\coGuiBubbleTextCtrl.cs" />
+    <Compile Include="tsObjects\coGuiButtonBaseCtrl.cs" />
+    <Compile Include="tsObjects\coGuiButtonCtrl.cs" />
+    <Compile Include="tsObjects\coGuiCanvas.cs" />
+    <Compile Include="tsObjects\coGuiCheckBoxCtrl.cs" />
+    <Compile Include="tsObjects\coGuiChunkedBitmapCtrl.cs" />
+    <Compile Include="tsObjects\coGuiClockHud.cs" />
+    <Compile Include="tsObjects\coGuiColorPickerCtrl.cs" />
+    <Compile Include="tsObjects\coGuiConsole.cs" />
+    <Compile Include="tsObjects\coGuiConsoleEditCtrl.cs" />
+    <Compile Include="tsObjects\coGuiConsoleTextCtrl.cs" />
+    <Compile Include="tsObjects\coGuiContainer.cs" />
+    <Compile Include="tsObjects\coGuiControl.cs" />
+    <Compile Include="tsObjects\coGuiControlArrayControl.cs" />
+    <Compile Include="tsObjects\coGuiControlProfile.cs" />
+    <Compile Include="tsObjects\coGuiConvexEditorCtrl.cs" />
+    <Compile Include="tsObjects\coGuiCrossHairHud.cs" />
+    <Compile Include="tsObjects\coGuiDecalEditorCtrl.cs" />
+    <Compile Include="tsObjects\coGuiDecoyCtrl.cs" />
+    <Compile Include="tsObjects\coGuiDirectoryFileListCtrl.cs" />
+    <Compile Include="tsObjects\coGuiDragAndDropControl.cs" />
+    <Compile Include="tsObjects\coGuiDynamicCtrlArrayControl.cs" />
+    <Compile Include="tsObjects\coGuiEaseViewCtrl.cs" />
+    <Compile Include="tsObjects\coGuiEditCtrl.cs" />
+    <Compile Include="tsObjects\coGuiEditorRuler.cs" />
+    <Compile Include="tsObjects\coGuiFadeinBitmapCtrl.cs" />
+    <Compile Include="tsObjects\coGuiFileTreeCtrl.cs" />
+    <Compile Include="tsObjects\coGuiFormCtrl.cs" />
+    <Compile Include="tsObjects\coGuiFrameSetCtrl.cs" />
+    <Compile Include="tsObjects\coGuiGameListMenuCtrl.cs" />
+    <Compile Include="tsObjects\coGuiGameListMenuProfile.cs" />
+    <Compile Include="tsObjects\coGuiGameListOptionsCtrl.cs" />
+    <Compile Include="tsObjects\coGuiGameListOptionsProfile.cs" />
+    <Compile Include="tsObjects\coGuiGradientCtrl.cs" />
+    <Compile Include="tsObjects\coGuiGradientSwatchCtrl.cs" />
+    <Compile Include="tsObjects\coGuiGraphCtrl.cs" />
+    <Compile Include="tsObjects\coGuiHealthBarHud.cs" />
+    <Compile Include="tsObjects\coGuiHealthTextHud.cs" />
+    <Compile Include="tsObjects\coGuiIconButtonCtrl.cs" />
+    <Compile Include="tsObjects\coGuiIdleCamFadeBitmapCtrl.cs" />
+    <Compile Include="tsObjects\coGuiImageList.cs" />
+    <Compile Include="tsObjects\coGuiInputCtrl.cs" />
+    <Compile Include="tsObjects\coGuiInspector.cs" />
+    <Compile Include="tsObjects\coGuiInspectorCustomField.cs" />
+    <Compile Include="tsObjects\coGuiInspectorDatablockField.cs" />
+    <Compile Include="tsObjects\coGuiInspectorDynamicField.cs" />
+    <Compile Include="tsObjects\coGuiInspectorDynamicGroup.cs" />
+    <Compile Include="tsObjects\coGuiInspectorField.cs" />
+    <Compile Include="tsObjects\coGuiInspectorGroup.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeBitMask32.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeBitMask32Helper.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeCheckBox.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeColor.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeColorF.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeColorI.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeCommand.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeCubemapName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeEaseF.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeEnum.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeFileName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeGuiProfile.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeImageFileName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeMaterialName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeMenuBase.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypePrefabFilename.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeRectUV.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeRegularMaterialName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeS32.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeSFXAmbienceName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeSFXDescriptionName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeSFXEnvironmentName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeSFXParameterName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeSFXSourceName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeSFXStateName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeSFXTrackName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeShapeFilename.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeString.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeTerrainMaterialIndex.cs" />
+    <Compile Include="tsObjects\coGuiInspectorTypeTerrainMaterialName.cs" />
+    <Compile Include="tsObjects\coGuiInspectorVariableField.cs" />
+    <Compile Include="tsObjects\coGuiInspectorVariableGroup.cs" />
+    <Compile Include="tsObjects\coGuiListBoxCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMaterialCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMaterialPreview.cs" />
+    <Compile Include="tsObjects\coGuiMenuBackgroundCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMenuBar.cs" />
+    <Compile Include="tsObjects\coGuiMenuTextListCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMeshRoadEditorCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMessageVectorCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMissionAreaCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMissionAreaEditorCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMLTextCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMLTextEditCtrl.cs" />
+    <Compile Include="tsObjects\coGuiMouseEventCtrl.cs" />
+    <Compile Include="tsObjects\coGuiNoMouseCtrl.cs" />
+    <Compile Include="tsObjects\coGuiObjectView.cs" />
+    <Compile Include="tsObjects\coGuiPaneControl.cs" />
+    <Compile Include="tsObjects\coGuiPanel.cs" />
+    <Compile Include="tsObjects\coGuiParticleGraphCtrl.cs" />
+    <Compile Include="tsObjects\coGuiPopUpBackgroundCtrl.cs" />
+    <Compile Include="tsObjects\coGuiPopUpBackgroundCtrlEx.cs" />
+    <Compile Include="tsObjects\coGuiPopUpMenuCtrl.cs" />
+    <Compile Include="tsObjects\coGuiPopUpMenuCtrlEx.cs" />
+    <Compile Include="tsObjects\coGuiProgressBitmapCtrl.cs" />
+    <Compile Include="tsObjects\coGuiProgressCtrl.cs" />
+    <Compile Include="tsObjects\coGuiRadioCtrl.cs" />
+    <Compile Include="tsObjects\coGuiRectHandles.cs" />
+    <Compile Include="tsObjects\coGuiRiverEditorCtrl.cs" />
+    <Compile Include="tsObjects\coGuiRoadEditorCtrl.cs" />
+    <Compile Include="tsObjects\coGuiRolloutCtrl.cs" />
+    <Compile Include="tsObjects\coGuiScriptNotifyCtrl.cs" />
+    <Compile Include="tsObjects\coGuiScrollCtrl.cs" />
+    <Compile Include="tsObjects\coGuiSeparatorCtrl.cs" />
+    <Compile Include="tsObjects\coGuiShapeEdPreview.cs" />
+    <Compile Include="tsObjects\coGuiShapeNameHud.cs" />
+    <Compile Include="tsObjects\coGuiSliderCtrl.cs" />
+    <Compile Include="tsObjects\coGuiSpeedometerHud.cs" />
+    <Compile Include="tsObjects\coGuiSplitContainer.cs" />
+    <Compile Include="tsObjects\coGuiStackControl.cs" />
+    <Compile Include="tsObjects\coGuiSubmenuBackgroundCtrl.cs" />
+    <Compile Include="tsObjects\coGuiSwatchButtonCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTabBookCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTabPageCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTerrPreviewCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTextCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTextEditCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTextEditSliderBitmapCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTextEditSliderCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTextListCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTheoraCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTickCtrl.cs" />
+    <Compile Include="tsObjects\coGuiToggleButtonCtrl.cs" />
+    <Compile Include="tsObjects\coGuiToolboxButtonCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTreeViewCtrl.cs" />
+    <Compile Include="tsObjects\coGuiTSCtrl.cs" />
+    <Compile Include="tsObjects\coGuiVariableInspector.cs" />
+    <Compile Include="tsObjects\coGuiWindowCollapseCtrl.cs" />
+    <Compile Include="tsObjects\coGuiWindowCtrl.cs" />
+    <Compile Include="tsObjects\coHoverVehicle.cs" />
+    <Compile Include="tsObjects\coHoverVehicleData.cs" />
+    <Compile Include="tsObjects\coHTTPObject.cs" />
+    <Compile Include="tsObjects\coInspectorFieldUndoAction.cs" />
+    <Compile Include="tsObjects\coInteriorInstance.cs" />
+    <Compile Include="tsObjects\coInteriorSubObject.cs" />
+    <Compile Include="tsObjects\coItem.cs" />
+    <Compile Include="tsObjects\coItemData.cs" />
+    <Compile Include="tsObjects\coLangTable.cs" />
+    <Compile Include="tsObjects\coLevelInfo.cs" />
+    <Compile Include="tsObjects\coLightAnimData.cs" />
+    <Compile Include="tsObjects\coLightBase.cs" />
+    <Compile Include="tsObjects\coLightDescription.cs" />
+    <Compile Include="tsObjects\coLightFlareData.cs" />
+    <Compile Include="tsObjects\coLightning.cs" />
+    <Compile Include="tsObjects\coLightningData.cs" />
+    <Compile Include="tsObjects\coMarker.cs" />
+    <Compile Include="tsObjects\coMaterial.cs" />
+    <Compile Include="tsObjects\coMECreateUndoAction.cs" />
+    <Compile Include="tsObjects\coMEDeleteUndoAction.cs" />
+    <Compile Include="tsObjects\coMenuBar.cs" />
+    <Compile Include="tsObjects\coMeshRoad.cs" />
+    <Compile Include="tsObjects\coMessage.cs" />
+    <Compile Include="tsObjects\coMessageForwarder.cs" />
+    <Compile Include="tsObjects\coMessageVector.cs" />
+    <Compile Include="tsObjects\coMirrorSubObject.cs" />
+    <Compile Include="tsObjects\coMissionArea.cs" />
+    <Compile Include="tsObjects\coMissionMarker.cs" />
+    <Compile Include="tsObjects\coMissionMarkerData.cs" />
+    <Compile Include="tsObjects\coMoreAdvancedComponent.cs" />
+    <Compile Include="tsObjects\coNetConnection.cs" />
+    <Compile Include="tsObjects\coNetObject.cs" />
+    <Compile Include="tsObjects\coOpenFileDialog.cs" />
+    <Compile Include="tsObjects\coOpenFolderDialog.cs" />
+    <Compile Include="tsObjects\coParticleData.cs" />
+    <Compile Include="tsObjects\coParticleEmitter.cs" />
+    <Compile Include="tsObjects\coParticleEmitterData.cs" />
+    <Compile Include="tsObjects\coParticleEmitterNode.cs" />
+    <Compile Include="tsObjects\coParticleEmitterNodeData.cs" />
+    <Compile Include="tsObjects\coPath.cs" />
+    <Compile Include="tsObjects\coPathCamera.cs" />
+    <Compile Include="tsObjects\coPathCameraData.cs" />
+    <Compile Include="tsObjects\coPathedInterior.cs" />
+    <Compile Include="tsObjects\coPathedInteriorData.cs" />
+    <Compile Include="tsObjects\coPersistenceManager.cs" />
+    <Compile Include="tsObjects\coPhysicalZone.cs" />
+    <Compile Include="tsObjects\coPhysicsDebris.cs" />
+    <Compile Include="tsObjects\coPhysicsDebrisData.cs" />
+    <Compile Include="tsObjects\coPhysicsForce.cs" />
+    <Compile Include="tsObjects\coPhysicsShape.cs" />
+    <Compile Include="tsObjects\coPhysicsShapeData.cs" />
+    <Compile Include="tsObjects\coPlayer.cs" />
+    <Compile Include="tsObjects\coPlayerData.cs" />
+    <Compile Include="tsObjects\coPointLight.cs" />
+    <Compile Include="tsObjects\coPopupMenu.cs" />
+    <Compile Include="tsObjects\coPostEffect.cs" />
+    <Compile Include="tsObjects\coPrecipitation.cs" />
+    <Compile Include="tsObjects\coPrecipitationData.cs" />
+    <Compile Include="tsObjects\coPrefab.cs" />
+    <Compile Include="tsObjects\coProjectile.cs" />
+    <Compile Include="tsObjects\coProjectileData.cs" />
+    <Compile Include="tsObjects\coProximityMine.cs" />
+    <Compile Include="tsObjects\coProximityMineData.cs" />
+    <Compile Include="tsObjects\coPxCloth.cs" />
+    <Compile Include="tsObjects\coPxFluid.cs" />
+    <Compile Include="tsObjects\coPxMaterial.cs" />
+    <Compile Include="tsObjects\coPxMultiActor.cs" />
+    <Compile Include="tsObjects\coPxUserData.cs" />
+    <Compile Include="tsObjects\coReflectorDesc.cs" />
+    <Compile Include="tsObjects\coRenderBinManager.cs" />
+    <Compile Include="tsObjects\coRenderFormatToken.cs" />
+    <Compile Include="tsObjects\coRenderGlowMgr.cs" />
+    <Compile Include="tsObjects\coRenderImposterMgr.cs" />
+    <Compile Include="tsObjects\coRenderMeshExample.cs" />
+    <Compile Include="tsObjects\coRenderMeshMgr.cs" />
+    <Compile Include="tsObjects\coRenderObjectExample.cs" />
+    <Compile Include="tsObjects\coRenderObjectMgr.cs" />
+    <Compile Include="tsObjects\coRenderOcclusionMgr.cs" />
+    <Compile Include="tsObjects\coRenderParticleMgr.cs" />
+    <Compile Include="tsObjects\coRenderPassManager.cs" />
+    <Compile Include="tsObjects\coRenderPassStateBin.cs" />
+    <Compile Include="tsObjects\coRenderPassStateToken.cs" />
+    <Compile Include="tsObjects\coRenderPrePassMgr.cs" />
+    <Compile Include="tsObjects\coRenderShapeExample.cs" />
+    <Compile Include="tsObjects\coRenderTexTargetBinManager.cs" />
+    <Compile Include="tsObjects\coRenderTranslucentMgr.cs" />
+    <Compile Include="tsObjects\coResponseCurveData.cs" />
+    <Compile Include="tsObjects\coRigidShape.cs" />
+    <Compile Include="tsObjects\coRigidShapeData.cs" />
+    <Compile Include="tsObjects\coRiver.cs" />
+    <Compile Include="tsObjects\coRuntimeRegisteredSimObject.cs" />
+    <Compile Include="tsObjects\coSaveFileDialog.cs" />
+    <Compile Include="tsObjects\coScatterSky.cs" />
+    <Compile Include="tsObjects\coSceneLighting.cs" />
+    <Compile Include="tsObjects\coSceneObject.cs" />
+    <Compile Include="tsObjects\coSceneRootZone.cs" />
+    <Compile Include="tsObjects\coSceneSimpleZone.cs" />
+    <Compile Include="tsObjects\coSceneSpace.cs" />
+    <Compile Include="tsObjects\coSceneZoneSpace.cs" />
+    <Compile Include="tsObjects\coScopeAlwaysShape.cs" />
+    <Compile Include="tsObjects\coScriptGroup.cs" />
+    <Compile Include="tsObjects\coScriptMsgListener.cs" />
+    <Compile Include="tsObjects\coScriptObject.cs" />
+    <Compile Include="tsObjects\coSelectAction.cs" />
+    <Compile Include="tsObjects\coSelection.cs" />
+    <Compile Include="tsObjects\coSettings.cs" />
+    <Compile Include="tsObjects\coSFXAmbience.cs" />
+    <Compile Include="tsObjects\coSFXController.cs" />
+    <Compile Include="tsObjects\coSFXDescription.cs" />
+    <Compile Include="tsObjects\coSFXEmitter.cs" />
+    <Compile Include="tsObjects\coSFXEnvironment.cs" />
+    <Compile Include="tsObjects\coSFXFMODEvent.cs" />
+    <Compile Include="tsObjects\coSFXFMODEventGroup.cs" />
+    <Compile Include="tsObjects\coSFXFMODEventSource.cs" />
+    <Compile Include="tsObjects\coSFXFMODProject.cs" />
+    <Compile Include="tsObjects\coSFXParameter.cs" />
+    <Compile Include="tsObjects\coSFXPlayList.cs" />
+    <Compile Include="tsObjects\coSFXProfile.cs" />
+    <Compile Include="tsObjects\coSFXSound.cs" />
+    <Compile Include="tsObjects\coSFXSource.cs" />
+    <Compile Include="tsObjects\coSFXState.cs" />
+    <Compile Include="tsObjects\coSFXTrack.cs" />
+    <Compile Include="tsObjects\coShaderData.cs" />
+    <Compile Include="tsObjects\coShadowRenderPassManager.cs" />
+    <Compile Include="tsObjects\coShapeBase.cs" />
+    <Compile Include="tsObjects\coShapeBaseData.cs" />
+    <Compile Include="tsObjects\coShapeBaseImageData.cs" />
+    <Compile Include="tsObjects\coSimComponent.cs" />
+    <Compile Include="tsObjects\coSimDataBlock.cs" />
+    <Compile Include="tsObjects\coSimGroup.cs" />
+    <Compile Include="tsObjects\coSimObject.cs" />
+    <Compile Include="tsObjects\coSimPersistSet.cs" />
+    <Compile Include="tsObjects\coSimpleComponentInterface.cs" />
+    <Compile Include="tsObjects\coSimpleNetObject.cs" />
+    <Compile Include="tsObjects\coSimSet.cs" />
+    <Compile Include="tsObjects\coSkyBox.cs" />
+    <Compile Include="tsObjects\coSpawnSphere.cs" />
+    <Compile Include="tsObjects\coSplash.cs" />
+    <Compile Include="tsObjects\coSplashData.cs" />
+    <Compile Include="tsObjects\coSpotLight.cs" />
+    <Compile Include="tsObjects\coStaticShape.cs" />
+    <Compile Include="tsObjects\coStaticShapeData.cs" />
+    <Compile Include="tsObjects\coStreamObject.cs" />
+    <Compile Include="tsObjects\coSun.cs" />
+    <Compile Include="tsObjects\coT3DSceneClient.cs" />
+    <Compile Include="tsObjects\coT3DSceneComponent.cs" />
+    <Compile Include="tsObjects\coTCPObject.cs" />
+    <Compile Include="tsObjects\coTerrainBlock.cs" />
+    <Compile Include="tsObjects\coTerrainMaterial.cs" />
+    <Compile Include="tsObjects\coTerrainRenderInst.cs" />
+    <Compile Include="tsObjects\coTimeOfDay.cs" />
+    <Compile Include="tsObjects\coTrigger.cs" />
+    <Compile Include="tsObjects\coTriggerData.cs" />
+    <Compile Include="tsObjects\coTSForestItemData.cs" />
+    <Compile Include="tsObjects\coTSShapeConstructor.cs" />
+    <Compile Include="tsObjects\coTSStatic.cs" />
+    <Compile Include="tsObjects\coTurretShape.cs" />
+    <Compile Include="tsObjects\coTurretShapeData.cs" />
+    <Compile Include="tsObjects\coUndoAction.cs" />
+    <Compile Include="tsObjects\coUndoManager.cs" />
+    <Compile Include="tsObjects\coUndoScriptAction.cs" />
+    <Compile Include="tsObjects\coVehicle.cs" />
+    <Compile Include="tsObjects\coVehicleBlocker.cs" />
+    <Compile Include="tsObjects\coVehicleData.cs" />
+    <Compile Include="tsObjects\coWaterBlock.cs" />
+    <Compile Include="tsObjects\coWaterObject.cs" />
+    <Compile Include="tsObjects\coWaterPlane.cs" />
+    <Compile Include="tsObjects\coWayPoint.cs" />
+    <Compile Include="tsObjects\coWheeledVehicle.cs" />
+    <Compile Include="tsObjects\coWheeledVehicleData.cs" />
+    <Compile Include="tsObjects\coWheeledVehicleSpring.cs" />
+    <Compile Include="tsObjects\coWheeledVehicleTire.cs" />
+    <Compile Include="tsObjects\coWorldEditor.cs" />
+    <Compile Include="tsObjects\coWorldEditorSelection.cs" />
+    <Compile Include="tsObjects\coZipObject.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

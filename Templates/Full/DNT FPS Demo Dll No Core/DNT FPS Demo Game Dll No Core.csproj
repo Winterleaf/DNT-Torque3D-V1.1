@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DC10291E-FCE2-48A6-9876-1D6B00D5C06D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DNT_FPS_Demo_Game_Dll</RootNamespace>
+    <AssemblyName>DNT FPS Demo Game Dll</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Scripts\Client\Audio\audio.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\Client\Enviroment\Lighting\Advanced\init.cs" />
+    <Compile Include="Scripts\Client\Enviroment\Lighting\Advanced\lightViz.cs" />
+    <Compile Include="Scripts\Client\Enviroment\Lighting\Advanced\shaders.cs" />
+    <Compile Include="Scripts\Client\Enviroment\Lighting\Advanced\shadersViz.cs" />
+    <Compile Include="Scripts\Client\Enviroment\Lighting\Advanced\shadowViz.cs" />
+    <Compile Include="Scripts\Client\Enviroment\Lighting\Advanced\shadowVizGui.cs" />
+    <Compile Include="Scripts\Client\Enviroment\Lighting\Basic\init.cs" />
+    <Compile Include="Scripts\Client\Enviroment\Lighting\Basic\shadowFilter.cs" />
+    <Compile Include="Scripts\Client\Enviroment\Lighting\ShadowMaps\init.cs" />
+    <Compile Include="Scripts\Client\postFx\chromaticLens.cs" />
+    <Compile Include="Scripts\Client\postFx\dof.cs" />
+    <Compile Include="Scripts\Client\postFx\edgeAA.cs" />
+    <Compile Include="Scripts\Client\postFx\flash.cs" />
+    <Compile Include="Scripts\Client\postFx\fog.cs" />
+    <Compile Include="Scripts\Client\postFx\fxaa.cs" />
+    <Compile Include="Scripts\Client\postFx\GammaPostFX.cs" />
+    <Compile Include="Scripts\Client\postFx\glow.cs" />
+    <Compile Include="Scripts\Client\postFx\hdr.cs" />
+    <Compile Include="Scripts\Client\postFx\lightRay.cs" />
+    <Compile Include="Scripts\Client\postFx\MLAA.cs" />
+    <Compile Include="Scripts\Client\postFx\postFXmanager_gui_settings.cs" />
+    <Compile Include="Scripts\Client\postFx\postFXManager_gui.cs" />
+    <Compile Include="Scripts\Client\postFx\postFXManager_gui_cs.cs" />
+    <Compile Include="Scripts\Client\postFx\postFXManager_persistance_cs.cs" />
+    <Compile Include="Scripts\Client\postFx\ssao.cs" />
+    <Compile Include="Scripts\Client\Utils\actionMap.cs" />
+    <Compile Include="Scripts\Client\Audio\audioAmbiences.cs" />
+    <Compile Include="Scripts\Client\Audio\AudioData.cs" />
+    <Compile Include="Scripts\Client\Audio\AudioDescriptions.cs" />
+    <Compile Include="Scripts\Client\Audio\audioEnviroments.cs" />
+    <Compile Include="Scripts\Client\Audio\audioStates.cs" />
+    <Compile Include="Scripts\Client\canvas.cs" />
+    <Compile Include="Scripts\Client\Utils\centerPrint.cs" />
+    <Compile Include="Scripts\Client\ChatHud.cs" />
+    <Compile Include="Scripts\Client\Client.cs" />
+    <Compile Include="Scripts\Client\Enviroment\clouds.cs" />
+    <Compile Include="Scripts\Client\commands.cs" />
+    <Compile Include="Scripts\Client\commonMaterialData.cs" />
+    <Compile Include="Scripts\Client\core.cs" />
+    <Compile Include="Scripts\Client\cursor.cs" />
+    <Compile Include="Scripts\Client\Default.bind.cs" />
+    <Compile Include="Scripts\Client\Defaults.cs" />
+    <Compile Include="Scripts\Client\Utils\devHelpers.cs" />
+    <Compile Include="Scripts\Client\Game.cs" />
+    <Compile Include="Scripts\Client\Utils\helperfuncs.cs" />
+    <Compile Include="Scripts\Client\imposter.cs" />
+    <Compile Include="Scripts\Client\Init.cs" />
+    <Compile Include="Scripts\Client\Enviroment\lighting.cs" />
+    <Compile Include="Scripts\Client\Main.cs" />
+    <Compile Include="Scripts\Client\materials.cs" />
+    <Compile Include="Scripts\Client\message.cs" />
+    <Compile Include="Scripts\Client\MessageHud.cs" />
+    <Compile Include="Scripts\Client\Utils\metrics.cs" />
+    <Compile Include="Scripts\Client\mission.cs" />
+    <Compile Include="Scripts\Client\MissionDownload.cs" />
+    <Compile Include="Scripts\Client\PlayerList.cs" />
+    <Compile Include="Scripts\Client\postfx.cs" />
+    <Compile Include="Scripts\Client\profiles.cs" />
+    <Compile Include="Scripts\Client\Utils\recordings.cs" />
+    <Compile Include="Scripts\Client\renderManager.cs" />
+    <Compile Include="Scripts\Client\Enviroment\scatterSky.cs" />
+    <Compile Include="Scripts\Client\screenshot.cs" />
+    <Compile Include="Scripts\Client\Utils\scriptdoc.cs" />
+    <Compile Include="Scripts\Client\ServerConnection.cs" />
+    <Compile Include="Scripts\Client\Shaders.cs" />
+    <Compile Include="Scripts\Client\Enviroment\terrainBlock.cs" />
+    <Compile Include="Scripts\Client\Enviroment\water.cs" />
+    <Compile Include="Scripts\Gui\help.cs" />
+    <Compile Include="Scripts\Gui\PlayGui.cs" />
+    <Compile Include="Scripts\Gui\StartupGui.cs" />
+    <Compile Include="Scripts\Main.cs" />
+    <Compile Include="Scripts\parseArgs.cs" />
+    <Compile Include="Scripts\Server\AIPlayer.cs" />
+    <Compile Include="Scripts\Server\audio.cs" />
+    <Compile Include="Scripts\Server\Camera.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\Server\centerPrint.cs" />
+    <Compile Include="Scripts\Server\Cheetah.cs" />
+    <Compile Include="Scripts\Server\clientConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\Server\Commands.cs" />
+    <Compile Include="Scripts\Server\Default.cs" />
+    <Compile Include="Scripts\Server\Game.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\Server\GrenadeLauncher.cs" />
+    <Compile Include="Scripts\Server\Health.cs" />
+    <Compile Include="Scripts\Server\Init.cs" />
+    <Compile Include="Scripts\Server\Inventory.cs" />
+    <Compile Include="Scripts\Server\Item.cs" />
+    <Compile Include="Scripts\Server\kickBan.cs" />
+    <Compile Include="Scripts\Server\LevelInfo.cs" />
+    <Compile Include="Scripts\Server\Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Server\Message.cs" />
+    <Compile Include="Scripts\Server\missionDownload.cs" />
+    <Compile Include="Scripts\Server\missionLoad.cs" />
+    <Compile Include="Scripts\Server\Player.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\Server\Projectile.cs" />
+    <Compile Include="Scripts\Server\ProximityMine.cs" />
+    <Compile Include="Scripts\Server\radiusDamage.cs" />
+    <Compile Include="Scripts\Server\RocketLauncher.cs" />
+    <Compile Include="Scripts\Server\server.cs" />
+    <Compile Include="Scripts\Server\ShapeBase.cs" />
+    <Compile Include="Scripts\Server\SoldierGun.cs" />
+    <Compile Include="Scripts\Server\StaticShape.cs" />
+    <Compile Include="Scripts\Server\Teleporter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\Server\Triggers.cs" />
+    <Compile Include="Scripts\Server\Turret.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scripts\Server\Vehicle.cs" />
+    <Compile Include="Scripts\Server\VehicleWheeled.cs" />
+    <Compile Include="Scripts\Server\Weapon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Engine\lib\DNT\DotNetTorque.csproj">
+      <Project>{F08948D7-0E15-408A-B1F6-EC395895656F}</Project>
+      <Name>DotNetTorque</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
