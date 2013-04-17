@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// 
+// Last updated: 10/18/2012
 // 
 
 #region
@@ -91,16 +91,16 @@ namespace DNT_FPS_Demo
             else
                 {
 */
-            dnt_torque = new dnTorque(Process.GetCurrentProcess().Handle);
-            //Initialize Torque, pass a handle to this form into T3D so it knows where to rendor the screen to.
-            //If you don't do this, you can't pass the mouse and key strokes, w/out the mouse and keystrokes
-            //being redirected the application will hang intermittently.
+                dnt_torque = new dnTorque(Process.GetCurrentProcess().Handle);
+                //Initialize Torque, pass a handle to this form into T3D so it knows where to rendor the screen to.
+                //If you don't do this, you can't pass the mouse and key strokes, w/out the mouse and keystrokes
+                //being redirected the application will hang intermittently.
 #if DEBUG
-            dnt_torque.InitializeTorque(new[] {""}, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll", "TestBase_DEBUG.dll");
+                dnt_torque.InitializeTorque(new[] { "" }, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll", "<!!__PROJECTNAME__!!>_DEBUG.dll");
 #else
-            dnt_torque.InitializeTorque(new[] {""}, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll", "TestBase.dll");
+                dnt_torque.InitializeTorque(new[] {""}, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll", "<!!__PROJECTNAME__!!>.dll");
 #endif
-            //Let's prepare the T3D display,
+                //Let's prepare the T3D display,
 /*                }
 */
             dnt_torque.WindowIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
