@@ -278,17 +278,17 @@ public int borderWidth
           dnTorque.self.SetVar(_mSimObjectId + ".borderWidth", value.AsString());
           }
        }
-//public Vector<S32> columns
-//       {
-//       get
-//          {
-//          return dnTorque.self.GetVar(_mSimObjectId + ".columns").AsVector<S32>();
-//          }
-//       set
-//          {
-//          dnTorque.self.SetVar(_mSimObjectId + ".columns", value.AsString());
-//          }
-//       }
+public VectorInt  columns
+       {
+       get
+          {
+          return dnTorque.self.GetVar(_mSimObjectId + ".columns").AsVectorInt ();
+          }
+       set
+          {
+          dnTorque.self.SetVar(_mSimObjectId + ".columns", value.AsString());
+          }
+       }
 public int fudgeFactor
        {
        get
@@ -300,17 +300,17 @@ public int fudgeFactor
           dnTorque.self.SetVar(_mSimObjectId + ".fudgeFactor", value.AsString());
           }
        }
-//public Vector<S32> rows
-//       {
-//       get
-//          {
-//          return dnTorque.self.GetVar(_mSimObjectId + ".rows").AsVector<S32>();
-//          }
-//       set
-//          {
-//          dnTorque.self.SetVar(_mSimObjectId + ".rows", value.AsString());
-//          }
-//       }
+public VectorInt  rows
+       {
+       get
+          {
+          return dnTorque.self.GetVar(_mSimObjectId + ".rows").AsVectorInt ();
+          }
+       set
+          {
+          dnTorque.self.SetVar(_mSimObjectId + ".rows", value.AsString());
+          }
+       }
 /// <summary>
 /// Add a new column. )
 /// 

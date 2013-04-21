@@ -952,6 +952,48 @@ static internal wle_fn_detag mwle_fn_detag;
 static internal wle_fn_displaySplashWindow mwle_fn_displaySplashWindow;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate int wle_fn_displaySplashWindow();
+static internal wle_fn_dnt_testcase_1 mwle_fn_dnt_testcase_1;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_1([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_10 mwle_fn_dnt_testcase_10;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_10([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_12 mwle_fn_dnt_testcase_12;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_12([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_13 mwle_fn_dnt_testcase_13;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_13([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_14 mwle_fn_dnt_testcase_14;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_14([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_15 mwle_fn_dnt_testcase_15;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_15([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_2 mwle_fn_dnt_testcase_2;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_2([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_3 mwle_fn_dnt_testcase_3;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_3([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_4 mwle_fn_dnt_testcase_4;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_4([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_5 mwle_fn_dnt_testcase_5;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_5([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_6 mwle_fn_dnt_testcase_6;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_6([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_7 mwle_fn_dnt_testcase_7;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_7([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_8 mwle_fn_dnt_testcase_8;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_8([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_dnt_testcase_9 mwle_fn_dnt_testcase_9;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_dnt_testcase_9([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder chr,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
 static internal wle_fn_dumpConsoleClasses mwle_fn_dumpConsoleClasses;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_dumpConsoleClasses([In] bool dumpScript, [In] bool dumpEngine);
@@ -5858,6 +5900,20 @@ mwle_fn_describeGFXResources= null;
 mwle_fn_describeGFXStateBlocks= null;
 mwle_fn_detag= null;
 mwle_fn_displaySplashWindow= null;
+mwle_fn_dnt_testcase_1= null;
+mwle_fn_dnt_testcase_10= null;
+mwle_fn_dnt_testcase_12= null;
+mwle_fn_dnt_testcase_13= null;
+mwle_fn_dnt_testcase_14= null;
+mwle_fn_dnt_testcase_15= null;
+mwle_fn_dnt_testcase_2= null;
+mwle_fn_dnt_testcase_3= null;
+mwle_fn_dnt_testcase_4= null;
+mwle_fn_dnt_testcase_5= null;
+mwle_fn_dnt_testcase_6= null;
+mwle_fn_dnt_testcase_7= null;
+mwle_fn_dnt_testcase_8= null;
+mwle_fn_dnt_testcase_9= null;
 mwle_fn_dumpConsoleClasses= null;
 mwle_fn_dumpConsoleFunctions= null;
 mwle_fn_dumpFontCacheStatus= null;
@@ -7596,6 +7652,20 @@ mwle_fn_describeGFXResources= (wle_fn_describeGFXResources)Marshal.GetDelegateFo
 mwle_fn_describeGFXStateBlocks= (wle_fn_describeGFXStateBlocks)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_describeGFXStateBlocks"), typeof(wle_fn_describeGFXStateBlocks));
 mwle_fn_detag= (wle_fn_detag)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_detag"), typeof(wle_fn_detag));
 mwle_fn_displaySplashWindow= (wle_fn_displaySplashWindow)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_displaySplashWindow"), typeof(wle_fn_displaySplashWindow));
+mwle_fn_dnt_testcase_1= (wle_fn_dnt_testcase_1)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_1"), typeof(wle_fn_dnt_testcase_1));
+mwle_fn_dnt_testcase_10= (wle_fn_dnt_testcase_10)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_10"), typeof(wle_fn_dnt_testcase_10));
+mwle_fn_dnt_testcase_12= (wle_fn_dnt_testcase_12)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_12"), typeof(wle_fn_dnt_testcase_12));
+mwle_fn_dnt_testcase_13= (wle_fn_dnt_testcase_13)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_13"), typeof(wle_fn_dnt_testcase_13));
+mwle_fn_dnt_testcase_14= (wle_fn_dnt_testcase_14)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_14"), typeof(wle_fn_dnt_testcase_14));
+mwle_fn_dnt_testcase_15= (wle_fn_dnt_testcase_15)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_15"), typeof(wle_fn_dnt_testcase_15));
+mwle_fn_dnt_testcase_2= (wle_fn_dnt_testcase_2)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_2"), typeof(wle_fn_dnt_testcase_2));
+mwle_fn_dnt_testcase_3= (wle_fn_dnt_testcase_3)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_3"), typeof(wle_fn_dnt_testcase_3));
+mwle_fn_dnt_testcase_4= (wle_fn_dnt_testcase_4)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_4"), typeof(wle_fn_dnt_testcase_4));
+mwle_fn_dnt_testcase_5= (wle_fn_dnt_testcase_5)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_5"), typeof(wle_fn_dnt_testcase_5));
+mwle_fn_dnt_testcase_6= (wle_fn_dnt_testcase_6)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_6"), typeof(wle_fn_dnt_testcase_6));
+mwle_fn_dnt_testcase_7= (wle_fn_dnt_testcase_7)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_7"), typeof(wle_fn_dnt_testcase_7));
+mwle_fn_dnt_testcase_8= (wle_fn_dnt_testcase_8)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_8"), typeof(wle_fn_dnt_testcase_8));
+mwle_fn_dnt_testcase_9= (wle_fn_dnt_testcase_9)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dnt_testcase_9"), typeof(wle_fn_dnt_testcase_9));
 mwle_fn_dumpConsoleClasses= (wle_fn_dumpConsoleClasses)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dumpConsoleClasses"), typeof(wle_fn_dumpConsoleClasses));
 mwle_fn_dumpConsoleFunctions= (wle_fn_dumpConsoleFunctions)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dumpConsoleFunctions"), typeof(wle_fn_dumpConsoleFunctions));
 mwle_fn_dumpFontCacheStatus= (wle_fn_dumpFontCacheStatus)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dumpFontCacheStatus"), typeof(wle_fn_dumpFontCacheStatus));

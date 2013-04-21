@@ -2649,6 +2649,216 @@ internal bool fn_displaySplashWindow ()
 return  SafeNativeMethods.mwle_fn_displaySplashWindow()>=1;
 }
 /// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_1 (string chr)
+{
+var returnbuff = new StringBuilder(4096);
+var sbchr = new StringBuilder(chr, 4096);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_1(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_10 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_10(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_12 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_12(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_13 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_13(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_14 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_14(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_15 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_15(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_2 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_2(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_3 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_3(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_4 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_4(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_5 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_5(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_6 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_6(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_7 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_7(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_8 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_8(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+
+internal string fn_dnt_testcase_9 (string chr)
+{
+var returnbuff = new StringBuilder(1024);
+var sbchr = new StringBuilder(chr, 1024);
+
+SafeNativeMethods.mwle_fn_dnt_testcase_9(sbchr, returnbuff);
+return returnbuff.ToString();
+
+}
+/// <summary>
 /// @brief Dumps all declared console classes to the console.
 ///             @param dumpScript Optional parameter specifying whether or not classes defined in script should be dumped.
 ///             @param dumpEngine Optional parameter specifying whether or not classes defined in the engine should be dumped.

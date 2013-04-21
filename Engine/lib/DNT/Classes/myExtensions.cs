@@ -64,6 +64,20 @@ namespace WinterLeaf.Classes
     /// </summary>
     public static class MyExtensions
         {
+        public static VectorBool AsVectorBool(this string value)
+            {
+            return new VectorBool(value);
+            }
+        public static VectorInt AsVectorInt(this string value)
+            {
+            return new VectorInt(value);
+            }
+        public static VectorFloat AsVectorFloat(this string value)
+            {
+            return new VectorFloat(value);
+            }
+
+
         public static EaseF AsEaseF(this string value)
             {
             return new EaseF(value);
@@ -78,7 +92,7 @@ namespace WinterLeaf.Classes
                 value = "0";
 
             sbyte s;
-            if (sbyte.TryParse(value,out s))
+            if (sbyte.TryParse(value, out s))
                 {
                 return s;
                 }

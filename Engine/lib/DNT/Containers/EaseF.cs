@@ -71,7 +71,7 @@ namespace WinterLeaf.Containers
 
         public EaseF(string easef)
             {
-            string[] v = easef.Split(',');
+            string[] v = easef.Split(' ');
             _mDirection = v[0].AsInt();
             _mType = v[1].AsInt();
             try

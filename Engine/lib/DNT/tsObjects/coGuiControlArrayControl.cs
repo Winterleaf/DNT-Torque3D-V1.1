@@ -236,17 +236,17 @@ public int colCount
           dnTorque.self.SetVar(_mSimObjectId + ".colCount", value.AsString());
           }
        }
-//public Vector<S32> colSizes
-//       {
-//       get
-//          {
-//          return dnTorque.self.GetVar(_mSimObjectId + ".colSizes").AsVector<S32>();
-//          }
-//       set
-//          {
-//          dnTorque.self.SetVar(_mSimObjectId + ".colSizes", value.AsString());
-//          }
-//       }
+public VectorInt  colSizes
+       {
+       get
+          {
+          return dnTorque.self.GetVar(_mSimObjectId + ".colSizes").AsVectorInt ();
+          }
+       set
+          {
+          dnTorque.self.SetVar(_mSimObjectId + ".colSizes", value.AsString());
+          }
+       }
 public int colSpacing
        {
        get

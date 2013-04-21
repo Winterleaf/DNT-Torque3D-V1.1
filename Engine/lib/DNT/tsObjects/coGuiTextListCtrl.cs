@@ -236,17 +236,17 @@ public bool clipColumnText
           dnTorque.self.SetVar(_mSimObjectId + ".clipColumnText", value.AsString());
           }
        }
-//public Vector<S32> columns
-//       {
-//       get
-//          {
-//          return dnTorque.self.GetVar(_mSimObjectId + ".columns").AsVector<S32>();
-//          }
-//       set
-//          {
-//          dnTorque.self.SetVar(_mSimObjectId + ".columns", value.AsString());
-//          }
-//       }
+public VectorInt  columns
+       {
+       get
+          {
+          return dnTorque.self.GetVar(_mSimObjectId + ".columns").AsVectorInt ();
+          }
+       set
+          {
+          dnTorque.self.SetVar(_mSimObjectId + ".columns", value.AsString());
+          }
+       }
 public bool fitParentWidth
        {
        get

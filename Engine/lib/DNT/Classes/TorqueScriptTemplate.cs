@@ -4072,6 +4072,118 @@ public  bool displaySplashWindow(){
 return m_ts.fn_displaySplashWindow();
 }
 /// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  string dnt_testcase_1(string chr){
+return m_ts.fn_dnt_testcase_1(chr);
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  Point4F dnt_testcase_10(Point4F chr){
+return new Point4F ( m_ts.fn_dnt_testcase_10(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  RectF dnt_testcase_12(RectF chr){
+return new RectF ( m_ts.fn_dnt_testcase_12(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  RectI dnt_testcase_13(RectI chr){
+return new RectI ( m_ts.fn_dnt_testcase_13(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  RectSpacingI dnt_testcase_14(RectSpacingI chr){
+return new RectSpacingI ( m_ts.fn_dnt_testcase_14(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  TransformF dnt_testcase_15(TransformF chr){
+return new TransformF ( m_ts.fn_dnt_testcase_15(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  AngAxisF dnt_testcase_2(AngAxisF chr){
+return new AngAxisF ( m_ts.fn_dnt_testcase_2(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  Box3F dnt_testcase_3(Box3F chr){
+return new Box3F ( m_ts.fn_dnt_testcase_3(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  ColorF dnt_testcase_4(ColorF chr){
+return new ColorF ( m_ts.fn_dnt_testcase_4(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  ColorI dnt_testcase_5(ColorI chr){
+return new ColorI ( m_ts.fn_dnt_testcase_5(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  EaseF dnt_testcase_6(EaseF chr){
+return new EaseF ( m_ts.fn_dnt_testcase_6(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  Point2F dnt_testcase_7(Point2F chr){
+return new Point2F ( m_ts.fn_dnt_testcase_7(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  Point2I dnt_testcase_8(Point2I chr){
+return new Point2I ( m_ts.fn_dnt_testcase_8(chr.AsString()));
+}
+/// <summary>
+/// Return the integer character code value corresponding to the first character in the given string.
+///     )
+/// 
+/// </summary>
+public  Point3F dnt_testcase_9(Point3F chr){
+return new Point3F ( m_ts.fn_dnt_testcase_9(chr.AsString()));
+}
+/// <summary>
 /// @brief Dumps all declared console classes to the console.
 ///             @param dumpScript Optional parameter specifying whether or not classes defined in script should be dumped.
 ///             @param dumpEngine Optional parameter specifying whether or not classes defined in the engine should be dumped.
@@ -5360,8 +5472,8 @@ return m_ts.fn_mAtan(rise, run);
 ///    @ingroup Matrices )
 /// 
 /// </summary>
-public  TransformF MatrixCreate(Point3F position, string orientation){
-return new TransformF ( m_ts.fn_MatrixCreate(position.AsString(), orientation));
+public  TransformF MatrixCreate(Point3F position, AngAxisF orientation){
+return new TransformF ( m_ts.fn_MatrixCreate(position.AsString(), orientation.AsString()));
 }
 /// <summary>
 /// @Create a matrix from the given rotations.
@@ -7112,8 +7224,8 @@ return new Point3F ( m_ts.fn_VectorNormalize(v.AsString()));
 ///    @ingroup Vectors )
 /// 
 /// </summary>
-public  TransformF VectorOrthoBasis(string aa){
-return new TransformF ( m_ts.fn_VectorOrthoBasis(aa));
+public  TransformF VectorOrthoBasis(AngAxisF aa){
+return new TransformF ( m_ts.fn_VectorOrthoBasis(aa.AsString()));
 }
 /// <summary>
 /// Scales a vector by a scalar.

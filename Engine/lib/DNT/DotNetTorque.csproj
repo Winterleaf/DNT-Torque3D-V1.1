@@ -86,6 +86,7 @@
     <Compile Include="Containers\RectI.cs" />
     <Compile Include="Containers\RectSpacingI.cs" />
     <Compile Include="Containers\TransformF.cs" />
+    <Compile Include="Containers\Vector.cs" />
     <Compile Include="Enums\Camera__CameraMotionMode.cs" />
     <Compile Include="Enums\domUpAxisType.cs" />
     <Compile Include="Enums\GFXFormat.cs" />

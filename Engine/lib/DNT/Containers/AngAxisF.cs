@@ -58,7 +58,7 @@ namespace WinterLeaf.Containers
 
         public AngAxisF(string angaxisf)
             {
-            string[] fl = angaxisf.Split(',');
+            string[] fl = angaxisf.Split(' ');
             _mAxis.x = fl[0].AsFloat();
             _mAxis.y = fl[1].AsFloat();
             _mAxis.z = fl[2].AsFloat();

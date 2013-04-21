@@ -44,7 +44,7 @@ namespace WinterLeaf.Containers
 
         public RectF(string recti)
             {
-            string[] vals = recti.Split(',');
+            string[] vals = recti.Split(' ');
             _mPoint.x = vals[0].AsFloat();
             _mPoint.y = vals[1].AsFloat();
             _mExtent.x = vals[2].AsFloat();
