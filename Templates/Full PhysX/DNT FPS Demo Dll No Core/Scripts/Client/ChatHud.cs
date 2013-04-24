@@ -45,13 +45,14 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
 
 using System;
 using WinterLeaf.Classes;
+using WinterLeaf.tsObjects;
 
 #endregion
 
@@ -203,7 +204,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             console.Call("OuterChatHud", "setExtent", new[] {Util.firstWord(console.GetVarString("OuterChatHud.extent")), (lengthInPixels + chatMargin).AsString()});
             console.Call("ChatScrollHud", "scrollToBottom");
-            GuiControl.setVisible("ChatPageDown", false);
+            ((coGuiControl) "ChatPageDown").setVisible(false);
             return string.Empty;
             }
 
@@ -251,22 +252,22 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             //remove old messages from the top only if scrolled down all the way
             while (!console.Call("chatPageDown", "isVisible").AsBool() && console.Call("HudMessageVector", "getNumLines").AsBool() && (console.Call("HudMessageVector", "getNumLines").AsInt() >= console.GetVarInt("$pref::HudMessageLogSize")))
                 {
-                string tag = MessageVector.getLineTag("HudMessageVector", 0).AsString();
+                string tag = ((coMessageVector) "HudMessageVector").getLineTag(0).AsString();
                 if (tag.AsInt() != 0)
                     console.Call(tag, "delete");
-                MessageVector.popFrontLine("HudMessageVector");
+                ((coMessageVector) "HudMessageVector").popFrontLine();
                 }
             //add the message...
-            MessageVector.pushBackLine("HudMessageVector", text, console.GetVarInt("$LastHudTarget"));
+            ((coMessageVector) "HudMessageVector").pushBackLine(text, console.GetVarInt("$LastHudTarget"));
             console.SetVar("$LastHudTarget", 0);
             //now that we've added the message, see if we need to reset the position
             if (linesToScroll > 0)
                 {
-                GuiControl.setVisible("chatPageDown", true);
+                ((coGuiControl) "ChatPageDown").setVisible(true);
                 console.SetVar(thisobj + ".position", origPosition);
                 }
             else
-                GuiControl.setVisible("chatPageDown", false);
+                ((coGuiControl) "ChatPageDown").setVisible(false);
             return string.Empty;
             }
 
@@ -304,7 +305,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // Now set the position
             console.SetVar(string.Format("{0}.position", thisobj), string.Format("{0} {1} {2}", position.Split(' ')[0], position.Split(' ')[1], (scrollLines*textHeight).AsString()));
             // Display the pageup icon
-            GuiControl.setVisible("chatPageDown", true);
+            ((coGuiControl) "ChatPageDown").setVisible(true);
             return string.Empty;
             }
 
@@ -340,7 +341,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.SetVar(string.Format("{0}.position", thisobj), string.Format("{0} {1}", pos.Split(' ')[0], (pos.Split(' ')[1].AsInt() - (scrollLines*textHeight)).AsString()));
 
             // See if we have should (still) display the pagedown icon
-            GuiControl.setVisible("chatPageDown", scrollLines < linesToScroll ? true : false);
+            ((coGuiControl) "ChatPageDown").setVisible(scrollLines < linesToScroll ? true : false);
             return string.Empty;
             }
 

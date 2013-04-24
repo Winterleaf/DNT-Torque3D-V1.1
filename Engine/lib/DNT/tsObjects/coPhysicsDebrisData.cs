@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,163 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPhysicsDebrisData))]
-    public class coPhysicsDebrisData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoPhysicsDebrisData))]
+    public class coPhysicsDebrisData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicsDebrisData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coPhysicsDebrisData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coPhysicsDebrisData(int simobjectid): base(simobjectid){ }
+        public coPhysicsDebrisData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coPhysicsDebrisData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coPhysicsDebrisData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// @brief Value that reduces an object's rotational velocity over time.\n\n     Larger values will cause velocity to decay quicker.\n\n 
+        /// </summary>
+        public float angularDamping
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".angularDamping").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".angularDamping", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum rotational velocity before the shape can be put to sleep.\n\n     This should be a positive value. Shapes put to sleep will not be simulated in order to save system resources.\n\n     @note The shape must be dynamic.
+        /// </summary>
+        public float angularSleepThreshold
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".angularSleepThreshold").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".angularSleepThreshold", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The density of this shape for purposes of calculating buoyant forces.\n\n     The result of the calculated buoyancy is relative to the density of the WaterObject the PhysicsDebris is within.     @see WaterObject::density
+        /// </summary>
+        public float buoyancyDensity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".buoyancyDensity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".buoyancyDensity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Determines if the shape's shadow should be cast onto the environment.\n\n 
+        /// </summary>
+        public bool castShadows
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Coefficient of kinetic %friction to be applied to the shape.\n\n     Kinetic %friction reduces the velocity of a moving object while it is in contact with a surface.      A larger coefficient will result in a larger reduction in velocity.      A shape's friction should be smaller than it's staticFriction, but greater than 0.\n\n     @note This value is only applied while an object is in motion. For an object starting at rest, see PhysicsDebrisData::staticFriction
+        /// </summary>
+        public float friction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Base time, in seconds, that debris persists after time of creation.\n\n     @note A %PhysicsDebris' lifetime multiplied by it's $pref::PhysicsDebris::lifetimeScale      must be equal to or greater than 1.0.\n\n
+        /// </summary>
+        public float lifetime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Range of variation randomly applied to lifetime when debris is created.\n\n     Represents the maximum amount of seconds that will be added or subtracted to a shape's base lifetime.      A value of 0 will apply the same lifetime to each shape created.\n\n
+        /// </summary>
+        public float lifetimeVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVariance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Value that reduces an object's linear velocity over time.\n\n     Larger values will cause velocity to decay quicker.\n\n 
+        /// </summary>
+        public float linearDamping
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".linearDamping").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".linearDamping", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum linear velocity before the shape can be put to sleep.\n\n     This should be a positive value. Shapes put to sleep will not be simulated in order to save system resources.\n\n     @note The shape must be dynamic.
+        /// </summary>
+        public float linearSleepThreshold
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".linearSleepThreshold").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".linearSleepThreshold", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Value representing the mass of the shape.\n\n     A shape's mass influences the magnitude of any force applied to it.      @note All PhysicsDebris objects are dynamic.
+        /// </summary>
+        public float mass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mass").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mass", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Bounce coeffecient applied to the shape in response to a collision.\n\n     Restitution is a ratio of a shape's velocity before and after a collision.      A value of 0 will zero out a shape's post-collision velocity, making it stop on contact.      Larger values will remove less velocity after a collision, making it \'bounce\' with greater force.      Normal %restitution values range between 0 and 1.0.     @note Values near or equaling 1.0 are likely to cause undesirable results in the physics simulation.      Because of this, it is reccomended to avoid values close to 1.0
+        /// </summary>
+        public float restitution
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".restitution").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".restitution", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Path to the .DAE or .DTS file to use for this shape.\n\n     Compatable with Live-Asset Reloading.
+        /// </summary>
+        public String shapeFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Coefficient of static %friction to be applied to the shape.\n\n     Static %friction determines the force needed to start moving an at-rest object in contact with a surface.      If the force applied onto shape cannot overcome the force of static %friction, the shape will remain at rest.      A higher coefficient will require a larger force to start motion.      This value should be both greater than 0 and the PhysicsDebrisData::friction.\n\n     @note This value is only applied while an object is at rest. For an object in motion, see PhysicsDebrisData::friction
+        /// </summary>
+        public float staticFriction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".staticFriction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".staticFriction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Scale to apply to linear and angular dampening while underwater.\n\n      @see angularDamping linearDamping 
+        /// </summary>
+        public float waterDampingScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waterDampingScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waterDampingScale", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +261,9 @@ public coPhysicsDebrisData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +271,17 @@ public coPhysicsDebrisData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +293,15 @@ public coPhysicsDebrisData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPhysicsDebrisData ts)
+        public static implicit operator string(coPhysicsDebrisData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +321,7 @@ public coPhysicsDebrisData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPhysicsDebrisData ts)
+        public static implicit operator int(coPhysicsDebrisData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +342,7 @@ public coPhysicsDebrisData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPhysicsDebrisData ts)
+        public static implicit operator uint(coPhysicsDebrisData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,169 +357,18 @@ public coPhysicsDebrisData(int simobjectid): base(simobjectid){ }
             {
             return new coPhysicsDebrisData(ts);
             }
-public float angularDamping
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".angularDamping").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".angularDamping", value.AsString());
-          }
-       }
-public float angularSleepThreshold
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".angularSleepThreshold").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".angularSleepThreshold", value.AsString());
-          }
-       }
-public float buoyancyDensity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".buoyancyDensity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".buoyancyDensity", value.AsString());
-          }
-       }
-public bool castShadows
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString());
-          }
-       }
-public float friction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString());
-          }
-       }
-public float lifetime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetime", value.AsString());
-          }
-       }
-public float lifetimeVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVariance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVariance", value.AsString());
-          }
-       }
-public float linearDamping
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".linearDamping").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".linearDamping", value.AsString());
-          }
-       }
-public float linearSleepThreshold
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".linearSleepThreshold").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".linearSleepThreshold", value.AsString());
-          }
-       }
-public float mass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mass").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mass", value.AsString());
-          }
-       }
-public float restitution
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".restitution").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".restitution", value.AsString());
-          }
-       }
-public String shapeFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString());
-          }
-       }
-public float staticFriction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".staticFriction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".staticFriction", value.AsString());
-          }
-       }
-public float waterDampingScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waterDampingScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waterDampingScale", value.AsString());
-          }
-       }
-/// <summary>
-/// ( PhysicsDebrisData, preload, void, 2, 2, 
-///    @brief Loads some information to have readily available at simulation time.
-///    Forces generation of shaders, materials, and other data used by the %PhysicsDebris object. 
-///    This function should be used while a level is loading in order to shorten 
-///    the amount of time to create a PhysicsDebris in game.)
-/// 
-/// </summary>
-public  void preload(){
-TorqueScriptTemplate.m_ts.fnPhysicsDebrisData_preload(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// ( PhysicsDebrisData, preload, void, 2, 2, 
+        ///    @brief Loads some information to have readily available at simulation time.
+        ///    Forces generation of shaders, materials, and other data used by the %PhysicsDebris object. 
+        ///    This function should be used while a level is loading in order to shorten 
+        ///    the amount of time to create a PhysicsDebris in game.)
+        /// 
+        /// </summary>
+        public void preload()
+            {
+            TorqueScriptTemplate.m_ts.fnPhysicsDebrisData_preload(_mSimObjectId);
+            }
+        }
+    }

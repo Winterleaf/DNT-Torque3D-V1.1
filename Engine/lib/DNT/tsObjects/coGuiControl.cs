@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,190 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiControl))]
-    public class coGuiControl: coSimGroup
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiControl))]
+    public class coGuiControl : coSimGroup
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiControl(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiControl(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiControl(int simobjectid): base(simobjectid){ }
+        public coGuiControl(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiControl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiControl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Key combination that triggers the control's primary action when the control is on the canvas. 
+        /// </summary>
+        public String accelerator
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".accelerator").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".accelerator", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the control is enabled for user interaction. 
+        /// </summary>
+        public bool active
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".active").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".active", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Command to execute on the secondary action of the control.\n\n     @note Within this script snippet, the control on which the #altCommand is being executed is bound to       the global variable $ThisControl. 
+        /// </summary>
+        public String altCommand
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".altCommand").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".altCommand", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Command to execute on the primary action of the control.\n\n     @note Within this script snippet, the control on which the #command is being executed is bound to       the global variable $ThisControl. 
+        /// </summary>
+        public String command
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".command").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".command", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The width and height of the control. 
+        /// </summary>
+        public Point2I extent
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".extent").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".extent", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The horizontal resizing behavior. 
+        /// </summary>
+        public GuiControl__horizSizingOptions horizSizing
+            {
+            get { return (GuiControl__horizSizingOptions) Enum.Parse(typeof (GuiControl__horizSizingOptions), dnTorque.self.GetVar(_mSimObjectId + ".horizSizing")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".horizSizing", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Time for mouse to hover over control until tooltip is shown (in milliseconds). 
+        /// </summary>
+        public int hovertime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hovertime").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hovertime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the control may contain child controls. 
+        /// </summary>
+        public bool isContainer
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isContainer").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isContainer", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of string table to use for lookup of internationalized text. 
+        /// </summary>
+        public String langTableMod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".langTableMod").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".langTableMod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The minimum width and height of the control. The control will not be resized smaller than this. 
+        /// </summary>
+        public Point2I minExtent
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minExtent").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minExtent", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The position relative to the parent control. 
+        /// </summary>
+        public Point2I position
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".position").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".position", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The control profile that determines fill styles, font settings, etc. 
+        /// </summary>
+        public coGuiControlProfile profile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".profile"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".profile", value.ToString()); }
+            }
+
+        /// <summary>
+        /// String to show in tooltip for this control. 
+        /// </summary>
+        public String tooltip
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tooltip").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tooltip", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Control profile to use when rendering tooltips for this control. 
+        /// </summary>
+        public coGuiControlProfile tooltipProfile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tooltipProfile"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tooltipProfile", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Name of the variable to which the value of this control will be synchronized. 
+        /// </summary>
+        public String variable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".variable").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".variable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The vertical resizing behavior. 
+        /// </summary>
+        public GuiControl__vertSizingOptions vertSizing
+            {
+            get { return (GuiControl__vertSizingOptions) Enum.Parse(typeof (GuiControl__vertSizingOptions), dnTorque.self.GetVar(_mSimObjectId + ".vertSizing")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".vertSizing", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Whether the control is visible or hidden. 
+        /// </summary>
+        public bool visible
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".visible").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".visible", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +290,9 @@ public coGuiControl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +300,17 @@ public coGuiControl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +322,15 @@ public coGuiControl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiControl ts)
+        public static implicit operator string(coGuiControl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +350,7 @@ public coGuiControl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiControl ts)
+        public static implicit operator int(coGuiControl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +371,7 @@ public coGuiControl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiControl ts)
+        public static implicit operator uint(coGuiControl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,503 +386,385 @@ public coGuiControl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiControl(ts);
             }
-public String accelerator
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".accelerator").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".accelerator", value.AsString());
-          }
-       }
-public bool active
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".active").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".active", value.AsString());
-          }
-       }
-public String altCommand
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".altCommand").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".altCommand", value.AsString());
-          }
-       }
-public String command
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".command").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".command", value.AsString());
-          }
-       }
-public Point2I extent
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".extent").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".extent", value.AsString());
-          }
-       }
-public GuiControl__horizSizingOptions horizSizing
-       {
-       get
-          {          return (GuiControl__horizSizingOptions)Enum.Parse(typeof(GuiControl__horizSizingOptions), dnTorque.self.GetVar(_mSimObjectId + ".horizSizing"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".horizSizing", value.ToString());
-          }
-       }
-public int hovertime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hovertime").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hovertime", value.AsString());
-          }
-       }
-public bool isContainer
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isContainer").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isContainer", value.AsString());
-          }
-       }
-public String langTableMod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".langTableMod").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".langTableMod", value.AsString());
-          }
-       }
-public Point2I minExtent
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minExtent").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minExtent", value.AsString());
-          }
-       }
-public Point2I position
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".position").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".position", value.AsString());
-          }
-       }
-public coGuiControlProfile profile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".profile");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".profile", value.ToString());
-          }
-       }
-public String tooltip
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tooltip").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tooltip", value.AsString());
-          }
-       }
-public coGuiControlProfile tooltipProfile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tooltipProfile");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tooltipProfile", value.ToString());
-          }
-       }
-public String variable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".variable").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".variable", value.AsString());
-          }
-       }
-public GuiControl__vertSizingOptions vertSizing
-       {
-       get
-          {          return (GuiControl__vertSizingOptions)Enum.Parse(typeof(GuiControl__vertSizingOptions), dnTorque.self.GetVar(_mSimObjectId + ".vertSizing"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".vertSizing", value.ToString());
-          }
-       }
-public bool visible
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".visible").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".visible", value.AsString());
-          }
-       }
-/// <summary>
-/// Add the given control as a child to this control.
-///    This is synonymous to calling SimGroup::addObject.
-///    @param control The control to add as a child.
-///    @note The control will retain its current position and size.
-///    @see SimGroup::addObject
-///    @ref GuiControl_Hierarchy )
-/// 
-/// </summary>
-public  void addGuiControl(string control){
-TorqueScriptTemplate.m_ts.fnGuiControl_addGuiControl(_mSimObjectId, control);
-}
-/// <summary>
-/// Clear this control from being the first responder in its hierarchy chain.
-///    @param ignored Ignored.  Supported for backwards-compatibility. )
-/// 
-/// </summary>
-public  void clearFirstResponder(bool ignored){
-TorqueScriptTemplate.m_ts.fnGuiControl_clearFirstResponder(_mSimObjectId, ignored);
-}
-/// <summary>
-/// Test whether the given control is a direct or indirect child to this control.
-///    @param control The potential child control.
-///    @return True if the given control is a direct or indirect child to this control. )
-/// 
-/// </summary>
-public  bool controlIsChild(string control){
-return TorqueScriptTemplate.m_ts.fnGuiControl_controlIsChild(_mSimObjectId, control);
-}
-/// <summary>
-/// Find the topmost child control located at the given coordinates.
-///    @note Only children that are both visible and have the 'modal' flag set in their profile will be considered in the search.
-///    @param x The X coordinate in the control's own coordinate space.
-///    @param y The Y coordinate in the control's own coordinate space.
-///    @return The topmost child control at the given coordintes or the control on which the method was called if no matching child could be found.
-///    @see GuiControlProfile::modal
-///    @see findHitControls )
-/// 
-/// </summary>
-public  string findHitControl(int x, int y){
-return TorqueScriptTemplate.m_ts.fnGuiControl_findHitControl(_mSimObjectId, x, y);
-}
-/// <summary>
-/// Find all visible child controls that intersect with the given rectangle.
-///    @note Invisible child controls will not be included in the search.
-///    @param x The X coordinate of the rectangle's upper left corner in the control's own coordinate space.
-///    @param y The Y coordinate of the rectangle's upper left corner in the control's own coordinate space.
-///    @param width The width of the search rectangle in pixels.
-///    @param height The height of the search rectangle in pixels.
-///    @return A space-separated list of the IDs of all visible control objects intersecting the given rectangle.
-///    @tsexample
-///    // Lock all controls in the rectangle at x=10 and y=10 and the extent width=100 and height=100.
-///    foreach$( %ctrl in %this.findHitControls( 10, 10, 100, 100 ) )
-///       %ctrl.setLocked( true );
-///    @endtsexample
-///    @see findHitControl )
-/// 
-/// </summary>
-public  string findHitControls(int x, int y, int width, int height){
-return TorqueScriptTemplate.m_ts.fnGuiControl_findHitControls(_mSimObjectId, x, y, width, height);
-}
-/// <summary>
-/// Get the aspect ratio of the control's extents.
-///    @return The width of the control divided by its height.
-///    @see getExtent )
-/// 
-/// </summary>
-public  float getAspect(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_getAspect(_mSimObjectId);
-}
-/// <summary>
-/// Get the coordinate of the control's center point relative to its parent.
-///    @return The coordinate of the control's center point in parent-relative coordinates. )
-/// 
-/// </summary>
-public  Point2I getCenter(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiControl_getCenter(_mSimObjectId));
-}
-/// <summary>
-/// Get the width and height of the control.
-///    @return A point structure containing the width of the control in x and the height in y. )
-/// 
-/// </summary>
-public  Point2I getExtent(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiControl_getExtent(_mSimObjectId));
-}
-/// <summary>
-/// Get the first responder set on this GuiControl tree.
-///    @return The first responder set on the control's subtree.
-///    @see isFirstResponder
-///    @see makeFirstResponder
-///    @see setFirstResponder
-///    @ref GuiControl_FirstResponders )
-/// 
-/// </summary>
-public  string getFirstResponder(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_getFirstResponder(_mSimObjectId);
-}
-/// <summary>
-/// Get the coordinate of the control's center point in coordinates relative to the root control in its control hierarchy.
-///    @Return the center coordinate of the control in root-relative coordinates. )
-/// 
-/// </summary>
-public  Point2I getGlobalCenter(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiControl_getGlobalCenter(_mSimObjectId));
-}
-/// <summary>
-/// Get the position of the control relative to the root of the GuiControl hierarchy it is contained in.
-///    @return The control's current position in root-relative coordinates. )
-/// 
-/// </summary>
-public  Point2I getGlobalPosition(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiControl_getGlobalPosition(_mSimObjectId));
-}
-/// <summary>
-/// Get the minimum allowed size of the control.
-///    @return The minimum size to which the control can be shrunk.
-///    @see minExtent )
-/// 
-/// </summary>
-public  Point2I getMinExtent(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiControl_getMinExtent(_mSimObjectId));
-}
-/// <summary>
-/// Get the immediate parent control of the control.
-///    @return The immediate parent GuiControl or 0 if the control is not parented to a GuiControl. )
-/// 
-/// </summary>
-public  string getParent(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_getParent(_mSimObjectId);
-}
-/// <summary>
-/// Get the control's current position relative to its parent.
-///    @return The coordinate of the control in its parent's coordinate space. )
-/// 
-/// </summary>
-public  Point2I getPosition(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiControl_getPosition(_mSimObjectId));
-}
-/// <summary>
-/// Get the canvas on which the control is placed.
-///    @return The canvas on which the control's hierarchy is currently placed or 0 if the control is not currently placed on a GuiCanvas.
-///    @see GuiControl_Hierarchy )
-/// 
-/// </summary>
-public  string getRoot(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_getRoot(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiControl, getValue, const char*, 2, 2, )
-/// 
-/// </summary>
-public  string getValue(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_getValue(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiControl, isActive, bool, 2, 2, )
-/// 
-/// </summary>
-public  bool isActive(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_isActive(_mSimObjectId);
-}
-/// <summary>
-/// Test whether the control is currently awake.
-///    If a control is awake it means that it is part of the GuiControl hierarchy of a GuiCanvas.
-///    @return True if the control is awake.
-///    @ref GuiControl_Waking )
-/// 
-/// </summary>
-public  bool isAwake(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_isAwake(_mSimObjectId);
-}
-/// <summary>
-/// Test whether the control is the current first responder.
-///    @return True if the control is the current first responder.
-///    @see makeFirstResponder
-///    @see setFirstResponder
-///    @ref GuiControl_FirstResponders )
-/// 
-/// </summary>
-public  bool isFirstResponder(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_isFirstResponder(_mSimObjectId);
-}
-/// <summary>
-/// Indicates if the mouse is locked in this control.
-///    @return True if the mouse is currently locked. )
-/// 
-/// </summary>
-public  bool isMouseLocked(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_isMouseLocked(_mSimObjectId);
-}
-/// <summary>
-/// Test whether the control is currently set to be visible.
-///    @return True if the control is currently set to be visible.
-///    @note This method does not tell anything about whether the control is actually visible to 
-///       the user at the moment.
-///    @ref GuiControl_VisibleActive )
-/// 
-/// </summary>
-public  bool isVisible(){
-return TorqueScriptTemplate.m_ts.fnGuiControl_isVisible(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiControl, makeFirstResponder, void, 3, 3, (bool isFirst))
-/// 
-/// </summary>
-public  void makeFirstResponder(string a2){
-TorqueScriptTemplate.m_ts.fnGuiControl_makeFirstResponder(_mSimObjectId, a2);
-}
-/// <summary>
-/// Test whether the given point lies within the rectangle of the control.
-///    @param x X coordinate of the point in parent-relative coordinates.
-///    @param y Y coordinate of the point in parent-relative coordinates.
-///    @return True if the point is within the control, false if not.
-///    @see getExtent
-///    @see getPosition )
-/// 
-/// </summary>
-public  bool pointInControl(int x, int y){
-return TorqueScriptTemplate.m_ts.fnGuiControl_pointInControl(_mSimObjectId, x, y);
-}
-/// <summary>
-/// Resize and reposition the control using the give coordinates and dimensions.  Child controls 
-///    will resize according to their layout behaviors.
-///    @param x The new X coordinate of the control in its parent's coordinate space.
-///    @param y The new Y coordinate of the control in its parent's coordinate space.
-///    @param width The new width to which the control should be resized.
-///    @param height The new height to which the control should be resized. )
-/// 
-/// </summary>
-public  void resize(int x, int y, int width, int height){
-TorqueScriptTemplate.m_ts.fnGuiControl_resize(_mSimObjectId, x, y, width, height);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void setActive(bool state){
-TorqueScriptTemplate.m_ts.fnGuiControl_setActive(_mSimObjectId, state);
-}
-/// <summary>
-/// Set the control's position by its center point.
-///    @param x The X coordinate of the new center point of the control relative to the control's parent.
-///    @param y The Y coordinate of the new center point of the control relative to the control's parent. )
-/// 
-/// </summary>
-public  void setCenter(int x, int y){
-TorqueScriptTemplate.m_ts.fnGuiControl_setCenter(_mSimObjectId, x, y);
-}
-/// <summary>
-/// ( GuiControl, setExtent, void, 3, 4,
-///    ( Point2I p | int x, int y ) Set the width and height of the control.
-///    @hide )
-/// 
-/// </summary>
-public  void setExtent(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiControl_setExtent(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// Make this control the current first responder.
-///    @note Only controls with a profile that has canKeyFocus enabled are able to become first responders.
-///    @see GuiControlProfile::canKeyFocus
-///    @see isFirstResponder
-///    @ref GuiControl_FirstResponders )
-/// 
-/// </summary>
-public  void setFirstResponder(){
-TorqueScriptTemplate.m_ts.fnGuiControl_setFirstResponder(_mSimObjectId);
-}
-/// <summary>
-/// Position the control in the local space of the parent control.
-///    @param x The new X coordinate of the control relative to its parent's upper left corner.
-///    @param y The new Y coordinate of the control relative to its parent's upper left corner. )
-/// 
-/// </summary>
-public  void setPosition(int x, int y){
-TorqueScriptTemplate.m_ts.fnGuiControl_setPosition(_mSimObjectId, x, y);
-}
-/// <summary>
-/// Set position of the control relative to the root of the GuiControl hierarchy it is contained in.
-///    @param x The new X coordinate of the control relative to the root's upper left corner.
-///    @param y The new Y coordinate of the control relative to the root's upper left corner. )
-/// 
-/// </summary>
-public  void setPositionGlobal(int x, int y){
-TorqueScriptTemplate.m_ts.fnGuiControl_setPositionGlobal(_mSimObjectId, x, y);
-}
-/// <summary>
-/// Set the control profile for the control to use.
-///    The profile used by a control determines a great part of its behavior and appearance.
-///    @param profile The new profile the control should use.
-///    @ref GuiControl_Profiles )
-/// 
-/// </summary>
-public  void setProfile(string profile){
-TorqueScriptTemplate.m_ts.fnGuiControl_setProfile(_mSimObjectId, profile);
-}
-/// <summary>
-/// Set the value associated with the control.
-///    @param value The new value for the control. )
-/// 
-/// </summary>
-public  void setValue(string value){
-TorqueScriptTemplate.m_ts.fnGuiControl_setValue(_mSimObjectId, value);
-}
-/// <summary>
-/// Set whether the control is visible or not.
-///    @param state The new visiblity flag state for the control.
-///    @ref GuiControl_VisibleActive )
-/// 
-/// </summary>
-public  void setVisible(bool state){
-TorqueScriptTemplate.m_ts.fnGuiControl_setVisible(_mSimObjectId, state);
-}
-}}
+
+        /// <summary>
+        /// Add the given control as a child to this control.
+        ///    This is synonymous to calling SimGroup::addObject.
+        ///    @param control The control to add as a child.
+        ///    @note The control will retain its current position and size.
+        ///    @see SimGroup::addObject
+        ///    @ref GuiControl_Hierarchy )
+        /// 
+        /// </summary>
+        public void addGuiControl(string control)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_addGuiControl(_mSimObjectId, control);
+            }
+
+        /// <summary>
+        /// Clear this control from being the first responder in its hierarchy chain.
+        ///    @param ignored Ignored.  Supported for backwards-compatibility. )
+        /// 
+        /// </summary>
+        public void clearFirstResponder(bool ignored)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_clearFirstResponder(_mSimObjectId, ignored);
+            }
+
+        /// <summary>
+        /// Test whether the given control is a direct or indirect child to this control.
+        ///    @param control The potential child control.
+        ///    @return True if the given control is a direct or indirect child to this control. )
+        /// 
+        /// </summary>
+        public bool controlIsChild(string control)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_controlIsChild(_mSimObjectId, control);
+            }
+
+        /// <summary>
+        /// Find the topmost child control located at the given coordinates.
+        ///    @note Only children that are both visible and have the 'modal' flag set in their profile will be considered in the search.
+        ///    @param x The X coordinate in the control's own coordinate space.
+        ///    @param y The Y coordinate in the control's own coordinate space.
+        ///    @return The topmost child control at the given coordintes or the control on which the method was called if no matching child could be found.
+        ///    @see GuiControlProfile::modal
+        ///    @see findHitControls )
+        /// 
+        /// </summary>
+        public string findHitControl(int x, int y)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_findHitControl(_mSimObjectId, x, y);
+            }
+
+        /// <summary>
+        /// Find all visible child controls that intersect with the given rectangle.
+        ///    @note Invisible child controls will not be included in the search.
+        ///    @param x The X coordinate of the rectangle's upper left corner in the control's own coordinate space.
+        ///    @param y The Y coordinate of the rectangle's upper left corner in the control's own coordinate space.
+        ///    @param width The width of the search rectangle in pixels.
+        ///    @param height The height of the search rectangle in pixels.
+        ///    @return A space-separated list of the IDs of all visible control objects intersecting the given rectangle.
+        ///    @tsexample
+        ///    // Lock all controls in the rectangle at x=10 and y=10 and the extent width=100 and height=100.
+        ///    foreach$( %ctrl in %this.findHitControls( 10, 10, 100, 100 ) )
+        ///       %ctrl.setLocked( true );
+        ///    @endtsexample
+        ///    @see findHitControl )
+        /// 
+        /// </summary>
+        public string findHitControls(int x, int y, int width, int height)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_findHitControls(_mSimObjectId, x, y, width, height);
+            }
+
+        /// <summary>
+        /// Get the aspect ratio of the control's extents.
+        ///    @return The width of the control divided by its height.
+        ///    @see getExtent )
+        /// 
+        /// </summary>
+        public float getAspect()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_getAspect(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the coordinate of the control's center point relative to its parent.
+        ///    @return The coordinate of the control's center point in parent-relative coordinates. )
+        /// 
+        /// </summary>
+        public Point2I getCenter()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiControl_getCenter(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the width and height of the control.
+        ///    @return A point structure containing the width of the control in x and the height in y. )
+        /// 
+        /// </summary>
+        public Point2I getExtent()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiControl_getExtent(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the first responder set on this GuiControl tree.
+        ///    @return The first responder set on the control's subtree.
+        ///    @see isFirstResponder
+        ///    @see makeFirstResponder
+        ///    @see setFirstResponder
+        ///    @ref GuiControl_FirstResponders )
+        /// 
+        /// </summary>
+        public string getFirstResponder()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_getFirstResponder(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the coordinate of the control's center point in coordinates relative to the root control in its control hierarchy.
+        ///    @Return the center coordinate of the control in root-relative coordinates. )
+        /// 
+        /// </summary>
+        public Point2I getGlobalCenter()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiControl_getGlobalCenter(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the position of the control relative to the root of the GuiControl hierarchy it is contained in.
+        ///    @return The control's current position in root-relative coordinates. )
+        /// 
+        /// </summary>
+        public Point2I getGlobalPosition()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiControl_getGlobalPosition(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the minimum allowed size of the control.
+        ///    @return The minimum size to which the control can be shrunk.
+        ///    @see minExtent )
+        /// 
+        /// </summary>
+        public Point2I getMinExtent()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiControl_getMinExtent(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the immediate parent control of the control.
+        ///    @return The immediate parent GuiControl or 0 if the control is not parented to a GuiControl. )
+        /// 
+        /// </summary>
+        public string getParent()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_getParent(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the control's current position relative to its parent.
+        ///    @return The coordinate of the control in its parent's coordinate space. )
+        /// 
+        /// </summary>
+        public Point2I getPosition()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiControl_getPosition(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the canvas on which the control is placed.
+        ///    @return The canvas on which the control's hierarchy is currently placed or 0 if the control is not currently placed on a GuiCanvas.
+        ///    @see GuiControl_Hierarchy )
+        /// 
+        /// </summary>
+        public string getRoot()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_getRoot(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiControl, getValue, const char*, 2, 2, )
+        /// 
+        /// </summary>
+        public string getValue()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_getValue(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiControl, isActive, bool, 2, 2, )
+        /// 
+        /// </summary>
+        public bool isActive()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_isActive(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Test whether the control is currently awake.
+        ///    If a control is awake it means that it is part of the GuiControl hierarchy of a GuiCanvas.
+        ///    @return True if the control is awake.
+        ///    @ref GuiControl_Waking )
+        /// 
+        /// </summary>
+        public bool isAwake()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_isAwake(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Test whether the control is the current first responder.
+        ///    @return True if the control is the current first responder.
+        ///    @see makeFirstResponder
+        ///    @see setFirstResponder
+        ///    @ref GuiControl_FirstResponders )
+        /// 
+        /// </summary>
+        public bool isFirstResponder()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_isFirstResponder(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Indicates if the mouse is locked in this control.
+        ///    @return True if the mouse is currently locked. )
+        /// 
+        /// </summary>
+        public bool isMouseLocked()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_isMouseLocked(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Test whether the control is currently set to be visible.
+        ///    @return True if the control is currently set to be visible.
+        ///    @note This method does not tell anything about whether the control is actually visible to 
+        ///       the user at the moment.
+        ///    @ref GuiControl_VisibleActive )
+        /// 
+        /// </summary>
+        public bool isVisible()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_isVisible(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiControl, makeFirstResponder, void, 3, 3, (bool isFirst))
+        /// 
+        /// </summary>
+        public void makeFirstResponder(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_makeFirstResponder(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// Test whether the given point lies within the rectangle of the control.
+        ///    @param x X coordinate of the point in parent-relative coordinates.
+        ///    @param y Y coordinate of the point in parent-relative coordinates.
+        ///    @return True if the point is within the control, false if not.
+        ///    @see getExtent
+        ///    @see getPosition )
+        /// 
+        /// </summary>
+        public bool pointInControl(int x, int y)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControl_pointInControl(_mSimObjectId, x, y);
+            }
+
+        /// <summary>
+        /// Resize and reposition the control using the give coordinates and dimensions.  Child controls 
+        ///    will resize according to their layout behaviors.
+        ///    @param x The new X coordinate of the control in its parent's coordinate space.
+        ///    @param y The new Y coordinate of the control in its parent's coordinate space.
+        ///    @param width The new width to which the control should be resized.
+        ///    @param height The new height to which the control should be resized. )
+        /// 
+        /// </summary>
+        public void resize(int x, int y, int width, int height)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_resize(_mSimObjectId, x, y, width, height);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void setActive(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setActive(_mSimObjectId, state);
+            }
+
+        /// <summary>
+        /// Set the control's position by its center point.
+        ///    @param x The X coordinate of the new center point of the control relative to the control's parent.
+        ///    @param y The Y coordinate of the new center point of the control relative to the control's parent. )
+        /// 
+        /// </summary>
+        public void setCenter(int x, int y)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setCenter(_mSimObjectId, x, y);
+            }
+
+        /// <summary>
+        /// ( GuiControl, setExtent, void, 3, 4,
+        ///    ( Point2I p | int x, int y ) Set the width and height of the control.
+        ///    @hide )
+        /// 
+        /// </summary>
+        public void setExtent(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setExtent(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// Make this control the current first responder.
+        ///    @note Only controls with a profile that has canKeyFocus enabled are able to become first responders.
+        ///    @see GuiControlProfile::canKeyFocus
+        ///    @see isFirstResponder
+        ///    @ref GuiControl_FirstResponders )
+        /// 
+        /// </summary>
+        public void setFirstResponder()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setFirstResponder(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Position the control in the local space of the parent control.
+        ///    @param x The new X coordinate of the control relative to its parent's upper left corner.
+        ///    @param y The new Y coordinate of the control relative to its parent's upper left corner. )
+        /// 
+        /// </summary>
+        public void setPosition(int x, int y)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setPosition(_mSimObjectId, x, y);
+            }
+
+        /// <summary>
+        /// Set position of the control relative to the root of the GuiControl hierarchy it is contained in.
+        ///    @param x The new X coordinate of the control relative to the root's upper left corner.
+        ///    @param y The new Y coordinate of the control relative to the root's upper left corner. )
+        /// 
+        /// </summary>
+        public void setPositionGlobal(int x, int y)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setPositionGlobal(_mSimObjectId, x, y);
+            }
+
+        /// <summary>
+        /// Set the control profile for the control to use.
+        ///    The profile used by a control determines a great part of its behavior and appearance.
+        ///    @param profile The new profile the control should use.
+        ///    @ref GuiControl_Profiles )
+        /// 
+        /// </summary>
+        public void setProfile(string profile)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setProfile(_mSimObjectId, profile);
+            }
+
+        /// <summary>
+        /// Set the value associated with the control.
+        ///    @param value The new value for the control. )
+        /// 
+        /// </summary>
+        public void setValue(string value)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setValue(_mSimObjectId, value);
+            }
+
+        /// <summary>
+        /// Set whether the control is visible or not.
+        ///    @param state The new visiblity flag state for the control.
+        ///    @ref GuiControl_VisibleActive )
+        /// 
+        /// </summary>
+        public void setVisible(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiControl_setVisible(_mSimObjectId, state);
+            }
+        }
+    }

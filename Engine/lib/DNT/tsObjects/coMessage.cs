@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoMessage))]
-    public class coMessage: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoMessage))]
+    public class coMessage : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMessage(string simobjectid) : base(simobjectid){ }
+        public coMessage(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMessage(uint simobjectid): base(simobjectid){ }
+        public coMessage(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMessage(int simobjectid): base(simobjectid){ }
+        public coMessage(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coMessage(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coMessage(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coMessage(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coMessage ts)
+        public static implicit operator string(coMessage ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coMessage(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coMessage ts)
+        public static implicit operator int(coMessage ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coMessage(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coMessage ts)
+        public static implicit operator uint(coMessage ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,25 +231,32 @@ public coMessage(int simobjectid): base(simobjectid){ }
             {
             return new coMessage(ts);
             }
-/// <summary>
-/// (Message, addReference, void, 2, 2, () Increment the reference count for this message)
-/// 
-/// </summary>
-public  void addReference(){
-TorqueScriptTemplate.m_ts.fnMessage_addReference(_mSimObjectId);
-}
-/// <summary>
-/// (Message, freeReference, void, 2, 2, () Decrement the reference count for this message)
-/// 
-/// </summary>
-public  void freeReference(){
-TorqueScriptTemplate.m_ts.fnMessage_freeReference(_mSimObjectId);
-}
-/// <summary>
-/// (Message, getType, const char *, 2, 2, () Get message type (script class name or C++ class name if no script defined class))
-/// 
-/// </summary>
-public  string getType(){
-return TorqueScriptTemplate.m_ts.fnMessage_getType(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// (Message, addReference, void, 2, 2, () Increment the reference count for this message)
+        /// 
+        /// </summary>
+        public void addReference()
+            {
+            TorqueScriptTemplate.m_ts.fnMessage_addReference(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Message, freeReference, void, 2, 2, () Decrement the reference count for this message)
+        /// 
+        /// </summary>
+        public void freeReference()
+            {
+            TorqueScriptTemplate.m_ts.fnMessage_freeReference(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Message, getType, const char *, 2, 2, () Get message type (script class name or C++ class name if no script defined class))
+        /// 
+        /// </summary>
+        public string getType()
+            {
+            return TorqueScriptTemplate.m_ts.fnMessage_getType(_mSimObjectId);
+            }
+        }
+    }

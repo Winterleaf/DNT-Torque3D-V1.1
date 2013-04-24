@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXController))]
-    public class coSFXController: coSFXSource
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXController))]
+    public class coSFXController : coSFXSource
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXController(string simobjectid) : base(simobjectid){ }
+        public coSFXController(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXController(uint simobjectid): base(simobjectid){ }
+        public coSFXController(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXController(int simobjectid): base(simobjectid){ }
+        public coSFXController(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// If true, the controller logs its operation to the console.\n     This is a non-networked field that will work locally only. 
+        /// </summary>
+        public bool trace
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".trace").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".trace", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coSFXController(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coSFXController(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coSFXController(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXController ts)
+        public static implicit operator string(coSFXController ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coSFXController(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXController ts)
+        public static implicit operator int(coSFXController ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coSFXController(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXController ts)
+        public static implicit operator uint(coSFXController ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,32 +240,26 @@ public coSFXController(int simobjectid): base(simobjectid){ }
             {
             return new coSFXController(ts);
             }
-public bool trace
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".trace").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".trace", value.AsString());
-          }
-       }
-/// <summary>
-/// Get the index of the playlist slot currently processed by the controller.
-///    @return The slot index currently being played.
-///    @see SFXPlayList )
-/// 
-/// </summary>
-public  int getCurrentSlot(){
-return TorqueScriptTemplate.m_ts.fnSFXController_getCurrentSlot(_mSimObjectId);
-}
-/// <summary>
-/// Set the index of the playlist slot to play by the controller.  This can be used to seek in the playlist.
-///    @param index Index of the playlist slot. )
-/// 
-/// </summary>
-public  void setCurrentSlot(int index){
-TorqueScriptTemplate.m_ts.fnSFXController_setCurrentSlot(_mSimObjectId, index);
-}
-}}
+
+        /// <summary>
+        /// Get the index of the playlist slot currently processed by the controller.
+        ///    @return The slot index currently being played.
+        ///    @see SFXPlayList )
+        /// 
+        /// </summary>
+        public int getCurrentSlot()
+            {
+            return TorqueScriptTemplate.m_ts.fnSFXController_getCurrentSlot(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Set the index of the playlist slot to play by the controller.  This can be used to seek in the playlist.
+        ///    @param index Index of the playlist slot. )
+        /// 
+        /// </summary>
+        public void setCurrentSlot(int index)
+            {
+            TorqueScriptTemplate.m_ts.fnSFXController_setCurrentSlot(_mSimObjectId, index);
+            }
+        }
+    }

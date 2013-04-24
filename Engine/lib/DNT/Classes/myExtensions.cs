@@ -64,24 +64,51 @@ namespace WinterLeaf.Classes
     /// </summary>
     public static class MyExtensions
         {
+        /// <summary>
+        /// Converts string to a Vector of Bools
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static VectorBool AsVectorBool(this string value)
             {
             return new VectorBool(value);
             }
+
+        /// <summary>
+        /// Converts string to a Vector of Ints
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static VectorInt AsVectorInt(this string value)
             {
             return new VectorInt(value);
             }
+
+        /// <summary>
+        /// Converts string to a Vector of Floats.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static VectorFloat AsVectorFloat(this string value)
             {
             return new VectorFloat(value);
             }
 
-
+        /// <summary>
+        /// Converts string to an EaseF
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static EaseF AsEaseF(this string value)
             {
             return new EaseF(value);
             }
+
+        /// <summary>
+        /// Converts string to a sByte
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static sbyte AsSbyte(this string value)
             {
             if (value.Trim().ToLower() == "true")
@@ -97,28 +124,53 @@ namespace WinterLeaf.Classes
                 return s;
                 }
             throw new Exception("Failed to parse sbyte.");
-
             }
 
+        /// <summary>
+        /// Converts String to a RectF
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static RectF AsRectF(this string value)
             {
             return new RectF(value);
             }
 
+        /// <summary>
+        /// Converts string to a RectI
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static RectI AsRectI(this string value)
             {
             return new RectI(value);
             }
 
+        /// <summary>
+        /// Converts RectF to a string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string AsString(this RectF value)
             {
             return value.AsString();
             }
+
+        /// <summary>
+        /// Converts a Polyhedron to a string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string AsPolyhedron(this Polyhedron value)
             {
             return value.AsString();
             }
 
+        /// <summary>
+        /// Converts string to a Polyhedron
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static Polyhedron AsPolyhedron(this string value)
             {
             return new Polyhedron(value);
@@ -244,7 +296,12 @@ namespace WinterLeaf.Classes
             return value.ToString(CultureInfo.GetCultureInfo("en"));
             }
 
-        static public string AsString(this sbyte value)
+        /// <summary>
+        /// Converts sByte to string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string AsString(this sbyte value)
             {
             return value.ToString(CultureInfo.GetCultureInfo("en"));
             }
@@ -316,7 +373,7 @@ namespace WinterLeaf.Classes
         /// <returns> float </returns>
         public static string AsString(this float value)
             {
-            return ((double)value).ToString("0.000", CultureInfo.GetCultureInfo("en"));
+            return ((double) value).ToString("0.000", CultureInfo.GetCultureInfo("en"));
             }
 
         /// <summary>
@@ -425,7 +482,7 @@ namespace WinterLeaf.Classes
             double d;
             if (double.TryParse(value, out d))
                 {
-                return (int)d;
+                return (int) d;
                 }
 
             throw new Exception("Failed to cast string to int");
@@ -441,7 +498,7 @@ namespace WinterLeaf.Classes
             if (value.Trim() == "")
                 return 0;
             Byte i;
-            return Byte.TryParse(value, out i) ? i : (byte)0;
+            return Byte.TryParse(value, out i) ? i : (byte) 0;
             }
 
         /// <summary>
@@ -470,7 +527,7 @@ namespace WinterLeaf.Classes
 
             int i;
             if (int.TryParse(value, NumberStyles.Number, CultureInfo.GetCultureInfo("en"), out i))
-                return (uint)i;
+                return (uint) i;
             throw new Exception("Failed to cast string to uint");
             }
 
@@ -486,7 +543,7 @@ namespace WinterLeaf.Classes
             double v;
             if (double.TryParse(value, NumberStyles.Number | NumberStyles.AllowExponent, CultureInfo.GetCultureInfo("en"), out v))
                 {
-                return (float)v;
+                return (float) v;
                 }
             float f;
             if (float.TryParse(value, NumberStyles.Number | NumberStyles.AllowExponent, CultureInfo.GetCultureInfo("en"), out f))

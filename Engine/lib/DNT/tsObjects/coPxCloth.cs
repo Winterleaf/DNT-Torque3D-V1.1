@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,154 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPxCloth))]
-    public class coPxCloth: coGameBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoPxCloth))]
+    public class coPxCloth : coGameBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPxCloth(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coPxCloth(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coPxCloth(int simobjectid): base(simobjectid){ }
+        public coPxCloth(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coPxCloth(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coPxCloth(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// @brief Optional way to specify cloth verts that will be attached to the world position    it is created at.\n\n 
+        /// </summary>
+        public PxClothAttachment attachments
+            {
+            get { return (PxClothAttachment) Enum.Parse(typeof (PxClothAttachment), dnTorque.self.GetVar(_mSimObjectId + ".attachments")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".attachments", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Enables or disables bending resistance.\n\n   Set the bending resistance through PxCloth::bendingStiffness. 
+        /// </summary>
+        public bool bending
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bending").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bending", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Bending stiffness of the cloth in the range 0 to 1.\n\n 
+        /// </summary>
+        public float bendingStiffness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bendingStiffness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bendingStiffness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Enable/disable damping of internal velocities.\n\n 
+        /// </summary>
+        public bool damping
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damping").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damping", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Spring damping of the cloth in the range 0 to 1.\n\n 
+        /// </summary>
+        public float dampingCoefficient
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dampingCoefficient").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dampingCoefficient", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Density of the cloth (Mass per Area).\n\n 
+        /// </summary>
+        public float density
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Friction coefficient in the range 0 to 1.\n\n	  Defines the damping of the velocities of cloth particles that are in contact. 
+        /// </summary>
+        public float friction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Name of the material to render.\n\n 
+        /// </summary>
+        public String material
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".material").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".material", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The number of cloth vertices in width and length.\n\n   At least two verts should be defined.\n\n
+        /// </summary>
+        public Point2I samples
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".samples").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".samples", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Enables or disables self-collision handling within a single piece of cloth.\n\n 
+        /// </summary>
+        public bool selfCollision
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".selfCollision").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".selfCollision", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The width and height of the cloth.\n\n 
+        /// </summary>
+        public Point2F size
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".size").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".size", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Value representing how thick the cloth is.\n\n   The thickness is usually a fraction of the overall extent of the cloth and 	  should not be set to a value greater than that. A good value is the maximal 	  distance between two adjacent cloth particles in their rest pose. Visual 	  artifacts or collision problems may appear if the thickness is too small.\n\n 
+        /// </summary>
+        public float thickness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".thickness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".thickness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Not supported in current release (according to PhysX docs).\n\n	  Enables or disables collision detection of cloth triangles against the scene. 	  If not set, only collisions of cloth particles are detected. If set,    collisions of cloth triangles are detected as well. 
+        /// </summary>
+        public bool triangleCollision
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".triangleCollision").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".triangleCollision", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +254,9 @@ public coPxCloth(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +264,17 @@ public coPxCloth(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +286,15 @@ public coPxCloth(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPxCloth ts)
+        public static implicit operator string(coPxCloth ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +314,7 @@ public coPxCloth(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPxCloth ts)
+        public static implicit operator int(coPxCloth ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +335,7 @@ public coPxCloth(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPxCloth ts)
+        public static implicit operator uint(coPxCloth ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,146 +350,5 @@ public coPxCloth(int simobjectid): base(simobjectid){ }
             {
             return new coPxCloth(ts);
             }
-public PxClothAttachment attachments
-       {
-       get
-          {          return (PxClothAttachment)Enum.Parse(typeof(PxClothAttachment), dnTorque.self.GetVar(_mSimObjectId + ".attachments"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".attachments", value.ToString());
-          }
-       }
-public bool bending
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bending").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bending", value.AsString());
-          }
-       }
-public float bendingStiffness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bendingStiffness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bendingStiffness", value.AsString());
-          }
-       }
-public bool damping
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damping").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damping", value.AsString());
-          }
-       }
-public float dampingCoefficient
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dampingCoefficient").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dampingCoefficient", value.AsString());
-          }
-       }
-public float density
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString());
-          }
-       }
-public float friction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString());
-          }
-       }
-public String material
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".material").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".material", value.AsString());
-          }
-       }
-public Point2I samples
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".samples").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".samples", value.AsString());
-          }
-       }
-public bool selfCollision
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".selfCollision").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".selfCollision", value.AsString());
-          }
-       }
-public Point2F size
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".size").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".size", value.AsString());
-          }
-       }
-public float thickness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".thickness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".thickness", value.AsString());
-          }
-       }
-public bool triangleCollision
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".triangleCollision").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".triangleCollision", value.AsString());
-          }
-       }
-}}
+        }
+    }

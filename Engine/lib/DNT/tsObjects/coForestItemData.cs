@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,145 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoForestItemData))]
-    public class coForestItemData: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoForestItemData))]
+    public class coForestItemData : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestItemData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coForestItemData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coForestItemData(int simobjectid): base(simobjectid){ }
+        public coForestItemData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coForestItemData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coForestItemData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Amplitude of the effect on larger branches. 
+        /// </summary>
+        public float branchAmp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".branchAmp").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".branchAmp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Can other objects or spacial queries hit items of this type. 
+        /// </summary>
+        public bool collidable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".collidable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".collidable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Coefficient used in calculating spring forces on the trunk.      Causes oscillation and forces to decay faster over time. 
+        /// </summary>
+        public float dampingCoefficient
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dampingCoefficient").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dampingCoefficient", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Amplitude of the winds effect on leafs/fronds. 
+        /// </summary>
+        public float detailAmp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailAmp").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailAmp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Frequency (speed) of the effect on leafs/fronds. 
+        /// </summary>
+        public float detailFreq
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailFreq").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailFreq", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Mass used in calculating spring forces on the trunk. Generally how      springy a plant is. 
+        /// </summary>
+        public float mass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mass").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mass", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Radius used during placement to ensure items are not crowded. 
+        /// </summary>
+        public float radius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".radius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".radius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Rigidity used in calculating spring forces on the trunk. How much the plant resists the wind force 
+        /// </summary>
+        public float rigidity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rigidity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rigidity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Shape file for this item type 
+        /// </summary>
+        public String shapeFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Coefficient used in calculating spring forces on the trunk.      How much the plant resists bending. 
+        /// </summary>
+        public float tightnessCoefficient
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tightnessCoefficient").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tightnessCoefficient", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Overall bend amount of the tree trunk by wind and impacts. 
+        /// </summary>
+        public float trunkBendScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".trunkBendScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".trunkBendScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Overall scale to the effect of wind. 
+        /// </summary>
+        public float windScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".windScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".windScale", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +243,9 @@ public coForestItemData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +253,17 @@ public coForestItemData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +275,15 @@ public coForestItemData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coForestItemData ts)
+        public static implicit operator string(coForestItemData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +303,7 @@ public coForestItemData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coForestItemData ts)
+        public static implicit operator int(coForestItemData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +324,7 @@ public coForestItemData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coForestItemData ts)
+        public static implicit operator uint(coForestItemData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,136 +339,5 @@ public coForestItemData(int simobjectid): base(simobjectid){ }
             {
             return new coForestItemData(ts);
             }
-public float branchAmp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".branchAmp").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".branchAmp", value.AsString());
-          }
-       }
-public bool collidable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".collidable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".collidable", value.AsString());
-          }
-       }
-public float dampingCoefficient
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dampingCoefficient").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dampingCoefficient", value.AsString());
-          }
-       }
-public float detailAmp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailAmp").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailAmp", value.AsString());
-          }
-       }
-public float detailFreq
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailFreq").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailFreq", value.AsString());
-          }
-       }
-public float mass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mass").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mass", value.AsString());
-          }
-       }
-public float radius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".radius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".radius", value.AsString());
-          }
-       }
-public float rigidity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rigidity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rigidity", value.AsString());
-          }
-       }
-public String shapeFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString());
-          }
-       }
-public float tightnessCoefficient
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tightnessCoefficient").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tightnessCoefficient", value.AsString());
-          }
-       }
-public float trunkBendScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".trunkBendScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".trunkBendScale", value.AsString());
-          }
-       }
-public float windScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".windScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".windScale", value.AsString());
-          }
-       }
-}}
+        }
+    }

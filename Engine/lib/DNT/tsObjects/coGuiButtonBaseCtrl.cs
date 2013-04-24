@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiButtonBaseCtrl))]
-    public class coGuiButtonBaseCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiButtonBaseCtrl))]
+    public class coGuiButtonBaseCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiButtonBaseCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiButtonBaseCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiButtonBaseCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiButtonBaseCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiButtonBaseCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiButtonBaseCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Button behavior type.\n 
+        /// </summary>
+        public GuiButtonBaseCtrl__ButtonType buttonType
+            {
+            get { return (GuiButtonBaseCtrl__ButtonType) Enum.Parse(typeof (GuiButtonBaseCtrl__ButtonType), dnTorque.self.GetVar(_mSimObjectId + ".buttonType")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".buttonType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Radio button toggle group number. All radio buttons that are assigned the same #groupNum and that      are parented to the same control will synchronize their toggle state, i.e. if one radio button is toggled on      all other radio buttons in its group will be toggled off.\n\n     The default group is -1. 
+        /// </summary>
+        public int groupNum
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".groupNum").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".groupNum", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Text label to display on button (if button class supports text labels). 
+        /// </summary>
+        public String text
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".text").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".text", value.AsString()); }
+            }
+
+        /// <summary>
+        /// ID of string in string table to use for text label on button.\n\n     @see setTextID\n     @see GuiControl::langTableMod\n     @see LangTable\n\n 
+        /// </summary>
+        public String textID
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textID").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textID", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, mouse events will be passed on to script. Default is false.\n 
+        /// </summary>
+        public bool useMouseEvents
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useMouseEvents").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useMouseEvents", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiButtonBaseCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiButtonBaseCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiButtonBaseCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiButtonBaseCtrl ts)
+        public static implicit operator string(coGuiButtonBaseCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiButtonBaseCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiButtonBaseCtrl ts)
+        public static implicit operator int(coGuiButtonBaseCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiButtonBaseCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiButtonBaseCtrl ts)
+        public static implicit operator uint(coGuiButtonBaseCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,121 +277,80 @@ public coGuiButtonBaseCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiButtonBaseCtrl(ts);
             }
-public GuiButtonBaseCtrl__ButtonType buttonType
-       {
-       get
-          {          return (GuiButtonBaseCtrl__ButtonType)Enum.Parse(typeof(GuiButtonBaseCtrl__ButtonType), dnTorque.self.GetVar(_mSimObjectId + ".buttonType"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".buttonType", value.ToString());
-          }
-       }
-public int groupNum
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".groupNum").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".groupNum", value.AsString());
-          }
-       }
-public String text
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".text").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".text", value.AsString());
-          }
-       }
-public String textID
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textID").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textID", value.AsString());
-          }
-       }
-public bool useMouseEvents
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useMouseEvents").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useMouseEvents", value.AsString());
-          }
-       }
-/// <summary>
-/// Get the text display on the button's label (if any).
-///    @return The button's label. )
-/// 
-/// </summary>
-public  string getText(){
-return TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_getText(_mSimObjectId);
-}
-/// <summary>
-/// Simulate a click on the button.
-///    This method will trigger the button's action just as if the button had been pressed by the 
-///    user. )
-/// 
-/// </summary>
-public  void performClick(){
-TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_performClick(_mSimObjectId);
-}
-/// <summary>
-/// Reset the mousing state of the button.
-///    This method should not generally be called. )
-/// 
-/// </summary>
-public  void resetState(){
-TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_resetState(_mSimObjectId);
-}
-/// <summary>
-/// For toggle or radio buttons, set whether the button is currently activated or not.  For radio buttons, 
-///    toggling a button on will toggle all other radio buttons in its group to off.
-///    @param isOn If true, the button will be toggled on (if not already); if false, it will be toggled off.
-///    @note Toggling the state of a button with this method will em>not/em> not trigger the action associated with the 
-///       button.  To do that, use performClick(). )
-/// 
-/// </summary>
-public  void setStateOn(bool isOn){
-TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_setStateOn(_mSimObjectId, isOn);
-}
-/// <summary>
-/// Set the text displayed on the button's label.
-///    @param text The text to display as the button's text label.
-///    @note Not all buttons render text labels.
-///    @see getText
-///    @see setTextID )
-/// 
-/// </summary>
-public  void setText(string text){
-TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_setText(_mSimObjectId, text);
-}
-/// <summary>
-/// Set the text displayed on the button's label using a string from the string table 
-///    assigned to the control.
-///    @param id Name of the variable that contains the integer string ID.  Used to look up 
-///       string in table.
-///    @note Not all buttons render text labels.
-///    @see setText
-///    @see getText
-///    @see GuiControl::langTableMod
-///    @see LangTable
-///    @ref Gui_i18n )
-/// 
-/// </summary>
-public  void setTextID(string id){
-TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_setTextID(_mSimObjectId, id);
-}
-}}
+
+        /// <summary>
+        /// Get the text display on the button's label (if any).
+        ///    @return The button's label. )
+        /// 
+        /// </summary>
+        public string getText()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_getText(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Simulate a click on the button.
+        ///    This method will trigger the button's action just as if the button had been pressed by the 
+        ///    user. )
+        /// 
+        /// </summary>
+        public void performClick()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_performClick(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Reset the mousing state of the button.
+        ///    This method should not generally be called. )
+        /// 
+        /// </summary>
+        public void resetState()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_resetState(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// For toggle or radio buttons, set whether the button is currently activated or not.  For radio buttons, 
+        ///    toggling a button on will toggle all other radio buttons in its group to off.
+        ///    @param isOn If true, the button will be toggled on (if not already); if false, it will be toggled off.
+        ///    @note Toggling the state of a button with this method will em>not/em> not trigger the action associated with the 
+        ///       button.  To do that, use performClick(). )
+        /// 
+        /// </summary>
+        public void setStateOn(bool isOn)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_setStateOn(_mSimObjectId, isOn);
+            }
+
+        /// <summary>
+        /// Set the text displayed on the button's label.
+        ///    @param text The text to display as the button's text label.
+        ///    @note Not all buttons render text labels.
+        ///    @see getText
+        ///    @see setTextID )
+        /// 
+        /// </summary>
+        public void setText(string text)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_setText(_mSimObjectId, text);
+            }
+
+        /// <summary>
+        /// Set the text displayed on the button's label using a string from the string table 
+        ///    assigned to the control.
+        ///    @param id Name of the variable that contains the integer string ID.  Used to look up 
+        ///       string in table.
+        ///    @note Not all buttons render text labels.
+        ///    @see setText
+        ///    @see getText
+        ///    @see GuiControl::langTableMod
+        ///    @see LangTable
+        ///    @ref Gui_i18n )
+        /// 
+        /// </summary>
+        public void setTextID(string id)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiButtonBaseCtrl_setTextID(_mSimObjectId, id);
+            }
+        }
+    }

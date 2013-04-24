@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,145 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoForestWindEmitter))]
-    public class coForestWindEmitter: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoForestWindEmitter))]
+    public class coForestWindEmitter : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestWindEmitter(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coForestWindEmitter(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coForestWindEmitter(int simobjectid): base(simobjectid){ }
+        public coForestWindEmitter(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coForestWindEmitter(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coForestWindEmitter(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// The frequency of gusting in seconds. 
+        /// </summary>
+        public float gustFrequency
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gustFrequency").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gustFrequency", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The maximum strength of a gust. 
+        /// </summary>
+        public float gustStrength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gustStrength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gustStrength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The amount of random wobble added to gust and turbulence vectors. 
+        /// </summary>
+        public float gustWobbleStrength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gustWobbleStrength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gustWobbleStrength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The amount of degrees the wind direction can drift (both positive and negative). 
+        /// </summary>
+        public float gustYawAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gustYawAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gustYawAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The frequency of wind yaw drift, in seconds. 
+        /// </summary>
+        public float gustYawFrequency
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gustYawFrequency").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gustYawFrequency", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines if the emitter is mounted to another object. 
+        /// </summary>
+        public bool hasMount
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hasMount").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hasMount", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines if the emitter is a global direction or local radial emitter. 
+        /// </summary>
+        public bool radialEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".radialEmitter").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".radialEmitter", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The radius of the emitter for local radial emitters. 
+        /// </summary>
+        public float radius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".radius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".radius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The strength of the wind force. 
+        /// </summary>
+        public float strength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".strength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".strength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The frequency of gust turbulence, in seconds. 
+        /// </summary>
+        public float turbulenceFrequency
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".turbulenceFrequency").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".turbulenceFrequency", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The strength of gust turbulence. 
+        /// </summary>
+        public float turbulenceStrength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".turbulenceStrength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".turbulenceStrength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines if the emitter will be counted in wind calculations. 
+        /// </summary>
+        public bool windEnabled
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".windEnabled").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".windEnabled", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +243,9 @@ public coForestWindEmitter(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +253,17 @@ public coForestWindEmitter(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +275,15 @@ public coForestWindEmitter(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coForestWindEmitter ts)
+        public static implicit operator string(coForestWindEmitter ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +303,7 @@ public coForestWindEmitter(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coForestWindEmitter ts)
+        public static implicit operator int(coForestWindEmitter ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +324,7 @@ public coForestWindEmitter(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coForestWindEmitter ts)
+        public static implicit operator uint(coForestWindEmitter ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,151 +339,22 @@ public coForestWindEmitter(int simobjectid): base(simobjectid){ }
             {
             return new coForestWindEmitter(ts);
             }
-public float gustFrequency
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gustFrequency").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gustFrequency", value.AsString());
-          }
-       }
-public float gustStrength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gustStrength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gustStrength", value.AsString());
-          }
-       }
-public float gustWobbleStrength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gustWobbleStrength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gustWobbleStrength", value.AsString());
-          }
-       }
-public float gustYawAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gustYawAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gustYawAngle", value.AsString());
-          }
-       }
-public float gustYawFrequency
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gustYawFrequency").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gustYawFrequency", value.AsString());
-          }
-       }
-public bool hasMount
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hasMount").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hasMount", value.AsString());
-          }
-       }
-public bool radialEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".radialEmitter").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".radialEmitter", value.AsString());
-          }
-       }
-public float radius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".radius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".radius", value.AsString());
-          }
-       }
-public float strength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".strength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".strength", value.AsString());
-          }
-       }
-public float turbulenceFrequency
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".turbulenceFrequency").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".turbulenceFrequency", value.AsString());
-          }
-       }
-public float turbulenceStrength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".turbulenceStrength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".turbulenceStrength", value.AsString());
-          }
-       }
-public bool windEnabled
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".windEnabled").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".windEnabled", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Mounts the wind emitter to another scene object
-/// 
-///    @param objectID Unique ID of the object wind emitter should attach to
-///    
-///    @tsexample
-///    // Wind emitter previously created and named %windEmitter
-///    // Going to attach it to the player, making him a walking wind storm
-///    %windEmitter.attachToObject(%player);
-///    @endtsexample)
-/// 
-/// </summary>
-public  void attachToObject(uint objectID){
-TorqueScriptTemplate.m_ts.fnForestWindEmitter_attachToObject(_mSimObjectId, objectID);
-}
-}}
+
+        /// <summary>
+        /// @brief Mounts the wind emitter to another scene object
+        /// 
+        ///    @param objectID Unique ID of the object wind emitter should attach to
+        ///    
+        ///    @tsexample
+        ///    // Wind emitter previously created and named %windEmitter
+        ///    // Going to attach it to the player, making him a walking wind storm
+        ///    %windEmitter.attachToObject(%player);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void attachToObject(uint objectID)
+            {
+            TorqueScriptTemplate.m_ts.fnForestWindEmitter_attachToObject(_mSimObjectId, objectID);
+            }
+        }
+    }

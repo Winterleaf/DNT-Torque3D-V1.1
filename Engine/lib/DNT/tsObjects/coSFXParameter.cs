@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +94,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXParameter))]
-    public class coSFXParameter: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXParameter))]
+    public class coSFXParameter : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXParameter(string simobjectid) : base(simobjectid){ }
+        public coSFXParameter(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXParameter(uint simobjectid): base(simobjectid){ }
+        public coSFXParameter(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXParameter(int simobjectid): base(simobjectid){ }
+        public coSFXParameter(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Channel that the parameter controls.\n     This controls which property of the sources it is attached to the parameter controls. 
+        /// </summary>
+        public SFXChannel channel
+            {
+            get { return (SFXChannel) Enum.Parse(typeof (SFXChannel), dnTorque.self.GetVar(_mSimObjectId + ".channel")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".channel", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Value to which the parameter is initially set.\n     When the parameter is first added to the system, #value will be set to #defaultValue. 
+        /// </summary>
+        public float defaultValue
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".defaultValue").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".defaultValue", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Textual description of the parameter.\n     Primarily for use in the Audio Parameters dialog of the editor to allow for easier identification      of parameters. 
+        /// </summary>
+        public String description
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".description").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".description", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Permitted range for #value.\n     Minimum and maximum allowed value for the parameter. Both inclusive.\n\n     For all but the User0-3 channels, this property is automatically set up by SFXParameter. 
+        /// </summary>
+        public Point2F range
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".range").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Current value of the audio parameter.\n     All attached sources are notified when this value changes. 
+        /// </summary>
+        public float value
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".value").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".value", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +182,9 @@ public coSFXParameter(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +192,17 @@ public coSFXParameter(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +214,15 @@ public coSFXParameter(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXParameter ts)
+        public static implicit operator string(coSFXParameter ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +242,7 @@ public coSFXParameter(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXParameter ts)
+        public static implicit operator int(coSFXParameter ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +263,7 @@ public coSFXParameter(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXParameter ts)
+        public static implicit operator uint(coSFXParameter ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,74 +278,25 @@ public coSFXParameter(int simobjectid): base(simobjectid){ }
             {
             return new coSFXParameter(ts);
             }
-public SFXChannel channel
-       {
-       get
-          {          return (SFXChannel)Enum.Parse(typeof(SFXChannel), dnTorque.self.GetVar(_mSimObjectId + ".channel"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".channel", value.ToString());
-          }
-       }
-public float defaultValue
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".defaultValue").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".defaultValue", value.AsString());
-          }
-       }
-public String description
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".description").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".description", value.AsString());
-          }
-       }
-public Point2F range
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".range").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString());
-          }
-       }
-public float value
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".value").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".value", value.AsString());
-          }
-       }
-/// <summary>
-/// Get the name of the parameter.
-///    @return The paramete name. )
-/// 
-/// </summary>
-public  string getParameterName(){
-return TorqueScriptTemplate.m_ts.fnSFXParameter_getParameterName(_mSimObjectId);
-}
-/// <summary>
-/// Reset the parameter's value to its default.
-///    @see SFXParameter::defaultValue )
-/// 
-/// </summary>
-public  void reset(){
-TorqueScriptTemplate.m_ts.fnSFXParameter_reset(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Get the name of the parameter.
+        ///    @return The paramete name. )
+        /// 
+        /// </summary>
+        public string getParameterName()
+            {
+            return TorqueScriptTemplate.m_ts.fnSFXParameter_getParameterName(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Reset the parameter's value to its default.
+        ///    @see SFXParameter::defaultValue )
+        /// 
+        /// </summary>
+        public void reset()
+            {
+            TorqueScriptTemplate.m_ts.fnSFXParameter_reset(_mSimObjectId);
+            }
+        }
+    }

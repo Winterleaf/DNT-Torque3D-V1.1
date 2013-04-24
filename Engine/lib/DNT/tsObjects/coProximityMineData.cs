@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoProximityMineData))]
-    public class coProximityMineData: coItemData
-{
+    [TypeConverter(typeof (tsObjectConvertercoProximityMineData))]
+    public class coProximityMineData : coItemData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coProximityMineData(string simobjectid) : base(simobjectid){ }
+        public coProximityMineData(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coProximityMineData(uint simobjectid): base(simobjectid){ }
+        public coProximityMineData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coProximityMineData(int simobjectid): base(simobjectid){ }
+        public coProximityMineData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Delay (in seconds) from when the mine is placed to when it becomes active. 
+        /// </summary>
+        public float armingDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".armingDelay").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".armingDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Sound to play when the mine is armed (starts at the same time as    the iarmed/i sequence if defined). 
+        /// </summary>
+        public coSFXTrack armingSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".armingSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".armingSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Delay (in seconds) from arming until the mine automatically    triggers and explodes, even if no object has entered the trigger area.\n\n   Set to 0 to disable. 
+        /// </summary>
+        public float autoTriggerDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoTriggerDelay").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoTriggerDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Offset from the mine's origin where the explosion emanates from.   Sometimes a thrown mine may be slightly sunk into the ground. This can be just    enough to cause the explosion to occur under the ground, especially on flat    ground, which can end up blocking the explosion. This offset along the mine's    'up' normal allows you to raise the explosion origin to a better height.
+        /// </summary>
+        public float explosionOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".explosionOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".explosionOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Delay (in seconds) from when the mine is triggered until it explodes. 
+        /// </summary>
+        public float triggerDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".triggerDelay").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".triggerDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Controls whether the mine can be triggered by the object that owns it.\n\n   For example, a player could deploy mines that are only dangerous to other    players and not himself. 
+        /// </summary>
+        public bool triggerOnOwner
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".triggerOnOwner").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".triggerOnOwner", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Distance at which an activated mine will detect other objects and explode. 
+        /// </summary>
+        public float triggerRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".triggerRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".triggerRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Sound to play when the mine is triggered (starts at the same time as    the itriggered/i sequence if defined). 
+        /// </summary>
+        public coSFXTrack triggerSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".triggerSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".triggerSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Speed above which moving objects within the trigger radius will trigger the mine 
+        /// </summary>
+        public float triggerSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".triggerSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".triggerSpeed", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +216,9 @@ public coProximityMineData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +226,17 @@ public coProximityMineData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +248,15 @@ public coProximityMineData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coProximityMineData ts)
+        public static implicit operator string(coProximityMineData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +276,7 @@ public coProximityMineData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coProximityMineData ts)
+        public static implicit operator int(coProximityMineData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +297,7 @@ public coProximityMineData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coProximityMineData ts)
+        public static implicit operator uint(coProximityMineData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,103 +312,5 @@ public coProximityMineData(int simobjectid): base(simobjectid){ }
             {
             return new coProximityMineData(ts);
             }
-public float armingDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".armingDelay").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".armingDelay", value.AsString());
-          }
-       }
-public coSFXTrack armingSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".armingSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".armingSound", value.ToString());
-          }
-       }
-public float autoTriggerDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoTriggerDelay").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoTriggerDelay", value.AsString());
-          }
-       }
-public float explosionOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".explosionOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".explosionOffset", value.AsString());
-          }
-       }
-public float triggerDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".triggerDelay").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".triggerDelay", value.AsString());
-          }
-       }
-public bool triggerOnOwner
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".triggerOnOwner").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".triggerOnOwner", value.AsString());
-          }
-       }
-public float triggerRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".triggerRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".triggerRadius", value.AsString());
-          }
-       }
-public coSFXTrack triggerSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".triggerSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".triggerSound", value.ToString());
-          }
-       }
-public float triggerSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".triggerSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".triggerSpeed", value.AsString());
-          }
-       }
-}}
+        }
+    }

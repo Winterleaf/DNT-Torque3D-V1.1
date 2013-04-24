@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,316 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoShapeBaseData))]
-    public class coShapeBaseData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoShapeBaseData))]
+    public class coShapeBaseData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coShapeBaseData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coShapeBaseData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coShapeBaseData(int simobjectid): base(simobjectid){ }
+        public coShapeBaseData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coShapeBaseData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coShapeBaseData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// The default camera vertical FOV in degrees. 
+        /// </summary>
+        public float cameraDefaultFov
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraDefaultFov").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraDefaultFov", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The maximum distance from the camera to the object.\n     Used when computing a custom camera transform for this object.\n\n     @see observeThroughObject 
+        /// </summary>
+        public float cameraMaxDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraMaxDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraMaxDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The maximum camera vertical FOV allowed in degrees. 
+        /// </summary>
+        public float cameraMaxFov
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraMaxFov").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraMaxFov", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The minimum distance from the camera to the object.\n     Used when computing a custom camera transform for this object.\n\n     @see observeThroughObject 
+        /// </summary>
+        public float cameraMinDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraMinDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraMinDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The minimum camera vertical FOV allowed in degrees. 
+        /// </summary>
+        public float cameraMinFov
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraMinFov").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraMinFov", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, verify that the CRC of the client's shape model matches the      server's CRC for the shape model when loaded by the client. 
+        /// </summary>
+        public bool computeCRC
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".computeCRC").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".computeCRC", value.AsString()); }
+            }
+
+        /// <summary>
+        /// References a ReflectorDesc datablock that defines performance and quality properties for dynamic reflections.\n
+        /// </summary>
+        public String cubeReflectorDesc
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cubeReflectorDesc").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cubeReflectorDesc", value.AsString()); }
+            }
+
+        /// <summary>
+        /// %Debris to generate when this shape is blown up. 
+        /// </summary>
+        public coDebrisData debris
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debris"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debris", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The DTS or DAE model to use for auto-generated breakups. @note may not be functional. 
+        /// </summary>
+        public String debrisShapeName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisShapeName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisShapeName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Shape density.\nUsed when computing buoyancy when in water.\n 
+        /// </summary>
+        public float density
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Damage level above which the object is destroyed.\n     When the damage level increases above this value, the object damage      state is set to \Destroyed\. 
+        /// </summary>
+        public float destroyedLevel
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".destroyedLevel").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".destroyedLevel", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Damage level above which the object is disabled.\n     Currently unused. 
+        /// </summary>
+        public float disabledLevel
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".disabledLevel").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".disabledLevel", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Drag factor.\nReduces velocity of moving objects. 
+        /// </summary>
+        public float drag
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".drag").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".drag", value.AsString()); }
+            }
+
+        /// <summary>
+        /// %Explosion to generate when this shape is blown up. 
+        /// </summary>
+        public coExplosionData explosion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".explosion"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".explosion", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Flag controlling whether the view from this object is first person      only. 
+        /// </summary>
+        public bool firstPersonOnly
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".firstPersonOnly").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".firstPersonOnly", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Flag controlling whether to manage our own energy level, or to use      the energy level of the object we are mounted to. 
+        /// </summary>
+        public bool inheritEnergyFromMount
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".inheritEnergyFromMount").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".inheritEnergyFromMount", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Invincible flag; when invincible, the object cannot be damaged or      repaired. 
+        /// </summary>
+        public bool isInvincible
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isInvincible").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isInvincible", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Shape mass.\nUsed in simulation of moving objects.\n 
+        /// </summary>
+        public float mass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mass").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mass", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum damage level for this object. 
+        /// </summary>
+        public float maxDamage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxDamage").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxDamage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum energy level for this object. 
+        /// </summary>
+        public float maxEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxEnergy").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Observe this object through its camera transform and default fov.\n     If true, when this object is the camera it can provide a custom camera      transform and FOV (instead of the default eye transform). 
+        /// </summary>
+        public bool observeThroughObject
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".observeThroughObject").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".observeThroughObject", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to render the shape when it is in the \Destroyed\ damage state. 
+        /// </summary>
+        public bool renderWhenDestroyed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderWhenDestroyed").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderWhenDestroyed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Rate at which damage is repaired in damage units/tick.\n     This value is subtracted from the damage level until it reaches 0. 
+        /// </summary>
+        public float repairRate
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".repairRate").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".repairRate", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enable shadows for this shape (currently unused, shadows are always enabled). 
+        /// </summary>
+        public bool shadowEnable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shadowEnable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shadowEnable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum distance at which shadow is visible (currently unused). 
+        /// </summary>
+        public float shadowMaxVisibleDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shadowMaxVisibleDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shadowMaxVisibleDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum height above ground to project shadow. If the object is higher      than this no shadow will be rendered. 
+        /// </summary>
+        public float shadowProjectionDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shadowProjectionDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shadowProjectionDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Size of the projected shadow texture (must be power of 2). 
+        /// </summary>
+        public int shadowSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shadowSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shadowSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Scalar applied to the radius of spot shadows (initial radius is based      on the shape bounds but can be adjusted with this field). 
+        /// </summary>
+        public float shadowSphereAdjust
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shadowSphereAdjust").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shadowSphereAdjust", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The DTS or DAE model to use for this object. 
+        /// </summary>
+        public String shapeFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// %Explosion to generate when this shape is blown up underwater. 
+        /// </summary>
+        public coExplosionData underwaterExplosion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".underwaterExplosion"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".underwaterExplosion", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Flag controlling whether the client uses this object's eye point to      view from. 
+        /// </summary>
+        public bool useEyePoint
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useEyePoint").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useEyePoint", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +415,9 @@ public coShapeBaseData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +425,17 @@ public coShapeBaseData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +447,15 @@ public coShapeBaseData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coShapeBaseData ts)
+        public static implicit operator string(coShapeBaseData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +475,7 @@ public coShapeBaseData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coShapeBaseData ts)
+        public static implicit operator int(coShapeBaseData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +496,7 @@ public coShapeBaseData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coShapeBaseData ts)
+        public static implicit operator uint(coShapeBaseData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,371 +511,35 @@ public coShapeBaseData(int simobjectid): base(simobjectid){ }
             {
             return new coShapeBaseData(ts);
             }
-public float cameraDefaultFov
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraDefaultFov").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraDefaultFov", value.AsString());
-          }
-       }
-public float cameraMaxDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraMaxDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraMaxDist", value.AsString());
-          }
-       }
-public float cameraMaxFov
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraMaxFov").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraMaxFov", value.AsString());
-          }
-       }
-public float cameraMinDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraMinDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraMinDist", value.AsString());
-          }
-       }
-public float cameraMinFov
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraMinFov").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraMinFov", value.AsString());
-          }
-       }
-public bool computeCRC
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".computeCRC").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".computeCRC", value.AsString());
-          }
-       }
-public String cubeReflectorDesc
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cubeReflectorDesc").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cubeReflectorDesc", value.AsString());
-          }
-       }
-public coDebrisData debris
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debris");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debris", value.ToString());
-          }
-       }
-public String debrisShapeName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisShapeName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisShapeName", value.AsString());
-          }
-       }
-public float density
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString());
-          }
-       }
-public float destroyedLevel
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".destroyedLevel").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".destroyedLevel", value.AsString());
-          }
-       }
-public float disabledLevel
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".disabledLevel").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".disabledLevel", value.AsString());
-          }
-       }
-public float drag
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".drag").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".drag", value.AsString());
-          }
-       }
-public coExplosionData explosion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".explosion");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".explosion", value.ToString());
-          }
-       }
-public bool firstPersonOnly
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".firstPersonOnly").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".firstPersonOnly", value.AsString());
-          }
-       }
-public bool inheritEnergyFromMount
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".inheritEnergyFromMount").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".inheritEnergyFromMount", value.AsString());
-          }
-       }
-public bool isInvincible
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isInvincible").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isInvincible", value.AsString());
-          }
-       }
-public float mass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mass").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mass", value.AsString());
-          }
-       }
-public float maxDamage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxDamage").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxDamage", value.AsString());
-          }
-       }
-public float maxEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxEnergy").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxEnergy", value.AsString());
-          }
-       }
-public bool observeThroughObject
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".observeThroughObject").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".observeThroughObject", value.AsString());
-          }
-       }
-public bool renderWhenDestroyed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderWhenDestroyed").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderWhenDestroyed", value.AsString());
-          }
-       }
-public float repairRate
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".repairRate").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".repairRate", value.AsString());
-          }
-       }
-public bool shadowEnable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shadowEnable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shadowEnable", value.AsString());
-          }
-       }
-public float shadowMaxVisibleDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shadowMaxVisibleDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shadowMaxVisibleDistance", value.AsString());
-          }
-       }
-public float shadowProjectionDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shadowProjectionDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shadowProjectionDistance", value.AsString());
-          }
-       }
-public int shadowSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shadowSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shadowSize", value.AsString());
-          }
-       }
-public float shadowSphereAdjust
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shadowSphereAdjust").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shadowSphereAdjust", value.AsString());
-          }
-       }
-public String shapeFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString());
-          }
-       }
-public coExplosionData underwaterExplosion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".underwaterExplosion");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".underwaterExplosion", value.ToString());
-          }
-       }
-public bool useEyePoint
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useEyePoint").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useEyePoint", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Check if there is the space at the given transform is free to spawn into.
-/// 
-///    The shape's bounding box volume is used to check for collisions at the given world 
-///    transform.  Only interior and static objects are checked for collision.
-/// 
-///    @param txfm Deploy transform to check
-///    @return True if the space is free, false if there is already something in 
-///    the way.
-/// 
-///    @note This is a server side only check, and is not actually limited to spawning.)
-/// 
-/// </summary>
-public  bool checkDeployPos(TransformF txfm){
-return TorqueScriptTemplate.m_ts.fnShapeBaseData_checkDeployPos(_mSimObjectId, txfm.AsString());
-}
-/// <summary>
-/// @brief Helper method to get a transform from a position and vector (suitable for use with setTransform).
-///    @param pos Desired transform position
-///    @param normal Vector of desired direction
-///    @return The deploy transform )
-/// 
-/// </summary>
-public  TransformF getDeployTransform(Point3F pos, Point3F normal){
-return new TransformF ( TorqueScriptTemplate.m_ts.fnShapeBaseData_getDeployTransform(_mSimObjectId, pos.AsString(), normal.AsString()));
-}
-}}
+
+        /// <summary>
+        /// @brief Check if there is the space at the given transform is free to spawn into.
+        /// 
+        ///    The shape's bounding box volume is used to check for collisions at the given world 
+        ///    transform.  Only interior and static objects are checked for collision.
+        /// 
+        ///    @param txfm Deploy transform to check
+        ///    @return True if the space is free, false if there is already something in 
+        ///    the way.
+        /// 
+        ///    @note This is a server side only check, and is not actually limited to spawning.)
+        /// 
+        /// </summary>
+        public bool checkDeployPos(TransformF txfm)
+            {
+            return TorqueScriptTemplate.m_ts.fnShapeBaseData_checkDeployPos(_mSimObjectId, txfm.AsString());
+            }
+
+        /// <summary>
+        /// @brief Helper method to get a transform from a position and vector (suitable for use with setTransform).
+        ///    @param pos Desired transform position
+        ///    @param normal Vector of desired direction
+        ///    @return The deploy transform )
+        /// 
+        /// </summary>
+        public TransformF getDeployTransform(Point3F pos, Point3F normal)
+            {
+            return new TransformF(TorqueScriptTemplate.m_ts.fnShapeBaseData_getDeployTransform(_mSimObjectId, pos.AsString(), normal.AsString()));
+            }
+        }
+    }

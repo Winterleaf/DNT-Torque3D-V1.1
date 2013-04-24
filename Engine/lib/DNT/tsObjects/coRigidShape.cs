@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoRigidShape))]
-    public class coRigidShape: coShapeBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoRigidShape))]
+    public class coRigidShape : coShapeBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRigidShape(string simobjectid) : base(simobjectid){ }
+        public coRigidShape(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRigidShape(uint simobjectid): base(simobjectid){ }
+        public coRigidShape(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRigidShape(int simobjectid): base(simobjectid){ }
+        public coRigidShape(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coRigidShape(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coRigidShape(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coRigidShape(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coRigidShape ts)
+        public static implicit operator string(coRigidShape ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coRigidShape(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coRigidShape ts)
+        public static implicit operator int(coRigidShape ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coRigidShape(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coRigidShape ts)
+        public static implicit operator uint(coRigidShape ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,31 +231,36 @@ public coRigidShape(int simobjectid): base(simobjectid){ }
             {
             return new coRigidShape(ts);
             }
-/// <summary>
-/// @brief Enables or disables the physics simulation on the RigidShape object.
-///    @param isFrozen Boolean frozen state to set the object.
-///    @tsexample
-///    // Define the frozen state.
-///    %isFrozen = \"true\";
-///    // Inform the object of the defined frozen state
-///    %thisRigidShape.freezeSim(%isFrozen);
-///    @endtsexample
-///    @see ShapeBaseData)
-/// 
-/// </summary>
-public  void freezeSim(bool isFrozen){
-TorqueScriptTemplate.m_ts.fnRigidShape_freezeSim(_mSimObjectId, isFrozen);
-}
-/// <summary>
-/// @brief Clears physic forces from the shape and sets it at rest.
-///    @tsexample
-///    // Inform the RigidShape object to reset.
-///    %thisRigidShape.reset();
-///    @endtsexample
-///    @see ShapeBaseData)
-/// 
-/// </summary>
-public  void reset(){
-TorqueScriptTemplate.m_ts.fnRigidShape_reset(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Enables or disables the physics simulation on the RigidShape object.
+        ///    @param isFrozen Boolean frozen state to set the object.
+        ///    @tsexample
+        ///    // Define the frozen state.
+        ///    %isFrozen = \"true\";
+        ///    // Inform the object of the defined frozen state
+        ///    %thisRigidShape.freezeSim(%isFrozen);
+        ///    @endtsexample
+        ///    @see ShapeBaseData)
+        /// 
+        /// </summary>
+        public void freezeSim(bool isFrozen)
+            {
+            TorqueScriptTemplate.m_ts.fnRigidShape_freezeSim(_mSimObjectId, isFrozen);
+            }
+
+        /// <summary>
+        /// @brief Clears physic forces from the shape and sets it at rest.
+        ///    @tsexample
+        ///    // Inform the RigidShape object to reset.
+        ///    %thisRigidShape.reset();
+        ///    @endtsexample
+        ///    @see ShapeBaseData)
+        /// 
+        /// </summary>
+        public void reset()
+            {
+            TorqueScriptTemplate.m_ts.fnRigidShape_reset(_mSimObjectId);
+            }
+        }
+    }

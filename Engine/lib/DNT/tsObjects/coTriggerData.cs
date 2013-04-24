@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTriggerData))]
-    public class coTriggerData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoTriggerData))]
+    public class coTriggerData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTriggerData(string simobjectid) : base(simobjectid){ }
+        public coTriggerData(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTriggerData(uint simobjectid): base(simobjectid){ }
+        public coTriggerData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTriggerData(int simobjectid): base(simobjectid){ }
+        public coTriggerData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Forces Trigger callbacks to only be called on clients.
+        /// </summary>
+        public bool clientSide
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".clientSide").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".clientSide", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Time in milliseconds between calls to onTickTrigger() while at least one object is within a Trigger's bounds.\n\n     @see onTickTrigger()\n
+        /// </summary>
+        public int tickPeriodMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tickPeriodMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tickPeriodMS", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coTriggerData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coTriggerData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coTriggerData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTriggerData ts)
+        public static implicit operator string(coTriggerData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coTriggerData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTriggerData ts)
+        public static implicit operator int(coTriggerData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coTriggerData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTriggerData ts)
+        public static implicit operator uint(coTriggerData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,26 +249,5 @@ public coTriggerData(int simobjectid): base(simobjectid){ }
             {
             return new coTriggerData(ts);
             }
-public bool clientSide
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".clientSide").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".clientSide", value.AsString());
-          }
-       }
-public int tickPeriodMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tickPeriodMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tickPeriodMS", value.AsString());
-          }
-       }
-}}
+        }
+    }

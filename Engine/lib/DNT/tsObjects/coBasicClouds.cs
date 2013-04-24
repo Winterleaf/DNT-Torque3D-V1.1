@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoBasicClouds))]
-    public class coBasicClouds: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoBasicClouds))]
+    public class coBasicClouds : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coBasicClouds(string simobjectid) : base(simobjectid){ }
+        public coBasicClouds(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coBasicClouds(uint simobjectid): base(simobjectid){ }
+        public coBasicClouds(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coBasicClouds(int simobjectid): base(simobjectid){ }
+        public coBasicClouds(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Abstract number which controls the curvature and height of the dome mesh 
+        /// </summary>
+        public float height
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".height").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".height", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enable or disable rendering of this layer. 
+        /// </summary>
+        public bool layerEnabled
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".layerEnabled").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".layerEnabled", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Texture scroll direction for this layer, relative to the world axis. 
+        /// </summary>
+        public Point2F texDirection
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texDirection").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texDirection", value.AsString()); }
+            }
+
+        /// <summary>
+        /// UV offset for this layer. 
+        /// </summary>
+        public Point2F texOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texOffset").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Texture repeat for this layer. 
+        /// </summary>
+        public float texScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Texture scroll speed for this layer. 
+        /// </summary>
+        public float texSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Texture for this layer. 
+        /// </summary>
+        public String texture
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texture").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texture", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +199,9 @@ public coBasicClouds(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +209,17 @@ public coBasicClouds(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +231,15 @@ public coBasicClouds(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coBasicClouds ts)
+        public static implicit operator string(coBasicClouds ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +259,7 @@ public coBasicClouds(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coBasicClouds ts)
+        public static implicit operator int(coBasicClouds ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +280,7 @@ public coBasicClouds(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coBasicClouds ts)
+        public static implicit operator uint(coBasicClouds ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,81 +295,5 @@ public coBasicClouds(int simobjectid): base(simobjectid){ }
             {
             return new coBasicClouds(ts);
             }
-public float height
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".height").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".height", value.AsString());
-          }
-       }
-public bool layerEnabled
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".layerEnabled").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".layerEnabled", value.AsString());
-          }
-       }
-public Point2F texDirection
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texDirection").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texDirection", value.AsString());
-          }
-       }
-public Point2F texOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texOffset").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texOffset", value.AsString());
-          }
-       }
-public float texScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texScale", value.AsString());
-          }
-       }
-public float texSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texSpeed", value.AsString());
-          }
-       }
-public String texture
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texture").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texture", value.AsString());
-          }
-       }
-}}
+        }
+    }

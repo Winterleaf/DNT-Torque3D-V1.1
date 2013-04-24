@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPrecipitationData))]
-    public class coPrecipitationData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoPrecipitationData))]
+    public class coPrecipitationData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPrecipitationData(string simobjectid) : base(simobjectid){ }
+        public coPrecipitationData(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPrecipitationData(uint simobjectid): base(simobjectid){ }
+        public coPrecipitationData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPrecipitationData(int simobjectid): base(simobjectid){ }
+        public coPrecipitationData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// The name of the shader used for raindrops. 
+        /// </summary>
+        public String dropShader
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dropShader").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dropShader", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief How many rows and columns are in the raindrop texture.\n\n   For example, if the texture has 16 raindrops arranged in a grid, this    field should be set to 4. 
+        /// </summary>
+        public int dropsPerSide
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dropsPerSide").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dropsPerSide", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Texture filename for drop particles.\n\n   The drop texture can contain several different drop sub-textures    arranged in a grid. There must be the same number of rows as columns. A    random frame will be chosen for each drop. 
+        /// </summary>
+        public String dropTexture
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dropTexture").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dropTexture", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Looping SFXProfile effect to play while Precipitation is active. 
+        /// </summary>
+        public coSFXTrack soundProfile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".soundProfile"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundProfile", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief How many rows and columns are in the splash texture.\n\n   For example, if the texture has 9 splashes arranged in a grid, this    field should be set to 3. 
+        /// </summary>
+        public int splashesPerSide
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashesPerSide").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashesPerSide", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The name of the shader used for splashes. 
+        /// </summary>
+        public String splashShader
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashShader").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashShader", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Texture filename for splash particles.\n\n   The splash texture can contain several different splash sub-textures    arranged in a grid. There must be the same number of rows as columns. A    random frame will be chosen for each splash. 
+        /// </summary>
+        public String splashTexture
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashTexture").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashTexture", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +198,9 @@ public coPrecipitationData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +208,17 @@ public coPrecipitationData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +230,15 @@ public coPrecipitationData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPrecipitationData ts)
+        public static implicit operator string(coPrecipitationData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +258,7 @@ public coPrecipitationData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPrecipitationData ts)
+        public static implicit operator int(coPrecipitationData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +279,7 @@ public coPrecipitationData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPrecipitationData ts)
+        public static implicit operator uint(coPrecipitationData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,81 +294,5 @@ public coPrecipitationData(int simobjectid): base(simobjectid){ }
             {
             return new coPrecipitationData(ts);
             }
-public String dropShader
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dropShader").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dropShader", value.AsString());
-          }
-       }
-public int dropsPerSide
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dropsPerSide").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dropsPerSide", value.AsString());
-          }
-       }
-public String dropTexture
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dropTexture").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dropTexture", value.AsString());
-          }
-       }
-public coSFXTrack soundProfile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".soundProfile");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".soundProfile", value.ToString());
-          }
-       }
-public int splashesPerSide
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashesPerSide").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashesPerSide", value.AsString());
-          }
-       }
-public String splashShader
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashShader").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashShader", value.AsString());
-          }
-       }
-public String splashTexture
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashTexture").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashTexture", value.AsString());
-          }
-       }
-}}
+        }
+    }

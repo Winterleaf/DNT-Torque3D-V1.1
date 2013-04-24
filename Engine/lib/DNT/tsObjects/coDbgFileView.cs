@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoDbgFileView))]
-    public class coDbgFileView: coGuiArrayCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoDbgFileView))]
+    public class coDbgFileView : coGuiArrayCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDbgFileView(string simobjectid) : base(simobjectid){ }
+        public coDbgFileView(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDbgFileView(uint simobjectid): base(simobjectid){ }
+        public coDbgFileView(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDbgFileView(int simobjectid): base(simobjectid){ }
+        public coDbgFileView(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coDbgFileView(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coDbgFileView(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coDbgFileView(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coDbgFileView ts)
+        public static implicit operator string(coDbgFileView ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coDbgFileView(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coDbgFileView ts)
+        public static implicit operator int(coDbgFileView ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coDbgFileView(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coDbgFileView ts)
+        public static implicit operator uint(coDbgFileView ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,72 +231,89 @@ public coDbgFileView(int simobjectid): base(simobjectid){ }
             {
             return new coDbgFileView(ts);
             }
-/// <summary>
-/// (DbgFileView, clearBreakPositions, void, 2, 2, ()
-///               Clear all break points in the current file.)
-/// 
-/// </summary>
-public  void clearBreakPositions(){
-TorqueScriptTemplate.m_ts.fnDbgFileView_clearBreakPositions(_mSimObjectId);
-}
-/// <summary>
-/// (DbgFileView, findString, bool, 3, 3, (string findThis)
-///               Find the specified string in the currently viewed file and 
-///               scroll it into view.)
-/// 
-/// </summary>
-public  bool findString(string a2){
-return TorqueScriptTemplate.m_ts.fnDbgFileView_findString(_mSimObjectId, a2);
-}
-/// <summary>
-/// (DbgFileView, getCurrentLine, const char *, 2, 2, ()
-///               Get the currently executing file and line, if any.
-///               @returns A string containing the file, a tab, and then the line number.
-///                Use getField() with this.)
-/// 
-/// </summary>
-public  string getCurrentLine(){
-return TorqueScriptTemplate.m_ts.fnDbgFileView_getCurrentLine(_mSimObjectId);
-}
-/// <summary>
-/// (DbgFileView, open, bool, 3, 3, (string filename)
-///               Open a file for viewing.
-///               @note This loads the file from the local system.)
-/// 
-/// </summary>
-public  bool open(string a2){
-return TorqueScriptTemplate.m_ts.fnDbgFileView_open(_mSimObjectId, a2);
-}
-/// <summary>
-/// (DbgFileView, removeBreak, void, 3, 3, (int line)
-///               Remove a breakpoint from the specified line.)
-/// 
-/// </summary>
-public  void removeBreak(string a2){
-TorqueScriptTemplate.m_ts.fnDbgFileView_removeBreak(_mSimObjectId, a2);
-}
-/// <summary>
-/// (DbgFileView, setBreak, void, 3, 3, (int line)
-///               Set a breakpoint at the specified line.)
-/// 
-/// </summary>
-public  void setBreak(string a2){
-TorqueScriptTemplate.m_ts.fnDbgFileView_setBreak(_mSimObjectId, a2);
-}
-/// <summary>
-/// (DbgFileView, setBreakPosition, void, 3, 3, (int line)
-///               Set a breakpoint at the specified line.)
-/// 
-/// </summary>
-public  void setBreakPosition(string a2){
-TorqueScriptTemplate.m_ts.fnDbgFileView_setBreakPosition(_mSimObjectId, a2);
-}
-/// <summary>
-/// (DbgFileView, setCurrentLine, void, 4, 4, (int line, bool selected)
-///               Set the current highlighted line.)
-/// 
-/// </summary>
-public  void setCurrentLine(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnDbgFileView_setCurrentLine(_mSimObjectId, a2, a3);
-}
-}}
+
+        /// <summary>
+        /// (DbgFileView, clearBreakPositions, void, 2, 2, ()
+        ///               Clear all break points in the current file.)
+        /// 
+        /// </summary>
+        public void clearBreakPositions()
+            {
+            TorqueScriptTemplate.m_ts.fnDbgFileView_clearBreakPositions(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (DbgFileView, findString, bool, 3, 3, (string findThis)
+        ///               Find the specified string in the currently viewed file and 
+        ///               scroll it into view.)
+        /// 
+        /// </summary>
+        public bool findString(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnDbgFileView_findString(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (DbgFileView, getCurrentLine, const char *, 2, 2, ()
+        ///               Get the currently executing file and line, if any.
+        ///               @returns A string containing the file, a tab, and then the line number.
+        ///                Use getField() with this.)
+        /// 
+        /// </summary>
+        public string getCurrentLine()
+            {
+            return TorqueScriptTemplate.m_ts.fnDbgFileView_getCurrentLine(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (DbgFileView, open, bool, 3, 3, (string filename)
+        ///               Open a file for viewing.
+        ///               @note This loads the file from the local system.)
+        /// 
+        /// </summary>
+        public bool open(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnDbgFileView_open(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (DbgFileView, removeBreak, void, 3, 3, (int line)
+        ///               Remove a breakpoint from the specified line.)
+        /// 
+        /// </summary>
+        public void removeBreak(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnDbgFileView_removeBreak(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (DbgFileView, setBreak, void, 3, 3, (int line)
+        ///               Set a breakpoint at the specified line.)
+        /// 
+        /// </summary>
+        public void setBreak(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnDbgFileView_setBreak(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (DbgFileView, setBreakPosition, void, 3, 3, (int line)
+        ///               Set a breakpoint at the specified line.)
+        /// 
+        /// </summary>
+        public void setBreakPosition(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnDbgFileView_setBreakPosition(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (DbgFileView, setCurrentLine, void, 4, 4, (int line, bool selected)
+        ///               Set the current highlighted line.)
+        /// 
+        /// </summary>
+        public void setCurrentLine(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnDbgFileView_setCurrentLine(_mSimObjectId, a2, a3);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,63 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiTextCtrl))]
-    public class coGuiTextCtrl: coGuiContainer
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiTextCtrl))]
+    public class coGuiTextCtrl : coGuiContainer
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiTextCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiTextCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiTextCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Defines the maximum length of the text. The default is 1024. 
+        /// </summary>
+        public int maxLength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxLength").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxLength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The text to show on the control.
+        /// </summary>
+        public String text
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".text").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".text", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maps the text of this control to a variable used in localization, rather than raw text.
+        /// </summary>
+        public String textID
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textID").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textID", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +162,9 @@ public coGuiTextCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +172,17 @@ public coGuiTextCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +194,15 @@ public coGuiTextCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiTextCtrl ts)
+        public static implicit operator string(coGuiTextCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +222,7 @@ public coGuiTextCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiTextCtrl ts)
+        public static implicit operator int(coGuiTextCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +243,7 @@ public coGuiTextCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiTextCtrl ts)
+        public static implicit operator uint(coGuiTextCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,66 +258,38 @@ public coGuiTextCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiTextCtrl(ts);
             }
-public int maxLength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxLength").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxLength", value.AsString());
-          }
-       }
-public String text
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".text").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".text", value.AsString());
-          }
-       }
-public String textID
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textID").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textID", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Sets the text in the control.
-///    @param text Text to display in the control.
-///    @tsexample
-///    // Set the text to show in the control
-///    %text = \"Gideon - Destroyer of World\";
-///    // Inform the GuiTextCtrl control to change its text to the defined value
-///    %thisGuiTextCtrl.setText(%text);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setText(string text){
-TorqueScriptTemplate.m_ts.fnGuiTextCtrl_setText(_mSimObjectId, text);
-}
-/// <summary>
-/// @brief Maps the text ctrl to a variable used in localization, rather than raw text.
-///    @param textID Name of variable text should be mapped to
-///    @tsexample
-///    // Inform the GuiTextCtrl control of the textID to use
-///    %thisGuiTextCtrl.setTextID(\"STR_QUIT\");
-///    @endtsexample
-///    @see GuiControl
-///    @see Localization)
-/// 
-/// </summary>
-public  void setTextID(string textID){
-TorqueScriptTemplate.m_ts.fnGuiTextCtrl_setTextID(_mSimObjectId, textID);
-}
-}}
+
+        /// <summary>
+        /// @brief Sets the text in the control.
+        ///    @param text Text to display in the control.
+        ///    @tsexample
+        ///    // Set the text to show in the control
+        ///    %text = \"Gideon - Destroyer of World\";
+        ///    // Inform the GuiTextCtrl control to change its text to the defined value
+        ///    %thisGuiTextCtrl.setText(%text);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setText(string text)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTextCtrl_setText(_mSimObjectId, text);
+            }
+
+        /// <summary>
+        /// @brief Maps the text ctrl to a variable used in localization, rather than raw text.
+        ///    @param textID Name of variable text should be mapped to
+        ///    @tsexample
+        ///    // Inform the GuiTextCtrl control of the textID to use
+        ///    %thisGuiTextCtrl.setTextID(\"STR_QUIT\");
+        ///    @endtsexample
+        ///    @see GuiControl
+        ///    @see Localization)
+        /// 
+        /// </summary>
+        public void setTextID(string textID)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTextCtrl_setTextID(_mSimObjectId, textID);
+            }
+        }
+    }

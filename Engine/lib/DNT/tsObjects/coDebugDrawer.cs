@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoDebugDrawer))]
-    public class coDebugDrawer: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoDebugDrawer))]
+    public class coDebugDrawer : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDebugDrawer(string simobjectid) : base(simobjectid){ }
+        public coDebugDrawer(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDebugDrawer(uint simobjectid): base(simobjectid){ }
+        public coDebugDrawer(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDebugDrawer(int simobjectid): base(simobjectid){ }
+        public coDebugDrawer(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +136,9 @@ public coDebugDrawer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +146,17 @@ public coDebugDrawer(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +168,15 @@ public coDebugDrawer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coDebugDrawer ts)
+        public static implicit operator string(coDebugDrawer ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +196,7 @@ public coDebugDrawer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coDebugDrawer ts)
+        public static implicit operator int(coDebugDrawer ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +217,7 @@ public coDebugDrawer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coDebugDrawer ts)
+        public static implicit operator uint(coDebugDrawer ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,46 +232,59 @@ public coDebugDrawer(int simobjectid): base(simobjectid){ }
             {
             return new coDebugDrawer(ts);
             }
-/// <summary>
-/// Draws an axis aligned box primitive within the two 3d points. )
-/// 
-/// </summary>
-public  void drawBox(Point3F a, Point3F b, ColorF color){
-TorqueScriptTemplate.m_ts.fnDebugDrawer_drawBox(_mSimObjectId, a.AsString(), b.AsString(), color.AsString());
-}
-/// <summary>
-/// Draws a line primitive between two 3d points. )
-/// 
-/// </summary>
-public  void drawLine(Point3F a, Point3F b, ColorF color){
-TorqueScriptTemplate.m_ts.fnDebugDrawer_drawLine(_mSimObjectId, a.AsString(), b.AsString(), color.AsString());
-}
-/// <summary>
-/// Sets the \"time to live\" (TTL) for the last rendered primitive. )
-/// 
-/// </summary>
-public  void setLastTTL(uint ms){
-TorqueScriptTemplate.m_ts.fnDebugDrawer_setLastTTL(_mSimObjectId, ms);
-}
-/// <summary>
-/// Sets the z buffer reading state for the last rendered primitive. )
-/// 
-/// </summary>
-public  void setLastZTest(bool enabled){
-TorqueScriptTemplate.m_ts.fnDebugDrawer_setLastZTest(_mSimObjectId, enabled);
-}
-/// <summary>
-/// Toggles the rendering of DebugDrawer primitives. )
-/// 
-/// </summary>
-public  void toggleDrawing(){
-TorqueScriptTemplate.m_ts.fnDebugDrawer_toggleDrawing(_mSimObjectId);
-}
-/// <summary>
-/// Toggles freeze mode which keeps the currently rendered primitives from expiring. )
-/// 
-/// </summary>
-public  void toggleFreeze(){
-TorqueScriptTemplate.m_ts.fnDebugDrawer_toggleFreeze(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Draws an axis aligned box primitive within the two 3d points. )
+        /// 
+        /// </summary>
+        public void drawBox(Point3F a, Point3F b, ColorF color)
+            {
+            TorqueScriptTemplate.m_ts.fnDebugDrawer_drawBox(_mSimObjectId, a.AsString(), b.AsString(), color.AsString());
+            }
+
+        /// <summary>
+        /// Draws a line primitive between two 3d points. )
+        /// 
+        /// </summary>
+        public void drawLine(Point3F a, Point3F b, ColorF color)
+            {
+            TorqueScriptTemplate.m_ts.fnDebugDrawer_drawLine(_mSimObjectId, a.AsString(), b.AsString(), color.AsString());
+            }
+
+        /// <summary>
+        /// Sets the \"time to live\" (TTL) for the last rendered primitive. )
+        /// 
+        /// </summary>
+        public void setLastTTL(uint ms)
+            {
+            TorqueScriptTemplate.m_ts.fnDebugDrawer_setLastTTL(_mSimObjectId, ms);
+            }
+
+        /// <summary>
+        /// Sets the z buffer reading state for the last rendered primitive. )
+        /// 
+        /// </summary>
+        public void setLastZTest(bool enabled)
+            {
+            TorqueScriptTemplate.m_ts.fnDebugDrawer_setLastZTest(_mSimObjectId, enabled);
+            }
+
+        /// <summary>
+        /// Toggles the rendering of DebugDrawer primitives. )
+        /// 
+        /// </summary>
+        public void toggleDrawing()
+            {
+            TorqueScriptTemplate.m_ts.fnDebugDrawer_toggleDrawing(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Toggles freeze mode which keeps the currently rendered primitives from expiring. )
+        /// 
+        /// </summary>
+        public void toggleFreeze()
+            {
+            TorqueScriptTemplate.m_ts.fnDebugDrawer_toggleFreeze(_mSimObjectId);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiFadeinBitmapCtrl))]
-    public class coGuiFadeinBitmapCtrl: coGuiBitmapCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiFadeinBitmapCtrl))]
+    public class coGuiFadeinBitmapCtrl : coGuiBitmapCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFadeinBitmapCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiFadeinBitmapCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFadeinBitmapCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiFadeinBitmapCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFadeinBitmapCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiFadeinBitmapCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Whether the fade cycle has finished running. 
+        /// </summary>
+        public bool done
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".done").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".done", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color to fade in from and fade out to. 
+        /// </summary>
+        public ColorF fadeColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Easing curve for fade-in. 
+        /// </summary>
+        public EaseF fadeInEase
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeInEase").AsEaseF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeInEase", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Milliseconds for the bitmap to fade in. 
+        /// </summary>
+        public int fadeInTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeInTime").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeInTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Easing curve for fade-out. 
+        /// </summary>
+        public EaseF fadeOutEase
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutEase").AsEaseF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeOutEase", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Milliseconds for the bitmap to fade out. 
+        /// </summary>
+        public int fadeOutTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutTime").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeOutTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Milliseconds to wait after fading in before fading out the bitmap. 
+        /// </summary>
+        public int waitTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waitTime").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waitTime", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +199,9 @@ public coGuiFadeinBitmapCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +209,17 @@ public coGuiFadeinBitmapCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +231,15 @@ public coGuiFadeinBitmapCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiFadeinBitmapCtrl ts)
+        public static implicit operator string(coGuiFadeinBitmapCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +259,7 @@ public coGuiFadeinBitmapCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiFadeinBitmapCtrl ts)
+        public static implicit operator int(coGuiFadeinBitmapCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +280,7 @@ public coGuiFadeinBitmapCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiFadeinBitmapCtrl ts)
+        public static implicit operator uint(coGuiFadeinBitmapCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,81 +295,5 @@ public coGuiFadeinBitmapCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiFadeinBitmapCtrl(ts);
             }
-public bool done
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".done").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".done", value.AsString());
-          }
-       }
-public ColorF fadeColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeColor", value.AsString());
-          }
-       }
-public EaseF fadeInEase
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeInEase").AsEaseF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeInEase", value.AsString());
-          }
-       }
-public int fadeInTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeInTime").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeInTime", value.AsString());
-          }
-       }
-public EaseF fadeOutEase
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutEase").AsEaseF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeOutEase", value.AsString());
-          }
-       }
-public int fadeOutTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutTime").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeOutTime", value.AsString());
-          }
-       }
-public int waitTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waitTime").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waitTime", value.AsString());
-          }
-       }
-}}
+        }
+    }

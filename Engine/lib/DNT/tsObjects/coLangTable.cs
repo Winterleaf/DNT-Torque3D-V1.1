@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoLangTable))]
-    public class coLangTable: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoLangTable))]
+    public class coLangTable : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLangTable(string simobjectid) : base(simobjectid){ }
+        public coLangTable(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLangTable(uint simobjectid): base(simobjectid){ }
+        public coLangTable(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLangTable(int simobjectid): base(simobjectid){ }
+        public coLangTable(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coLangTable(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coLangTable(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coLangTable(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coLangTable ts)
+        public static implicit operator string(coLangTable ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coLangTable(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coLangTable ts)
+        public static implicit operator int(coLangTable ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coLangTable(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coLangTable ts)
+        public static implicit operator uint(coLangTable ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,77 +231,92 @@ public coLangTable(int simobjectid): base(simobjectid){ }
             {
             return new coLangTable(ts);
             }
-/// <summary>
-/// (LangTable, addLanguage, S32, 3, 4, 
-/// 			  (string filename, [string languageName])
-/// 			  @brief Adds a language to the table
-/// 			  @param filename Name and path to the language file
-/// 			  @param languageName Optional name to assign to the new language entry
-/// 			  @return True If file was successfully found and language created
-/// 			  )
-/// 
-/// </summary>
-public  int addLanguage(string a2, string a3= ""){
-return TorqueScriptTemplate.m_ts.fnLangTable_addLanguage(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (LangTable, getCurrentLanguage, S32, 2, 2, ()
-/// 			  @brief Get the ID of the current language table
-/// 			  @return Numerical ID of the current language table)
-/// 
-/// </summary>
-public  int getCurrentLanguage(){
-return TorqueScriptTemplate.m_ts.fnLangTable_getCurrentLanguage(_mSimObjectId);
-}
-/// <summary>
-/// (LangTable, getLangName, const char *, 3, 3, (int language)
-/// 			  @brief Return the readable name of the language table
-/// 			  @param language Numerical ID of the language table to access
-/// 			  @return String containing the name of the table, NULL if ID was invalid or name was never specified)
-/// 
-/// </summary>
-public  string getLangName(string a2){
-return TorqueScriptTemplate.m_ts.fnLangTable_getLangName(_mSimObjectId, a2);
-}
-/// <summary>
-/// (LangTable, getNumLang, S32, 2, 2, ()
-/// 			  @brief Used to find out how many languages are in the table
-/// 			  @return Size of the vector containing the languages, numerical)
-/// 
-/// </summary>
-public  int getNumLang(){
-return TorqueScriptTemplate.m_ts.fnLangTable_getNumLang(_mSimObjectId);
-}
-/// <summary>
-/// (LangTable, getString, const char *, 3, 3, 
-/// 			  (string filename)
-/// 			  @brief Grabs a string from the specified table
-/// 			  If an invalid is passed, the function will attempt to 
-/// 			  to grab from the default table
-/// 			  @param filename Name of the language table to access
-/// 			  @return Text from the specified language table, \"\" if ID was invalid and default table is not set)
-/// 
-/// </summary>
-public  string getString(string a2){
-return TorqueScriptTemplate.m_ts.fnLangTable_getString(_mSimObjectId, a2);
-}
-/// <summary>
-/// (LangTable, setCurrentLanguage, void, 3, 3, 
-/// 			  (int language)
-/// 			  @brief Sets the current language table for grabbing text
-/// 			  @param language ID of the table)
-/// 
-/// </summary>
-public  void setCurrentLanguage(string a2){
-TorqueScriptTemplate.m_ts.fnLangTable_setCurrentLanguage(_mSimObjectId, a2);
-}
-/// <summary>
-/// (LangTable, setDefaultLanguage, void, 3, 3, (int language)
-/// 			  @brief Sets the default language table
-/// 			  @param language ID of the table)
-/// 
-/// </summary>
-public  void setDefaultLanguage(string a2){
-TorqueScriptTemplate.m_ts.fnLangTable_setDefaultLanguage(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// (LangTable, addLanguage, S32, 3, 4, 
+        /// 			  (string filename, [string languageName])
+        /// 			  @brief Adds a language to the table
+        /// 			  @param filename Name and path to the language file
+        /// 			  @param languageName Optional name to assign to the new language entry
+        /// 			  @return True If file was successfully found and language created
+        /// 			  )
+        /// 
+        /// </summary>
+        public int addLanguage(string a2, string a3 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnLangTable_addLanguage(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (LangTable, getCurrentLanguage, S32, 2, 2, ()
+        /// 			  @brief Get the ID of the current language table
+        /// 			  @return Numerical ID of the current language table)
+        /// 
+        /// </summary>
+        public int getCurrentLanguage()
+            {
+            return TorqueScriptTemplate.m_ts.fnLangTable_getCurrentLanguage(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (LangTable, getLangName, const char *, 3, 3, (int language)
+        /// 			  @brief Return the readable name of the language table
+        /// 			  @param language Numerical ID of the language table to access
+        /// 			  @return String containing the name of the table, NULL if ID was invalid or name was never specified)
+        /// 
+        /// </summary>
+        public string getLangName(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnLangTable_getLangName(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (LangTable, getNumLang, S32, 2, 2, ()
+        /// 			  @brief Used to find out how many languages are in the table
+        /// 			  @return Size of the vector containing the languages, numerical)
+        /// 
+        /// </summary>
+        public int getNumLang()
+            {
+            return TorqueScriptTemplate.m_ts.fnLangTable_getNumLang(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (LangTable, getString, const char *, 3, 3, 
+        /// 			  (string filename)
+        /// 			  @brief Grabs a string from the specified table
+        /// 			  If an invalid is passed, the function will attempt to 
+        /// 			  to grab from the default table
+        /// 			  @param filename Name of the language table to access
+        /// 			  @return Text from the specified language table, \"\" if ID was invalid and default table is not set)
+        /// 
+        /// </summary>
+        public string getString(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnLangTable_getString(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (LangTable, setCurrentLanguage, void, 3, 3, 
+        /// 			  (int language)
+        /// 			  @brief Sets the current language table for grabbing text
+        /// 			  @param language ID of the table)
+        /// 
+        /// </summary>
+        public void setCurrentLanguage(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnLangTable_setCurrentLanguage(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (LangTable, setDefaultLanguage, void, 3, 3, (int language)
+        /// 			  @brief Sets the default language table
+        /// 			  @param language ID of the table)
+        /// 
+        /// </summary>
+        public void setDefaultLanguage(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnLangTable_setDefaultLanguage(_mSimObjectId, a2);
+            }
+        }
+    }

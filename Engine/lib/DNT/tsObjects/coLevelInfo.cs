@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,163 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoLevelInfo))]
-    public class coLevelInfo: coNetObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoLevelInfo))]
+    public class coLevelInfo : coNetObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLevelInfo(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coLevelInfo(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coLevelInfo(int simobjectid): base(simobjectid){ }
+        public coLevelInfo(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coLevelInfo(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coLevelInfo(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Enable expanded support for mixing static and dynamic lighting (more costly) 
+        /// </summary>
+        public bool advancedLightmapSupport
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".advancedLightmapSupport").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".advancedLightmapSupport", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Interpolation curve to use for blending from one ambient light color to a different one. 
+        /// </summary>
+        public EaseF ambientLightBlendCurve
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambientLightBlendCurve").AsEaseF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ambientLightBlendCurve", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of seconds it takes to blend from one ambient light color to a different one. 
+        /// </summary>
+        public float ambientLightBlendPhase
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambientLightBlendPhase").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ambientLightBlendPhase", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The color used to clear the background before the scene or any GUIs are rendered. 
+        /// </summary>
+        public ColorI canvasClearColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".canvasClearColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".canvasClearColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// NearPlane bias used when rendering Decal and DecalRoad. This should be tuned to the visibleDistance in your level. 
+        /// </summary>
+        public float decalBias
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".decalBias").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".decalBias", value.AsString()); }
+            }
+
+        /// <summary>
+        /// A height in meters for altitude fog falloff. 
+        /// </summary>
+        public float fogAtmosphereHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fogAtmosphereHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fogAtmosphereHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The default color for the scene fog. 
+        /// </summary>
+        public ColorF fogColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fogColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fogColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The 0 to 1 density value for the exponential fog falloff. 
+        /// </summary>
+        public float fogDensity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fogDensity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fogDensity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// An offset from the camera in meters for moving the start of the fog effect. 
+        /// </summary>
+        public float fogDensityOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fogDensityOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fogDensityOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Closest distance from the camera's position to render the world. 
+        /// </summary>
+        public float nearClip
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".nearClip").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".nearClip", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The global ambient sound environment. 
+        /// </summary>
+        public coSFXAmbience soundAmbience
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".soundAmbience"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundAmbience", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The distance attenuation model to use. 
+        /// </summary>
+        public TypeSFXDistanceModel soundDistanceModel
+            {
+            get { return (TypeSFXDistanceModel) Enum.Parse(typeof (TypeSFXDistanceModel), dnTorque.self.GetVar(_mSimObjectId + ".soundDistanceModel")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundDistanceModel", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Furthest distance fromt he camera's position to render the world. 
+        /// </summary>
+        public float visibleDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".visibleDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".visibleDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Furthest distance fromt he camera's position to render players. 
+        /// </summary>
+        public float visibleDistance_Ghost
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".visibleDistance_Ghost").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".visibleDistance_Ghost", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +263,9 @@ public coLevelInfo(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +273,17 @@ public coLevelInfo(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +295,15 @@ public coLevelInfo(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coLevelInfo ts)
+        public static implicit operator string(coLevelInfo ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +323,7 @@ public coLevelInfo(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coLevelInfo ts)
+        public static implicit operator int(coLevelInfo ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +344,7 @@ public coLevelInfo(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coLevelInfo ts)
+        public static implicit operator uint(coLevelInfo ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,157 +359,5 @@ public coLevelInfo(int simobjectid): base(simobjectid){ }
             {
             return new coLevelInfo(ts);
             }
-public bool advancedLightmapSupport
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".advancedLightmapSupport").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".advancedLightmapSupport", value.AsString());
-          }
-       }
-public EaseF ambientLightBlendCurve
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ambientLightBlendCurve").AsEaseF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ambientLightBlendCurve", value.AsString());
-          }
-       }
-public float ambientLightBlendPhase
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ambientLightBlendPhase").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ambientLightBlendPhase", value.AsString());
-          }
-       }
-public ColorI canvasClearColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".canvasClearColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".canvasClearColor", value.AsString());
-          }
-       }
-public float decalBias
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".decalBias").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".decalBias", value.AsString());
-          }
-       }
-public float fogAtmosphereHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fogAtmosphereHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fogAtmosphereHeight", value.AsString());
-          }
-       }
-public ColorF fogColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fogColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fogColor", value.AsString());
-          }
-       }
-public float fogDensity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fogDensity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fogDensity", value.AsString());
-          }
-       }
-public float fogDensityOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fogDensityOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fogDensityOffset", value.AsString());
-          }
-       }
-public float nearClip
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".nearClip").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".nearClip", value.AsString());
-          }
-       }
-public coSFXAmbience soundAmbience
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".soundAmbience");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".soundAmbience", value.ToString());
-          }
-       }
-public TypeSFXDistanceModel soundDistanceModel
-       {
-       get
-          {          return (TypeSFXDistanceModel)Enum.Parse(typeof(TypeSFXDistanceModel), dnTorque.self.GetVar(_mSimObjectId + ".soundDistanceModel"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".soundDistanceModel", value.ToString());
-          }
-       }
-public float visibleDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".visibleDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".visibleDistance", value.AsString());
-          }
-       }
-public float visibleDistance_Ghost
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".visibleDistance_Ghost").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".visibleDistance_Ghost", value.AsString());
-          }
-       }
-}}
+        }
+    }

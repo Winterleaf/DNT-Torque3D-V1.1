@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTimeOfDay))]
-    public class coTimeOfDay: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoTimeOfDay))]
+    public class coTimeOfDay : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTimeOfDay(string simobjectid) : base(simobjectid){ }
+        public coTimeOfDay(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTimeOfDay(uint simobjectid): base(simobjectid){ }
+        public coTimeOfDay(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTimeOfDay(int simobjectid): base(simobjectid){ }
+        public coTimeOfDay(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// The angle in degrees between global equator and tropic. 
+        /// </summary>
+        public float axisTilt
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".axisTilt").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".axisTilt", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public float azimuthOverride
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".azimuthOverride").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".azimuthOverride", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The length of a virtual day in real world seconds. 
+        /// </summary>
+        public float dayLength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dayLength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dayLength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Scalar applied to time that elapses while the sun is up. 
+        /// </summary>
+        public float dayScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dayScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dayScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Scalar applied to time that elapses while the sun is down. 
+        /// </summary>
+        public float nightScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".nightScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".nightScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// True when the TimeOfDay object is operating. 
+        /// </summary>
+        public bool play
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".play").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".play", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public float startTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".startTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".startTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Current time of day. 
+        /// </summary>
+        public float time
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".time").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".time", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +207,9 @@ public coTimeOfDay(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +217,17 @@ public coTimeOfDay(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +239,15 @@ public coTimeOfDay(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTimeOfDay ts)
+        public static implicit operator string(coTimeOfDay ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +267,7 @@ public coTimeOfDay(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTimeOfDay ts)
+        public static implicit operator int(coTimeOfDay ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +288,7 @@ public coTimeOfDay(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTimeOfDay ts)
+        public static implicit operator uint(coTimeOfDay ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,127 +303,50 @@ public coTimeOfDay(int simobjectid): base(simobjectid){ }
             {
             return new coTimeOfDay(ts);
             }
-public float axisTilt
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".axisTilt").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".axisTilt", value.AsString());
-          }
-       }
-public float azimuthOverride
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".azimuthOverride").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".azimuthOverride", value.AsString());
-          }
-       }
-public float dayLength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dayLength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dayLength", value.AsString());
-          }
-       }
-public float dayScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dayScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dayScale", value.AsString());
-          }
-       }
-public float nightScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".nightScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".nightScale", value.AsString());
-          }
-       }
-public bool play
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".play").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".play", value.AsString());
-          }
-       }
-public float startTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".startTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".startTime", value.AsString());
-          }
-       }
-public float time
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".time").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".time", value.AsString());
-          }
-       }
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void addTimeOfDayEvent(float elevation, string identifier){
-TorqueScriptTemplate.m_ts.fnTimeOfDay_addTimeOfDayEvent(_mSimObjectId, elevation, identifier);
-}
-/// <summary>
-/// )
-/// 
-/// </summary>
-public  void animate(float elevation, float degreesPerSecond){
-TorqueScriptTemplate.m_ts.fnTimeOfDay_animate(_mSimObjectId, elevation, degreesPerSecond);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void setDayLength(float seconds){
-TorqueScriptTemplate.m_ts.fnTimeOfDay_setDayLength(_mSimObjectId, seconds);
-}
-/// <summary>
-/// )
-/// 
-/// </summary>
-public  void setPlay(bool enabled){
-TorqueScriptTemplate.m_ts.fnTimeOfDay_setPlay(_mSimObjectId, enabled);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void setTimeOfDay(float time){
-TorqueScriptTemplate.m_ts.fnTimeOfDay_setTimeOfDay(_mSimObjectId, time);
-}
-}}
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void addTimeOfDayEvent(float elevation, string identifier)
+            {
+            TorqueScriptTemplate.m_ts.fnTimeOfDay_addTimeOfDayEvent(_mSimObjectId, elevation, identifier);
+            }
+
+        /// <summary>
+        /// )
+        /// 
+        /// </summary>
+        public void animate(float elevation, float degreesPerSecond)
+            {
+            TorqueScriptTemplate.m_ts.fnTimeOfDay_animate(_mSimObjectId, elevation, degreesPerSecond);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void setDayLength(float seconds)
+            {
+            TorqueScriptTemplate.m_ts.fnTimeOfDay_setDayLength(_mSimObjectId, seconds);
+            }
+
+        /// <summary>
+        /// )
+        /// 
+        /// </summary>
+        public void setPlay(bool enabled)
+            {
+            TorqueScriptTemplate.m_ts.fnTimeOfDay_setPlay(_mSimObjectId, enabled);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void setTimeOfDay(float time)
+            {
+            TorqueScriptTemplate.m_ts.fnTimeOfDay_setTimeOfDay(_mSimObjectId, time);
+            }
+        }
+    }

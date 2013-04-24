@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTCPObject))]
-    public class coTCPObject: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoTCPObject))]
+    public class coTCPObject : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTCPObject(string simobjectid) : base(simobjectid){ }
+        public coTCPObject(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTCPObject(uint simobjectid): base(simobjectid){ }
+        public coTCPObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTCPObject(int simobjectid): base(simobjectid){ }
+        public coTCPObject(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coTCPObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coTCPObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coTCPObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTCPObject ts)
+        public static implicit operator string(coTCPObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coTCPObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTCPObject ts)
+        public static implicit operator int(coTCPObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coTCPObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTCPObject ts)
+        public static implicit operator uint(coTCPObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,88 +231,97 @@ public coTCPObject(int simobjectid): base(simobjectid){ }
             {
             return new coTCPObject(ts);
             }
-/// <summary>
-/// @brief Connect to the given address.
-/// 
-///    @param address Server address (including port) to connect to.
-/// 
-///    @tsexample
-///       // Set the address.
-///       %address = \"www.garagegames.com:80\";
-/// 
-///       // Inform this TCPObject to connect to the specified address.
-///       %thisTCPObj.connect(%address);
-///    @endtsexample)
-/// 
-/// </summary>
-public  void connect(string address){
-TorqueScriptTemplate.m_ts.fnTCPObject_connect(_mSimObjectId, address);
-}
-/// <summary>
-/// @brief Disconnect from whatever this TCPObject is currently connected to, if anything.
-/// 
-///    @tsexample
-///       // Inform this TCPObject to disconnect from anything it is currently connected to.
-///       %thisTCPObj.disconnect();
-///    @endtsexample)
-/// 
-/// </summary>
-public  void disconnect(){
-TorqueScriptTemplate.m_ts.fnTCPObject_disconnect(_mSimObjectId);
-}
-/// <summary>
-/// @brief Start listening on the specified port for connections.
-/// 
-///    This method starts a listener which looks for incoming TCP connections to a port.  
-///    You must overload the onConnectionRequest callback to create a new TCPObject to 
-///    read, write, or reject the new connection.
-/// 
-///    @param port Port for this TCPObject to start listening for connections on.
-/// 
-///    @tsexample
-/// 
-///     // Create a listener on port 8080.
-///     new TCPObject( TCPListener );
-///     TCPListener.listen( 8080 );
-/// 
-///     function TCPListener::onConnectionRequest( %this, %address, %id )
-///     {
-///        // Create a new object to manage the connection.
-///        new TCPObject( TCPClient, %id );
-///     }
-/// 
-///     function TCPClient::onLine( %this, %line )
-///     {
-///        // Print the line of text from client.
-///        echo( %line );
-///     }
-/// 
-///    @endtsexample)
-/// 
-/// </summary>
-public  void listen(int port){
-TorqueScriptTemplate.m_ts.fnTCPObject_listen(_mSimObjectId, port);
-}
-/// <summary>
-/// @brief Transmits the data string to the connected computer.
-/// 
-///    This method is used to send text data to the connected computer regardless if we initiated the 
-///    connection using connect(), or listening to a port using listen().
-/// 
-///    @param data The data string to send.
-/// 
-///    @tsexample
-///       // Set the command data
-///       %data = \"GET \" @ $RSSFeed::serverURL @ \" HTTP/1.0\\r\\";
-///       %data = %data @ \"Host: \" @ $RSSFeed::serverName @ \"\\r\\";
-///       %data = %data @ \"User-Agent: \" @ $RSSFeed::userAgent @ \"\\r\\\r\\"
-/// 
-///       // Send the command to the connected server.
-///       %thisTCPObj.send(%data);
-///    @endtsexample)
-/// 
-/// </summary>
-public  void send(string data){
-TorqueScriptTemplate.m_ts.fnTCPObject_send(_mSimObjectId, data);
-}
-}}
+
+        /// <summary>
+        /// @brief Connect to the given address.
+        /// 
+        ///    @param address Server address (including port) to connect to.
+        /// 
+        ///    @tsexample
+        ///       // Set the address.
+        ///       %address = \"www.garagegames.com:80\";
+        /// 
+        ///       // Inform this TCPObject to connect to the specified address.
+        ///       %thisTCPObj.connect(%address);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void connect(string address)
+            {
+            TorqueScriptTemplate.m_ts.fnTCPObject_connect(_mSimObjectId, address);
+            }
+
+        /// <summary>
+        /// @brief Disconnect from whatever this TCPObject is currently connected to, if anything.
+        /// 
+        ///    @tsexample
+        ///       // Inform this TCPObject to disconnect from anything it is currently connected to.
+        ///       %thisTCPObj.disconnect();
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void disconnect()
+            {
+            TorqueScriptTemplate.m_ts.fnTCPObject_disconnect(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Start listening on the specified port for connections.
+        /// 
+        ///    This method starts a listener which looks for incoming TCP connections to a port.  
+        ///    You must overload the onConnectionRequest callback to create a new TCPObject to 
+        ///    read, write, or reject the new connection.
+        /// 
+        ///    @param port Port for this TCPObject to start listening for connections on.
+        /// 
+        ///    @tsexample
+        /// 
+        ///     // Create a listener on port 8080.
+        ///     new TCPObject( TCPListener );
+        ///     TCPListener.listen( 8080 );
+        /// 
+        ///     function TCPListener::onConnectionRequest( %this, %address, %id )
+        ///     {
+        ///        // Create a new object to manage the connection.
+        ///        new TCPObject( TCPClient, %id );
+        ///     }
+        /// 
+        ///     function TCPClient::onLine( %this, %line )
+        ///     {
+        ///        // Print the line of text from client.
+        ///        echo( %line );
+        ///     }
+        /// 
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void listen(int port)
+            {
+            TorqueScriptTemplate.m_ts.fnTCPObject_listen(_mSimObjectId, port);
+            }
+
+        /// <summary>
+        /// @brief Transmits the data string to the connected computer.
+        /// 
+        ///    This method is used to send text data to the connected computer regardless if we initiated the 
+        ///    connection using connect(), or listening to a port using listen().
+        /// 
+        ///    @param data The data string to send.
+        /// 
+        ///    @tsexample
+        ///       // Set the command data
+        ///       %data = \"GET \" @ $RSSFeed::serverURL @ \" HTTP/1.0\\r\\";
+        ///       %data = %data @ \"Host: \" @ $RSSFeed::serverName @ \"\\r\\";
+        ///       %data = %data @ \"User-Agent: \" @ $RSSFeed::userAgent @ \"\\r\\\r\\"
+        /// 
+        ///       // Send the command to the connected server.
+        ///       %thisTCPObj.send(%data);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void send(string data)
+            {
+            TorqueScriptTemplate.m_ts.fnTCPObject_send(_mSimObjectId, data);
+            }
+        }
+    }

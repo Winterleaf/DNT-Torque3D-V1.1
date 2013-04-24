@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiShapeNameHud))]
-    public class coGuiShapeNameHud: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiShapeNameHud))]
+    public class coGuiShapeNameHud : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiShapeNameHud(string simobjectid) : base(simobjectid){ }
+        public coGuiShapeNameHud(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiShapeNameHud(uint simobjectid): base(simobjectid){ }
+        public coGuiShapeNameHud(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiShapeNameHud(int simobjectid): base(simobjectid){ }
+        public coGuiShapeNameHud(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Visibility distance (how far the player must be from the ShapeBase object in focus) for this control to render. 
+        /// </summary>
+        public float distanceFade
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".distanceFade").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".distanceFade", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Standard color for the background of the control. 
+        /// </summary>
+        public ColorF fillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the control's frame. 
+        /// </summary>
+        public ColorF frameColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, we draw the background color of the control. 
+        /// </summary>
+        public bool showFill
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFill").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFill", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, we draw the frame of the control. 
+        /// </summary>
+        public bool showFrame
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFrame").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFrame", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the text on this control. 
+        /// </summary>
+        public ColorF textColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Amount to vertically offset the control in relation to the ShapeBase object in focus. 
+        /// </summary>
+        public float verticalOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".verticalOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".verticalOffset", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +199,9 @@ public coGuiShapeNameHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +209,17 @@ public coGuiShapeNameHud(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +231,15 @@ public coGuiShapeNameHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiShapeNameHud ts)
+        public static implicit operator string(coGuiShapeNameHud ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +259,7 @@ public coGuiShapeNameHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiShapeNameHud ts)
+        public static implicit operator int(coGuiShapeNameHud ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +280,7 @@ public coGuiShapeNameHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiShapeNameHud ts)
+        public static implicit operator uint(coGuiShapeNameHud ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,81 +295,5 @@ public coGuiShapeNameHud(int simobjectid): base(simobjectid){ }
             {
             return new coGuiShapeNameHud(ts);
             }
-public float distanceFade
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".distanceFade").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".distanceFade", value.AsString());
-          }
-       }
-public ColorF fillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString());
-          }
-       }
-public ColorF frameColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString());
-          }
-       }
-public bool showFill
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFill").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFill", value.AsString());
-          }
-       }
-public bool showFrame
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFrame").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFrame", value.AsString());
-          }
-       }
-public ColorF textColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textColor", value.AsString());
-          }
-       }
-public float verticalOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".verticalOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".verticalOffset", value.AsString());
-          }
-       }
-}}
+        }
+    }

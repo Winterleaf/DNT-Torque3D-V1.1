@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTrigger))]
-    public class coTrigger: coGameBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoTrigger))]
+    public class coTrigger : coGameBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTrigger(string simobjectid) : base(simobjectid){ }
+        public coTrigger(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTrigger(uint simobjectid): base(simobjectid){ }
+        public coTrigger(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTrigger(int simobjectid): base(simobjectid){ }
+        public coTrigger(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// The command to execute when an object enters this trigger. Object id stored in %%obj. Maximum 1023 characters. 
+        /// </summary>
+        public String enterCommand
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".enterCommand").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".enterCommand", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The command to execute when an object leaves this trigger. Object id stored in %%obj. Maximum 1023 characters. 
+        /// </summary>
+        public String leaveCommand
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".leaveCommand").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".leaveCommand", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Defines a non-rectangular area for the trigger.\n\n   Rather than the standard rectangular bounds, this optional parameter defines a quadrilateral    trigger area. The quadrilateral is defined as a corner point followed by three vectors    representing the edges extending from the corner.\n
+        /// </summary>
+        public Polyhedron polyhedron
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".polyhedron").AsPolyhedron(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".polyhedron", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The command to execute while an object is inside this trigger. Maximum 1023 characters. 
+        /// </summary>
+        public String tickCommand
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tickCommand").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tickCommand", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coTrigger(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coTrigger(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coTrigger(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTrigger ts)
+        public static implicit operator string(coTrigger ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coTrigger(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTrigger ts)
+        public static implicit operator int(coTrigger ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coTrigger(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTrigger ts)
+        public static implicit operator uint(coTrigger ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,66 +268,27 @@ public coTrigger(int simobjectid): base(simobjectid){ }
             {
             return new coTrigger(ts);
             }
-public String enterCommand
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".enterCommand").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".enterCommand", value.AsString());
-          }
-       }
-public String leaveCommand
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".leaveCommand").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".leaveCommand", value.AsString());
-          }
-       }
-public Polyhedron polyhedron
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".polyhedron").AsPolyhedron();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".polyhedron", value.AsString());
-          }
-       }
-public String tickCommand
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tickCommand").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tickCommand", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Get the number of objects that are within the Trigger's bounds.
-///    @see getObject())
-/// 
-/// </summary>
-public  int getNumObjects(){
-return TorqueScriptTemplate.m_ts.fnTrigger_getNumObjects(_mSimObjectId);
-}
-/// <summary>
-/// @brief Retrieve the requested object that is within the Trigger's bounds.
-///    @param index Index of the object to get (range is 0 to getNumObjects()-1)
-///    @returns The SimObjectID of the object, or -1 if the requested index is invalid.
-///    @see getNumObjects())
-/// 
-/// </summary>
-public  int getObject(int index){
-return TorqueScriptTemplate.m_ts.fnTrigger_getObject(_mSimObjectId, index);
-}
-}}
+
+        /// <summary>
+        /// @brief Get the number of objects that are within the Trigger's bounds.
+        ///    @see getObject())
+        /// 
+        /// </summary>
+        public int getNumObjects()
+            {
+            return TorqueScriptTemplate.m_ts.fnTrigger_getNumObjects(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Retrieve the requested object that is within the Trigger's bounds.
+        ///    @param index Index of the object to get (range is 0 to getNumObjects()-1)
+        ///    @returns The SimObjectID of the object, or -1 if the requested index is invalid.
+        ///    @see getNumObjects())
+        /// 
+        /// </summary>
+        public int getObject(int index)
+            {
+            return TorqueScriptTemplate.m_ts.fnTrigger_getObject(_mSimObjectId, index);
+            }
+        }
+    }

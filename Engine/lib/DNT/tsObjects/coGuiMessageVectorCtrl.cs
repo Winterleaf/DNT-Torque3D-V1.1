@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiMessageVectorCtrl))]
-    public class coGuiMessageVectorCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiMessageVectorCtrl))]
+    public class coGuiMessageVectorCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMessageVectorCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiMessageVectorCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMessageVectorCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiMessageVectorCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMessageVectorCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiMessageVectorCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String allowedMatches
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".allowedMatches").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".allowedMatches", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int lineContinuedIndex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lineContinuedIndex").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lineContinuedIndex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int lineSpacing
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lineSpacing").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lineSpacing", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI matchColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".matchColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".matchColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int maxColorIndex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxColorIndex").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxColorIndex", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiMessageVectorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiMessageVectorCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiMessageVectorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiMessageVectorCtrl ts)
+        public static implicit operator string(coGuiMessageVectorCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiMessageVectorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiMessageVectorCtrl ts)
+        public static implicit operator int(coGuiMessageVectorCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiMessageVectorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiMessageVectorCtrl ts)
+        public static implicit operator uint(coGuiMessageVectorCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,95 +277,45 @@ public coGuiMessageVectorCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiMessageVectorCtrl(ts);
             }
-public String allowedMatches
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".allowedMatches").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".allowedMatches", value.AsString());
-          }
-       }
-public int lineContinuedIndex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lineContinuedIndex").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lineContinuedIndex", value.AsString());
-          }
-       }
-public int lineSpacing
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lineSpacing").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lineSpacing", value.AsString());
-          }
-       }
-public ColorI matchColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".matchColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".matchColor", value.AsString());
-          }
-       }
-public int maxColorIndex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxColorIndex").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxColorIndex", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Push a line onto the back of the list.
-/// 
-/// 	   @param item The GUI element being pushed into the control
-/// 
-/// 	   @tsexample
-/// 	   // All messages are stored in this HudMessageVector, the actual
-/// 	   // MainChatHud only displays the contents of this vector.
-/// 	   new MessageVector(HudMessageVector);
-/// 	   // Attach the MessageVector to the chat control
-/// 	   chatHud.attach(HudMessageVector);
-/// 	   @endtsexample
-/// 
-/// 	   @return Value)
-/// 
-/// </summary>
-public  bool attach(string item){
-return TorqueScriptTemplate.m_ts.fnGuiMessageVectorCtrl_attach(_mSimObjectId, item);
-}
-/// <summary>
-/// @brief Stop listing messages from the MessageVector previously attached to, if any.
-/// 
-/// 				   Detailed description
-/// 
-/// 				   @param param Description
-/// 
-/// 				   @tsexample
-/// 				   // Deatch the MessageVector from HudMessageVector
-/// 				   // HudMessageVector will no longer render the text
-/// 				   chatHud.detach();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void detach(){
-TorqueScriptTemplate.m_ts.fnGuiMessageVectorCtrl_detach(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Push a line onto the back of the list.
+        /// 
+        /// 	   @param item The GUI element being pushed into the control
+        /// 
+        /// 	   @tsexample
+        /// 	   // All messages are stored in this HudMessageVector, the actual
+        /// 	   // MainChatHud only displays the contents of this vector.
+        /// 	   new MessageVector(HudMessageVector);
+        /// 	   // Attach the MessageVector to the chat control
+        /// 	   chatHud.attach(HudMessageVector);
+        /// 	   @endtsexample
+        /// 
+        /// 	   @return Value)
+        /// 
+        /// </summary>
+        public bool attach(string item)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiMessageVectorCtrl_attach(_mSimObjectId, item);
+            }
+
+        /// <summary>
+        /// @brief Stop listing messages from the MessageVector previously attached to, if any.
+        /// 
+        /// 				   Detailed description
+        /// 
+        /// 				   @param param Description
+        /// 
+        /// 				   @tsexample
+        /// 				   // Deatch the MessageVector from HudMessageVector
+        /// 				   // HudMessageVector will no longer render the text
+        /// 				   chatHud.detach();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void detach()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMessageVectorCtrl_detach(_mSimObjectId);
+            }
+        }
+    }

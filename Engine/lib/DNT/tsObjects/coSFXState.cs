@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXState))]
-    public class coSFXState: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXState))]
+    public class coSFXState : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXState(string simobjectid) : base(simobjectid){ }
+        public coSFXState(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXState(uint simobjectid): base(simobjectid){ }
+        public coSFXState(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXState(int simobjectid): base(simobjectid){ }
+        public coSFXState(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// States that will automatically be disabled when this state is activated.\n\n     @ref SFXState_activation 
+        /// </summary>
+        public coSFXState excludedStates
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".excludedStates"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".excludedStates", value.ToString()); }
+            }
+
+        /// <summary>
+        /// States that will automatically be activated when this state is activated.\n\n     @ref SFXState_activation 
+        /// </summary>
+        public coSFXState includedStates
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".includedStates"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".includedStates", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coSFXState(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coSFXState(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coSFXState(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXState ts)
+        public static implicit operator string(coSFXState ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coSFXState(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXState ts)
+        public static implicit operator int(coSFXState ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coSFXState(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXState ts)
+        public static implicit operator uint(coSFXState ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,85 +249,76 @@ public coSFXState(int simobjectid): base(simobjectid){ }
             {
             return new coSFXState(ts);
             }
-public coSFXState excludedStates
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".excludedStates");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".excludedStates", value.ToString());
-          }
-       }
-public coSFXState includedStates
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".includedStates");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".includedStates", value.ToString());
-          }
-       }
-/// <summary>
-/// Increase the activation count on the state.
-///    If the state isn't already active and it is not disabled, the state will be activated.
-///    @see isActive
-///    @see deactivate )
-/// 
-/// </summary>
-public  void activate(){
-TorqueScriptTemplate.m_ts.fnSFXState_activate(_mSimObjectId);
-}
-/// <summary>
-/// Decrease the activation count on the state.
-///    If the count reaches zero and the state was not disabled, the state will be deactivated.
-///    @see isActive
-///    @see activate )
-/// 
-/// </summary>
-public  void deactivate(){
-TorqueScriptTemplate.m_ts.fnSFXState_deactivate(_mSimObjectId);
-}
-/// <summary>
-/// Increase the disabling count of the state.
-///    If the state is currently active, it will be deactivated.
-///    @see isDisabled )
-/// 
-/// </summary>
-public  void disable(){
-TorqueScriptTemplate.m_ts.fnSFXState_disable(_mSimObjectId);
-}
-/// <summary>
-/// Decrease the disabling count of the state.
-///    If the disabling count reaches zero while the activation count is still non-zero, 
-///       the state will be reactivated again.
-///    @see isDisabled )
-/// 
-/// </summary>
-public  void enable(){
-TorqueScriptTemplate.m_ts.fnSFXState_enable(_mSimObjectId);
-}
-/// <summary>
-/// Test whether the state is currently active.
-///    This is true when the activation count is >0 and the disabling count is =0.
-///    @return True if the state is currently active.
-///    @see activate )
-/// 
-/// </summary>
-public  bool isActive(){
-return TorqueScriptTemplate.m_ts.fnSFXState_isActive(_mSimObjectId);
-}
-/// <summary>
-/// Test whether the state is currently disabled.
-///    This is true when the disabling count of the state is non-zero.
-///    @return True if the state is disabled.
-///    @see disable )
-/// 
-/// </summary>
-public  bool isDisabled(){
-return TorqueScriptTemplate.m_ts.fnSFXState_isDisabled(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Increase the activation count on the state.
+        ///    If the state isn't already active and it is not disabled, the state will be activated.
+        ///    @see isActive
+        ///    @see deactivate )
+        /// 
+        /// </summary>
+        public void activate()
+            {
+            TorqueScriptTemplate.m_ts.fnSFXState_activate(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Decrease the activation count on the state.
+        ///    If the count reaches zero and the state was not disabled, the state will be deactivated.
+        ///    @see isActive
+        ///    @see activate )
+        /// 
+        /// </summary>
+        public void deactivate()
+            {
+            TorqueScriptTemplate.m_ts.fnSFXState_deactivate(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Increase the disabling count of the state.
+        ///    If the state is currently active, it will be deactivated.
+        ///    @see isDisabled )
+        /// 
+        /// </summary>
+        public void disable()
+            {
+            TorqueScriptTemplate.m_ts.fnSFXState_disable(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Decrease the disabling count of the state.
+        ///    If the disabling count reaches zero while the activation count is still non-zero, 
+        ///       the state will be reactivated again.
+        ///    @see isDisabled )
+        /// 
+        /// </summary>
+        public void enable()
+            {
+            TorqueScriptTemplate.m_ts.fnSFXState_enable(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Test whether the state is currently active.
+        ///    This is true when the activation count is >0 and the disabling count is =0.
+        ///    @return True if the state is currently active.
+        ///    @see activate )
+        /// 
+        /// </summary>
+        public bool isActive()
+            {
+            return TorqueScriptTemplate.m_ts.fnSFXState_isActive(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Test whether the state is currently disabled.
+        ///    This is true when the disabling count of the state is non-zero.
+        ///    @return True if the state is disabled.
+        ///    @see disable )
+        /// 
+        /// </summary>
+        public bool isDisabled()
+            {
+            return TorqueScriptTemplate.m_ts.fnSFXState_isDisabled(_mSimObjectId);
+            }
+        }
+    }

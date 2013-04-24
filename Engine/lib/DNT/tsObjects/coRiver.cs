@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoRiver))]
-    public class coRiver: coWaterObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoRiver))]
+    public class coRiver : coWaterObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRiver(string simobjectid) : base(simobjectid){ }
+        public coRiver(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRiver(uint simobjectid): base(simobjectid){ }
+        public coRiver(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRiver(int simobjectid): base(simobjectid){ }
+        public coRiver(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Magnitude of the force vector applied to dynamic objects within the River. 
+        /// </summary>
+        public float FlowMagnitude
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FlowMagnitude").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FlowMagnitude", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Segments of the river at this distance in meters or greater will      render as a single unsubdivided without undulation effects. 
+        /// </summary>
+        public float LowLODDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".LowLODDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".LowLODDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// For internal use, do not modify. 
+        /// </summary>
+        public String Node
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".Node").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".Node", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Divide the River lengthwise into segments of this length in meters.      These geometric volumes are used for spacial queries like determining containment. 
+        /// </summary>
+        public float SegmentLength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".SegmentLength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".SegmentLength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// For purposes of generating the renderable geometry River segments are further subdivided      such that no quad is of greater width or length than this distance in meters. 
+        /// </summary>
+        public float SubdivideLength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".SubdivideLength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".SubdivideLength", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +180,9 @@ public coRiver(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +190,17 @@ public coRiver(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +212,15 @@ public coRiver(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coRiver ts)
+        public static implicit operator string(coRiver ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +240,7 @@ public coRiver(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coRiver ts)
+        public static implicit operator int(coRiver ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +261,7 @@ public coRiver(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coRiver ts)
+        public static implicit operator uint(coRiver ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,104 +276,60 @@ public coRiver(int simobjectid): base(simobjectid){ }
             {
             return new coRiver(ts);
             }
-public float FlowMagnitude
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FlowMagnitude").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FlowMagnitude", value.AsString());
-          }
-       }
-public float LowLODDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".LowLODDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".LowLODDistance", value.AsString());
-          }
-       }
-public String Node
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".Node").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".Node", value.AsString());
-          }
-       }
-public float SegmentLength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".SegmentLength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".SegmentLength", value.AsString());
-          }
-       }
-public float SubdivideLength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".SubdivideLength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".SubdivideLength", value.AsString());
-          }
-       }
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Force River to recreate its geometry.
-///                    )
-/// 
-/// </summary>
-public  void regenerate(){
-TorqueScriptTemplate.m_ts.fnRiver_regenerate(_mSimObjectId);
-}
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    BatchSize is not currently used.
-///                    )
-/// 
-/// </summary>
-public  void setBatchSize(float meters){
-TorqueScriptTemplate.m_ts.fnRiver_setBatchSize(_mSimObjectId, meters);
-}
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    @see SubdivideLength field.
-///                    )
-/// 
-/// </summary>
-public  void setMaxDivisionSize(float meters){
-TorqueScriptTemplate.m_ts.fnRiver_setMaxDivisionSize(_mSimObjectId, meters);
-}
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    @see SegmentLength field.
-///                    )
-/// 
-/// </summary>
-public  void setMetersPerSegment(float meters){
-TorqueScriptTemplate.m_ts.fnRiver_setMetersPerSegment(_mSimObjectId, meters);
-}
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Sets the depth in meters of a particular node.
-///                    )
-/// 
-/// </summary>
-public  void setNodeDepth(int idx, float meters){
-TorqueScriptTemplate.m_ts.fnRiver_setNodeDepth(_mSimObjectId, idx, meters);
-}
-}}
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Force River to recreate its geometry.
+        ///                    )
+        /// 
+        /// </summary>
+        public void regenerate()
+            {
+            TorqueScriptTemplate.m_ts.fnRiver_regenerate(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    BatchSize is not currently used.
+        ///                    )
+        /// 
+        /// </summary>
+        public void setBatchSize(float meters)
+            {
+            TorqueScriptTemplate.m_ts.fnRiver_setBatchSize(_mSimObjectId, meters);
+            }
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    @see SubdivideLength field.
+        ///                    )
+        /// 
+        /// </summary>
+        public void setMaxDivisionSize(float meters)
+            {
+            TorqueScriptTemplate.m_ts.fnRiver_setMaxDivisionSize(_mSimObjectId, meters);
+            }
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    @see SegmentLength field.
+        ///                    )
+        /// 
+        /// </summary>
+        public void setMetersPerSegment(float meters)
+            {
+            TorqueScriptTemplate.m_ts.fnRiver_setMetersPerSegment(_mSimObjectId, meters);
+            }
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Sets the depth in meters of a particular node.
+        ///                    )
+        /// 
+        /// </summary>
+        public void setNodeDepth(int idx, float meters)
+            {
+            TorqueScriptTemplate.m_ts.fnRiver_setNodeDepth(_mSimObjectId, idx, meters);
+            }
+        }
+    }

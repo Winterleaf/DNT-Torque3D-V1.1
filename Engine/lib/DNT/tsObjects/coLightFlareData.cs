@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,136 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoLightFlareData))]
-    public class coLightFlareData: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoLightFlareData))]
+    public class coLightFlareData : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLightFlareData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coLightFlareData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coLightFlareData(int simobjectid): base(simobjectid){ }
+        public coLightFlareData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coLightFlareData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coLightFlareData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Where this element appears along the flare beam. 
+        /// </summary>
+        public float elementDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elementDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elementDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// A rectangle specified in pixels of the flareTexture image. 
+        /// </summary>
+        public RectF elementRect
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elementRect").AsRectF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elementRect", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Defines if this element orients to point along the flare beam       or if it is always upright. 
+        /// </summary>
+        public bool elementRotate
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elementRotate").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elementRotate", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Size scale applied to this element. 
+        /// </summary>
+        public float elementScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elementScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elementScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Used to modulate this element's color if elementUseLightColor       is false.\n      @see elementUseLightColor 
+        /// </summary>
+        public ColorF elementTint
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elementTint").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elementTint", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true this element's color is modulated by the light color.       If false, elementTint will be used.\n      @see elementTint 
+        /// </summary>
+        public bool elementUseLightColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elementUseLightColor").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elementUseLightColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Allows the user to disable this flare globally for any lights referencing it. 
+        /// </summary>
+        public bool flareEnabled
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flareEnabled").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flareEnabled", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The texture / sprite sheet for this flare. 
+        /// </summary>
+        public String flareTexture
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flareTexture").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flareTexture", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If positive an occlusion query is used to test flare visibility, else it uses simple raycasts. 
+        /// </summary>
+        public float occlusionRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".occlusionRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".occlusionRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Size scale applied to all elements of the flare. 
+        /// </summary>
+        public float overallScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".overallScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".overallScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If false the flare does not render in reflections, else only non-zero distance elements are rendered. 
+        /// </summary>
+        public bool renderReflectPass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderReflectPass").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderReflectPass", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +235,9 @@ public coLightFlareData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +245,17 @@ public coLightFlareData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +267,15 @@ public coLightFlareData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coLightFlareData ts)
+        public static implicit operator string(coLightFlareData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +295,7 @@ public coLightFlareData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coLightFlareData ts)
+        public static implicit operator int(coLightFlareData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +316,7 @@ public coLightFlareData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coLightFlareData ts)
+        public static implicit operator uint(coLightFlareData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,134 +331,16 @@ public coLightFlareData(int simobjectid): base(simobjectid){ }
             {
             return new coLightFlareData(ts);
             }
-public float elementDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elementDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elementDist", value.AsString());
-          }
-       }
-public RectF elementRect
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elementRect").AsRectF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elementRect", value.AsString());
-          }
-       }
-public bool elementRotate
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elementRotate").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elementRotate", value.AsString());
-          }
-       }
-public float elementScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elementScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elementScale", value.AsString());
-          }
-       }
-public ColorF elementTint
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elementTint").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elementTint", value.AsString());
-          }
-       }
-public bool elementUseLightColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elementUseLightColor").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elementUseLightColor", value.AsString());
-          }
-       }
-public bool flareEnabled
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flareEnabled").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flareEnabled", value.AsString());
-          }
-       }
-public String flareTexture
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flareTexture").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flareTexture", value.AsString());
-          }
-       }
-public float occlusionRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".occlusionRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".occlusionRadius", value.AsString());
-          }
-       }
-public float overallScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".overallScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".overallScale", value.AsString());
-          }
-       }
-public bool renderReflectPass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderReflectPass").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderReflectPass", value.AsString());
-          }
-       }
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Force trigger an inspectPostApply
-///                    )
-/// 
-/// </summary>
-public  void apply(){
-TorqueScriptTemplate.m_ts.fnLightFlareData_apply(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Force trigger an inspectPostApply
+        ///                    )
+        /// 
+        /// </summary>
+        public void apply()
+            {
+            TorqueScriptTemplate.m_ts.fnLightFlareData_apply(_mSimObjectId);
+            }
+        }
+    }

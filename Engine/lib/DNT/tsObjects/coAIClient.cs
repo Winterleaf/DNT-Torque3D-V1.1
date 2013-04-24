@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoAIClient))]
-    public class coAIClient: coAIConnection
-{
+    [TypeConverter(typeof (tsObjectConvertercoAIClient))]
+    public class coAIClient : coAIConnection
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIClient(string simobjectid) : base(simobjectid){ }
+        public coAIClient(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIClient(uint simobjectid): base(simobjectid){ }
+        public coAIClient(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIClient(int simobjectid): base(simobjectid){ }
+        public coAIClient(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coAIClient(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coAIClient(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coAIClient(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coAIClient ts)
+        public static implicit operator string(coAIClient ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coAIClient(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coAIClient ts)
+        public static implicit operator int(coAIClient ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coAIClient(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coAIClient ts)
+        public static implicit operator uint(coAIClient ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,76 +231,101 @@ public coAIClient(int simobjectid): base(simobjectid){ }
             {
             return new coAIClient(ts);
             }
-/// <summary>
-/// ( AIClient, getAimLocation, const char *, 2, 2, ai.getAimLocation(); ) 
-/// </summary>
-public  string getAimLocation(){
-return TorqueScriptTemplate.m_ts.fnAIClient_getAimLocation(_mSimObjectId);
-}
-/// <summary>
-/// ( AIClient, getLocation, const char *, 2, 2, ai.getLocation(); ) 
-/// </summary>
-public  string getLocation(){
-return TorqueScriptTemplate.m_ts.fnAIClient_getLocation(_mSimObjectId);
-}
-/// <summary>
-/// ( AIClient, getMoveDestination, const char *, 2, 2, ai.getMoveDestination(); ) 
-/// </summary>
-public  string getMoveDestination(){
-return TorqueScriptTemplate.m_ts.fnAIClient_getMoveDestination(_mSimObjectId);
-}
-/// <summary>
-/// ( AIClient, getTargetObject, S32, 2, 2, ai.getTargetObject(); ) 
-/// </summary>
-public  int getTargetObject(){
-return TorqueScriptTemplate.m_ts.fnAIClient_getTargetObject(_mSimObjectId);
-}
-/// <summary>
-/// ( AIClient, missionCycleCleanup, void, 2, 2, ai.missionCycleCleanup(); ) 
-/// </summary>
-public  void missionCycleCleanup(){
-TorqueScriptTemplate.m_ts.fnAIClient_missionCycleCleanup(_mSimObjectId);
-}
-/// <summary>
-/// ( AIClient, move, void, 2, 2, ai.move(); ) 
-/// </summary>
-public  void move(){
-TorqueScriptTemplate.m_ts.fnAIClient_move(_mSimObjectId);
-}
-/// <summary>
-/// ( AIClient, moveForward, void, 2, 2, ai.moveForward(); ) 
-/// </summary>
-public  void moveForward(){
-TorqueScriptTemplate.m_ts.fnAIClient_moveForward(_mSimObjectId);
-}
-/// <summary>
-/// ( AIClient, setAimLocation, void, 3, 3, ai.setAimLocation( x y z ); ) 
-/// </summary>
-public  void setAimLocation(string a2){
-TorqueScriptTemplate.m_ts.fnAIClient_setAimLocation(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( AIClient, setMoveDestination, void, 3, 3, ai.setMoveDestination( x y z ); ) 
-/// </summary>
-public  void setMoveDestination(string a2){
-TorqueScriptTemplate.m_ts.fnAIClient_setMoveDestination(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( AIClient, setMoveSpeed, void, 3, 3, ai.setMoveSpeed( float ); ) 
-/// </summary>
-public  void setMoveSpeed(string a2){
-TorqueScriptTemplate.m_ts.fnAIClient_setMoveSpeed(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( AIClient, setTargetObject, void, 3, 3, ai.setTargetObject( obj ); ) 
-/// </summary>
-public  void setTargetObject(string a2){
-TorqueScriptTemplate.m_ts.fnAIClient_setTargetObject(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( AIClient, stop, void, 2, 2, ai.stop(); ) 
-/// </summary>
-public  void stop(){
-TorqueScriptTemplate.m_ts.fnAIClient_stop(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// ( AIClient, getAimLocation, const char *, 2, 2, ai.getAimLocation(); ) 
+        /// </summary>
+        public string getAimLocation()
+            {
+            return TorqueScriptTemplate.m_ts.fnAIClient_getAimLocation(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( AIClient, getLocation, const char *, 2, 2, ai.getLocation(); ) 
+        /// </summary>
+        public string getLocation()
+            {
+            return TorqueScriptTemplate.m_ts.fnAIClient_getLocation(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( AIClient, getMoveDestination, const char *, 2, 2, ai.getMoveDestination(); ) 
+        /// </summary>
+        public string getMoveDestination()
+            {
+            return TorqueScriptTemplate.m_ts.fnAIClient_getMoveDestination(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( AIClient, getTargetObject, S32, 2, 2, ai.getTargetObject(); ) 
+        /// </summary>
+        public int getTargetObject()
+            {
+            return TorqueScriptTemplate.m_ts.fnAIClient_getTargetObject(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( AIClient, missionCycleCleanup, void, 2, 2, ai.missionCycleCleanup(); ) 
+        /// </summary>
+        public void missionCycleCleanup()
+            {
+            TorqueScriptTemplate.m_ts.fnAIClient_missionCycleCleanup(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( AIClient, move, void, 2, 2, ai.move(); ) 
+        /// </summary>
+        public void move()
+            {
+            TorqueScriptTemplate.m_ts.fnAIClient_move(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( AIClient, moveForward, void, 2, 2, ai.moveForward(); ) 
+        /// </summary>
+        public void moveForward()
+            {
+            TorqueScriptTemplate.m_ts.fnAIClient_moveForward(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( AIClient, setAimLocation, void, 3, 3, ai.setAimLocation( x y z ); ) 
+        /// </summary>
+        public void setAimLocation(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnAIClient_setAimLocation(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( AIClient, setMoveDestination, void, 3, 3, ai.setMoveDestination( x y z ); ) 
+        /// </summary>
+        public void setMoveDestination(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnAIClient_setMoveDestination(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( AIClient, setMoveSpeed, void, 3, 3, ai.setMoveSpeed( float ); ) 
+        /// </summary>
+        public void setMoveSpeed(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnAIClient_setMoveSpeed(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( AIClient, setTargetObject, void, 3, 3, ai.setTargetObject( obj ); ) 
+        /// </summary>
+        public void setTargetObject(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnAIClient_setTargetObject(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( AIClient, stop, void, 2, 2, ai.stop(); ) 
+        /// </summary>
+        public void stop()
+            {
+            TorqueScriptTemplate.m_ts.fnAIClient_stop(_mSimObjectId);
+            }
+        }
+    }

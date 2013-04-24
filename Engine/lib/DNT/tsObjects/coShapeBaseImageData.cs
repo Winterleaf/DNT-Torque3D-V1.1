@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,847 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoShapeBaseImageData))]
-    public class coShapeBaseImageData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoShapeBaseImageData))]
+    public class coShapeBaseImageData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coShapeBaseImageData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coShapeBaseImageData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coShapeBaseImageData(int simobjectid): base(simobjectid){ }
+        public coShapeBaseImageData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coShapeBaseImageData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coShapeBaseImageData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// @brief Flag to control whether the Image's aim is automatically converged with    the crosshair.\n\n   Currently unused. 
+        /// </summary>
+        public bool accuFire
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".accuFire").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".accuFire", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Indicates that all shapes should be animated in sync.\n\n   When multiple shapes are defined for this image datablock, each of them are automatically    animated in step with each other. This allows for easy switching between between shapes    when some other condition changes, such as going from first person to third person, and    keeping their look consistent. If you know that you'll never switch between shapes on the    fly, such as players only being allowed in a first person view, then you could set this to    false to save some calculations.\n\n   There are other circumstances internal to the engine that determine that only the current shape    should be animated rather than all defined shapes. In those cases, this property is ignored.\n\n   @note This property is only important if you have more than one shape defined, such as shapeFileFP.\n\n   @see shapeFileFP\n
+        /// </summary>
+        public bool animateAllShapes
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animateAllShapes").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animateAllShapes", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Indicates that the image should be animated on the server.\n\n   In most cases you'll want this set if you're using useEyeNode. You may also want to    set this if the muzzlePoint is animated while it shoots. You can set this    to false even if these previous cases are true if the image's shape is set    up in the correct position and orientation in the 'root' pose and none of    the nodes are animated at key times, such as the muzzlePoint essentially    remaining at the same position at the start of the fire state (it could    animate just fine after the projectile is away as the muzzle vector is only    calculated at the start of the state).\n\n   You'll also want to set this to true if you're animating the camera using the    image's 'eye' node -- unless the movement is very subtle and doesn't need to    be reflected on the server.\n\n   @note Setting this to true causes up to four animation threads to be advanced on the server    for each instance in use, although for most images only one or two are actually defined.\n\n   @see useEyeNode\n
+        /// </summary>
+        public bool animateOnServer
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animateOnServer").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animateOnServer", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Amplitude of the camera shaking effect.\n\n   @see shakeCamera 
+        /// </summary>
+        public Point3F camShakeAmp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeAmp").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeAmp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Frequency of the camera shaking effect.\n\n   @see shakeCamera 
+        /// </summary>
+        public Point3F camShakeFreq
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeFreq").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeFreq", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief DebrisData datablock to use for ejected casings.\n\n   @see stateEjectShell 
+        /// </summary>
+        public coDebrisData casing
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".casing"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".casing", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Whether this Image can be cloaked.\n\n   Currently unused. 
+        /// </summary>
+        public bool cloakable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cloakable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cloakable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, verify that the CRC of the client's Image matches the server's    CRC for the Image when loaded by the client. 
+        /// </summary>
+        public bool computeCRC
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".computeCRC").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".computeCRC", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Flag to adjust the aiming vector to the eye's LOS point.\n\n   @see ShapeBase::getMuzzleVector() 
+        /// </summary>
+        public bool correctMuzzleVector
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".correctMuzzleVector").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".correctMuzzleVector", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Flag to adjust the aiming vector to the camera's LOS point when in 3rd person view.\n\n   @see ShapeBase::getMuzzleVector() 
+        /// </summary>
+        public bool correctMuzzleVectorTP
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".correctMuzzleVectorTP").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".correctMuzzleVectorTP", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Whether to enable environment mapping on this Image.\n\n 
+        /// </summary>
+        public bool emap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".emap").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".emap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief \X Y Z\ translation offset from the ShapeBase model's eye node.\n\n   When in first person view, this is the offset from the eye node to place the gun. This    gives the gun a fixed point in space, typical of a lot of FPS games.\n   @see eyeRotation
+        /// </summary>
+        public TransformF eyeOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".eyeOffset").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".eyeOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief \X Y Z ANGLE\ rotation offset from the ShapeBase model's eye node.\n\n   When in first person view, this is the rotation from the eye node to place the gun.\n   @see eyeOffset
+        /// </summary>
+        public TransformF eyeRotation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".eyeRotation").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".eyeRotation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Set to true to render the image in first person. 
+        /// </summary>
+        public bool firstPerson
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".firstPerson").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".firstPerson", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Passed along to the mounting shape to modify animation sequences played in third person. [optional]\n\n 
+        /// </summary>
+        public String imageAnimPrefix
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".imageAnimPrefix").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".imageAnimPrefix", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Passed along to the mounting shape to modify animation sequences played in first person. [optional]\n\n 
+        /// </summary>
+        public String imageAnimPrefixFP
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".imageAnimPrefixFP").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".imageAnimPrefixFP", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Brightness of the light this Image emits.\n\n   Only valid for WeaponFireLight.   @see lightType
+        /// </summary>
+        public float lightBrightness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightBrightness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightBrightness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The color of light this Image emits.\n\n   @see lightType
+        /// </summary>
+        public ColorF lightColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Duration in SimTime of Pulsing and WeaponFire type lights.\n\n   @see lightType
+        /// </summary>
+        public int lightDuration
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightDuration").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightDuration", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Radius of the light this Image emits.\n\n   @see lightType
+        /// </summary>
+        public float lightRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The type of light this Image emits.\n\n   @see ShapeBaseImageLightType
+        /// </summary>
+        public ShapeBaseImageData__LightType lightType
+            {
+            get { return (ShapeBaseImageData__LightType) Enum.Parse(typeof (ShapeBaseImageData__LightType), dnTorque.self.GetVar(_mSimObjectId + ".lightType")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Mass of this Image.\n\n   This is added to the total mass of the ShapeBase object. 
+        /// </summary>
+        public float mass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mass").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mass", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum number of sounds this Image can play at a time.\n\n   Any value = 0 indicates that it can play an infinite number of sounds. 
+        /// </summary>
+        public int maxConcurrentSounds
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxConcurrentSounds").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxConcurrentSounds", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum Image energy for it to be operable.\n\n   @see usesEnergy
+        /// </summary>
+        public float minEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minEnergy").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Mount node # to mount this Image to.\n\n   This should correspond to a mount# node on the ShapeBase derived object we are mounting to. 
+        /// </summary>
+        public int mountPoint
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mountPoint").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mountPoint", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief \X Y Z\ translation offset from this Image's imountPoint/i node to    attach to.\n\n   Defaults to \0 0 0\. ie. attach this Image's    imountPoint/i node to the ShapeBase model's mount# node without any offset.\n   @see rotation
+        /// </summary>
+        public TransformF offset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".offset").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".offset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The projectile fired by this Image\n\n 
+        /// </summary>
+        public coProjectileData projectile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".projectile"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".projectile", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief \X Y Z ANGLE\ rotation offset from this Image's imountPoint/i node    to attach to.\n\n   Defaults to \0 0 0\. ie. attach this Image's    imountPoint/i node to the ShapeBase model's mount# node without any additional rotation.\n   @see offset
+        /// </summary>
+        public TransformF rotation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotation").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The amount of time to transition between the previous sequence and new sequence when the script prefix has changed.\n\n   When setImageScriptAnimPrefix() is used on a ShapeBase that has this image mounted, the image    will attempt to switch to the new animation sequence based on the given script prefix. This is    the amount of time it takes to transition from the previously playing animation sequence to   the new script prefix-based animation sequence.\n   @see ShapeBase::setImageScriptAnimPrefix()
+        /// </summary>
+        public float scriptAnimTransitionTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scriptAnimTransitionTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scriptAnimTransitionTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Flag indicating whether the camera should shake when this Image fires.\n\n   @note Camera shake only works properly if the player is in control of    the one and only shapeBase object in the scene which fires an Image that    uses camera shake. 
+        /// </summary>
+        public bool shakeCamera
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shakeCamera").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shakeCamera", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The DTS or DAE model to use for this Image.\n\n 
+        /// </summary>
+        public String shapeFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The DTS or DAE model to use for this Image when in first person.\n\n   This is an optional parameter that also requires either eyeOffset or useEyeNode    to be set. If none of these conditions is met then shapeFile will be used    for all cases.\n\n   Typically you set a first person image for a weapon that    includes the player's arms attached to it for animating while firing,    reloading, etc. This is typical of many FPS games.   @see eyeOffset\n   @see useEyeNode\n
+        /// </summary>
+        public String shapeFileFP
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shapeFileFP").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shapeFileFP", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Vector direction to eject shell casings.\n\n   @see casing
+        /// </summary>
+        public Point3F shellExitDir
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shellExitDir").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shellExitDir", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Variance (in degrees) from the shellExitDir vector to eject casings.\n\n   @see shellExitDir
+        /// </summary>
+        public float shellExitVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shellExitVariance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shellExitVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Speed at which to eject casings.\n\n   @see casing
+        /// </summary>
+        public float shellVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shellVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shellVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If false, other Images will temporarily be blocked from mounting      while the state machine is executing the tasks in this state.\n\n     For instance, if we have a rocket launcher, the player shouldn't      be able to switch out iwhile/i firing. So, you'd set      stateAllowImageChange to false in firing states, and true the rest      of the time. 
+        /// </summary>
+        public bool stateAllowImageChange
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateAllowImageChange").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateAllowImageChange", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The first state with this set to true is the state entered by the      client when it receives the 'altFire' event. 
+        /// </summary>
+        public bool stateAlternateFire
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateAlternateFire").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateAlternateFire", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Direction of the animation to play in this state.\n\n     True is forward, false is backward. 
+        /// </summary>
+        public bool stateDirection
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateDirection").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateDirection", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, a shell casing will be ejected in this state. 
+        /// </summary>
+        public bool stateEjectShell
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateEjectShell").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateEjectShell", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Emitter to generate particles in this state (from muzzle point or      specified node).\n\n     @see stateEmitterNode 
+        /// </summary>
+        public coParticleEmitterData stateEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Name of the node to emit particles from.\n\n     @see stateEmitter 
+        /// </summary>
+        public String stateEmitterNode
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateEmitterNode").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateEmitterNode", value.AsString()); }
+            }
+
+        /// <summary>
+        /// How long (in seconds) to emit particles on entry to this state. 
+        /// </summary>
+        public float stateEmitterTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateEmitterTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateEmitterTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount of energy to subtract from the Image in this state.\n\n     Energy is drained at stateEnergyDrain units/tick as long as we are in      this state.\n     @see usesEnergy
+        /// </summary>
+        public float stateEnergyDrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateEnergyDrain").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateEnergyDrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The first state with this set to true is the state entered by the      client when it receives the 'fire' event. 
+        /// </summary>
+        public bool stateFire
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateFire").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateFire", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If set to true, and both ready and loaded transitions are true, the      ready transition will be taken instead of the loaded transition.\n\n     A state is 'ready' if pressing the fire trigger in that state would      transition to the fire state. 
+        /// </summary>
+        public bool stateIgnoreLoadedForReady
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateIgnoreLoadedForReady").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateIgnoreLoadedForReady", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Set the loaded state of the Image.\n\n     ulliIgnoreLoaded: Don't change Image loaded state./li     liLoaded: Set Image loaded state to true./li     liNotLoaded: Set Image loaded state to false./li/ul\n     @see ShapeBaseImageLoadedState
+        /// </summary>
+        public ShapeBaseImageData__StateData__LoadedState stateLoadedFlag
+            {
+            get { return (ShapeBaseImageData__StateData__LoadedState) Enum.Parse(typeof (ShapeBaseImageData__StateData__LoadedState), dnTorque.self.GetVar(_mSimObjectId + ".stateLoadedFlag")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateLoadedFlag", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Name of this state. 
+        /// </summary>
+        public String stateName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Type of recoil sequence to play on the ShapeBase object on entry to      this state.\n\n     ulliNoRecoil: Do not play a recoil sequence./li     liLightRecoil: Play the light_recoil sequence./li     liMediumRecoil: Play the medium_recoil sequence./li     liHeavyRecoil: Play the heavy_recoil sequence./li/ul\n     @see ShapeBaseImageRecoilState
+        /// </summary>
+        public ShapeBaseImageData__StateData__RecoilState stateRecoil
+            {
+            get { return (ShapeBaseImageData__StateData__RecoilState) Enum.Parse(typeof (ShapeBaseImageData__StateData__RecoilState), dnTorque.self.GetVar(_mSimObjectId + ".stateRecoil")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateRecoil", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The first state with this set to true is the state entered by the      client when it receives the 'reload' event. 
+        /// </summary>
+        public bool stateReload
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateReload").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateReload", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the timeScale of the stateSequence animation will be adjusted      such that the sequence plays for stateTimeoutValue seconds.  
+        /// </summary>
+        public bool stateScaleAnimation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateScaleAnimation").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateScaleAnimation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the timeScale of the first person stateSequence animation will be adjusted      such that the sequence plays for stateTimeoutValue seconds.  
+        /// </summary>
+        public bool stateScaleAnimationFP
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateScaleAnimationFP").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateScaleAnimationFP", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Indicates if the sequence to be played on the mounting shape should be scaled to the length of the state. 
+        /// </summary>
+        public bool stateScaleShapeSequence
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateScaleShapeSequence").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateScaleShapeSequence", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Method to execute on entering this state.\n\n     Scoped to this image class name, then ShapeBaseImageData. The script      callback function takes the same arguments as the onMount callback.\n     @see onMount() for the same arguments as this callback.
+        /// </summary>
+        public String stateScript
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateScript").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateScript", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the sequence to play on entry to this state. 
+        /// </summary>
+        public String stateSequence
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateSequence").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateSequence", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Never allow a transition to this sequence. Often used for a fire sequence. 
+        /// </summary>
+        public bool stateSequenceNeverTransition
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceNeverTransition").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceNeverTransition", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, the muzzle flash sequence will be played while in this state.\n\n     The name of the muzzle flash sequence is the same as stateSequence,      with \_vis\ at the end. 
+        /// </summary>
+        public bool stateSequenceRandomFlash
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceRandomFlash").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceRandomFlash", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Do we transition to the state's sequence when we enter the state? 
+        /// </summary>
+        public bool stateSequenceTransitionIn
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceTransitionIn").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceTransitionIn", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Do we transition to the new state's sequence when we leave the state? 
+        /// </summary>
+        public bool stateSequenceTransitionOut
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceTransitionOut").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceTransitionOut", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The time to transition in or out of a sequence. 
+        /// </summary>
+        public float stateSequenceTransitionTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceTransitionTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceTransitionTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the sequence that is played on the mounting shape. 
+        /// </summary>
+        public String stateShapeSequence
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateShapeSequence").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateShapeSequence", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Sound to play on entry to this state. 
+        /// </summary>
+        public coSFXTrack stateSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Controls how fast the 'spin' animation sequence will be played in      this state.\n\n     ulliIgnore: No change to the spin sequence./li     liStop: Stops the spin sequence at its current position./li     liSpinUp: Increase spin sequence timeScale from 0 (on state entry)      to 1 (after stateTimeoutValue seconds)./li     liSpinDown: Decrease spin sequence timeScale from 1 (on state entry)      to 0 (after stateTimeoutValue seconds)./li     liFullSpeed: Resume the spin sequence playback at its current      position with timeScale=1./li/ul\n     @see ShapeBaseImageSpinState
+        /// </summary>
+        public ShapeBaseImageData__StateData__SpinState stateSpinThread
+            {
+            get { return (ShapeBaseImageData__StateData__SpinState) Enum.Parse(typeof (ShapeBaseImageData__StateData__SpinState), dnTorque.self.GetVar(_mSimObjectId + ".stateSpinThread")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateSpinThread", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Time in seconds to wait before transitioning to stateTransitionOnTimeout. 
+        /// </summary>
+        public float stateTimeoutValue
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTimeoutValue").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTimeoutValue", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the generic trigger 0 state      changes to true. 
+        /// </summary>
+        public String stateTransitionGeneric0In
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric0In").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric0In", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the generic trigger 0 state      changes to false. 
+        /// </summary>
+        public String stateTransitionGeneric0Out
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric0Out").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric0Out", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the generic trigger 1 state      changes to true. 
+        /// </summary>
+        public String stateTransitionGeneric1In
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric1In").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric1In", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the generic trigger 1 state      changes to false. 
+        /// </summary>
+        public String stateTransitionGeneric1Out
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric1Out").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric1Out", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the generic trigger 2 state      changes to true. 
+        /// </summary>
+        public String stateTransitionGeneric2In
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric2In").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric2In", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the generic trigger 2 state      changes to false. 
+        /// </summary>
+        public String stateTransitionGeneric2Out
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric2Out").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric2Out", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the generic trigger 3 state      changes to true. 
+        /// </summary>
+        public String stateTransitionGeneric3In
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric3In").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric3In", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the generic trigger 3 state      changes to false. 
+        /// </summary>
+        public String stateTransitionGeneric3Out
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric3Out").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric3Out", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the alt trigger state of the      Image changes to false (alt fire button up). 
+        /// </summary>
+        public String stateTransitionOnAltTriggerDown
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnAltTriggerDown").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnAltTriggerDown", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the alt trigger state of the      Image changes to true (alt fire button down). 
+        /// </summary>
+        public String stateTransitionOnAltTriggerUp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnAltTriggerUp").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnAltTriggerUp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the ammo state of the Image      changes to true. 
+        /// </summary>
+        public String stateTransitionOnAmmo
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnAmmo").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnAmmo", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the loaded state of the Image      changes to 'Loaded'. 
+        /// </summary>
+        public String stateTransitionOnLoaded
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnLoaded").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnLoaded", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the Player moves. 
+        /// </summary>
+        public String stateTransitionOnMotion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnMotion").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnMotion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the ammo state of the Image      changes to false. 
+        /// </summary>
+        public String stateTransitionOnNoAmmo
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNoAmmo").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNoAmmo", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the Player stops moving. 
+        /// </summary>
+        public String stateTransitionOnNoMotion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNoMotion").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNoMotion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the Image loses a target. 
+        /// </summary>
+        public String stateTransitionOnNoTarget
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNoTarget").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNoTarget", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the loaded state of the Image      changes to 'Empty'. 
+        /// </summary>
+        public String stateTransitionOnNotLoaded
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNotLoaded").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNotLoaded", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the Image exits the water. 
+        /// </summary>
+        public String stateTransitionOnNotWet
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNotWet").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNotWet", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the Image gains a target. 
+        /// </summary>
+        public String stateTransitionOnTarget
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnTarget").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnTarget", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when we have been in this state      for stateTimeoutValue seconds. 
+        /// </summary>
+        public String stateTransitionOnTimeout
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnTimeout").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnTimeout", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the trigger state of the Image      changes to false (fire button released). 
+        /// </summary>
+        public String stateTransitionOnTriggerDown
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnTriggerDown").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnTriggerDown", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the trigger state of the Image      changes to true (fire button down). 
+        /// </summary>
+        public String stateTransitionOnTriggerUp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnTriggerUp").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnTriggerUp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of the state to transition to when the Image enters the water. 
+        /// </summary>
+        public String stateTransitionOnWet
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnWet").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnWet", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If false, this state ignores stateTimeoutValue and transitions      immediately if other transition conditions are met. 
+        /// </summary>
+        public bool stateWaitForTimeout
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateWaitForTimeout").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateWaitForTimeout", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Mount image using image's eyeMount node and place the camera at the image's eye node (or    at the eyeMount node if the eye node is missing).\n\n   When in first person view, if an 'eyeMount' node is present in the image's shape, this indicates    that the image should mount eyeMount node to Player eye node for image placement. The    Player's camera should also mount to the image's eye node to inherit any animation (or the eyeMount    node if the image doesn't have an eye node).\n\n   @note Used instead of eyeOffset.\n\n   @note Read about the animateOnServer field as you may want to set it to true if you're using useEyeNode.\n\n   @see eyeOffset\n\n   @see animateOnServer\n\n
+        /// </summary>
+        public bool useEyeNode
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useEyeNode").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useEyeNode", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, allow multiple timeout transitions to occur within a single    tick (useful if states have a very small timeout).\n\n 
+        /// </summary>
+        public bool useRemainderDT
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useRemainderDT").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useRemainderDT", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Flag indicating whether this Image uses energy instead of ammo. The energy level comes from the ShapeBase object we're mounted to.\n\n   @see ShapeBase::setEnergyLevel()
+        /// </summary>
+        public bool usesEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".usesEnergy").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".usesEnergy", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +947,9 @@ public coShapeBaseImageData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +957,17 @@ public coShapeBaseImageData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +979,15 @@ public coShapeBaseImageData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coShapeBaseImageData ts)
+        public static implicit operator string(coShapeBaseImageData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +1007,7 @@ public coShapeBaseImageData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coShapeBaseImageData ts)
+        public static implicit operator int(coShapeBaseImageData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +1028,7 @@ public coShapeBaseImageData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coShapeBaseImageData ts)
+        public static implicit operator uint(coShapeBaseImageData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,990 +1043,5 @@ public coShapeBaseImageData(int simobjectid): base(simobjectid){ }
             {
             return new coShapeBaseImageData(ts);
             }
-public bool accuFire
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".accuFire").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".accuFire", value.AsString());
-          }
-       }
-public bool animateAllShapes
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animateAllShapes").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animateAllShapes", value.AsString());
-          }
-       }
-public bool animateOnServer
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animateOnServer").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animateOnServer", value.AsString());
-          }
-       }
-public Point3F camShakeAmp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".camShakeAmp").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".camShakeAmp", value.AsString());
-          }
-       }
-public Point3F camShakeFreq
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".camShakeFreq").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".camShakeFreq", value.AsString());
-          }
-       }
-public coDebrisData casing
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".casing");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".casing", value.ToString());
-          }
-       }
-public bool cloakable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cloakable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cloakable", value.AsString());
-          }
-       }
-public bool computeCRC
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".computeCRC").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".computeCRC", value.AsString());
-          }
-       }
-public bool correctMuzzleVector
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".correctMuzzleVector").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".correctMuzzleVector", value.AsString());
-          }
-       }
-public bool correctMuzzleVectorTP
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".correctMuzzleVectorTP").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".correctMuzzleVectorTP", value.AsString());
-          }
-       }
-public bool emap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".emap").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".emap", value.AsString());
-          }
-       }
-public TransformF eyeOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".eyeOffset").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".eyeOffset", value.AsString());
-          }
-       }
-public TransformF eyeRotation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".eyeRotation").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".eyeRotation", value.AsString());
-          }
-       }
-public bool firstPerson
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".firstPerson").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".firstPerson", value.AsString());
-          }
-       }
-public String imageAnimPrefix
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".imageAnimPrefix").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".imageAnimPrefix", value.AsString());
-          }
-       }
-public String imageAnimPrefixFP
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".imageAnimPrefixFP").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".imageAnimPrefixFP", value.AsString());
-          }
-       }
-public float lightBrightness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightBrightness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightBrightness", value.AsString());
-          }
-       }
-public ColorF lightColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightColor", value.AsString());
-          }
-       }
-public int lightDuration
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightDuration").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightDuration", value.AsString());
-          }
-       }
-public float lightRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightRadius", value.AsString());
-          }
-       }
-public ShapeBaseImageData__LightType lightType
-       {
-       get
-          {          return (ShapeBaseImageData__LightType)Enum.Parse(typeof(ShapeBaseImageData__LightType), dnTorque.self.GetVar(_mSimObjectId + ".lightType"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightType", value.ToString());
-          }
-       }
-public float mass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mass").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mass", value.AsString());
-          }
-       }
-public int maxConcurrentSounds
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxConcurrentSounds").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxConcurrentSounds", value.AsString());
-          }
-       }
-public float minEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minEnergy").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minEnergy", value.AsString());
-          }
-       }
-public int mountPoint
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mountPoint").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mountPoint", value.AsString());
-          }
-       }
-public TransformF offset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".offset").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".offset", value.AsString());
-          }
-       }
-public coProjectileData projectile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".projectile");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".projectile", value.ToString());
-          }
-       }
-public TransformF rotation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotation").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotation", value.AsString());
-          }
-       }
-public float scriptAnimTransitionTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scriptAnimTransitionTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scriptAnimTransitionTime", value.AsString());
-          }
-       }
-public bool shakeCamera
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shakeCamera").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shakeCamera", value.AsString());
-          }
-       }
-public String shapeFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString());
-          }
-       }
-public String shapeFileFP
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shapeFileFP").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shapeFileFP", value.AsString());
-          }
-       }
-public Point3F shellExitDir
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shellExitDir").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shellExitDir", value.AsString());
-          }
-       }
-public float shellExitVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shellExitVariance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shellExitVariance", value.AsString());
-          }
-       }
-public float shellVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shellVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shellVelocity", value.AsString());
-          }
-       }
-public bool stateAllowImageChange
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateAllowImageChange").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateAllowImageChange", value.AsString());
-          }
-       }
-public bool stateAlternateFire
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateAlternateFire").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateAlternateFire", value.AsString());
-          }
-       }
-public bool stateDirection
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateDirection").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateDirection", value.AsString());
-          }
-       }
-public bool stateEjectShell
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateEjectShell").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateEjectShell", value.AsString());
-          }
-       }
-public coParticleEmitterData stateEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateEmitter", value.ToString());
-          }
-       }
-public String stateEmitterNode
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateEmitterNode").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateEmitterNode", value.AsString());
-          }
-       }
-public float stateEmitterTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateEmitterTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateEmitterTime", value.AsString());
-          }
-       }
-public float stateEnergyDrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateEnergyDrain").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateEnergyDrain", value.AsString());
-          }
-       }
-public bool stateFire
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateFire").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateFire", value.AsString());
-          }
-       }
-public bool stateIgnoreLoadedForReady
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateIgnoreLoadedForReady").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateIgnoreLoadedForReady", value.AsString());
-          }
-       }
-public ShapeBaseImageData__StateData__LoadedState stateLoadedFlag
-       {
-       get
-          {          return (ShapeBaseImageData__StateData__LoadedState)Enum.Parse(typeof(ShapeBaseImageData__StateData__LoadedState), dnTorque.self.GetVar(_mSimObjectId + ".stateLoadedFlag"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateLoadedFlag", value.ToString());
-          }
-       }
-public String stateName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateName", value.AsString());
-          }
-       }
-public ShapeBaseImageData__StateData__RecoilState stateRecoil
-       {
-       get
-          {          return (ShapeBaseImageData__StateData__RecoilState)Enum.Parse(typeof(ShapeBaseImageData__StateData__RecoilState), dnTorque.self.GetVar(_mSimObjectId + ".stateRecoil"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateRecoil", value.ToString());
-          }
-       }
-public bool stateReload
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateReload").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateReload", value.AsString());
-          }
-       }
-public bool stateScaleAnimation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateScaleAnimation").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateScaleAnimation", value.AsString());
-          }
-       }
-public bool stateScaleAnimationFP
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateScaleAnimationFP").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateScaleAnimationFP", value.AsString());
-          }
-       }
-public bool stateScaleShapeSequence
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateScaleShapeSequence").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateScaleShapeSequence", value.AsString());
-          }
-       }
-public String stateScript
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateScript").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateScript", value.AsString());
-          }
-       }
-public String stateSequence
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateSequence").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateSequence", value.AsString());
-          }
-       }
-public bool stateSequenceNeverTransition
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceNeverTransition").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceNeverTransition", value.AsString());
-          }
-       }
-public bool stateSequenceRandomFlash
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceRandomFlash").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceRandomFlash", value.AsString());
-          }
-       }
-public bool stateSequenceTransitionIn
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceTransitionIn").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceTransitionIn", value.AsString());
-          }
-       }
-public bool stateSequenceTransitionOut
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceTransitionOut").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceTransitionOut", value.AsString());
-          }
-       }
-public float stateSequenceTransitionTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateSequenceTransitionTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateSequenceTransitionTime", value.AsString());
-          }
-       }
-public String stateShapeSequence
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateShapeSequence").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateShapeSequence", value.AsString());
-          }
-       }
-public coSFXTrack stateSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateSound", value.ToString());
-          }
-       }
-public ShapeBaseImageData__StateData__SpinState stateSpinThread
-       {
-       get
-          {          return (ShapeBaseImageData__StateData__SpinState)Enum.Parse(typeof(ShapeBaseImageData__StateData__SpinState), dnTorque.self.GetVar(_mSimObjectId + ".stateSpinThread"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateSpinThread", value.ToString());
-          }
-       }
-public float stateTimeoutValue
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTimeoutValue").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTimeoutValue", value.AsString());
-          }
-       }
-public String stateTransitionGeneric0In
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric0In").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric0In", value.AsString());
-          }
-       }
-public String stateTransitionGeneric0Out
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric0Out").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric0Out", value.AsString());
-          }
-       }
-public String stateTransitionGeneric1In
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric1In").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric1In", value.AsString());
-          }
-       }
-public String stateTransitionGeneric1Out
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric1Out").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric1Out", value.AsString());
-          }
-       }
-public String stateTransitionGeneric2In
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric2In").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric2In", value.AsString());
-          }
-       }
-public String stateTransitionGeneric2Out
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric2Out").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric2Out", value.AsString());
-          }
-       }
-public String stateTransitionGeneric3In
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric3In").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric3In", value.AsString());
-          }
-       }
-public String stateTransitionGeneric3Out
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionGeneric3Out").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionGeneric3Out", value.AsString());
-          }
-       }
-public String stateTransitionOnAltTriggerDown
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnAltTriggerDown").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnAltTriggerDown", value.AsString());
-          }
-       }
-public String stateTransitionOnAltTriggerUp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnAltTriggerUp").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnAltTriggerUp", value.AsString());
-          }
-       }
-public String stateTransitionOnAmmo
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnAmmo").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnAmmo", value.AsString());
-          }
-       }
-public String stateTransitionOnLoaded
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnLoaded").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnLoaded", value.AsString());
-          }
-       }
-public String stateTransitionOnMotion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnMotion").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnMotion", value.AsString());
-          }
-       }
-public String stateTransitionOnNoAmmo
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNoAmmo").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNoAmmo", value.AsString());
-          }
-       }
-public String stateTransitionOnNoMotion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNoMotion").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNoMotion", value.AsString());
-          }
-       }
-public String stateTransitionOnNoTarget
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNoTarget").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNoTarget", value.AsString());
-          }
-       }
-public String stateTransitionOnNotLoaded
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNotLoaded").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNotLoaded", value.AsString());
-          }
-       }
-public String stateTransitionOnNotWet
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnNotWet").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnNotWet", value.AsString());
-          }
-       }
-public String stateTransitionOnTarget
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnTarget").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnTarget", value.AsString());
-          }
-       }
-public String stateTransitionOnTimeout
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnTimeout").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnTimeout", value.AsString());
-          }
-       }
-public String stateTransitionOnTriggerDown
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnTriggerDown").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnTriggerDown", value.AsString());
-          }
-       }
-public String stateTransitionOnTriggerUp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnTriggerUp").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnTriggerUp", value.AsString());
-          }
-       }
-public String stateTransitionOnWet
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateTransitionOnWet").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateTransitionOnWet", value.AsString());
-          }
-       }
-public bool stateWaitForTimeout
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateWaitForTimeout").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateWaitForTimeout", value.AsString());
-          }
-       }
-public bool useEyeNode
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useEyeNode").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useEyeNode", value.AsString());
-          }
-       }
-public bool useRemainderDT
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useRemainderDT").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useRemainderDT", value.AsString());
-          }
-       }
-public bool usesEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".usesEnergy").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".usesEnergy", value.AsString());
-          }
-       }
-}}
+        }
+    }

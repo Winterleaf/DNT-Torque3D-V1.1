@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoUndoManager))]
-    public class coUndoManager: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoUndoManager))]
+    public class coUndoManager : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coUndoManager(string simobjectid) : base(simobjectid){ }
+        public coUndoManager(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coUndoManager(uint simobjectid): base(simobjectid){ }
+        public coUndoManager(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coUndoManager(int simobjectid): base(simobjectid){ }
+        public coUndoManager(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Number of undo and redo levels.
+        /// </summary>
+        public int numLevels
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".numLevels").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".numLevels", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coUndoManager(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coUndoManager(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coUndoManager(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coUndoManager ts)
+        public static implicit operator string(coUndoManager ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coUndoManager(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coUndoManager ts)
+        public static implicit operator int(coUndoManager ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coUndoManager(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coUndoManager ts)
+        public static implicit operator uint(coUndoManager ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,106 +240,122 @@ public coUndoManager(int simobjectid): base(simobjectid){ }
             {
             return new coUndoManager(ts);
             }
-public int numLevels
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".numLevels").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".numLevels", value.AsString());
-          }
-       }
-/// <summary>
-/// (UndoManager, clearAll, void, 2, 2, Clears the undo manager.)
-/// 
-/// </summary>
-public  void clearAll(){
-TorqueScriptTemplate.m_ts.fnUndoManager_clearAll(_mSimObjectId);
-}
-/// <summary>
-/// (UndoManager, getNextRedoName, const char *, 2, 2, UndoManager.getNextRedoName();)
-/// 
-/// </summary>
-public  string getNextRedoName(){
-return TorqueScriptTemplate.m_ts.fnUndoManager_getNextRedoName(_mSimObjectId);
-}
-/// <summary>
-/// (UndoManager, getNextUndoName, const char *, 2, 2, UndoManager.getNextUndoName();)
-/// 
-/// </summary>
-public  string getNextUndoName(){
-return TorqueScriptTemplate.m_ts.fnUndoManager_getNextUndoName(_mSimObjectId);
-}
-/// <summary>
-/// (UndoManager, getRedoAction, S32, 3, 3, (index))
-/// 
-/// </summary>
-public  int getRedoAction(string a2){
-return TorqueScriptTemplate.m_ts.fnUndoManager_getRedoAction(_mSimObjectId, a2);
-}
-/// <summary>
-/// (UndoManager, getRedoCount, S32, 2, 2, )
-/// 
-/// </summary>
-public  int getRedoCount(){
-return TorqueScriptTemplate.m_ts.fnUndoManager_getRedoCount(_mSimObjectId);
-}
-/// <summary>
-/// (UndoManager, getRedoName, const char*, 3, 3, (index))
-/// 
-/// </summary>
-public  string getRedoName(string a2){
-return TorqueScriptTemplate.m_ts.fnUndoManager_getRedoName(_mSimObjectId, a2);
-}
-/// <summary>
-/// (UndoManager, getUndoAction, S32, 3, 3, (index))
-/// 
-/// </summary>
-public  int getUndoAction(string a2){
-return TorqueScriptTemplate.m_ts.fnUndoManager_getUndoAction(_mSimObjectId, a2);
-}
-/// <summary>
-/// (UndoManager, getUndoCount, S32, 2, 2, )
-/// 
-/// </summary>
-public  int getUndoCount(){
-return TorqueScriptTemplate.m_ts.fnUndoManager_getUndoCount(_mSimObjectId);
-}
-/// <summary>
-/// (UndoManager, getUndoName, const char*, 3, 3, (index))
-/// 
-/// </summary>
-public  string getUndoName(string a2){
-return TorqueScriptTemplate.m_ts.fnUndoManager_getUndoName(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( UndoManager, popCompound, void, 2, 3, ( bool discard=false ) - Pop the current CompoundUndoAction off the stack. )
-/// 
-/// </summary>
-public  void popCompound(string a2= ""){
-TorqueScriptTemplate.m_ts.fnUndoManager_popCompound(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( UndoManager, pushCompound, const char*, 2, 3, ( string name=\"\" ) - Push a CompoundUndoAction onto the compound stack for assembly. )
-/// 
-/// </summary>
-public  string pushCompound(string a2= ""){
-return TorqueScriptTemplate.m_ts.fnUndoManager_pushCompound(_mSimObjectId, a2);
-}
-/// <summary>
-/// (UndoManager, redo, void, 2, 2, UndoManager.redo();)
-/// 
-/// </summary>
-public  void redo(){
-TorqueScriptTemplate.m_ts.fnUndoManager_redo(_mSimObjectId);
-}
-/// <summary>
-/// (UndoManager, undo, void, 2, 2, UndoManager.undo();)
-/// 
-/// </summary>
-public  void undo(){
-TorqueScriptTemplate.m_ts.fnUndoManager_undo(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// (UndoManager, clearAll, void, 2, 2, Clears the undo manager.)
+        /// 
+        /// </summary>
+        public void clearAll()
+            {
+            TorqueScriptTemplate.m_ts.fnUndoManager_clearAll(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (UndoManager, getNextRedoName, const char *, 2, 2, UndoManager.getNextRedoName();)
+        /// 
+        /// </summary>
+        public string getNextRedoName()
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_getNextRedoName(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (UndoManager, getNextUndoName, const char *, 2, 2, UndoManager.getNextUndoName();)
+        /// 
+        /// </summary>
+        public string getNextUndoName()
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_getNextUndoName(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (UndoManager, getRedoAction, S32, 3, 3, (index))
+        /// 
+        /// </summary>
+        public int getRedoAction(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_getRedoAction(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (UndoManager, getRedoCount, S32, 2, 2, )
+        /// 
+        /// </summary>
+        public int getRedoCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_getRedoCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (UndoManager, getRedoName, const char*, 3, 3, (index))
+        /// 
+        /// </summary>
+        public string getRedoName(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_getRedoName(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (UndoManager, getUndoAction, S32, 3, 3, (index))
+        /// 
+        /// </summary>
+        public int getUndoAction(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_getUndoAction(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (UndoManager, getUndoCount, S32, 2, 2, )
+        /// 
+        /// </summary>
+        public int getUndoCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_getUndoCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (UndoManager, getUndoName, const char*, 3, 3, (index))
+        /// 
+        /// </summary>
+        public string getUndoName(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_getUndoName(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( UndoManager, popCompound, void, 2, 3, ( bool discard=false ) - Pop the current CompoundUndoAction off the stack. )
+        /// 
+        /// </summary>
+        public void popCompound(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnUndoManager_popCompound(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( UndoManager, pushCompound, const char*, 2, 3, ( string name=\"\" ) - Push a CompoundUndoAction onto the compound stack for assembly. )
+        /// 
+        /// </summary>
+        public string pushCompound(string a2 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnUndoManager_pushCompound(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (UndoManager, redo, void, 2, 2, UndoManager.redo();)
+        /// 
+        /// </summary>
+        public void redo()
+            {
+            TorqueScriptTemplate.m_ts.fnUndoManager_redo(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (UndoManager, undo, void, 2, 2, UndoManager.undo();)
+        /// 
+        /// </summary>
+        public void undo()
+            {
+            TorqueScriptTemplate.m_ts.fnUndoManager_undo(_mSimObjectId);
+            }
+        }
+    }

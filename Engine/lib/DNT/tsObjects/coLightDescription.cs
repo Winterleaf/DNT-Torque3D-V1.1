@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoLightDescription))]
-    public class coLightDescription: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoLightDescription))]
+    public class coLightDescription : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLightDescription(string simobjectid) : base(simobjectid){ }
+        public coLightDescription(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLightDescription(uint simobjectid): base(simobjectid){ }
+        public coLightDescription(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLightDescription(int simobjectid): base(simobjectid){ }
+        public coLightDescription(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// The length of time in seconds for a single playback of the light animation 
+        /// </summary>
+        public float animationPeriod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animationPeriod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animationPeriod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The phase used to offset the animation start time to vary the animation of nearby lights. 
+        /// </summary>
+        public float animationPhase
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animationPhase").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animationPhase", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Datablock containing light animation information (LightAnimData) 
+        /// </summary>
+        public coLightAnimData animationType
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animationType"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animationType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Adjusts the lights power, 0 being off completely. 
+        /// </summary>
+        public float brightness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brightness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brightness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables/disabled shadow casts by this light. 
+        /// </summary>
+        public bool castShadows
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Changes the base color hue of the light. 
+        /// </summary>
+        public ColorF color
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Globally scales all features of the light flare 
+        /// </summary>
+        public float flareScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flareScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flareScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Datablock containing light flare information (LightFlareData) 
+        /// </summary>
+        public coLightFlareData flareType
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flareType"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flareType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Controls the size (radius) of the light 
+        /// </summary>
+        public float range
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".range").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +217,9 @@ public coLightDescription(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +227,17 @@ public coLightDescription(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +249,15 @@ public coLightDescription(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coLightDescription ts)
+        public static implicit operator string(coLightDescription ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +277,7 @@ public coLightDescription(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coLightDescription ts)
+        public static implicit operator int(coLightDescription ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +298,7 @@ public coLightDescription(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coLightDescription ts)
+        public static implicit operator uint(coLightDescription ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,124 +313,28 @@ public coLightDescription(int simobjectid): base(simobjectid){ }
             {
             return new coLightDescription(ts);
             }
-public float animationPeriod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animationPeriod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animationPeriod", value.AsString());
-          }
-       }
-public float animationPhase
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animationPhase").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animationPhase", value.AsString());
-          }
-       }
-public coLightAnimData animationType
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animationType");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animationType", value.ToString());
-          }
-       }
-public float brightness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brightness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brightness", value.AsString());
-          }
-       }
-public bool castShadows
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString());
-          }
-       }
-public ColorF color
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString());
-          }
-       }
-public float flareScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flareScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flareScale", value.AsString());
-          }
-       }
-public coLightFlareData flareType
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flareType");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flareType", value.ToString());
-          }
-       }
-public float range
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".range").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Force an inspectPostApply call for the benefit of tweaking via the console
-///    
-///    Normally this functionality is only exposed to objects via the World Editor, once changes have been made. 
-///    Exposing apply to script allows you to make changes to it on the fly without the World Editor.
-/// 
-///    @note This is intended for debugging and tweaking, not for game play
-/// 
-///    @tsexample
-///    // Change a property of the light description
-///    RocketLauncherLightDesc.brightness = 10;
-///    // Make it so
-///    RocketLauncherLightDesc.apply();
-///    
-///    @endtsexample
-/// )
-/// 
-/// </summary>
-public  void apply(){
-TorqueScriptTemplate.m_ts.fnLightDescription_apply(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Force an inspectPostApply call for the benefit of tweaking via the console
+        ///    
+        ///    Normally this functionality is only exposed to objects via the World Editor, once changes have been made. 
+        ///    Exposing apply to script allows you to make changes to it on the fly without the World Editor.
+        /// 
+        ///    @note This is intended for debugging and tweaking, not for game play
+        /// 
+        ///    @tsexample
+        ///    // Change a property of the light description
+        ///    RocketLauncherLightDesc.brightness = 10;
+        ///    // Make it so
+        ///    RocketLauncherLightDesc.apply();
+        ///    
+        ///    @endtsexample
+        /// )
+        /// 
+        /// </summary>
+        public void apply()
+            {
+            TorqueScriptTemplate.m_ts.fnLightDescription_apply(_mSimObjectId);
+            }
+        }
+    }

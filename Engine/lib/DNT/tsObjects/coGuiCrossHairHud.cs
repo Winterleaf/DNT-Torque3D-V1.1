@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiCrossHairHud))]
-    public class coGuiCrossHairHud: coGuiBitmapCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiCrossHairHud))]
+    public class coGuiCrossHairHud : coGuiBitmapCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiCrossHairHud(string simobjectid) : base(simobjectid){ }
+        public coGuiCrossHairHud(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiCrossHairHud(uint simobjectid): base(simobjectid){ }
+        public coGuiCrossHairHud(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiCrossHairHud(int simobjectid): base(simobjectid){ }
+        public coGuiCrossHairHud(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// As the health bar depletes, this color will represent the health loss amount. 
+        /// </summary>
+        public ColorF damageFillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageFillColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damageFillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the health bar's frame. 
+        /// </summary>
+        public ColorF damageFrameColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageFrameColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damageFrameColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Offset for drawing the damage portion of the health control. 
+        /// </summary>
+        public Point2I damageOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageOffset").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damageOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Size for the health bar portion of the control. 
+        /// </summary>
+        public Point2I damageRect
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageRect").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damageRect", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coGuiCrossHairHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coGuiCrossHairHud(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coGuiCrossHairHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiCrossHairHud ts)
+        public static implicit operator string(coGuiCrossHairHud ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coGuiCrossHairHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiCrossHairHud ts)
+        public static implicit operator int(coGuiCrossHairHud ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coGuiCrossHairHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiCrossHairHud ts)
+        public static implicit operator uint(coGuiCrossHairHud ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,48 +268,5 @@ public coGuiCrossHairHud(int simobjectid): base(simobjectid){ }
             {
             return new coGuiCrossHairHud(ts);
             }
-public ColorF damageFillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damageFillColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damageFillColor", value.AsString());
-          }
-       }
-public ColorF damageFrameColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damageFrameColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damageFrameColor", value.AsString());
-          }
-       }
-public Point2I damageOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damageOffset").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damageOffset", value.AsString());
-          }
-       }
-public Point2I damageRect
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damageRect").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damageRect", value.AsString());
-          }
-       }
-}}
+        }
+    }

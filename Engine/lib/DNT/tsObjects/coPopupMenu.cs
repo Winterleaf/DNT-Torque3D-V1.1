@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPopupMenu))]
-    public class coPopupMenu: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoPopupMenu))]
+    public class coPopupMenu : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPopupMenu(string simobjectid) : base(simobjectid){ }
+        public coPopupMenu(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPopupMenu(uint simobjectid): base(simobjectid){ }
+        public coPopupMenu(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPopupMenu(int simobjectid): base(simobjectid){ }
+        public coPopupMenu(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// the title of this menu when attached to a menu bar
+        /// </summary>
+        public String barTitle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".barTitle").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".barTitle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// true if this is a pop-up/context menu. defaults to false.
+        /// </summary>
+        public bool isPopup
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isPopup").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isPopup", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coPopupMenu(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coPopupMenu(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coPopupMenu(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPopupMenu ts)
+        public static implicit operator string(coPopupMenu ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coPopupMenu(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPopupMenu ts)
+        public static implicit operator int(coPopupMenu ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coPopupMenu(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPopupMenu ts)
+        public static implicit operator uint(coPopupMenu ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,110 +249,113 @@ public coPopupMenu(int simobjectid): base(simobjectid){ }
             {
             return new coPopupMenu(ts);
             }
-public String barTitle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".barTitle").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".barTitle", value.AsString());
-          }
-       }
-public bool isPopup
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isPopup").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isPopup", value.AsString());
-          }
-       }
-/// <summary>
-/// (PopupMenu, attachToMenuBar, void, 5, 5, (GuiCanvas, pos, title))
-/// 
-/// </summary>
-public  void attachToMenuBar(string a2, string a3, string a4){
-TorqueScriptTemplate.m_ts.fnPopupMenu_attachToMenuBar(_mSimObjectId, a2, a3, a4);
-}
-/// <summary>
-/// (PopupMenu, checkItem, void, 4, 4, (pos, checked))
-/// 
-/// </summary>
-public  void checkItem(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnPopupMenu_checkItem(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (PopupMenu, checkRadioItem, void, 5, 5, (firstPos, lastPos, checkPos))
-/// 
-/// </summary>
-public  void checkRadioItem(string a2, string a3, string a4){
-TorqueScriptTemplate.m_ts.fnPopupMenu_checkRadioItem(_mSimObjectId, a2, a3, a4);
-}
-/// <summary>
-/// (PopupMenu, enableItem, void, 4, 4, (pos, enabled))
-/// 
-/// </summary>
-public  void enableItem(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnPopupMenu_enableItem(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (PopupMenu, getItemCount, S32, 2, 2, ())
-/// 
-/// </summary>
-public  int getItemCount(){
-return TorqueScriptTemplate.m_ts.fnPopupMenu_getItemCount(_mSimObjectId);
-}
-/// <summary>
-/// (PopupMenu, insertItem, S32, 3, 5, (pos[, title][, accelerator]))
-/// 
-/// </summary>
-public  int insertItem(string a2, string a3= "", string a4= ""){
-return TorqueScriptTemplate.m_ts.fnPopupMenu_insertItem(_mSimObjectId, a2, a3, a4);
-}
-/// <summary>
-/// (PopupMenu, insertSubMenu, S32, 5, 5, (pos, title, subMenu))
-/// 
-/// </summary>
-public  int insertSubMenu(string a2, string a3, string a4){
-return TorqueScriptTemplate.m_ts.fnPopupMenu_insertSubMenu(_mSimObjectId, a2, a3, a4);
-}
-/// <summary>
-/// (PopupMenu, isItemChecked, bool, 3, 3, (pos))
-/// 
-/// </summary>
-public  bool isItemChecked(string a2){
-return TorqueScriptTemplate.m_ts.fnPopupMenu_isItemChecked(_mSimObjectId, a2);
-}
-/// <summary>
-/// (PopupMenu, removeFromMenuBar, void, 2, 2, ())
-/// 
-/// </summary>
-public  void removeFromMenuBar(){
-TorqueScriptTemplate.m_ts.fnPopupMenu_removeFromMenuBar(_mSimObjectId);
-}
-/// <summary>
-/// (PopupMenu, removeItem, void, 3, 3, (pos))
-/// 
-/// </summary>
-public  void removeItem(string a2){
-TorqueScriptTemplate.m_ts.fnPopupMenu_removeItem(_mSimObjectId, a2);
-}
-/// <summary>
-/// (PopupMenu, setItem, bool, 4, 5, (pos, title[, accelerator]))
-/// 
-/// </summary>
-public  bool setItem(string a2, string a3, string a4= ""){
-return TorqueScriptTemplate.m_ts.fnPopupMenu_setItem(_mSimObjectId, a2, a3, a4);
-}
-/// <summary>
-/// (PopupMenu, showPopup, void, 3, 5, (Canvas,[x, y]))
-/// 
-/// </summary>
-public  void showPopup(string a2, string a3= "", string a4= ""){
-TorqueScriptTemplate.m_ts.fnPopupMenu_showPopup(_mSimObjectId, a2, a3, a4);
-}
-}}
+
+        /// <summary>
+        /// (PopupMenu, attachToMenuBar, void, 5, 5, (GuiCanvas, pos, title))
+        /// 
+        /// </summary>
+        public void attachToMenuBar(string a2, string a3, string a4)
+            {
+            TorqueScriptTemplate.m_ts.fnPopupMenu_attachToMenuBar(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// (PopupMenu, checkItem, void, 4, 4, (pos, checked))
+        /// 
+        /// </summary>
+        public void checkItem(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnPopupMenu_checkItem(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (PopupMenu, checkRadioItem, void, 5, 5, (firstPos, lastPos, checkPos))
+        /// 
+        /// </summary>
+        public void checkRadioItem(string a2, string a3, string a4)
+            {
+            TorqueScriptTemplate.m_ts.fnPopupMenu_checkRadioItem(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// (PopupMenu, enableItem, void, 4, 4, (pos, enabled))
+        /// 
+        /// </summary>
+        public void enableItem(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnPopupMenu_enableItem(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (PopupMenu, getItemCount, S32, 2, 2, ())
+        /// 
+        /// </summary>
+        public int getItemCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnPopupMenu_getItemCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (PopupMenu, insertItem, S32, 3, 5, (pos[, title][, accelerator]))
+        /// 
+        /// </summary>
+        public int insertItem(string a2, string a3 = "", string a4 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnPopupMenu_insertItem(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// (PopupMenu, insertSubMenu, S32, 5, 5, (pos, title, subMenu))
+        /// 
+        /// </summary>
+        public int insertSubMenu(string a2, string a3, string a4)
+            {
+            return TorqueScriptTemplate.m_ts.fnPopupMenu_insertSubMenu(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// (PopupMenu, isItemChecked, bool, 3, 3, (pos))
+        /// 
+        /// </summary>
+        public bool isItemChecked(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnPopupMenu_isItemChecked(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (PopupMenu, removeFromMenuBar, void, 2, 2, ())
+        /// 
+        /// </summary>
+        public void removeFromMenuBar()
+            {
+            TorqueScriptTemplate.m_ts.fnPopupMenu_removeFromMenuBar(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (PopupMenu, removeItem, void, 3, 3, (pos))
+        /// 
+        /// </summary>
+        public void removeItem(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnPopupMenu_removeItem(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (PopupMenu, setItem, bool, 4, 5, (pos, title[, accelerator]))
+        /// 
+        /// </summary>
+        public bool setItem(string a2, string a3, string a4 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnPopupMenu_setItem(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// (PopupMenu, showPopup, void, 3, 5, (Canvas,[x, y]))
+        /// 
+        /// </summary>
+        public void showPopup(string a2, string a3 = "", string a4 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnPopupMenu_showPopup(_mSimObjectId, a2, a3, a4);
+            }
+        }
+    }

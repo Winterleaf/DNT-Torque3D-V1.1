@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,388 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiControlProfile))]
-    public class coGuiControlProfile: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiControlProfile))]
+    public class coGuiControlProfile : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiControlProfile(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiControlProfile(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiControlProfile(int simobjectid): base(simobjectid){ }
+        public coGuiControlProfile(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiControlProfile(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiControlProfile(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Automatically adjust height of control to fit contents. 
+        /// </summary>
+        public bool autoSizeHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoSizeHeight").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoSizeHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Automatically adjust width of control to fit contents. 
+        /// </summary>
+        public bool autoSizeWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoSizeWidth").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoSizeWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI bevelColorHL
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bevelColorHL").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bevelColorHL", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI bevelColorLL
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bevelColorLL").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bevelColorLL", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Texture to use for rendering control. 
+        /// </summary>
+        public String bitmap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Border type (0=no border). 
+        /// </summary>
+        public int border
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".border").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".border", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color to draw border with. 
+        /// </summary>
+        public ColorI borderColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".borderColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI borderColorHL
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderColorHL").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".borderColorHL", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI borderColorNA
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderColorNA").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".borderColorNA", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Thickness of border in pixels. 
+        /// </summary>
+        public int borderThickness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderThickness").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".borderThickness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the control can have the keyboard focus. 
+        /// </summary>
+        public bool canKeyFocus
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".canKeyFocus").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".canKeyFocus", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Category under which the profile will appear in the editor.  
+        /// </summary>
+        public String category
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".category").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".category", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color to use for the text cursor. 
+        /// </summary>
+        public ColorI cursorColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cursorColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cursorColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI fillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI fillColorHL
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColorHL").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fillColorHL", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI fillColorNA
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColorNA").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fillColorNA", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI fillColorSEL
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColorSEL").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fillColorSEL", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public FontCharset fontCharset
+            {
+            get { return (FontCharset) Enum.Parse(typeof (FontCharset), dnTorque.self.GetVar(_mSimObjectId + ".fontCharset")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontCharset", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Font color for normal text (same as fontColors[0]). 
+        /// </summary>
+        public ColorI fontColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Font color for highlighted text (same as fontColors[1]). 
+        /// </summary>
+        public ColorI fontColorHL
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorHL").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorHL", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Font color for links in text (same as fontColors[4]). 
+        /// </summary>
+        public ColorI fontColorLink
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorLink").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorLink", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Font color for highlighted links in text (same as fontColors[5]). 
+        /// </summary>
+        public ColorI fontColorLinkHL
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorLinkHL").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorLinkHL", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Font color when control is not active/disabled (same as fontColors[2]). 
+        /// </summary>
+        public ColorI fontColorNA
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorNA").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorNA", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Font colors to use for different text types/states. 
+        /// </summary>
+        public ColorI fontColors
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColors").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontColors", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Font color for selected text (same as fontColors[3]). 
+        /// </summary>
+        public ColorI fontColorSEL
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorSEL").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorSEL", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Font size in points. 
+        /// </summary>
+        public int fontSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Name of font family and typeface (e.g. \Arial Bold\). 
+        /// </summary>
+        public String fontType
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontType").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fontType", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, 'bitmap' is an array of images. 
+        /// </summary>
+        public bool hasBitmapArray
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hasBitmapArray").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hasBitmapArray", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Horizontal alignment for text. 
+        /// </summary>
+        public GuiControlProfile__AlignmentType justify
+            {
+            get { return (GuiControlProfile__AlignmentType) Enum.Parse(typeof (GuiControlProfile__AlignmentType), dnTorque.self.GetVar(_mSimObjectId + ".justify")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".justify", value.ToString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool modal
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".modal").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".modal", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool mouseOverSelected
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mouseOverSelected").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mouseOverSelected", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether control should only accept numerical data (GuiTextEditCtrl). 
+        /// </summary>
+        public bool numbersOnly
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".numbersOnly").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".numbersOnly", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool opaque
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".opaque").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".opaque", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String profileForChildren
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".profileForChildren").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".profileForChildren", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to add automatic tab event when return is pressed so focus moves on to next control (GuiTextEditCtrl). 
+        /// </summary>
+        public bool returnTab
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".returnTab").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".returnTab", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Sound to play when mouse has been pressed on control. 
+        /// </summary>
+        public coSFXTrack soundButtonDown
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".soundButtonDown"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundButtonDown", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Sound to play when mouse is hovering over control. 
+        /// </summary>
+        public coSFXTrack soundButtonOver
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".soundButtonOver"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundButtonOver", value.ToString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool tab
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tab").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tab", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Point2I textOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textOffset").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textOffset", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +488,9 @@ public coGuiControlProfile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +498,17 @@ public coGuiControlProfile(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +520,15 @@ public coGuiControlProfile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiControlProfile ts)
+        public static implicit operator string(coGuiControlProfile ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +548,7 @@ public coGuiControlProfile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiControlProfile ts)
+        public static implicit operator int(coGuiControlProfile ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +569,7 @@ public coGuiControlProfile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiControlProfile ts)
+        public static implicit operator uint(coGuiControlProfile ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,438 +584,14 @@ public coGuiControlProfile(int simobjectid): base(simobjectid){ }
             {
             return new coGuiControlProfile(ts);
             }
-public bool autoSizeHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoSizeHeight").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoSizeHeight", value.AsString());
-          }
-       }
-public bool autoSizeWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoSizeWidth").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoSizeWidth", value.AsString());
-          }
-       }
-public ColorI bevelColorHL
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bevelColorHL").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bevelColorHL", value.AsString());
-          }
-       }
-public ColorI bevelColorLL
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bevelColorLL").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bevelColorLL", value.AsString());
-          }
-       }
-public String bitmap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString());
-          }
-       }
-public int border
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".border").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".border", value.AsString());
-          }
-       }
-public ColorI borderColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".borderColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".borderColor", value.AsString());
-          }
-       }
-public ColorI borderColorHL
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".borderColorHL").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".borderColorHL", value.AsString());
-          }
-       }
-public ColorI borderColorNA
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".borderColorNA").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".borderColorNA", value.AsString());
-          }
-       }
-public int borderThickness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".borderThickness").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".borderThickness", value.AsString());
-          }
-       }
-public bool canKeyFocus
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".canKeyFocus").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".canKeyFocus", value.AsString());
-          }
-       }
-public String category
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".category").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".category", value.AsString());
-          }
-       }
-public ColorI cursorColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cursorColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cursorColor", value.AsString());
-          }
-       }
-public ColorI fillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString());
-          }
-       }
-public ColorI fillColorHL
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fillColorHL").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fillColorHL", value.AsString());
-          }
-       }
-public ColorI fillColorNA
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fillColorNA").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fillColorNA", value.AsString());
-          }
-       }
-public ColorI fillColorSEL
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fillColorSEL").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fillColorSEL", value.AsString());
-          }
-       }
-public FontCharset fontCharset
-       {
-       get
-          {          return (FontCharset)Enum.Parse(typeof(FontCharset), dnTorque.self.GetVar(_mSimObjectId + ".fontCharset"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontCharset", value.ToString());
-          }
-       }
-public ColorI fontColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontColor", value.AsString());
-          }
-       }
-public ColorI fontColorHL
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontColorHL").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontColorHL", value.AsString());
-          }
-       }
-public ColorI fontColorLink
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontColorLink").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontColorLink", value.AsString());
-          }
-       }
-public ColorI fontColorLinkHL
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontColorLinkHL").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontColorLinkHL", value.AsString());
-          }
-       }
-public ColorI fontColorNA
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontColorNA").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontColorNA", value.AsString());
-          }
-       }
-public ColorI fontColors
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontColors").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontColors", value.AsString());
-          }
-       }
-public ColorI fontColorSEL
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontColorSEL").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontColorSEL", value.AsString());
-          }
-       }
-public int fontSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontSize", value.AsString());
-          }
-       }
-public String fontType
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fontType").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fontType", value.AsString());
-          }
-       }
-public bool hasBitmapArray
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hasBitmapArray").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hasBitmapArray", value.AsString());
-          }
-       }
-public GuiControlProfile__AlignmentType justify
-       {
-       get
-          {          return (GuiControlProfile__AlignmentType)Enum.Parse(typeof(GuiControlProfile__AlignmentType), dnTorque.self.GetVar(_mSimObjectId + ".justify"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".justify", value.ToString());
-          }
-       }
-public bool modal
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".modal").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".modal", value.AsString());
-          }
-       }
-public bool mouseOverSelected
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mouseOverSelected").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mouseOverSelected", value.AsString());
-          }
-       }
-public bool numbersOnly
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".numbersOnly").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".numbersOnly", value.AsString());
-          }
-       }
-public bool opaque
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".opaque").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".opaque", value.AsString());
-          }
-       }
-public String profileForChildren
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".profileForChildren").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".profileForChildren", value.AsString());
-          }
-       }
-public bool returnTab
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".returnTab").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".returnTab", value.AsString());
-          }
-       }
-public coSFXTrack soundButtonDown
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".soundButtonDown");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".soundButtonDown", value.ToString());
-          }
-       }
-public coSFXTrack soundButtonOver
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".soundButtonOver");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".soundButtonOver", value.ToString());
-          }
-       }
-public bool tab
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tab").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tab", value.AsString());
-          }
-       }
-public Point2I textOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textOffset").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textOffset", value.AsString());
-          }
-       }
-/// <summary>
-/// ( GuiControlProfile, getStringWidth, S32, 3, 3, ( pString ) )
-/// 
-/// </summary>
-public  int getStringWidth(string a2){
-return TorqueScriptTemplate.m_ts.fnGuiControlProfile_getStringWidth(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// ( GuiControlProfile, getStringWidth, S32, 3, 3, ( pString ) )
+        /// 
+        /// </summary>
+        public int getStringWidth(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiControlProfile_getStringWidth(_mSimObjectId, a2);
+            }
+        }
+    }

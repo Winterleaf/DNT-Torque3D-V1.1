@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,217 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoProjectileData))]
-    public class coProjectileData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoProjectileData))]
+    public class coProjectileData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coProjectileData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coProjectileData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coProjectileData(int simobjectid): base(simobjectid){ }
+        public coProjectileData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coProjectileData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coProjectileData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// @brief Amount of time, in milliseconds, before the projectile will cause damage or explode on impact.\n\n   This value must be equal to or less than the projectile's lifetime.\n\n   @see lifetime
+        /// </summary>
+        public int armingDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".armingDelay").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".armingDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Influences post-bounce velocity of a projectile that does not explode on contact.\n\n   Scales the velocity from a bounce after friction is taken into account.    A value of 1.0 will leave it's velocity unchanged while values greater than 1.0 will increase it.\n
+        /// </summary>
+        public float bounceElasticity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bounceElasticity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bounceElasticity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Factor to reduce post-bounce velocity of a projectile that does not explode on contact.\n\n   Reduces bounce velocity by this factor and a multiple of the tangent to impact.    Used to simulate surface friction.\n
+        /// </summary>
+        public float bounceFriction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bounceFriction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bounceFriction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Decal datablock used for decals placed at projectile explosion points.\n\n
+        /// </summary>
+        public coDecalData decal
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".decal"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".decal", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Explosion datablock used when the projectile explodes outside of water.\n\n
+        /// </summary>
+        public coExplosionData explosion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".explosion"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".explosion", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount of time, in milliseconds, before the projectile begins to fade out.\n\n   This value must be smaller than the projectile's lifetime to have an affect.
+        /// </summary>
+        public int fadeDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeDelay").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Scales the influence of gravity on the projectile.\n\n   The larger this value is, the more that gravity will affect the projectile.    A value of 1.0 will assume \normal\ influence upon it.\n   The magnitude of gravity is assumed to be 9.81 m/s/s\n\n   @note ProjectileData::isBallistic must be true for this to have any affect.
+        /// </summary>
+        public float gravityMod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gravityMod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gravityMod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float impactForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Detetmines if the projectile should be affected by gravity and whether or not    it bounces before exploding.\n\n
+        /// </summary>
+        public bool isBallistic
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isBallistic").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isBallistic", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount of time, in milliseconds, before the projectile is removed from the simulation.\n\n   Used with fadeDelay to determine the transparency of the projectile at a given time.    A projectile may exist up to a maximum of 131040ms (or 4095 ticks) as defined by Projectile::MaxLivingTicks in the source code.   @see fadeDelay
+        /// </summary>
+        public int lifetime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetime").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief LightDescription datablock used for lights attached to the projectile.\n\n
+        /// </summary>
+        public coLightDescription lightDesc
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightDesc"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightDesc", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount of velocity the projectile recieves from the \muzzle\ of the gun.\n\n   Used with velInheritFactor to determine the initial velocity of the projectile.    This value is never modified by the engine.\n\n   @note This value by default is not transmitted between the server and the client.\n\n   @see velInheritFactor
+        /// </summary>
+        public float muzzleVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".muzzleVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".muzzleVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Particle emitter datablock used to generate particles while the projectile is outside of water.\n\n   @note If datablocks are defined for both particleEmitter and particleWaterEmitter, both effects will play    as the projectile enters or leaves water.\n\n   @see particleWaterEmitter\n
+        /// </summary>
+        public coParticleEmitterData particleEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".particleEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".particleEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Particle emitter datablock used to generate particles while the projectile is submerged in water.\n\n   @note If datablocks are defined for both particleWaterEmitter and particleEmitter , both effects will play    as the projectile enters or leaves water.\n\n   @see particleEmitter\n
+        /// </summary>
+        public coParticleEmitterData particleWaterEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".particleWaterEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".particleWaterEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief File path to the model of the projectile.\n\n
+        /// </summary>
+        public String projectileShapeName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".projectileShapeName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".projectileShapeName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Scale to apply to the projectile's size.\n\n   @note This is applied after SceneObject::scale\n
+        /// </summary>
+        public Point3F scale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief SFXTrack datablock used to play sounds while in flight.\n\n
+        /// </summary>
+        public coSFXTrack sound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Splash datablock used to create splash effects as the projectile enters or leaves water\n\n
+        /// </summary>
+        public coSplashData splash
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splash"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splash", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount of velocity the projectile recieves from the source that created it.\n\n   Use an amount between 0 and 1 for the best effect.    This value is never modified by the engine.\n   @note This value by default is not transmitted between the server and the client.
+        /// </summary>
+        public float velInheritFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".velInheritFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".velInheritFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Explosion datablock used when the projectile explodes underwater.\n\n
+        /// </summary>
+        public coExplosionData waterExplosion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waterExplosion"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waterExplosion", value.ToString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +316,9 @@ public coProjectileData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +326,17 @@ public coProjectileData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +348,15 @@ public coProjectileData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coProjectileData ts)
+        public static implicit operator string(coProjectileData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +376,7 @@ public coProjectileData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coProjectileData ts)
+        public static implicit operator int(coProjectileData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +397,7 @@ public coProjectileData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coProjectileData ts)
+        public static implicit operator uint(coProjectileData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,224 +412,5 @@ public coProjectileData(int simobjectid): base(simobjectid){ }
             {
             return new coProjectileData(ts);
             }
-public int armingDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".armingDelay").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".armingDelay", value.AsString());
-          }
-       }
-public float bounceElasticity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bounceElasticity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bounceElasticity", value.AsString());
-          }
-       }
-public float bounceFriction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bounceFriction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bounceFriction", value.AsString());
-          }
-       }
-public coDecalData decal
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".decal");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".decal", value.ToString());
-          }
-       }
-public coExplosionData explosion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".explosion");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".explosion", value.ToString());
-          }
-       }
-public int fadeDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeDelay").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeDelay", value.AsString());
-          }
-       }
-public float gravityMod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gravityMod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gravityMod", value.AsString());
-          }
-       }
-public float impactForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactForce", value.AsString());
-          }
-       }
-public bool isBallistic
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isBallistic").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isBallistic", value.AsString());
-          }
-       }
-public int lifetime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetime").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetime", value.AsString());
-          }
-       }
-public coLightDescription lightDesc
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightDesc");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightDesc", value.ToString());
-          }
-       }
-public float muzzleVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".muzzleVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".muzzleVelocity", value.AsString());
-          }
-       }
-public coParticleEmitterData particleEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".particleEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".particleEmitter", value.ToString());
-          }
-       }
-public coParticleEmitterData particleWaterEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".particleWaterEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".particleWaterEmitter", value.ToString());
-          }
-       }
-public String projectileShapeName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".projectileShapeName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".projectileShapeName", value.AsString());
-          }
-       }
-public Point3F scale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scale", value.AsString());
-          }
-       }
-public coSFXTrack sound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sound", value.ToString());
-          }
-       }
-public coSplashData splash
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splash");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splash", value.ToString());
-          }
-       }
-public float velInheritFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".velInheritFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".velInheritFactor", value.AsString());
-          }
-       }
-public coExplosionData waterExplosion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waterExplosion");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waterExplosion", value.ToString());
-          }
-       }
-}}
+        }
+    }

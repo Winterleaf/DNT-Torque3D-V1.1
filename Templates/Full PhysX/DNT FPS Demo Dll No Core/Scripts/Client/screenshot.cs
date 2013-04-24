@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -168,7 +168,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "tiledScreenShot", "%tiles, %overlap", 2, 31000, false)]
         public void tiledScreenShot(string tiles, string overlap)
             {
-            GuiCanvas.popDialog("Canvas", "ConsoleDlg");
+            ((coGuiCanvas) "Canvas").popDialog("ConsoleDlg");
 
             _screenShot(tiles, overlap);
             }

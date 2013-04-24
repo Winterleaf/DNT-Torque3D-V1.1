@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoItem))]
-    public class coItem: coShapeBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoItem))]
+    public class coItem : coShapeBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coItem(string simobjectid) : base(simobjectid){ }
+        public coItem(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coItem(uint simobjectid): base(simobjectid){ }
+        public coItem(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coItem(int simobjectid): base(simobjectid){ }
+        public coItem(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// If true, the object will automatically rotate around its Z axis.\n
+        /// </summary>
+        public bool rotate
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotate").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotate", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the object is not moving in the world.\n
+        /// </summary>
+        public bool staticx
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".static").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".static", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coItem(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coItem(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coItem(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coItem ts)
+        public static implicit operator string(coItem ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coItem(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coItem ts)
+        public static implicit operator int(coItem ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coItem(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coItem ts)
+        public static implicit operator uint(coItem ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,117 +249,108 @@ public coItem(int simobjectid): base(simobjectid){ }
             {
             return new coItem(ts);
             }
-public bool rotate
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotate").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotate", value.AsString());
-          }
-       }
-public bool staticx
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".static").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".static", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Get the normal of the surface on which the object is stuck.   
-///    @return Returns The XYZ normal from where this Item is stuck.
-///    @tsexample
-/// 	   // Acquire the position where this Item is currently stuck
-/// 	   %stuckPosition = %item.getLastStickPos();
-///    @endtsexample
-///    @note Server side only.
-///    )
-/// 
-/// </summary>
-public  string getLastStickyNormal(){
-return TorqueScriptTemplate.m_ts.fnItem_getLastStickyNormal(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the position on the surface on which this Item is stuck.   
-///    @return Returns The XYZ position of where this Item is stuck.
-///    @tsexample
-/// 	   // Acquire the position where this Item is currently stuck
-/// 	   %stuckPosition = %item.getLastStickPos();
-///    @endtsexample
-///    @note Server side only.
-///    )
-/// 
-/// </summary>
-public  string getLastStickyPos(){
-return TorqueScriptTemplate.m_ts.fnItem_getLastStickyPos(_mSimObjectId);
-}
-/// <summary>
-/// @brief Is the object at rest (ie, no longer moving)?   
-///    @return True if the object is at rest, false if it is not.
-///    @tsexample
-/// 	   // Query the item on if it is or is not at rest.
-/// 	   %isAtRest = %item.isAtRest();
-///    @endtsexample
-///    )
-/// 
-/// </summary>
-public  bool isAtRest(){
-return TorqueScriptTemplate.m_ts.fnItem_isAtRest(_mSimObjectId);
-}
-/// <summary>
-/// @brief Is the object still rotating?   
-///    @return True if the object is still rotating, false if it is not.
-///    @tsexample
-/// 	   // Query the item on if it is or is not rotating.
-/// 	   %isRotating = %itemData.isRotating();
-///    @endtsexample
-///    @see rotate
-///    )
-/// 
-/// </summary>
-public  bool isRotating(){
-return TorqueScriptTemplate.m_ts.fnItem_isRotating(_mSimObjectId);
-}
-/// <summary>
-/// @brief Is the object static (ie, non-movable)?   
-///    @return True if the object is static, false if it is not.
-///    @tsexample
-/// 	   // Query the item on if it is or is not static.
-/// 	   %isStatic = %itemData.isStatic();
-///    @endtsexample
-///    @see static
-///    )
-/// 
-/// </summary>
-public  bool isStatic(){
-return TorqueScriptTemplate.m_ts.fnItem_isStatic(_mSimObjectId);
-}
-/// <summary>
-/// @brief Temporarily disable collisions against a specific ShapeBase object.
-/// 
-///    This is useful to prevent a player from immediately picking up an Item they have 
-///    just thrown.  Only one object may be on the timeout list at a time.  The timeout is 
-///    defined as 15 ticks.
-/// 
-///    @param objectID ShapeBase object ID to disable collisions against.
-///    @return Returns true if the ShapeBase object requested could be found, false if it could not.
-/// 
-///    @tsexample
-/// 	   // Set the ShapeBase Object ID to disable collisions against
-/// 	   %ignoreColObj = %player.getID();
-/// 	   // Inform this Item object to ignore collisions temproarily against the %ignoreColObj.
-/// 	   %item.setCollisionTimeout(%ignoreColObj);
-///    @endtsexample
-///    )
-/// 
-/// </summary>
-public  bool setCollisionTimeout(int ignoreColObj){
-return TorqueScriptTemplate.m_ts.fnItem_setCollisionTimeout(_mSimObjectId, ignoreColObj);
-}
-}}
+
+        /// <summary>
+        /// @brief Get the normal of the surface on which the object is stuck.   
+        ///    @return Returns The XYZ normal from where this Item is stuck.
+        ///    @tsexample
+        /// 	   // Acquire the position where this Item is currently stuck
+        /// 	   %stuckPosition = %item.getLastStickPos();
+        ///    @endtsexample
+        ///    @note Server side only.
+        ///    )
+        /// 
+        /// </summary>
+        public string getLastStickyNormal()
+            {
+            return TorqueScriptTemplate.m_ts.fnItem_getLastStickyNormal(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the position on the surface on which this Item is stuck.   
+        ///    @return Returns The XYZ position of where this Item is stuck.
+        ///    @tsexample
+        /// 	   // Acquire the position where this Item is currently stuck
+        /// 	   %stuckPosition = %item.getLastStickPos();
+        ///    @endtsexample
+        ///    @note Server side only.
+        ///    )
+        /// 
+        /// </summary>
+        public string getLastStickyPos()
+            {
+            return TorqueScriptTemplate.m_ts.fnItem_getLastStickyPos(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Is the object at rest (ie, no longer moving)?   
+        ///    @return True if the object is at rest, false if it is not.
+        ///    @tsexample
+        /// 	   // Query the item on if it is or is not at rest.
+        /// 	   %isAtRest = %item.isAtRest();
+        ///    @endtsexample
+        ///    )
+        /// 
+        /// </summary>
+        public bool isAtRest()
+            {
+            return TorqueScriptTemplate.m_ts.fnItem_isAtRest(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Is the object still rotating?   
+        ///    @return True if the object is still rotating, false if it is not.
+        ///    @tsexample
+        /// 	   // Query the item on if it is or is not rotating.
+        /// 	   %isRotating = %itemData.isRotating();
+        ///    @endtsexample
+        ///    @see rotate
+        ///    )
+        /// 
+        /// </summary>
+        public bool isRotating()
+            {
+            return TorqueScriptTemplate.m_ts.fnItem_isRotating(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Is the object static (ie, non-movable)?   
+        ///    @return True if the object is static, false if it is not.
+        ///    @tsexample
+        /// 	   // Query the item on if it is or is not static.
+        /// 	   %isStatic = %itemData.isStatic();
+        ///    @endtsexample
+        ///    @see static
+        ///    )
+        /// 
+        /// </summary>
+        public bool isStatic()
+            {
+            return TorqueScriptTemplate.m_ts.fnItem_isStatic(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Temporarily disable collisions against a specific ShapeBase object.
+        /// 
+        ///    This is useful to prevent a player from immediately picking up an Item they have 
+        ///    just thrown.  Only one object may be on the timeout list at a time.  The timeout is 
+        ///    defined as 15 ticks.
+        /// 
+        ///    @param objectID ShapeBase object ID to disable collisions against.
+        ///    @return Returns true if the ShapeBase object requested could be found, false if it could not.
+        /// 
+        ///    @tsexample
+        /// 	   // Set the ShapeBase Object ID to disable collisions against
+        /// 	   %ignoreColObj = %player.getID();
+        /// 	   // Inform this Item object to ignore collisions temproarily against the %ignoreColObj.
+        /// 	   %item.setCollisionTimeout(%ignoreColObj);
+        ///    @endtsexample
+        ///    )
+        /// 
+        /// </summary>
+        public bool setCollisionTimeout(int ignoreColObj)
+            {
+            return TorqueScriptTemplate.m_ts.fnItem_setCollisionTimeout(_mSimObjectId, ignoreColObj);
+            }
+        }
+    }

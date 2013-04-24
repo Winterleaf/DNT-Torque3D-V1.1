@@ -45,12 +45,13 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
 
 using WinterLeaf.Classes;
+using WinterLeaf.tsObjects;
 
 #endregion
 
@@ -62,7 +63,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "recordingsDlg", "onWake", "", 0, 37000, false)]
         public void RecordingsDlgonWake()
             {
-            GuiTextListCtrl.clear("RecordingsDlgList");
+            coGuiTextListCtrl RecordingsDlgList = "RecordingsDlgList";
+            RecordingsDlgList.clear();
 
             int i = 0;
             string filespec = console.GetVarString("$currentMod") + "/recordings/*.rec";
@@ -70,20 +72,21 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             for (string file = Util.findFirstFile(filespec, false); file != ""; file = Util.findNextFile(filespec))
 
-                GuiTextListCtrl.addRow("RecordingsDlgList", i++, Util.fileBase(file), 0);
+                RecordingsDlgList.addRow(i++, Util.fileBase(file), 0);
 
-            GuiTextListCtrl.sort("RecordingsDlgList", 0, false);
+            RecordingsDlgList.sort(0, false);
 
-            GuiTextListCtrl.setSelectedRow("RecordingsDlgList", 0);
+            RecordingsDlgList.setSelectedRow(0);
 
-            GuiTextListCtrl.scrollVisible("RecordingsDlgList", 0);
+            RecordingsDlgList.scrollVisible(0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "StartSelectedDemo", "", 0, 37000, false)]
         public void StartSelectedDemo()
             {
-            int sel = GuiTextListCtrl.getSelectedId("RecordingsDlgList"); //console.Call("RecordingsDlgList", "getSelectedId");
-            string rowText = GuiTextListCtrl.getRowTextById("RecordingsDlgList", sel); // console.Call("RecordingsDlgList", "getRowTextById", new string[] { sel });
+            coGuiTextListCtrl RecordingsDlgList = "RecordingsDlgList";
+            int sel = RecordingsDlgList.getSelectedId(); //console.Call("RecordingsDlgList", "getSelectedId");
+            string rowText = RecordingsDlgList.getRowTextById(sel); // console.Call("RecordingsDlgList", "getRowTextById", new string[] { sel });
 
             string file = console.GetVarString("$currentMod") + "/recordings/" + Util.getField(rowText, 0) + ".rec";
             new Torque_Class_Helper("GameConnection", "ServerConnection").Create();
@@ -97,8 +100,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             clientStartMission();
             if (console.Call("ServerConnection", "playDemo", new[] {file}).AsBool())
                 {
-                GuiCanvas.setContent("Canvas", "PlayGui");
-                GuiCanvas.popDialog("Canvas", "RecordingsDlg");
+                ((coGuiCanvas) "Canvas").setContent("PlayGui");
+                ((coGuiCanvas) "Canvas").popDialog("RecordingsDlg");
 
                 console.Call("ServerConnection", "prepDemoPlayback");
                 }
@@ -107,17 +110,17 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 console.Call("MessageBoxOK", new[] {"Playback Failed", "Demo playback failed for file '" + file + "'."});
                 if (console.isObject("ServerConnection"))
 
-                    GameConnection.delete("ServerConnection", "");
+                    ((coGameConnection) "ServerConnection").delete("");
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "startDemoRecord", "", 0, 37000, false)]
         public void StartDemoRecord()
             {
-            GameConnection.stopRecording("ServerConnection");
+            ((coGameConnection) "ServerConnection").stopRecording();
 
 
-            if (GameConnection.isDemoPlaying("ServerConnection")) //(console.Call("ServerConnection", "isDemoPlaying").AsBool())
+            if (((coGameConnection) "ServerConnection").isDemoPlaying()) //(console.Call("ServerConnection", "isDemoPlaying").AsBool())
                 return;
 
             string file = "";
@@ -144,9 +147,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.Call("ServerConnection", "prepDemoRecord");
 
 
-            GameConnection.startRecording("ServerConnection", file);
+            ((coGameConnection) "ServerConnection").startRecording(file);
 
-            if (GameConnection.isDemoRecording("ServerConnection"))
+            if (((coGameConnection) "ServerConnection").isDemoRecording())
                 return; //"console.Call("ServerConnection", "isDemoRecording").AsBool()) return;
 
 
@@ -161,13 +164,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "stopDemoRecord", "", 0, 37000, false)]
         public void StopDemoRecord()
             {
-            if (!GameConnection.isDemoRecording("ServerConnection"))
+            if (!((coGameConnection) "ServerConnection").isDemoRecording())
                 return;
 
 
             ChatHudAddLine("ChatHud", console.ColorEncode(@"\c4Recording file [\c2" + console.GetVarString("$DemoFileName") + @"\cr] finished."));
 
-            GameConnection.stopRecording("ServerConnection");
+            ((coGameConnection) "ServerConnection").stopRecording();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "demoPlaybackComplete", "", 0, 37000, false)]
@@ -179,15 +182,15 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             if (console.GetVarBool("$UseUnifiedShell"))
                 {
                 if (console.isObject("UnifiedMainMenuGui"))
-                    GuiCanvas.setContent("Canvas", "UnifiedMainMenuGui");
+                    ((coGuiCanvas) "Canvas").setContent("UnifiedMainMenuGui");
                 else if (console.isObject("MainMenuGui"))
-                    GuiCanvas.setContent("Canvas", "MainMenuGui");
+                    ((coGuiCanvas) "Canvas").setContent("MainMenuGui");
                 }
             else if (console.isObject("MainMenuGui"))
-                GuiCanvas.setContent("Canvas", "MainMenuGui");
+                ((coGuiCanvas) "Canvas").setContent("MainMenuGui");
 
 
-            GuiCanvas.pushDialog("Canvas", "RecordingsDlg");
+            ((coGuiCanvas) "Canvas").pushDialog("RecordingsDlg");
             }
         }
     }

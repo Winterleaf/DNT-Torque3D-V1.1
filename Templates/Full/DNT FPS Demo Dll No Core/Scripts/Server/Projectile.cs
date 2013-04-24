@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,90 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiRoadEditorCtrl))]
-    public class coGuiRoadEditorCtrl: coEditTSCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiRoadEditorCtrl))]
+    public class coGuiRoadEditorCtrl : coEditTSCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiRoadEditorCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiRoadEditorCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiRoadEditorCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiRoadEditorCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiRoadEditorCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiRoadEditorCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float DefaultWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".DefaultWidth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".DefaultWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI HoverNodeColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".HoverNodeColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".HoverNodeColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI HoverSplineColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".HoverSplineColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".HoverSplineColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool isDirty
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isDirty").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isDirty", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Default Material used by the Road Editor on road creation. 
+        /// </summary>
+        public String materialName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".materialName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".materialName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI SelectedSplineColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".SelectedSplineColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".SelectedSplineColor", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +190,9 @@ public coGuiRoadEditorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +200,17 @@ public coGuiRoadEditorCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +222,15 @@ public coGuiRoadEditorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiRoadEditorCtrl ts)
+        public static implicit operator string(coGuiRoadEditorCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +250,7 @@ public coGuiRoadEditorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiRoadEditorCtrl ts)
+        public static implicit operator int(coGuiRoadEditorCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +271,7 @@ public coGuiRoadEditorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiRoadEditorCtrl ts)
+        public static implicit operator uint(coGuiRoadEditorCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,140 +286,95 @@ public coGuiRoadEditorCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiRoadEditorCtrl(ts);
             }
-public float DefaultWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".DefaultWidth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".DefaultWidth", value.AsString());
-          }
-       }
-public ColorI HoverNodeColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".HoverNodeColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".HoverNodeColor", value.AsString());
-          }
-       }
-public ColorI HoverSplineColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".HoverSplineColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".HoverSplineColor", value.AsString());
-          }
-       }
-public bool isDirty
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isDirty").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isDirty", value.AsString());
-          }
-       }
-public String materialName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".materialName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".materialName", value.AsString());
-          }
-       }
-public ColorI SelectedSplineColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".SelectedSplineColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".SelectedSplineColor", value.AsString());
-          }
-       }
-/// <summary>
-/// ( GuiRoadEditorCtrl, deleteNode, void, 2, 2, deleteNode() )
-/// 
-/// </summary>
-public  void deleteNode(){
-TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_deleteNode(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, deleteRoad, void, 2, 2,  )
-/// 
-/// </summary>
-public  void deleteRoad(){
-TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_deleteRoad(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, getMode, const char*, 2, 2,  )
-/// 
-/// </summary>
-public  string getMode(){
-return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getMode(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, getNodePosition, const char*, 2, 2,  )
-/// 
-/// </summary>
-public  string getNodePosition(){
-return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getNodePosition(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, getNodeWidth, F32, 2, 2,  )
-/// 
-/// </summary>
-public  float getNodeWidth(){
-return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getNodeWidth(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, getSelectedNode, S32, 2, 2,  )
-/// 
-/// </summary>
-public  int getSelectedNode(){
-return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getSelectedNode(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, getSelectedRoad, const char*, 2, 2,  )
-/// 
-/// </summary>
-public  string getSelectedRoad(){
-return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getSelectedRoad(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, setNodePosition, void, 3, 3,  )
-/// 
-/// </summary>
-public  void setNodePosition(string a2){
-TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_setNodePosition(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, setNodeWidth, void, 3, 3,  )
-/// 
-/// </summary>
-public  void setNodeWidth(string a2){
-TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_setNodeWidth(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiRoadEditorCtrl, setSelectedRoad, void, 2, 3,  )
-/// 
-/// </summary>
-public  void setSelectedRoad(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_setSelectedRoad(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, deleteNode, void, 2, 2, deleteNode() )
+        /// 
+        /// </summary>
+        public void deleteNode()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_deleteNode(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, deleteRoad, void, 2, 2,  )
+        /// 
+        /// </summary>
+        public void deleteRoad()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_deleteRoad(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, getMode, const char*, 2, 2,  )
+        /// 
+        /// </summary>
+        public string getMode()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getMode(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, getNodePosition, const char*, 2, 2,  )
+        /// 
+        /// </summary>
+        public string getNodePosition()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getNodePosition(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, getNodeWidth, F32, 2, 2,  )
+        /// 
+        /// </summary>
+        public float getNodeWidth()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getNodeWidth(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, getSelectedNode, S32, 2, 2,  )
+        /// 
+        /// </summary>
+        public int getSelectedNode()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getSelectedNode(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, getSelectedRoad, const char*, 2, 2,  )
+        /// 
+        /// </summary>
+        public string getSelectedRoad()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_getSelectedRoad(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, setNodePosition, void, 3, 3,  )
+        /// 
+        /// </summary>
+        public void setNodePosition(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_setNodePosition(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, setNodeWidth, void, 3, 3,  )
+        /// 
+        /// </summary>
+        public void setNodeWidth(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_setNodeWidth(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiRoadEditorCtrl, setSelectedRoad, void, 2, 3,  )
+        /// 
+        /// </summary>
+        public void setSelectedRoad(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRoadEditorCtrl_setSelectedRoad(_mSimObjectId, a2);
+            }
+        }
+    }

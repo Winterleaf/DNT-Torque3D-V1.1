@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSceneObject))]
-    public class coSceneObject: coNetObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoSceneObject))]
+    public class coSceneObject : coNetObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSceneObject(string simobjectid) : base(simobjectid){ }
+        public coSceneObject(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSceneObject(uint simobjectid): base(simobjectid){ }
+        public coSceneObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSceneObject(int simobjectid): base(simobjectid){ }
+        public coSceneObject(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Controls client-side rendering of the object.\n     @see isRenderable()\n 
+        /// </summary>
+        public bool isRenderEnabled
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isRenderEnabled").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isRenderEnabled", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines if the object may be selected from wihin the Tools.\n     @see isSelectable()\n 
+        /// </summary>
+        public bool isSelectionEnabled
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isSelectionEnabled").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isSelectionEnabled", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Node we are mounted to. 
+        /// </summary>
+        public int mountNode
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mountNode").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mountNode", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief PersistentID of object we are mounted to.\n\n     Unlike the SimObjectID that is determined at run time, the PersistentID of an object is saved with the level/mission and      may be used to form a link between objects. 
+        /// </summary>
+        public int mountPID
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mountPID").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mountPID", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Position we are mounted at ( object space of our mount object ). 
+        /// </summary>
+        public TransformF mountPos
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mountPos").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mountPos", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Rotation we are mounted at ( object space of our mount object ). 
+        /// </summary>
+        public TransformF mountRot
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mountRot").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mountRot", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Object world position. 
+        /// </summary>
+        public TransformF position
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".position").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".position", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Object world orientation. 
+        /// </summary>
+        public TransformF rotation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotation").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Object world scale. 
+        /// </summary>
+        public Point3F scale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scale", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +217,9 @@ public coSceneObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +227,17 @@ public coSceneObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +249,15 @@ public coSceneObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSceneObject ts)
+        public static implicit operator string(coSceneObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +277,7 @@ public coSceneObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSceneObject ts)
+        public static implicit operator int(coSceneObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +298,7 @@ public coSceneObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSceneObject ts)
+        public static implicit operator uint(coSceneObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,311 +313,261 @@ public coSceneObject(int simobjectid): base(simobjectid){ }
             {
             return new coSceneObject(ts);
             }
-public bool isRenderEnabled
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isRenderEnabled").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isRenderEnabled", value.AsString());
-          }
-       }
-public bool isSelectionEnabled
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isSelectionEnabled").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isSelectionEnabled", value.AsString());
-          }
-       }
-public int mountNode
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mountNode").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mountNode", value.AsString());
-          }
-       }
-public int mountPID
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mountPID").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mountPID", value.AsString());
-          }
-       }
-public TransformF mountPos
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mountPos").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mountPos", value.AsString());
-          }
-       }
-public TransformF mountRot
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mountRot").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mountRot", value.AsString());
-          }
-       }
-public TransformF position
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".position").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".position", value.AsString());
-          }
-       }
-public TransformF rotation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotation").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotation", value.AsString());
-          }
-       }
-public Point3F scale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scale", value.AsString());
-          }
-       }
-/// <summary>
-/// Get Euler rotation of this object.
-///    @return the orientation of the object in the form of rotations around the 
-///    X, Y and Z axes in degrees. )
-/// 
-/// </summary>
-public  Point3F getEulerRotation(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getEulerRotation(_mSimObjectId));
-}
-/// <summary>
-/// Get the direction this object is facing.
-///    @return a vector indicating the direction this object is facing.
-///    @note This is the object's y axis. )
-/// 
-/// </summary>
-public  Point3F getForwardVector(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getForwardVector(_mSimObjectId));
-}
-/// <summary>
-/// Get the object's inverse transform.
-///    @return the inverse transform of the object )
-/// 
-/// </summary>
-public  TransformF getInverseTransform(){
-return new TransformF ( TorqueScriptTemplate.m_ts.fnSceneObject_getInverseTransform(_mSimObjectId));
-}
-/// <summary>
-/// Get the object mounted at a particular slot.
-///    @param slot mount slot index to query
-///    @return ID of the object mounted in the slot, or 0 if no object. )
-/// 
-/// </summary>
-public  int getMountedObject(int slot){
-return TorqueScriptTemplate.m_ts.fnSceneObject_getMountedObject(_mSimObjectId, slot);
-}
-/// <summary>
-/// Get the number of objects mounted to us.
-///    @return the number of mounted objects. )
-/// 
-/// </summary>
-public  int getMountedObjectCount(){
-return TorqueScriptTemplate.m_ts.fnSceneObject_getMountedObjectCount(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the mount node index of the object mounted at our given slot.
-///    @param slot mount slot index to query
-///    @return index of the mount node used by the object mounted in this slot. )
-/// 
-/// </summary>
-public  int getMountedObjectNode(int slot){
-return TorqueScriptTemplate.m_ts.fnSceneObject_getMountedObjectNode(_mSimObjectId, slot);
-}
-/// <summary>
-/// @brief Get the object mounted at our given node index.
-///    @param node mount node index to query
-///    @return ID of the first object mounted at the node, or 0 if none found. )
-/// 
-/// </summary>
-public  int getMountNodeObject(int node){
-return TorqueScriptTemplate.m_ts.fnSceneObject_getMountNodeObject(_mSimObjectId, node);
-}
-/// <summary>
-/// Get the object's bounding box (relative to the object's origin).
-///    @return six fields, two Point3Fs, containing the min and max points of the 
-///    objectbox. )
-/// 
-/// </summary>
-public  Box3F getObjectBox(){
-return new Box3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getObjectBox(_mSimObjectId));
-}
-/// <summary>
-/// @brief Get the object we are mounted to.
-///    @return the SimObjectID of the object we're mounted to, or 0 if not mounted. )
-/// 
-/// </summary>
-public  int getObjectMount(){
-return TorqueScriptTemplate.m_ts.fnSceneObject_getObjectMount(_mSimObjectId);
-}
-/// <summary>
-/// Get the object's world position.
-///    @return the current world position of the object )
-/// 
-/// </summary>
-public  Point3F getPosition(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getPosition(_mSimObjectId));
-}
-/// <summary>
-/// Get the right vector of the object.
-///    @return a vector indicating the right direction of this object.
-///    @note This is the object's x axis. )
-/// 
-/// </summary>
-public  Point3F getRightVector(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getRightVector(_mSimObjectId));
-}
-/// <summary>
-/// Get the object's scale.
-///    @return object scale as a Point3F )
-/// 
-/// </summary>
-public  Point3F getScale(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getScale(_mSimObjectId));
-}
-/// <summary>
-/// Get the object's transform.
-///    @return the current transform of the object )
-/// 
-/// </summary>
-public  TransformF getTransform(){
-return new TransformF ( TorqueScriptTemplate.m_ts.fnSceneObject_getTransform(_mSimObjectId));
-}
-/// <summary>
-/// Return the type mask for this object.
-///    @return The numeric type mask for the object. )
-/// 
-/// </summary>
-public  int getType(){
-return TorqueScriptTemplate.m_ts.fnSceneObject_getType(_mSimObjectId);
-}
-/// <summary>
-/// Get the up vector of the object.
-///    @return a vector indicating the up direction of this object.
-///    @note This is the object's z axis. )
-/// 
-/// </summary>
-public  Point3F getUpVector(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getUpVector(_mSimObjectId));
-}
-/// <summary>
-/// Get the object's world bounding box.
-///    @return six fields, two Point3Fs, containing the min and max points of the 
-///    worldbox. )
-/// 
-/// </summary>
-public  Box3F getWorldBox(){
-return new Box3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getWorldBox(_mSimObjectId));
-}
-/// <summary>
-/// Get the center of the object's world bounding box.
-///    @return the center of the world bounding box for this object. )
-/// 
-/// </summary>
-public  Point3F getWorldBoxCenter(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnSceneObject_getWorldBoxCenter(_mSimObjectId));
-}
-/// <summary>
-/// Check if this object has a global bounds set.
-///    If global bounds are set to be true, then the object is assumed to have an 
-///    infinitely large bounding box for collision and rendering purposes.
-///    @return true if the object has a global bounds. )
-/// 
-/// </summary>
-public  bool isGlobalBounds(){
-return TorqueScriptTemplate.m_ts.fnSceneObject_isGlobalBounds(_mSimObjectId);
-}
-/// <summary>
-/// @brief Check if we are mounted to another object.
-///    @return true if mounted to another object, false if not mounted. )
-/// 
-/// </summary>
-public  bool isMounted(){
-return TorqueScriptTemplate.m_ts.fnSceneObject_isMounted(_mSimObjectId);
-}
-/// <summary>
-/// @brief Mount objB to this object at the desired slot with optional transform.
-/// 
-///    @param objB  Object to mount onto us
-///    @param slot  Mount slot ID
-///    @param txfm (optional) mount offset transform
-///    @return true if successful, false if failed (objB is not valid) )
-/// 
-/// </summary>
-public  bool mountObject(string objB, int slot, TransformF txfm){
-return TorqueScriptTemplate.m_ts.fnSceneObject_mountObject(_mSimObjectId, objB, slot, txfm.AsString());
-}
-/// <summary>
-/// Set the object's scale.
-///    @param scale object scale to set )
-/// 
-/// </summary>
-public  void setScale(Point3F scale){
-TorqueScriptTemplate.m_ts.fnSceneObject_setScale(_mSimObjectId, scale.AsString());
-}
-/// <summary>
-/// Set the object's transform (orientation and position).
-///    @param txfm object transform to set )
-/// 
-/// </summary>
-public  void setTransform(TransformF txfm){
-TorqueScriptTemplate.m_ts.fnSceneObject_setTransform(_mSimObjectId, txfm.AsString());
-}
-/// <summary>
-/// Unmount us from the currently mounted object if any. )
-/// 
-/// </summary>
-public  void unmount(){
-TorqueScriptTemplate.m_ts.fnSceneObject_unmount(_mSimObjectId);
-}
-/// <summary>
-/// @brief Unmount an object from ourselves.
-/// 
-///    @param target object to unmount
-///    @return true if successful, false if failed )
-/// 
-/// </summary>
-public  bool unmountObject(string target){
-return TorqueScriptTemplate.m_ts.fnSceneObject_unmountObject(_mSimObjectId, target);
-}
-}}
+
+        /// <summary>
+        /// Get Euler rotation of this object.
+        ///    @return the orientation of the object in the form of rotations around the 
+        ///    X, Y and Z axes in degrees. )
+        /// 
+        /// </summary>
+        public Point3F getEulerRotation()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnSceneObject_getEulerRotation(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the direction this object is facing.
+        ///    @return a vector indicating the direction this object is facing.
+        ///    @note This is the object's y axis. )
+        /// 
+        /// </summary>
+        public Point3F getForwardVector()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnSceneObject_getForwardVector(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the object's inverse transform.
+        ///    @return the inverse transform of the object )
+        /// 
+        /// </summary>
+        public TransformF getInverseTransform()
+            {
+            return new TransformF(TorqueScriptTemplate.m_ts.fnSceneObject_getInverseTransform(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the object mounted at a particular slot.
+        ///    @param slot mount slot index to query
+        ///    @return ID of the object mounted in the slot, or 0 if no object. )
+        /// 
+        /// </summary>
+        public int getMountedObject(int slot)
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_getMountedObject(_mSimObjectId, slot);
+            }
+
+        /// <summary>
+        /// Get the number of objects mounted to us.
+        ///    @return the number of mounted objects. )
+        /// 
+        /// </summary>
+        public int getMountedObjectCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_getMountedObjectCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the mount node index of the object mounted at our given slot.
+        ///    @param slot mount slot index to query
+        ///    @return index of the mount node used by the object mounted in this slot. )
+        /// 
+        /// </summary>
+        public int getMountedObjectNode(int slot)
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_getMountedObjectNode(_mSimObjectId, slot);
+            }
+
+        /// <summary>
+        /// @brief Get the object mounted at our given node index.
+        ///    @param node mount node index to query
+        ///    @return ID of the first object mounted at the node, or 0 if none found. )
+        /// 
+        /// </summary>
+        public int getMountNodeObject(int node)
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_getMountNodeObject(_mSimObjectId, node);
+            }
+
+        /// <summary>
+        /// Get the object's bounding box (relative to the object's origin).
+        ///    @return six fields, two Point3Fs, containing the min and max points of the 
+        ///    objectbox. )
+        /// 
+        /// </summary>
+        public Box3F getObjectBox()
+            {
+            return new Box3F(TorqueScriptTemplate.m_ts.fnSceneObject_getObjectBox(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// @brief Get the object we are mounted to.
+        ///    @return the SimObjectID of the object we're mounted to, or 0 if not mounted. )
+        /// 
+        /// </summary>
+        public int getObjectMount()
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_getObjectMount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the object's world position.
+        ///    @return the current world position of the object )
+        /// 
+        /// </summary>
+        public Point3F getPosition()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnSceneObject_getPosition(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the right vector of the object.
+        ///    @return a vector indicating the right direction of this object.
+        ///    @note This is the object's x axis. )
+        /// 
+        /// </summary>
+        public Point3F getRightVector()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnSceneObject_getRightVector(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the object's scale.
+        ///    @return object scale as a Point3F )
+        /// 
+        /// </summary>
+        public Point3F getScale()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnSceneObject_getScale(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the object's transform.
+        ///    @return the current transform of the object )
+        /// 
+        /// </summary>
+        public TransformF getTransform()
+            {
+            return new TransformF(TorqueScriptTemplate.m_ts.fnSceneObject_getTransform(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Return the type mask for this object.
+        ///    @return The numeric type mask for the object. )
+        /// 
+        /// </summary>
+        public int getType()
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_getType(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the up vector of the object.
+        ///    @return a vector indicating the up direction of this object.
+        ///    @note This is the object's z axis. )
+        /// 
+        /// </summary>
+        public Point3F getUpVector()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnSceneObject_getUpVector(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the object's world bounding box.
+        ///    @return six fields, two Point3Fs, containing the min and max points of the 
+        ///    worldbox. )
+        /// 
+        /// </summary>
+        public Box3F getWorldBox()
+            {
+            return new Box3F(TorqueScriptTemplate.m_ts.fnSceneObject_getWorldBox(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the center of the object's world bounding box.
+        ///    @return the center of the world bounding box for this object. )
+        /// 
+        /// </summary>
+        public Point3F getWorldBoxCenter()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnSceneObject_getWorldBoxCenter(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Check if this object has a global bounds set.
+        ///    If global bounds are set to be true, then the object is assumed to have an 
+        ///    infinitely large bounding box for collision and rendering purposes.
+        ///    @return true if the object has a global bounds. )
+        /// 
+        /// </summary>
+        public bool isGlobalBounds()
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_isGlobalBounds(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Check if we are mounted to another object.
+        ///    @return true if mounted to another object, false if not mounted. )
+        /// 
+        /// </summary>
+        public bool isMounted()
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_isMounted(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Mount objB to this object at the desired slot with optional transform.
+        /// 
+        ///    @param objB  Object to mount onto us
+        ///    @param slot  Mount slot ID
+        ///    @param txfm (optional) mount offset transform
+        ///    @return true if successful, false if failed (objB is not valid) )
+        /// 
+        /// </summary>
+        public bool mountObject(string objB, int slot, TransformF txfm)
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_mountObject(_mSimObjectId, objB, slot, txfm.AsString());
+            }
+
+        /// <summary>
+        /// Set the object's scale.
+        ///    @param scale object scale to set )
+        /// 
+        /// </summary>
+        public void setScale(Point3F scale)
+            {
+            TorqueScriptTemplate.m_ts.fnSceneObject_setScale(_mSimObjectId, scale.AsString());
+            }
+
+        /// <summary>
+        /// Set the object's transform (orientation and position).
+        ///    @param txfm object transform to set )
+        /// 
+        /// </summary>
+        public void setTransform(TransformF txfm)
+            {
+            TorqueScriptTemplate.m_ts.fnSceneObject_setTransform(_mSimObjectId, txfm.AsString());
+            }
+
+        /// <summary>
+        /// Unmount us from the currently mounted object if any. )
+        /// 
+        /// </summary>
+        public void unmount()
+            {
+            TorqueScriptTemplate.m_ts.fnSceneObject_unmount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Unmount an object from ourselves.
+        /// 
+        ///    @param target object to unmount
+        ///    @return true if successful, false if failed )
+        /// 
+        /// </summary>
+        public bool unmountObject(string target)
+            {
+            return TorqueScriptTemplate.m_ts.fnSceneObject_unmountObject(_mSimObjectId, target);
+            }
+        }
+    }

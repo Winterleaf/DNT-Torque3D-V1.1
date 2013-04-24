@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiSeparatorCtrl))]
-    public class coGuiSeparatorCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiSeparatorCtrl))]
+    public class coGuiSeparatorCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSeparatorCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiSeparatorCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSeparatorCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiSeparatorCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSeparatorCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiSeparatorCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int borderMargin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderMargin").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".borderMargin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Optional text label to display. 
+        /// </summary>
+        public String caption
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".caption").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".caption", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool invisible
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".invisible").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".invisible", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Left margin of text label. 
+        /// </summary>
+        public int leftMargin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".leftMargin").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".leftMargin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Orientation of separator. 
+        /// </summary>
+        public GuiSeparatorCtrl__separatorTypeOptions type
+            {
+            get { return (GuiSeparatorCtrl__separatorTypeOptions) Enum.Parse(typeof (GuiSeparatorCtrl__separatorTypeOptions), dnTorque.self.GetVar(_mSimObjectId + ".type")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".type", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiSeparatorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiSeparatorCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiSeparatorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiSeparatorCtrl ts)
+        public static implicit operator string(coGuiSeparatorCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiSeparatorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiSeparatorCtrl ts)
+        public static implicit operator int(coGuiSeparatorCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiSeparatorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiSeparatorCtrl ts)
+        public static implicit operator uint(coGuiSeparatorCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,58 +277,5 @@ public coGuiSeparatorCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiSeparatorCtrl(ts);
             }
-public int borderMargin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".borderMargin").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".borderMargin", value.AsString());
-          }
-       }
-public String caption
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".caption").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".caption", value.AsString());
-          }
-       }
-public bool invisible
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".invisible").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".invisible", value.AsString());
-          }
-       }
-public int leftMargin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".leftMargin").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".leftMargin", value.AsString());
-          }
-       }
-public GuiSeparatorCtrl__separatorTypeOptions type
-       {
-       get
-          {          return (GuiSeparatorCtrl__separatorTypeOptions)Enum.Parse(typeof(GuiSeparatorCtrl__separatorTypeOptions), dnTorque.self.GetVar(_mSimObjectId + ".type"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".type", value.ToString());
-          }
-       }
-}}
+        }
+    }

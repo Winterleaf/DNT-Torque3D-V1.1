@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,82 +44,2341 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
+
+
 #endregion
 
 namespace WinterLeaf.Enums
     {
-public enum  ConsoleLogEntry__Level{ Normal = 0, Warning, Error, NUM_CLASS };
-public enum  OggTheoraDecoder__ETranscoder{ TRANSCODER_Auto, TRANSCODER_Generic, TRANSCODER_SSE2420RGBA, };
-public enum  ForestBrushTool__BrushMode{ Paint = 0, Erase, EraseSelected };
-public enum  GFXTextureArgument{ GFXTA_FIRST = 0, GFXTADiffuse = 0, GFXTACurrent, GFXTATexture, GFXTATFactor, GFXTASpecular, GFXTATemp, GFXTAConstant, GFXTA_COUNT, GFXTAComplement = 0x00000010, GFXTAAlphaReplicate = 0x00000020, };
-public enum  GuiBitmapButtonCtrl__BitmapMode{ BitmapStretched, BitmapCentered, };
-public enum  GuiButtonBaseCtrl__ButtonType{ ButtonTypePush, ButtonTypeCheck, ButtonTypeRadio, };
-public enum  GuiIconButtonCtrl__TextLocation{ TextLocNone, TextLocBottom, TextLocRight, TextLocTop, TextLocLeft, TextLocCenter, };
-public enum  GuiIconButtonCtrl__IconLocation{ IconLocNone, IconLocLeft, IconLocRight, IconLocCenter  };
-public enum  GuiAutoScrollCtrl__Direction{ Up, Down, Left, Right };
-public enum  GuiFrameSetCtrl__FrameState{ FRAME_STATE_ON, FRAME_STATE_OFF, FRAME_STATE_AUTO,  NO_HIT = -1, DEFAULT_BORDER_WIDTH = 4, DEFAULT_COLUMNS = 1, DEFAULT_ROWS = 1, DEFAULT_MIN_FRAME_EXTENT = 64 };
-public enum  GuiScrollCtrl__ScrollBarBehavior{ ScrollBarAlwaysOn = 0, ScrollBarAlwaysOff = 1, ScrollBarDynamic = 2 };
-public enum  GuiSplitContainer__Orientation{ Vertical = 0, Horizontal = 1 };
-public enum  GuiSplitContainer__FixedPanel{ None = 0, FirstPanel = 1, SecondPanel };
-public enum  GuiStackControl__StackingType{ stackingTypeVert, stackingTypeHoriz, stackingTypeDyn };
-public enum  GuiStackControl__HorizontalType{ horizStackLeft = 0, horizStackRight, };
-public enum  GuiStackControl__VerticalType{ vertStackTop, vertStackBottom, };
-public enum  GuiTabBookCtrl__TabPosition{ AlignTop, AlignBottom };
-public enum  GuiColorPickerCtrl__PickMode{ pPallet = 0,		 pHorizColorRange,		 pVertColorRange,		 pHorizColorBrightnessRange, pVertColorBrightnessRange, pBlendColorRange,		 pHorizAlphaRange,		 pVertAlphaRange,		 pDropperBackground		 };
-public enum  GuiGradientCtrl__PickMode{		pHorizColorRange,				pHorizAlphaRange,		 };
-public enum  GuiControl__horizSizingOptions{ horizResizeRight = 0, horizResizeWidth, horizResizeLeft, horizResizeCenter, horizResizeRelative, horizResizeWindowRelative };
-public enum  GuiControl__vertSizingOptions{ vertResizeBottom = 0, vertResizeHeight, vertResizeTop, vertResizeCenter, vertResizeRelative, vertResizeWindowRelative };
-public enum  Docking__DockingType: uint { dockNone = 0x00000000, dockClient = 0x00000001, dockTop = 0x00000002, dockBottom = 0x00000004, dockLeft = 0x00000008, dockRight = 0x00000010, dockInvalid = 0x00000020, dockAny = dockClient | dockTop | dockBottom | dockLeft | dockRight };
-public enum  GuiControlProfile__AlignmentType{ LeftJustify, RightJustify, CenterJustify, TopJustify, BottomJustify };
-public enum  GuiSeparatorCtrl__separatorTypeOptions{ separatorTypeVertical = 0, separatorTypeHorizontal };
-public enum  GizmoMode{ NoneMode = 0, MoveMode, RotateMode, ScaleMode, ModeEnumCount };
-public enum  GizmoAlignment{ World = 0, Object, AlignEnumCount};
-public enum  WorldEditor__DropType{ DropAtOrigin = 0, DropAtCamera, DropAtCameraWithRot, DropBelowCamera, DropAtScreenCenter, DropAtCentroid, DropToTerrain, DropBelowSelection };
-public enum  Material__BlendOp{ None = 0, Mul, Add, AddAlpha, Sub, LerpAlpha, ToneMap, NumBlendTypes };
-public enum  Material__AnimType{ Scroll = 1, Rotate = 2, Wave = 4, Scale = 8, Sequence = 16, };
-public enum  Material__WaveType{ Sin = 0, Triangle, Square, };
-public enum  FontCharset{ TGE_ANSI_CHARSET = 0, TGE_SYMBOL_CHARSET, TGE_SHIFTJIS_CHARSET, TGE_HANGEUL_CHARSET, TGE_HANGUL_CHARSET, TGE_GB2312_CHARSET, TGE_CHINESEBIG5_CHARSET, TGE_OEM_CHARSET, TGE_JOHAB_CHARSET, TGE_HEBREW_CHARSET, TGE_ARABIC_CHARSET, TGE_GREEK_CHARSET, TGE_TURKISH_CHARSET, TGE_VIETNAMESE_CHARSET, TGE_THAI_CHARSET, TGE_EASTEUROPE_CHARSET, TGE_RUSSIAN_CHARSET, TGE_MAC_CHARSET, TGE_BALTIC_CHARSET};
-public enum  PFXRenderTime{ PFXBeforeBin, PFXAfterBin, PFXAfterDiffuse, PFXEndOfFrame, PFXTexGenOnDemand};
-public enum  PFXTargetClear{ PFXTargetClear_None, PFXTargetClear_OnCreate, PFXTargetClear_OnDraw,};
-public enum  ParticleRenderInst__BlendStyle{ BlendUndefined = 0, BlendNormal, BlendAdditive, BlendSubtractive, BlendPremultAlpha, BlendGreyscale, BlendStyle_COUNT, };
-public enum  Marker__SmoothingType{ SmoothingTypeLinear, SmoothingTypeSpline, SmoothingTypeAccelerate, };
-public enum  Marker__KnotType{ KnotTypeNormal, KnotTypePositionOnly, KnotTypeKink, };
-public enum  SFXChannel{ SFXChannelVolume, SFXChannelPitch, SFXChannelPriority, SFXChannelPositionX, SFXChannelPositionY, SFXChannelPositionZ, SFXChannelRotationX, SFXChannelRotationY, SFXChannelRotationZ, SFXChannelVelocityX, SFXChannelVelocityY, SFXChannelVelocityZ, SFXChannelMinDistance, SFXChannelMaxDistance, SFXChannelConeInsideAngle, SFXChannelConeOutsideAngle, SFXChannelConeOutsideVolume, SFXChannelCursor, SFXChannelStatus, SFXChannelUser0, SFXChannelUser1, SFXChannelUser2, SFXChannelUser3,  SFX_NUM_CHANNELS};
-public enum  SFXPlayList__ELoopMode{ LOOP_All, LOOP_Single, };
-public enum  SFXPlayList__ERandomMode{ RANDOM_NotRandom,  RANDOM_StrictRandom,  RANDOM_OrderedRandom, };
-public enum  SFXPlayList__ETransitionMode{ TRANSITION_None, TRANSITION_Wait,  TRANSITION_WaitAll, TRANSITION_Stop,  TRANSITION_StopAll, };
-public enum  SFXPlayList__EReplayMode{ REPLAY_IgnorePlaying,  REPLAY_RestartPlaying,  REPLAY_KeepPlaying,  REPLAY_StartNew, REPLAY_SkipIfPlaying, };
-public enum  SFXPlayList__EStateMode{ STATE_StopInactive,  STATE_PauseInactive,  STATE_IgnoreInactive, };
-public enum  Item__LightType{ NoLight = 0, ConstantLight, PulsingLight, NumLightTypes, };
-public enum  ShapeBaseImageData__LightType{ NoLight = 0, ConstantLight, SpotLight, PulsingLight, WeaponFireLight, NumLightTypes };
-public enum  ShapeBaseImageData__StateData__LoadedState{ IgnoreLoaded, Loaded, NotLoaded, NumLoadedBits = 3 };
-public enum  ShapeBaseImageData__StateData__SpinState{ IgnoreSpin, NoSpin, SpinUp, SpinDown, FullSpin, NumSpinBits = 3 };
-public enum  ShapeBaseImageData__StateData__RecoilState{ NoRecoil, LightRecoil, MediumRecoil, HeavyRecoil, NumRecoilBits = 3 };
-public enum  PhysicsShapeData__SimType{ SimType_ClientOnly, SimType_ServerOnly, SimType_ClientServer, SimType_Bits = 3, };
-public enum  TurretShapeData__FireLinkType{ FireTogether, GroupedFire, IndividualFire, NumFireLinkTypeBits = 2 };
-public enum  ColladaUtils__ImportOptions__eLodType{ DetectDTS = 0, SingleSize, TrailingNumber, NumLodTypes };
-public enum  TypeGFXBlend{ GFXBlendZero,  GFXBlendOne,  GFXBlendSrcColor,  GFXBlendInvSrcColor,  GFXBlendSrcAlpha,  GFXBlendInvSrcAlpha,  GFXBlendDestAlpha,  GFXBlendInvDestAlpha,  GFXBlendDestColor,  GFXBlendInvDestColor,  GFXBlendSrcAlphaSat, };
-public enum  TypeGFXCmpFunc{ GFXCmpNever ,  GFXCmpLess ,  GFXCmpEqual ,  GFXCmpLessEqual ,  GFXCmpGreater ,  GFXCmpNotEqual ,  GFXCmpGreaterEqual ,  GFXCmpAlways , };
-public enum  TypeGFXTextureAddressMode{          GFXAddressWrap ,         GFXAddressMirror ,          GFXAddressClamp ,         GFXAddressBorder ,     GFXAddressMirrorOnce , };
-public enum  TypeGFXTextureFilterType{    GFXTextureFilterNone ,    GFXTextureFilterPoint ,   GFXTextureFilterLinear ,  GFXTextureFilterAnisotropic ,  GFXTextureFilterPyramidalQuad ,  GFXTextureFilterGaussianQuad , };
-public enum  TypeGFXTextureOp{ GFXTOPDisable ,  GFXTOPSelectARG1 ,  GFXTOPSelectARG2 ,  GFXTOPModulate ,  GFXTOPModulate2X ,  GFXTOPModulate4X ,  GFXTOPAdd ,  GFXTOPAddSigned ,  GFXTOPAddSigned2X ,  GFXTOPSubtract ,  GFXTOPAddSmooth ,  GFXTOPBlendDiffuseAlpha ,  GFXTOPBlendTextureAlpha ,  GFXTOPBlendFactorAlpha ,  GFXTOPBlendTextureAlphaPM ,  GFXTOPBlendCURRENTALPHA ,  GFXTOPPreModulate ,  GFXTOPModulateAlphaAddColor ,  GFXTOPModulateColorAddAlpha ,  GFXTOPModulateInvAlphaAddColor ,  GFXTOPModulateInvColorAddAlpha ,  GFXTOPBumpEnvMap ,  GFXTOPBumpEnvMapLuminance ,  GFXTOPDotProduct3 ,  GFXTOPLERP , };
-public enum  TypeGFXTextureArgument{ GFXTADiffuse ,  GFXTACurrent ,  GFXTATexture ,  GFXTATFactor ,  GFXTASpecular ,  GFXTATemp ,  GFXTAConstant ,  OneMinus ,  AlphaReplicate , };
-public enum  TypeGFXTextureTransformFlags{ GFXTTFDisable ,  GFXTTFFCoord1D ,  GFXTTFFCoord2D ,  GFXTTFFCoord3D ,  GFXTTFFCoord4D ,  GFXTTFProjected , };
-public enum  TypeGFXFormat{ GFXFormatR8G8B8 ,  GFXFormatR8G8B8A8 ,  GFXFormatR8G8B8X8 ,  GFXFormatR32F ,  GFXFormatR5G6B5 ,  GFXFormatR5G5B5A1 ,  GFXFormatR5G5B5X1 ,  GFXFormatA4L4 ,  GFXFormatA8L8 ,  GFXFormatA8 ,  GFXFormatL8 ,  GFXFormatDXT1 ,  GFXFormatDXT2 ,  GFXFormatDXT3 ,  GFXFormatDXT4 ,  GFXFormatDXT5 ,  GFXFormatD32 ,  GFXFormatD24X8 ,  GFXFormatD24S8 ,  GFXFormatD24FS8 ,  GFXFormatD16 ,  GFXFormatR32G32B32A32F ,  GFXFormatR16G16B16A16F ,  GFXFormatL16 ,  GFXFormatR16G16B16A16 ,  GFXFormatR16G16 ,  GFXFormatR16F ,  GFXFormatR16G16F ,  GFXFormatR10G10B10A2 , };
-public enum  TypeGFXCullMode{ GFXCullNone ,  GFXCullCW ,  GFXCullCCW , };
-public enum  TypeGFXStencilOp{ GFXStencilOpKeep ,  GFXStencilOpZero ,  GFXStencilOpReplace ,  GFXStencilOpIncrSat ,  GFXStencilOpDecrSat ,  GFXStencilOpInvert ,  GFXStencilOpIncr ,  GFXStencilOpDecr , };
-public enum  TypeGFXBlendOp{ GFXBlendOpAdd ,  GFXBlendOpSubtract ,  GFXBlendOpRevSubtract ,  GFXBlendOpMin ,  GFXBlendOpMax , };
-public enum  TypeSFXDistanceModel{ Linear,  Logarithmic, };
-public enum  TypeTSMeshType{          None,         Bounds,  CollisionMesh,    VisibleMesh, };
-public enum  PxClothAttachment{};
-}
+    /// <summary>
+    /// ConsoleLogEntry__Level
+    /// </summary>
+    public enum ConsoleLogEntry__Level
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        Normal = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Warning,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Error,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NUM_CLASS
+        };
+
+    /// <summary>
+    /// OggTheoraDecoder__ETranscoder
+    /// </summary>
+    public enum OggTheoraDecoder__ETranscoder
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        TRANSCODER_Auto,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TRANSCODER_Generic,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TRANSCODER_SSE2420RGBA,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// ForestBrushTool__BrushMode
+    /// </summary>
+    public enum ForestBrushTool__BrushMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        Paint = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Erase,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        EraseSelected
+        };
+
+    /// <summary>
+    /// GFXTextureArgument
+    /// </summary>
+    public enum GFXTextureArgument
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTA_FIRST = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTADiffuse = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTACurrent,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTATexture,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTATFactor,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTASpecular,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTATemp,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTAConstant,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTA_COUNT,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTAComplement = 0x00000010,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GFXTAAlphaReplicate = 0x00000020,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// GuiBitmapButtonCtrl__BitmapMode
+    /// </summary>
+    public enum GuiBitmapButtonCtrl__BitmapMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        BitmapStretched,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BitmapCentered,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// GuiButtonBaseCtrl__ButtonType
+    /// </summary>
+    public enum GuiButtonBaseCtrl__ButtonType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        ButtonTypePush,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ButtonTypeCheck,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ButtonTypeRadio,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// GuiIconButtonCtrl__TextLocation
+    /// </summary>
+    public enum GuiIconButtonCtrl__TextLocation
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        TextLocNone,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TextLocBottom,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TextLocRight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TextLocTop,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TextLocLeft,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TextLocCenter,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// GuiIconButtonCtrl__IconLocation
+    /// </summary>
+    public enum GuiIconButtonCtrl__IconLocation
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        IconLocNone,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IconLocLeft,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IconLocRight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IconLocCenter
+        };
+
+    /// <summary>
+    /// GuiAutoScrollCtrl__Direction
+    /// </summary>
+    public enum GuiAutoScrollCtrl__Direction
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        Up,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Down,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Left,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Right
+        };
+
+    /// <summary>
+    /// GuiFrameSetCtrl__FrameState
+    /// </summary>
+    public enum GuiFrameSetCtrl__FrameState
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        FRAME_STATE_ON,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        FRAME_STATE_OFF,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        FRAME_STATE_AUTO,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NO_HIT = -1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DEFAULT_BORDER_WIDTH = 4,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DEFAULT_COLUMNS = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DEFAULT_ROWS = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DEFAULT_MIN_FRAME_EXTENT = 64
+        };
+
+    /// <summary>
+    /// GuiScrollCtrl__ScrollBarBehavior
+    /// </summary>
+    public enum GuiScrollCtrl__ScrollBarBehavior
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        ScrollBarAlwaysOn = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ScrollBarAlwaysOff = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ScrollBarDynamic = 2
+        };
+
+    /// <summary>
+    /// GuiSplitContainer__Orientation
+    /// </summary>
+    public enum GuiSplitContainer__Orientation
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        Vertical = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Horizontal = 1
+        };
+
+    /// <summary>
+    /// GuiSplitContainer__FixedPanel
+    /// </summary>
+    public enum GuiSplitContainer__FixedPanel
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        FirstPanel = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SecondPanel
+        };
+
+    /// <summary>
+    /// GuiStackControl__StackingType
+    /// </summary>
+    public enum GuiStackControl__StackingType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        stackingTypeVert,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        stackingTypeHoriz,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        stackingTypeDyn
+        };
+
+    /// <summary>
+    /// GuiStackControl__HorizontalType
+    /// </summary>
+    public enum GuiStackControl__HorizontalType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        horizStackLeft = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        horizStackRight,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// GuiStackControl__VerticalType
+    /// </summary>
+    public enum GuiStackControl__VerticalType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        vertStackTop,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        vertStackBottom,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// GuiTabBookCtrl__TabPosition
+    /// </summary>
+    public enum GuiTabBookCtrl__TabPosition
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        AlignTop,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        AlignBottom
+        };
+
+    /// <summary>
+    /// GuiColorPickerCtrl__PickMode
+    /// </summary>
+    public enum GuiColorPickerCtrl__PickMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        pPallet = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pHorizColorRange,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pVertColorRange,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pHorizColorBrightnessRange,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pVertColorBrightnessRange,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pBlendColorRange,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pHorizAlphaRange,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pVertAlphaRange,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pDropperBackground
+        };
+
+    /// <summary>
+    /// GuiGradientCtrl__PickMode
+    /// </summary>
+    public enum GuiGradientCtrl__PickMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        pHorizColorRange,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        pHorizAlphaRange,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// GuiControl__horizSizingOptions
+    /// </summary>
+    public enum GuiControl__horizSizingOptions
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        horizResizeRight = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        horizResizeWidth,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        horizResizeLeft,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        horizResizeCenter,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        horizResizeRelative,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        horizResizeWindowRelative
+        };
+
+    /// <summary>
+    /// GuiControl__vertSizingOptions
+    /// </summary>
+    public enum GuiControl__vertSizingOptions
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        vertResizeBottom = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        vertResizeHeight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        vertResizeTop,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        vertResizeCenter,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        vertResizeRelative,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        vertResizeWindowRelative
+        };
+
+    /// <summary>
+    /// Docking__DockingType
+    /// </summary>
+    public enum Docking__DockingType : uint
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        dockNone = 0x00000000,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        dockClient = 0x00000001,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        dockTop = 0x00000002,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        dockBottom = 0x00000004,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        dockLeft = 0x00000008,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        dockRight = 0x00000010,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        dockInvalid = 0x00000020,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        dockAny = dockClient | dockTop | dockBottom | dockLeft | dockRight
+        };
+
+    /// <summary>
+    /// GuiControlProfile__AlignmentType
+    /// </summary>
+    public enum GuiControlProfile__AlignmentType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        LeftJustify,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        RightJustify,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        CenterJustify,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TopJustify,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BottomJustify
+        };
+
+    /// <summary>
+    /// GuiSeparatorCtrl__separatorTypeOptions
+    /// </summary>
+    public enum GuiSeparatorCtrl__separatorTypeOptions
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        separatorTypeVertical = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        separatorTypeHorizontal
+        };
+
+    /// <summary>
+    /// GizmoMode
+    /// </summary>
+    public enum GizmoMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        NoneMode = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        MoveMode,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        RotateMode,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ScaleMode,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ModeEnumCount
+        };
+
+    /// <summary>
+    /// GizmoAlignment
+    /// </summary>
+    public enum GizmoAlignment
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        World = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Object,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        AlignEnumCount
+        };
+
+    /// <summary>
+    /// WorldEditor__DropType
+    /// </summary>
+    public enum WorldEditor__DropType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        DropAtOrigin = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DropAtCamera,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DropAtCameraWithRot,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DropBelowCamera,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DropAtScreenCenter,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DropAtCentroid,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DropToTerrain,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        DropBelowSelection
+        };
+
+    /// <summary>
+    /// Material__BlendOp
+    /// </summary>
+    public enum Material__BlendOp
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Mul,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Add,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        AddAlpha,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Sub,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        LerpAlpha,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ToneMap,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NumBlendTypes
+        };
+
+    /// <summary>
+    /// Material__AnimType
+    /// </summary>
+    public enum Material__AnimType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        Scroll = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Rotate = 2,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Wave = 4,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Scale = 8,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Sequence = 16,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// Material__WaveType
+    /// </summary>
+    public enum Material__WaveType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        Sin = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Triangle,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Square,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// FontCharset
+    /// </summary>
+    public enum FontCharset
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_ANSI_CHARSET = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_SYMBOL_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_SHIFTJIS_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_HANGEUL_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_HANGUL_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_GB2312_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_CHINESEBIG5_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_OEM_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_JOHAB_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_HEBREW_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_ARABIC_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_GREEK_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_TURKISH_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_VIETNAMESE_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_THAI_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_EASTEUROPE_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_RUSSIAN_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_MAC_CHARSET,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TGE_BALTIC_CHARSET
+        };
+
+    /// <summary>
+    /// PFXRenderTime
+    /// </summary>
+    public enum PFXRenderTime
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        PFXBeforeBin,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PFXAfterBin,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PFXAfterDiffuse,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PFXEndOfFrame,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PFXTexGenOnDemand
+        };
+
+    /// <summary>
+    /// PFXTargetClear
+    /// </summary>
+    public enum PFXTargetClear
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        PFXTargetClear_None,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PFXTargetClear_OnCreate,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PFXTargetClear_OnDraw,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// ParticleRenderInst__BlendStyle
+    /// </summary>
+    public enum ParticleRenderInst__BlendStyle
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        BlendUndefined = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BlendNormal,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BlendAdditive,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BlendSubtractive,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BlendPremultAlpha,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BlendGreyscale,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BlendStyle_COUNT,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// Marker__SmoothingType
+    /// </summary>
+    public enum Marker__SmoothingType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        SmoothingTypeLinear,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SmoothingTypeSpline,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SmoothingTypeAccelerate,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// Marker__KnotType
+    /// </summary>
+    public enum Marker__KnotType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        KnotTypeNormal,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        KnotTypePositionOnly,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        KnotTypeKink,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// SFXChannel
+    /// </summary>
+    public enum SFXChannel
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelVolume,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelPitch,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelPriority,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelPositionX,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelPositionY,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelPositionZ,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelRotationX,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelRotationY,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelRotationZ,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelVelocityX,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelVelocityY,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelVelocityZ,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelMinDistance,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelMaxDistance,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelConeInsideAngle,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelConeOutsideAngle,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelConeOutsideVolume,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelCursor,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelStatus,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelUser0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelUser1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelUser2,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFXChannelUser3,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SFX_NUM_CHANNELS
+        };
+
+    /// <summary>
+    /// SFXPlayList__ELoopMode
+    /// </summary>
+    public enum SFXPlayList__ELoopMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        LOOP_All,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        LOOP_Single,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// SFXPlayList__ERandomMode
+    /// </summary>
+    public enum SFXPlayList__ERandomMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        RANDOM_NotRandom,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        RANDOM_StrictRandom,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        RANDOM_OrderedRandom,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// SFXPlayList__ETransitionMode
+    /// </summary>
+    public enum SFXPlayList__ETransitionMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        TRANSITION_None,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TRANSITION_Wait,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TRANSITION_WaitAll,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TRANSITION_Stop,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TRANSITION_StopAll,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// SFXPlayList__EReplayMode
+    /// </summary>
+    public enum SFXPlayList__EReplayMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        REPLAY_IgnorePlaying,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        REPLAY_RestartPlaying,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        REPLAY_KeepPlaying,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        REPLAY_StartNew,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        REPLAY_SkipIfPlaying,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// SFXPlayList__EStateMode
+    /// </summary>
+    public enum SFXPlayList__EStateMode
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        STATE_StopInactive,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        STATE_PauseInactive,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        STATE_IgnoreInactive,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// Item__LightType
+    /// </summary>
+    public enum Item__LightType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        NoLight = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ConstantLight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PulsingLight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NumLightTypes,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// PhysicsShapeData__SimType
+    /// </summary>
+    public enum PhysicsShapeData__SimType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        SimType_ClientOnly,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SimType_ServerOnly,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SimType_ClientServer,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SimType_Bits = 3,
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// ShapeBaseImageData__LightType
+    /// </summary>
+    public enum ShapeBaseImageData__LightType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        NoLight = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ConstantLight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SpotLight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PulsingLight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        WeaponFireLight,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NumLightTypes
+        };
+
+    /// <summary>
+    /// ShapeBaseImageData__StateData__LoadedState
+    /// </summary>
+    public enum ShapeBaseImageData__StateData__LoadedState
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        IgnoreLoaded,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Loaded,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NotLoaded,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NumLoadedBits = 3
+        };
+
+    /// <summary>
+    /// ShapeBaseImageData__StateData__SpinState
+    /// </summary>
+    public enum ShapeBaseImageData__StateData__SpinState
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        IgnoreSpin,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NoSpin,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SpinUp,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SpinDown,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        FullSpin,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NumSpinBits = 3
+        };
+
+    /// <summary>
+    /// ShapeBaseImageData__StateData__RecoilState
+    /// </summary>
+    public enum ShapeBaseImageData__StateData__RecoilState
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        NoRecoil,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        LightRecoil,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        MediumRecoil,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        HeavyRecoil,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NumRecoilBits = 3
+        };
+
+    /// <summary>
+    /// TurretShapeData__FireLinkType
+    /// </summary>
+    public enum TurretShapeData__FireLinkType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        FireTogether,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        GroupedFire,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IndividualFire,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NumFireLinkTypeBits = 2
+        };
+
+    /// <summary>
+    /// ColladaUtils__ImportOptions__eLodType
+    /// </summary>
+    public enum ColladaUtils__ImportOptions__eLodType
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        DetectDTS = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        SingleSize,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        TrailingNumber,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        NumLodTypes
+        };
+
+    /// <summary>
+    /// TypeGFXBlend
+    /// </summary>
+    public enum TypeGFXBlend
+        {
+        /// <summary>
+        /// GFXBlendZero
+        /// </summary>
+        GFXBlendZero,
+
+        /// <summary>
+        /// GFXBlendOne
+        /// </summary>
+        GFXBlendOne,
+
+        /// <summary>
+        /// GFXBlendSrcColor
+        /// </summary>
+        GFXBlendSrcColor,
+
+        /// <summary>
+        /// GFXBlendInvSrcColor
+        /// </summary>
+        GFXBlendInvSrcColor,
+
+        /// <summary>
+        /// GFXBlendSrcAlpha
+        /// </summary>
+        GFXBlendSrcAlpha,
+
+        /// <summary>
+        /// GFXBlendInvSrcAlpha
+        /// </summary>
+        GFXBlendInvSrcAlpha,
+
+        /// <summary>
+        /// GFXBlendDestAlpha
+        /// </summary>
+        GFXBlendDestAlpha,
+
+        /// <summary>
+        /// GFXBlendInvDestAlpha
+        /// </summary>
+        GFXBlendInvDestAlpha,
+
+        /// <summary>
+        /// GFXBlendDestColor
+        /// </summary>
+        GFXBlendDestColor,
+
+        /// <summary>
+        /// GFXBlendInvDestColor
+        /// </summary>
+        GFXBlendInvDestColor,
+
+        /// <summary>
+        /// GFXBlendSrcAlphaSat
+        /// </summary>
+        GFXBlendSrcAlphaSat,
+        };
+
+    /// <summary>
+    /// TypeGFXCmpFunc
+    /// </summary>
+    public enum TypeGFXCmpFunc
+        {
+        /// <summary>
+        /// GFXCmpNever
+        /// </summary>
+        GFXCmpNever,
+
+        /// <summary>
+        /// GFXCmpLess
+        /// </summary>
+        GFXCmpLess,
+
+        /// <summary>
+        /// GFXCmpEqual
+        /// </summary>
+        GFXCmpEqual,
+
+        /// <summary>
+        /// GFXCmpLessEqual
+        /// </summary>
+        GFXCmpLessEqual,
+
+        /// <summary>
+        /// GFXCmpGreater
+        /// </summary>
+        GFXCmpGreater,
+
+        /// <summary>
+        /// GFXCmpNotEqual
+        /// </summary>
+        GFXCmpNotEqual,
+
+        /// <summary>
+        /// GFXCmpGreaterEqual
+        /// </summary>
+        GFXCmpGreaterEqual,
+
+        /// <summary>
+        /// GFXCmpAlways
+        /// </summary>
+        GFXCmpAlways,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureAddressMode
+    /// </summary>
+    public enum TypeGFXTextureAddressMode
+        {
+        /// <summary>
+        /// GFXAddressWrap
+        /// </summary>
+        GFXAddressWrap,
+
+        /// <summary>
+        /// GFXAddressMirror
+        /// </summary>
+        GFXAddressMirror,
+
+        /// <summary>
+        /// GFXAddressClamp
+        /// </summary>
+        GFXAddressClamp,
+
+        /// <summary>
+        /// GFXAddressBorder
+        /// </summary>
+        GFXAddressBorder,
+
+        /// <summary>
+        /// GFXAddressMirrorOnce
+        /// </summary>
+        GFXAddressMirrorOnce,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureFilterType
+    /// </summary>
+    public enum TypeGFXTextureFilterType
+        {
+        /// <summary>
+        /// GFXTextureFilterNone
+        /// </summary>
+        GFXTextureFilterNone,
+
+        /// <summary>
+        /// GFXTextureFilterPoint
+        /// </summary>
+        GFXTextureFilterPoint,
+
+        /// <summary>
+        /// GFXTextureFilterLinear
+        /// </summary>
+        GFXTextureFilterLinear,
+
+        /// <summary>
+        /// GFXTextureFilterAnisotropic
+        /// </summary>
+        GFXTextureFilterAnisotropic,
+
+        /// <summary>
+        /// GFXTextureFilterPyramidalQuad
+        /// </summary>
+        GFXTextureFilterPyramidalQuad,
+
+        /// <summary>
+        /// GFXTextureFilterGaussianQuad
+        /// </summary>
+        GFXTextureFilterGaussianQuad,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureOp
+    /// </summary>
+    public enum TypeGFXTextureOp
+        {
+        /// <summary>
+        /// GFXTOPDisable
+        /// </summary>
+        GFXTOPDisable,
+
+        /// <summary>
+        /// GFXTOPSelectARG1
+        /// </summary>
+        GFXTOPSelectARG1,
+
+        /// <summary>
+        /// GFXTOPSelectARG2
+        /// </summary>
+        GFXTOPSelectARG2,
+
+        /// <summary>
+        /// GFXTOPModulate
+        /// </summary>
+        GFXTOPModulate,
+
+        /// <summary>
+        /// GFXTOPModulate2X
+        /// </summary>
+        GFXTOPModulate2X,
+
+        /// <summary>
+        /// GFXTOPModulate4X
+        /// </summary>
+        GFXTOPModulate4X,
+
+        /// <summary>
+        /// GFXTOPAdd
+        /// </summary>
+        GFXTOPAdd,
+
+        /// <summary>
+        /// GFXTOPAddSigned
+        /// </summary>
+        GFXTOPAddSigned,
+
+        /// <summary>
+        /// GFXTOPAddSigned2X
+        /// </summary>
+        GFXTOPAddSigned2X,
+
+        /// <summary>
+        /// GFXTOPSubtract
+        /// </summary>
+        GFXTOPSubtract,
+
+        /// <summary>
+        /// GFXTOPAddSmooth
+        /// </summary>
+        GFXTOPAddSmooth,
+
+        /// <summary>
+        /// GFXTOPBlendDiffuseAlpha
+        /// </summary>
+        GFXTOPBlendDiffuseAlpha,
+
+        /// <summary>
+        /// GFXTOPBlendTextureAlpha
+        /// </summary>
+        GFXTOPBlendTextureAlpha,
+
+        /// <summary>
+        /// GFXTOPBlendFactorAlpha
+        /// </summary>
+        GFXTOPBlendFactorAlpha,
+
+        /// <summary>
+        /// GFXTOPBlendTextureAlphaPM
+        /// </summary>
+        GFXTOPBlendTextureAlphaPM,
+
+        /// <summary>
+        /// GFXTOPBlendCURRENTALPHA
+        /// </summary>
+        GFXTOPBlendCURRENTALPHA,
+
+        /// <summary>
+        /// GFXTOPPreModulate
+        /// </summary>
+        GFXTOPPreModulate,
+
+        /// <summary>
+        /// GFXTOPModulateAlphaAddColor
+        /// </summary>
+        GFXTOPModulateAlphaAddColor,
+
+        /// <summary>
+        /// GFXTOPModulateColorAddAlpha
+        /// </summary>
+        GFXTOPModulateColorAddAlpha,
+
+        /// <summary>
+        /// GFXTOPModulateInvAlphaAddColor
+        /// </summary>
+        GFXTOPModulateInvAlphaAddColor,
+
+        /// <summary>
+        /// GFXTOPModulateInvColorAddAlpha
+        /// </summary>
+        GFXTOPModulateInvColorAddAlpha,
+
+        /// <summary>
+        /// GFXTOPBumpEnvMap
+        /// </summary>
+        GFXTOPBumpEnvMap,
+
+        /// <summary>
+        /// GFXTOPBumpEnvMapLuminance
+        /// </summary>
+        GFXTOPBumpEnvMapLuminance,
+
+        /// <summary>
+        /// GFXTOPDotProduct3
+        /// </summary>
+        GFXTOPDotProduct3,
+
+        /// <summary>
+        /// GFXTOPLERP
+        /// </summary>
+        GFXTOPLERP,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureArgument
+    /// </summary>
+    public enum TypeGFXTextureArgument
+        {
+        /// <summary>
+        /// GFXTADiffuse
+        /// </summary>
+        GFXTADiffuse,
+
+        /// <summary>
+        /// GFXTACurrent
+        /// </summary>
+        GFXTACurrent,
+
+        /// <summary>
+        /// GFXTATexture
+        /// </summary>
+        GFXTATexture,
+
+        /// <summary>
+        /// GFXTATFactor
+        /// </summary>
+        GFXTATFactor,
+
+        /// <summary>
+        /// GFXTASpecular
+        /// </summary>
+        GFXTASpecular,
+
+        /// <summary>
+        /// GFXTATemp
+        /// </summary>
+        GFXTATemp,
+
+        /// <summary>
+        /// GFXTAConstant
+        /// </summary>
+        GFXTAConstant,
+
+        /// <summary>
+        /// OneMinus
+        /// </summary>
+        OneMinus,
+
+        /// <summary>
+        /// AlphaReplicate
+        /// </summary>
+        AlphaReplicate,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureTransformFlags
+    /// </summary>
+    public enum TypeGFXTextureTransformFlags
+        {
+        /// <summary>
+        /// GFXTTFDisable
+        /// </summary>
+        GFXTTFDisable,
+
+        /// <summary>
+        /// GFXTTFFCoord1D
+        /// </summary>
+        GFXTTFFCoord1D,
+
+        /// <summary>
+        /// GFXTTFFCoord2D
+        /// </summary>
+        GFXTTFFCoord2D,
+
+        /// <summary>
+        /// GFXTTFFCoord3D
+        /// </summary>
+        GFXTTFFCoord3D,
+
+        /// <summary>
+        /// GFXTTFFCoord4D
+        /// </summary>
+        GFXTTFFCoord4D,
+
+        /// <summary>
+        /// GFXTTFProjected
+        /// </summary>
+        GFXTTFProjected,
+        };
+
+    /// <summary>
+    /// TypeGFXFormat
+    /// </summary>
+    public enum TypeGFXFormat
+        {
+        /// <summary>
+        /// GFXFormatR8G8B8
+        /// </summary>
+        GFXFormatR8G8B8,
+
+        /// <summary>
+        /// GFXFormatR8G8B8A8
+        /// </summary>
+        GFXFormatR8G8B8A8,
+
+        /// <summary>
+        /// GFXFormatR8G8B8X8
+        /// </summary>
+        GFXFormatR8G8B8X8,
+
+        /// <summary>
+        /// GFXFormatR32F
+        /// </summary>
+        GFXFormatR32F,
+
+        /// <summary>
+        /// GFXFormatR5G6B5
+        /// </summary>
+        GFXFormatR5G6B5,
+
+        /// <summary>
+        /// GFXFormatR5G5B5A1
+        /// </summary>
+        GFXFormatR5G5B5A1,
+
+        /// <summary>
+        /// GFXFormatR5G5B5X1
+        /// </summary>
+        GFXFormatR5G5B5X1,
+
+        /// <summary>
+        /// GFXFormatA4L4
+        /// </summary>
+        GFXFormatA4L4,
+
+        /// <summary>
+        /// GFXFormatA8L8
+        /// </summary>
+        GFXFormatA8L8,
+
+        /// <summary>
+        /// GFXFormatA8
+        /// </summary>
+        GFXFormatA8,
+
+        /// <summary>
+        /// GFXFormatL8
+        /// </summary>
+        GFXFormatL8,
+
+        /// <summary>
+        /// GFXFormatDXT1
+        /// </summary>
+        GFXFormatDXT1,
+
+        /// <summary>
+        /// GFXFormatDXT2
+        /// </summary>
+        GFXFormatDXT2,
+
+        /// <summary>
+        /// GFXFormatDXT3
+        /// </summary>
+        GFXFormatDXT3,
+
+        /// <summary>
+        /// GFXFormatDXT4
+        /// </summary>
+        GFXFormatDXT4,
+
+        /// <summary>
+        /// GFXFormatDXT5
+        /// </summary>
+        GFXFormatDXT5,
+
+        /// <summary>
+        /// GFXFormatD32
+        /// </summary>
+        GFXFormatD32,
+
+        /// <summary>
+        /// GFXFormatD24X8
+        /// </summary>
+        GFXFormatD24X8,
+
+        /// <summary>
+        /// GFXFormatD24S8
+        /// </summary>
+        GFXFormatD24S8,
+
+        /// <summary>
+        /// GFXFormatD24FS8
+        /// </summary>
+        GFXFormatD24FS8,
+
+        /// <summary>
+        /// GFXFormatD16
+        /// </summary>
+        GFXFormatD16,
+
+        /// <summary>
+        /// GFXFormatR32G32B32A32F
+        /// </summary>
+        GFXFormatR32G32B32A32F,
+
+        /// <summary>
+        /// GFXFormatR16G16B16A16F
+        /// </summary>
+        GFXFormatR16G16B16A16F,
+
+        /// <summary>
+        /// GFXFormatL16
+        /// </summary>
+        GFXFormatL16,
+
+        /// <summary>
+        /// GFXFormatR16G16B16A16
+        /// </summary>
+        GFXFormatR16G16B16A16,
+
+        /// <summary>
+        /// GFXFormatR16G16
+        /// </summary>
+        GFXFormatR16G16,
+
+        /// <summary>
+        /// GFXFormatR16F
+        /// </summary>
+        GFXFormatR16F,
+
+        /// <summary>
+        /// GFXFormatR16G16F
+        /// </summary>
+        GFXFormatR16G16F,
+
+        /// <summary>
+        /// GFXFormatR10G10B10A2
+        /// </summary>
+        GFXFormatR10G10B10A2,
+        };
+
+    /// <summary>
+    /// TypeGFXCullMode
+    /// </summary>
+    public enum TypeGFXCullMode
+        {
+        /// <summary>
+        /// GFXCullNone
+        /// </summary>
+        GFXCullNone,
+
+        /// <summary>
+        /// GFXCullCW
+        /// </summary>
+        GFXCullCW,
+
+        /// <summary>
+        /// GFXCullCCW
+        /// </summary>
+        GFXCullCCW,
+        };
+
+    /// <summary>
+    /// TypeGFXStencilOp
+    /// </summary>
+    public enum TypeGFXStencilOp
+        {
+        /// <summary>
+        /// GFXStencilOpKeep
+        /// </summary>
+        GFXStencilOpKeep,
+
+        /// <summary>
+        /// GFXStencilOpZero
+        /// </summary>
+        GFXStencilOpZero,
+
+        /// <summary>
+        /// GFXStencilOpReplace
+        /// </summary>
+        GFXStencilOpReplace,
+
+        /// <summary>
+        /// GFXStencilOpIncrSat
+        /// </summary>
+        GFXStencilOpIncrSat,
+
+        /// <summary>
+        /// GFXStencilOpDecrSat
+        /// </summary>
+        GFXStencilOpDecrSat,
+
+        /// <summary>
+        /// GFXStencilOpInvert
+        /// </summary>
+        GFXStencilOpInvert,
+
+        /// <summary>
+        /// GFXStencilOpIncr
+        /// </summary>
+        GFXStencilOpIncr,
+
+        /// <summary>
+        /// GFXStencilOpDecr
+        /// </summary>
+        GFXStencilOpDecr,
+        };
+
+    /// <summary>
+    /// TypeGFXBlendOp
+    /// </summary>
+    public enum TypeGFXBlendOp
+        {
+        /// <summary>
+        /// GFXBlendOpAdd
+        /// </summary>
+        GFXBlendOpAdd,
+
+        /// <summary>
+        /// GFXBlendOpSubtract
+        /// </summary>
+        GFXBlendOpSubtract,
+
+        /// <summary>
+        /// GFXBlendOpRevSubtract
+        /// </summary>
+        GFXBlendOpRevSubtract,
+
+        /// <summary>
+        /// GFXBlendOpMin
+        /// </summary>
+        GFXBlendOpMin,
+
+        /// <summary>
+        /// GFXBlendOpMax
+        /// </summary>
+        GFXBlendOpMax,
+        };
+
+    /// <summary>
+    /// TypeSFXDistanceModel
+    /// </summary>
+    public enum TypeSFXDistanceModel
+        {
+        /// <summary>
+        /// Linear
+        /// </summary>
+        Linear,
+
+        /// <summary>
+        /// Logarithmic
+        /// </summary>
+        Logarithmic,
+        };
+
+    /// <summary>
+    /// PxClothAttachment
+    /// </summary>
+    public enum PxClothAttachment
+        {
+        /// <summary>
+        /// 
+        /// </summary>
+        };
+
+    /// <summary>
+    /// TypeTSMeshType
+    /// </summary>
+    public enum TypeTSMeshType
+        {
+        /// <summary>
+        /// None
+        /// </summary>
+        None,
+
+        /// <summary>
+        /// Bounds
+        /// </summary>
+        Bounds,
+
+        /// <summary>
+        /// CollisionMesh
+        /// </summary>
+        CollisionMesh,
+
+        /// <summary>
+        /// VisibleMesh
+        /// </summary>
+        VisibleMesh,
+        };
+    }

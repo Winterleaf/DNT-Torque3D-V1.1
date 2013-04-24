@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,163 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoDecalData))]
-    public class coDecalData: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoDecalData))]
+    public class coDecalData : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDecalData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coDecalData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coDecalData(int simobjectid): base(simobjectid){ }
+        public coDecalData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coDecalData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coDecalData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// The angle in degrees used to clip geometry that faces away from the      decal projection direction. 
+        /// </summary>
+        public float clippingAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".clippingAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".clippingAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief LOD value - size in pixels at which decals of this type are      fully faded out.\n\n     This should be a smaller value than #fadeStartPixelSize. 
+        /// </summary>
+        public float fadeEndPixelSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeEndPixelSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeEndPixelSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief LOD value - size in pixels at which decals of this type begin      to fade out.\n\n     This should be a larger value than #fadeEndPixelSize. However, you may      also set this to a negative value to disable lod-based fading. 
+        /// </summary>
+        public float fadeStartPixelSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeStartPixelSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeStartPixelSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Time (in milliseconds) over which to fade out the decal before      deleting it at the end of its lifetime.\n\n     @see lifeSpan 
+        /// </summary>
+        public int fadeTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeTime").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Index of the texture rectangle within the imagemap to use for this decal. 
+        /// </summary>
+        public int frame
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".frame").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".frame", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Time (in milliseconds) before this decal will be automatically deleted. 
+        /// </summary>
+        public int lifeSpan
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifeSpan").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifeSpan", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Material to use for this decal. 
+        /// </summary>
+        public String material
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".material").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".material", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, a random frame from the imagemap is selected for each      instance of the decal. 
+        /// </summary>
+        public bool randomize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".randomize").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".randomize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Default renderPriority for decals of this type (determines draw      order when decals overlap). 
+        /// </summary>
+        public sbyte renderPriority
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderPriority").AsSbyte(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderPriority", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Width and height of the decal in meters before scale is applied. 
+        /// </summary>
+        public float size
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".size").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".size", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Number of columns in the supplied imagemap.\n\n     Use #texRows and #texCols if the imagemap frames are arranged in a      grid; use #textureCoords to manually specify UV coordinates for      irregular sized frames. 
+        /// </summary>
+        public int texCols
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texCols").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texCols", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Number of rows in the supplied imagemap.\n\n     Use #texRows and #texCols if the imagemap frames are arranged in a      grid; use #textureCoords to manually specify UV coordinates for      irregular sized frames. 
+        /// </summary>
+        public int texRows
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texRows").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texRows", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of individual frames in the imagemap (maximum 16). 
+        /// </summary>
+        public int textureCoordCount
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureCoordCount").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureCoordCount", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief An array of RectFs (topleft.x topleft.y extent.x extent.y)      representing the UV coordinates for each frame in the imagemap.\n\n     @note This field should only be set if the imagemap frames are      irregular in size. Otherwise use the #texRows and #texCols fields      and the UV coordinates will be calculated automatically. 
+        /// </summary>
+        public RectF textureCoords
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureCoords").AsRectF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureCoords", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +262,9 @@ public coDecalData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +272,17 @@ public coDecalData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +294,15 @@ public coDecalData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coDecalData ts)
+        public static implicit operator string(coDecalData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +322,7 @@ public coDecalData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coDecalData ts)
+        public static implicit operator int(coDecalData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +343,7 @@ public coDecalData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coDecalData ts)
+        public static implicit operator uint(coDecalData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,170 +358,19 @@ public coDecalData(int simobjectid): base(simobjectid){ }
             {
             return new coDecalData(ts);
             }
-public float clippingAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".clippingAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".clippingAngle", value.AsString());
-          }
-       }
-public float fadeEndPixelSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeEndPixelSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeEndPixelSize", value.AsString());
-          }
-       }
-public float fadeStartPixelSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeStartPixelSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeStartPixelSize", value.AsString());
-          }
-       }
-public int fadeTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeTime").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeTime", value.AsString());
-          }
-       }
-public int frame
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".frame").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".frame", value.AsString());
-          }
-       }
-public int lifeSpan
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifeSpan").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifeSpan", value.AsString());
-          }
-       }
-public String material
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".material").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".material", value.AsString());
-          }
-       }
-public bool randomize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".randomize").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".randomize", value.AsString());
-          }
-       }
-public sbyte renderPriority
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderPriority").AsSbyte();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderPriority", value.AsString());
-          }
-       }
-public float size
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".size").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".size", value.AsString());
-          }
-       }
-public int texCols
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texCols").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texCols", value.AsString());
-          }
-       }
-public int texRows
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texRows").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texRows", value.AsString());
-          }
-       }
-public int textureCoordCount
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textureCoordCount").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureCoordCount", value.AsString());
-          }
-       }
-public RectF textureCoords
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textureCoords").AsRectF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureCoords", value.AsString());
-          }
-       }
-/// <summary>
-/// Recompute the imagemap sub-texture rectangles for this DecalData.
-///    @tsexample
-///    // Inform the decal object to reload its imagemap and frame data.
-///    %decalData.texRows = 4;
-///    %decalData.postApply();
-///    @endtsexample)
-/// 
-/// </summary>
-public  void postApply(){
-TorqueScriptTemplate.m_ts.fnDecalData_postApply(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Recompute the imagemap sub-texture rectangles for this DecalData.
+        ///    @tsexample
+        ///    // Inform the decal object to reload its imagemap and frame data.
+        ///    %decalData.texRows = 4;
+        ///    %decalData.postApply();
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void postApply()
+            {
+            TorqueScriptTemplate.m_ts.fnDecalData_postApply(_mSimObjectId);
+            }
+        }
+    }

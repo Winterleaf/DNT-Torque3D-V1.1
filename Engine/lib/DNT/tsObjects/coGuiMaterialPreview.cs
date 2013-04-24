@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiMaterialPreview))]
-    public class coGuiMaterialPreview: coGuiTSCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiMaterialPreview))]
+    public class coGuiMaterialPreview : coGuiTSCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMaterialPreview(string simobjectid) : base(simobjectid){ }
+        public coGuiMaterialPreview(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMaterialPreview(uint simobjectid): base(simobjectid){ }
+        public coGuiMaterialPreview(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMaterialPreview(int simobjectid): base(simobjectid){ }
+        public coGuiMaterialPreview(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +136,9 @@ public coGuiMaterialPreview(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +146,17 @@ public coGuiMaterialPreview(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +168,15 @@ public coGuiMaterialPreview(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiMaterialPreview ts)
+        public static implicit operator string(coGuiMaterialPreview ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +196,7 @@ public coGuiMaterialPreview(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiMaterialPreview ts)
+        public static implicit operator int(coGuiMaterialPreview ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +217,7 @@ public coGuiMaterialPreview(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiMaterialPreview ts)
+        public static implicit operator uint(coGuiMaterialPreview ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,49 +232,62 @@ public coGuiMaterialPreview(int simobjectid): base(simobjectid){ }
             {
             return new coGuiMaterialPreview(ts);
             }
-/// <summary>
-/// Deletes the preview model.)
-/// 
-/// </summary>
-public  void deleteModel(){
-TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_deleteModel(_mSimObjectId);
-}
-/// <summary>
-/// Resets the viewport to default zoom, pan, rotate and lighting.)
-/// 
-/// </summary>
-public  void reset(){
-TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_reset(_mSimObjectId);
-}
-/// <summary>
-/// Sets the color of the ambient light in the scene.)
-/// 
-/// </summary>
-public  void setAmbientLightColor(ColorF color){
-TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_setAmbientLightColor(_mSimObjectId, color.AsString());
-}
-/// <summary>
-/// Sets the color of the light in the scene.)
-/// 
-/// </summary>
-public  void setLightColor(ColorF color){
-TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_setLightColor(_mSimObjectId, color.AsString());
-}
-/// <summary>
-/// Sets the model to be displayed in this control
-///    @param shapeName Name of the model to display.)
-/// 
-/// </summary>
-public  void setModel(string shapeName){
-TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_setModel(_mSimObjectId, shapeName);
-}
-/// <summary>
-/// Sets the distance at which the camera orbits the object. Clamped to the 
-///    acceptable range defined in the class by min and max orbit distances.
-///    @param distance The distance to set the orbit to (will be clamped).)
-/// 
-/// </summary>
-public  void setOrbitDistance(float distance){
-TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_setOrbitDistance(_mSimObjectId, distance);
-}
-}}
+
+        /// <summary>
+        /// Deletes the preview model.)
+        /// 
+        /// </summary>
+        public void deleteModel()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_deleteModel(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Resets the viewport to default zoom, pan, rotate and lighting.)
+        /// 
+        /// </summary>
+        public void reset()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_reset(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Sets the color of the ambient light in the scene.)
+        /// 
+        /// </summary>
+        public void setAmbientLightColor(ColorF color)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_setAmbientLightColor(_mSimObjectId, color.AsString());
+            }
+
+        /// <summary>
+        /// Sets the color of the light in the scene.)
+        /// 
+        /// </summary>
+        public void setLightColor(ColorF color)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_setLightColor(_mSimObjectId, color.AsString());
+            }
+
+        /// <summary>
+        /// Sets the model to be displayed in this control
+        ///    @param shapeName Name of the model to display.)
+        /// 
+        /// </summary>
+        public void setModel(string shapeName)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_setModel(_mSimObjectId, shapeName);
+            }
+
+        /// <summary>
+        /// Sets the distance at which the camera orbits the object. Clamped to the 
+        ///    acceptable range defined in the class by min and max orbit distances.
+        ///    @param distance The distance to set the orbit to (will be clamped).)
+        /// 
+        /// </summary>
+        public void setOrbitDistance(float distance)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMaterialPreview_setOrbitDistance(_mSimObjectId, distance);
+            }
+        }
+    }

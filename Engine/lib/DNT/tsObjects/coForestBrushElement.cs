@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,154 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoForestBrushElement))]
-    public class coForestBrushElement: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoForestBrushElement))]
+    public class coForestBrushElement : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestBrushElement(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coForestBrushElement(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coForestBrushElement(int simobjectid): base(simobjectid){ }
+        public coForestBrushElement(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coForestBrushElement(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coForestBrushElement(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// The max world space elevation this item will be placed. 
+        /// </summary>
+        public float elevationMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elevationMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elevationMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The min world space elevation this item will be placed. 
+        /// </summary>
+        public float elevationMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elevationMin").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elevationMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The type of ForestItem this element holds placement parameters for. 
+        /// </summary>
+        public coForestItemData forestItemData
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".forestItemData"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".forestItemData", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The probability that this element will be created during an editor brush stroke      is the sum of all element probabilities in the brush divided by the probability      of this element. 
+        /// </summary>
+        public float probability
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".probability").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".probability", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The max rotation in degrees that items will be placed. 
+        /// </summary>
+        public float rotationRange
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotationRange").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotationRange", value.AsString()); }
+            }
+
+        /// <summary>
+        /// An exponent used to bias between the minimum and maximum random sizes. 
+        /// </summary>
+        public float scaleExponent
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scaleExponent").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scaleExponent", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The maximum random size of each item. 
+        /// </summary>
+        public float scaleMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scaleMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scaleMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The minimum random size for each item. 
+        /// </summary>
+        public float scaleMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scaleMin").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scaleMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Max variation in the sink radius. 
+        /// </summary>
+        public float sinkMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sinkMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sinkMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Min variation in the sink radius. 
+        /// </summary>
+        public float sinkMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sinkMin").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sinkMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// This is the radius used to calculate how much to sink the trunk at      its base and is used to sink the tree into the ground when its on a slope. 
+        /// </summary>
+        public float sinkRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sinkRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sinkRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The max surface slope in degrees this item will be placed on. 
+        /// </summary>
+        public float slopeMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".slopeMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".slopeMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The min surface slope in degrees this item will be placed on. 
+        /// </summary>
+        public float slopeMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".slopeMin").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".slopeMin", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +252,9 @@ public coForestBrushElement(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +262,17 @@ public coForestBrushElement(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +284,15 @@ public coForestBrushElement(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coForestBrushElement ts)
+        public static implicit operator string(coForestBrushElement ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +312,7 @@ public coForestBrushElement(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coForestBrushElement ts)
+        public static implicit operator int(coForestBrushElement ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +333,7 @@ public coForestBrushElement(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coForestBrushElement ts)
+        public static implicit operator uint(coForestBrushElement ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,147 +348,5 @@ public coForestBrushElement(int simobjectid): base(simobjectid){ }
             {
             return new coForestBrushElement(ts);
             }
-public float elevationMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elevationMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elevationMax", value.AsString());
-          }
-       }
-public float elevationMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elevationMin").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elevationMin", value.AsString());
-          }
-       }
-public coForestItemData forestItemData
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".forestItemData");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".forestItemData", value.ToString());
-          }
-       }
-public float probability
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".probability").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".probability", value.AsString());
-          }
-       }
-public float rotationRange
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotationRange").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotationRange", value.AsString());
-          }
-       }
-public float scaleExponent
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scaleExponent").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scaleExponent", value.AsString());
-          }
-       }
-public float scaleMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scaleMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scaleMax", value.AsString());
-          }
-       }
-public float scaleMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scaleMin").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scaleMin", value.AsString());
-          }
-       }
-public float sinkMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sinkMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sinkMax", value.AsString());
-          }
-       }
-public float sinkMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sinkMin").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sinkMin", value.AsString());
-          }
-       }
-public float sinkRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sinkRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sinkRadius", value.AsString());
-          }
-       }
-public float slopeMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".slopeMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".slopeMax", value.AsString());
-          }
-       }
-public float slopeMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".slopeMin").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".slopeMin", value.AsString());
-          }
-       }
-}}
+        }
+    }

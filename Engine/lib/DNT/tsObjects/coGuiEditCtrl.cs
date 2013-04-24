@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,136 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiEditCtrl))]
-    public class coGuiEditCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiEditCtrl))]
+    public class coGuiEditCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiEditCtrl(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiEditCtrl(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiEditCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiEditCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiEditCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiEditCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// If true, lines will be drawn extending along the edges of selected objects. 
+        /// </summary>
+        public bool drawBorderLines
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".drawBorderLines").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".drawBorderLines", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, guides will be included in rendering. 
+        /// </summary>
+        public bool drawGuides
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".drawGuides").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".drawGuides", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String editCtrl
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".editCtrl").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".editCtrl", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, rectangle selection will only select controls fully inside the drag rectangle. 
+        /// </summary>
+        public bool fullBoxSelection
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fullBoxSelection").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fullBoxSelection", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String refCtrl
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".refCtrl").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".refCtrl", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Distance in pixels that edge and center snapping will work across. 
+        /// </summary>
+        public int snapSensitivity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snapSensitivity").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snapSensitivity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, edge and center snapping will work against canvas (toplevel control). 
+        /// </summary>
+        public bool snapToCanvas
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snapToCanvas").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snapToCanvas", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, selection centers will snap into alignment when moved or resized. 
+        /// </summary>
+        public bool snapToCenters
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snapToCenters").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snapToCenters", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, edge and center snapping will work against controls. 
+        /// </summary>
+        public bool snapToControls
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snapToControls").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snapToControls", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, selection edges will snap into alignment when moved or resized. 
+        /// </summary>
+        public bool snapToEdges
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snapToEdges").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snapToEdges", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, edge and center snapping will work against guides. 
+        /// </summary>
+        public bool snapToGuides
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snapToGuides").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snapToGuides", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +234,9 @@ public coGuiEditCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +244,17 @@ public coGuiEditCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +266,15 @@ public coGuiEditCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiEditCtrl ts)
+        public static implicit operator string(coGuiEditCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +294,7 @@ public coGuiEditCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiEditCtrl ts)
+        public static implicit operator int(coGuiEditCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +315,7 @@ public coGuiEditCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiEditCtrl ts)
+        public static implicit operator uint(coGuiEditCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,335 +330,275 @@ public coGuiEditCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiEditCtrl(ts);
             }
-public bool drawBorderLines
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".drawBorderLines").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".drawBorderLines", value.AsString());
-          }
-       }
-public bool drawGuides
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".drawGuides").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".drawGuides", value.AsString());
-          }
-       }
-public String editCtrl
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".editCtrl").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".editCtrl", value.AsString());
-          }
-       }
-public bool fullBoxSelection
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fullBoxSelection").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fullBoxSelection", value.AsString());
-          }
-       }
-public String refCtrl
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".refCtrl").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".refCtrl", value.AsString());
-          }
-       }
-public int snapSensitivity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snapSensitivity").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snapSensitivity", value.AsString());
-          }
-       }
-public bool snapToCanvas
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snapToCanvas").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snapToCanvas", value.AsString());
-          }
-       }
-public bool snapToCenters
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snapToCenters").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snapToCenters", value.AsString());
-          }
-       }
-public bool snapToControls
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snapToControls").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snapToControls", value.AsString());
-          }
-       }
-public bool snapToEdges
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snapToEdges").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snapToEdges", value.AsString());
-          }
-       }
-public bool snapToGuides
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snapToGuides").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snapToGuides", value.AsString());
-          }
-       }
-/// <summary>
-/// ( GuiEditCtrl, addNewCtrl, void, 3, 3, (GuiControl ctrl))
-/// 
-/// </summary>
-public  void addNewCtrl(string a2){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_addNewCtrl(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, addSelection, void, 3, 3, selects a control.)
-/// 
-/// </summary>
-public  void addSelection(string a2){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_addSelection(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, bringToFront, void, 2, 2, )
-/// 
-/// </summary>
-public  void bringToFront(){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_bringToFront(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, clearGuides, void, 2, 3, ( [ int axis ] ) - Clear all currently set guide lines. )
-/// 
-/// </summary>
-public  void clearGuides(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_clearGuides(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, clearSelection, void, 2, 2, Clear selected controls list.)
-/// 
-/// </summary>
-public  void clearSelection(){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_clearSelection(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, deleteSelection, void, 2, 2, () - Delete the selected controls.)
-/// 
-/// </summary>
-public  void deleteSelection(){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_deleteSelection(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, fitIntoParents, void, 2, 4, ( bool width=true, bool height=true ) - Fit selected controls into their parents. )
-/// 
-/// </summary>
-public  void fitIntoParents(string a2= "", string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_fitIntoParents(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiEditCtrl, getContentControl, S32, 2, 2, () - Return the toplevel control edited inside the GUI editor. )
-/// 
-/// </summary>
-public  int getContentControl(){
-return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getContentControl(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, getCurrentAddSet, S32, 2, 2, Returns the set to which new controls will be added)
-/// 
-/// </summary>
-public  int getCurrentAddSet(){
-return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getCurrentAddSet(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, getMouseMode, const char*, 2, 2, () - Return the current mouse mode. )
-/// 
-/// </summary>
-public  string getMouseMode(){
-return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getMouseMode(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, getNumSelected, S32, 2, 2, () - Return the number of controls currently selected. )
-/// 
-/// </summary>
-public  int getNumSelected(){
-return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getNumSelected(_mSimObjectId);
-}
-/// <summary>
-/// Gets the set of GUI controls currently selected in the editor. )
-/// 
-/// </summary>
-public  string getSelection(){
-return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getSelection(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, getSelectionGlobalBounds, const char*, 2, 2, () - Returns global bounds of current selection as vector 'x y width height'. )
-/// 
-/// </summary>
-public  string getSelectionGlobalBounds(){
-return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getSelectionGlobalBounds(_mSimObjectId);
-}
-/// <summary>
-/// Gets the GUI controls(s) that are currently in the trash.)
-/// 
-/// </summary>
-public  string getTrash(){
-return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getTrash(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, justify, void, 3, 3, (int mode) )
-/// 
-/// </summary>
-public  void justify(string a2){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_justify(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, loadSelection, void, 2, 3, ( string fileName=null ) - Load selection from file or clipboard.)
-/// 
-/// </summary>
-public  void loadSelection(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_loadSelection(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, moveSelection, void, 4, 4, (int dx, int dy) - Move all controls in the selection by (dx,dy) pixels.)
-/// 
-/// </summary>
-public  void moveSelection(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_moveSelection(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiEditCtrl, pushToBack, void, 2, 2, )
-/// 
-/// </summary>
-public  void pushToBack(){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_pushToBack(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, readGuides, void, 3, 4, ( GuiControl ctrl [, int axis ] ) - Read the guides from the given control. )
-/// 
-/// </summary>
-public  void readGuides(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_readGuides(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiEditCtrl, removeSelection, void, 3, 3, deselects a control.)
-/// 
-/// </summary>
-public  void removeSelection(string a2){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_removeSelection(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, saveSelection, void, 2, 3, ( string fileName=null ) - Save selection to file or clipboard.)
-/// 
-/// </summary>
-public  void saveSelection(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_saveSelection(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, select, void, 3, 3, (GuiControl ctrl))
-/// 
-/// </summary>
-public  void select(string a2){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_select(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, selectAll, void, 2, 2, ())
-/// 
-/// </summary>
-public  void selectAll(){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_selectAll(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, selectChildren, void, 2, 3, ( bool addToSelection=false ) - Select children of currently selected controls. )
-/// 
-/// </summary>
-public  void selectChildren(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_selectChildren(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, selectParents, void, 2, 3, ( bool addToSelection=false ) - Select parents of currently selected controls. )
-/// 
-/// </summary>
-public  void selectParents(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_selectParents(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, setContentControl, void, 3, 3, ( GuiControl ctrl ) - Set the toplevel control to edit in the GUI editor. )
-/// 
-/// </summary>
-public  void setContentControl(string a2){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_setContentControl(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, setCurrentAddSet, void, 3, 3, (GuiControl ctrl))
-/// 
-/// </summary>
-public  void setCurrentAddSet(string a2){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_setCurrentAddSet(_mSimObjectId, a2);
-}
-/// <summary>
-/// (GuiEditCtrl, setSnapToGrid, void, 3, 3, GuiEditCtrl.setSnapToGrid(gridsize))
-/// 
-/// </summary>
-public  void setSnapToGrid(string a2){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_setSnapToGrid(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiEditCtrl, toggle, void, 2, 2, Toggle activation.)
-/// 
-/// </summary>
-public  void toggle(){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_toggle(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiEditCtrl, writeGuides, void, 3, 4, ( GuiControl ctrl [, int axis ] ) - Write the guides to the given control. )
-/// 
-/// </summary>
-public  void writeGuides(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiEditCtrl_writeGuides(_mSimObjectId, a2, a3);
-}
-}}
+
+        /// <summary>
+        /// ( GuiEditCtrl, addNewCtrl, void, 3, 3, (GuiControl ctrl))
+        /// 
+        /// </summary>
+        public void addNewCtrl(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_addNewCtrl(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, addSelection, void, 3, 3, selects a control.)
+        /// 
+        /// </summary>
+        public void addSelection(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_addSelection(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, bringToFront, void, 2, 2, )
+        /// 
+        /// </summary>
+        public void bringToFront()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_bringToFront(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, clearGuides, void, 2, 3, ( [ int axis ] ) - Clear all currently set guide lines. )
+        /// 
+        /// </summary>
+        public void clearGuides(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_clearGuides(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, clearSelection, void, 2, 2, Clear selected controls list.)
+        /// 
+        /// </summary>
+        public void clearSelection()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_clearSelection(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, deleteSelection, void, 2, 2, () - Delete the selected controls.)
+        /// 
+        /// </summary>
+        public void deleteSelection()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_deleteSelection(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, fitIntoParents, void, 2, 4, ( bool width=true, bool height=true ) - Fit selected controls into their parents. )
+        /// 
+        /// </summary>
+        public void fitIntoParents(string a2 = "", string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_fitIntoParents(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, getContentControl, S32, 2, 2, () - Return the toplevel control edited inside the GUI editor. )
+        /// 
+        /// </summary>
+        public int getContentControl()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getContentControl(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, getCurrentAddSet, S32, 2, 2, Returns the set to which new controls will be added)
+        /// 
+        /// </summary>
+        public int getCurrentAddSet()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getCurrentAddSet(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, getMouseMode, const char*, 2, 2, () - Return the current mouse mode. )
+        /// 
+        /// </summary>
+        public string getMouseMode()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getMouseMode(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, getNumSelected, S32, 2, 2, () - Return the number of controls currently selected. )
+        /// 
+        /// </summary>
+        public int getNumSelected()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getNumSelected(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Gets the set of GUI controls currently selected in the editor. )
+        /// 
+        /// </summary>
+        public string getSelection()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getSelection(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, getSelectionGlobalBounds, const char*, 2, 2, () - Returns global bounds of current selection as vector 'x y width height'. )
+        /// 
+        /// </summary>
+        public string getSelectionGlobalBounds()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getSelectionGlobalBounds(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Gets the GUI controls(s) that are currently in the trash.)
+        /// 
+        /// </summary>
+        public string getTrash()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiEditCtrl_getTrash(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, justify, void, 3, 3, (int mode) )
+        /// 
+        /// </summary>
+        public void justify(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_justify(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, loadSelection, void, 2, 3, ( string fileName=null ) - Load selection from file or clipboard.)
+        /// 
+        /// </summary>
+        public void loadSelection(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_loadSelection(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, moveSelection, void, 4, 4, (int dx, int dy) - Move all controls in the selection by (dx,dy) pixels.)
+        /// 
+        /// </summary>
+        public void moveSelection(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_moveSelection(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, pushToBack, void, 2, 2, )
+        /// 
+        /// </summary>
+        public void pushToBack()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_pushToBack(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, readGuides, void, 3, 4, ( GuiControl ctrl [, int axis ] ) - Read the guides from the given control. )
+        /// 
+        /// </summary>
+        public void readGuides(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_readGuides(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, removeSelection, void, 3, 3, deselects a control.)
+        /// 
+        /// </summary>
+        public void removeSelection(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_removeSelection(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, saveSelection, void, 2, 3, ( string fileName=null ) - Save selection to file or clipboard.)
+        /// 
+        /// </summary>
+        public void saveSelection(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_saveSelection(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, select, void, 3, 3, (GuiControl ctrl))
+        /// 
+        /// </summary>
+        public void select(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_select(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, selectAll, void, 2, 2, ())
+        /// 
+        /// </summary>
+        public void selectAll()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_selectAll(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, selectChildren, void, 2, 3, ( bool addToSelection=false ) - Select children of currently selected controls. )
+        /// 
+        /// </summary>
+        public void selectChildren(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_selectChildren(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, selectParents, void, 2, 3, ( bool addToSelection=false ) - Select parents of currently selected controls. )
+        /// 
+        /// </summary>
+        public void selectParents(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_selectParents(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, setContentControl, void, 3, 3, ( GuiControl ctrl ) - Set the toplevel control to edit in the GUI editor. )
+        /// 
+        /// </summary>
+        public void setContentControl(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_setContentControl(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, setCurrentAddSet, void, 3, 3, (GuiControl ctrl))
+        /// 
+        /// </summary>
+        public void setCurrentAddSet(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_setCurrentAddSet(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (GuiEditCtrl, setSnapToGrid, void, 3, 3, GuiEditCtrl.setSnapToGrid(gridsize))
+        /// 
+        /// </summary>
+        public void setSnapToGrid(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_setSnapToGrid(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, toggle, void, 2, 2, Toggle activation.)
+        /// 
+        /// </summary>
+        public void toggle()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_toggle(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiEditCtrl, writeGuides, void, 3, 4, ( GuiControl ctrl [, int axis ] ) - Write the guides to the given control. )
+        /// 
+        /// </summary>
+        public void writeGuides(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiEditCtrl_writeGuides(_mSimObjectId, a2, a3);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,280 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPrecipitation))]
-    public class coPrecipitation: coGameBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoPrecipitation))]
+    public class coPrecipitation : coGameBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPrecipitation(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coPrecipitation(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coPrecipitation(int simobjectid): base(simobjectid){ }
+        public coPrecipitation(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coPrecipitation(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coPrecipitation(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Set to true to enable splash animations when drops collide with other surfaces. 
+        /// </summary>
+        public bool animateSplashes
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animateSplashes").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animateSplashes", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Height (vertical dimension) of the precipitation box. 
+        /// </summary>
+        public float boxHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boxHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boxHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Width and depth (horizontal dimensions) of the precipitation box. 
+        /// </summary>
+        public float boxWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boxWidth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boxWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Allow drops to collide with world objects.\n\n     If #animateSplashes is true, drops that collide with another object      will produce a simple splash animation.\n     @note This can be expensive as each drop will perform a raycast when      it is created to determine where it will hit. 
+        /// </summary>
+        public bool doCollision
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".doCollision").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".doCollision", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Length (in milliseconds) to display each drop frame.\n\n     If #dropAnimateMS = 0, drops select a single random frame at creation      that does not change throughout the drop's lifetime. If #dropAnimateMS       0, each drop cycles through the the available frames in the drop      texture at the given rate. 
+        /// </summary>
+        public int dropAnimateMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dropAnimateMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dropAnimateMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Size of each drop of precipitation. This will scale the texture. 
+        /// </summary>
+        public float dropSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dropSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dropSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The distance at which drops begin to fade out. 
+        /// </summary>
+        public float fadeDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The distance at which drops are completely faded out. 
+        /// </summary>
+        public float fadeDistEnd
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeDistEnd").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeDistEnd", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Controls whether the Precipitation system follows the camera      or remains where it is first placed in the scene.\n\n     Set to true to make it seem like it is raining everywhere in the      level (ie. the Player will always be in the rain). Set to false      to have a single area affected by rain (ie. the Player can move in      and out of the rainy area). 
+        /// </summary>
+        public bool followCam
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".followCam").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".followCam", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to 0 to disable the glow or or use it to control the intensity of each channel. 
+        /// </summary>
+        public ColorF glowIntensity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".glowIntensity").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".glowIntensity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Allow drops to collide with Player objects; only valid if #doCollision is true. 
+        /// </summary>
+        public bool hitPlayers
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hitPlayers").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hitPlayers", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Allow drops to collide with Vehicle objects; only valid if #doCollision is true. 
+        /// </summary>
+        public bool hitVehicles
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hitVehicles").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hitVehicles", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum mass of a drop.\n\n     Drop mass determines how strongly the drop is affected by wind and      turbulence. On creation, the drop will be assigned a random speed      between #minMass and #minMass. 
+        /// </summary>
+        public float maxMass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxMass").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxMass", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum speed at which a drop will fall.\n\n     On creation, the drop will be assigned a random speed between #minSpeed      and #maxSpeed. 
+        /// </summary>
+        public float maxSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Radius at which precipitation drops spiral when turbulence is enabled. 
+        /// </summary>
+        public float maxTurbulence
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxTurbulence").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxTurbulence", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum mass of a drop.\n\n     Drop mass determines how strongly the drop is affected by wind and      turbulence. On creation, the drop will be assigned a random speed      between #minMass and #minMass. 
+        /// </summary>
+        public float minMass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minMass").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minMass", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum speed at which a drop will fall.\n\n     On creation, the drop will be assigned a random speed between #minSpeed      and #maxSpeed. 
+        /// </summary>
+        public float minSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum number of drops allowed to exist in the precipitation      box at any one time.\n\n     The actual number of drops in the effect depends on the current      percentage, which can change over time using modifyStorm(). 
+        /// </summary>
+        public int numDrops
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".numDrops").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".numDrops", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief This enables precipitation rendering during reflection passes.\n\n     @note This is expensive. 
+        /// </summary>
+        public bool reflect
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflect").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflect", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true to include the camera velocity when calculating drop      rotation speed. 
+        /// </summary>
+        public bool rotateWithCamVel
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotateWithCamVel").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotateWithCamVel", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Lifetime of splashes in milliseconds. 
+        /// </summary>
+        public int splashMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Size of each splash animation when a drop collides with another surface. 
+        /// </summary>
+        public float splashSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Speed at which precipitation drops spiral when turbulence is enabled. 
+        /// </summary>
+        public float turbulenceSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".turbulenceSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".turbulenceSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true to enable shading of the drops and splashes by the sun color. 
+        /// </summary>
+        public bool useLighting
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useLighting").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useLighting", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true to make drops true (non axis-aligned) billboards. 
+        /// </summary>
+        public bool useTrueBillboards
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useTrueBillboards").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useTrueBillboards", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Check to enable turbulence. This causes precipitation drops to spiral      while falling. 
+        /// </summary>
+        public bool useTurbulence
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useTurbulence").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useTurbulence", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls whether drops are affected by wind.\n     @see ForestWindEmitter 
+        /// </summary>
+        public bool useWind
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useWind").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useWind", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +379,9 @@ public coPrecipitation(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +389,17 @@ public coPrecipitation(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +411,15 @@ public coPrecipitation(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPrecipitation ts)
+        public static implicit operator string(coPrecipitation ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +439,7 @@ public coPrecipitation(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPrecipitation ts)
+        public static implicit operator int(coPrecipitation ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +460,7 @@ public coPrecipitation(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPrecipitation ts)
+        public static implicit operator uint(coPrecipitation ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,353 +475,63 @@ public coPrecipitation(int simobjectid): base(simobjectid){ }
             {
             return new coPrecipitation(ts);
             }
-public bool animateSplashes
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animateSplashes").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animateSplashes", value.AsString());
-          }
-       }
-public float boxHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boxHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boxHeight", value.AsString());
-          }
-       }
-public float boxWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boxWidth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boxWidth", value.AsString());
-          }
-       }
-public bool doCollision
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".doCollision").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".doCollision", value.AsString());
-          }
-       }
-public int dropAnimateMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dropAnimateMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dropAnimateMS", value.AsString());
-          }
-       }
-public float dropSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dropSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dropSize", value.AsString());
-          }
-       }
-public float fadeDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeDist", value.AsString());
-          }
-       }
-public float fadeDistEnd
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeDistEnd").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeDistEnd", value.AsString());
-          }
-       }
-public bool followCam
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".followCam").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".followCam", value.AsString());
-          }
-       }
-public ColorF glowIntensity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".glowIntensity").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".glowIntensity", value.AsString());
-          }
-       }
-public bool hitPlayers
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hitPlayers").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hitPlayers", value.AsString());
-          }
-       }
-public bool hitVehicles
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hitVehicles").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hitVehicles", value.AsString());
-          }
-       }
-public float maxMass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxMass").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxMass", value.AsString());
-          }
-       }
-public float maxSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxSpeed", value.AsString());
-          }
-       }
-public float maxTurbulence
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxTurbulence").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxTurbulence", value.AsString());
-          }
-       }
-public float minMass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minMass").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minMass", value.AsString());
-          }
-       }
-public float minSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minSpeed", value.AsString());
-          }
-       }
-public int numDrops
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".numDrops").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".numDrops", value.AsString());
-          }
-       }
-public bool reflect
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflect").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflect", value.AsString());
-          }
-       }
-public bool rotateWithCamVel
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotateWithCamVel").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotateWithCamVel", value.AsString());
-          }
-       }
-public int splashMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashMS", value.AsString());
-          }
-       }
-public float splashSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashSize", value.AsString());
-          }
-       }
-public float turbulenceSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".turbulenceSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".turbulenceSpeed", value.AsString());
-          }
-       }
-public bool useLighting
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useLighting").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useLighting", value.AsString());
-          }
-       }
-public bool useTrueBillboards
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useTrueBillboards").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useTrueBillboards", value.AsString());
-          }
-       }
-public bool useTurbulence
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useTurbulence").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useTurbulence", value.AsString());
-          }
-       }
-public bool useWind
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useWind").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useWind", value.AsString());
-          }
-       }
-/// <summary>
-/// Smoothly change the maximum number of drops in the effect (from current 
-///    value to #numDrops * @a percentage).
-///    This method can be used to simulate a storm building or fading in intensity 
-///    as the number of drops in the Precipitation box changes.
-///    @param percentage New maximum number of drops value (as a percentage of 
-///    #numDrops). Valid range is 0-1.
-///    @param seconds Length of time (in seconds) over which to increase the drops 
-///    percentage value. Set to 0 to change instantly.
-///    @tsexample
-///    %percentage = 0.5;  // The percentage, from 0 to 1, of the maximum drops to display
-///    %seconds = 5.0;     // The length of time over which to make the change.
-///    %precipitation.modifyStorm( %percentage, %seconds );
-///    @endtsexample )
-/// 
-/// </summary>
-public  void modifyStorm(float percentage, float seconds){
-TorqueScriptTemplate.m_ts.fnPrecipitation_modifyStorm(_mSimObjectId, percentage, seconds);
-}
-/// <summary>
-/// Sets the maximum number of drops in the effect, as a percentage of #numDrops.
-///    The change occurs instantly (use modifyStorm() to change the number of drops 
-///    over a period of time.
-///    @param percentage New maximum number of drops value (as a percentage of 
-///    #numDrops). Valid range is 0-1.
-///    @tsexample
-///    %percentage = 0.5;  // The percentage, from 0 to 1, of the maximum drops to display
-///    %precipitation.setPercentage( %percentage );
-///    @endtsexample
-///    @see modifyStorm )
-/// 
-/// </summary>
-public  void setPercentage(float percentage){
-TorqueScriptTemplate.m_ts.fnPrecipitation_setPercentage(_mSimObjectId, percentage);
-}
-/// <summary>
-/// Smoothly change the turbulence parameters over a period of time.
-///    @param max New #maxTurbulence value. Set to 0 to disable turbulence.
-///    @param speed New #turbulenceSpeed value.
-///    @param seconds Length of time (in seconds) over which to interpolate the 
-///    turbulence settings. Set to 0 to change instantly.
-///    @tsexample
-///    %turbulence = 0.5;     // Set the new turbulence value. Set to 0 to disable turbulence.
-///    %speed = 5.0;          // The new speed of the turbulance effect.
-///    %seconds = 5.0;        // The length of time over which to make the change.
-///    %precipitation.setTurbulence( %turbulence, %speed, %seconds );
-///    @endtsexample )
-/// 
-/// </summary>
-public  void setTurbulence(float max, float speed, float seconds){
-TorqueScriptTemplate.m_ts.fnPrecipitation_setTurbulence(_mSimObjectId, max, speed, seconds);
-}
-}}
+
+        /// <summary>
+        /// Smoothly change the maximum number of drops in the effect (from current 
+        ///    value to #numDrops * @a percentage).
+        ///    This method can be used to simulate a storm building or fading in intensity 
+        ///    as the number of drops in the Precipitation box changes.
+        ///    @param percentage New maximum number of drops value (as a percentage of 
+        ///    #numDrops). Valid range is 0-1.
+        ///    @param seconds Length of time (in seconds) over which to increase the drops 
+        ///    percentage value. Set to 0 to change instantly.
+        ///    @tsexample
+        ///    %percentage = 0.5;  // The percentage, from 0 to 1, of the maximum drops to display
+        ///    %seconds = 5.0;     // The length of time over which to make the change.
+        ///    %precipitation.modifyStorm( %percentage, %seconds );
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public void modifyStorm(float percentage, float seconds)
+            {
+            TorqueScriptTemplate.m_ts.fnPrecipitation_modifyStorm(_mSimObjectId, percentage, seconds);
+            }
+
+        /// <summary>
+        /// Sets the maximum number of drops in the effect, as a percentage of #numDrops.
+        ///    The change occurs instantly (use modifyStorm() to change the number of drops 
+        ///    over a period of time.
+        ///    @param percentage New maximum number of drops value (as a percentage of 
+        ///    #numDrops). Valid range is 0-1.
+        ///    @tsexample
+        ///    %percentage = 0.5;  // The percentage, from 0 to 1, of the maximum drops to display
+        ///    %precipitation.setPercentage( %percentage );
+        ///    @endtsexample
+        ///    @see modifyStorm )
+        /// 
+        /// </summary>
+        public void setPercentage(float percentage)
+            {
+            TorqueScriptTemplate.m_ts.fnPrecipitation_setPercentage(_mSimObjectId, percentage);
+            }
+
+        /// <summary>
+        /// Smoothly change the turbulence parameters over a period of time.
+        ///    @param max New #maxTurbulence value. Set to 0 to disable turbulence.
+        ///    @param speed New #turbulenceSpeed value.
+        ///    @param seconds Length of time (in seconds) over which to interpolate the 
+        ///    turbulence settings. Set to 0 to change instantly.
+        ///    @tsexample
+        ///    %turbulence = 0.5;     // Set the new turbulence value. Set to 0 to disable turbulence.
+        ///    %speed = 5.0;          // The new speed of the turbulance effect.
+        ///    %seconds = 5.0;        // The length of time over which to make the change.
+        ///    %precipitation.setTurbulence( %turbulence, %speed, %seconds );
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public void setTurbulence(float max, float speed, float seconds)
+            {
+            TorqueScriptTemplate.m_ts.fnPrecipitation_setTurbulence(_mSimObjectId, max, speed, seconds);
+            }
+        }
+    }

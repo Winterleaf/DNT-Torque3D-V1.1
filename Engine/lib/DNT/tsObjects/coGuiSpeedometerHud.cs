@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiSpeedometerHud))]
-    public class coGuiSpeedometerHud: coGuiBitmapCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiSpeedometerHud))]
+    public class coGuiSpeedometerHud : coGuiBitmapCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSpeedometerHud(string simobjectid) : base(simobjectid){ }
+        public coGuiSpeedometerHud(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSpeedometerHud(uint simobjectid): base(simobjectid){ }
+        public coGuiSpeedometerHud(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSpeedometerHud(int simobjectid): base(simobjectid){ }
+        public coGuiSpeedometerHud(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Center of the needle, offset from the GuiSpeedometerHud control top    left corner 
+        /// </summary>
+        public Point2F center
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".center").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".center", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color of the needle 
+        /// </summary>
+        public ColorF color
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Length of the needle from center to end 
+        /// </summary>
+        public float length
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".length").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".length", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Angle (in radians) of the needle when the Vehicle speed is = maxSpeed.    An angle of 0 points right, 90 points up etc). 
+        /// </summary>
+        public float maxAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum Vehicle speed (in Torque units per second) to represent on the    speedo (Vehicle speeds greater than this are clamped to maxSpeed). 
+        /// </summary>
+        public float maxSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Angle (in radians) of the needle when the Vehicle speed is 0. An angle    of 0 points right, 90 points up etc). 
+        /// </summary>
+        public float minAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Length of the needle from center to tail 
+        /// </summary>
+        public float tail
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tail").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tail", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Width of the needle 
+        /// </summary>
+        public float width
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".width").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".width", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +208,9 @@ public coGuiSpeedometerHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +218,17 @@ public coGuiSpeedometerHud(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +240,15 @@ public coGuiSpeedometerHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiSpeedometerHud ts)
+        public static implicit operator string(coGuiSpeedometerHud ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +268,7 @@ public coGuiSpeedometerHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiSpeedometerHud ts)
+        public static implicit operator int(coGuiSpeedometerHud ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +289,7 @@ public coGuiSpeedometerHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiSpeedometerHud ts)
+        public static implicit operator uint(coGuiSpeedometerHud ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,92 +304,5 @@ public coGuiSpeedometerHud(int simobjectid): base(simobjectid){ }
             {
             return new coGuiSpeedometerHud(ts);
             }
-public Point2F center
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".center").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".center", value.AsString());
-          }
-       }
-public ColorF color
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString());
-          }
-       }
-public float length
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".length").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".length", value.AsString());
-          }
-       }
-public float maxAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxAngle", value.AsString());
-          }
-       }
-public float maxSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxSpeed", value.AsString());
-          }
-       }
-public float minAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minAngle", value.AsString());
-          }
-       }
-public float tail
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tail").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tail", value.AsString());
-          }
-       }
-public float width
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".width").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".width", value.AsString());
-          }
-       }
-}}
+        }
+    }

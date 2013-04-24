@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -100,10 +100,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             }
 
         [Torque_Decorations.TorqueCallBack("", "StartupGui", "next", "(this)", 1, 4950, false)]
-        public void StartupGuiNext(string thisobj)
+        public void StartupGuiNext(coGuiBitmapCtrl thisobj)
             {
             // Set us to a blank screen while we load the next one
-            GuiCanvas.setContent("Canvas", "BlankGui");
+            ((coGuiCanvas) "Canvas").setContent("BlankGui");
             // Set our bitmap and reset the done variable
             console.Call(thisobj, "setBitmap", new[] {console.GetVarString(thisobj + ".bitmap[" + console.GetVarString("$StartupIdx") + "]")});
 
@@ -111,7 +111,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // If we have a logo then set it
 
 
-            string stl = SimSet.findObjectByInternalName(thisobj, "StartupLogo", false);
+            string stl = thisobj.findObjectByInternalName("StartupLogo", false);
             if (console.isObject(stl))
                 {
                 if (console.GetVarString(thisobj + ".logo[" + console.GetVarString("$StartupIdx") + "]") != "")
@@ -136,7 +136,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 }
 
 
-            string st2 = SimSet.findObjectByInternalName(thisobj, "StartupLogoSecondary", false);
+            string st2 = thisobj.findObjectByInternalName("StartupLogoSecondary", false);
             if (console.isObject(st2))
                 {
                 if (console.GetVarString(thisobj + ".seclogo[" + console.GetVarString("$StartupIdx") + "]") != "")
@@ -161,7 +161,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 }
 
             console.SetVar("$StartupIdx", console.GetVarInt("$StartupIdx") + 1);
-            GuiCanvas.setContent("Canvas", thisobj);
+            ((coGuiCanvas) "Canvas").setContent(thisobj);
             }
 
         [Torque_Decorations.TorqueCallBack("", "StartupGui", "onDone", "(this)", 1, 4950, false)]

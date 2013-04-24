@@ -45,13 +45,12 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
 
 using System;
-using System.Globalization;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.tsObjects;
@@ -245,7 +244,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     {
                     // We'll need to "skew" this projectile a little bit.  We start by
                     // getting the straight ahead aiming point of the gun
-                    Point3F vec = ShapeBase.getMuzzleVector(obj, slot);
+                    Point3F vec = obj.getMuzzleVector(slot);
                     // Then we'll create a spread matrix by randomly generating x, y, and z
                     // points in a circle
                     Random r = new Random();
@@ -326,7 +325,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     }
                 else
                     {
-                    muzzleVector = new TransformF(ShapeBase.getMuzzleVector(obj, slot));
+                    muzzleVector = new TransformF(obj.getMuzzleVector(slot));
                     }
                 Point3F objectVelocity = obj.getVelocity();
 
@@ -379,7 +378,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     {
                     // We'll need to "skew" this projectile a little bit.  We start by
                     // getting the straight ahead aiming point of the gun
-                    Point3F vec = ShapeBase.getMuzzleVector(obj, slot);
+                    Point3F vec = obj.getMuzzleVector(slot);
                     // Then we'll create a spread matrix by randomly generating x, y, and z
                     // points in a circle
                     Random r = new Random();
@@ -444,7 +443,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
                 ShapeBaseShapeBaseSetInventory(obj, thisobj["ammo"], thisobj["ammo.maxInventory"].AsInt());
 
-                ShapeBase.setImageAmmo(obj, slot, true);
+                obj.setImageAmmo(slot, true);
                 }
             else
                 {
@@ -516,9 +515,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (!console.ParentExecute(thisobj, "onPickup", nsd, new string[] {thisobj, obj, shape, amount}).AsBool())
                 return;
 
-            AudioServerPlay3D("WeaponPickupSound", SceneObject.getTransform(shape));
+            AudioServerPlay3D("WeaponPickupSound", shape.getTransform());
 
-            coItemData image = ShapeBase.getMountedImage(shape, WeaponSlot).ToString(CultureInfo.InvariantCulture);
+            coItemData image = shape.getMountedImage(WeaponSlot);
 
             if (image == 0)
                 return;
@@ -526,7 +525,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (!console.isField(image, "clip") || console.Call(string.Format("{0}.clip", image), "getID") != console.Call(thisobj, "getID"))
                 return;
 
-            bool outOfAmmo = !ShapeBase.getImageAmmo(shape, WeaponSlot);
+            bool outOfAmmo = !shape.getImageAmmo(WeaponSlot);
 
             int amountInClips = 0;
 
@@ -553,11 +552,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             }
 
         [Torque_Decorations.TorqueCallBack("", "Ammo", "onPickup", "(%this, %obj, %shape, %amount, %nameSpaceDepth)", 5, 1900, false)]
-        public void AmmoOnPickup(string thisobj, string obj, string shape, string amount, int nameSpaceDepth)
+        public void AmmoOnPickup(string thisobj, string obj, coSceneObject shape, string amount, int nameSpaceDepth)
             {
             int nsd = nameSpaceDepth + 1;
-            if (console.ParentExecute(thisobj, "onPickup", nsd, new[] {thisobj, obj, shape, amount}).AsBool())
-                AudioServerPlay3D("AmmoPickupSound", SceneObject.getTransform(shape));
+            if (console.ParentExecute(thisobj, "onPickup", nsd, new string[] {thisobj, obj, shape, amount}).AsBool())
+                AudioServerPlay3D("AmmoPickupSound", shape.getTransform());
             }
 
         [Torque_Decorations.TorqueCallBack("", "Ammo", "onInventory", "(%this, %obj, %amount)", 3, 1900, false)]
@@ -570,9 +569,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 if (image <= 0)
                     continue;
 
-
-                if (!console.isObject(image["ammo"]) || console.Call(image[".ammo"], "getID") != console.Call(thisobj, "getID"))
+                if (!console.isObject(image["ammo"]))
                     continue;
+                if (console.Call(image["ammo"], "getID") != console.Call(thisobj, "getID"))
+                    continue;
+
+                //if (!console.isObject(image["ammo"]) || console.Call(image[".ammo"], "getID") != console.Call(thisobj, "getID"))
+                //  continue;
 
                 player.setImageAmmo(i, amount != 0);
 

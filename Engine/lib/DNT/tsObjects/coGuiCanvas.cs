@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiCanvas))]
-    public class coGuiCanvas: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiCanvas))]
+    public class coGuiCanvas : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiCanvas(string simobjectid) : base(simobjectid){ }
+        public coGuiCanvas(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiCanvas(uint simobjectid): base(simobjectid){ }
+        public coGuiCanvas(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiCanvas(int simobjectid): base(simobjectid){ }
+        public coGuiCanvas(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Deal with mouse buttons, even if the cursor is hidden. 
+        /// </summary>
+        public bool alwaysHandleMouseButtons
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alwaysHandleMouseButtons").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alwaysHandleMouseButtons", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The number of GFX fences to use. 
+        /// </summary>
+        public int numFences
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".numFences").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".numFences", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +154,9 @@ public coGuiCanvas(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +164,17 @@ public coGuiCanvas(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +186,15 @@ public coGuiCanvas(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiCanvas ts)
+        public static implicit operator string(coGuiCanvas ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +214,7 @@ public coGuiCanvas(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiCanvas ts)
+        public static implicit operator int(coGuiCanvas ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +235,7 @@ public coGuiCanvas(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiCanvas ts)
+        public static implicit operator uint(coGuiCanvas ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,410 +250,461 @@ public coGuiCanvas(int simobjectid): base(simobjectid){ }
             {
             return new coGuiCanvas(ts);
             }
-public bool alwaysHandleMouseButtons
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alwaysHandleMouseButtons").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alwaysHandleMouseButtons", value.AsString());
-          }
-       }
-public int numFences
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".numFences").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".numFences", value.AsString());
-          }
-       }
-/// <summary>
-/// Translate a coordinate from canvas window-space to screen-space.
-///    @param coordinate The coordinate in window-space.
-///    @return The given coordinate translated to screen-space. )
-/// 
-/// </summary>
-public  Point2I clientToScreen(Point2I coordinate){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiCanvas_clientToScreen(_mSimObjectId, coordinate.AsString()));
-}
-/// <summary>
-/// @brief Turns on the mouse off.
-/// 				   @tsexample
-/// 				   Canvas.cursorOff();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void cursorOff(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_cursorOff(_mSimObjectId);
-}
-/// <summary>
-/// @brief Turns on the mouse cursor.
-/// 				   @tsexample
-/// 				   Canvas.cursorOn();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void cursorOn(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_cursorOn(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the GuiControl which is being used as the content.
-/// 
-/// 				   @tsexample
-/// 				   Canvas.getContent();
-/// 				   @endtsexample
-/// 
-/// 				   @return ID of current content control)
-/// 
-/// </summary>
-public  int getContent(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_getContent(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the current position of the cursor.
-/// 				   @param param Description
-/// 				   @tsexample
-/// 				   %cursorPos = Canvas.getCursorPos();
-/// 				   @endtsexample
-/// 				   @return Screen coordinates of mouse cursor, in format \"X Y\")
-/// 
-/// </summary>
-public  Point2I getCursorPos(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiCanvas_getCursorPos(_mSimObjectId));
-}
-/// <summary>
-/// @brief Returns the dimensions of the canvas
-/// 
-/// 				   @tsexample
-/// 				   %extent = Canvas.getExtent();
-/// 				   @endtsexample
-/// 
-/// 				   @return Width and height of canvas. Formatted as numerical values in a single string \"# #\")
-/// 
-/// </summary>
-public  new  Point2I getExtent(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiCanvas_getExtent(_mSimObjectId));
-}
-/// <summary>
-/// @brief Gets information on the specified mode of this device.
-/// 				   @param modeId Index of the mode to get data from.
-/// 				   @return A video mode string given an adapter and mode index.
-/// 				   @see GuiCanvas::getVideoMode())
-/// 
-/// </summary>
-public  string getMode(int modeId){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_getMode(_mSimObjectId, modeId);
-}
-/// <summary>
-/// @brief Gets the number of modes available on this device.
-/// 
-/// 				   @param param Description
-/// 
-/// 				   @tsexample
-/// 				   %modeCount = Canvas.getModeCount()
-/// 				   @endtsexample
-/// 
-/// 				   @return The number of video modes supported by the device)
-/// 
-/// </summary>
-public  int getModeCount(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_getModeCount(_mSimObjectId);
-}
-/// <summary>
-/// @brief Gets the gui control under the mouse.
-/// 				   @tsexample
-/// 				   %underMouse = Canvas.getMouseControl();
-/// 				   @endtsexample
-/// 
-/// 				   @return ID of the gui control, if one was found. NULL otherwise)
-/// 
-/// </summary>
-public  int getMouseControl(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_getMouseControl(_mSimObjectId);
-}
-/// <summary>
-/// @brief Gets the current screen mode as a string.
-/// 
-/// 				   The return string will contain 5 values (width, height, fullscreen, bitdepth, refreshRate). 
-/// 				   You will need to parse out each one for individual use.
-/// 
-/// 				   @tsexample
-/// 				   %screenWidth = getWord(Canvas.getVideoMode(), 0);
-/// 				   %screenHeight = getWord(Canvas.getVideoMode(), 1);
-/// 				   %isFullscreen = getWord(Canvas.getVideoMode(), 2);
-/// 				   %bitdepth = getWord(Canvas.getVideoMode(), 3);
-/// 				   %refreshRate = getWord(Canvas.getVideoMode(), 4);
-/// 				   @endtsexample
-/// 
-/// 				   @return String formatted with screen width, screen height, screen mode, bit depth, and refresh rate.)
-/// 
-/// </summary>
-public  string getVideoMode(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_getVideoMode(_mSimObjectId);
-}
-/// <summary>
-/// Get the current position of the platform window associated with the canvas.
-///    @return The window position of the canvas in screen-space. )
-/// 
-/// </summary>
-public  Point2I getWindowPosition(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiCanvas_getWindowPosition(_mSimObjectId));
-}
-/// <summary>
-/// @brief Disable rendering of the cursor.
-/// 
-/// 				   @tsexample
-/// 				   Canvas.hideCursor();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void hideCursor(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_hideCursor(_mSimObjectId);
-}
-/// <summary>
-/// @brief Determines if mouse cursor is enabled.
-/// 
-/// 				   @tsexample
-/// 				   // Is cursor on?
-/// 				   if(Canvas.isCursorOn())
-/// 				   	echo(\"Canvas cursor is on\");
-/// 				   @endtsexample
-/// 				   @return Returns true if the cursor is on.)
-/// 
-/// </summary>
-public  bool isCursorOn(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_isCursorOn(_mSimObjectId);
-}
-/// <summary>
-/// @brief Determines if mouse cursor is rendering.
-/// 
-/// 				   @tsexample
-/// 				   // Is cursor rendering?
-/// 				   if(Canvas.isCursorShown())
-/// 				   	echo(\"Canvas cursor is rendering\");
-/// 				   @endtsexample
-/// 				   @return Returns true if the cursor is rendering.)
-/// 
-/// </summary>
-public  bool isCursorShown(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_isCursorShown(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiCanvas, isFullscreen, bool, 2, 2, () - Is this canvas currently fullscreen? )
-/// 
-/// </summary>
-public  bool isFullscreen(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_isFullscreen(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiCanvas, isMaximized, bool, 2, 2, () )
-/// 
-/// </summary>
-public  bool isMaximized(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_isMaximized(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiCanvas, isMinimized, bool, 2, 2, () )
-/// 
-/// </summary>
-public  bool isMinimized(){
-return TorqueScriptTemplate.m_ts.fnGuiCanvas_isMinimized(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiCanvas, maximizeWindow, void, 2, 2, () - maximize this canvas' window. )
-/// 
-/// </summary>
-public  void maximizeWindow(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_maximizeWindow(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiCanvas, minimizeWindow, void, 2, 2, () - minimize this canvas' window. )
-/// 
-/// </summary>
-public  void minimizeWindow(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_minimizeWindow(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiCanvas, popDialog, void, 2, 3, (GuiControl ctrl=NULL)
-/// 			  @hide)
-/// 
-/// </summary>
-public  void popDialog(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_popDialog(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiCanvas, popLayer, void, 2, 3, (int layer) 
-/// 			  @hide)
-/// 
-/// </summary>
-public  void popLayer(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_popLayer(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiCanvas, pushDialog, void, 3, 5, (GuiControl ctrl, int layer=0, bool center=false)
-/// 			  @hide)
-/// 
-/// </summary>
-public  void pushDialog(string a2, string a3= "", string a4= ""){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_pushDialog(_mSimObjectId, a2, a3, a4);
-}
-/// <summary>
-/// @brief This turns on/off front-buffer rendering.
-/// 
-/// 				   @param enable True if all rendering should be done to the front buffer
-/// 
-/// 				   @tsexample
-/// 				   Canvas.renderFront(false);
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void renderFront(bool enable){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_renderFront(_mSimObjectId, enable);
-}
-/// <summary>
-/// @brief Force canvas to redraw.
-///                If the elapsed time is greater than the time since the last paint 
-///                then the repaint will be skipped.
-///                @param elapsedMS The optional elapsed time in milliseconds.
-/// 
-/// 				   @tsexample
-/// 				   Canvas.repaint();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void repaint(int elapsedMS){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_repaint(_mSimObjectId, elapsedMS);
-}
-/// <summary>
-/// @brief Reset the update regions for the canvas.
-/// 
-/// 				   @tsexample
-/// 				   Canvas.reset();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void reset(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_reset(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiCanvas, restoreWindow, void, 2, 2, () - restore this canvas' window. )
-/// 
-/// </summary>
-public  void restoreWindow(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_restoreWindow(_mSimObjectId);
-}
-/// <summary>
-/// Translate a coordinate from screen-space to canvas window-space.
-///    @param coordinate The coordinate in screen-space.
-///    @return The given coordinate translated to window-space. )
-/// 
-/// </summary>
-public  Point2I screenToClient(Point2I coordinate){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiCanvas_screenToClient(_mSimObjectId, coordinate.AsString()));
-}
-/// <summary>
-/// @brief Set the content of the canvas to a specified control.
-/// 
-/// 				   @param ctrl ID or name of GuiControl to set content to
-/// 
-/// 				   @tsexample
-/// 				   Canvas.setContent(PlayGui);
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void setContent(string ctrl){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_setContent(_mSimObjectId, ctrl);
-}
-/// <summary>
-/// @brief Sets the cursor for the canvas.
-/// 
-/// 				   @param cursor Name of the GuiCursor to use
-/// 
-/// 				   @tsexample
-/// 				   Canvas.setCursor(\"DefaultCursor\");
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void setCursor(string cursor){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_setCursor(_mSimObjectId, cursor);
-}
-/// <summary>
-/// ( GuiCanvas, setCursorPos, void, 3, 4, (Point2I pos)
-/// 			  @hide)
-/// 
-/// </summary>
-public  void setCursorPos(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_setCursorPos(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiCanvas, setFocus, void, 2,2, () - Claim OS input focus for this canvas' window.)
-/// 
-/// </summary>
-public  void setFocus(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_setFocus(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiCanvas, setVideoMode, void, 5, 8,
-///                (int width, int height, bool fullscreen, [int bitDepth], [int refreshRate], [int antialiasLevel] )
-///                Change the video mode of this canvas. This method has the side effect of setting the $pref::Video::mode to the new values.
-///                \\param width The screen width to set.
-///                \\param height The screen height to set.
-///                \\param fullscreen Specify true to run fullscreen or false to run in a window
-///                \\param bitDepth [optional] The desired bit-depth. Defaults to the current setting. This parameter is ignored if you are running in a window.
-///                \\param refreshRate [optional] The desired refresh rate. Defaults to the current setting. This parameter is ignored if you are running in a window
-/// 					\\param antialiasLevel [optional] The level of anti-aliasing to apply 0 = none )
-/// 
-/// </summary>
-public  void setVideoMode(string a2, string a3, string a4, string a5= "", string a6= "", string a7= ""){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_setVideoMode(_mSimObjectId, a2, a3, a4, a5, a6, a7);
-}
-/// <summary>
-/// Set the position of the platform window associated with the canvas.
-///    @param position The new position of the window in screen-space. )
-/// 
-/// </summary>
-public  void setWindowPosition(Point2I position){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_setWindowPosition(_mSimObjectId, position.AsString());
-}
-/// <summary>
-/// @brief Change the title of the OS window.
-/// 
-/// 				   @param newTitle String containing the new name
-/// 
-/// 				   @tsexample
-/// 				   Canvas.setWindowTitle(\"Documentation Rocks!\");
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void setWindowTitle(string newTitle){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_setWindowTitle(_mSimObjectId, newTitle);
-}
-/// <summary>
-/// @brief Enable rendering of the cursor.
-/// 
-/// 				   @tsexample
-/// 				   Canvas.showCursor();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void showCursor(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_showCursor(_mSimObjectId);
-}
-/// <summary>
-/// @brief toggle canvas from fullscreen to windowed mode or back.
-/// 
-/// 				   @tsexample
-/// 				   // If we are in windowed mode, the following will put is in fullscreen
-/// 				   Canvas.toggleFullscreen();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void toggleFullscreen(){
-TorqueScriptTemplate.m_ts.fnGuiCanvas_toggleFullscreen(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Translate a coordinate from canvas window-space to screen-space.
+        ///    @param coordinate The coordinate in window-space.
+        ///    @return The given coordinate translated to screen-space. )
+        /// 
+        /// </summary>
+        public Point2I clientToScreen(Point2I coordinate)
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiCanvas_clientToScreen(_mSimObjectId, coordinate.AsString()));
+            }
+
+        /// <summary>
+        /// @brief Turns on the mouse off.
+        /// 				   @tsexample
+        /// 				   Canvas.cursorOff();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void cursorOff()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_cursorOff(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Turns on the mouse cursor.
+        /// 				   @tsexample
+        /// 				   Canvas.cursorOn();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void cursorOn()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_cursorOn(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the GuiControl which is being used as the content.
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.getContent();
+        /// 				   @endtsexample
+        /// 
+        /// 				   @return ID of current content control)
+        /// 
+        /// </summary>
+        public int getContent()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_getContent(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the current position of the cursor.
+        /// 				   @param param Description
+        /// 				   @tsexample
+        /// 				   %cursorPos = Canvas.getCursorPos();
+        /// 				   @endtsexample
+        /// 				   @return Screen coordinates of mouse cursor, in format \"X Y\")
+        /// 
+        /// </summary>
+        public Point2I getCursorPos()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiCanvas_getCursorPos(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// @brief Returns the dimensions of the canvas
+        /// 
+        /// 				   @tsexample
+        /// 				   %extent = Canvas.getExtent();
+        /// 				   @endtsexample
+        /// 
+        /// 				   @return Width and height of canvas. Formatted as numerical values in a single string \"# #\")
+        /// 
+        /// </summary>
+        public new Point2I getExtent()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiCanvas_getExtent(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// @brief Gets information on the specified mode of this device.
+        /// 				   @param modeId Index of the mode to get data from.
+        /// 				   @return A video mode string given an adapter and mode index.
+        /// 				   @see GuiCanvas::getVideoMode())
+        /// 
+        /// </summary>
+        public string getMode(int modeId)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_getMode(_mSimObjectId, modeId);
+            }
+
+        /// <summary>
+        /// @brief Gets the number of modes available on this device.
+        /// 
+        /// 				   @param param Description
+        /// 
+        /// 				   @tsexample
+        /// 				   %modeCount = Canvas.getModeCount()
+        /// 				   @endtsexample
+        /// 
+        /// 				   @return The number of video modes supported by the device)
+        /// 
+        /// </summary>
+        public int getModeCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_getModeCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Gets the gui control under the mouse.
+        /// 				   @tsexample
+        /// 				   %underMouse = Canvas.getMouseControl();
+        /// 				   @endtsexample
+        /// 
+        /// 				   @return ID of the gui control, if one was found. NULL otherwise)
+        /// 
+        /// </summary>
+        public int getMouseControl()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_getMouseControl(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Gets the current screen mode as a string.
+        /// 
+        /// 				   The return string will contain 5 values (width, height, fullscreen, bitdepth, refreshRate). 
+        /// 				   You will need to parse out each one for individual use.
+        /// 
+        /// 				   @tsexample
+        /// 				   %screenWidth = getWord(Canvas.getVideoMode(), 0);
+        /// 				   %screenHeight = getWord(Canvas.getVideoMode(), 1);
+        /// 				   %isFullscreen = getWord(Canvas.getVideoMode(), 2);
+        /// 				   %bitdepth = getWord(Canvas.getVideoMode(), 3);
+        /// 				   %refreshRate = getWord(Canvas.getVideoMode(), 4);
+        /// 				   @endtsexample
+        /// 
+        /// 				   @return String formatted with screen width, screen height, screen mode, bit depth, and refresh rate.)
+        /// 
+        /// </summary>
+        public string getVideoMode()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_getVideoMode(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the current position of the platform window associated with the canvas.
+        ///    @return The window position of the canvas in screen-space. )
+        /// 
+        /// </summary>
+        public Point2I getWindowPosition()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiCanvas_getWindowPosition(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// @brief Disable rendering of the cursor.
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.hideCursor();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void hideCursor()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_hideCursor(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Determines if mouse cursor is enabled.
+        /// 
+        /// 				   @tsexample
+        /// 				   // Is cursor on?
+        /// 				   if(Canvas.isCursorOn())
+        /// 				   	echo(\"Canvas cursor is on\");
+        /// 				   @endtsexample
+        /// 				   @return Returns true if the cursor is on.)
+        /// 
+        /// </summary>
+        public bool isCursorOn()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_isCursorOn(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Determines if mouse cursor is rendering.
+        /// 
+        /// 				   @tsexample
+        /// 				   // Is cursor rendering?
+        /// 				   if(Canvas.isCursorShown())
+        /// 				   	echo(\"Canvas cursor is rendering\");
+        /// 				   @endtsexample
+        /// 				   @return Returns true if the cursor is rendering.)
+        /// 
+        /// </summary>
+        public bool isCursorShown()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_isCursorShown(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, isFullscreen, bool, 2, 2, () - Is this canvas currently fullscreen? )
+        /// 
+        /// </summary>
+        public bool isFullscreen()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_isFullscreen(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, isMaximized, bool, 2, 2, () )
+        /// 
+        /// </summary>
+        public bool isMaximized()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_isMaximized(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, isMinimized, bool, 2, 2, () )
+        /// 
+        /// </summary>
+        public bool isMinimized()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiCanvas_isMinimized(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, maximizeWindow, void, 2, 2, () - maximize this canvas' window. )
+        /// 
+        /// </summary>
+        public void maximizeWindow()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_maximizeWindow(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, minimizeWindow, void, 2, 2, () - minimize this canvas' window. )
+        /// 
+        /// </summary>
+        public void minimizeWindow()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_minimizeWindow(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, popDialog, void, 2, 3, (GuiControl ctrl=NULL)
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public void popDialog(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_popDialog(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, popLayer, void, 2, 3, (int layer) 
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public void popLayer(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_popLayer(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, pushDialog, void, 3, 5, (GuiControl ctrl, int layer=0, bool center=false)
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public void pushDialog(string a2, string a3 = "", string a4 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_pushDialog(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// @brief This turns on/off front-buffer rendering.
+        /// 
+        /// 				   @param enable True if all rendering should be done to the front buffer
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.renderFront(false);
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void renderFront(bool enable)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_renderFront(_mSimObjectId, enable);
+            }
+
+        /// <summary>
+        /// @brief Force canvas to redraw.
+        ///                If the elapsed time is greater than the time since the last paint 
+        ///                then the repaint will be skipped.
+        ///                @param elapsedMS The optional elapsed time in milliseconds.
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.repaint();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void repaint(int elapsedMS)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_repaint(_mSimObjectId, elapsedMS);
+            }
+
+        /// <summary>
+        /// @brief Reset the update regions for the canvas.
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.reset();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void reset()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_reset(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, restoreWindow, void, 2, 2, () - restore this canvas' window. )
+        /// 
+        /// </summary>
+        public void restoreWindow()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_restoreWindow(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Translate a coordinate from screen-space to canvas window-space.
+        ///    @param coordinate The coordinate in screen-space.
+        ///    @return The given coordinate translated to window-space. )
+        /// 
+        /// </summary>
+        public Point2I screenToClient(Point2I coordinate)
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiCanvas_screenToClient(_mSimObjectId, coordinate.AsString()));
+            }
+
+        /// <summary>
+        /// @brief Set the content of the canvas to a specified control.
+        /// 
+        /// 				   @param ctrl ID or name of GuiControl to set content to
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.setContent(PlayGui);
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void setContent(string ctrl)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_setContent(_mSimObjectId, ctrl);
+            }
+
+        /// <summary>
+        /// @brief Sets the cursor for the canvas.
+        /// 
+        /// 				   @param cursor Name of the GuiCursor to use
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.setCursor(\"DefaultCursor\");
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void setCursor(string cursor)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_setCursor(_mSimObjectId, cursor);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, setCursorPos, void, 3, 4, (Point2I pos)
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public void setCursorPos(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_setCursorPos(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, setFocus, void, 2,2, () - Claim OS input focus for this canvas' window.)
+        /// 
+        /// </summary>
+        public void setFocus()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_setFocus(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiCanvas, setVideoMode, void, 5, 8,
+        ///                (int width, int height, bool fullscreen, [int bitDepth], [int refreshRate], [int antialiasLevel] )
+        ///                Change the video mode of this canvas. This method has the side effect of setting the $pref::Video::mode to the new values.
+        ///                \\param width The screen width to set.
+        ///                \\param height The screen height to set.
+        ///                \\param fullscreen Specify true to run fullscreen or false to run in a window
+        ///                \\param bitDepth [optional] The desired bit-depth. Defaults to the current setting. This parameter is ignored if you are running in a window.
+        ///                \\param refreshRate [optional] The desired refresh rate. Defaults to the current setting. This parameter is ignored if you are running in a window
+        /// 					\\param antialiasLevel [optional] The level of anti-aliasing to apply 0 = none )
+        /// 
+        /// </summary>
+        public void setVideoMode(string a2, string a3, string a4, string a5 = "", string a6 = "", string a7 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_setVideoMode(_mSimObjectId, a2, a3, a4, a5, a6, a7);
+            }
+
+        /// <summary>
+        /// Set the position of the platform window associated with the canvas.
+        ///    @param position The new position of the window in screen-space. )
+        /// 
+        /// </summary>
+        public void setWindowPosition(Point2I position)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_setWindowPosition(_mSimObjectId, position.AsString());
+            }
+
+        /// <summary>
+        /// @brief Change the title of the OS window.
+        /// 
+        /// 				   @param newTitle String containing the new name
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.setWindowTitle(\"Documentation Rocks!\");
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void setWindowTitle(string newTitle)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_setWindowTitle(_mSimObjectId, newTitle);
+            }
+
+        /// <summary>
+        /// @brief Enable rendering of the cursor.
+        /// 
+        /// 				   @tsexample
+        /// 				   Canvas.showCursor();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void showCursor()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_showCursor(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief toggle canvas from fullscreen to windowed mode or back.
+        /// 
+        /// 				   @tsexample
+        /// 				   // If we are in windowed mode, the following will put is in fullscreen
+        /// 				   Canvas.toggleFullscreen();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void toggleFullscreen()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiCanvas_toggleFullscreen(_mSimObjectId);
+            }
+        }
+    }

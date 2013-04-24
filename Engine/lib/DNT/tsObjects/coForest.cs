@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoForest))]
-    public class coForest: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoForest))]
+    public class coForest : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForest(string simobjectid) : base(simobjectid){ }
+        public coForest(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForest(uint simobjectid): base(simobjectid){ }
+        public coForest(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForest(int simobjectid): base(simobjectid){ }
+        public coForest(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// The source forest data file. 
+        /// </summary>
+        public String dataFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dataFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dataFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Scalar applied to the farclip distance when Forest renders into a reflection. 
+        /// </summary>
+        public float lodReflectScalar
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lodReflectScalar").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lodReflectScalar", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coForest(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coForest(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coForest(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coForest ts)
+        public static implicit operator string(coForest ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coForest(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coForest ts)
+        public static implicit operator int(coForest ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coForest(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coForest ts)
+        public static implicit operator uint(coForest ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,54 +249,41 @@ public coForest(int simobjectid): base(simobjectid){ }
             {
             return new coForest(ts);
             }
-public String dataFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dataFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dataFile", value.AsString());
-          }
-       }
-public float lodReflectScalar
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lodReflectScalar").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lodReflectScalar", value.AsString());
-          }
-       }
-/// <summary>
-/// (Forest, clear, void, 2, 2, () )
-/// 
-/// </summary>
-public  void clear(){
-TorqueScriptTemplate.m_ts.fnForest_clear(_mSimObjectId);
-}
-/// <summary>
-/// (Forest, isDirty, bool, 2, 2, ())
-/// 
-/// </summary>
-public  bool isDirty(){
-return TorqueScriptTemplate.m_ts.fnForest_isDirty(_mSimObjectId);
-}
-/// <summary>
-/// (Forest, regenCells, void, 2, 2, ())
-/// 
-/// </summary>
-public  void regenCells(){
-TorqueScriptTemplate.m_ts.fnForest_regenCells(_mSimObjectId);
-}
-/// <summary>
-/// ( Forest, saveDataFile, bool, 2, 3, saveDataFile( [path] ) )
-/// 
-/// </summary>
-public  bool saveDataFile(string a2= ""){
-return TorqueScriptTemplate.m_ts.fnForest_saveDataFile(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// (Forest, clear, void, 2, 2, () )
+        /// 
+        /// </summary>
+        public void clear()
+            {
+            TorqueScriptTemplate.m_ts.fnForest_clear(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Forest, isDirty, bool, 2, 2, ())
+        /// 
+        /// </summary>
+        public bool isDirty()
+            {
+            return TorqueScriptTemplate.m_ts.fnForest_isDirty(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Forest, regenCells, void, 2, 2, ())
+        /// 
+        /// </summary>
+        public void regenCells()
+            {
+            TorqueScriptTemplate.m_ts.fnForest_regenCells(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( Forest, saveDataFile, bool, 2, 3, saveDataFile( [path] ) )
+        /// 
+        /// </summary>
+        public bool saveDataFile(string a2 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnForest_saveDataFile(_mSimObjectId, a2);
+            }
+        }
+    }

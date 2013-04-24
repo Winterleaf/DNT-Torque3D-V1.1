@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiMissionAreaCtrl))]
-    public class coGuiMissionAreaCtrl: coGuiBitmapCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiMissionAreaCtrl))]
+    public class coGuiMissionAreaCtrl : coGuiBitmapCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMissionAreaCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiMissionAreaCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMissionAreaCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiMissionAreaCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMissionAreaCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiMissionAreaCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI cameraColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bitmap file for the mission area handles.\n
+        /// </summary>
+        public String handleBitmap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".handleBitmap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".handleBitmap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI missionBoundsColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".missionBoundsColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".missionBoundsColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool squareBitmap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".squareBitmap").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".squareBitmap", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coGuiMissionAreaCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coGuiMissionAreaCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coGuiMissionAreaCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiMissionAreaCtrl ts)
+        public static implicit operator string(coGuiMissionAreaCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coGuiMissionAreaCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiMissionAreaCtrl ts)
+        public static implicit operator int(coGuiMissionAreaCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coGuiMissionAreaCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiMissionAreaCtrl ts)
+        public static implicit operator uint(coGuiMissionAreaCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,62 +268,23 @@ public coGuiMissionAreaCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiMissionAreaCtrl(ts);
             }
-public ColorI cameraColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraColor", value.AsString());
-          }
-       }
-public String handleBitmap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".handleBitmap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".handleBitmap", value.AsString());
-          }
-       }
-public ColorI missionBoundsColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".missionBoundsColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".missionBoundsColor", value.AsString());
-          }
-       }
-public bool squareBitmap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".squareBitmap").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".squareBitmap", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Set the MissionArea to edit.)
-/// 
-/// </summary>
-public  void setMissionArea(string area){
-TorqueScriptTemplate.m_ts.fnGuiMissionAreaCtrl_setMissionArea(_mSimObjectId, area);
-}
-/// <summary>
-/// @brief Update the terrain bitmap.)
-/// 
-/// </summary>
-public  void updateTerrain(){
-TorqueScriptTemplate.m_ts.fnGuiMissionAreaCtrl_updateTerrain(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Set the MissionArea to edit.)
+        /// 
+        /// </summary>
+        public void setMissionArea(string area)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMissionAreaCtrl_setMissionArea(_mSimObjectId, area);
+            }
+
+        /// <summary>
+        /// @brief Update the terrain bitmap.)
+        /// 
+        /// </summary>
+        public void updateTerrain()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiMissionAreaCtrl_updateTerrain(_mSimObjectId);
+            }
+        }
+    }

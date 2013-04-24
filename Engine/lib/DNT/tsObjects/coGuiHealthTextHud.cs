@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,136 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiHealthTextHud))]
-    public class coGuiHealthTextHud: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiHealthTextHud))]
+    public class coGuiHealthTextHud : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiHealthTextHud(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiHealthTextHud(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiHealthTextHud(int simobjectid): base(simobjectid){ }
+        public coGuiHealthTextHud(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiHealthTextHud(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiHealthTextHud(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Color for the background of the control.
+        /// </summary>
+        public ColorF fillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the control's frame.
+        /// </summary>
+        public ColorF frameColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Speed at which the control will pulse.
+        /// </summary>
+        public int pulseRate
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pulseRate").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pulseRate", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Health level at which to begin pulsing.
+        /// </summary>
+        public float pulseThreshold
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pulseThreshold").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pulseThreshold", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, display the energy value rather than the damage value.
+        /// </summary>
+        public bool showEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showEnergy").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, draw the background.
+        /// </summary>
+        public bool showFill
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFill").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFill", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, draw the frame.
+        /// </summary>
+        public bool showFrame
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFrame").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFrame", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, we don't hardcode maxHealth to 100.
+        /// </summary>
+        public bool showTrueValue
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showTrueValue").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showTrueValue", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the text on this control.
+        /// </summary>
+        public ColorF textColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the text when health is low.
+        /// </summary>
+        public ColorF warningColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".warningColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".warningColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The health level at which to use the warningColor.
+        /// </summary>
+        public float warnThreshold
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".warnThreshold").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".warnThreshold", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +235,9 @@ public coGuiHealthTextHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +245,17 @@ public coGuiHealthTextHud(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +267,15 @@ public coGuiHealthTextHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiHealthTextHud ts)
+        public static implicit operator string(coGuiHealthTextHud ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +295,7 @@ public coGuiHealthTextHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiHealthTextHud ts)
+        public static implicit operator int(coGuiHealthTextHud ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +316,7 @@ public coGuiHealthTextHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiHealthTextHud ts)
+        public static implicit operator uint(coGuiHealthTextHud ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,125 +331,5 @@ public coGuiHealthTextHud(int simobjectid): base(simobjectid){ }
             {
             return new coGuiHealthTextHud(ts);
             }
-public ColorF fillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString());
-          }
-       }
-public ColorF frameColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString());
-          }
-       }
-public int pulseRate
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pulseRate").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pulseRate", value.AsString());
-          }
-       }
-public float pulseThreshold
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pulseThreshold").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pulseThreshold", value.AsString());
-          }
-       }
-public bool showEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showEnergy").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showEnergy", value.AsString());
-          }
-       }
-public bool showFill
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFill").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFill", value.AsString());
-          }
-       }
-public bool showFrame
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFrame").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFrame", value.AsString());
-          }
-       }
-public bool showTrueValue
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showTrueValue").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showTrueValue", value.AsString());
-          }
-       }
-public ColorF textColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textColor", value.AsString());
-          }
-       }
-public ColorF warningColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".warningColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".warningColor", value.AsString());
-          }
-       }
-public float warnThreshold
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".warnThreshold").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".warnThreshold", value.AsString());
-          }
-       }
-}}
+        }
+    }

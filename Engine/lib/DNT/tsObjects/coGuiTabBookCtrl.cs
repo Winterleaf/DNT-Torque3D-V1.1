@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiTabBookCtrl))]
-    public class coGuiTabBookCtrl: coGuiContainer
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiTabBookCtrl))]
+    public class coGuiTabBookCtrl : coGuiContainer
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTabBookCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiTabBookCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTabBookCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiTabBookCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTabBookCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiTabBookCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Whether reordering tabs with the mouse is allowed. 
+        /// </summary>
+        public bool allowReorder
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".allowReorder").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".allowReorder", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Index of page to select on first onWake() call (-1 to disable). 
+        /// </summary>
+        public int defaultPage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".defaultPage").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".defaultPage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// X offset of first tab page header. 
+        /// </summary>
+        public int frontTabPadding
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".frontTabPadding").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".frontTabPadding", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum width allocated to a tab page header. 
+        /// </summary>
+        public int minTabWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minTabWidth").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minTabWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Index of currently selected page. 
+        /// </summary>
+        public int selectedPage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".selectedPage").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".selectedPage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Height of tab page headers. 
+        /// </summary>
+        public int tabHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tabHeight").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tabHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Spacing to put between individual tab page headers. 
+        /// </summary>
+        public int tabMargin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tabMargin").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tabMargin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Where to place the tab page headers. 
+        /// </summary>
+        public GuiTabBookCtrl__TabPosition tabPosition
+            {
+            get { return (GuiTabBookCtrl__TabPosition) Enum.Parse(typeof (GuiTabBookCtrl__TabPosition), dnTorque.self.GetVar(_mSimObjectId + ".tabPosition")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tabPosition", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +208,9 @@ public coGuiTabBookCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +218,17 @@ public coGuiTabBookCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +240,15 @@ public coGuiTabBookCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiTabBookCtrl ts)
+        public static implicit operator string(coGuiTabBookCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +268,7 @@ public coGuiTabBookCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiTabBookCtrl ts)
+        public static implicit operator int(coGuiTabBookCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +289,7 @@ public coGuiTabBookCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiTabBookCtrl ts)
+        public static implicit operator uint(coGuiTabBookCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,116 +304,36 @@ public coGuiTabBookCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiTabBookCtrl(ts);
             }
-public bool allowReorder
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".allowReorder").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".allowReorder", value.AsString());
-          }
-       }
-public int defaultPage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".defaultPage").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".defaultPage", value.AsString());
-          }
-       }
-public int frontTabPadding
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".frontTabPadding").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".frontTabPadding", value.AsString());
-          }
-       }
-public int minTabWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minTabWidth").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minTabWidth", value.AsString());
-          }
-       }
-public int selectedPage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".selectedPage").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".selectedPage", value.AsString());
-          }
-       }
-public int tabHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tabHeight").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tabHeight", value.AsString());
-          }
-       }
-public int tabMargin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tabMargin").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tabMargin", value.AsString());
-          }
-       }
-public GuiTabBookCtrl__TabPosition tabPosition
-       {
-       get
-          {          return (GuiTabBookCtrl__TabPosition)Enum.Parse(typeof(GuiTabBookCtrl__TabPosition), dnTorque.self.GetVar(_mSimObjectId + ".tabPosition"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tabPosition", value.ToString());
-          }
-       }
-/// <summary>
-///  ),
-///    Add a new tab page to the control.
-///    @param title Title text for the tab page header. )
-/// 
-/// </summary>
-public  void addPage(string title){
-TorqueScriptTemplate.m_ts.fnGuiTabBookCtrl_addPage(_mSimObjectId, title);
-}
-/// <summary>
-/// Get the index of the currently selected tab page.
-///    @return Index of the selected tab page or -1 if no tab page is selected. )
-/// 
-/// </summary>
-public  int getSelectedPage(){
-return TorqueScriptTemplate.m_ts.fnGuiTabBookCtrl_getSelectedPage(_mSimObjectId);
-}
-/// <summary>
-/// Set the selected tab page.
-///    @param index Index of the tab page. )
-/// 
-/// </summary>
-public  void selectPage(int index){
-TorqueScriptTemplate.m_ts.fnGuiTabBookCtrl_selectPage(_mSimObjectId, index);
-}
-}}
+
+        /// <summary>
+        ///  ),
+        ///    Add a new tab page to the control.
+        ///    @param title Title text for the tab page header. )
+        /// 
+        /// </summary>
+        public void addPage(string title)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTabBookCtrl_addPage(_mSimObjectId, title);
+            }
+
+        /// <summary>
+        /// Get the index of the currently selected tab page.
+        ///    @return Index of the selected tab page or -1 if no tab page is selected. )
+        /// 
+        /// </summary>
+        public int getSelectedPage()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiTabBookCtrl_getSelectedPage(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Set the selected tab page.
+        ///    @param index Index of the tab page. )
+        /// 
+        /// </summary>
+        public void selectPage(int index)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTabBookCtrl_selectPage(_mSimObjectId, index);
+            }
+        }
+    }

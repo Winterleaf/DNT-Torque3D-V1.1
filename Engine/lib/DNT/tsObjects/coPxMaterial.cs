@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,63 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPxMaterial))]
-    public class coPxMaterial: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoPxMaterial))]
+    public class coPxMaterial : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPxMaterial(string simobjectid) : base(simobjectid){ }
+        public coPxMaterial(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPxMaterial(uint simobjectid): base(simobjectid){ }
+        public coPxMaterial(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPxMaterial(int simobjectid): base(simobjectid){ }
+        public coPxMaterial(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Coefficient of dynamic %friction to be applied.\n\n     Dynamic %friction reduces the velocity of a moving object while it is in contact with a surface.      A higher coefficient will result in a larger reduction in velocity.      A shape's dynamicFriction should be equal to or larger than 0.\n\n
+        /// </summary>
+        public float dynamicFriction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicFriction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicFriction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Coeffecient of a bounce applied to the shape in response to a collision.\n\n     A value of 0 makes the object bounce as little as possible, while higher values up to 1.0 result in more bounce.\n\n     @note Values close to or above 1.0 may cause stability problems and/or increasing energy.
+        /// </summary>
+        public float restitution
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".restitution").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".restitution", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Coefficient of static %friction to be applied.\n\n     Static %friction determines the force needed to start moving an at-rest object in contact with a surface.      If the force applied onto shape cannot overcome the force of static %friction, the shape will remain at rest.      A higher coefficient will require a larger force to start motion.      @note This value should be larger than 0.\n\n
+        /// </summary>
+        public float staticFriction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".staticFriction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".staticFriction", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +162,9 @@ public coPxMaterial(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +172,17 @@ public coPxMaterial(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +194,15 @@ public coPxMaterial(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPxMaterial ts)
+        public static implicit operator string(coPxMaterial ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +222,7 @@ public coPxMaterial(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPxMaterial ts)
+        public static implicit operator int(coPxMaterial ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +243,7 @@ public coPxMaterial(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPxMaterial ts)
+        public static implicit operator uint(coPxMaterial ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,37 +258,5 @@ public coPxMaterial(int simobjectid): base(simobjectid){ }
             {
             return new coPxMaterial(ts);
             }
-public float dynamicFriction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicFriction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicFriction", value.AsString());
-          }
-       }
-public float restitution
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".restitution").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".restitution", value.AsString());
-          }
-       }
-public float staticFriction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".staticFriction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".staticFriction", value.AsString());
-          }
-       }
-}}
+        }
+    }

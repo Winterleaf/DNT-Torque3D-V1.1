@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,90 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTerrainBlock))]
-    public class coTerrainBlock: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoTerrainBlock))]
+    public class coTerrainBlock : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTerrainBlock(string simobjectid) : base(simobjectid){ }
+        public coTerrainBlock(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTerrainBlock(uint simobjectid): base(simobjectid){ }
+        public coTerrainBlock(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTerrainBlock(int simobjectid): base(simobjectid){ }
+        public coTerrainBlock(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Size of base texture size per meter. 
+        /// </summary>
+        public int baseTexSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseTexSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseTexSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Allows the terrain to cast shadows onto itself and other objects.
+        /// </summary>
+        public bool castShadows
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Light map dimensions in pixels. 
+        /// </summary>
+        public int lightMapSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightMapSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightMapSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Not yet implemented. 
+        /// </summary>
+        public int screenError
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".screenError").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".screenError", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Indicates the spacing between points on the XY plane on the terrain. 
+        /// </summary>
+        public float squareSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".squareSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".squareSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The source terrain data file. 
+        /// </summary>
+        public String terrainFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".terrainFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".terrainFile", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +189,9 @@ public coTerrainBlock(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +199,17 @@ public coTerrainBlock(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +221,15 @@ public coTerrainBlock(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTerrainBlock ts)
+        public static implicit operator string(coTerrainBlock ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +249,7 @@ public coTerrainBlock(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTerrainBlock ts)
+        public static implicit operator int(coTerrainBlock ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +270,7 @@ public coTerrainBlock(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTerrainBlock ts)
+        public static implicit operator uint(coTerrainBlock ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,81 +285,18 @@ public coTerrainBlock(int simobjectid): base(simobjectid){ }
             {
             return new coTerrainBlock(ts);
             }
-public int baseTexSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseTexSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseTexSize", value.AsString());
-          }
-       }
-public bool castShadows
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString());
-          }
-       }
-public int lightMapSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightMapSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightMapSize", value.AsString());
-          }
-       }
-public int screenError
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".screenError").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".screenError", value.AsString());
-          }
-       }
-public float squareSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".squareSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".squareSize", value.AsString());
-          }
-       }
-public String terrainFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".terrainFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".terrainFile", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Saves the terrain block's terrain file to the specified file name.
-/// 
-/// 				   @param fileName Name and path of file to save terrain data to.
-/// 
-/// 				   @return True if file save was successful, false otherwise)
-/// 
-/// </summary>
-public  bool save(string fileName){
-return TorqueScriptTemplate.m_ts.fnTerrainBlock_save(_mSimObjectId, fileName);
-}
-}}
+
+        /// <summary>
+        /// @brief Saves the terrain block's terrain file to the specified file name.
+        /// 
+        /// 				   @param fileName Name and path of file to save terrain data to.
+        /// 
+        /// 				   @return True if file save was successful, false otherwise)
+        /// 
+        /// </summary>
+        public bool save(string fileName)
+            {
+            return TorqueScriptTemplate.m_ts.fnTerrainBlock_save(_mSimObjectId, fileName);
+            }
+        }
+    }

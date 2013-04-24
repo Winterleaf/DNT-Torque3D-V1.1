@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoDecalRoad))]
-    public class coDecalRoad: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoDecalRoad))]
+    public class coDecalRoad : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDecalRoad(string simobjectid) : base(simobjectid){ }
+        public coDecalRoad(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDecalRoad(uint simobjectid): base(simobjectid){ }
+        public coDecalRoad(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDecalRoad(int simobjectid): base(simobjectid){ }
+        public coDecalRoad(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Angle in degrees - DecalRoad will subdivided the spline if its curve is greater than this threshold. 
+        /// </summary>
+        public float breakAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".breakAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".breakAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Material used for rendering. 
+        /// </summary>
+        public String material
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".material").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".material", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Do not modify, for internal use. 
+        /// </summary>
+        public String node
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".node").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".node", value.AsString()); }
+            }
+
+        /// <summary>
+        /// DecalRoad(s) are rendered in descending renderPriority order. 
+        /// </summary>
+        public int renderPriority
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderPriority").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderPriority", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The length in meters of textures mapped to the DecalRoad 
+        /// </summary>
+        public float textureLength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureLength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureLength", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +180,9 @@ public coDecalRoad(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +190,17 @@ public coDecalRoad(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +212,15 @@ public coDecalRoad(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coDecalRoad ts)
+        public static implicit operator string(coDecalRoad ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +240,7 @@ public coDecalRoad(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coDecalRoad ts)
+        public static implicit operator int(coDecalRoad ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +261,7 @@ public coDecalRoad(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coDecalRoad ts)
+        public static implicit operator uint(coDecalRoad ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,79 +276,29 @@ public coDecalRoad(int simobjectid): base(simobjectid){ }
             {
             return new coDecalRoad(ts);
             }
-public float breakAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".breakAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".breakAngle", value.AsString());
-          }
-       }
-public String material
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".material").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".material", value.AsString());
-          }
-       }
-public String node
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".node").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".node", value.AsString());
-          }
-       }
-public int renderPriority
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderPriority").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderPriority", value.AsString());
-          }
-       }
-public float textureLength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textureLength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureLength", value.AsString());
-          }
-       }
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Force trigger an inspectPostApply. This will transmit 
-///                    the material and other fields ( not including nodes ) 
-///                    to client objects.
-///                   )
-/// 
-/// </summary>
-public  void postApply(){
-TorqueScriptTemplate.m_ts.fnDecalRoad_postApply(_mSimObjectId);
-}
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Force DecalRoad to update it's spline and reclip geometry.
-///                   )
-/// 
-/// </summary>
-public  void regenerate(){
-TorqueScriptTemplate.m_ts.fnDecalRoad_regenerate(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Force trigger an inspectPostApply. This will transmit 
+        ///                    the material and other fields ( not including nodes ) 
+        ///                    to client objects.
+        ///                   )
+        /// 
+        /// </summary>
+        public void postApply()
+            {
+            TorqueScriptTemplate.m_ts.fnDecalRoad_postApply(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Force DecalRoad to update it's spline and reclip geometry.
+        ///                   )
+        /// 
+        /// </summary>
+        public void regenerate()
+            {
+            TorqueScriptTemplate.m_ts.fnDecalRoad_regenerate(_mSimObjectId);
+            }
+        }
+    }

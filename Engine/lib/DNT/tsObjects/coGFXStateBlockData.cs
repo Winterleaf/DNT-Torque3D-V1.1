@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,406 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGFXStateBlockData))]
-    public class coGFXStateBlockData: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoGFXStateBlockData))]
+    public class coGFXStateBlockData : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGFXStateBlockData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGFXStateBlockData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGFXStateBlockData(int simobjectid): base(simobjectid){ }
+        public coGFXStateBlockData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGFXStateBlockData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGFXStateBlockData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Set to true if the alpha test state is not all defaults. 
+        /// </summary>
+        public bool alphaDefined
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alphaDefined").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaDefined", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables per-pixel alpha testing. The default is false. 
+        /// </summary>
+        public bool alphaTestEnable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alphaTestEnable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaTestEnable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The test function used to accept or reject a pixel based on its alpha value. The default is GFXCmpGreaterEqual. 
+        /// </summary>
+        public TypeGFXCmpFunc alphaTestFunc
+            {
+            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".alphaTestFunc")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaTestFunc", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The reference alpha value against which pixels are tested. The default is zero. 
+        /// </summary>
+        public int alphaTestRef
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alphaTestRef").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaTestRef", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true if the alpha blend state is not all defaults. 
+        /// </summary>
+        public bool blendDefined
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".blendDefined").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendDefined", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The destination blend state. The default is GFXBlendZero. 
+        /// </summary>
+        public TypeGFXBlend blendDest
+            {
+            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".blendDest")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendDest", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Enables alpha blending. The default is false. 
+        /// </summary>
+        public bool blendEnable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".blendEnable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendEnable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The arithmetic operation applied to alpha blending. The default is GFXBlendOpAdd. 
+        /// </summary>
+        public TypeGFXBlendOp blendOp
+            {
+            get { return (TypeGFXBlendOp) Enum.Parse(typeof (TypeGFXBlendOp), dnTorque.self.GetVar(_mSimObjectId + ".blendOp")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendOp", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The source blend state. The default is GFXBlendOne. 
+        /// </summary>
+        public TypeGFXBlend blendSrc
+            {
+            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".blendSrc")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendSrc", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Enables alpha channel writes. The default is true. 
+        /// </summary>
+        public bool colorWriteAlpha
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteAlpha").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorWriteAlpha", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables blue channel writes. The default is true. 
+        /// </summary>
+        public bool colorWriteBlue
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteBlue").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorWriteBlue", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true if the color write state is not all defaults. 
+        /// </summary>
+        public bool colorWriteDefined
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteDefined").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorWriteDefined", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables green channel writes. The default is true. 
+        /// </summary>
+        public bool colorWriteGreen
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteGreen").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorWriteGreen", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables red channel writes. The default is true. 
+        /// </summary>
+        public bool colorWriteRed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteRed").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorWriteRed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true if the culling state is not all defaults. 
+        /// </summary>
+        public bool cullDefined
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cullDefined").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cullDefined", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Defines how back facing triangles are culled if at all. The default is GFXCullCCW. 
+        /// </summary>
+        public TypeGFXCullMode cullMode
+            {
+            get { return (TypeGFXCullMode) Enum.Parse(typeof (TypeGFXCullMode), dnTorque.self.GetVar(_mSimObjectId + ".cullMode")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cullMode", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Enables fixed function lighting when rendering without a shader on geometry with vertex normals. The default is false. 
+        /// </summary>
+        public bool ffLighting
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ffLighting").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ffLighting", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true if the sampler states are not all defaults. 
+        /// </summary>
+        public bool samplersDefined
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".samplersDefined").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".samplersDefined", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The array of texture sampler states.\n     @note Not all graphics devices support 16 samplers. In general      all systems support 4 samplers with most modern cards doing 8. 
+        /// </summary>
+        public coGFXSamplerStateData samplerStates
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".samplerStates"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".samplerStates", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Set to true if the seperate alpha blend state is not all defaults. 
+        /// </summary>
+        public bool separateAlphaBlendDefined
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendDefined").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendDefined", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The destination blend state. The default is GFXBlendZero. 
+        /// </summary>
+        public TypeGFXBlend separateAlphaBlendDest
+            {
+            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendDest")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendDest", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Enables the separate blend mode for the alpha channel. The default is false. 
+        /// </summary>
+        public bool separateAlphaBlendEnable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendEnable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendEnable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The arithmetic operation applied to separate alpha blending. The default is GFXBlendOpAdd. 
+        /// </summary>
+        public TypeGFXBlendOp separateAlphaBlendOp
+            {
+            get { return (TypeGFXBlendOp) Enum.Parse(typeof (TypeGFXBlendOp), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendOp")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendOp", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The source blend state. The default is GFXBlendOne. 
+        /// </summary>
+        public TypeGFXBlend separateAlphaBlendSrc
+            {
+            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendSrc")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendSrc", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Set to true if the stencil state is not all defaults. 
+        /// </summary>
+        public bool stencilDefined
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stencilDefined").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilDefined", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables stenciling. The default is false. 
+        /// </summary>
+        public bool stencilEnable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stencilEnable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilEnable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The stencil operation to perform if the stencil test fails. The default is GFXStencilOpKeep. 
+        /// </summary>
+        public TypeGFXStencilOp stencilFailOp
+            {
+            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilFailOp")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilFailOp", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The comparison function to test the reference value to a stencil buffer entry. The default is GFXCmpNever. 
+        /// </summary>
+        public TypeGFXCmpFunc stencilFunc
+            {
+            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".stencilFunc")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilFunc", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The mask applied to the reference value and each stencil buffer entry to determine the significant bits for the stencil test. The default is 0xFFFFFFFF. 
+        /// </summary>
+        public int stencilMask
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stencilMask").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilMask", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The stencil operation to perform if both the stencil and the depth tests pass. The default is GFXStencilOpKeep. 
+        /// </summary>
+        public TypeGFXStencilOp stencilPassOp
+            {
+            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilPassOp")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilPassOp", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The reference value for the stencil test. The default is zero. 
+        /// </summary>
+        public int stencilRef
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stencilRef").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilRef", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The write mask applied to values written into the stencil buffer. The default is 0xFFFFFFFF. 
+        /// </summary>
+        public int stencilWriteMask
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stencilWriteMask").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilWriteMask", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The stencil operation to perform if the stencil test passes and the depth test fails. The default is GFXStencilOpKeep. 
+        /// </summary>
+        public TypeGFXStencilOp stencilZFailOp
+            {
+            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilZFailOp")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilZFailOp", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The color used for multiple-texture blending with the GFXTATFactor texture-blending argument or      the GFXTOPBlendFactorAlpha texture-blending operation. The default is opaque white (255, 255, 255, 255). 
+        /// </summary>
+        public ColorI textureFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureFactor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables fixed function vertex coloring when rendering without a shader. The default is false. 
+        /// </summary>
+        public bool vertexColorEnable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".vertexColorEnable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".vertexColorEnable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// A floating-point bias used when comparing depth values. The default is zero. 
+        /// </summary>
+        public float zBias
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".zBias").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".zBias", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true if the depth state is not all defaults. 
+        /// </summary>
+        public bool zDefined
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".zDefined").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".zDefined", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables z-buffer reads. The default is true. 
+        /// </summary>
+        public bool zEnable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".zEnable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".zEnable", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The depth comparision function which a pixel must pass to be written to the z-buffer. The default is GFXCmpLessEqual. 
+        /// </summary>
+        public TypeGFXCmpFunc zFunc
+            {
+            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".zFunc")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".zFunc", value.ToString()); }
+            }
+
+        /// <summary>
+        /// An additional floating-point bias based on the maximum depth slop of the triangle being rendered. The default is zero. 
+        /// </summary>
+        public float zSlopeBias
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".zSlopeBias").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".zSlopeBias", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables z-buffer writes. The default is true. 
+        /// </summary>
+        public bool zWriteEnable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".zWriteEnable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".zWriteEnable", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +506,9 @@ public coGFXStateBlockData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +516,17 @@ public coGFXStateBlockData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +538,15 @@ public coGFXStateBlockData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGFXStateBlockData ts)
+        public static implicit operator string(coGFXStateBlockData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +566,7 @@ public coGFXStateBlockData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGFXStateBlockData ts)
+        public static implicit operator int(coGFXStateBlockData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +587,7 @@ public coGFXStateBlockData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGFXStateBlockData ts)
+        public static implicit operator uint(coGFXStateBlockData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,442 +602,5 @@ public coGFXStateBlockData(int simobjectid): base(simobjectid){ }
             {
             return new coGFXStateBlockData(ts);
             }
-public bool alphaDefined
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alphaDefined").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaDefined", value.AsString());
-          }
-       }
-public bool alphaTestEnable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alphaTestEnable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaTestEnable", value.AsString());
-          }
-       }
-public TypeGFXCmpFunc alphaTestFunc
-       {
-       get
-          {          return (TypeGFXCmpFunc)Enum.Parse(typeof(TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".alphaTestFunc"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaTestFunc", value.ToString());
-          }
-       }
-public int alphaTestRef
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alphaTestRef").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaTestRef", value.AsString());
-          }
-       }
-public bool blendDefined
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".blendDefined").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".blendDefined", value.AsString());
-          }
-       }
-public TypeGFXBlend blendDest
-       {
-       get
-          {          return (TypeGFXBlend)Enum.Parse(typeof(TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".blendDest"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".blendDest", value.ToString());
-          }
-       }
-public bool blendEnable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".blendEnable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".blendEnable", value.AsString());
-          }
-       }
-public TypeGFXBlendOp blendOp
-       {
-       get
-          {          return (TypeGFXBlendOp)Enum.Parse(typeof(TypeGFXBlendOp), dnTorque.self.GetVar(_mSimObjectId + ".blendOp"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".blendOp", value.ToString());
-          }
-       }
-public TypeGFXBlend blendSrc
-       {
-       get
-          {          return (TypeGFXBlend)Enum.Parse(typeof(TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".blendSrc"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".blendSrc", value.ToString());
-          }
-       }
-public bool colorWriteAlpha
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteAlpha").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorWriteAlpha", value.AsString());
-          }
-       }
-public bool colorWriteBlue
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteBlue").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorWriteBlue", value.AsString());
-          }
-       }
-public bool colorWriteDefined
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteDefined").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorWriteDefined", value.AsString());
-          }
-       }
-public bool colorWriteGreen
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteGreen").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorWriteGreen", value.AsString());
-          }
-       }
-public bool colorWriteRed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorWriteRed").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorWriteRed", value.AsString());
-          }
-       }
-public bool cullDefined
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cullDefined").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cullDefined", value.AsString());
-          }
-       }
-public TypeGFXCullMode cullMode
-       {
-       get
-          {          return (TypeGFXCullMode)Enum.Parse(typeof(TypeGFXCullMode), dnTorque.self.GetVar(_mSimObjectId + ".cullMode"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cullMode", value.ToString());
-          }
-       }
-public bool ffLighting
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ffLighting").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ffLighting", value.AsString());
-          }
-       }
-public bool samplersDefined
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".samplersDefined").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".samplersDefined", value.AsString());
-          }
-       }
-public coGFXSamplerStateData samplerStates
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".samplerStates");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".samplerStates", value.ToString());
-          }
-       }
-public bool separateAlphaBlendDefined
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendDefined").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendDefined", value.AsString());
-          }
-       }
-public TypeGFXBlend separateAlphaBlendDest
-       {
-       get
-          {          return (TypeGFXBlend)Enum.Parse(typeof(TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendDest"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendDest", value.ToString());
-          }
-       }
-public bool separateAlphaBlendEnable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendEnable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendEnable", value.AsString());
-          }
-       }
-public TypeGFXBlendOp separateAlphaBlendOp
-       {
-       get
-          {          return (TypeGFXBlendOp)Enum.Parse(typeof(TypeGFXBlendOp), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendOp"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendOp", value.ToString());
-          }
-       }
-public TypeGFXBlend separateAlphaBlendSrc
-       {
-       get
-          {          return (TypeGFXBlend)Enum.Parse(typeof(TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendSrc"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendSrc", value.ToString());
-          }
-       }
-public bool stencilDefined
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stencilDefined").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilDefined", value.AsString());
-          }
-       }
-public bool stencilEnable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stencilEnable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilEnable", value.AsString());
-          }
-       }
-public TypeGFXStencilOp stencilFailOp
-       {
-       get
-          {          return (TypeGFXStencilOp)Enum.Parse(typeof(TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilFailOp"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilFailOp", value.ToString());
-          }
-       }
-public TypeGFXCmpFunc stencilFunc
-       {
-       get
-          {          return (TypeGFXCmpFunc)Enum.Parse(typeof(TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".stencilFunc"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilFunc", value.ToString());
-          }
-       }
-public int stencilMask
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stencilMask").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilMask", value.AsString());
-          }
-       }
-public TypeGFXStencilOp stencilPassOp
-       {
-       get
-          {          return (TypeGFXStencilOp)Enum.Parse(typeof(TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilPassOp"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilPassOp", value.ToString());
-          }
-       }
-public int stencilRef
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stencilRef").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilRef", value.AsString());
-          }
-       }
-public int stencilWriteMask
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stencilWriteMask").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilWriteMask", value.AsString());
-          }
-       }
-public TypeGFXStencilOp stencilZFailOp
-       {
-       get
-          {          return (TypeGFXStencilOp)Enum.Parse(typeof(TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilZFailOp"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stencilZFailOp", value.ToString());
-          }
-       }
-public ColorI textureFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textureFactor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureFactor", value.AsString());
-          }
-       }
-public bool vertexColorEnable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".vertexColorEnable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".vertexColorEnable", value.AsString());
-          }
-       }
-public float zBias
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".zBias").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".zBias", value.AsString());
-          }
-       }
-public bool zDefined
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".zDefined").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".zDefined", value.AsString());
-          }
-       }
-public bool zEnable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".zEnable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".zEnable", value.AsString());
-          }
-       }
-public TypeGFXCmpFunc zFunc
-       {
-       get
-          {          return (TypeGFXCmpFunc)Enum.Parse(typeof(TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".zFunc"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".zFunc", value.ToString());
-          }
-       }
-public float zSlopeBias
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".zSlopeBias").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".zSlopeBias", value.AsString());
-          }
-       }
-public bool zWriteEnable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".zWriteEnable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".zWriteEnable", value.AsString());
-          }
-       }
-}}
+        }
+    }

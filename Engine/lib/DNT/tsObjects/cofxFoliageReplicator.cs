@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,469 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercofxFoliageReplicator))]
-    public class cofxFoliageReplicator: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercofxFoliageReplicator))]
+    public class cofxFoliageReplicator : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public cofxFoliageReplicator(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public cofxFoliageReplicator(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public cofxFoliageReplicator(int simobjectid): base(simobjectid){ }
+        public cofxFoliageReplicator(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public cofxFoliageReplicator(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public cofxFoliageReplicator(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Maximum surface angle allowed for foliage instances. 
+        /// </summary>
+        public int AllowedTerrainSlope
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowedTerrainSlope").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowedTerrainSlope", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage will be placed on InteriorInstances when set. 
+        /// </summary>
+        public bool AllowOnInteriors
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnInteriors").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowOnInteriors", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage will be placed on Static shapes when set. 
+        /// </summary>
+        public bool AllowOnStatics
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnStatics").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowOnStatics", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage will be placed on terrain when set. 
+        /// </summary>
+        public bool AllowOnTerrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnTerrain").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowOnTerrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage will be placed on/under water when set. 
+        /// </summary>
+        public bool AllowOnWater
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnWater").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowOnWater", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage will be placed on water when set. Requires AllowOnWater. 
+        /// </summary>
+        public bool AllowWaterSurface
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowWaterSurface").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowWaterSurface", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum alpha value allowed on foliage instances. 
+        /// </summary>
+        public float AlphaCutoff
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AlphaCutoff").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AlphaCutoff", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum size of culling bins. Must be = 8 and = OuterRadius. 
+        /// </summary>
+        public int CullResolution
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".CullResolution").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".CullResolution", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Height multiplier for drawn culling bins.
+        /// </summary>
+        public float DebugBoxHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".DebugBoxHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".DebugBoxHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Region beyond ViewDistance where foliage fades in/out. 
+        /// </summary>
+        public float FadeInRegion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FadeInRegion").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FadeInRegion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Region before ViewClosest where foliage fades in/out. 
+        /// </summary>
+        public float FadeOutRegion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FadeOutRegion").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FadeOutRegion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maintain aspect ratio of image if true. This option ignores MaxWidth. 
+        /// </summary>
+        public bool FixAspectRatio
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FixAspectRatio").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FixAspectRatio", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Use only MaxWidth and MaxHeight for billboard size. Ignores MinWidth and MinHeight. 
+        /// </summary>
+        public bool FixSizeToMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FixSizeToMax").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FixSizeToMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum foliage instance count. 
+        /// </summary>
+        public int FoliageCount
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FoliageCount").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FoliageCount", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Image file for the foliage texture. 
+        /// </summary>
+        public String FoliageFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FoliageFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FoliageFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of times to try placing a foliage instance before giving up. 
+        /// </summary>
+        public int FoliageRetries
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FoliageRetries").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FoliageRetries", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Alpha of the foliage at ground level. 0 = transparent, 1 = opaque. 
+        /// </summary>
+        public float GroundAlpha
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".GroundAlpha").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".GroundAlpha", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage is hidden when set to true. 
+        /// </summary>
+        public bool HideFoliage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".HideFoliage").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".HideFoliage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Placement area inner radius on the X axis 
+        /// </summary>
+        public int InnerRadiusX
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".InnerRadiusX").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".InnerRadiusX", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Placement area inner radius on the Y axis 
+        /// </summary>
+        public int InnerRadiusY
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".InnerRadiusY").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".InnerRadiusY", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage should be illuminated with changing lights when true. 
+        /// </summary>
+        public bool LightOn
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".LightOn").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".LightOn", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage instances have the same lighting when set and LightOn is set. 
+        /// </summary>
+        public bool LightSync
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".LightSync").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".LightSync", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Time before foliage illumination cycle repeats. 
+        /// </summary>
+        public float LightTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".LightTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".LightTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum height of foliage billboards 
+        /// </summary>
+        public float MaxHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".MaxHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".MaxHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum luminance for foliage instances. 
+        /// </summary>
+        public float MaxLuminance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".MaxLuminance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".MaxLuminance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum sway cycle time in seconds. 
+        /// </summary>
+        public float MaxSwayTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".MaxSwayTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".MaxSwayTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum width of foliage billboards 
+        /// </summary>
+        public float MaxWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".MaxWidth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".MaxWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum height of foliage billboards 
+        /// </summary>
+        public float MinHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".MinHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".MinHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum luminance for foliage instances. 
+        /// </summary>
+        public float MinLuminance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".MinLuminance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".MinLuminance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minumum sway cycle time in seconds. 
+        /// </summary>
+        public float MinSwayTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".MinSwayTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".MinSwayTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum width of foliage billboards 
+        /// </summary>
+        public float MinWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".MinWidth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".MinWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Offset billboards by this amount vertically. 
+        /// </summary>
+        public float OffsetZ
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OffsetZ").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OffsetZ", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Placement area outer radius on the X axis 
+        /// </summary>
+        public int OuterRadiusX
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OuterRadiusX").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OuterRadiusX", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Placement area outer radius on the Y axis 
+        /// </summary>
+        public int OuterRadiusY
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OuterRadiusY").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OuterRadiusY", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Height of the placement ring in world units. 
+        /// </summary>
+        public int PlacementAreaHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".PlacementAreaHeight").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".PlacementAreaHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color of the placement ring. 
+        /// </summary>
+        public ColorF PlacementColour
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".PlacementColour").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".PlacementColour", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Randomly flip billboards left-to-right. 
+        /// </summary>
+        public bool RandomFlip
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".RandomFlip").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".RandomFlip", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Random seed for foliage placement. 
+        /// </summary>
+        public int Seed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".Seed").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".Seed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Draw placement rings when set to true. 
+        /// </summary>
+        public bool ShowPlacementArea
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShowPlacementArea").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShowPlacementArea", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Front-to-back sway magnitude. 
+        /// </summary>
+        public float SwayMagFront
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".SwayMagFront").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".SwayMagFront", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Left-to-right sway magnitude. 
+        /// </summary>
+        public float SwayMagSide
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".SwayMagSide").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".SwayMagSide", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage should sway randomly when true. 
+        /// </summary>
+        public bool SwayOn
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".SwayOn").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".SwayOn", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Foliage instances should sway together when true and SwayOn is enabled. 
+        /// </summary>
+        public bool SwaySync
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".SwaySync").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".SwaySync", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Use culling bins when enabled. 
+        /// </summary>
+        public bool UseCulling
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".UseCulling").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".UseCulling", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Culling bins are drawn when set to true. 
+        /// </summary>
+        public bool UseDebugInfo
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".UseDebugInfo").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".UseDebugInfo", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Use camera facing billboards ( including the z axis ). 
+        /// </summary>
+        public bool UseTrueBillboards
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".UseTrueBillboards").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".UseTrueBillboards", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum distance from camera where foliage appears. 
+        /// </summary>
+        public float ViewClosest
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ViewClosest").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ViewClosest", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum distance from camera where foliage appears. 
+        /// </summary>
+        public float ViewDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ViewDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ViewDistance", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +568,9 @@ public cofxFoliageReplicator(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +578,17 @@ public cofxFoliageReplicator(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +600,15 @@ public cofxFoliageReplicator(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( cofxFoliageReplicator ts)
+        public static implicit operator string(cofxFoliageReplicator ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +628,7 @@ public cofxFoliageReplicator(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( cofxFoliageReplicator ts)
+        public static implicit operator int(cofxFoliageReplicator ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +649,7 @@ public cofxFoliageReplicator(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( cofxFoliageReplicator ts)
+        public static implicit operator uint(cofxFoliageReplicator ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,532 +664,5 @@ public cofxFoliageReplicator(int simobjectid): base(simobjectid){ }
             {
             return new cofxFoliageReplicator(ts);
             }
-public int AllowedTerrainSlope
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowedTerrainSlope").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowedTerrainSlope", value.AsString());
-          }
-       }
-public bool AllowOnInteriors
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnInteriors").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowOnInteriors", value.AsString());
-          }
-       }
-public bool AllowOnStatics
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnStatics").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowOnStatics", value.AsString());
-          }
-       }
-public bool AllowOnTerrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnTerrain").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowOnTerrain", value.AsString());
-          }
-       }
-public bool AllowOnWater
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnWater").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowOnWater", value.AsString());
-          }
-       }
-public bool AllowWaterSurface
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowWaterSurface").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowWaterSurface", value.AsString());
-          }
-       }
-public float AlphaCutoff
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AlphaCutoff").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AlphaCutoff", value.AsString());
-          }
-       }
-public int CullResolution
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".CullResolution").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".CullResolution", value.AsString());
-          }
-       }
-public float DebugBoxHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".DebugBoxHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".DebugBoxHeight", value.AsString());
-          }
-       }
-public float FadeInRegion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FadeInRegion").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FadeInRegion", value.AsString());
-          }
-       }
-public float FadeOutRegion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FadeOutRegion").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FadeOutRegion", value.AsString());
-          }
-       }
-public bool FixAspectRatio
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FixAspectRatio").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FixAspectRatio", value.AsString());
-          }
-       }
-public bool FixSizeToMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FixSizeToMax").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FixSizeToMax", value.AsString());
-          }
-       }
-public int FoliageCount
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FoliageCount").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FoliageCount", value.AsString());
-          }
-       }
-public String FoliageFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FoliageFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FoliageFile", value.AsString());
-          }
-       }
-public int FoliageRetries
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FoliageRetries").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FoliageRetries", value.AsString());
-          }
-       }
-public float GroundAlpha
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".GroundAlpha").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".GroundAlpha", value.AsString());
-          }
-       }
-public bool HideFoliage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".HideFoliage").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".HideFoliage", value.AsString());
-          }
-       }
-public int InnerRadiusX
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".InnerRadiusX").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".InnerRadiusX", value.AsString());
-          }
-       }
-public int InnerRadiusY
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".InnerRadiusY").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".InnerRadiusY", value.AsString());
-          }
-       }
-public bool LightOn
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".LightOn").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".LightOn", value.AsString());
-          }
-       }
-public bool LightSync
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".LightSync").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".LightSync", value.AsString());
-          }
-       }
-public float LightTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".LightTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".LightTime", value.AsString());
-          }
-       }
-public float MaxHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".MaxHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".MaxHeight", value.AsString());
-          }
-       }
-public float MaxLuminance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".MaxLuminance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".MaxLuminance", value.AsString());
-          }
-       }
-public float MaxSwayTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".MaxSwayTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".MaxSwayTime", value.AsString());
-          }
-       }
-public float MaxWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".MaxWidth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".MaxWidth", value.AsString());
-          }
-       }
-public float MinHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".MinHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".MinHeight", value.AsString());
-          }
-       }
-public float MinLuminance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".MinLuminance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".MinLuminance", value.AsString());
-          }
-       }
-public float MinSwayTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".MinSwayTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".MinSwayTime", value.AsString());
-          }
-       }
-public float MinWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".MinWidth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".MinWidth", value.AsString());
-          }
-       }
-public float OffsetZ
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OffsetZ").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OffsetZ", value.AsString());
-          }
-       }
-public int OuterRadiusX
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OuterRadiusX").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OuterRadiusX", value.AsString());
-          }
-       }
-public int OuterRadiusY
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OuterRadiusY").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OuterRadiusY", value.AsString());
-          }
-       }
-public int PlacementAreaHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".PlacementAreaHeight").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".PlacementAreaHeight", value.AsString());
-          }
-       }
-public ColorF PlacementColour
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".PlacementColour").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".PlacementColour", value.AsString());
-          }
-       }
-public bool RandomFlip
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".RandomFlip").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".RandomFlip", value.AsString());
-          }
-       }
-public int Seed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".Seed").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".Seed", value.AsString());
-          }
-       }
-public bool ShowPlacementArea
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShowPlacementArea").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShowPlacementArea", value.AsString());
-          }
-       }
-public float SwayMagFront
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".SwayMagFront").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".SwayMagFront", value.AsString());
-          }
-       }
-public float SwayMagSide
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".SwayMagSide").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".SwayMagSide", value.AsString());
-          }
-       }
-public bool SwayOn
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".SwayOn").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".SwayOn", value.AsString());
-          }
-       }
-public bool SwaySync
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".SwaySync").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".SwaySync", value.AsString());
-          }
-       }
-public bool UseCulling
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".UseCulling").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".UseCulling", value.AsString());
-          }
-       }
-public bool UseDebugInfo
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".UseDebugInfo").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".UseDebugInfo", value.AsString());
-          }
-       }
-public bool UseTrueBillboards
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".UseTrueBillboards").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".UseTrueBillboards", value.AsString());
-          }
-       }
-public float ViewClosest
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ViewClosest").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ViewClosest", value.AsString());
-          }
-       }
-public float ViewDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ViewDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ViewDistance", value.AsString());
-          }
-       }
-}}
+        }
+    }

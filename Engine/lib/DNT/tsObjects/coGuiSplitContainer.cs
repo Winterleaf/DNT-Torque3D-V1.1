@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +94,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiSplitContainer))]
-    public class coGuiSplitContainer: coGuiContainer
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiSplitContainer))]
+    public class coGuiSplitContainer : coGuiContainer
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSplitContainer(string simobjectid) : base(simobjectid){ }
+        public coGuiSplitContainer(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSplitContainer(uint simobjectid): base(simobjectid){ }
+        public coGuiSplitContainer(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSplitContainer(int simobjectid): base(simobjectid){ }
+        public coGuiSplitContainer(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Which (if any) side of the splitter to keep at a fixed size. 
+        /// </summary>
+        public GuiSplitContainer__FixedPanel fixedPanel
+            {
+            get { return (GuiSplitContainer__FixedPanel) Enum.Parse(typeof (GuiSplitContainer__FixedPanel), dnTorque.self.GetVar(_mSimObjectId + ".fixedPanel")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fixedPanel", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Width of the fixed panel specified by #fixedPanel (if any). 
+        /// </summary>
+        public int fixedSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fixedSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fixedSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to split between top and bottom (horizontal) or between left and right (vertical). 
+        /// </summary>
+        public GuiSplitContainer__Orientation orientation
+            {
+            get { return (GuiSplitContainer__Orientation) Enum.Parse(typeof (GuiSplitContainer__Orientation), dnTorque.self.GetVar(_mSimObjectId + ".orientation")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".orientation", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Point on control through which the splitter goes.\n\n     Changed relatively if size of control changes. 
+        /// </summary>
+        public Point2I splitPoint
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splitPoint").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splitPoint", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Width of the splitter bar between the two sides. Default is 2. 
+        /// </summary>
+        public int splitterSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splitterSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splitterSize", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +182,9 @@ public coGuiSplitContainer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +192,17 @@ public coGuiSplitContainer(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +214,15 @@ public coGuiSplitContainer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiSplitContainer ts)
+        public static implicit operator string(coGuiSplitContainer ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +242,7 @@ public coGuiSplitContainer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiSplitContainer ts)
+        public static implicit operator int(coGuiSplitContainer ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +263,7 @@ public coGuiSplitContainer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiSplitContainer ts)
+        public static implicit operator uint(coGuiSplitContainer ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,57 +278,5 @@ public coGuiSplitContainer(int simobjectid): base(simobjectid){ }
             {
             return new coGuiSplitContainer(ts);
             }
-public GuiSplitContainer__FixedPanel fixedPanel
-       {
-       get
-          {          return (GuiSplitContainer__FixedPanel)Enum.Parse(typeof(GuiSplitContainer__FixedPanel), dnTorque.self.GetVar(_mSimObjectId + ".fixedPanel"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fixedPanel", value.ToString());
-          }
-       }
-public int fixedSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fixedSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fixedSize", value.AsString());
-          }
-       }
-public GuiSplitContainer__Orientation orientation
-       {
-       get
-          {          return (GuiSplitContainer__Orientation)Enum.Parse(typeof(GuiSplitContainer__Orientation), dnTorque.self.GetVar(_mSimObjectId + ".orientation"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".orientation", value.ToString());
-          }
-       }
-public Point2I splitPoint
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splitPoint").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splitPoint", value.AsString());
-          }
-       }
-public int splitterSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splitterSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splitterSize", value.AsString());
-          }
-       }
-}}
+        }
+    }

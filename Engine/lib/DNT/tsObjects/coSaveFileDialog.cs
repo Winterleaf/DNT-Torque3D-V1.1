@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSaveFileDialog))]
-    public class coSaveFileDialog: coFileDialog
-{
+    [TypeConverter(typeof (tsObjectConvertercoSaveFileDialog))]
+    public class coSaveFileDialog : coFileDialog
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSaveFileDialog(string simobjectid) : base(simobjectid){ }
+        public coSaveFileDialog(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSaveFileDialog(uint simobjectid): base(simobjectid){ }
+        public coSaveFileDialog(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSaveFileDialog(int simobjectid): base(simobjectid){ }
+        public coSaveFileDialog(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// True/False whether the dialog should prompt before accepting an existing file name 
+        /// </summary>
+        public bool OverwritePrompt
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OverwritePrompt").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OverwritePrompt", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coSaveFileDialog(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coSaveFileDialog(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coSaveFileDialog(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSaveFileDialog ts)
+        public static implicit operator string(coSaveFileDialog ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coSaveFileDialog(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSaveFileDialog ts)
+        public static implicit operator int(coSaveFileDialog ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coSaveFileDialog(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSaveFileDialog ts)
+        public static implicit operator uint(coSaveFileDialog ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,15 +240,5 @@ public coSaveFileDialog(int simobjectid): base(simobjectid){ }
             {
             return new coSaveFileDialog(ts);
             }
-public bool OverwritePrompt
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OverwritePrompt").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OverwritePrompt", value.AsString());
-          }
-       }
-}}
+        }
+    }

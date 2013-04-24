@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoProjectile))]
-    public class coProjectile: coGameBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoProjectile))]
+    public class coProjectile : coGameBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coProjectile(string simobjectid) : base(simobjectid){ }
+        public coProjectile(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coProjectile(uint simobjectid): base(simobjectid){ }
+        public coProjectile(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coProjectile(int simobjectid): base(simobjectid){ }
+        public coProjectile(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Starting position for the projectile.\n\n
+        /// </summary>
+        public Point3F initialPosition
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".initialPosition").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".initialPosition", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Starting velocity for the projectile.\n\n
+        /// </summary>
+        public Point3F initialVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".initialVelocity").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".initialVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief ID number of the object that fired the projectile.\n\n   @note If the projectile was fired by a WeaponImage, sourceObject will be    the object that owns the WeaponImage. This is usually the player.
+        /// </summary>
+        public int sourceObject
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sourceObject").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sourceObject", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The sourceObject's weapon slot that the projectile originates from.\n\n
+        /// </summary>
+        public int sourceSlot
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sourceSlot").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sourceSlot", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coProjectile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coProjectile(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coProjectile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coProjectile ts)
+        public static implicit operator string(coProjectile ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coProjectile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coProjectile ts)
+        public static implicit operator int(coProjectile ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coProjectile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coProjectile ts)
+        public static implicit operator uint(coProjectile ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,66 +268,25 @@ public coProjectile(int simobjectid): base(simobjectid){ }
             {
             return new coProjectile(ts);
             }
-public Point3F initialPosition
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".initialPosition").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".initialPosition", value.AsString());
-          }
-       }
-public Point3F initialVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".initialVelocity").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".initialVelocity", value.AsString());
-          }
-       }
-public int sourceObject
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sourceObject").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sourceObject", value.AsString());
-          }
-       }
-public int sourceSlot
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sourceSlot").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sourceSlot", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Updates the projectile's positional and collision information.
-///                                        This function will first delete the projectile if it is a server object and is outside it's ProjectileData::lifetime. 
-///                                        Also responsible for applying gravity, determining collisions, triggering explosions, 
-///                                        emitting trail particles, and calculating bounces if necessary.
-/// 									            @param seconds Amount of time, in seconds since the simulation's start, to advance.
-/// 									            @tsexample
-/// 									               // Tell the projectile to process a simulation event, and provide the amount of time
-/// 										            // that has passed since the simulation began.
-/// 										            %seconds = 2.0;
-/// 										            %projectile.presimulate(%seconds);
-/// 									            @endtsexample
-///                                        @note This function is not called if the SimObject::hidden is true.)
-/// 
-/// </summary>
-public  void presimulate(float seconds){
-TorqueScriptTemplate.m_ts.fnProjectile_presimulate(_mSimObjectId, seconds);
-}
-}}
+
+        /// <summary>
+        /// @brief Updates the projectile's positional and collision information.
+        ///                                        This function will first delete the projectile if it is a server object and is outside it's ProjectileData::lifetime. 
+        ///                                        Also responsible for applying gravity, determining collisions, triggering explosions, 
+        ///                                        emitting trail particles, and calculating bounces if necessary.
+        /// 									            @param seconds Amount of time, in seconds since the simulation's start, to advance.
+        /// 									            @tsexample
+        /// 									               // Tell the projectile to process a simulation event, and provide the amount of time
+        /// 										            // that has passed since the simulation began.
+        /// 										            %seconds = 2.0;
+        /// 										            %projectile.presimulate(%seconds);
+        /// 									            @endtsexample
+        ///                                        @note This function is not called if the SimObject::hidden is true.)
+        /// 
+        /// </summary>
+        public void presimulate(float seconds)
+            {
+            TorqueScriptTemplate.m_ts.fnProjectile_presimulate(_mSimObjectId, seconds);
+            }
+        }
+    }

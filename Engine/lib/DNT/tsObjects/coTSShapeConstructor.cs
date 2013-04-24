@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,172 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTSShapeConstructor))]
-    public class coTSShapeConstructor: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoTSShapeConstructor))]
+    public class coTSShapeConstructor : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTSShapeConstructor(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coTSShapeConstructor(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coTSShapeConstructor(int simobjectid): base(simobjectid){ }
+        public coTSShapeConstructor(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coTSShapeConstructor(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coTSShapeConstructor(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Translate COLLADA model on import so the origin is at the center. No effect for DTS files. 
+        /// </summary>
+        public bool adjustCenter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".adjustCenter").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".adjustCenter", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Translate COLLADA model on import so origin is at the (Z axis) bottom of the model. No effect for DTS files.\n   This can be used along with adjustCenter to have the origin at the    center of the bottom of the model.\n   @see adjustCenter 
+        /// </summary>
+        public bool adjustFloor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".adjustFloor").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".adjustFloor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// TAB separated patterns of nodes to import even if in neverImport list. No effect for DTS files.\n   Torque allows unwanted nodes in COLLADA (.dae) files to to be ignored    during import. This field contains a TAB separated list of patterns to    match node names. Any node that matches one of the patterns in the list    will balways/b be imported, even if it also matches the neverImport list\n   @see neverImport\n\n   @tsexample\n   singleton TSShapeConstructor(MyShapeDae)\n   {\n     baseShape = \./myShape.dae\;\n     alwaysImport = \mount*\ TAB \eye\;\n     neverImport = \*-PIVOT\;\n   }\n   @endtsexample 
+        /// </summary>
+        public String alwaysImport
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alwaysImport").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alwaysImport", value.AsString()); }
+            }
+
+        /// <summary>
+        /// TAB separated patterns of meshes to import even if in neverImportMesh list. No effect for DTS files.\n   Torque allows unwanted meshes in COLLADA (.dae) files to to be ignored    during import. This field contains a TAB separated list of patterns to    match mesh names. Any mesh that matches one of the patterns in the list    will balways/b be imported, even if it also matches the neverImportMesh list\n   @see neverImportMesh\n\n   @tsexample\n   singleton TSShapeConstructor(MyShapeDae)\n   {\n     baseShape = \./myShape.dae\;\n     alwaysImportMesh = \body*\ TAB \armor\ TAB \bounds\;\n     neverImportMesh = \*-dummy\;\n   }\n   @endtsexample 
+        /// </summary>
+        public String alwaysImportMesh
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alwaysImportMesh").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alwaysImportMesh", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Specifies the path to the DTS or DAE file to be operated on by this object.\n   Since the TSShapeConstructor script must be in the same folder as the DTS or    DAE file, it is recommended to use a relative path so that the shape and    script files can be copied to another location without having to modify the    path. 
+        /// </summary>
+        public String baseShape
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseShape").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseShape", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Forces update of the materials.cs file in the same folder as the COLLADA    (.dae) file, even if Materials already exist. No effect for DTS files.\n   Normally only Materials that are not already defined are written to materials.cs. 
+        /// </summary>
+        public bool forceUpdateMaterials
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".forceUpdateMaterials").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".forceUpdateMaterials", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Ignore scale elements inside COLLADA nodes. No effect for DTS files.\n   This field is a workaround for certain exporters that generate bad node    scaling, and is not usually required. 
+        /// </summary>
+        public bool ignoreNodeScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ignoreNodeScale").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ignoreNodeScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Control how the COLLADA (.dae) importer interprets LOD in the model. No effect for DTS files.\n   Set to one of the following values:\n   dldtDetectDTS/dtddThe default value. Instructs the importer to search for a 'baseXXX-startXXX' node hierarchy at the root level. If found, the importer acts as if ''TrailingNumber'' was set. Otherwise, all geometry is imported at a single detail size./dd   dtSingleSize/dtddAll geometry is imported at a fixed detail size. Numbers at the end of geometry node's are ignored./dd   dtTrailingNumber/dtddNumbers at the end of geometry node's name are interpreted as the detail size (similar to DTS exporting). Geometry instances with the same base name but different trailing number are grouped into the same object./dd   dtDEFAULT/dtddThe default value. Use the value in the .dae file (defaults to Z_AXIS if the up_axis element is not present)./dd/dl 
+        /// </summary>
+        public ColladaUtils__ImportOptions__eLodType lodType
+            {
+            get { return (ColladaUtils__ImportOptions__eLodType) Enum.Parse(typeof (ColladaUtils__ImportOptions__eLodType), dnTorque.self.GetVar(_mSimObjectId + ".lodType")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lodType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Prefix to apply to all material map names in the COLLADA (.dae) file. No effect for DTS files.\n   This field is useful to avoid material name clashes for exporters that generate generic material    names like \texture0\ or \material1\. 
+        /// </summary>
+        public String matNamePrefix
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".matNamePrefix").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".matNamePrefix", value.AsString()); }
+            }
+
+        /// <summary>
+        /// TAB separated patterns of nodes to ignore on loading. No effect for DTS files.\n   Torque allows unwanted nodes in COLLADA (.dae) files to to be ignored    during import. This field contains a TAB separated list of patterns to    match node names. Any node that matches one of the patterns in the list will    not be imported (unless it matches the alwaysImport list.\n   @see alwaysImport 
+        /// </summary>
+        public String neverImport
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".neverImport").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".neverImport", value.AsString()); }
+            }
+
+        /// <summary>
+        /// TAB separated patterns of meshes to ignore on loading. No effect for DTS files.\n   Torque allows unwanted meshes in COLLADA (.dae) files to to be ignored    during import. This field contains a TAB separated list of patterns to    match mesh names. Any mesh that matches one of the patterns in the list will    not be imported (unless it matches the alwaysImportMesh list.\n   @see alwaysImportMesh 
+        /// </summary>
+        public String neverImportMesh
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".neverImportMesh").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".neverImportMesh", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Legacy method of adding sequences to a DTS or DAE shape after loading.\n\n   @tsexample\n   singleton TSShapeConstructor(MyShapeDae)\n   {\n     baseShape = \./myShape.dae\;\n     sequence = \../anims/root.dae root\;\n     sequence = \../anims/walk.dae walk\;\n     sequence = \../anims/jump.dsq jump\;\n   }\n   @endtsexample 
+        /// </summary>
+        public String sequence
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sequence").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sequence", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Sets the detail size when lodType is set to SingleSize. No effect otherwise, and no effect for DTS files.\n   @see lodType 
+        /// </summary>
+        public int singleDetailSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".singleDetailSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".singleDetailSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Override the unit element in the COLLADA (.dae) file. No effect for DTS files.\n   COLLADA (.dae) files usually contain a unit element that indicates the    'real world' units that the model is described in. It means you can work    in sensible and meaningful units in your modeling app.br\n   For example, if you were modeling a small object like a cup, it might make    sense to work in inches (1 MAX unit = 1 inch), but if you were modeling a    building, it might make more sense to work in feet (1 MAX unit = 1 foot).    If you export both models to COLLADA, T3D will automatically scale them    appropriately. 1 T3D unit = 1 meter, so the cup would be scaled down by 0.0254,    and the building scaled down by 0.3048, given them both the correct scale    relative to each other.br\n   Omit the field or set to -1 to use the value in the .dae file (1.0 if the    unit element is not present) 
+        /// </summary>
+        public float unit
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".unit").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".unit", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Override the up_axis element in the COLLADA (.dae) file. No effect for DTS files.\n   Set to one of the following values:\n   dldtX_AXIS/dtddPositive X points up. Model will be rotated into Torque's coordinate system (Z up)./dd   dtY_AXIS/dtddPositive Y points up. Model will be rotated into Torque's coordinate system (Z up)./dd   dtZ_AXIS/dtddPositive Z points up. No rotation will be applied to the model./dd   dtDEFAULT/dtddThe default value. Use the value in the .dae file (defaults to Z_AXIS if the up_axis element is not present)./dd/dl 
+        /// </summary>
+        public int upAxis
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".upAxis").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".upAxis", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +271,9 @@ public coTSShapeConstructor(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +281,17 @@ public coTSShapeConstructor(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +303,15 @@ public coTSShapeConstructor(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTSShapeConstructor ts)
+        public static implicit operator string(coTSShapeConstructor ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +331,7 @@ public coTSShapeConstructor(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTSShapeConstructor ts)
+        public static implicit operator int(coTSShapeConstructor ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +352,7 @@ public coTSShapeConstructor(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTSShapeConstructor ts)
+        public static implicit operator uint(coTSShapeConstructor ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,168 +367,5 @@ public coTSShapeConstructor(int simobjectid): base(simobjectid){ }
             {
             return new coTSShapeConstructor(ts);
             }
-public bool adjustCenter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".adjustCenter").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".adjustCenter", value.AsString());
-          }
-       }
-public bool adjustFloor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".adjustFloor").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".adjustFloor", value.AsString());
-          }
-       }
-public String alwaysImport
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alwaysImport").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alwaysImport", value.AsString());
-          }
-       }
-public String alwaysImportMesh
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alwaysImportMesh").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alwaysImportMesh", value.AsString());
-          }
-       }
-public String baseShape
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseShape").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseShape", value.AsString());
-          }
-       }
-public bool forceUpdateMaterials
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".forceUpdateMaterials").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".forceUpdateMaterials", value.AsString());
-          }
-       }
-public bool ignoreNodeScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ignoreNodeScale").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ignoreNodeScale", value.AsString());
-          }
-       }
-public ColladaUtils__ImportOptions__eLodType lodType
-       {
-       get
-          {          return (ColladaUtils__ImportOptions__eLodType)Enum.Parse(typeof(ColladaUtils__ImportOptions__eLodType), dnTorque.self.GetVar(_mSimObjectId + ".lodType"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lodType", value.ToString());
-          }
-       }
-public String matNamePrefix
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".matNamePrefix").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".matNamePrefix", value.AsString());
-          }
-       }
-public String neverImport
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".neverImport").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".neverImport", value.AsString());
-          }
-       }
-public String neverImportMesh
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".neverImportMesh").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".neverImportMesh", value.AsString());
-          }
-       }
-public String sequence
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sequence").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sequence", value.AsString());
-          }
-       }
-public int singleDetailSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".singleDetailSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".singleDetailSize", value.AsString());
-          }
-       }
-public float unit
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".unit").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".unit", value.AsString());
-          }
-       }
-public int upAxis
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".upAxis").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".upAxis", value.AsString());
-          }
-       }
-}}
+        }
+    }

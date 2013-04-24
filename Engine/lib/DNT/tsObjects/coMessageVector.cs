@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoMessageVector))]
-    public class coMessageVector: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoMessageVector))]
+    public class coMessageVector : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMessageVector(string simobjectid) : base(simobjectid){ }
+        public coMessageVector(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMessageVector(uint simobjectid): base(simobjectid){ }
+        public coMessageVector(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMessageVector(int simobjectid): base(simobjectid){ }
+        public coMessageVector(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coMessageVector(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coMessageVector(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coMessageVector(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coMessageVector ts)
+        public static implicit operator string(coMessageVector ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coMessageVector(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coMessageVector ts)
+        public static implicit operator int(coMessageVector ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coMessageVector(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coMessageVector ts)
+        public static implicit operator uint(coMessageVector ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,171 +231,198 @@ public coMessageVector(int simobjectid): base(simobjectid){ }
             {
             return new coMessageVector(ts);
             }
-/// <summary>
-/// Clear all messages in the vector
-///    @tsexample
-///    HudMessageVector.clear();
-///    @endtsexample)
-/// 
-/// </summary>
-public  void clear(){
-TorqueScriptTemplate.m_ts.fnMessageVector_clear(_mSimObjectId);
-}
-/// <summary>
-/// Delete the line at the specified position.
-///    @param deletePos Position in the vector containing the line to be deleted
-///    @tsexample
-///    // Delete the first line (index 0) in the vector...
-///    HudMessageVector.deleteLine(0);
-///    @endtsexample
-///    @return False if deletePos is greater than the number of lines in the current vector)
-/// 
-/// </summary>
-public  bool deleteLine(int deletePos){
-return TorqueScriptTemplate.m_ts.fnMessageVector_deleteLine(_mSimObjectId, deletePos);
-}
-/// <summary>
-/// ( MessageVector, dump, void, 3, 4, (string filename, string header=NULL)
-///               Dump the message vector to a file, optionally prefixing a header.
-/// 			  @hide)
-/// 
-/// </summary>
-public  void dump(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnMessageVector_dump(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// Scan through the vector, returning the line number of the first line that matches the specified tag; else returns -1 if no match was found.
-///    @param tag Numerical value assigned to a message when it was added or inserted
-///    @tsexample
-///    // Locate a line of text tagged with the value \"1\", then delete it.
-///    %taggedLine = HudMessageVector.getLineIndexByTag(1);
-///    HudMessageVector.deleteLine(%taggedLine);
-///    @endtsexample
-///    @return Line with matching tag, other wise -1)
-/// 
-/// </summary>
-public  int getLineIndexByTag(int tag){
-return TorqueScriptTemplate.m_ts.fnMessageVector_getLineIndexByTag(_mSimObjectId, tag);
-}
-/// <summary>
-/// Get the tag of a specified line.
-///    @param pos Position in vector to grab tag from
-///    @tsexample
-///    // Remove all lines that do not have a tag value of 1.
-///    while( HudMessageVector.getNumLines())
-///    {
-///       %tag = HudMessageVector.getLineTag(1);
-///       if(%tag != 1)
-///          %tag.delete();
-///       HudMessageVector.popFrontLine();
-///    }
-///    @endtsexample
-///    @return Tag value of a given line, if the position is greater than the number of lines return 0)
-/// 
-/// </summary>
-public  int getLineTag(int pos){
-return TorqueScriptTemplate.m_ts.fnMessageVector_getLineTag(_mSimObjectId, pos);
-}
-/// <summary>
-/// Get the text at a specified line.
-///    @param pos Position in vector to grab text from
-///    @tsexample
-///    // Print a line of text at position 1.
-///    %text = HudMessageVector.getLineText(1);
-///    echo(%text);
-///    @endtsexample
-///    @return Text at specified line, if the position is greater than the number of lines return \"\")
-/// 
-/// </summary>
-public  string getLineText(int pos){
-return TorqueScriptTemplate.m_ts.fnMessageVector_getLineText(_mSimObjectId, pos);
-}
-/// <summary>
-/// Scan through the lines in the vector, returning the first line that has a matching tag.
-///    @param tag Numerical value assigned to a message when it was added or inserted
-///    @tsexample
-///    // Locate text in the vector tagged with the value \"1\", then print it
-///    %taggedText = HudMessageVector.getLineTextByTag(1);
-///    echo(%taggedText);
-///    @endtsexample
-///    @return Text from a line with matching tag, other wise \"\")
-/// 
-/// </summary>
-public  string getLineTextByTag(int tag){
-return TorqueScriptTemplate.m_ts.fnMessageVector_getLineTextByTag(_mSimObjectId, tag);
-}
-/// <summary>
-/// Get the number of lines in the vector.
-///    @tsexample
-///    // Find out how many lines have been stored in HudMessageVector
-///    %chatLines = HudMessageVector.getNumLines();
-///    echo(%chatLines);
-///    @endtsexample)
-/// 
-/// </summary>
-public  int getNumLines(){
-return TorqueScriptTemplate.m_ts.fnMessageVector_getNumLines(_mSimObjectId);
-}
-/// <summary>
-/// Push a line onto the back of the list.
-///    @param msg Text that makes up the message
-///    @param tag Numerical value associated with this message, useful for searching.
-///    @tsexample
-///    // Add the message...
-///    HudMessageVector.insertLine(1, \"Hello World\", 0);
-///    @endtsexample
-///    @return False if insertPos is greater than the number of lines in the current vector)
-/// 
-/// </summary>
-public  bool insertLine(int insertPos, string msg, int tag){
-return TorqueScriptTemplate.m_ts.fnMessageVector_insertLine(_mSimObjectId, insertPos, msg, tag);
-}
-/// <summary>
-/// Pop a line from the back of the list; destroys the line.
-///    @tsexample
-///    HudMessageVector.popBackLine();
-///    @endtsexample
-///    @return False if there are no lines to pop (underflow), true otherwise)
-/// 
-/// </summary>
-public  bool popBackLine(){
-return TorqueScriptTemplate.m_ts.fnMessageVector_popBackLine(_mSimObjectId);
-}
-/// <summary>
-/// Pop a line from the front of the vector, destroying the line.
-///    @tsexample
-///    HudMessageVector.popFrontLine();
-///    @endtsexample
-///    @return False if there are no lines to pop (underflow), true otherwise)
-/// 
-/// </summary>
-public  bool popFrontLine(){
-return TorqueScriptTemplate.m_ts.fnMessageVector_popFrontLine(_mSimObjectId);
-}
-/// <summary>
-/// Push a line onto the back of the list.
-///    @param msg Text that makes up the message
-///    @param tag Numerical value associated with this message, useful for searching.
-///    @tsexample
-///    // Add the message...
-///    HudMessageVector.pushBackLine(\"Hello World\", 0);
-///    @endtsexample)
-/// 
-/// </summary>
-public  void pushBackLine(string msg, int tag){
-TorqueScriptTemplate.m_ts.fnMessageVector_pushBackLine(_mSimObjectId, msg, tag);
-}
-/// <summary>
-/// Push a line onto the front of the vector.
-///    @param msg Text that makes up the message
-///    @param tag Numerical value associated with this message, useful for searching.
-///    @tsexample
-///    // Add the message...
-///    HudMessageVector.pushFrontLine(\"Hello World\", 0);
-///    @endtsexample)
-/// 
-/// </summary>
-public  void pushFrontLine(string msg, int tag){
-TorqueScriptTemplate.m_ts.fnMessageVector_pushFrontLine(_mSimObjectId, msg, tag);
-}
-}}
+
+        /// <summary>
+        /// Clear all messages in the vector
+        ///    @tsexample
+        ///    HudMessageVector.clear();
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void clear()
+            {
+            TorqueScriptTemplate.m_ts.fnMessageVector_clear(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Delete the line at the specified position.
+        ///    @param deletePos Position in the vector containing the line to be deleted
+        ///    @tsexample
+        ///    // Delete the first line (index 0) in the vector...
+        ///    HudMessageVector.deleteLine(0);
+        ///    @endtsexample
+        ///    @return False if deletePos is greater than the number of lines in the current vector)
+        /// 
+        /// </summary>
+        public bool deleteLine(int deletePos)
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_deleteLine(_mSimObjectId, deletePos);
+            }
+
+        /// <summary>
+        /// ( MessageVector, dump, void, 3, 4, (string filename, string header=NULL)
+        ///               Dump the message vector to a file, optionally prefixing a header.
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public void dump(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnMessageVector_dump(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// Scan through the vector, returning the line number of the first line that matches the specified tag; else returns -1 if no match was found.
+        ///    @param tag Numerical value assigned to a message when it was added or inserted
+        ///    @tsexample
+        ///    // Locate a line of text tagged with the value \"1\", then delete it.
+        ///    %taggedLine = HudMessageVector.getLineIndexByTag(1);
+        ///    HudMessageVector.deleteLine(%taggedLine);
+        ///    @endtsexample
+        ///    @return Line with matching tag, other wise -1)
+        /// 
+        /// </summary>
+        public int getLineIndexByTag(int tag)
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_getLineIndexByTag(_mSimObjectId, tag);
+            }
+
+        /// <summary>
+        /// Get the tag of a specified line.
+        ///    @param pos Position in vector to grab tag from
+        ///    @tsexample
+        ///    // Remove all lines that do not have a tag value of 1.
+        ///    while( HudMessageVector.getNumLines())
+        ///    {
+        ///       %tag = HudMessageVector.getLineTag(1);
+        ///       if(%tag != 1)
+        ///          %tag.delete();
+        ///       HudMessageVector.popFrontLine();
+        ///    }
+        ///    @endtsexample
+        ///    @return Tag value of a given line, if the position is greater than the number of lines return 0)
+        /// 
+        /// </summary>
+        public int getLineTag(int pos)
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_getLineTag(_mSimObjectId, pos);
+            }
+
+        /// <summary>
+        /// Get the text at a specified line.
+        ///    @param pos Position in vector to grab text from
+        ///    @tsexample
+        ///    // Print a line of text at position 1.
+        ///    %text = HudMessageVector.getLineText(1);
+        ///    echo(%text);
+        ///    @endtsexample
+        ///    @return Text at specified line, if the position is greater than the number of lines return \"\")
+        /// 
+        /// </summary>
+        public string getLineText(int pos)
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_getLineText(_mSimObjectId, pos);
+            }
+
+        /// <summary>
+        /// Scan through the lines in the vector, returning the first line that has a matching tag.
+        ///    @param tag Numerical value assigned to a message when it was added or inserted
+        ///    @tsexample
+        ///    // Locate text in the vector tagged with the value \"1\", then print it
+        ///    %taggedText = HudMessageVector.getLineTextByTag(1);
+        ///    echo(%taggedText);
+        ///    @endtsexample
+        ///    @return Text from a line with matching tag, other wise \"\")
+        /// 
+        /// </summary>
+        public string getLineTextByTag(int tag)
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_getLineTextByTag(_mSimObjectId, tag);
+            }
+
+        /// <summary>
+        /// Get the number of lines in the vector.
+        ///    @tsexample
+        ///    // Find out how many lines have been stored in HudMessageVector
+        ///    %chatLines = HudMessageVector.getNumLines();
+        ///    echo(%chatLines);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public int getNumLines()
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_getNumLines(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Push a line onto the back of the list.
+        ///    @param msg Text that makes up the message
+        ///    @param tag Numerical value associated with this message, useful for searching.
+        ///    @tsexample
+        ///    // Add the message...
+        ///    HudMessageVector.insertLine(1, \"Hello World\", 0);
+        ///    @endtsexample
+        ///    @return False if insertPos is greater than the number of lines in the current vector)
+        /// 
+        /// </summary>
+        public bool insertLine(int insertPos, string msg, int tag)
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_insertLine(_mSimObjectId, insertPos, msg, tag);
+            }
+
+        /// <summary>
+        /// Pop a line from the back of the list; destroys the line.
+        ///    @tsexample
+        ///    HudMessageVector.popBackLine();
+        ///    @endtsexample
+        ///    @return False if there are no lines to pop (underflow), true otherwise)
+        /// 
+        /// </summary>
+        public bool popBackLine()
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_popBackLine(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Pop a line from the front of the vector, destroying the line.
+        ///    @tsexample
+        ///    HudMessageVector.popFrontLine();
+        ///    @endtsexample
+        ///    @return False if there are no lines to pop (underflow), true otherwise)
+        /// 
+        /// </summary>
+        public bool popFrontLine()
+            {
+            return TorqueScriptTemplate.m_ts.fnMessageVector_popFrontLine(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Push a line onto the back of the list.
+        ///    @param msg Text that makes up the message
+        ///    @param tag Numerical value associated with this message, useful for searching.
+        ///    @tsexample
+        ///    // Add the message...
+        ///    HudMessageVector.pushBackLine(\"Hello World\", 0);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void pushBackLine(string msg, int tag)
+            {
+            TorqueScriptTemplate.m_ts.fnMessageVector_pushBackLine(_mSimObjectId, msg, tag);
+            }
+
+        /// <summary>
+        /// Push a line onto the front of the vector.
+        ///    @param msg Text that makes up the message
+        ///    @param tag Numerical value associated with this message, useful for searching.
+        ///    @tsexample
+        ///    // Add the message...
+        ///    HudMessageVector.pushFrontLine(\"Hello World\", 0);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void pushFrontLine(string msg, int tag)
+            {
+            TorqueScriptTemplate.m_ts.fnMessageVector_pushFrontLine(_mSimObjectId, msg, tag);
+            }
+        }
+    }

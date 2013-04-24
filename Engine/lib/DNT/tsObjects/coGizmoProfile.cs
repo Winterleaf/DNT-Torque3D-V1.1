@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,217 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGizmoProfile))]
-    public class coGizmoProfile: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoGizmoProfile))]
+    public class coGizmoProfile : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGizmoProfile(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGizmoProfile(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGizmoProfile(int simobjectid): base(simobjectid){ }
+        public coGizmoProfile(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGizmoProfile(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGizmoProfile(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public GizmoAlignment alignment
+            {
+            get { return (GizmoAlignment) Enum.Parse(typeof (GizmoAlignment), dnTorque.self.GetVar(_mSimObjectId + ".alignment")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alignment", value.ToString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool allowSnapRotations
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".allowSnapRotations").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".allowSnapRotations", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool allowSnapScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".allowSnapScale").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".allowSnapScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int flags
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flags").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flags", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI gridColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gridColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Point3F gridSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridSize").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gridSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public GizmoMode mode
+            {
+            get { return (GizmoMode) Enum.Parse(typeof (GizmoMode), dnTorque.self.GetVar(_mSimObjectId + ".mode")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mode", value.ToString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float planeDim
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".planeDim").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".planeDim", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool renderInfoText
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderInfoText").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderInfoText", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool renderMoveGrid
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderMoveGrid").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderMoveGrid", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool renderPlane
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderPlane").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderPlane", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool renderPlaneHashes
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderPlaneHashes").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderPlaneHashes", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool renderSolid
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderSolid").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderSolid", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool renderWhenUsed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderWhenUsed").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderWhenUsed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float rotateScalar
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotateScalar").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotateScalar", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float rotationSnap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotationSnap").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotationSnap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float scaleScalar
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scaleScalar").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scaleScalar", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float scaleSnap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scaleSnap").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scaleSnap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int screenLength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".screenLength").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".screenLength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool snapToGrid
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snapToGrid").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snapToGrid", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +317,9 @@ public coGizmoProfile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +327,17 @@ public coGizmoProfile(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +349,15 @@ public coGizmoProfile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGizmoProfile ts)
+        public static implicit operator string(coGizmoProfile ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +377,7 @@ public coGizmoProfile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGizmoProfile ts)
+        public static implicit operator int(coGizmoProfile ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +398,7 @@ public coGizmoProfile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGizmoProfile ts)
+        public static implicit operator uint(coGizmoProfile ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,222 +413,5 @@ public coGizmoProfile(int simobjectid): base(simobjectid){ }
             {
             return new coGizmoProfile(ts);
             }
-public GizmoAlignment alignment
-       {
-       get
-          {          return (GizmoAlignment)Enum.Parse(typeof(GizmoAlignment), dnTorque.self.GetVar(_mSimObjectId + ".alignment"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alignment", value.ToString());
-          }
-       }
-public bool allowSnapRotations
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".allowSnapRotations").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".allowSnapRotations", value.AsString());
-          }
-       }
-public bool allowSnapScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".allowSnapScale").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".allowSnapScale", value.AsString());
-          }
-       }
-public int flags
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flags").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flags", value.AsString());
-          }
-       }
-public ColorI gridColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gridColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gridColor", value.AsString());
-          }
-       }
-public Point3F gridSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gridSize").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gridSize", value.AsString());
-          }
-       }
-public GizmoMode mode
-       {
-       get
-          {          return (GizmoMode)Enum.Parse(typeof(GizmoMode), dnTorque.self.GetVar(_mSimObjectId + ".mode"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mode", value.ToString());
-          }
-       }
-public float planeDim
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".planeDim").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".planeDim", value.AsString());
-          }
-       }
-public bool renderInfoText
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderInfoText").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderInfoText", value.AsString());
-          }
-       }
-public bool renderMoveGrid
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderMoveGrid").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderMoveGrid", value.AsString());
-          }
-       }
-public bool renderPlane
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderPlane").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderPlane", value.AsString());
-          }
-       }
-public bool renderPlaneHashes
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderPlaneHashes").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderPlaneHashes", value.AsString());
-          }
-       }
-public bool renderSolid
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderSolid").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderSolid", value.AsString());
-          }
-       }
-public bool renderWhenUsed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderWhenUsed").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderWhenUsed", value.AsString());
-          }
-       }
-public float rotateScalar
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotateScalar").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotateScalar", value.AsString());
-          }
-       }
-public float rotationSnap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotationSnap").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotationSnap", value.AsString());
-          }
-       }
-public float scaleScalar
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scaleScalar").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scaleScalar", value.AsString());
-          }
-       }
-public float scaleSnap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scaleSnap").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scaleSnap", value.AsString());
-          }
-       }
-public int screenLength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".screenLength").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".screenLength", value.AsString());
-          }
-       }
-public bool snapToGrid
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snapToGrid").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snapToGrid", value.AsString());
-          }
-       }
-}}
+        }
+    }

@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -97,11 +97,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             if (console.Call("AL_ShadowVizOverlayCtrl", "isAwake").AsBool())
                 {
                 Util._setShadowVizLight("0");
-                GuiCanvas.popDialog("Canvas", "AL_ShadowVizOverlayCtrl");
+                ((coGuiCanvas) "Canvas").popDialog("AL_ShadowVizOverlayCtrl");
                 }
             else
                 {
-                GuiCanvas.pushDialog("Canvas", "AL_ShadowVizOverlayCtrl", "100");
+                ((coGuiCanvas) "Canvas").pushDialog("AL_ShadowVizOverlayCtrl", "100");
                 _setShadowVizLight(console.Call("EWorldEditor", "getSelectedObject", new[] {"0"}), false);
                 }
             }
@@ -120,12 +120,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 string clientLight = serverToClientObject(new coNetObject(light)); //console.Call("serverToClientObject", new string[] { light });
                 sizeAndAspect = Util._setShadowVizLight(clientLight);
                 }
-            console.Call(SimSet.findObjectByInternalName("AL_ShadowVizOverlayCtrl", "MatCtrl", true), "setMaterial", new[] {"AL_ShadowVisualizeMaterial"});
+            console.Call(((coSimSet) "AL_ShadowVizOverlayCtrl").findObjectByInternalName("MatCtrl", true), "setMaterial", new[] {"AL_ShadowVisualizeMaterial"});
             string text = "ShadowViz";
             if (console.isObject(light))
                 text = text + ":" + sizeAndAspect.Split(' ')[0] + " x " + sizeAndAspect.Split(' ')[1];
 
-            console.SetVar(SimSet.findObjectByInternalName("AL_ShadowVizOverlayCtrl", "WindowCtrl", true), text);
+            console.SetVar(((coSimSet) "AL_ShadowVizOverlayCtrl").findObjectByInternalName("WindowCtrl", true), text);
             }
 
 
@@ -133,7 +133,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void showShadowVizForLight(string light)
             {
             if (!console.Call("AL_ShadowVizOverlayCtrl", "isAwake").AsBool())
-                GuiCanvas.pushDialog("Canvas", "AL_ShadowVizOverlayCtrl", "100");
+                ((coGuiCanvas) "Canvas").pushDialog("AL_ShadowVizOverlayCtrl", "100");
 
             _setShadowVizLight(light, true);
             }

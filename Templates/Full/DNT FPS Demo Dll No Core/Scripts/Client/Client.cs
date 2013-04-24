@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -121,7 +121,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             {
             new coGuiControl("DamageHUD").findObjectByInternalName("damage_" + direction, true);
 
-            coGuiBitmapCtrl ctrl = SimSet.findObjectByInternalName("DamageHUD", "damage_" + direction, true);
+            coGuiBitmapCtrl ctrl = ((coGuiControl) "DamageHUD").findObjectByInternalName("damage_" + direction, true);
 
             if (!console.isObject(ctrl))
                 return;

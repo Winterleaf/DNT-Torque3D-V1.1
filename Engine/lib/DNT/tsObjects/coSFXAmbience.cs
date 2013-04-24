@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXAmbience))]
-    public class coSFXAmbience: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXAmbience))]
+    public class coSFXAmbience : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXAmbience(string simobjectid) : base(simobjectid){ }
+        public coSFXAmbience(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXAmbience(uint simobjectid): base(simobjectid){ }
+        public coSFXAmbience(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXAmbience(int simobjectid): base(simobjectid){ }
+        public coSFXAmbience(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// The factor to apply to the doppler affect in this space.\n     Defaults to 0.5.\n\n     @ref SFXSource_doppler 
+        /// </summary>
+        public float dopplerFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dopplerFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dopplerFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Reverb environment active in the ambience zone.\n     @ref SFX_reverb 
+        /// </summary>
+        public coSFXEnvironment environment
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".environment"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".environment", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The rolloff factor to apply to distance-based volume attenuation in this space.\n     Defaults to 1.0.\n\n     @note This applies to the logarithmic distance model only.\n\n     @ref SFXSource_volume 
+        /// </summary>
+        public float rolloffFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rolloffFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rolloffFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Sound track to play in the ambience zone. 
+        /// </summary>
+        public coSFXTrack soundTrack
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".soundTrack"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundTrack", value.ToString()); }
+            }
+
+        /// <summary>
+        /// States to activate when the ambient zone is entered.\n     When the ambient sound state is entered, all states associated with the state will      be activated (given that they are not disabled) and deactivated when the space      is exited again. 
+        /// </summary>
+        public coSFXState states
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".states"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".states", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +180,9 @@ public coSFXAmbience(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +190,17 @@ public coSFXAmbience(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +212,15 @@ public coSFXAmbience(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXAmbience ts)
+        public static implicit operator string(coSFXAmbience ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +240,7 @@ public coSFXAmbience(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXAmbience ts)
+        public static implicit operator int(coSFXAmbience ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +261,7 @@ public coSFXAmbience(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXAmbience ts)
+        public static implicit operator uint(coSFXAmbience ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,59 +276,5 @@ public coSFXAmbience(int simobjectid): base(simobjectid){ }
             {
             return new coSFXAmbience(ts);
             }
-public float dopplerFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dopplerFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dopplerFactor", value.AsString());
-          }
-       }
-public coSFXEnvironment environment
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".environment");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".environment", value.ToString());
-          }
-       }
-public float rolloffFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rolloffFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rolloffFactor", value.AsString());
-          }
-       }
-public coSFXTrack soundTrack
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".soundTrack");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".soundTrack", value.ToString());
-          }
-       }
-public coSFXState states
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".states");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".states", value.ToString());
-          }
-       }
-}}
+        }
+    }

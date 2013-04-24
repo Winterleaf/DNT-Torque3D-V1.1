@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiStackControl))]
-    public class coGuiStackControl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiStackControl))]
+    public class coGuiStackControl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiStackControl(string simobjectid) : base(simobjectid){ }
+        public coGuiStackControl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiStackControl(uint simobjectid): base(simobjectid){ }
+        public coGuiStackControl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiStackControl(int simobjectid): base(simobjectid){ }
+        public coGuiStackControl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Determines whether to reposition child controls.\n\n   If true, horizontally stacked children are aligned along the top edge of    the stack control. Vertically stacked children are aligned along the left    edge of the stack control. If false, horizontally stacked children retain    their Y position, and vertically stacked children retain their X position. 
+        /// </summary>
+        public bool changeChildPosition
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".changeChildPosition").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".changeChildPosition", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines whether to resize child controls.\n\n   If true, horizontally stacked children keep their width, but have their    height set to the stack control height. Vertically stacked children keep    their height, but have their width set to the stack control width. If    false, child controls are not resized. 
+        /// </summary>
+        public bool changeChildSizeToFit
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".changeChildSizeToFit").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".changeChildSizeToFit", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines whether to resize the stack control along the non-stack axis (change    height for horizontal stacking, change width for vertical stacking). No effect    if dynamicSize is false.\n\n   If true, the stack will be resized to the maximum of the child control widths/heights.    If false, the stack will not be resized. 
+        /// </summary>
+        public bool dynamicNonStackExtent
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicNonStackExtent").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicNonStackExtent", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines whether to reposition the stack along the stack axis when it is    auto-resized. No effect if dynamicSize is false.\n\n   If true, the stack will grow left for horizontal stacking, and grow up for vertical stacking.\n   If false, the stack will grow right for horizontal stacking, and grow down for vertical stacking.\n 
+        /// </summary>
+        public bool dynamicPos
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicPos").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicPos", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines whether to resize the stack control along the stack axis (change    width for horizontal stacking, change height for vertical stacking).\n\n   If true, the stack width/height will be resized to the sum of the child control widths/heights.    If false, the stack will not be resized. 
+        /// </summary>
+        public bool dynamicSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicSize").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls the type of horizontal stacking to use (iLeft to Right/i or    iRight to Left/i) 
+        /// </summary>
+        public GuiStackControl__HorizontalType horizStacking
+            {
+            get { return (GuiStackControl__HorizontalType) Enum.Parse(typeof (GuiStackControl__HorizontalType), dnTorque.self.GetVar(_mSimObjectId + ".horizStacking")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".horizStacking", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Distance (in pixels) between stacked child controls. 
+        /// </summary>
+        public int padding
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".padding").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".padding", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines the method used to position the child controls.\n\n 
+        /// </summary>
+        public GuiStackControl__StackingType stackingType
+            {
+            get { return (GuiStackControl__StackingType) Enum.Parse(typeof (GuiStackControl__StackingType), dnTorque.self.GetVar(_mSimObjectId + ".stackingType")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stackingType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Controls the type of vertical stacking to use (iTop to Bottom/i or    iBottom to Top/i) 
+        /// </summary>
+        public GuiStackControl__VerticalType vertStacking
+            {
+            get { return (GuiStackControl__VerticalType) Enum.Parse(typeof (GuiStackControl__VerticalType), dnTorque.self.GetVar(_mSimObjectId + ".vertStacking")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".vertStacking", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +217,9 @@ public coGuiStackControl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +227,17 @@ public coGuiStackControl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +249,15 @@ public coGuiStackControl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiStackControl ts)
+        public static implicit operator string(coGuiStackControl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +277,7 @@ public coGuiStackControl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiStackControl ts)
+        public static implicit operator int(coGuiStackControl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +298,7 @@ public coGuiStackControl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiStackControl ts)
+        public static implicit operator uint(coGuiStackControl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,127 +313,38 @@ public coGuiStackControl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiStackControl(ts);
             }
-public bool changeChildPosition
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".changeChildPosition").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".changeChildPosition", value.AsString());
-          }
-       }
-public bool changeChildSizeToFit
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".changeChildSizeToFit").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".changeChildSizeToFit", value.AsString());
-          }
-       }
-public bool dynamicNonStackExtent
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicNonStackExtent").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicNonStackExtent", value.AsString());
-          }
-       }
-public bool dynamicPos
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicPos").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicPos", value.AsString());
-          }
-       }
-public bool dynamicSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicSize").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicSize", value.AsString());
-          }
-       }
-public GuiStackControl__HorizontalType horizStacking
-       {
-       get
-          {          return (GuiStackControl__HorizontalType)Enum.Parse(typeof(GuiStackControl__HorizontalType), dnTorque.self.GetVar(_mSimObjectId + ".horizStacking"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".horizStacking", value.ToString());
-          }
-       }
-public int padding
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".padding").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".padding", value.AsString());
-          }
-       }
-public GuiStackControl__StackingType stackingType
-       {
-       get
-          {          return (GuiStackControl__StackingType)Enum.Parse(typeof(GuiStackControl__StackingType), dnTorque.self.GetVar(_mSimObjectId + ".stackingType"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stackingType", value.ToString());
-          }
-       }
-public GuiStackControl__VerticalType vertStacking
-       {
-       get
-          {          return (GuiStackControl__VerticalType)Enum.Parse(typeof(GuiStackControl__VerticalType), dnTorque.self.GetVar(_mSimObjectId + ".vertStacking"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".vertStacking", value.ToString());
-          }
-       }
-/// <summary>
-/// Prevents control from restacking - useful when adding or removing child controls
-///    @param freeze True to freeze the control, false to unfreeze it
-///    @tsexample
-///    %stackCtrl.freeze(true);
-///    // add controls to stack
-///    %stackCtrl.freeze(false);
-///    @endtsexample )
-/// 
-/// </summary>
-public  void freeze(bool freeze){
-TorqueScriptTemplate.m_ts.fnGuiStackControl_freeze(_mSimObjectId, freeze);
-}
-/// <summary>
-/// Return whether or not this control is frozen )
-/// 
-/// </summary>
-public  bool isFrozen(){
-return TorqueScriptTemplate.m_ts.fnGuiStackControl_isFrozen(_mSimObjectId);
-}
-/// <summary>
-/// Restack the child controls. )
-/// 
-/// </summary>
-public  void updateStack(){
-TorqueScriptTemplate.m_ts.fnGuiStackControl_updateStack(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Prevents control from restacking - useful when adding or removing child controls
+        ///    @param freeze True to freeze the control, false to unfreeze it
+        ///    @tsexample
+        ///    %stackCtrl.freeze(true);
+        ///    // add controls to stack
+        ///    %stackCtrl.freeze(false);
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public void freeze(bool freeze)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiStackControl_freeze(_mSimObjectId, freeze);
+            }
+
+        /// <summary>
+        /// Return whether or not this control is frozen )
+        /// 
+        /// </summary>
+        public bool isFrozen()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiStackControl_isFrozen(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Restack the child controls. )
+        /// 
+        /// </summary>
+        public void updateStack()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiStackControl_updateStack(_mSimObjectId);
+            }
+        }
+    }

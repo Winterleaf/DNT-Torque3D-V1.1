@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiBitmapButtonCtrl))]
-    public class coGuiBitmapButtonCtrl: coGuiButtonCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiBitmapButtonCtrl))]
+    public class coGuiBitmapButtonCtrl : coGuiButtonCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiBitmapButtonCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiBitmapButtonCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiBitmapButtonCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiBitmapButtonCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiBitmapButtonCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiBitmapButtonCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// If true, the control's extents will be set to match the bitmap's extents when setting the bitmap.\n     The bitmap extents will always be taken from the default/normal bitmap (in case the extents of the various      bitmaps do not match up.) 
+        /// </summary>
+        public bool autoFitExtents
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoFitExtents").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoFitExtents", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Texture file to display on this button.\n     If useStates is false, this will be the file that renders on the control. Otherwise, this will      specify the default texture name to which the various state and modifier suffixes are appended      to find the per-state and per-modifier (if enabled) textures. 
+        /// </summary>
+        public String bitmap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Behavior for fitting the bitmap to the control extents.\n     If set to 'Stretched', the bitmap will be stretched both verticall and horizontally to fit inside      the control's extents.\n\n     If set to 'Centered', the bitmap will stay at its original resolution centered in the control's      rectangle (getting clipped if the control is smaller than the texture). 
+        /// </summary>
+        public GuiBitmapButtonCtrl__BitmapMode bitmapMode
+            {
+            get { return (GuiBitmapButtonCtrl__BitmapMode) Enum.Parse(typeof (GuiBitmapButtonCtrl__BitmapMode), dnTorque.self.GetVar(_mSimObjectId + ".bitmapMode")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bitmapMode", value.ToString()); }
+            }
+
+        /// <summary>
+        /// If true, per-modifier button functionality is enabled.\n     @ref guibitmapbutton_modifiers 
+        /// </summary>
+        public bool useModifiers
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useModifiers").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useModifiers", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, per-mouse state button functionality is enabled.\n     Defaults to true.\n\n     If you do not use per-state images on this button set this to false to speed up the loading process      by inhibiting searches for the individual images. 
+        /// </summary>
+        public bool useStates
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useStates").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useStates", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiBitmapButtonCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiBitmapButtonCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiBitmapButtonCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiBitmapButtonCtrl ts)
+        public static implicit operator string(coGuiBitmapButtonCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiBitmapButtonCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiBitmapButtonCtrl ts)
+        public static implicit operator int(coGuiBitmapButtonCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiBitmapButtonCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiBitmapButtonCtrl ts)
+        public static implicit operator uint(coGuiBitmapButtonCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,66 +277,15 @@ public coGuiBitmapButtonCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiBitmapButtonCtrl(ts);
             }
-public bool autoFitExtents
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoFitExtents").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoFitExtents", value.AsString());
-          }
-       }
-public String bitmap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString());
-          }
-       }
-public GuiBitmapButtonCtrl__BitmapMode bitmapMode
-       {
-       get
-          {          return (GuiBitmapButtonCtrl__BitmapMode)Enum.Parse(typeof(GuiBitmapButtonCtrl__BitmapMode), dnTorque.self.GetVar(_mSimObjectId + ".bitmapMode"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bitmapMode", value.ToString());
-          }
-       }
-public bool useModifiers
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useModifiers").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useModifiers", value.AsString());
-          }
-       }
-public bool useStates
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useStates").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useStates", value.AsString());
-          }
-       }
-/// <summary>
-/// Set the bitmap to show on the button.
-///    @param path Path to the texture file in any of the supported formats. )
-/// 
-/// </summary>
-public  void setBitmap(string path){
-TorqueScriptTemplate.m_ts.fnGuiBitmapButtonCtrl_setBitmap(_mSimObjectId, path);
-}
-}}
+
+        /// <summary>
+        /// Set the bitmap to show on the button.
+        ///    @param path Path to the texture file in any of the supported formats. )
+        /// 
+        /// </summary>
+        public void setBitmap(string path)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiBitmapButtonCtrl_setBitmap(_mSimObjectId, path);
+            }
+        }
+    }

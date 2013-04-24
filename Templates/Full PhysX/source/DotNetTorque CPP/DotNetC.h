@@ -47,6 +47,8 @@
 // 
 // Last updated: 10/18/2012
 // 
+#ifndef _DOTNETC_H_
+#define _DOTNETC_H_
 
 #include "ts/tsLastDetail.h"
 #include "util/fpsTracker.h"
@@ -398,12 +400,6 @@ static U32              sgFindFilesPos = 0;
 typedef void (__stdcall * Instance_Eval)(const char *evalstring,const char * buffer);
 typedef void (__stdcall * Instance_Eval_Direct_New)(S32 argc,const char** argv,const char * buffer);
 
-
-
-
-Instance_Eval Handler_Instance_Eval =0;
-Instance_Eval_Direct_New Handler_Instance_Eval_Direct_New =0;
-
 const U32 bufferSizes = 1024 * 4;
 
 namespace {
@@ -705,6 +701,20 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_describeGFXResources(char 
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_describeGFXStateBlocks(char * x__filePath);
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_detag(char * x__str,  char* retval);
 extern "C" __declspec(dllexport) S32  __cdecl wle_fn_displaySplashWindow();
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_1(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_10(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_12(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_13(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_14(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_15(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_2(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_3(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_4(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_5(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_6(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_7(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_8(char * x__chr,  char* retval);
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dnt_testcase_9(char * x__chr,  char* retval);
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpConsoleClasses(bool dumpScript, bool dumpEngine);
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpConsoleFunctions(bool dumpScript, bool dumpEngine);
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpFontCacheStatus();
@@ -2291,3 +2301,4 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fnZone_dumpZoneState(char * x
 extern "C" __declspec(dllexport) S32  __cdecl wle_fnZone_getZoneId(char * x__object);
 
 }
+#endif

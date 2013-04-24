@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -201,13 +201,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "loadMainMenu", "()", 0, 2000, false)]
         public string LoadMainMenu()
             {
+            coGuiCanvas Canvas = "Canvas";
             // Startup the client with the Main menu...
             if (console.isObject("MainMenuGui"))
-                GuiCanvas.setContent("Canvas", "MainMenuGui");
+                Canvas.setContent("MainMenuGui");
             else if (console.isObject("UnifiedMainMenuGui"))
-                GuiCanvas.setContent("Canvas", "UnifiedMainMenuGui");
+                Canvas.setContent("UnifiedMainMenuGui");
 
-            GuiCanvas.setCursor("Canvas", "DefaultCursor");
+            Canvas.setCursor("DefaultCursor");
 
             // first check if we have a level file to load
             if (console.GetVarString("$levelToLoad") != "")

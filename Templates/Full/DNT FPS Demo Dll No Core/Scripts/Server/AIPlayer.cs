@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -109,7 +109,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "DumpMC", "", 0, 2500, false)]
         public void DumpMC()
             {
-            console.error("Items in Missioncleaup are " + SimSet.getCount("MissionCleanup"));
+            console.error("Items in Missioncleaup are " + ((coSimSet) "MissionCleanup").getCount());
             }
 
 
@@ -218,7 +218,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("LurkerGrenadeLauncher"), 1);
             ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("LurkerGrenadeAmmo"), 10);
             ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("ProxMine"), 1);
-            ShapeBase.mountImage(aiPlayer, "LurkerWeaponImage", 0, true, "");
+            aiPlayer.mountImage("LurkerWeaponImage", 0, true, "");
 
 
             TransformF t = aiPlayer.getTransform();
@@ -284,7 +284,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "DemoPlayer", "damage", "(%this, %obj, %sourceObject, %position, %damage, %damageType)", 6, 2400, false)]
         public void DemoPlayerDamage(coPlayerData datablock, coAIPlayer npc, string position, coPlayer sourceobject, float damage, string damageType)
             {
-            if (!console.isObject(npc) || Player.getState(npc) == "Dead" || damage == 0)
+            if (!console.isObject(npc) || npc.getState() == "Dead" || damage == 0)
                 return;
 
             npc.applyDamage(damage);
@@ -375,7 +375,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             tch.Props.Add("dataBlock", "DemoPlayer");
             tch.Props.Add("path", "");
             coAIPlayer npc = tch.Create();
-            SimSet.pushToBack("MissionCleanup", npc);
+            ((coSimSet) "MissionCleanup").pushToBack(npc);
             npc.setShapeName(name);
             npc.setTransform(spawnPoint);
             return npc;
@@ -396,7 +396,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "AIPlayer", "followPath", "(%this,%path,%node)", 3, 2500, false)]
         public void AiPlayerFollowPath(coAIPlayer npc, coSimSet path, int node)
             {
-            ShapeBase.stopThread(npc, 0);
+            npc.stopThread(0);
 
             if (!console.isObject(path))
                 {
@@ -541,7 +541,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 {
                 if (!console.isObject(keyValuePair.Key.AsString()))
                     continue;
-                if (Player.getState(keyValuePair.Key.AsString()) == "Dead")
+                if (((coPlayer) keyValuePair.Key.AsString()).getState() == "Dead")
                     continue;
                 if (console.GetVarInt(keyValuePair.Key.AsString() + ".aiteam") == console.GetVarInt(npc + ".aiteam"))
                     continue;
@@ -587,7 +587,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 if (dist < 30)
                     {
                     TransformF t = nearestplayer.getTransform();
-                    AIPlayer.setAimObject(npc, nearestplayer);
+                    npc.setAimObject(nearestplayer);
                     string currentweapon = new coSimObject(npc.getMountedImage(0))["name"];
 
                     if (dist > 25)

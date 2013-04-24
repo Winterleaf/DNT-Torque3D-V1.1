@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoArrayObject))]
-    public class coArrayObject: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoArrayObject))]
+    public class coArrayObject : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coArrayObject(string simobjectid) : base(simobjectid){ }
+        public coArrayObject(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coArrayObject(uint simobjectid): base(simobjectid){ }
+        public coArrayObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coArrayObject(int simobjectid): base(simobjectid){ }
+        public coArrayObject(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Makes the keys and values case-sensitive.\n   By default, comparison of key and value strings will be case-insensitive. 
+        /// </summary>
+        public bool caseSensitive
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".caseSensitive").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".caseSensitive", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Helper field which allows you to add new key['keyname'] = value pairs. 
+        /// </summary>
+        public String key
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".key").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".key", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coArrayObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coArrayObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coArrayObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coArrayObject ts)
+        public static implicit operator string(coArrayObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coArrayObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coArrayObject ts)
+        public static implicit operator int(coArrayObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coArrayObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coArrayObject ts)
+        public static implicit operator uint(coArrayObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,396 +249,465 @@ public coArrayObject(int simobjectid): base(simobjectid){ }
             {
             return new coArrayObject(ts);
             }
-public bool caseSensitive
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".caseSensitive").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".caseSensitive", value.AsString());
-          }
-       }
-public String key
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".key").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".key", value.AsString());
-          }
-       }
-/// <summary>
-///  ),
-///    Adds a new element to the end of an array (same as push_back()).
-///    @param key Key for the new element
-///    @param value Value for the new element )
-/// 
-/// </summary>
-public  void add(string key, string value){
-TorqueScriptTemplate.m_ts.fnArrayObject_add(_mSimObjectId, key, value);
-}
-/// <summary>
-/// Appends the target array to the array object.
-///    @param target ArrayObject to append to the end of this array )
-/// 
-/// </summary>
-public  bool append(string target){
-return TorqueScriptTemplate.m_ts.fnArrayObject_append(_mSimObjectId, target);
-}
-/// <summary>
-/// Get the number of elements in the array. )
-/// 
-/// </summary>
-public  int count(){
-return TorqueScriptTemplate.m_ts.fnArrayObject_count(_mSimObjectId);
-}
-/// <summary>
-/// Get the number of times a particular key is found in the array.
-///    @param key Key value to count )
-/// 
-/// </summary>
-public  int countKey(string key){
-return TorqueScriptTemplate.m_ts.fnArrayObject_countKey(_mSimObjectId, key);
-}
-/// <summary>
-/// Get the number of times a particular value is found in the array.
-///    @param value Array element value to count )
-/// 
-/// </summary>
-public  int countValue(string value){
-return TorqueScriptTemplate.m_ts.fnArrayObject_countValue(_mSimObjectId, value);
-}
-/// <summary>
-/// Removes elements with matching keys from array.
-///    @param target ArrayObject containing keys to remove from this array )
-/// 
-/// </summary>
-public  bool crop(string target){
-return TorqueScriptTemplate.m_ts.fnArrayObject_crop(_mSimObjectId, target);
-}
-/// <summary>
-/// Alters array into an exact duplicate of the target array.
-///    @param target ArrayObject to duplicate )
-/// 
-/// </summary>
-public  bool duplicate(string target){
-return TorqueScriptTemplate.m_ts.fnArrayObject_duplicate(_mSimObjectId, target);
-}
-/// <summary>
-/// Echos the array contents to the console )
-/// 
-/// </summary>
-public  void echo(){
-TorqueScriptTemplate.m_ts.fnArrayObject_echo(_mSimObjectId);
-}
-/// <summary>
-/// Emptys all elements from an array )
-/// 
-/// </summary>
-public  void empty(){
-TorqueScriptTemplate.m_ts.fnArrayObject_empty(_mSimObjectId);
-}
-/// <summary>
-/// Removes an element at a specific position from the array.
-///    @param index 0-based index of the element to remove )
-/// 
-/// </summary>
-public  void erase(int index){
-TorqueScriptTemplate.m_ts.fnArrayObject_erase(_mSimObjectId, index);
-}
-/// <summary>
-/// Gets the current pointer index )
-/// 
-/// </summary>
-public  int getCurrent(){
-return TorqueScriptTemplate.m_ts.fnArrayObject_getCurrent(_mSimObjectId);
-}
-/// <summary>
-/// Search the array from the current position for the key 
-///    @param value Array key to search for
-///    @return Index of the first element found, or -1 if none )
-/// 
-/// </summary>
-public  int getIndexFromKey(string key){
-return TorqueScriptTemplate.m_ts.fnArrayObject_getIndexFromKey(_mSimObjectId, key);
-}
-/// <summary>
-/// Search the array from the current position for the element 
-///    @param value Array value to search for
-///    @return Index of the first element found, or -1 if none )
-/// 
-/// </summary>
-public  int getIndexFromValue(string value){
-return TorqueScriptTemplate.m_ts.fnArrayObject_getIndexFromValue(_mSimObjectId, value);
-}
-/// <summary>
-/// Get the key of the array element at the submitted index.
-///    @param index 0-based index of the array element to get
-///    @return The key associated with the array element at the 
-///    specified index, or \"\" if the index is out of range )
-/// 
-/// </summary>
-public  string getKey(int index){
-return TorqueScriptTemplate.m_ts.fnArrayObject_getKey(_mSimObjectId, index);
-}
-/// <summary>
-/// Get the value of the array element at the submitted index.
-///    @param index 0-based index of the array element to get
-///    @return The value of the array element at the specified index, 
-///    or \"\" if the index is out of range )
-/// 
-/// </summary>
-public  string getValue(int index){
-return TorqueScriptTemplate.m_ts.fnArrayObject_getValue(_mSimObjectId, index);
-}
-/// <summary>
-/// Adds a new element to a specified position in the array.
-///    - @a index = 0 will insert an element at the start of the array (same as push_front())
-///    - @a index = %array.count() will insert an element at the end of the array (same as push_back())
-///    @param key Key for the new element
-///    @param value Value for the new element
-///    @param index 0-based index at which to insert the new element )
-/// 
-/// </summary>
-public  void insert(string key, string value, int index){
-TorqueScriptTemplate.m_ts.fnArrayObject_insert(_mSimObjectId, key, value, index);
-}
-/// <summary>
-/// Moves array pointer to start of array
-///    @return Returns the new array pointer )
-/// 
-/// </summary>
-public  int moveFirst(){
-return TorqueScriptTemplate.m_ts.fnArrayObject_moveFirst(_mSimObjectId);
-}
-/// <summary>
-/// Moves array pointer to end of array
-///    @return Returns the new array pointer )
-/// 
-/// </summary>
-public  int moveLast(){
-return TorqueScriptTemplate.m_ts.fnArrayObject_moveLast(_mSimObjectId);
-}
-/// <summary>
-/// Moves array pointer to next position
-///    @return Returns the new array pointer, or -1 if already at the end )
-/// 
-/// </summary>
-public  int moveNext(){
-return TorqueScriptTemplate.m_ts.fnArrayObject_moveNext(_mSimObjectId);
-}
-/// <summary>
-/// Moves array pointer to prev position
-///    @return Returns the new array pointer, or -1 if already at the start )
-/// 
-/// </summary>
-public  int movePrev(){
-return TorqueScriptTemplate.m_ts.fnArrayObject_movePrev(_mSimObjectId);
-}
-/// <summary>
-/// Removes the last element from the array )
-/// 
-/// </summary>
-public  void pop_back(){
-TorqueScriptTemplate.m_ts.fnArrayObject_pop_back(_mSimObjectId);
-}
-/// <summary>
-/// Removes the first element from the array )
-/// 
-/// </summary>
-public  void pop_front(){
-TorqueScriptTemplate.m_ts.fnArrayObject_pop_front(_mSimObjectId);
-}
-/// <summary>
-///  ),
-///    Adds a new element to the end of an array.
-///    @param key Key for the new element
-///    @param value Value for the new element )
-/// 
-/// </summary>
-public  void push_back(string key, string value){
-TorqueScriptTemplate.m_ts.fnArrayObject_push_back(_mSimObjectId, key, value);
-}
-/// <summary>
-///  ),
-///    Adds a new element to the front of an array )
-/// 
-/// </summary>
-public  void push_front(string key, string value){
-TorqueScriptTemplate.m_ts.fnArrayObject_push_front(_mSimObjectId, key, value);
-}
-/// <summary>
-/// Sets the current pointer index.
-///    @param index New 0-based pointer index )
-/// 
-/// </summary>
-public  void setCurrent(int index){
-TorqueScriptTemplate.m_ts.fnArrayObject_setCurrent(_mSimObjectId, index);
-}
-/// <summary>
-/// Set the key at the given index.
-///    @param key New key value
-///    @param index 0-based index of the array element to update )
-/// 
-/// </summary>
-public  void setKey(string key, int index){
-TorqueScriptTemplate.m_ts.fnArrayObject_setKey(_mSimObjectId, key, index);
-}
-/// <summary>
-/// Set the value at the given index.
-///    @param value New array element value
-///    @param index 0-based index of the array element to update )
-/// 
-/// </summary>
-public  void setValue(string value, int index){
-TorqueScriptTemplate.m_ts.fnArrayObject_setValue(_mSimObjectId, value, index);
-}
-/// <summary>
-/// Alpha sorts the array by value
-///    @param ascending [optional] True for ascending sort, false for descending sort )
-/// 
-/// </summary>
-public  void sort(bool ascending){
-TorqueScriptTemplate.m_ts.fnArrayObject_sort(_mSimObjectId, ascending);
-}
-/// <summary>
-/// Alpha sorts the array by value in ascending order )
-/// 
-/// </summary>
-public  void sorta(){
-TorqueScriptTemplate.m_ts.fnArrayObject_sorta(_mSimObjectId);
-}
-/// <summary>
-/// Alpha sorts the array by value in descending order )
-/// 
-/// </summary>
-public  void sortd(){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortd(_mSimObjectId);
-}
-/// <summary>
-/// Sorts the array by value in ascending order using the given callback function.
-///    @param functionName Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.
-///    @tsexample
-///    function mySortCallback(%a, %b)
-///    {
-///       return strcmp( %a.name, %b.name );
-///    }
-///    %array.sortf( \"mySortCallback\" );
-///    @endtsexample )
-/// 
-/// </summary>
-public  void sortf(string functionName){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortf(_mSimObjectId, functionName);
-}
-/// <summary>
-/// Sorts the array by value in descending order using the given callback function.
-///    @param functionName Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.
-///    @see sortf )
-/// 
-/// </summary>
-public  void sortfd(string functionName){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortfd(_mSimObjectId, functionName);
-}
-/// <summary>
-/// Sorts the array by key in ascending order using the given callback function.
-///    @param functionName Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.
-///    @see sortf )
-/// 
-/// </summary>
-public  void sortfk(string functionName){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortfk(_mSimObjectId, functionName);
-}
-/// <summary>
-/// Sorts the array by key in descending order using the given callback function.
-///    @param functionName Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.
-///    @see sortf )
-/// 
-/// </summary>
-public  void sortfkd(string functionName){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortfkd(_mSimObjectId, functionName);
-}
-/// <summary>
-/// Alpha sorts the array by key
-///    @param ascending [optional] True for ascending sort, false for descending sort )
-/// 
-/// </summary>
-public  void sortk(bool ascending){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortk(_mSimObjectId, ascending);
-}
-/// <summary>
-/// Alpha sorts the array by key in ascending order )
-/// 
-/// </summary>
-public  void sortka(){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortka(_mSimObjectId);
-}
-/// <summary>
-/// Alpha sorts the array by key in descending order )
-/// 
-/// </summary>
-public  void sortkd(){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortkd(_mSimObjectId);
-}
-/// <summary>
-/// Numerically sorts the array by value
-///    @param ascending [optional] True for ascending sort, false for descending sort )
-/// 
-/// </summary>
-public  void sortn(bool ascending){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortn(_mSimObjectId, ascending);
-}
-/// <summary>
-/// Numerically sorts the array by value in ascending order ) 
-/// 
-/// </summary>
-public  void sortna(){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortna(_mSimObjectId);
-}
-/// <summary>
-/// Numerically sorts the array by value in descending order )
-/// 
-/// </summary>
-public  void sortnd(){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortnd(_mSimObjectId);
-}
-/// <summary>
-/// Numerically sorts the array by key
-///    @param ascending [optional] True for ascending sort, false for descending sort )
-/// 
-/// </summary>
-public  void sortnk(bool ascending){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortnk(_mSimObjectId, ascending);
-}
-/// <summary>
-/// Numerical sorts the array by key in ascending order )
-/// 
-/// </summary>
-public  void sortnka(){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortnka(_mSimObjectId);
-}
-/// <summary>
-/// Numerical sorts the array by key in descending order )
-/// 
-/// </summary>
-public  void sortnkd(){
-TorqueScriptTemplate.m_ts.fnArrayObject_sortnkd(_mSimObjectId);
-}
-/// <summary>
-/// Removes any elements that have duplicated keys (leaving the first instance) )
-/// 
-/// </summary>
-public  void uniqueKey(){
-TorqueScriptTemplate.m_ts.fnArrayObject_uniqueKey(_mSimObjectId);
-}
-/// <summary>
-/// Removes any elements that have duplicated values (leaving the first instance) )
-/// 
-/// </summary>
-public  void uniqueValue(){
-TorqueScriptTemplate.m_ts.fnArrayObject_uniqueValue(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        ///  ),
+        ///    Adds a new element to the end of an array (same as push_back()).
+        ///    @param key Key for the new element
+        ///    @param value Value for the new element )
+        /// 
+        /// </summary>
+        public void add(string key, string value)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_add(_mSimObjectId, key, value);
+            }
+
+        /// <summary>
+        /// Appends the target array to the array object.
+        ///    @param target ArrayObject to append to the end of this array )
+        /// 
+        /// </summary>
+        public bool append(string target)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_append(_mSimObjectId, target);
+            }
+
+        /// <summary>
+        /// Get the number of elements in the array. )
+        /// 
+        /// </summary>
+        public int count()
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_count(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the number of times a particular key is found in the array.
+        ///    @param key Key value to count )
+        /// 
+        /// </summary>
+        public int countKey(string key)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_countKey(_mSimObjectId, key);
+            }
+
+        /// <summary>
+        /// Get the number of times a particular value is found in the array.
+        ///    @param value Array element value to count )
+        /// 
+        /// </summary>
+        public int countValue(string value)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_countValue(_mSimObjectId, value);
+            }
+
+        /// <summary>
+        /// Removes elements with matching keys from array.
+        ///    @param target ArrayObject containing keys to remove from this array )
+        /// 
+        /// </summary>
+        public bool crop(string target)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_crop(_mSimObjectId, target);
+            }
+
+        /// <summary>
+        /// Alters array into an exact duplicate of the target array.
+        ///    @param target ArrayObject to duplicate )
+        /// 
+        /// </summary>
+        public bool duplicate(string target)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_duplicate(_mSimObjectId, target);
+            }
+
+        /// <summary>
+        /// Echos the array contents to the console )
+        /// 
+        /// </summary>
+        public void echo()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_echo(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Emptys all elements from an array )
+        /// 
+        /// </summary>
+        public void empty()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_empty(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Removes an element at a specific position from the array.
+        ///    @param index 0-based index of the element to remove )
+        /// 
+        /// </summary>
+        public void erase(int index)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_erase(_mSimObjectId, index);
+            }
+
+        /// <summary>
+        /// Gets the current pointer index )
+        /// 
+        /// </summary>
+        public int getCurrent()
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_getCurrent(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Search the array from the current position for the key 
+        ///    @param value Array key to search for
+        ///    @return Index of the first element found, or -1 if none )
+        /// 
+        /// </summary>
+        public int getIndexFromKey(string key)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_getIndexFromKey(_mSimObjectId, key);
+            }
+
+        /// <summary>
+        /// Search the array from the current position for the element 
+        ///    @param value Array value to search for
+        ///    @return Index of the first element found, or -1 if none )
+        /// 
+        /// </summary>
+        public int getIndexFromValue(string value)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_getIndexFromValue(_mSimObjectId, value);
+            }
+
+        /// <summary>
+        /// Get the key of the array element at the submitted index.
+        ///    @param index 0-based index of the array element to get
+        ///    @return The key associated with the array element at the 
+        ///    specified index, or \"\" if the index is out of range )
+        /// 
+        /// </summary>
+        public string getKey(int index)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_getKey(_mSimObjectId, index);
+            }
+
+        /// <summary>
+        /// Get the value of the array element at the submitted index.
+        ///    @param index 0-based index of the array element to get
+        ///    @return The value of the array element at the specified index, 
+        ///    or \"\" if the index is out of range )
+        /// 
+        /// </summary>
+        public string getValue(int index)
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_getValue(_mSimObjectId, index);
+            }
+
+        /// <summary>
+        /// Adds a new element to a specified position in the array.
+        ///    - @a index = 0 will insert an element at the start of the array (same as push_front())
+        ///    - @a index = %array.count() will insert an element at the end of the array (same as push_back())
+        ///    @param key Key for the new element
+        ///    @param value Value for the new element
+        ///    @param index 0-based index at which to insert the new element )
+        /// 
+        /// </summary>
+        public void insert(string key, string value, int index)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_insert(_mSimObjectId, key, value, index);
+            }
+
+        /// <summary>
+        /// Moves array pointer to start of array
+        ///    @return Returns the new array pointer )
+        /// 
+        /// </summary>
+        public int moveFirst()
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_moveFirst(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Moves array pointer to end of array
+        ///    @return Returns the new array pointer )
+        /// 
+        /// </summary>
+        public int moveLast()
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_moveLast(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Moves array pointer to next position
+        ///    @return Returns the new array pointer, or -1 if already at the end )
+        /// 
+        /// </summary>
+        public int moveNext()
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_moveNext(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Moves array pointer to prev position
+        ///    @return Returns the new array pointer, or -1 if already at the start )
+        /// 
+        /// </summary>
+        public int movePrev()
+            {
+            return TorqueScriptTemplate.m_ts.fnArrayObject_movePrev(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Removes the last element from the array )
+        /// 
+        /// </summary>
+        public void pop_back()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_pop_back(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Removes the first element from the array )
+        /// 
+        /// </summary>
+        public void pop_front()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_pop_front(_mSimObjectId);
+            }
+
+        /// <summary>
+        ///  ),
+        ///    Adds a new element to the end of an array.
+        ///    @param key Key for the new element
+        ///    @param value Value for the new element )
+        /// 
+        /// </summary>
+        public void push_back(string key, string value)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_push_back(_mSimObjectId, key, value);
+            }
+
+        /// <summary>
+        ///  ),
+        ///    Adds a new element to the front of an array )
+        /// 
+        /// </summary>
+        public void push_front(string key, string value)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_push_front(_mSimObjectId, key, value);
+            }
+
+        /// <summary>
+        /// Sets the current pointer index.
+        ///    @param index New 0-based pointer index )
+        /// 
+        /// </summary>
+        public void setCurrent(int index)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_setCurrent(_mSimObjectId, index);
+            }
+
+        /// <summary>
+        /// Set the key at the given index.
+        ///    @param key New key value
+        ///    @param index 0-based index of the array element to update )
+        /// 
+        /// </summary>
+        public void setKey(string key, int index)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_setKey(_mSimObjectId, key, index);
+            }
+
+        /// <summary>
+        /// Set the value at the given index.
+        ///    @param value New array element value
+        ///    @param index 0-based index of the array element to update )
+        /// 
+        /// </summary>
+        public void setValue(string value, int index)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_setValue(_mSimObjectId, value, index);
+            }
+
+        /// <summary>
+        /// Alpha sorts the array by value
+        ///    @param ascending [optional] True for ascending sort, false for descending sort )
+        /// 
+        /// </summary>
+        public void sort(bool ascending)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sort(_mSimObjectId, ascending);
+            }
+
+        /// <summary>
+        /// Alpha sorts the array by value in ascending order )
+        /// 
+        /// </summary>
+        public void sorta()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sorta(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Alpha sorts the array by value in descending order )
+        /// 
+        /// </summary>
+        public void sortd()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortd(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Sorts the array by value in ascending order using the given callback function.
+        ///    @param functionName Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.
+        ///    @tsexample
+        ///    function mySortCallback(%a, %b)
+        ///    {
+        ///       return strcmp( %a.name, %b.name );
+        ///    }
+        ///    %array.sortf( \"mySortCallback\" );
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public void sortf(string functionName)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortf(_mSimObjectId, functionName);
+            }
+
+        /// <summary>
+        /// Sorts the array by value in descending order using the given callback function.
+        ///    @param functionName Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.
+        ///    @see sortf )
+        /// 
+        /// </summary>
+        public void sortfd(string functionName)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortfd(_mSimObjectId, functionName);
+            }
+
+        /// <summary>
+        /// Sorts the array by key in ascending order using the given callback function.
+        ///    @param functionName Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.
+        ///    @see sortf )
+        /// 
+        /// </summary>
+        public void sortfk(string functionName)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortfk(_mSimObjectId, functionName);
+            }
+
+        /// <summary>
+        /// Sorts the array by key in descending order using the given callback function.
+        ///    @param functionName Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.
+        ///    @see sortf )
+        /// 
+        /// </summary>
+        public void sortfkd(string functionName)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortfkd(_mSimObjectId, functionName);
+            }
+
+        /// <summary>
+        /// Alpha sorts the array by key
+        ///    @param ascending [optional] True for ascending sort, false for descending sort )
+        /// 
+        /// </summary>
+        public void sortk(bool ascending)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortk(_mSimObjectId, ascending);
+            }
+
+        /// <summary>
+        /// Alpha sorts the array by key in ascending order )
+        /// 
+        /// </summary>
+        public void sortka()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortka(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Alpha sorts the array by key in descending order )
+        /// 
+        /// </summary>
+        public void sortkd()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortkd(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Numerically sorts the array by value
+        ///    @param ascending [optional] True for ascending sort, false for descending sort )
+        /// 
+        /// </summary>
+        public void sortn(bool ascending)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortn(_mSimObjectId, ascending);
+            }
+
+        /// <summary>
+        /// Numerically sorts the array by value in ascending order ) 
+        /// 
+        /// </summary>
+        public void sortna()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortna(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Numerically sorts the array by value in descending order )
+        /// 
+        /// </summary>
+        public void sortnd()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortnd(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Numerically sorts the array by key
+        ///    @param ascending [optional] True for ascending sort, false for descending sort )
+        /// 
+        /// </summary>
+        public void sortnk(bool ascending)
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortnk(_mSimObjectId, ascending);
+            }
+
+        /// <summary>
+        /// Numerical sorts the array by key in ascending order )
+        /// 
+        /// </summary>
+        public void sortnka()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortnka(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Numerical sorts the array by key in descending order )
+        /// 
+        /// </summary>
+        public void sortnkd()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_sortnkd(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Removes any elements that have duplicated keys (leaving the first instance) )
+        /// 
+        /// </summary>
+        public void uniqueKey()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_uniqueKey(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Removes any elements that have duplicated values (leaving the first instance) )
+        /// 
+        /// </summary>
+        public void uniqueValue()
+            {
+            TorqueScriptTemplate.m_ts.fnArrayObject_uniqueValue(_mSimObjectId);
+            }
+        }
+    }

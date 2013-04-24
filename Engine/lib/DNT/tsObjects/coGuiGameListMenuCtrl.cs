@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiGameListMenuCtrl))]
-    public class coGuiGameListMenuCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiGameListMenuCtrl))]
+    public class coGuiGameListMenuCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListMenuCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiGameListMenuCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListMenuCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiGameListMenuCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListMenuCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiGameListMenuCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Script callback when the 'A' button is pressed. 'A' inputs are Keyboard: A, Return, Space; Gamepad: A, Start 
+        /// </summary>
+        public String callbackOnA
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".callbackOnA").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".callbackOnA", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Script callback when the 'B' button is pressed. 'B' inputs are Keyboard: B, Esc, Backspace, Delete; Gamepad: B, Back 
+        /// </summary>
+        public String callbackOnB
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".callbackOnB").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".callbackOnB", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Script callback when the 'X' button is pressed. 'X' inputs are Keyboard: X; Gamepad: X 
+        /// </summary>
+        public String callbackOnX
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".callbackOnX").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".callbackOnX", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Script callback when the 'Y' button is pressed. 'Y' inputs are Keyboard: Y; Gamepad: Y 
+        /// </summary>
+        public String callbackOnY
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".callbackOnY").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".callbackOnY", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enable debug rendering 
+        /// </summary>
+        public bool debugRender
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debugRender").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debugRender", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +180,9 @@ public coGuiGameListMenuCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +190,17 @@ public coGuiGameListMenuCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +212,15 @@ public coGuiGameListMenuCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiGameListMenuCtrl ts)
+        public static implicit operator string(coGuiGameListMenuCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +240,7 @@ public coGuiGameListMenuCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiGameListMenuCtrl ts)
+        public static implicit operator int(coGuiGameListMenuCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +261,7 @@ public coGuiGameListMenuCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiGameListMenuCtrl ts)
+        public static implicit operator uint(coGuiGameListMenuCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,139 +276,103 @@ public coGuiGameListMenuCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiGameListMenuCtrl(ts);
             }
-public String callbackOnA
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".callbackOnA").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".callbackOnA", value.AsString());
-          }
-       }
-public String callbackOnB
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".callbackOnB").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".callbackOnB", value.AsString());
-          }
-       }
-public String callbackOnX
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".callbackOnX").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".callbackOnX", value.AsString());
-          }
-       }
-public String callbackOnY
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".callbackOnY").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".callbackOnY", value.AsString());
-          }
-       }
-public bool debugRender
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debugRender").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debugRender", value.AsString());
-          }
-       }
-/// <summary>
-/// Activates the current row. The script callback of  the current row will be called (if it has one). )
-/// 
-/// </summary>
-public  void activateRow(){
-TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_activateRow(_mSimObjectId);
-}
-/// <summary>
-/// Add a row to the list control.
-///    @param label The text to display on the row as a label.
-///    @param callback Name of a script function to use as a callback when this row is activated.
-///    @param icon [optional] Index of the icon to use as a marker.
-///    @param yPad [optional] An extra amount of height padding before the row. Does nothing on the first row.
-///    @param useHighlightIcon [optional] Does this row use the highlight icon?.
-///    @param enabled [optional] If this row is initially enabled. )
-/// 
-/// </summary>
-public  void addRow(string label, string callback, int icon, int yPad, bool useHighlightIcon, bool enabled){
-TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_addRow(_mSimObjectId, label, callback, icon, yPad, useHighlightIcon, enabled);
-}
-/// <summary>
-/// Gets the number of rows on the control.
-///    @return (int) The number of rows on the control. )
-/// 
-/// </summary>
-public  int getRowCount(){
-return TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_getRowCount(_mSimObjectId);
-}
-/// <summary>
-/// Gets the label displayed on the specified row.
-///    @param row Index of the row to get the label of.
-///    @return The label for the row. )
-/// 
-/// </summary>
-public  string getRowLabel(int row){
-return TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_getRowLabel(_mSimObjectId, row);
-}
-/// <summary>
-/// Gets the index of the currently selected row.
-///    @return Index of the selected row. )
-/// 
-/// </summary>
-public  int getSelectedRow(){
-return TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_getSelectedRow(_mSimObjectId);
-}
-/// <summary>
-/// Determines if the specified row is enabled or disabled.
-///    @param row The row to set the enabled status of.
-///    @return True if the specified row is enabled. False if the row is not enabled or the given index was not valid. )
-/// 
-/// </summary>
-public  bool isRowEnabled(int row){
-return TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_isRowEnabled(_mSimObjectId, row);
-}
-/// <summary>
-/// Sets a row's enabled status according to the given parameters.
-///    @param row The index to check for validity.
-///    @param enabled Indicate true to enable the row or false to disable it. )
-/// 
-/// </summary>
-public  void setRowEnabled(int row, bool enabled){
-TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_setRowEnabled(_mSimObjectId, row, enabled);
-}
-/// <summary>
-/// Sets the label on the given row.
-///    @param row Index of the row to set the label on.
-///    @param label Text to set as the label of the row. )
-/// 
-/// </summary>
-public  void setRowLabel(int row, string label){
-TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_setRowLabel(_mSimObjectId, row, label);
-}
-/// <summary>
-/// Sets the selected row. Only rows that are enabled can be selected.
-///    @param row Index of the row to set as selected. )
-/// 
-/// </summary>
-public  void setSelected(int row){
-TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_setSelected(_mSimObjectId, row);
-}
-}}
+
+        /// <summary>
+        /// Activates the current row. The script callback of  the current row will be called (if it has one). )
+        /// 
+        /// </summary>
+        public void activateRow()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_activateRow(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Add a row to the list control.
+        ///    @param label The text to display on the row as a label.
+        ///    @param callback Name of a script function to use as a callback when this row is activated.
+        ///    @param icon [optional] Index of the icon to use as a marker.
+        ///    @param yPad [optional] An extra amount of height padding before the row. Does nothing on the first row.
+        ///    @param useHighlightIcon [optional] Does this row use the highlight icon?.
+        ///    @param enabled [optional] If this row is initially enabled. )
+        /// 
+        /// </summary>
+        public void addRow(string label, string callback, int icon, int yPad, bool useHighlightIcon, bool enabled)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_addRow(_mSimObjectId, label, callback, icon, yPad, useHighlightIcon, enabled);
+            }
+
+        /// <summary>
+        /// Gets the number of rows on the control.
+        ///    @return (int) The number of rows on the control. )
+        /// 
+        /// </summary>
+        public int getRowCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_getRowCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Gets the label displayed on the specified row.
+        ///    @param row Index of the row to get the label of.
+        ///    @return The label for the row. )
+        /// 
+        /// </summary>
+        public string getRowLabel(int row)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_getRowLabel(_mSimObjectId, row);
+            }
+
+        /// <summary>
+        /// Gets the index of the currently selected row.
+        ///    @return Index of the selected row. )
+        /// 
+        /// </summary>
+        public int getSelectedRow()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_getSelectedRow(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Determines if the specified row is enabled or disabled.
+        ///    @param row The row to set the enabled status of.
+        ///    @return True if the specified row is enabled. False if the row is not enabled or the given index was not valid. )
+        /// 
+        /// </summary>
+        public bool isRowEnabled(int row)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_isRowEnabled(_mSimObjectId, row);
+            }
+
+        /// <summary>
+        /// Sets a row's enabled status according to the given parameters.
+        ///    @param row The index to check for validity.
+        ///    @param enabled Indicate true to enable the row or false to disable it. )
+        /// 
+        /// </summary>
+        public void setRowEnabled(int row, bool enabled)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_setRowEnabled(_mSimObjectId, row, enabled);
+            }
+
+        /// <summary>
+        /// Sets the label on the given row.
+        ///    @param row Index of the row to set the label on.
+        ///    @param label Text to set as the label of the row. )
+        /// 
+        /// </summary>
+        public void setRowLabel(int row, string label)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_setRowLabel(_mSimObjectId, row, label);
+            }
+
+        /// <summary>
+        /// Sets the selected row. Only rows that are enabled can be selected.
+        ///    @param row Index of the row to set as selected. )
+        /// 
+        /// </summary>
+        public void setSelected(int row)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiGameListMenuCtrl_setSelected(_mSimObjectId, row);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoShaderData))]
-    public class coShaderData: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoShaderData))]
+    public class coShaderData : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coShaderData(string simobjectid) : base(simobjectid){ }
+        public coShaderData(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coShaderData(uint simobjectid): base(simobjectid){ }
+        public coShaderData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coShaderData(int simobjectid): base(simobjectid){ }
+        public coShaderData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief String of case-sensitive defines passed to the shader compiler.\n\n   The string should be delimited by a semicolon, tab, or newline character.      @tsexample\n    singleton ShaderData( FlashShader )\n     {\n       DXVertexShaderFile 	= \shaders/common/postFx/flashV.hlsl\;\n       DXPixelShaderFile 	= \shaders/common/postFx/flashP.hlsl\;\n\n        //Define setting the color of WHITE_COLOR.\n       defines = \WHITE_COLOR=float4(1.0,1.0,1.0,0.0)\;\n\n       pixVersion = 2.0\n     }\n   @endtsexample\n\n   
+        /// </summary>
+        public String defines
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".defines").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".defines", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief %Path to the DirectX pixel shader file to use for this ShaderData.\n\n	  It must contain only one program and no vertex shader, just the pixel 	  shader. It can be either an HLSL or assembly level shader. HLSL's 	  must have a filename extension of .hlsl, otherwise its assumed to be an assembly file.
+        /// </summary>
+        public String DXPixelShaderFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".DXPixelShaderFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".DXPixelShaderFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief %Path to the DirectX vertex shader file to use for this ShaderData.\n\n	  It must contain only one program and no pixel shader, just the vertex shader.	  It can be either an HLSL or assembly level shader. HLSL's must have a 	  filename extension of .hlsl, otherwise its assumed to be an assembly file.
+        /// </summary>
+        public String DXVertexShaderFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".DXVertexShaderFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".DXVertexShaderFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief %Path to an OpenGL pixel shader file to use for this ShaderData.\n\n	  It must contain only one program and no vertex shader, just the pixel 	  shader.
+        /// </summary>
+        public String OGLPixelShaderFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OGLPixelShaderFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OGLPixelShaderFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief %Path to an OpenGL vertex shader file to use for this ShaderData.\n\n	  It must contain only one program and no pixel shader, just the vertex shader.
+        /// </summary>
+        public String OGLVertexShaderFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OGLVertexShaderFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OGLVertexShaderFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Indicates target level the shader should be compiled.\n\n	  Valid numbers at the time of this writing are 1.1, 1.4, 2.0, and 3.0. 	  The shader will not run properly if the hardware does not support the 	  level of shader compiled.
+        /// </summary>
+        public float pixVersion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pixVersion").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pixVersion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, the maximum pixel shader version offered by the graphics card will be used.\n\n	  Otherwise, the script-defined pixel shader version will be used.\n\n
+        /// </summary>
+        public bool useDevicePixVersion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useDevicePixVersion").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useDevicePixVersion", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +198,9 @@ public coShaderData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +208,17 @@ public coShaderData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +230,15 @@ public coShaderData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coShaderData ts)
+        public static implicit operator string(coShaderData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +258,7 @@ public coShaderData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coShaderData ts)
+        public static implicit operator int(coShaderData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +279,7 @@ public coShaderData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coShaderData ts)
+        public static implicit operator uint(coShaderData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,93 +294,19 @@ public coShaderData(int simobjectid): base(simobjectid){ }
             {
             return new coShaderData(ts);
             }
-public String defines
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".defines").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".defines", value.AsString());
-          }
-       }
-public String DXPixelShaderFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".DXPixelShaderFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".DXPixelShaderFile", value.AsString());
-          }
-       }
-public String DXVertexShaderFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".DXVertexShaderFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".DXVertexShaderFile", value.AsString());
-          }
-       }
-public String OGLPixelShaderFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OGLPixelShaderFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OGLPixelShaderFile", value.AsString());
-          }
-       }
-public String OGLVertexShaderFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OGLVertexShaderFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OGLVertexShaderFile", value.AsString());
-          }
-       }
-public float pixVersion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pixVersion").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pixVersion", value.AsString());
-          }
-       }
-public bool useDevicePixVersion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useDevicePixVersion").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useDevicePixVersion", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Rebuilds all the vertex and pixel shader instances created from this ShaderData.
-/// 
-/// 				   @tsexample
-/// 				   // Rebuild the shader instances from ShaderData CloudLayerShader
-/// 				   CloudLayerShader.reload();
-/// 				   @endtsexample)
-/// 
-/// </summary>
-public  void reload(){
-TorqueScriptTemplate.m_ts.fnShaderData_reload(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Rebuilds all the vertex and pixel shader instances created from this ShaderData.
+        /// 
+        /// 				   @tsexample
+        /// 				   // Rebuild the shader instances from ShaderData CloudLayerShader
+        /// 				   CloudLayerShader.reload();
+        /// 				   @endtsexample)
+        /// 
+        /// </summary>
+        public void reload()
+            {
+            TorqueScriptTemplate.m_ts.fnShaderData_reload(_mSimObjectId);
+            }
+        }
+    }

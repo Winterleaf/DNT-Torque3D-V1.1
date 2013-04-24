@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,127 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiMeshRoadEditorCtrl))]
-    public class coGuiMeshRoadEditorCtrl: coEditTSCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiMeshRoadEditorCtrl))]
+    public class coGuiMeshRoadEditorCtrl : coEditTSCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiMeshRoadEditorCtrl(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiMeshRoadEditorCtrl(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiMeshRoadEditorCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiMeshRoadEditorCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiMeshRoadEditorCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiMeshRoadEditorCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Default Material used by the Mesh Road Editor on bottom surface road creation. 
+        /// </summary>
+        public String bottomMaterialName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bottomMaterialName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bottomMaterialName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float DefaultDepth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".DefaultDepth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".DefaultDepth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Point3F DefaultNormal
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".DefaultNormal").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".DefaultNormal", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float DefaultWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".DefaultWidth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".DefaultWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI HoverNodeColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".HoverNodeColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".HoverNodeColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI HoverSplineColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".HoverSplineColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".HoverSplineColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool isDirty
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isDirty").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isDirty", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI SelectedSplineColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".SelectedSplineColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".SelectedSplineColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Default Material used by the Mesh Road Editor on side surface road creation. 
+        /// </summary>
+        public String sideMaterialName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sideMaterialName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sideMaterialName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Default Material used by the Mesh Road Editor on upper surface road creation. 
+        /// </summary>
+        public String topMaterialName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".topMaterialName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".topMaterialName", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +226,9 @@ public coGuiMeshRoadEditorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +236,17 @@ public coGuiMeshRoadEditorCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +258,15 @@ public coGuiMeshRoadEditorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiMeshRoadEditorCtrl ts)
+        public static implicit operator string(coGuiMeshRoadEditorCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +286,7 @@ public coGuiMeshRoadEditorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiMeshRoadEditorCtrl ts)
+        public static implicit operator int(coGuiMeshRoadEditorCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +307,7 @@ public coGuiMeshRoadEditorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiMeshRoadEditorCtrl ts)
+        public static implicit operator uint(coGuiMeshRoadEditorCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,114 +322,5 @@ public coGuiMeshRoadEditorCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiMeshRoadEditorCtrl(ts);
             }
-public String bottomMaterialName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bottomMaterialName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bottomMaterialName", value.AsString());
-          }
-       }
-public float DefaultDepth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".DefaultDepth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".DefaultDepth", value.AsString());
-          }
-       }
-public Point3F DefaultNormal
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".DefaultNormal").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".DefaultNormal", value.AsString());
-          }
-       }
-public float DefaultWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".DefaultWidth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".DefaultWidth", value.AsString());
-          }
-       }
-public ColorI HoverNodeColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".HoverNodeColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".HoverNodeColor", value.AsString());
-          }
-       }
-public ColorI HoverSplineColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".HoverSplineColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".HoverSplineColor", value.AsString());
-          }
-       }
-public bool isDirty
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isDirty").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isDirty", value.AsString());
-          }
-       }
-public ColorI SelectedSplineColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".SelectedSplineColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".SelectedSplineColor", value.AsString());
-          }
-       }
-public String sideMaterialName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sideMaterialName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sideMaterialName", value.AsString());
-          }
-       }
-public String topMaterialName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".topMaterialName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".topMaterialName", value.AsString());
-          }
-       }
-}}
+        }
+    }

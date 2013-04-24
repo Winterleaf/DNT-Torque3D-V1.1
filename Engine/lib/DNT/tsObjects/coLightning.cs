@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoLightning))]
-    public class coLightning: coGameBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoLightning))]
+    public class coLightning : coGameBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLightning(string simobjectid) : base(simobjectid){ }
+        public coLightning(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLightning(uint simobjectid): base(simobjectid){ }
+        public coLightning(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLightning(int simobjectid): base(simobjectid){ }
+        public coLightning(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Radial distance from the center of the Lightning object for the    start point of the bolt.\n\n   The actual start point will be a random point within this radius. 
+        /// </summary>
+        public float boltStartRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boltStartRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boltStartRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Percentage chance (0-1) that a given lightning bolt will hit something. 
+        /// </summary>
+        public float chanceToHitTarget
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".chanceToHitTarget").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".chanceToHitTarget", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color to blend the strike texture with. 
+        /// </summary>
+        public ColorF color
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Color to blend the strike texture with when the bolt is fading away.\n\n   Bolts fade away automatically shortly after the strike occurs. 
+        /// </summary>
+        public ColorF fadeColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Horizontal size (XY plane) of the search box used to find and    damage Player or Vehicle objects within range of the strike.\n\n   Only the object at highest altitude with a clear line of sight to the    bolt will be hit. 
+        /// </summary>
+        public float strikeRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".strikeRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".strikeRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Number of lightning strikes to perform per minute.\n\n   Automatically invokes strikeRandomPoint() at regular intervals. 
+        /// </summary>
+        public int strikesPerMinute
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".strikesPerMinute").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".strikesPerMinute", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Width of a lightning bolt. 
+        /// </summary>
+        public float strikeWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".strikeWidth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".strikeWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls whether lightning bolts are affected by fog when they are rendered. 
+        /// </summary>
+        public bool useFog
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useFog").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useFog", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +208,9 @@ public coLightning(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +218,17 @@ public coLightning(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +240,15 @@ public coLightning(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coLightning ts)
+        public static implicit operator string(coLightning ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +268,7 @@ public coLightning(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coLightning ts)
+        public static implicit operator int(coLightning ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +289,7 @@ public coLightning(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coLightning ts)
+        public static implicit operator uint(coLightning ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,125 +304,44 @@ public coLightning(int simobjectid): base(simobjectid){ }
             {
             return new coLightning(ts);
             }
-public float boltStartRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boltStartRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boltStartRadius", value.AsString());
-          }
-       }
-public float chanceToHitTarget
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".chanceToHitTarget").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".chanceToHitTarget", value.AsString());
-          }
-       }
-public ColorF color
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString());
-          }
-       }
-public ColorF fadeColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeColor", value.AsString());
-          }
-       }
-public float strikeRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".strikeRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".strikeRadius", value.AsString());
-          }
-       }
-public int strikesPerMinute
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".strikesPerMinute").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".strikesPerMinute", value.AsString());
-          }
-       }
-public float strikeWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".strikeWidth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".strikeWidth", value.AsString());
-          }
-       }
-public bool useFog
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useFog").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useFog", value.AsString());
-          }
-       }
-/// <summary>
-/// Creates a LightningStrikeEvent which strikes a specific object.
-///    @note This method is currently unimplemented. )
-/// 
-/// </summary>
-public  void strikeObject(int id){
-TorqueScriptTemplate.m_ts.fnLightning_strikeObject(_mSimObjectId, id);
-}
-/// <summary>
-/// Creates a LightningStrikeEvent which attempts to strike and damage a random 
-///    object in range of the Lightning object.
-///    @tsexample
-///    // Generate a damaging lightning strike effect on all clients
-///    %lightning.strikeRandomPoint();
-///    @endtsexample )
-/// 
-/// </summary>
-public  void strikeRandomPoint(){
-TorqueScriptTemplate.m_ts.fnLightning_strikeRandomPoint(_mSimObjectId);
-}
-/// <summary>
-/// @brief Creates a LightningStrikeEvent that triggers harmless lightning 
-///    bolts on all clients.
-///    No objects will be damaged by these bolts.
-///    @tsexample
-///    // Generate a harmless lightning strike effect on all clients
-///    %lightning.warningFlashes();
-///    @endtsexample )
-/// 
-/// </summary>
-public  void warningFlashes(){
-TorqueScriptTemplate.m_ts.fnLightning_warningFlashes(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Creates a LightningStrikeEvent which strikes a specific object.
+        ///    @note This method is currently unimplemented. )
+        /// 
+        /// </summary>
+        public void strikeObject(int id)
+            {
+            TorqueScriptTemplate.m_ts.fnLightning_strikeObject(_mSimObjectId, id);
+            }
+
+        /// <summary>
+        /// Creates a LightningStrikeEvent which attempts to strike and damage a random 
+        ///    object in range of the Lightning object.
+        ///    @tsexample
+        ///    // Generate a damaging lightning strike effect on all clients
+        ///    %lightning.strikeRandomPoint();
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public void strikeRandomPoint()
+            {
+            TorqueScriptTemplate.m_ts.fnLightning_strikeRandomPoint(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Creates a LightningStrikeEvent that triggers harmless lightning 
+        ///    bolts on all clients.
+        ///    No objects will be damaged by these bolts.
+        ///    @tsexample
+        ///    // Generate a harmless lightning strike effect on all clients
+        ///    %lightning.warningFlashes();
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public void warningFlashes()
+            {
+            TorqueScriptTemplate.m_ts.fnLightning_warningFlashes(_mSimObjectId);
+            }
+        }
+    }

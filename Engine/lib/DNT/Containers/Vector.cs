@@ -155,9 +155,10 @@ namespace WinterLeaf.Containers
             }
 
         /// <summary>
-        /// Gets or Sets the element at the index
+        /// Gets or sets value at index.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public int this[int index]
             {
             get { return _mData[index]; }
@@ -166,86 +167,154 @@ namespace WinterLeaf.Containers
 
         #region IConvertible Members
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public TypeCode GetTypeCode()
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public bool ToBoolean(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public char ToChar(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public sbyte ToSByte(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public byte ToByte(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public short ToInt16(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public ushort ToUInt16(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public int ToInt32(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public uint ToUInt32(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public long ToInt64(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public ulong ToUInt64(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public float ToSingle(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public double ToDouble(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public decimal ToDecimal(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public DateTime ToDateTime(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Converts To String
+        /// </summary>
+        /// <returns></returns>
         public string ToString(IFormatProvider provider)
             {
             return AsString();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public object ToType(Type conversionType, IFormatProvider provider)
             {
             throw new NotImplementedException();
@@ -377,86 +446,154 @@ namespace WinterLeaf.Containers
 
         #region IConvertible Members
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public TypeCode GetTypeCode()
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public bool ToBoolean(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public char ToChar(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public sbyte ToSByte(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public byte ToByte(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public short ToInt16(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public ushort ToUInt16(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public int ToInt32(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public uint ToUInt32(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public long ToInt64(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public ulong ToUInt64(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public float ToSingle(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public double ToDouble(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public decimal ToDecimal(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public DateTime ToDateTime(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Returns String
+        /// </summary>
+        /// <returns></returns>
         public string ToString(IFormatProvider provider)
             {
             return AsString();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public object ToType(Type conversionType, IFormatProvider provider)
             {
             throw new NotImplementedException();
@@ -586,86 +723,154 @@ namespace WinterLeaf.Containers
 
         #region IConvertible Members
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public TypeCode GetTypeCode()
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public bool ToBoolean(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public char ToChar(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public sbyte ToSByte(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public byte ToByte(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public short ToInt16(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public ushort ToUInt16(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public int ToInt32(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public uint ToUInt32(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public long ToInt64(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public ulong ToUInt64(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public float ToSingle(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public double ToDouble(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public decimal ToDecimal(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public DateTime ToDateTime(IFormatProvider provider)
             {
             throw new NotImplementedException();
             }
 
+        /// <summary>
+        /// Returns String
+        /// </summary>
+        /// <returns></returns>
         public string ToString(IFormatProvider provider)
             {
             return AsString();
             }
 
+        /// <summary>
+        /// Not Implemented
+        /// </summary>
+        /// <returns></returns>
         public object ToType(Type conversionType, IFormatProvider provider)
             {
             throw new NotImplementedException();

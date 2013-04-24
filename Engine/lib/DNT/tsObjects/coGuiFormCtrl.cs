@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiFormCtrl))]
-    public class coGuiFormCtrl: coGuiPanel
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiFormCtrl))]
+    public class coGuiFormCtrl : coGuiPanel
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFormCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiFormCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFormCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiFormCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFormCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiFormCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String caption
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".caption").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".caption", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String content
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".content").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".content", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String contentLibrary
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".contentLibrary").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".contentLibrary", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public bool hasMenu
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hasMenu").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hasMenu", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool movable
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".movable").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".movable", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +180,9 @@ public coGuiFormCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +190,17 @@ public coGuiFormCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +212,15 @@ public coGuiFormCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiFormCtrl ts)
+        public static implicit operator string(coGuiFormCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +240,7 @@ public coGuiFormCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiFormCtrl ts)
+        public static implicit operator int(coGuiFormCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +261,7 @@ public coGuiFormCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiFormCtrl ts)
+        public static implicit operator uint(coGuiFormCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,67 +276,15 @@ public coGuiFormCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiFormCtrl(ts);
             }
-public String caption
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".caption").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".caption", value.AsString());
-          }
-       }
-public String content
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".content").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".content", value.AsString());
-          }
-       }
-public String contentLibrary
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".contentLibrary").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".contentLibrary", value.AsString());
-          }
-       }
-public bool hasMenu
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hasMenu").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hasMenu", value.AsString());
-          }
-       }
-public bool movable
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".movable").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".movable", value.AsString());
-          }
-       }
-/// <summary>
-/// Sets the title of the form.
-///    @param caption Form caption )
-/// 
-/// </summary>
-public  void setCaption(string caption){
-TorqueScriptTemplate.m_ts.fnGuiFormCtrl_setCaption(_mSimObjectId, caption);
-}
-}}
+
+        /// <summary>
+        /// Sets the title of the form.
+        ///    @param caption Form caption )
+        /// 
+        /// </summary>
+        public void setCaption(string caption)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiFormCtrl_setCaption(_mSimObjectId, caption);
+            }
+        }
+    }

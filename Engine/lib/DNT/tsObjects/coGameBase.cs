@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGameBase))]
-    public class coGameBase: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoGameBase))]
+    public class coGameBase : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGameBase(string simobjectid) : base(simobjectid){ }
+        public coGameBase(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGameBase(uint simobjectid): base(simobjectid){ }
+        public coGameBase(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGameBase(int simobjectid): base(simobjectid){ }
+        public coGameBase(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Script datablock used for game objects. 
+        /// </summary>
+        public coGameBaseData dataBlock
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dataBlock"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dataBlock", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +145,9 @@ public coGameBase(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +155,17 @@ public coGameBase(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +177,15 @@ public coGameBase(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGameBase ts)
+        public static implicit operator string(coGameBase ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +205,7 @@ public coGameBase(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGameBase ts)
+        public static implicit operator int(coGameBase ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +226,7 @@ public coGameBase(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGameBase ts)
+        public static implicit operator uint(coGameBase ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,60 +241,58 @@ public coGameBase(int simobjectid): base(simobjectid){ }
             {
             return new coGameBase(ts);
             }
-public coGameBaseData dataBlock
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dataBlock");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dataBlock", value.ToString());
-          }
-       }
-/// <summary>
-/// @brief Apply an impulse to this object as defined by a world position and velocity vector.
-/// 
-///    @param pos impulse world position
-///    @param vel impulse velocity (impulse force F = m * v)
-///    @return Always true
-/// 
-///    @note Not all objects that derrive from GameBase have this defined.)
-/// 
-/// </summary>
-public  bool applyImpulse(Point3F pos, Point3F vel){
-return TorqueScriptTemplate.m_ts.fnGameBase_applyImpulse(_mSimObjectId, pos.AsString(), vel.AsString());
-}
-/// <summary>
-/// @brief Applies a radial impulse to the object using the given origin and force.
-/// 
-///    @param origin World point of origin of the radial impulse.
-///    @param radius The radius of the impulse area.
-///    @param magnitude The strength of the impulse.
-///    
-///    @note Not all objects that derrive from GameBase have this defined.)
-/// 
-/// </summary>
-public  void applyRadialImpulse(Point3F origin, float radius, float magnitude){
-TorqueScriptTemplate.m_ts.fnGameBase_applyRadialImpulse(_mSimObjectId, origin.AsString(), radius, magnitude);
-}
-/// <summary>
-/// @brief Get the datablock used by this object.
-///    @return the datablock this GameBase is using.
-///    @see setDataBlock())
-/// 
-/// </summary>
-public  int getDataBlock(){
-return TorqueScriptTemplate.m_ts.fnGameBase_getDataBlock(_mSimObjectId);
-}
-/// <summary>
-/// @brief Assign this GameBase to use the specified datablock.
-///    @param data new datablock to use
-///    @return true if successful, false if failed.
-///    @see getDataBlock())
-/// 
-/// </summary>
-public  bool setDataBlock(string data){
-return TorqueScriptTemplate.m_ts.fnGameBase_setDataBlock(_mSimObjectId, data);
-}
-}}
+
+        /// <summary>
+        /// @brief Apply an impulse to this object as defined by a world position and velocity vector.
+        /// 
+        ///    @param pos impulse world position
+        ///    @param vel impulse velocity (impulse force F = m * v)
+        ///    @return Always true
+        /// 
+        ///    @note Not all objects that derrive from GameBase have this defined.)
+        /// 
+        /// </summary>
+        public bool applyImpulse(Point3F pos, Point3F vel)
+            {
+            return TorqueScriptTemplate.m_ts.fnGameBase_applyImpulse(_mSimObjectId, pos.AsString(), vel.AsString());
+            }
+
+        /// <summary>
+        /// @brief Applies a radial impulse to the object using the given origin and force.
+        /// 
+        ///    @param origin World point of origin of the radial impulse.
+        ///    @param radius The radius of the impulse area.
+        ///    @param magnitude The strength of the impulse.
+        ///    
+        ///    @note Not all objects that derrive from GameBase have this defined.)
+        /// 
+        /// </summary>
+        public void applyRadialImpulse(Point3F origin, float radius, float magnitude)
+            {
+            TorqueScriptTemplate.m_ts.fnGameBase_applyRadialImpulse(_mSimObjectId, origin.AsString(), radius, magnitude);
+            }
+
+        /// <summary>
+        /// @brief Get the datablock used by this object.
+        ///    @return the datablock this GameBase is using.
+        ///    @see setDataBlock())
+        /// 
+        /// </summary>
+        public int getDataBlock()
+            {
+            return TorqueScriptTemplate.m_ts.fnGameBase_getDataBlock(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Assign this GameBase to use the specified datablock.
+        ///    @param data new datablock to use
+        ///    @return true if successful, false if failed.
+        ///    @see getDataBlock())
+        /// 
+        /// </summary>
+        public bool setDataBlock(string data)
+            {
+            return TorqueScriptTemplate.m_ts.fnGameBase_setDataBlock(_mSimObjectId, data);
+            }
+        }
+    }

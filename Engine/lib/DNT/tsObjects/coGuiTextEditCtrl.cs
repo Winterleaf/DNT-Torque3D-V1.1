@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiTextEditCtrl))]
-    public class coGuiTextEditCtrl: coGuiTextCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiTextEditCtrl))]
+    public class coGuiTextEditCtrl : coGuiTextCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextEditCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiTextEditCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextEditCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiTextEditCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextEditCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiTextEditCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// If the attempted text cannot be entered, this sound effect will be played.\n
+        /// </summary>
+        public coSFXTrack deniedSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".deniedSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".deniedSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Script command to be called when the Escape key is pressed.\n
+        /// </summary>
+        public String escapeCommand
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".escapeCommand").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".escapeCommand", value.AsString()); }
+            }
+
+        /// <summary>
+        /// How large of a history buffer to maintain.\n
+        /// </summary>
+        public int historySize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".historySize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".historySize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, all characters entered will be stored in the control, however will display as the character stored in passwordMask.\n
+        /// </summary>
+        public bool password
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".password").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".password", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If 'password' is true, this is the character that will be used to mask the characters in the control.\n
+        /// </summary>
+        public String passwordMask
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".passwordMask").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".passwordMask", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, every key event will act as if the Enter key was pressed.\n
+        /// </summary>
+        public bool sinkAllKeyEvents
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sinkAllKeyEvents").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sinkAllKeyEvents", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, when the 'tab' key is pressed, it will act as if the Enter key was pressed on the control.\n
+        /// </summary>
+        public bool tabComplete
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tabComplete").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tabComplete", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Script command to be called when the first validater is lost.\n
+        /// </summary>
+        public String validate
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".validate").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".validate", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +207,9 @@ public coGuiTextEditCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +217,17 @@ public coGuiTextEditCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +239,15 @@ public coGuiTextEditCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiTextEditCtrl ts)
+        public static implicit operator string(coGuiTextEditCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +267,7 @@ public coGuiTextEditCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiTextEditCtrl ts)
+        public static implicit operator int(coGuiTextEditCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +288,7 @@ public coGuiTextEditCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiTextEditCtrl ts)
+        public static implicit operator uint(coGuiTextEditCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,197 +303,126 @@ public coGuiTextEditCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiTextEditCtrl(ts);
             }
-public coSFXTrack deniedSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".deniedSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".deniedSound", value.ToString());
-          }
-       }
-public String escapeCommand
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".escapeCommand").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".escapeCommand", value.AsString());
-          }
-       }
-public int historySize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".historySize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".historySize", value.AsString());
-          }
-       }
-public bool password
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".password").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".password", value.AsString());
-          }
-       }
-public String passwordMask
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".passwordMask").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".passwordMask", value.AsString());
-          }
-       }
-public bool sinkAllKeyEvents
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sinkAllKeyEvents").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sinkAllKeyEvents", value.AsString());
-          }
-       }
-public bool tabComplete
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tabComplete").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tabComplete", value.AsString());
-          }
-       }
-public String validate
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".validate").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".validate", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Unselects all selected text in the control.
-///    @tsexample
-///    // Inform the control to unselect all of its selected text
-///    %thisGuiTextEditCtrl.clearSelectedText();
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void clearSelectedText(){
-TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_clearSelectedText(_mSimObjectId);
-}
-/// <summary>
-/// @brief Force a validation to occur.
-///    @tsexample
-///    // Inform the control to force a validation of its text.
-///    %thisGuiTextEditCtrl.forceValidateText();
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void forceValidateText(){
-TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_forceValidateText(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns the current position of the text cursor in the control.
-///    @tsexample
-///    // Acquire the cursor position in the control
-///    %position = %thisGuiTextEditCtrl.getCursorPost();
-///    @endtsexample
-///    @return Text cursor position within the control.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  int getCursorPos(){
-return TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_getCursorPos(_mSimObjectId);
-}
-/// <summary>
-/// @brief Acquires the current text displayed in this control.
-///    @tsexample
-///    // Acquire the value of the text control.
-///    %text = %thisGuiTextEditCtrl.getText();
-///    @endtsexample
-///    @return The current text within the control.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  string getText(){
-return TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_getText(_mSimObjectId);
-}
-/// <summary>
-/// @brief Checks to see if all text in the control has been selected.
-///    @tsexample
-///    // Check to see if all text has been selected or not.
-///    %allSelected = %thisGuiTextEditCtrl.isAllTextSelected();
-///    @endtsexample
-///    @return True if all text in the control is selected, otherwise false.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  bool isAllTextSelected(){
-return TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_isAllTextSelected(_mSimObjectId);
-}
-/// <summary>
-/// @brief Selects all text within the control.
-///    @tsexample
-///    // Inform the control to select all of its text.
-///    %thisGuiTextEditCtrl.selectAllText();
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void selectAllText(){
-TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_selectAllText(_mSimObjectId);
-}
-/// <summary>
-/// @brief Sets the text cursor at the defined position within the control.
-///    @param position Text position to set the text cursor.
-///    @tsexample
-///    // Define the cursor position
-///    %position = \"12\";
-///    // Inform the GuiTextEditCtrl control to place the text cursor at the defined position
-///    %thisGuiTextEditCtrl.setCursorPos(%position);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setCursorPos(int position){
-TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_setCursorPos(_mSimObjectId, position);
-}
-/// <summary>
-/// @brief Sets the text in the control.
-///    @param text Text to place in the control.
-///    @tsexample
-///    // Define the text to display
-///    %text = \"Text!\"
-///    // Inform the GuiTextEditCtrl to display the defined text
-///    %thisGuiTextEditCtrl.setText(%text);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  new  void setText(string text){
-TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_setText(_mSimObjectId, text);
-}
-}}
+
+        /// <summary>
+        /// @brief Unselects all selected text in the control.
+        ///    @tsexample
+        ///    // Inform the control to unselect all of its selected text
+        ///    %thisGuiTextEditCtrl.clearSelectedText();
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void clearSelectedText()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_clearSelectedText(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Force a validation to occur.
+        ///    @tsexample
+        ///    // Inform the control to force a validation of its text.
+        ///    %thisGuiTextEditCtrl.forceValidateText();
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void forceValidateText()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_forceValidateText(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns the current position of the text cursor in the control.
+        ///    @tsexample
+        ///    // Acquire the cursor position in the control
+        ///    %position = %thisGuiTextEditCtrl.getCursorPost();
+        ///    @endtsexample
+        ///    @return Text cursor position within the control.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public int getCursorPos()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_getCursorPos(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Acquires the current text displayed in this control.
+        ///    @tsexample
+        ///    // Acquire the value of the text control.
+        ///    %text = %thisGuiTextEditCtrl.getText();
+        ///    @endtsexample
+        ///    @return The current text within the control.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public string getText()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_getText(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Checks to see if all text in the control has been selected.
+        ///    @tsexample
+        ///    // Check to see if all text has been selected or not.
+        ///    %allSelected = %thisGuiTextEditCtrl.isAllTextSelected();
+        ///    @endtsexample
+        ///    @return True if all text in the control is selected, otherwise false.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public bool isAllTextSelected()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_isAllTextSelected(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Selects all text within the control.
+        ///    @tsexample
+        ///    // Inform the control to select all of its text.
+        ///    %thisGuiTextEditCtrl.selectAllText();
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void selectAllText()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_selectAllText(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Sets the text cursor at the defined position within the control.
+        ///    @param position Text position to set the text cursor.
+        ///    @tsexample
+        ///    // Define the cursor position
+        ///    %position = \"12\";
+        ///    // Inform the GuiTextEditCtrl control to place the text cursor at the defined position
+        ///    %thisGuiTextEditCtrl.setCursorPos(%position);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setCursorPos(int position)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_setCursorPos(_mSimObjectId, position);
+            }
+
+        /// <summary>
+        /// @brief Sets the text in the control.
+        ///    @param text Text to place in the control.
+        ///    @tsexample
+        ///    // Define the text to display
+        ///    %text = \"Text!\"
+        ///    // Inform the GuiTextEditCtrl to display the defined text
+        ///    %thisGuiTextEditCtrl.setText(%text);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public new void setText(string text)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTextEditCtrl_setText(_mSimObjectId, text);
+            }
+        }
+    }

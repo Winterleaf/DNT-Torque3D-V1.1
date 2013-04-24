@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiPopUpMenuCtrl))]
-    public class coGuiPopUpMenuCtrl: coGuiTextCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiPopUpMenuCtrl))]
+    public class coGuiPopUpMenuCtrl : coGuiTextCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiPopUpMenuCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiPopUpMenuCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiPopUpMenuCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiPopUpMenuCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiPopUpMenuCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiPopUpMenuCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String bitmap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Point2I bitmapBounds
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bitmapBounds").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bitmapBounds", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int maxPopupHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxPopupHeight").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxPopupHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool reverseTextList
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverseTextList").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverseTextList", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool sbUsesNAColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sbUsesNAColor").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sbUsesNAColor", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiPopUpMenuCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiPopUpMenuCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiPopUpMenuCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiPopUpMenuCtrl ts)
+        public static implicit operator string(coGuiPopUpMenuCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiPopUpMenuCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiPopUpMenuCtrl ts)
+        public static implicit operator int(coGuiPopUpMenuCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiPopUpMenuCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiPopUpMenuCtrl ts)
+        public static implicit operator uint(coGuiPopUpMenuCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,196 +277,180 @@ public coGuiPopUpMenuCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiPopUpMenuCtrl(ts);
             }
-public String bitmap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString());
-          }
-       }
-public Point2I bitmapBounds
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bitmapBounds").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bitmapBounds", value.AsString());
-          }
-       }
-public int maxPopupHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxPopupHeight").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxPopupHeight", value.AsString());
-          }
-       }
-public bool reverseTextList
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverseTextList").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverseTextList", value.AsString());
-          }
-       }
-public bool sbUsesNAColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sbUsesNAColor").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sbUsesNAColor", value.AsString());
-          }
-       }
-/// <summary>
-/// ( GuiPopUpMenuCtrl, add, void, 3, 5, (string name, int idNum, int scheme=0))
-/// 
-/// </summary>
-public  void add(string a2, string a3= "", string a4= ""){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_add(_mSimObjectId, a2, a3, a4);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, addScheme, void, 6, 6, (int id, ColorI fontColor, ColorI fontColorHL, ColorI fontColorSEL))
-/// 
-/// </summary>
-public  void addScheme(string a2, string a3, string a4, string a5){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_addScheme(_mSimObjectId, a2, a3, a4, a5);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, changeTextById, void, 4, 4, ( int id, string text ) )
-/// 
-/// </summary>
-public  void changeTextById(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_changeTextById(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, clear, void, 2, 2, Clear the popup list.)
-/// 
-/// </summary>
-public  new  void clear(){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_clear(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, clearEntry, void, 3, 3, (S32 entry))
-/// 
-/// </summary>
-public  void clearEntry(string a2){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_clearEntry(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, findText, S32, 3, 3, (string text)
-///               Returns the position of the first entry containing the specified text.)
-/// 
-/// </summary>
-public  int findText(string a2){
-return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_findText(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, forceClose, void, 2, 2, )
-/// 
-/// </summary>
-public  void forceClose(){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_forceClose(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, forceOnAction, void, 2, 2, )
-/// 
-/// </summary>
-public  void forceOnAction(){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_forceOnAction(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, getSelected, S32, 2, 2, )
-/// 
-/// </summary>
-public  int getSelected(){
-return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_getSelected(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, getText, const char*, 2, 2, )
-/// 
-/// </summary>
-public  string getText(){
-return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_getText(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, getTextById, const char*, 3, 3,  (int id))
-/// 
-/// </summary>
-public  string getTextById(string a2){
-return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_getTextById(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, replaceText, void, 3, 3, (bool doReplaceText))
-/// 
-/// </summary>
-public  void replaceText(string a2){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_replaceText(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, setEnumContent, void, 4, 4, (string class, string enum)
-///               This fills the popup with a classrep's field enumeration type info.
-///               More of a helper function than anything.   If console access to the field list is added, 
-///               at least for the enumerated types, then this should go away..)
-/// 
-/// </summary>
-public  void setEnumContent(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_setEnumContent(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, setFirstSelected, void, 2, 3, ([scriptCallback=true]))
-/// 
-/// </summary>
-public  void setFirstSelected(string a2= ""){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_setFirstSelected(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, setNoneSelected, void, 2, 2, )
-/// 
-/// </summary>
-public  void setNoneSelected(){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_setNoneSelected(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, setSelected, void, 3, 4, (int id, [scriptCallback=true]))
-/// 
-/// </summary>
-public  void setSelected(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_setSelected(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiPopUpMenuCtrl, size, S32, 2, 2, Get the size of the menu - the number of entries in it.)
-/// 
-/// </summary>
-public  int size(){
-return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_size(_mSimObjectId);
-}
-/// <summary>
-/// (GuiPopUpMenuCtrl, sort, void, 2, 2, Sort the list alphabetically.)
-/// 
-/// </summary>
-public  void sort(){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_sort(_mSimObjectId);
-}
-/// <summary>
-/// (GuiPopUpMenuCtrl, sortID, void, 2, 2, Sort the list by ID.)
-/// 
-/// </summary>
-public  void sortID(){
-TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_sortID(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, add, void, 3, 5, (string name, int idNum, int scheme=0))
+        /// 
+        /// </summary>
+        public void add(string a2, string a3 = "", string a4 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_add(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, addScheme, void, 6, 6, (int id, ColorI fontColor, ColorI fontColorHL, ColorI fontColorSEL))
+        /// 
+        /// </summary>
+        public void addScheme(string a2, string a3, string a4, string a5)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_addScheme(_mSimObjectId, a2, a3, a4, a5);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, changeTextById, void, 4, 4, ( int id, string text ) )
+        /// 
+        /// </summary>
+        public void changeTextById(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_changeTextById(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, clear, void, 2, 2, Clear the popup list.)
+        /// 
+        /// </summary>
+        public new void clear()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_clear(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, clearEntry, void, 3, 3, (S32 entry))
+        /// 
+        /// </summary>
+        public void clearEntry(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_clearEntry(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, findText, S32, 3, 3, (string text)
+        ///               Returns the position of the first entry containing the specified text.)
+        /// 
+        /// </summary>
+        public int findText(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_findText(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, forceClose, void, 2, 2, )
+        /// 
+        /// </summary>
+        public void forceClose()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_forceClose(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, forceOnAction, void, 2, 2, )
+        /// 
+        /// </summary>
+        public void forceOnAction()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_forceOnAction(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, getSelected, S32, 2, 2, )
+        /// 
+        /// </summary>
+        public int getSelected()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_getSelected(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, getText, const char*, 2, 2, )
+        /// 
+        /// </summary>
+        public string getText()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_getText(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, getTextById, const char*, 3, 3,  (int id))
+        /// 
+        /// </summary>
+        public string getTextById(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_getTextById(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, replaceText, void, 3, 3, (bool doReplaceText))
+        /// 
+        /// </summary>
+        public void replaceText(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_replaceText(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, setEnumContent, void, 4, 4, (string class, string enum)
+        ///               This fills the popup with a classrep's field enumeration type info.
+        ///               More of a helper function than anything.   If console access to the field list is added, 
+        ///               at least for the enumerated types, then this should go away..)
+        /// 
+        /// </summary>
+        public void setEnumContent(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_setEnumContent(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, setFirstSelected, void, 2, 3, ([scriptCallback=true]))
+        /// 
+        /// </summary>
+        public void setFirstSelected(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_setFirstSelected(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, setNoneSelected, void, 2, 2, )
+        /// 
+        /// </summary>
+        public void setNoneSelected()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_setNoneSelected(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, setSelected, void, 3, 4, (int id, [scriptCallback=true]))
+        /// 
+        /// </summary>
+        public void setSelected(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_setSelected(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiPopUpMenuCtrl, size, S32, 2, 2, Get the size of the menu - the number of entries in it.)
+        /// 
+        /// </summary>
+        public int size()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_size(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (GuiPopUpMenuCtrl, sort, void, 2, 2, Sort the list alphabetically.)
+        /// 
+        /// </summary>
+        public void sort()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_sort(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (GuiPopUpMenuCtrl, sortID, void, 2, 2, Sort the list by ID.)
+        /// 
+        /// </summary>
+        public void sortID()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiPopUpMenuCtrl_sortID(_mSimObjectId);
+            }
+        }
+    }

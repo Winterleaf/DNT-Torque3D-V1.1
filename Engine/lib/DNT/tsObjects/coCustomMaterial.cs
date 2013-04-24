@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,90 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoCustomMaterial))]
-    public class coCustomMaterial: coMaterial
-{
+    [TypeConverter(typeof (tsObjectConvertercoCustomMaterial))]
+    public class coCustomMaterial : coMaterial
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCustomMaterial(string simobjectid) : base(simobjectid){ }
+        public coCustomMaterial(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCustomMaterial(uint simobjectid): base(simobjectid){ }
+        public coCustomMaterial(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCustomMaterial(int simobjectid): base(simobjectid){ }
+        public coCustomMaterial(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Alternate material for targeting lower end hardware.\n\n   If the CustomMaterial requires a higher pixel shader version than the one    it's using, it's fallback Material will be processed instead.    If the fallback material wasn't defined, Torque 3D will assert and attempt to use a very    basic material in it's place.\n\n
+        /// </summary>
+        public coMaterial fallback
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fallback"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fallback", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Determines if the material should recieve lights in Basic Lighting.    Has no effect in Advanced Lighting.\n\n
+        /// </summary>
+        public bool forwardLit
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".forwardLit").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".forwardLit", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Name of the ShaderData to use for this effect.\n\n
+        /// </summary>
+        public String shader
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shader").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shader", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Name of a GFXStateBlockData for this effect.\n\n
+        /// </summary>
+        public coGFXStateBlockData stateBlock
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stateBlock"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateBlock", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief String identifier of this material's target texture.
+        /// </summary>
+        public String target
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".target").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".target", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Specifies pixel shader version for hardware.\n\n   Valid pixel shader versions include 2.0, 3.0, etc.    @note All features aren't compatible with all pixel shader versions.
+        /// </summary>
+        public float version
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".version").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".version", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +189,9 @@ public coCustomMaterial(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +199,17 @@ public coCustomMaterial(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +221,15 @@ public coCustomMaterial(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coCustomMaterial ts)
+        public static implicit operator string(coCustomMaterial ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +249,7 @@ public coCustomMaterial(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coCustomMaterial ts)
+        public static implicit operator int(coCustomMaterial ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +270,7 @@ public coCustomMaterial(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coCustomMaterial ts)
+        public static implicit operator uint(coCustomMaterial ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,70 +285,5 @@ public coCustomMaterial(int simobjectid): base(simobjectid){ }
             {
             return new coCustomMaterial(ts);
             }
-public coMaterial fallback
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fallback");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fallback", value.ToString());
-          }
-       }
-public bool forwardLit
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".forwardLit").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".forwardLit", value.AsString());
-          }
-       }
-public String shader
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shader").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shader", value.AsString());
-          }
-       }
-public coGFXStateBlockData stateBlock
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stateBlock");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateBlock", value.ToString());
-          }
-       }
-public String target
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".target").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".target", value.AsString());
-          }
-       }
-public float version
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".version").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".version", value.AsString());
-          }
-       }
-}}
+        }
+    }

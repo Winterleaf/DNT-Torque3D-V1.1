@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,631 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoMaterial))]
-    public class coMaterial: coBaseMaterialDefinition
-{
+    [TypeConverter(typeof (tsObjectConvertercoMaterial))]
+    public class coMaterial : coBaseMaterialDefinition
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMaterial(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coMaterial(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coMaterial(int simobjectid): base(simobjectid){ }
+        public coMaterial(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coMaterial(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coMaterial(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// The alpha reference value for alpha testing. Must be between 0 to 255.\n@see alphaTest\n 
+        /// </summary>
+        public int alphaRef
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alphaRef").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaRef", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables alpha test when rendering the material.\n@see alphaRef\n 
+        /// </summary>
+        public bool alphaTest
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alphaTest").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaTest", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The types of animation to play on this material. 
+        /// </summary>
+        public Material__AnimType animFlags
+            {
+            get { return (Material__AnimType) Enum.Parse(typeof (Material__AnimType), dnTorque.self.GetVar(_mSimObjectId + ".animFlags")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animFlags", value.ToString()); }
+            }
+
+        /// <summary>
+        /// For backwards compatibility.\n@see diffuseMap\n 
+        /// </summary>
+        public String baseTex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseTex").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseTex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @internal
+        /// </summary>
+        public bool bumpAtlas
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bumpAtlas").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bumpAtlas", value.AsString()); }
+            }
+
+        /// <summary>
+        /// For backwards compatibility.\n@see normalMap\n
+        /// </summary>
+        public String bumpTex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bumpTex").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bumpTex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If set to false the lighting system will not cast shadows from this material. 
+        /// </summary>
+        public bool castShadows
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @internal 
+        /// </summary>
+        public Point2I cellIndex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cellIndex").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cellIndex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @internal
+        /// </summary>
+        public Point2I cellLayout
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cellLayout").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cellLayout", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @internal
+        /// </summary>
+        public int cellSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cellSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cellSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// For backwards compatibility.\n@see diffuseColor\n
+        /// </summary>
+        public ColorF colorMultiply
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorMultiply").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorMultiply", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The name of a CubemapData for environment mapping. 
+        /// </summary>
+        public String cubemap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cubemap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cubemap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The sound to play when the player walks over the material. If this is set, it overrides #footstepSoundId. This field is      useful for directly assigning custom footstep sounds to materials without having to rely on the PlayerData sound assignment.\n\n     @warn Be aware that materials are client-side objects. This means that the SFXTracks assigned to materials must be client-side, too. 
+        /// </summary>
+        public coSFXTrack customFootstepSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".customFootstepSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".customFootstepSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The sound to play when the player impacts on the surface with a velocity equal or greater than PlayerData::groundImpactMinSpeed.      If this is set, it overrides #impactSoundId. This field is useful for directly assigning custom impact sounds to materials      without having to rely on the PlayerData sound assignment.\n\n     @warn Be aware that materials are client-side objects. This means that the SFXTracks assigned to materials must be client-side, too. 
+        /// </summary>
+        public coSFXTrack customImpactSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".customImpactSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".customImpactSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// A typically greyscale detail texture additively blended into the material. 
+        /// </summary>
+        public String detailMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// A second normal map texture applied at the detail scale. You can use the DXTnm      format only when per-pixel specular highlights are disabled. 
+        /// </summary>
+        public String detailNormalMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailNormalMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailNormalMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Used to scale the strength of the detail normal map when blended with the base normal map. 
+        /// </summary>
+        public float detailNormalMapStrength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailNormalMapStrength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailNormalMapStrength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The scale factor for the detail map. 
+        /// </summary>
+        public Point2F detailScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailScale").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// For backwards compatibility.\n@see detailMap\n
+        /// </summary>
+        public String detailTex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailTex").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailTex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// This color is multiplied against the diffuse texture color. If no diffuse texture      is present this is the material color. 
+        /// </summary>
+        public ColorF diffuseColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".diffuseColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".diffuseColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The diffuse color texture map. 
+        /// </summary>
+        public String diffuseMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".diffuseMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".diffuseMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float directSoundOcclusion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".directSoundOcclusion").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".directSoundOcclusion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Disables backface culling casing surfaces to be double sided.      Note that the lighting on the backside will be a mirror of the front      side of the surface. 
+        /// </summary>
+        public bool doubleSided
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".doubleSided").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".doubleSided", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables the material to use the dynamic cubemap from the ShapeBase object its applied to. 
+        /// </summary>
+        public bool dynamicCubemap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicCubemap").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicCubemap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If #showDust is true, this is the set of colors to use for the ParticleData of the dust      emitter.\n\n     @see ParticleData::colors 
+        /// </summary>
+        public ColorF effectColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".effectColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".effectColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables emissive lighting for the material. 
+        /// </summary>
+        public bool emissive
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".emissive").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".emissive", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The name of an environment map cube map to apply to this material. 
+        /// </summary>
+        public String envMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".envMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".envMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// For backwards compatibility.\n@see envMap\n
+        /// </summary>
+        public String envTex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".envTex").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".envTex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// What sound to play from the PlayerData sound list when the player walks over the material. -1 (default) to not play any sound.\n     \n     The IDs are:\n\n     - 0: PlayerData::FootSoftSound\n     - 1: PlayerData::FootHardSound\n     - 2: PlayerData::FootMetalSound\n     - 3: PlayerData::FootSnowSound\n     - 4: PlayerData::FootShallowSound\n     - 5: PlayerData::FootWadingSound\n     - 6: PlayerData::FootUnderwaterSound\n     - 7: PlayerData::FootBubblesSound\n     - 8: PlayerData::movingBubblesSound\n     - 9: PlayerData::waterBreathSound\n     - 10: PlayerData::impactSoftSound\n     - 11: PlayerData::impactHardSound\n     - 12: PlayerData::impactMetalSound\n     - 13: PlayerData::impactSnowSound\n     - 14: PlayerData::impactWaterEasy\n     - 15: PlayerData::impactWaterMedium\n     - 16: PlayerData::impactWaterHard\n     - 17: PlayerData::exitingWater\n 
+        /// </summary>
+        public int footstepSoundId
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".footstepSoundId").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".footstepSoundId", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float friction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables rendering this material to the glow buffer. 
+        /// </summary>
+        public bool glow
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".glow").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".glow", value.AsString()); }
+            }
+
+        /// <summary>
+        /// What sound to play from the PlayerData sound list when the player impacts on the surface with a velocity equal or greater      than PlayerData::groundImpactMinSpeed.\n\n     For a list of IDs, see #footstepSoundId 
+        /// </summary>
+        public int impactSoundId
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactSoundId").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactSoundId", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The lightmap texture used with pureLight. 
+        /// </summary>
+        public String lightMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Used to map this material to the material name used by TSShape. 
+        /// </summary>
+        public String mapTo
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mapTo").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mapTo", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The Minnaert shading constant value. Must be greater than 0 to enable the effect. 
+        /// </summary>
+        public float minnaertConstant
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minnaertConstant").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minnaertConstant", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The normal map texture. You can use the DXTnm format only when per-pixel      specular highlights are disabled, or a specular map is in use. 
+        /// </summary>
+        public String normalMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".normalMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".normalMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// A secondary diffuse color texture map which will use the second texcoord of a mesh. 
+        /// </summary>
+        public String overlayMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".overlayMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".overlayMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// For backwards compatibility.\n@see overlayMap\n
+        /// </summary>
+        public String overlayTex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".overlayTex").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".overlayTex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables parallax mapping and defines the scale factor for the parallax effect. Typically      this value is less than 0.4 else the effect breaks down. 
+        /// </summary>
+        public float parallaxScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".parallaxScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".parallaxScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// This enables per-pixel specular highlights controlled by the alpha channel of the      normal map texture. Note that if pixel specular is enabled the DXTnm format will not      work with your normal map, unless you are also using a specular map. 
+        /// </summary>
+        public bool pixelSpecular
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pixelSpecular").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pixelSpecular", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @internal 
+        /// </summary>
+        public bool planarReflection
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".planarReflection").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".planarReflection", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float reverbSoundOcclusion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbSoundOcclusion").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbSoundOcclusion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The piviot position in UV coordinates to center the rotation animation. 
+        /// </summary>
+        public Point2F rotPivotOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotPivotOffset").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotPivotOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The speed to rotate the texture in degrees per second when rotation animation is enabled. 
+        /// </summary>
+        public float rotSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The scroll direction in UV space when scroll animation is enabled. 
+        /// </summary>
+        public Point2F scrollDir
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scrollDir").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scrollDir", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The speed to scroll the texture in UVs per second when scroll animation is enabled. 
+        /// </summary>
+        public float scrollSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scrollSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scrollSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The number of frames per second for frame based sequence animations if greater than zero. 
+        /// </summary>
+        public float sequenceFramePerSec
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sequenceFramePerSec").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sequenceFramePerSec", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The size of each frame in UV units for sequence animations. 
+        /// </summary>
+        public float sequenceSegmentSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sequenceSegmentSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sequenceSegmentSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to emit dust particles from a shape moving over the material. This is, for example, used by      vehicles or players to decide whether to show dust trails. 
+        /// </summary>
+        public bool showDust
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showDust").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showDust", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to show player footprint decals on this material.\n\n     @see PlayerData::decalData 
+        /// </summary>
+        public bool showFootprints
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFootprints").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFootprints", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The color of the specular highlight when not using a specularMap. 
+        /// </summary>
+        public ColorF specular
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".specular").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".specular", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The specular map texture. The RGB channels of this texture provide a per-pixel replacement for the 'specular' parameter on the material.      If this texture contains alpha information, the alpha channel of the texture will be used as the gloss map.      This provides a per-pixel replacement for the 'specularPower' on the material 
+        /// </summary>
+        public String specularMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".specularMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".specularMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The intensity of the specular highlight when not using a specularMap. 
+        /// </summary>
+        public float specularPower
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".specularPower").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".specularPower", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables the subsurface scattering approximation. 
+        /// </summary>
+        public bool subSurface
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".subSurface").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".subSurface", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The color used for the subsurface scattering approximation. 
+        /// </summary>
+        public ColorF subSurfaceColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".subSurfaceColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".subSurfaceColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The 0 to 1 rolloff factor used in the subsurface scattering approximation. 
+        /// </summary>
+        public float subSurfaceRolloff
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".subSurfaceRolloff").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".subSurfaceRolloff", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The tonemap texture used with pureLight.
+        /// </summary>
+        public String toneMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".toneMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".toneMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true this material is translucent blended. 
+        /// </summary>
+        public bool translucent
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".translucent").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".translucent", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The type of blend operation to use when the material is translucent. 
+        /// </summary>
+        public Material__BlendOp translucentBlendOp
+            {
+            get { return (Material__BlendOp) Enum.Parse(typeof (Material__BlendOp), dnTorque.self.GetVar(_mSimObjectId + ".translucentBlendOp")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".translucentBlendOp", value.ToString()); }
+            }
+
+        /// <summary>
+        /// If enabled and the material is translucent it will write into the depth buffer. 
+        /// </summary>
+        public bool translucentZWrite
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".translucentZWrite").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".translucentZWrite", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Use anisotropic filtering for the textures of this stage. 
+        /// </summary>
+        public bool useAnisotropic
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useAnisotropic").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useAnisotropic", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If enabled, vertex colors are premultiplied with diffuse colors. 
+        /// </summary>
+        public bool vertColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".vertColor").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".vertColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true the vertex color is used for lighting. 
+        /// </summary>
+        public bool vertLit
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".vertLit").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".vertLit", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The wave amplitude when wave animation is enabled. 
+        /// </summary>
+        public float waveAmp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waveAmp").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waveAmp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The wave frequency when wave animation is enabled. 
+        /// </summary>
+        public float waveFreq
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waveFreq").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waveFreq", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The type of wave animation to perform when wave animation is enabled. 
+        /// </summary>
+        public Material__WaveType waveType
+            {
+            get { return (Material__WaveType) Enum.Parse(typeof (Material__WaveType), dnTorque.self.GetVar(_mSimObjectId + ".waveType")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waveType", value.ToString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +731,9 @@ public coMaterial(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +741,17 @@ public coMaterial(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +763,15 @@ public coMaterial(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coMaterial ts)
+        public static implicit operator string(coMaterial ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +791,7 @@ public coMaterial(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coMaterial ts)
+        public static implicit operator int(coMaterial ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +812,7 @@ public coMaterial(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coMaterial ts)
+        public static implicit operator uint(coMaterial ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,781 +827,73 @@ public coMaterial(int simobjectid): base(simobjectid){ }
             {
             return new coMaterial(ts);
             }
-public int alphaRef
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alphaRef").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaRef", value.AsString());
-          }
-       }
-public bool alphaTest
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alphaTest").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaTest", value.AsString());
-          }
-       }
-public Material__AnimType animFlags
-       {
-       get
-          {          return (Material__AnimType)Enum.Parse(typeof(Material__AnimType), dnTorque.self.GetVar(_mSimObjectId + ".animFlags"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animFlags", value.ToString());
-          }
-       }
-public String baseTex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseTex").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseTex", value.AsString());
-          }
-       }
-public bool bumpAtlas
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bumpAtlas").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bumpAtlas", value.AsString());
-          }
-       }
-public String bumpTex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bumpTex").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bumpTex", value.AsString());
-          }
-       }
-public bool castShadows
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString());
-          }
-       }
-public Point2I cellIndex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cellIndex").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cellIndex", value.AsString());
-          }
-       }
-public Point2I cellLayout
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cellLayout").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cellLayout", value.AsString());
-          }
-       }
-public int cellSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cellSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cellSize", value.AsString());
-          }
-       }
-public ColorF colorMultiply
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorMultiply").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorMultiply", value.AsString());
-          }
-       }
-public String cubemap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cubemap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cubemap", value.AsString());
-          }
-       }
-public coSFXTrack customFootstepSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".customFootstepSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".customFootstepSound", value.ToString());
-          }
-       }
-public coSFXTrack customImpactSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".customImpactSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".customImpactSound", value.ToString());
-          }
-       }
-public String detailMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailMap", value.AsString());
-          }
-       }
-public String detailNormalMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailNormalMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailNormalMap", value.AsString());
-          }
-       }
-public float detailNormalMapStrength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailNormalMapStrength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailNormalMapStrength", value.AsString());
-          }
-       }
-public Point2F detailScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailScale").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailScale", value.AsString());
-          }
-       }
-public String detailTex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailTex").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailTex", value.AsString());
-          }
-       }
-public ColorF diffuseColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".diffuseColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".diffuseColor", value.AsString());
-          }
-       }
-public String diffuseMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".diffuseMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".diffuseMap", value.AsString());
-          }
-       }
-public float directSoundOcclusion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".directSoundOcclusion").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".directSoundOcclusion", value.AsString());
-          }
-       }
-public bool doubleSided
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".doubleSided").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".doubleSided", value.AsString());
-          }
-       }
-public bool dynamicCubemap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicCubemap").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicCubemap", value.AsString());
-          }
-       }
-public ColorF effectColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".effectColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".effectColor", value.AsString());
-          }
-       }
-public bool emissive
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".emissive").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".emissive", value.AsString());
-          }
-       }
-public String envMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".envMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".envMap", value.AsString());
-          }
-       }
-public String envTex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".envTex").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".envTex", value.AsString());
-          }
-       }
-public int footstepSoundId
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".footstepSoundId").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".footstepSoundId", value.AsString());
-          }
-       }
-public float friction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString());
-          }
-       }
-public bool glow
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".glow").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".glow", value.AsString());
-          }
-       }
-public int impactSoundId
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactSoundId").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactSoundId", value.AsString());
-          }
-       }
-public String lightMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightMap", value.AsString());
-          }
-       }
-public String mapTo
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mapTo").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mapTo", value.AsString());
-          }
-       }
-public float minnaertConstant
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minnaertConstant").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minnaertConstant", value.AsString());
-          }
-       }
-public String normalMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".normalMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".normalMap", value.AsString());
-          }
-       }
-public String overlayMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".overlayMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".overlayMap", value.AsString());
-          }
-       }
-public String overlayTex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".overlayTex").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".overlayTex", value.AsString());
-          }
-       }
-public float parallaxScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".parallaxScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".parallaxScale", value.AsString());
-          }
-       }
-public bool pixelSpecular
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pixelSpecular").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pixelSpecular", value.AsString());
-          }
-       }
-public bool planarReflection
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".planarReflection").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".planarReflection", value.AsString());
-          }
-       }
-public float reverbSoundOcclusion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbSoundOcclusion").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbSoundOcclusion", value.AsString());
-          }
-       }
-public Point2F rotPivotOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotPivotOffset").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotPivotOffset", value.AsString());
-          }
-       }
-public float rotSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotSpeed", value.AsString());
-          }
-       }
-public Point2F scrollDir
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scrollDir").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scrollDir", value.AsString());
-          }
-       }
-public float scrollSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scrollSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scrollSpeed", value.AsString());
-          }
-       }
-public float sequenceFramePerSec
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sequenceFramePerSec").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sequenceFramePerSec", value.AsString());
-          }
-       }
-public float sequenceSegmentSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sequenceSegmentSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sequenceSegmentSize", value.AsString());
-          }
-       }
-public bool showDust
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showDust").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showDust", value.AsString());
-          }
-       }
-public bool showFootprints
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFootprints").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFootprints", value.AsString());
-          }
-       }
-public ColorF specular
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".specular").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".specular", value.AsString());
-          }
-       }
-public String specularMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".specularMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".specularMap", value.AsString());
-          }
-       }
-public float specularPower
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".specularPower").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".specularPower", value.AsString());
-          }
-       }
-public bool subSurface
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".subSurface").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".subSurface", value.AsString());
-          }
-       }
-public ColorF subSurfaceColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".subSurfaceColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".subSurfaceColor", value.AsString());
-          }
-       }
-public float subSurfaceRolloff
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".subSurfaceRolloff").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".subSurfaceRolloff", value.AsString());
-          }
-       }
-public String toneMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".toneMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".toneMap", value.AsString());
-          }
-       }
-public bool translucent
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".translucent").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".translucent", value.AsString());
-          }
-       }
-public Material__BlendOp translucentBlendOp
-       {
-       get
-          {          return (Material__BlendOp)Enum.Parse(typeof(Material__BlendOp), dnTorque.self.GetVar(_mSimObjectId + ".translucentBlendOp"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".translucentBlendOp", value.ToString());
-          }
-       }
-public bool translucentZWrite
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".translucentZWrite").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".translucentZWrite", value.AsString());
-          }
-       }
-public bool useAnisotropic
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useAnisotropic").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useAnisotropic", value.AsString());
-          }
-       }
-public bool vertColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".vertColor").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".vertColor", value.AsString());
-          }
-       }
-public bool vertLit
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".vertLit").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".vertLit", value.AsString());
-          }
-       }
-public float waveAmp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waveAmp").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waveAmp", value.AsString());
-          }
-       }
-public float waveFreq
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waveFreq").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waveFreq", value.AsString());
-          }
-       }
-public Material__WaveType waveType
-       {
-       get
-          {          return (Material__WaveType)Enum.Parse(typeof(Material__WaveType), dnTorque.self.GetVar(_mSimObjectId + ".waveType"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waveType", value.ToString());
-          }
-       }
-/// <summary>
-/// ( Material, dumpInstances, void, 2, 2, 
-///    Dumps a formatted list of the currently allocated material instances for this material to the console. )
-/// 
-/// </summary>
-public  void dumpInstances(){
-TorqueScriptTemplate.m_ts.fnMaterial_dumpInstances(_mSimObjectId);
-}
-/// <summary>
-/// ( Material, flush, void, 2, 2, 
-///    Flushes all material instances that use this material. )
-/// 
-/// </summary>
-public  void flush(){
-TorqueScriptTemplate.m_ts.fnMaterial_flush(_mSimObjectId);
-}
-/// <summary>
-/// ( Material, getAnimFlags, const char*, 3, 3,  )
-/// 
-/// </summary>
-public  string getAnimFlags(string a2){
-return TorqueScriptTemplate.m_ts.fnMaterial_getAnimFlags(_mSimObjectId, a2);
-}
-/// <summary>
-/// (Material, getFilename, const char*, 2, 2, Get filename of material)
-/// 
-/// </summary>
-public  new  string getFilename(){
-return TorqueScriptTemplate.m_ts.fnMaterial_getFilename(_mSimObjectId);
-}
-/// <summary>
-/// ( Material, isAutoGenerated, bool, 2, 2, 
-///               Returns true if this Material was automatically generated by MaterialList::mapMaterials() )
-/// 
-/// </summary>
-public  bool isAutoGenerated(){
-return TorqueScriptTemplate.m_ts.fnMaterial_isAutoGenerated(_mSimObjectId);
-}
-/// <summary>
-/// ( Material, reload, void, 2, 2, 
-///    Reloads all material instances that use this material. )
-/// 
-/// </summary>
-public  void reload(){
-TorqueScriptTemplate.m_ts.fnMaterial_reload(_mSimObjectId);
-}
-/// <summary>
-/// ( Material, setAutoGenerated, void, 3, 3, 
-///               setAutoGenerated(bool isAutoGenerated): Set whether or not the Material is autogenerated. )
-/// 
-/// </summary>
-public  void setAutoGenerated(string a2){
-TorqueScriptTemplate.m_ts.fnMaterial_setAutoGenerated(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// ( Material, dumpInstances, void, 2, 2, 
+        ///    Dumps a formatted list of the currently allocated material instances for this material to the console. )
+        /// 
+        /// </summary>
+        public void dumpInstances()
+            {
+            TorqueScriptTemplate.m_ts.fnMaterial_dumpInstances(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( Material, flush, void, 2, 2, 
+        ///    Flushes all material instances that use this material. )
+        /// 
+        /// </summary>
+        public void flush()
+            {
+            TorqueScriptTemplate.m_ts.fnMaterial_flush(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( Material, getAnimFlags, const char*, 3, 3,  )
+        /// 
+        /// </summary>
+        public string getAnimFlags(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnMaterial_getAnimFlags(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (Material, getFilename, const char*, 2, 2, Get filename of material)
+        /// 
+        /// </summary>
+        public new string getFilename()
+            {
+            return TorqueScriptTemplate.m_ts.fnMaterial_getFilename(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( Material, isAutoGenerated, bool, 2, 2, 
+        ///               Returns true if this Material was automatically generated by MaterialList::mapMaterials() )
+        /// 
+        /// </summary>
+        public bool isAutoGenerated()
+            {
+            return TorqueScriptTemplate.m_ts.fnMaterial_isAutoGenerated(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( Material, reload, void, 2, 2, 
+        ///    Reloads all material instances that use this material. )
+        /// 
+        /// </summary>
+        public void reload()
+            {
+            TorqueScriptTemplate.m_ts.fnMaterial_reload(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( Material, setAutoGenerated, void, 3, 3, 
+        ///               setAutoGenerated(bool isAutoGenerated): Set whether or not the Material is autogenerated. )
+        /// 
+        /// </summary>
+        public void setAutoGenerated(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnMaterial_setAutoGenerated(_mSimObjectId, a2);
+            }
+        }
+    }

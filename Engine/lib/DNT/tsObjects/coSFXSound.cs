@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXSound))]
-    public class coSFXSound: coSFXSource
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXSound))]
+    public class coSFXSound : coSFXSource
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXSound(string simobjectid) : base(simobjectid){ }
+        public coSFXSound(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXSound(uint simobjectid): base(simobjectid){ }
+        public coSFXSound(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXSound(int simobjectid): base(simobjectid){ }
+        public coSFXSound(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coSFXSound(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coSFXSound(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coSFXSound(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXSound ts)
+        public static implicit operator string(coSFXSound ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coSFXSound(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXSound ts)
+        public static implicit operator int(coSFXSound ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coSFXSound(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXSound ts)
+        public static implicit operator uint(coSFXSound ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,42 +231,51 @@ public coSFXSound(int simobjectid): base(simobjectid){ }
             {
             return new coSFXSound(ts);
             }
-/// <summary>
-/// Get the total play time (in seconds) of the sound data attached to the sound.
-///    @return 
-///    @note Be aware that for looped sounds, this will not return the total playback time of the sound. )
-/// 
-/// </summary>
-public  float getDuration(){
-return TorqueScriptTemplate.m_ts.fnSFXSound_getDuration(_mSimObjectId);
-}
-/// <summary>
-/// Get the current playback position in seconds.
-///    @return The current play cursor offset. )
-/// 
-/// </summary>
-public  float getPosition(){
-return TorqueScriptTemplate.m_ts.fnSFXSound_getPosition(_mSimObjectId);
-}
-/// <summary>
-/// Test whether the sound data associated with the sound has been fully loaded and is ready for playback.
-///    For streamed sounds, this will be false during playback when the stream queue for the sound is starved and 
-///    waiting for data.  For buffered sounds, only an initial loading phase will potentially cause isReady to 
-///    return false.
-///    @return True if the sound is ready for playback. )
-/// 
-/// </summary>
-public  bool isReady(){
-return TorqueScriptTemplate.m_ts.fnSFXSound_isReady(_mSimObjectId);
-}
-/// <summary>
-/// Set the current playback position in seconds.
-///    If the source is currently playing, playback will jump to the new position.  If playback is stopped or paused, 
-///    playback will resume at the given position when play() is called.
-///    @param position The new position of the play cursor (in seconds). )
-/// 
-/// </summary>
-public  void setPosition(float position){
-TorqueScriptTemplate.m_ts.fnSFXSound_setPosition(_mSimObjectId, position);
-}
-}}
+
+        /// <summary>
+        /// Get the total play time (in seconds) of the sound data attached to the sound.
+        ///    @return 
+        ///    @note Be aware that for looped sounds, this will not return the total playback time of the sound. )
+        /// 
+        /// </summary>
+        public float getDuration()
+            {
+            return TorqueScriptTemplate.m_ts.fnSFXSound_getDuration(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the current playback position in seconds.
+        ///    @return The current play cursor offset. )
+        /// 
+        /// </summary>
+        public float getPosition()
+            {
+            return TorqueScriptTemplate.m_ts.fnSFXSound_getPosition(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Test whether the sound data associated with the sound has been fully loaded and is ready for playback.
+        ///    For streamed sounds, this will be false during playback when the stream queue for the sound is starved and 
+        ///    waiting for data.  For buffered sounds, only an initial loading phase will potentially cause isReady to 
+        ///    return false.
+        ///    @return True if the sound is ready for playback. )
+        /// 
+        /// </summary>
+        public bool isReady()
+            {
+            return TorqueScriptTemplate.m_ts.fnSFXSound_isReady(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Set the current playback position in seconds.
+        ///    If the source is currently playing, playback will jump to the new position.  If playback is stopped or paused, 
+        ///    playback will resume at the given position when play() is called.
+        ///    @param position The new position of the play cursor (in seconds). )
+        /// 
+        /// </summary>
+        public void setPosition(float position)
+            {
+            TorqueScriptTemplate.m_ts.fnSFXSound_setPosition(_mSimObjectId, position);
+            }
+        }
+    }

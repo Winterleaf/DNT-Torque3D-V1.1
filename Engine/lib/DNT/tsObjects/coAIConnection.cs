@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoAIConnection))]
-    public class coAIConnection: coGameConnection
-{
+    [TypeConverter(typeof (tsObjectConvertercoAIConnection))]
+    public class coAIConnection : coGameConnection
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIConnection(string simobjectid) : base(simobjectid){ }
+        public coAIConnection(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIConnection(uint simobjectid): base(simobjectid){ }
+        public coAIConnection(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIConnection(int simobjectid): base(simobjectid){ }
+        public coAIConnection(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coAIConnection(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coAIConnection(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coAIConnection(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coAIConnection ts)
+        public static implicit operator string(coAIConnection ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coAIConnection(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coAIConnection ts)
+        public static implicit operator int(coAIConnection ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coAIConnection(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coAIConnection ts)
+        public static implicit operator uint(coAIConnection ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,63 +231,78 @@ public coAIConnection(int simobjectid): base(simobjectid){ }
             {
             return new coAIConnection(ts);
             }
-/// <summary>
-/// (AIConnection,getAddress,const char*,2, 2,)
-/// 
-/// </summary>
-public  new  string getAddress(){
-return TorqueScriptTemplate.m_ts.fnAIConnection_getAddress(_mSimObjectId);
-}
-/// <summary>
-/// (AIConnection,getFreeLook,bool,2, 2,getFreeLook()
-///               Is freelook on for the current move?)
-/// 
-/// </summary>
-public  bool getFreeLook(){
-return TorqueScriptTemplate.m_ts.fnAIConnection_getFreeLook(_mSimObjectId);
-}
-/// <summary>
-/// (AIConnection,getMove,F32,3, 3,(string field)
-///               Get the given field of a move.
-///               @param field One of {'x','y','z','yaw','pitch','roll'}
-///               @returns The requested field on the current move.)
-/// 
-/// </summary>
-public  float getMove(string a2){
-return TorqueScriptTemplate.m_ts.fnAIConnection_getMove(_mSimObjectId, a2);
-}
-/// <summary>
-/// (AIConnection,getTrigger,bool,4, 4,(int trigger)
-///               Is the given trigger set?)
-/// 
-/// </summary>
-public  bool getTrigger(string a2, string a3){
-return TorqueScriptTemplate.m_ts.fnAIConnection_getTrigger(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (AIConnection,setFreeLook,void,3, 3,(bool isFreeLook)
-///               Enable/disable freelook on the current move.)
-/// 
-/// </summary>
-public  void setFreeLook(string a2){
-TorqueScriptTemplate.m_ts.fnAIConnection_setFreeLook(_mSimObjectId, a2);
-}
-/// <summary>
-/// (AIConnection,setMove,void,4, 4,(string field, float value)
-///               Set a field on the current move.
-///               @param   field One of {'x','y','z','yaw','pitch','roll'}
-///               @param   value Value to set field to.)
-/// 
-/// </summary>
-public  void setMove(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnAIConnection_setMove(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (AIConnection,setTrigger,void,4, 4,(int trigger, bool set)
-///               Set a trigger.)
-/// 
-/// </summary>
-public  void setTrigger(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnAIConnection_setTrigger(_mSimObjectId, a2, a3);
-}
-}}
+
+        /// <summary>
+        /// (AIConnection,getAddress,const char*,2, 2,)
+        /// 
+        /// </summary>
+        public new string getAddress()
+            {
+            return TorqueScriptTemplate.m_ts.fnAIConnection_getAddress(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (AIConnection,getFreeLook,bool,2, 2,getFreeLook()
+        ///               Is freelook on for the current move?)
+        /// 
+        /// </summary>
+        public bool getFreeLook()
+            {
+            return TorqueScriptTemplate.m_ts.fnAIConnection_getFreeLook(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (AIConnection,getMove,F32,3, 3,(string field)
+        ///               Get the given field of a move.
+        ///               @param field One of {'x','y','z','yaw','pitch','roll'}
+        ///               @returns The requested field on the current move.)
+        /// 
+        /// </summary>
+        public float getMove(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnAIConnection_getMove(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (AIConnection,getTrigger,bool,4, 4,(int trigger)
+        ///               Is the given trigger set?)
+        /// 
+        /// </summary>
+        public bool getTrigger(string a2, string a3)
+            {
+            return TorqueScriptTemplate.m_ts.fnAIConnection_getTrigger(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (AIConnection,setFreeLook,void,3, 3,(bool isFreeLook)
+        ///               Enable/disable freelook on the current move.)
+        /// 
+        /// </summary>
+        public void setFreeLook(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnAIConnection_setFreeLook(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (AIConnection,setMove,void,4, 4,(string field, float value)
+        ///               Set a field on the current move.
+        ///               @param   field One of {'x','y','z','yaw','pitch','roll'}
+        ///               @param   value Value to set field to.)
+        /// 
+        /// </summary>
+        public void setMove(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnAIConnection_setMove(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (AIConnection,setTrigger,void,4, 4,(int trigger, bool set)
+        ///               Set a trigger.)
+        /// 
+        /// </summary>
+        public void setTrigger(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnAIConnection_setTrigger(_mSimObjectId, a2, a3);
+            }
+        }
+    }

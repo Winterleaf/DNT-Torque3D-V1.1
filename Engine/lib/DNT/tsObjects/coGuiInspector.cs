@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,63 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiInspector))]
-    public class coGuiInspector: coGuiStackControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiInspector))]
+    public class coGuiInspector : coGuiStackControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiInspector(string simobjectid) : base(simobjectid){ }
+        public coGuiInspector(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiInspector(uint simobjectid): base(simobjectid){ }
+        public coGuiInspector(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiInspector(int simobjectid): base(simobjectid){ }
+        public coGuiInspector(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int dividerMargin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dividerMargin").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dividerMargin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Specify groups that should be shown or not. Specifying 'shown' implicitly does 'not show' all other groups. Example string: +name -otherName 
+        /// </summary>
+        public String groupFilters
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".groupFilters").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".groupFilters", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If false the custom fields Name, Id, and Source Class will not be shown. 
+        /// </summary>
+        public bool showCustomFields
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showCustomFields").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showCustomFields", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +162,9 @@ public coGuiInspector(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +172,17 @@ public coGuiInspector(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +194,15 @@ public coGuiInspector(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiInspector ts)
+        public static implicit operator string(coGuiInspector ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +222,7 @@ public coGuiInspector(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiInspector ts)
+        public static implicit operator int(coGuiInspector ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +243,7 @@ public coGuiInspector(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiInspector ts)
+        public static implicit operator uint(coGuiInspector ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,101 +258,87 @@ public coGuiInspector(int simobjectid): base(simobjectid){ }
             {
             return new coGuiInspector(ts);
             }
-public int dividerMargin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dividerMargin").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dividerMargin", value.AsString());
-          }
-       }
-public String groupFilters
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".groupFilters").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".groupFilters", value.AsString());
-          }
-       }
-public bool showCustomFields
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showCustomFields").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showCustomFields", value.AsString());
-          }
-       }
-/// <summary>
-/// ( GuiInspector, addInspect, void, 3, 4, ( id object, (bool autoSync = true) ) - Add the object to the list of objects being inspected. )
-/// 
-/// </summary>
-public  void addInspect(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiInspector_addInspect(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiInspector, apply, void, 2, 2, apply() - Force application of inspected object's attributes )
-/// 
-/// </summary>
-public  void apply(){
-TorqueScriptTemplate.m_ts.fnGuiInspector_apply(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiInspector, getInspectObject, const char*, 2, 3, getInspectObject( int index=0 ) - Returns currently inspected object )
-/// 
-/// </summary>
-public  string getInspectObject(string a2= ""){
-return TorqueScriptTemplate.m_ts.fnGuiInspector_getInspectObject(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiInspector, getNumInspectObjects, S32, 2, 2, () - Return the number of objects currently being inspected. )
-/// 
-/// </summary>
-public  int getNumInspectObjects(){
-return TorqueScriptTemplate.m_ts.fnGuiInspector_getNumInspectObjects(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiInspector, inspect, void, 3, 3, Inspect(Object))
-/// 
-/// </summary>
-public  void inspect(string a2){
-TorqueScriptTemplate.m_ts.fnGuiInspector_inspect(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiInspector, refresh, void, 2, 2, Reinspect the currently selected object. )
-/// 
-/// </summary>
-public  void refresh(){
-TorqueScriptTemplate.m_ts.fnGuiInspector_refresh(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiInspector, removeInspect, void, 3, 3, ( id object ) - Remove the object from the list of objects being inspected. )
-/// 
-/// </summary>
-public  void removeInspect(string a2){
-TorqueScriptTemplate.m_ts.fnGuiInspector_removeInspect(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiInspector, setName, void, 3, 3, setName(NewObjectName))
-/// 
-/// </summary>
-public  new  void setName(string a2){
-TorqueScriptTemplate.m_ts.fnGuiInspector_setName(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiInspector, setObjectField, void, 4, 4, 
-///    setObjectField( fieldname, data ) - Set a named fields value on the inspected object if it exists. This triggers all the usual callbacks that would occur if the field had been changed through the gui. )
-/// 
-/// </summary>
-public  void setObjectField(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnGuiInspector_setObjectField(_mSimObjectId, a2, a3);
-}
-}}
+
+        /// <summary>
+        /// ( GuiInspector, addInspect, void, 3, 4, ( id object, (bool autoSync = true) ) - Add the object to the list of objects being inspected. )
+        /// 
+        /// </summary>
+        public void addInspect(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspector_addInspect(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiInspector, apply, void, 2, 2, apply() - Force application of inspected object's attributes )
+        /// 
+        /// </summary>
+        public void apply()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspector_apply(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiInspector, getInspectObject, const char*, 2, 3, getInspectObject( int index=0 ) - Returns currently inspected object )
+        /// 
+        /// </summary>
+        public string getInspectObject(string a2 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiInspector_getInspectObject(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiInspector, getNumInspectObjects, S32, 2, 2, () - Return the number of objects currently being inspected. )
+        /// 
+        /// </summary>
+        public int getNumInspectObjects()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiInspector_getNumInspectObjects(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiInspector, inspect, void, 3, 3, Inspect(Object))
+        /// 
+        /// </summary>
+        public void inspect(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspector_inspect(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiInspector, refresh, void, 2, 2, Reinspect the currently selected object. )
+        /// 
+        /// </summary>
+        public void refresh()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspector_refresh(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiInspector, removeInspect, void, 3, 3, ( id object ) - Remove the object from the list of objects being inspected. )
+        /// 
+        /// </summary>
+        public void removeInspect(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspector_removeInspect(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiInspector, setName, void, 3, 3, setName(NewObjectName))
+        /// 
+        /// </summary>
+        public new void setName(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspector_setName(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiInspector, setObjectField, void, 4, 4, 
+        ///    setObjectField( fieldname, data ) - Set a named fields value on the inspected object if it exists. This triggers all the usual callbacks that would occur if the field had been changed through the gui. )
+        /// 
+        /// </summary>
+        public void setObjectField(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspector_setObjectField(_mSimObjectId, a2, a3);
+            }
+        }
+    }

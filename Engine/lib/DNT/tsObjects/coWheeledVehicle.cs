@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoWheeledVehicle))]
-    public class coWheeledVehicle: coVehicle
-{
+    [TypeConverter(typeof (tsObjectConvertercoWheeledVehicle))]
+    public class coWheeledVehicle : coVehicle
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicle(string simobjectid) : base(simobjectid){ }
+        public coWheeledVehicle(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicle(uint simobjectid): base(simobjectid){ }
+        public coWheeledVehicle(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicle(int simobjectid): base(simobjectid){ }
+        public coWheeledVehicle(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coWheeledVehicle(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coWheeledVehicle(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coWheeledVehicle(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coWheeledVehicle ts)
+        public static implicit operator string(coWheeledVehicle ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coWheeledVehicle(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coWheeledVehicle ts)
+        public static implicit operator int(coWheeledVehicle ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coWheeledVehicle(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coWheeledVehicle ts)
+        public static implicit operator uint(coWheeledVehicle ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,65 +231,76 @@ public coWheeledVehicle(int simobjectid): base(simobjectid){ }
             {
             return new coWheeledVehicle(ts);
             }
-/// <summary>
-/// @brief Get the number of wheels on this vehicle.
-///    @return the number of wheels (equal to the number of hub nodes defined in the model) )
-/// 
-/// </summary>
-public  int getWheelCount(){
-return TorqueScriptTemplate.m_ts.fnWheeledVehicle_getWheelCount(_mSimObjectId);
-}
-/// <summary>
-/// @brief Set whether the wheel is powered (has torque applied from the engine).
-///    A rear wheel drive car for example would set the front wheels to false, 
-///    and the rear wheels to true.
-///    @param wheel index of the wheel to set (hub node #)
-///    @param powered flag indicating whether to power the wheel or not
-///    @return true if successful, false if failed )
-/// 
-/// </summary>
-public  bool setWheelPowered(int wheel, bool powered){
-return TorqueScriptTemplate.m_ts.fnWheeledVehicle_setWheelPowered(_mSimObjectId, wheel, powered);
-}
-/// <summary>
-/// @brief Set the WheeledVehicleSpring datablock for this wheel.
-///    @param wheel index of the wheel to set (hub node #)
-///    @param spring WheeledVehicleSpring datablock
-///    @return true if successful, false if failed
-///    @tsexample
-///    %obj.setWheelSpring( 0, FrontSpring );
-///    @endtsexample )
-/// 
-/// </summary>
-public  bool setWheelSpring(int wheel, string spring){
-return TorqueScriptTemplate.m_ts.fnWheeledVehicle_setWheelSpring(_mSimObjectId, wheel, spring);
-}
-/// <summary>
-/// @brief Set how much the wheel is affected by steering.
-///    The steering factor controls how much the wheel is rotated by the vehicle 
-///    steering. For example, most cars would have their front wheels set to 1.0, 
-///    and their rear wheels set to 0 since only the front wheels should turn.
-///    Negative values will turn the wheel in the opposite direction to the steering 
-///    angle.
-///    @param wheel index of the wheel to set (hub node #)
-///    @param steering steering factor from -1 (full inverse) to 1 (full)
-///    @return true if successful, false if failed )
-/// 
-/// </summary>
-public  bool setWheelSteering(int wheel, float steering){
-return TorqueScriptTemplate.m_ts.fnWheeledVehicle_setWheelSteering(_mSimObjectId, wheel, steering);
-}
-/// <summary>
-/// @brief Set the WheeledVehicleTire datablock for this wheel.
-///    @param wheel index of the wheel to set (hub node #)
-///    @param tire WheeledVehicleTire datablock
-///    @return true if successful, false if failed
-///    @tsexample
-///    %obj.setWheelTire( 0, FrontTire );
-///    @endtsexample )
-/// 
-/// </summary>
-public  bool setWheelTire(int wheel, string tire){
-return TorqueScriptTemplate.m_ts.fnWheeledVehicle_setWheelTire(_mSimObjectId, wheel, tire);
-}
-}}
+
+        /// <summary>
+        /// @brief Get the number of wheels on this vehicle.
+        ///    @return the number of wheels (equal to the number of hub nodes defined in the model) )
+        /// 
+        /// </summary>
+        public int getWheelCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnWheeledVehicle_getWheelCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Set whether the wheel is powered (has torque applied from the engine).
+        ///    A rear wheel drive car for example would set the front wheels to false, 
+        ///    and the rear wheels to true.
+        ///    @param wheel index of the wheel to set (hub node #)
+        ///    @param powered flag indicating whether to power the wheel or not
+        ///    @return true if successful, false if failed )
+        /// 
+        /// </summary>
+        public bool setWheelPowered(int wheel, bool powered)
+            {
+            return TorqueScriptTemplate.m_ts.fnWheeledVehicle_setWheelPowered(_mSimObjectId, wheel, powered);
+            }
+
+        /// <summary>
+        /// @brief Set the WheeledVehicleSpring datablock for this wheel.
+        ///    @param wheel index of the wheel to set (hub node #)
+        ///    @param spring WheeledVehicleSpring datablock
+        ///    @return true if successful, false if failed
+        ///    @tsexample
+        ///    %obj.setWheelSpring( 0, FrontSpring );
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public bool setWheelSpring(int wheel, string spring)
+            {
+            return TorqueScriptTemplate.m_ts.fnWheeledVehicle_setWheelSpring(_mSimObjectId, wheel, spring);
+            }
+
+        /// <summary>
+        /// @brief Set how much the wheel is affected by steering.
+        ///    The steering factor controls how much the wheel is rotated by the vehicle 
+        ///    steering. For example, most cars would have their front wheels set to 1.0, 
+        ///    and their rear wheels set to 0 since only the front wheels should turn.
+        ///    Negative values will turn the wheel in the opposite direction to the steering 
+        ///    angle.
+        ///    @param wheel index of the wheel to set (hub node #)
+        ///    @param steering steering factor from -1 (full inverse) to 1 (full)
+        ///    @return true if successful, false if failed )
+        /// 
+        /// </summary>
+        public bool setWheelSteering(int wheel, float steering)
+            {
+            return TorqueScriptTemplate.m_ts.fnWheeledVehicle_setWheelSteering(_mSimObjectId, wheel, steering);
+            }
+
+        /// <summary>
+        /// @brief Set the WheeledVehicleTire datablock for this wheel.
+        ///    @param wheel index of the wheel to set (hub node #)
+        ///    @param tire WheeledVehicleTire datablock
+        ///    @return true if successful, false if failed
+        ///    @tsexample
+        ///    %obj.setWheelTire( 0, FrontTire );
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public bool setWheelTire(int wheel, string tire)
+            {
+            return TorqueScriptTemplate.m_ts.fnWheeledVehicle_setWheelTire(_mSimObjectId, wheel, tire);
+            }
+        }
+    }

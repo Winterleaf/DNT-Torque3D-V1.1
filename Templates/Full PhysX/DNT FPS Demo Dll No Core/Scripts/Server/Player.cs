@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -137,7 +137,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 player.unmountImage(WeaponSlot);
 
 
-                Player.setControlObject(player, vehicle);
+                player.setControlObject(vehicle);
 
                 if (player.getClassName() == "Player")
                     {
@@ -147,7 +147,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             else
                 {
                 string pose = vehicleDataBlock["mountPose[" + node + "]"];
-                Player.setActionThread(player, pose != "" ? pose : "root", false, true);
+                player.setActionThread(pose != "" ? pose : "root", false, true);
                 }
             }
 
@@ -193,7 +193,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             int maxDismountSpeed = vdb["maxDismountSpeed"].AsInt();
             if ((vvel.len() <= maxDismountSpeed) || (forced))
                 {
-                TransformF pos = SceneObject.getTransform(player);
+                TransformF pos = player.getTransform();
                 TransformF rot = pos;
                 TransformF oldpos = pos.copy();
 
@@ -202,7 +202,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 Point3F impulsevec = new Point3F(0, 0, 0);
 
 
-                TransformF r = math.MatrixMulVector(SceneObject.getTransform(player), vecs[0]);
+                TransformF r = math.MatrixMulVector(player.getTransform(), vecs[0]);
 
                 vecs[0] = r.MPosition;
                 pos.MPosition.x = 0;
@@ -217,7 +217,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     Point3F vectorscale = vecs[i].vectorScale(3);
 
                     pos = oldpos + new TransformF(vectorscale);
-                    if (!Player.checkDismountPoint(player, oldpos.MPosition, pos.MPosition))
+                    if (!player.checkDismountPoint(oldpos.MPosition, pos.MPosition))
                         continue;
                     success = i;
                     impulsevec = vecs[i].copy();
@@ -297,10 +297,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "Armor", "damage", "(%this, %obj, %sourceObject, %position, %damage, %damageType)", 6, 2400, false)]
         public void ArmorDamage(coPlayerData datablock, coPlayer player, TransformF position, coPlayer sourceobject, float damage, string damageType)
             {
-            if (!console.isObject(player) || Player.getState(player) == "Dead" || damage == 0)
+            if (!console.isObject(player) || player.getState() == "Dead" || damage == 0)
                 return;
 
-            ShapeBase.applyDamage(player, damage);
+            player.applyDamage(damage);
 
             const string location = "Body";
 
@@ -316,14 +316,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (!console.isObject(client))
                 return;
 
-            if (ShapeBase.getDamageLevel(player) >= 99)
-                ShapeBase.unmountImage(player, 0);
+            if (player.getDamageLevel() >= 99)
+                player.unmountImage(0);
 
             // Determine damage direction
             if (damageType != "Suicide")
                 PlayerSetDamageDirection(player, sourceobject, position);
 
-            if (Player.getState(player) == "Dead")
+            if (player.getState() == "Dead")
                 GameConnectionOnDeath(client, sourceobject, sourceClient, damageType, location);
             }
 
@@ -434,7 +434,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "Player", "kill", "(%this, %damageType)", 2, 2400, false)]
         public void PlayerKill(coPlayer player, string damageType)
             {
-            ShapeBaseDamage(player, "0", SceneObject.getTransform(player).MPosition, 10000, damageType);
+            ShapeBaseDamage(player, "0", player.getTransform().MPosition, 10000, damageType);
             }
 
         [Torque_Decorations.TorqueCallBack("", "Player", "mountVehicles", "(%this, %bool)", 2, 2400, false)]

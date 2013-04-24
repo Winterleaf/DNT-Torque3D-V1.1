@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -96,14 +96,21 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             ts.Props.Add("description", "AudioChannel");
             ts.Create();
 
+            ((coSFXSource) "AudioChannelMaster").play(-1);
+            ((coSFXSource) "AudioChannelDefault").play(-1);
+            ((coSFXSource) "AudioChannelGui").play(-1);
+            ((coSFXSource) "AudioChannelMusic").play(-1);
+            ((coSFXSource) "AudioChannelMessages").play(-1);
+            ((coSFXSource) "AudioChannelEffects").stop(-1);
 
-            SFXSource.play("AudioChannelMaster", -1);
-            SFXSource.play("AudioChannelDefault", -1);
-            SFXSource.play("AudioChannelGui", -1);
-            SFXSource.play("AudioChannelMusic", -1);
-            SFXSource.play("AudioChannelMessages", -1);
 
-            SFXSource.stop("AudioChannelEffects", -1);
+            //SFXSource.play("AudioChannelMaster", -1);
+            //SFXSource.play("AudioChannelDefault", -1);
+            //SFXSource.play("AudioChannelGui", -1);
+            //SFXSource.play("AudioChannelMusic", -1);
+            //SFXSource.play("AudioChannelMessages", -1);
+
+            //SFXSource.stop("AudioChannelEffects", -1);
             //-----------------------------------------------------------------------------
             //    Master SFXDescriptions.
             //-----------------------------------------------------------------------------
@@ -241,7 +248,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 }
             // Restore master volume.
 
-            sfxSetMasterVolume(sGlobal["$pref::SFX::masterVolume"]);
+            sfxSetMasterVolume(fGlobal["$pref::SFX::masterVolume"]);
 
 
             // Restore channel volumes.
@@ -253,7 +260,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "sfxShutdown", "", 0, 21000, false)]
         public void sfxShutdown()
             {
-            sGlobal["$pref::SFX::masterVolume"] = sfxGetMasterVolume();
+            fGlobal["$pref::SFX::masterVolume"] = sfxGetMasterVolume();
 
             for (int channel = 0; channel <= 8; channel++)
                 sGlobal["$pref::SFX::channelVolume[" + channel.AsString() + "]"] = console.Call("sfxGetChannelVolume", new[] {channel.AsString()});
@@ -307,16 +314,16 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 {
                 string info = Util.getRecord(devices, i);
                 string provider = Util.getField(info, 0);
-                ArrayObject.push_back(deviceTrySequence, provider, info);
+                deviceTrySequence.push_back(provider, info);
                 }
-            ArrayObject.sortfk(deviceTrySequence, "sfxCompareProvider");
+            deviceTrySequence.sortfk("sfxCompareProvider");
             // Try the devices in order.
 
-            count = ArrayObject.count(deviceTrySequence);
+            count = deviceTrySequence.count();
             for (int i = 0; i < count; i++)
                 {
-                string provider = ArrayObject.getKey(deviceTrySequence, i);
-                string info = ArrayObject.getValue(deviceTrySequence, i);
+                string provider = deviceTrySequence.getKey(i);
+                string info = deviceTrySequence.getValue(i);
                 sGlobal["$pref::SFX::provider"] = provider;
                 sGlobal["$pref::SFX::device"] = Util.getField(info, 1);
                 sGlobal["$pref::SFX::useHardware"] = Util.getField(info, 2);
@@ -339,9 +346,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxOldChannelToGroup", "(%channel)", 1, 21000, false)]
-        public coSimSet sfxOldChannelToGroup(coSimSet channel)
+        public coSFXSource sfxOldChannelToGroup(coSimSet channel)
             {
-            return new coSimSet(sGlobal["$AudioChannels[" + channel + "]"]);
+            return new coSFXSource(sGlobal["$AudioChannels[" + channel + "]"]);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxGroupToOldChannel", "(%group)", 1, 21000, false)]
@@ -356,40 +363,44 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxSetMasterVolume", "(%volume)", 1, 21000, false)]
-        public void sfxSetMasterVolume(string volume)
+        public void sfxSetMasterVolume(float volume)
             {
-            SFXSource.setVolume("AudioChannelMaster", volume.AsFloat());
+            ((coSFXSource) "AudioChannelMaster").setVolume(volume);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxGetMasterVolume", "()", 0, 21000, false)]
-        public string sfxGetMasterVolume()
+        public float sfxGetMasterVolume()
             {
-            return SFXSource.getVolume("AudioChannelMaster").AsString();
+            //return SFXSource.getVolume("AudioChannelMaster").AsString();
+            return ((coSFXSource) "AudioChannelMaster").getVolume();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxStopAll", "(%channel)", 1, 21000, false)]
         public void sfxStopAll(coSimSet channel)
             {
             channel = sfxOldChannelToGroup(channel);
+
             if (!console.isObject(channel))
                 return;
+
             for (uint i = 0; i < channel.getCount(); i++)
-                SFXSource.stop(channel.getObject(i), -1);
+                ((coSFXSource) channel.getObject(i)).stop(-1);
+            //SFXSource.stop(channel.getObject(i), -1);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxGetChannelVolume", "(%channel)", 1, 21000, false)]
         public string sfxGetChannelVolume(coSimSet channel)
             {
-            coSimSet obj = sfxOldChannelToGroup(channel);
-            return console.isObject(obj) ? SFXSource.getVolume(obj).AsString() : "0";
+            coSFXSource obj = sfxOldChannelToGroup(channel);
+            return console.isObject(obj) ? obj.getVolume().AsString() : "0";
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxSetChannelVolume", "(%channel,%volume)", 2, 21000, false)]
         public void sfxSetChannelVolume(coSimSet channel, float volume)
             {
-            string obj = sfxOldChannelToGroup(channel);
+            coSFXSource obj = sfxOldChannelToGroup(channel);
             if (console.isObject(obj))
-                SFXSource.setVolume(obj, volume);
+                obj.setVolume(volume);
             }
 
         /// Pauses the playback of active sound sources.
@@ -419,7 +430,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 throw new Exception("The find word function doesn't exists... wtf?");
                 if (channel != "" && console.Call("findWord", new string[] {channels, channel}).AsInt() == -1)
                     continue;
-                SFXSource.pause(source, -1);
+                //SFXSource.pause(source, -1);
                 pauseSet.pushToBack(source);
                 }
             }
@@ -438,7 +449,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             if (!console.isObject(pauseSet))
                 pauseSet = sGlobal["SFXPausedSet"];
             for (uint i = 0; i < pauseSet.getCount(); i++)
-                SFXSource.play(pauseSet.getObject(i), -1);
+                ((coSFXSource) pauseSet.getObject(i)).play(-1);
             pauseSet.clear();
             }
         }

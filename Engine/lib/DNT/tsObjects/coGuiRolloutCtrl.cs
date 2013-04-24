@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiRolloutCtrl))]
-    public class coGuiRolloutCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiRolloutCtrl))]
+    public class coGuiRolloutCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiRolloutCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiRolloutCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiRolloutCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiRolloutCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiRolloutCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiRolloutCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Whether to automatically collapse sibling rollouts.\n\n     If this is true, the rollout will automatically collapse all sibling rollout controls when it      is expanded. If this is false, the auto-collapse behavior can be triggered by CTRL (CMD on MAC)      clicking the rollout header. CTRL/CMD clicking also works if this is false, in which case the      auto-collapsing of sibling controls will be temporarily deactivated. 
+        /// </summary>
+        public bool autoCollapseSiblings
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoCollapseSiblings").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoCollapseSiblings", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Text label to display on the rollout header. 
+        /// </summary>
+        public String caption
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".caption").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".caption", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the rollout can be collapsed by clicking its header. 
+        /// </summary>
+        public bool clickCollapse
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".clickCollapse").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".clickCollapse", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Default height of the client area. This is used when no child control has been added to the rollout. 
+        /// </summary>
+        public int defaultHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".defaultHeight").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".defaultHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The current rollout expansion state. 
+        /// </summary>
+        public bool expanded
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".expanded").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".expanded", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to render the rollout header.\n\n     @note If this is false, the user cannot toggle the rollout state with the mouse. 
+        /// </summary>
+        public bool hideHeader
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hideHeader").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hideHeader", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Margin to put around child control. 
+        /// </summary>
+        public RectI margin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".margin").AsRectI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".margin", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +199,9 @@ public coGuiRolloutCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +209,17 @@ public coGuiRolloutCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +231,15 @@ public coGuiRolloutCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiRolloutCtrl ts)
+        public static implicit operator string(coGuiRolloutCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +259,7 @@ public coGuiRolloutCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiRolloutCtrl ts)
+        public static implicit operator int(coGuiRolloutCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +280,7 @@ public coGuiRolloutCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiRolloutCtrl ts)
+        public static implicit operator uint(coGuiRolloutCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,145 +295,85 @@ public coGuiRolloutCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiRolloutCtrl(ts);
             }
-public bool autoCollapseSiblings
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoCollapseSiblings").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoCollapseSiblings", value.AsString());
-          }
-       }
-public String caption
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".caption").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".caption", value.AsString());
-          }
-       }
-public bool clickCollapse
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".clickCollapse").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".clickCollapse", value.AsString());
-          }
-       }
-public int defaultHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".defaultHeight").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".defaultHeight", value.AsString());
-          }
-       }
-public bool expanded
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".expanded").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".expanded", value.AsString());
-          }
-       }
-public bool hideHeader
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hideHeader").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hideHeader", value.AsString());
-          }
-       }
-public RectI margin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".margin").AsRectI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".margin", value.AsString());
-          }
-       }
-/// <summary>
-/// Collapse the rollout if it is currently expanded.  This will make the rollout's child control invisible.
-///    @note The rollout will animate to collapsed state.  To instantly collapse without animation, use instantCollapse(). )
-/// 
-/// </summary>
-public  void collapse(){
-TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_collapse(_mSimObjectId);
-}
-/// <summary>
-/// Expand the rollout if it is currently collapsed.  This will make the rollout's child control visible.
-///    @note The rollout will animate to expanded state.  To instantly expand without animation, use instantExpand(). )
-/// 
-/// </summary>
-public  void expand(){
-TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_expand(_mSimObjectId);
-}
-/// <summary>
-/// Instantly collapse the rollout without animation.  To smoothly slide the rollout to collapsed state, use collapse(). )
-/// 
-/// </summary>
-public  void instantCollapse(){
-TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_instantCollapse(_mSimObjectId);
-}
-/// <summary>
-/// Instantly expand the rollout without animation.  To smoothly slide the rollout to expanded state, use expand(). )
-/// 
-/// </summary>
-public  void instantExpand(){
-TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_instantExpand(_mSimObjectId);
-}
-/// <summary>
-/// Determine whether the rollout is currently expanded, i.e. whether the child control is visible.
-///    @return True if the rollout is expanded, false if not. )
-/// 
-/// </summary>
-public  new  bool isExpanded(){
-return TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_isExpanded(_mSimObjectId);
-}
-/// <summary>
-/// Resize the rollout to exactly fit around its child control.  This can be used to manually trigger a recomputation of 
-///    the rollout size. )
-/// 
-/// </summary>
-public  void sizeToContents(){
-TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_sizeToContents(_mSimObjectId);
-}
-/// <summary>
-/// Toggle the current collapse state of the rollout.  If it is currently expanded, then collapse it.  If it 
-///    is currently collapsed, then expand it. )
-/// 
-/// </summary>
-public  void toggleCollapse(){
-TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_toggleCollapse(_mSimObjectId);
-}
-/// <summary>
-/// Toggle the current expansion state of the rollout  If it is currently expanded, then collapse it.  If it 
-///    is currently collapsed, then expand it.
-///    @param instant If true, the rollout will toggle its state without animation.  Otherwise, the rollout will 
-///       smoothly slide into the opposite state. )
-/// 
-/// </summary>
-public  void toggleExpanded(bool instantly){
-TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_toggleExpanded(_mSimObjectId, instantly);
-}
-}}
+
+        /// <summary>
+        /// Collapse the rollout if it is currently expanded.  This will make the rollout's child control invisible.
+        ///    @note The rollout will animate to collapsed state.  To instantly collapse without animation, use instantCollapse(). )
+        /// 
+        /// </summary>
+        public void collapse()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_collapse(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Expand the rollout if it is currently collapsed.  This will make the rollout's child control visible.
+        ///    @note The rollout will animate to expanded state.  To instantly expand without animation, use instantExpand(). )
+        /// 
+        /// </summary>
+        public void expand()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_expand(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Instantly collapse the rollout without animation.  To smoothly slide the rollout to collapsed state, use collapse(). )
+        /// 
+        /// </summary>
+        public void instantCollapse()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_instantCollapse(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Instantly expand the rollout without animation.  To smoothly slide the rollout to expanded state, use expand(). )
+        /// 
+        /// </summary>
+        public void instantExpand()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_instantExpand(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Determine whether the rollout is currently expanded, i.e. whether the child control is visible.
+        ///    @return True if the rollout is expanded, false if not. )
+        /// 
+        /// </summary>
+        public new bool isExpanded()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_isExpanded(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Resize the rollout to exactly fit around its child control.  This can be used to manually trigger a recomputation of 
+        ///    the rollout size. )
+        /// 
+        /// </summary>
+        public void sizeToContents()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_sizeToContents(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Toggle the current collapse state of the rollout.  If it is currently expanded, then collapse it.  If it 
+        ///    is currently collapsed, then expand it. )
+        /// 
+        /// </summary>
+        public void toggleCollapse()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_toggleCollapse(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Toggle the current expansion state of the rollout  If it is currently expanded, then collapse it.  If it 
+        ///    is currently collapsed, then expand it.
+        ///    @param instant If true, the rollout will toggle its state without animation.  Otherwise, the rollout will 
+        ///       smoothly slide into the opposite state. )
+        /// 
+        /// </summary>
+        public void toggleExpanded(bool instantly)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiRolloutCtrl_toggleExpanded(_mSimObjectId, instantly);
+            }
+        }
+    }

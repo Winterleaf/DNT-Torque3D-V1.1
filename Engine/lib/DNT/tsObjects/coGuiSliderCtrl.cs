@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiSliderCtrl))]
-    public class coGuiSliderCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiSliderCtrl))]
+    public class coGuiSliderCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSliderCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiSliderCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSliderCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiSliderCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiSliderCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiSliderCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Min and max values corresponding to left and right slider position. 
+        /// </summary>
+        public Point2F range
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".range").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to snap the slider to tick marks. 
+        /// </summary>
+        public bool snap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snap").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Spacing between tick marks in pixels. 0=off. 
+        /// </summary>
+        public int ticks
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ticks").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ticks", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The value corresponding to the current slider position. 
+        /// </summary>
+        public float value
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".value").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".value", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coGuiSliderCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coGuiSliderCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coGuiSliderCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiSliderCtrl ts)
+        public static implicit operator string(coGuiSliderCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coGuiSliderCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiSliderCtrl ts)
+        public static implicit operator int(coGuiSliderCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coGuiSliderCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiSliderCtrl ts)
+        public static implicit operator uint(coGuiSliderCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,74 +268,37 @@ public coGuiSliderCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiSliderCtrl(ts);
             }
-public Point2F range
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".range").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString());
-          }
-       }
-public bool snap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snap").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snap", value.AsString());
-          }
-       }
-public int ticks
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ticks").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ticks", value.AsString());
-          }
-       }
-public float value
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".value").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".value", value.AsString());
-          }
-       }
-/// <summary>
-/// Get the current value of the slider based on the position of the thumb.
-///    @return Slider position (from range.x to range.y). )
-/// 
-/// </summary>
-public  new  float getValue(){
-return TorqueScriptTemplate.m_ts.fnGuiSliderCtrl_getValue(_mSimObjectId);
-}
-/// <summary>
-/// Returns true if the thumb is currently being dragged by the user.  This method is mainly useful 
-///    for scrubbing type sliders where the slider position is sync'd to a changing value.  When the 
-///    user is dragging the thumb, however, the sync'ing should pause and not get in the way of the user. )
-/// 
-/// </summary>
-public  bool isThumbBeingDragged(){
-return TorqueScriptTemplate.m_ts.fnGuiSliderCtrl_isThumbBeingDragged(_mSimObjectId);
-}
-/// <summary>
-/// Set position of the thumb on the slider.
-///    @param pos New slider position (from range.x to range.y)
-///    @param doCallback If true, the altCommand callback will be invoked )
-/// 
-/// </summary>
-public  void setValue(float pos, bool doCallback){
-TorqueScriptTemplate.m_ts.fnGuiSliderCtrl_setValue(_mSimObjectId, pos, doCallback);
-}
-}}
+
+        /// <summary>
+        /// Get the current value of the slider based on the position of the thumb.
+        ///    @return Slider position (from range.x to range.y). )
+        /// 
+        /// </summary>
+        public new float getValue()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiSliderCtrl_getValue(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Returns true if the thumb is currently being dragged by the user.  This method is mainly useful 
+        ///    for scrubbing type sliders where the slider position is sync'd to a changing value.  When the 
+        ///    user is dragging the thumb, however, the sync'ing should pause and not get in the way of the user. )
+        /// 
+        /// </summary>
+        public bool isThumbBeingDragged()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiSliderCtrl_isThumbBeingDragged(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Set position of the thumb on the slider.
+        ///    @param pos New slider position (from range.x to range.y)
+        ///    @param doCallback If true, the altCommand callback will be invoked )
+        /// 
+        /// </summary>
+        public void setValue(float pos, bool doCallback)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiSliderCtrl_setValue(_mSimObjectId, pos, doCallback);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiDirectoryFileListCtrl))]
-    public class coGuiDirectoryFileListCtrl: coGuiListBoxCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiDirectoryFileListCtrl))]
+    public class coGuiDirectoryFileListCtrl : coGuiListBoxCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiDirectoryFileListCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiDirectoryFileListCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiDirectoryFileListCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiDirectoryFileListCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiDirectoryFileListCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiDirectoryFileListCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Tab-delimited list of file name patterns. Only matched files will be displayed. 
+        /// </summary>
+        public String fileFilter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fileFilter").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fileFilter", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Path in game directory from which to list files. 
+        /// </summary>
+        public String filePath
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".filePath").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".filePath", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coGuiDirectoryFileListCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coGuiDirectoryFileListCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coGuiDirectoryFileListCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiDirectoryFileListCtrl ts)
+        public static implicit operator string(coGuiDirectoryFileListCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coGuiDirectoryFileListCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiDirectoryFileListCtrl ts)
+        public static implicit operator int(coGuiDirectoryFileListCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coGuiDirectoryFileListCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiDirectoryFileListCtrl ts)
+        public static implicit operator uint(coGuiDirectoryFileListCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,66 +249,55 @@ public coGuiDirectoryFileListCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiDirectoryFileListCtrl(ts);
             }
-public String fileFilter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fileFilter").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fileFilter", value.AsString());
-          }
-       }
-public String filePath
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".filePath").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".filePath", value.AsString());
-          }
-       }
-/// <summary>
-/// Get the currently selected filename.
-///    @return The filename of the currently selected file )
-/// 
-/// </summary>
-public  string getSelectedFile(){
-return TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_getSelectedFile(_mSimObjectId);
-}
-/// <summary>
-/// Get the list of selected files.
-///    @return A space separated list of selected files )
-/// 
-/// </summary>
-public  string getSelectedFiles(){
-return TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_getSelectedFiles(_mSimObjectId);
-}
-/// <summary>
-/// Update the file list. )
-/// 
-/// </summary>
-public  void reload(){
-TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_reload(_mSimObjectId);
-}
-/// <summary>
-/// Set the file filter.
-///    @param filter Tab-delimited list of file name patterns. Only matched files will be displayed. )
-/// 
-/// </summary>
-public  void setFilter(string filter){
-TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_setFilter(_mSimObjectId, filter);
-}
-/// <summary>
-/// Set the search path and file filter.
-///    @param path   Path in game directory from which to list files.
-///    @param filter Tab-delimited list of file name patterns. Only matched files will be displayed. )
-/// 
-/// </summary>
-public  bool setPath(string path, string filter){
-return TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_setPath(_mSimObjectId, path, filter);
-}
-}}
+
+        /// <summary>
+        /// Get the currently selected filename.
+        ///    @return The filename of the currently selected file )
+        /// 
+        /// </summary>
+        public string getSelectedFile()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_getSelectedFile(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the list of selected files.
+        ///    @return A space separated list of selected files )
+        /// 
+        /// </summary>
+        public string getSelectedFiles()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_getSelectedFiles(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Update the file list. )
+        /// 
+        /// </summary>
+        public void reload()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_reload(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Set the file filter.
+        ///    @param filter Tab-delimited list of file name patterns. Only matched files will be displayed. )
+        /// 
+        /// </summary>
+        public void setFilter(string filter)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_setFilter(_mSimObjectId, filter);
+            }
+
+        /// <summary>
+        /// Set the search path and file filter.
+        ///    @param path   Path in game directory from which to list files.
+        ///    @param filter Tab-delimited list of file name patterns. Only matched files will be displayed. )
+        /// 
+        /// </summary>
+        public bool setPath(string path, string filter)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiDirectoryFileListCtrl_setPath(_mSimObjectId, path, filter);
+            }
+        }
+    }

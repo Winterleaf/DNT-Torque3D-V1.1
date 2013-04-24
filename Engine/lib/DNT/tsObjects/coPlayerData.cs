@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,1117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPlayerData))]
-    public class coPlayerData: coShapeBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoPlayerData))]
+    public class coPlayerData : coShapeBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPlayerData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coPlayerData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coPlayerData(int simobjectid): base(simobjectid){ }
+        public coPlayerData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coPlayerData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coPlayerData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// @brief Amount of movement control the player has when in the air.\n\n     This is applied as a multiplier to the player's x and y motion.\n
+        /// </summary>
+        public float airControl
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".airControl").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".airControl", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Allow mounted images to request a sequence be played on the Player.\n\n     When true a new thread is added to the player to allow for      mounted images to request a sequence be played on the player      through the image's state machine. It is only optional so      that we don't create a TSThread on the player if we don't      need to.\n
+        /// </summary>
+        public bool allowImageStateAnimation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".allowImageStateAnimation").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".allowImageStateAnimation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Size of the bounding box used by the player for collision.\n\n     Dimensions are given as \width depth height\. 
+        /// </summary>
+        public Point3F boundingBox
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boundingBox").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boundingBox", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Percentage of the player's bounding box depth that represents the back side of the head.\n\n     Used when computing the damage location.\n     @see Player::getDamageLocation 
+        /// </summary>
+        public float boxHeadBackPercentage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadBackPercentage").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boxHeadBackPercentage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Percentage of the player's bounding box depth that represents the front side of the head.\n\n     Used when computing the damage location.\n     @see Player::getDamageLocation 
+        /// </summary>
+        public float boxHeadFrontPercentage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadFrontPercentage").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boxHeadFrontPercentage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Percentage of the player's bounding box width that represents the left side of the head.\n\n     Used when computing the damage location.\n     @see Player::getDamageLocation 
+        /// </summary>
+        public float boxHeadLeftPercentage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadLeftPercentage").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boxHeadLeftPercentage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Percentage of the player's bounding box height that represents the head.\n\n     Used when computing the damage location.\n     @see Player::getDamageLocation 
+        /// </summary>
+        public float boxHeadPercentage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadPercentage").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boxHeadPercentage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Percentage of the player's bounding box width that represents the right side of the head.\n\n     Used when computing the damage location.\n     @see Player::getDamageLocation 
+        /// </summary>
+        public float boxHeadRightPercentage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadRightPercentage").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boxHeadRightPercentage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Percentage of the player's bounding box height that represents the torso.\n\n     Used when computing the damage location.\n     @see Player::getDamageLocation 
+        /// </summary>
+        public float boxTorsoPercentage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".boxTorsoPercentage").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".boxTorsoPercentage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Time in seconds to generate bubble particles after entering the water.\n\n 
+        /// </summary>
+        public float bubbleEmitTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bubbleEmitTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bubbleEmitTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Collision bounding box used when the player is crouching.\n\n     @see boundingBox 
+        /// </summary>
+        public Point3F crouchBoundingBox
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".crouchBoundingBox").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".crouchBoundingBox", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Force used to accelerate the player when crouching.\n\n 
+        /// </summary>
+        public float crouchForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".crouchForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".crouchForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Decal to place on the ground for player footsteps.\n\n 
+        /// </summary>
+        public coDecalData decalData
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".decalData"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".decalData", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Distance from the center of the model to the right foot.\n\n     While this defines the distance to the right foot, it is also used to place      the left foot decal as well. Just on the opposite side of the player. 
+        /// </summary>
+        public float decalOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".decalOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".decalOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Emitter used to generate dust particles.\n\n     @note Currently unused. 
+        /// </summary>
+        public coParticleEmitterData dustEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dustEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dustEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when exiting the water with velocity = exitSplashSoundVelocity.\n\n     @see exitSplashSoundVelocity\n
+        /// </summary>
+        public coSFXTrack exitingWater
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".exitingWater"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".exitingWater", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum velocity when leaving the water for the exitingWater sound to      play.\n\n     @see exitingWater
+        /// </summary>
+        public float exitSplashSoundVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".exitSplashSoundVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".exitSplashSoundVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Downward speed at which we consider the player falling.\n\n 
+        /// </summary>
+        public float fallingSpeedThreshold
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fallingSpeedThreshold").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fallingSpeedThreshold", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Forces shadows to be rendered in first person when renderFirstPerson is disabled. Defaults to false.\n\n 
+        /// </summary>
+        public bool firstPersonShadows
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".firstPersonShadows").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".firstPersonShadows", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when walking in water and coverage equals 1.0      (fully underwater).\n\n 
+        /// </summary>
+        public coSFXTrack FootBubblesSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FootBubblesSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FootBubblesSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when walking on a surface with Material footstepSoundId 1.\n\n 
+        /// </summary>
+        public coSFXTrack FootHardSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FootHardSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FootHardSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when walking on a surface with Material footstepSoundId 2.\n\n 
+        /// </summary>
+        public coSFXTrack FootMetalSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FootMetalSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FootMetalSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Particle emitter used to generate footpuffs (particles created as the player      walks along the ground).\n\n     @note The generation of foot puffs requires the appropriate triggeres to be defined in the      player's animation sequences. Without these, no foot puffs will be generated.\n
+        /// </summary>
+        public coParticleEmitterData footPuffEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".footPuffEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".footPuffEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Number of footpuff particles to generate each step.\n\n     Each foot puff is randomly placed within the defined foot puff radius. This      includes having footPuffNumParts set to one.\n     @see footPuffRadius\n
+        /// </summary>
+        public int footPuffNumParts
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".footPuffNumParts").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".footPuffNumParts", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Particle creation radius for footpuff particles.\n\n     This is applied to each foot puff particle, even if footPuffNumParts is set to one. So      set this value to zero if you want a single foot puff placed at exactly the same location      under the player each time.\n
+        /// </summary>
+        public float footPuffRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".footPuffRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".footPuffRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when walking in water and coverage is less than      footSplashHeight.\n\n     @see footSplashHeight\n 
+        /// </summary>
+        public coSFXTrack FootShallowSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FootShallowSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FootShallowSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when walking on a surface with Material footstepSoundId 3.\n\n 
+        /// </summary>
+        public coSFXTrack FootSnowSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FootSnowSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FootSnowSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when walking on a surface with Material footstepSoundId 0.\n\n 
+        /// </summary>
+        public coSFXTrack FootSoftSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FootSoftSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FootSoftSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Water coverage level to choose between FootShallowSound and FootWadingSound.\n\n     @see FootShallowSound\n     @see FootWadingSound\n
+        /// </summary>
+        public float footstepSplashHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".footstepSplashHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".footstepSplashHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when walking in water and coverage equals 1.0      (fully underwater).\n\n 
+        /// </summary>
+        public coSFXTrack FootUnderwaterSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FootUnderwaterSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FootUnderwaterSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when walking in water and coverage is less than 1,      but  footSplashHeight.\n\n     @see footSplashHeight\n 
+        /// </summary>
+        public coSFXTrack FootWadingSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".FootWadingSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".FootWadingSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum falling impact speed to apply damage and initiate the camera      shaking effect.\n\n 
+        /// </summary>
+        public float groundImpactMinSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactMinSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".groundImpactMinSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Amplitude of the camera shake effect after falling.\n\n     This is how much to shake the camera.\n
+        /// </summary>
+        public Point3F groundImpactShakeAmp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeAmp").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeAmp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Duration (in seconds) of the camera shake effect after falling.\n\n     This is how long to shake the camera.\n
+        /// </summary>
+        public float groundImpactShakeDuration
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeDuration").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeDuration", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Falloff factor of the camera shake effect after falling.\n\n     This is how to fade the camera shake over the duration.\n
+        /// </summary>
+        public float groundImpactShakeFalloff
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeFalloff").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeFalloff", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Frequency of the camera shake effect after falling.\n\n     This is how fast to shake the camera.\n
+        /// </summary>
+        public Point3F groundImpactShakeFreq
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeFreq").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeFreq", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum velocity when entering the water for choosing between the impactWaterMedium and      impactWaterHard sound to play.\n\n     @see impactWaterMedium\n     @see impactWaterHard\n 
+        /// </summary>
+        public float hardSplashSoundVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hardSplashSoundVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hardSplashSoundVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum horizontal speed.\n\n     @note This limit is only enforced if the player's horizontal speed      exceeds horizResistSpeed.\n     @see horizResistSpeed\n     @see horizResistFactor\n 
+        /// </summary>
+        public float horizMaxSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".horizMaxSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".horizMaxSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Factor of resistence once horizResistSpeed has been reached.\n\n     @see horizMaxSpeed\n     @see horizResistSpeed\n 
+        /// </summary>
+        public float horizResistFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".horizResistFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".horizResistFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Horizontal speed at which resistence will take place.\n\n     @see horizMaxSpeed\n     @see horizResistFactor\n 
+        /// </summary>
+        public float horizResistSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".horizResistSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".horizResistSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Optional prefix to all mounted image animation sequences in third person.\n\n     This defines a prefix that will be added when looking up mounted image      animation sequences while in third person. It allows for the customization      of a third person image based on the type of player.\n
+        /// </summary>
+        public String imageAnimPrefix
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".imageAnimPrefix").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".imageAnimPrefix", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Optional prefix to all mounted image animation sequences in first person.\n\n     This defines a prefix that will be added when looking up mounted image      animation sequences while in first person. It allows for the customization      of a first person image based on the type of player.\n
+        /// </summary>
+        public String imageAnimPrefixFP
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".imageAnimPrefixFP").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".imageAnimPrefixFP", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play after falling on a surface with Material footstepSoundId 1.\n\n 
+        /// </summary>
+        public coSFXTrack impactHardSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactHardSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactHardSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play after falling on a surface with Material footstepSoundId 2.\n\n 
+        /// </summary>
+        public coSFXTrack impactMetalSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactMetalSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactMetalSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play after falling on a surface with Material footstepSoundId 3.\n\n 
+        /// </summary>
+        public coSFXTrack impactSnowSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactSnowSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactSnowSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play after falling on a surface with Material footstepSoundId 0.\n\n 
+        /// </summary>
+        public coSFXTrack impactSoftSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactSoftSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactSoftSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when entering the water with velocity       mediumSplashSoundVelocity.\n\n     @see mediumSplashSoundVelocity\n
+        /// </summary>
+        public coSFXTrack impactWaterEasy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterEasy"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactWaterEasy", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when entering the water with velocity =      hardSplashSoundVelocity.\n\n     @see hardSplashSoundVelocity\n
+        /// </summary>
+        public coSFXTrack impactWaterHard
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterHard"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactWaterHard", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when entering the water with velocity =      mediumSplashSoundVelocity and  hardSplashSoundVelocity.\n\n     @see mediumSplashSoundVelocity\n     @see hardSplashSoundVelocity\n
+        /// </summary>
+        public coSFXTrack impactWaterMedium
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterMedium"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactWaterMedium", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Energy level drained each time the player jet jumps.\n\n     @note Setting this to zero will disable any energy drain\n     @see jetMinJumpEnergy\n
+        /// </summary>
+        public float jetJumpEnergyDrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetJumpEnergyDrain").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetJumpEnergyDrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Force used to accelerate the player when a jet jump is initiated.\n\n 
+        /// </summary>
+        public float jetJumpForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetJumpForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetJumpForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Angle from vertical (in degrees) where the player can jet jump.\n\n 
+        /// </summary>
+        public float jetJumpSurfaceAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetJumpSurfaceAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetJumpSurfaceAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum vertical speed before the player can no longer jet jump.\n\n 
+        /// </summary>
+        public float jetMaxJumpSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetMaxJumpSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetMaxJumpSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum energy level required to jet jump.\n\n     @see jetJumpEnergyDrain\n
+        /// </summary>
+        public float jetMinJumpEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetMinJumpEnergy").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetMinJumpEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum speed needed to jet jump.\n\n     If the player's own z velocity is greater than this, then it is used to scale      the jet jump speed, up to jetMaxJumpSpeed.\n     @see jetMaxJumpSpeed\n
+        /// </summary>
+        public float jetMinJumpSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetMinJumpSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetMinJumpSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Delay time in number of ticks ticks between jumps.\n\n 
+        /// </summary>
+        public int jumpDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jumpDelay").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jumpDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Energy level drained each time the player jumps.\n\n     @note Setting this to zero will disable any energy drain\n     @see minJumpEnergy\n
+        /// </summary>
+        public float jumpEnergyDrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jumpEnergyDrain").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jumpEnergyDrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Force used to accelerate the player when a jump is initiated.\n\n 
+        /// </summary>
+        public float jumpForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jumpForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jumpForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Angle from vertical (in degrees) where the player can jump.\n\n 
+        /// </summary>
+        public float jumpSurfaceAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jumpSurfaceAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jumpSurfaceAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Controls the direction of the jump impulse.\n     When false, jumps are always in the vertical (+Z) direction. When true      jumps are in the direction of the ground normal so long as the player is not      directly facing the surface. If the player is directly facing the surface, then      they will jump straight up.\n 
+        /// </summary>
+        public bool jumpTowardsNormal
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jumpTowardsNormal").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jumpTowardsNormal", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Time of land sequence play back when using new recover system.\n\n     If greater than 0 then the legacy fall recovery system will be bypassed      in favour of just playing the player's land sequence. The time to      recover from a fall then becomes this parameter's time and the land      sequence's playback will be scaled to match.\n     @see transitionToLand\n 
+        /// </summary>
+        public float landSequenceTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".landSequenceTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".landSequenceTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum backward speed when running. 
+        /// </summary>
+        public float maxBackwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxBackwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxBackwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum backward speed when crouching.\n\n 
+        /// </summary>
+        public float maxCrouchBackwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxCrouchBackwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxCrouchBackwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum forward speed when crouching.\n\n 
+        /// </summary>
+        public float maxCrouchForwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxCrouchForwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxCrouchForwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum sideways speed when crouching.\n\n 
+        /// </summary>
+        public float maxCrouchSideSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxCrouchSideSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxCrouchSideSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum forward speed when running. 
+        /// </summary>
+        public float maxForwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxForwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxForwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Defines the maximum left and right angles (in radians) the player can      look in freelook mode.\n\n 
+        /// </summary>
+        public float maxFreelookAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxFreelookAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxFreelookAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum vertical speed before the player can no longer jump.\n\n 
+        /// </summary>
+        public float maxJumpSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxJumpSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxJumpSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Highest angle (in radians) the player can look.\n\n     @note An angle of zero is straight ahead, with positive up and negative down. 
+        /// </summary>
+        public float maxLookAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxLookAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxLookAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum backward speed when prone (laying down).\n\n 
+        /// </summary>
+        public float maxProneBackwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxProneBackwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxProneBackwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum forward speed when prone (laying down).\n\n 
+        /// </summary>
+        public float maxProneForwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxProneForwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxProneForwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum sideways speed when prone (laying down).\n\n 
+        /// </summary>
+        public float maxProneSideSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxProneSideSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxProneSideSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum sideways speed when running. 
+        /// </summary>
+        public float maxSideSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxSideSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxSideSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum backward speed when sprinting. 
+        /// </summary>
+        public float maxSprintBackwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxSprintBackwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxSprintBackwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum forward speed when sprinting. 
+        /// </summary>
+        public float maxSprintForwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxSprintForwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxSprintForwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum sideways speed when sprinting. 
+        /// </summary>
+        public float maxSprintSideSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxSprintSideSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxSprintSideSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum height the player can step up.\n\n     The player will automatically step onto changes in ground height less      than maxStepHeight. The player will collide with ground height changes      greater than this. 
+        /// </summary>
+        public float maxStepHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxStepHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxStepHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum time scale for action animations.\n\n   If an action animation has a defined ground frame, it is automatically scaled to match the    player's ground velocity. This field limits the maximum time scale used even if    the player's velocity exceeds it. 
+        /// </summary>
+        public float maxTimeScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxTimeScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxTimeScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum backward speed when underwater.\n\n 
+        /// </summary>
+        public float maxUnderwaterBackwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxUnderwaterBackwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxUnderwaterBackwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum forward speed when underwater.\n\n 
+        /// </summary>
+        public float maxUnderwaterForwardSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxUnderwaterForwardSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxUnderwaterForwardSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum sideways speed when underwater.\n\n 
+        /// </summary>
+        public float maxUnderwaterSideSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxUnderwaterSideSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxUnderwaterSideSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum velocity when entering the water for choosing between the impactWaterEasy and      impactWaterMedium sounds to play.\n\n     @see impactWaterEasy\n     @see impactWaterMedium\n 
+        /// </summary>
+        public float mediumSplashSoundVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mediumSplashSoundVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mediumSplashSoundVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum impact speed to apply falling damage.\n\n     This field also sets the minimum speed for the onImpact callback      to be invoked.\n     @see ShapeBaseData::onImpact()\n
+        /// </summary>
+        public float minImpactSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minImpactSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minImpactSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum energy level required to jump.\n\n     @see jumpEnergyDrain\n
+        /// </summary>
+        public float minJumpEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minJumpEnergy").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minJumpEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum speed needed to jump.\n\n     If the player's own z velocity is greater than this, then it is used to scale      the jump speed, up to maxJumpSpeed.\n     @see maxJumpSpeed\n
+        /// </summary>
+        public float minJumpSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minJumpSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minJumpSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum impact speed to apply non-falling damage.\n\n     This field also sets the minimum speed for the onLateralImpact callback      to be invoked.\n     @see ShapeBaseData::onLateralImpact()\n
+        /// </summary>
+        public float minLateralImpactSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minLateralImpactSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minLateralImpactSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Lowest angle (in radians) the player can look.\n\n     @note An angle of zero is straight ahead, with positive up and negative down. 
+        /// </summary>
+        public float minLookAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minLookAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minLookAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum energy level required to run or swim.\n\n     @see runEnergyDrain\n
+        /// </summary>
+        public float minRunEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minRunEnergy").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minRunEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum energy level required to sprint.\n\n     @see sprintEnergyDrain\n
+        /// </summary>
+        public float minSprintEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minSprintEnergy").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minSprintEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when in water and coverage equals 1.0 (fully underwater).\n\n     Note that unlike FootUnderwaterSound, this sound plays even if the      player is not moving around in the water.\n 
+        /// </summary>
+        public coSFXTrack movingBubblesSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".movingBubblesSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".movingBubblesSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Specifies the type of physics used by the player.\n\n     This depends on the physics module used. An example is 'Capsule'.\n     @note Not current used.\n
+        /// </summary>
+        public String physicsPlayerType
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".physicsPlayerType").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".physicsPlayerType", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Radius around the player to collide with Items in the scene (on server).\n\n   Internally the pickupRadius is added to the larger side of the initial bounding box    to determine the actual distance, to a maximum of 2 times the bounding box size. The    initial bounding box is that used for the root pose, and therefore doesn't take into    account the change in pose.\n
+        /// </summary>
+        public float pickupRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pickupRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pickupRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Collision bounding box used when the player is prone (laying down).\n\n     @see boundingBox 
+        /// </summary>
+        public Point3F proneBoundingBox
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".proneBoundingBox").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".proneBoundingBox", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Force used to accelerate the player when prone (laying down).\n\n 
+        /// </summary>
+        public float proneForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".proneForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".proneForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Number of ticks for the player to recover from falling.\n\n 
+        /// </summary>
+        public int recoverDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".recoverDelay").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".recoverDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Scale factor applied to runForce while in the recover state.\n\n     This can be used to temporarily slow the player's movement after a fall, or      prevent the player from moving at all if set to zero.\n 
+        /// </summary>
+        public float recoverRunForceScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".recoverRunForceScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".recoverRunForceScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Flag controlling whether to render the player shape in first person view.\n\n 
+        /// </summary>
+        public bool renderFirstPerson
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderFirstPerson").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderFirstPerson", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Energy value drained each tick that the player is moving.\n\n     The player will not be able to move when his energy falls below      minRunEnergy.\n     @note Setting this to zero will disable any energy drain.\n     @see minRunEnergy\n
+        /// </summary>
+        public float runEnergyDrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".runEnergyDrain").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".runEnergyDrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Force used to accelerate the player when running.\n\n 
+        /// </summary>
+        public float runForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".runForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".runForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum angle from vertical (in degrees) the player can run up.\n\n 
+        /// </summary>
+        public float runSurfaceAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".runSurfaceAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".runSurfaceAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief File name of this player's shape that will be used in conjunction with the corresponding mounted image.\n\n      These optional parameters correspond to each mounted image slot to indicate a shape that is rendered       in addition to the mounted image shape. Typically these are a player's arms (or arm) that is       animated along with the mounted image's state animation sequences.\n
+        /// </summary>
+        public String shapeNameFP
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shapeNameFP").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shapeNameFP", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief SplashData datablock used to create splashes when the player moves      through water.\n\n 
+        /// </summary>
+        public coSplashData splash
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splash"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splash", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum angle (in degrees) from pure vertical movement in water to      generate splashes.\n\n 
+        /// </summary>
+        public float splashAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Particle emitters used to generate splash particles.\n\n 
+        /// </summary>
+        public coParticleEmitterData splashEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Multipled by speed to determine the number of splash particles to generate.\n\n 
+        /// </summary>
+        public float splashFreqMod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashFreqMod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashFreqMod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum speed to generate splash particles.\n\n 
+        /// </summary>
+        public float splashVelEpsilon
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashVelEpsilon").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashVelEpsilon", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum velocity when moving through water to generate splashes.\n\n 
+        /// </summary>
+        public float splashVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Can the player jump while sprinting. 
+        /// </summary>
+        public bool sprintCanJump
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sprintCanJump").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sprintCanJump", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Energy value drained each tick that the player is sprinting.\n\n     The player will not be able to move when his energy falls below      sprintEnergyDrain.\n     @note Setting this to zero will disable any energy drain.\n     @see minSprintEnergy\n
+        /// </summary>
+        public float sprintEnergyDrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sprintEnergyDrain").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sprintEnergyDrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Force used to accelerate the player when sprinting.\n\n 
+        /// </summary>
+        public float sprintForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sprintForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sprintForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount to scale pitch motion while sprinting. 
+        /// </summary>
+        public float sprintPitchScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sprintPitchScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sprintPitchScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount to scale strafing motion vector while sprinting. 
+        /// </summary>
+        public float sprintStrafeScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sprintStrafeScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sprintStrafeScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount to scale yaw motion while sprinting. 
+        /// </summary>
+        public float sprintYawScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sprintYawScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sprintYawScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Collision bounding box used when the player is swimming.\n\n     @see boundingBox 
+        /// </summary>
+        public Point3F swimBoundingBox
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".swimBoundingBox").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".swimBoundingBox", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Force used to accelerate the player when swimming.\n\n 
+        /// </summary>
+        public float swimForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".swimForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".swimForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief When going from a fall to a land, should we transition between the two.\n\n     @note Only takes affect when landSequenceTime is greater than 0.\n     @see landSequenceTime\n 
+        /// </summary>
+        public bool transitionToLand
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".transitionToLand").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".transitionToLand", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum upwards speed.\n\n     @note This limit is only enforced if the player's upward speed exceeds      upResistSpeed.\n     @see upResistSpeed\n     @see upResistFactor\n 
+        /// </summary>
+        public float upMaxSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".upMaxSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".upMaxSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Factor of resistence once upResistSpeed has been reached.\n\n     @see upMaxSpeed\n     @see upResistSpeed\n 
+        /// </summary>
+        public float upResistFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".upResistFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".upResistFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Upwards speed at which resistence will take place.\n\n     @see upMaxSpeed\n     @see upResistFactor\n 
+        /// </summary>
+        public float upResistSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".upResistSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".upResistSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play when in water and coverage equals 1.0 (fully underwater).\n\n     Note that unlike FootUnderwaterSound, this sound plays even if the      player is not moving around in the water.\n 
+        /// </summary>
+        public coSFXTrack waterBreathSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waterBreathSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waterBreathSound", value.ToString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +1216,9 @@ public coPlayerData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +1226,17 @@ public coPlayerData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +1248,15 @@ public coPlayerData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPlayerData ts)
+        public static implicit operator string(coPlayerData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +1276,7 @@ public coPlayerData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPlayerData ts)
+        public static implicit operator int(coPlayerData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +1297,7 @@ public coPlayerData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPlayerData ts)
+        public static implicit operator uint(coPlayerData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,1324 +1312,5 @@ public coPlayerData(int simobjectid): base(simobjectid){ }
             {
             return new coPlayerData(ts);
             }
-public float airControl
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".airControl").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".airControl", value.AsString());
-          }
-       }
-public bool allowImageStateAnimation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".allowImageStateAnimation").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".allowImageStateAnimation", value.AsString());
-          }
-       }
-public Point3F boundingBox
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boundingBox").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boundingBox", value.AsString());
-          }
-       }
-public float boxHeadBackPercentage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadBackPercentage").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boxHeadBackPercentage", value.AsString());
-          }
-       }
-public float boxHeadFrontPercentage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadFrontPercentage").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boxHeadFrontPercentage", value.AsString());
-          }
-       }
-public float boxHeadLeftPercentage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadLeftPercentage").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boxHeadLeftPercentage", value.AsString());
-          }
-       }
-public float boxHeadPercentage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadPercentage").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boxHeadPercentage", value.AsString());
-          }
-       }
-public float boxHeadRightPercentage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boxHeadRightPercentage").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boxHeadRightPercentage", value.AsString());
-          }
-       }
-public float boxTorsoPercentage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".boxTorsoPercentage").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".boxTorsoPercentage", value.AsString());
-          }
-       }
-public float bubbleEmitTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bubbleEmitTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bubbleEmitTime", value.AsString());
-          }
-       }
-public Point3F crouchBoundingBox
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".crouchBoundingBox").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".crouchBoundingBox", value.AsString());
-          }
-       }
-public float crouchForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".crouchForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".crouchForce", value.AsString());
-          }
-       }
-public coDecalData decalData
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".decalData");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".decalData", value.ToString());
-          }
-       }
-public float decalOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".decalOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".decalOffset", value.AsString());
-          }
-       }
-public coParticleEmitterData dustEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dustEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dustEmitter", value.ToString());
-          }
-       }
-public coSFXTrack exitingWater
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".exitingWater");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".exitingWater", value.ToString());
-          }
-       }
-public float exitSplashSoundVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".exitSplashSoundVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".exitSplashSoundVelocity", value.AsString());
-          }
-       }
-public float fallingSpeedThreshold
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fallingSpeedThreshold").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fallingSpeedThreshold", value.AsString());
-          }
-       }
-public bool firstPersonShadows
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".firstPersonShadows").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".firstPersonShadows", value.AsString());
-          }
-       }
-public coSFXTrack FootBubblesSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FootBubblesSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FootBubblesSound", value.ToString());
-          }
-       }
-public coSFXTrack FootHardSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FootHardSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FootHardSound", value.ToString());
-          }
-       }
-public coSFXTrack FootMetalSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FootMetalSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FootMetalSound", value.ToString());
-          }
-       }
-public coParticleEmitterData footPuffEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".footPuffEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".footPuffEmitter", value.ToString());
-          }
-       }
-public int footPuffNumParts
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".footPuffNumParts").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".footPuffNumParts", value.AsString());
-          }
-       }
-public float footPuffRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".footPuffRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".footPuffRadius", value.AsString());
-          }
-       }
-public coSFXTrack FootShallowSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FootShallowSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FootShallowSound", value.ToString());
-          }
-       }
-public coSFXTrack FootSnowSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FootSnowSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FootSnowSound", value.ToString());
-          }
-       }
-public coSFXTrack FootSoftSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FootSoftSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FootSoftSound", value.ToString());
-          }
-       }
-public float footstepSplashHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".footstepSplashHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".footstepSplashHeight", value.AsString());
-          }
-       }
-public coSFXTrack FootUnderwaterSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FootUnderwaterSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FootUnderwaterSound", value.ToString());
-          }
-       }
-public coSFXTrack FootWadingSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".FootWadingSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".FootWadingSound", value.ToString());
-          }
-       }
-public float groundImpactMinSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactMinSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".groundImpactMinSpeed", value.AsString());
-          }
-       }
-public Point3F groundImpactShakeAmp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeAmp").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeAmp", value.AsString());
-          }
-       }
-public float groundImpactShakeDuration
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeDuration").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeDuration", value.AsString());
-          }
-       }
-public float groundImpactShakeFalloff
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeFalloff").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeFalloff", value.AsString());
-          }
-       }
-public Point3F groundImpactShakeFreq
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeFreq").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeFreq", value.AsString());
-          }
-       }
-public float hardSplashSoundVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hardSplashSoundVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hardSplashSoundVelocity", value.AsString());
-          }
-       }
-public float horizMaxSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".horizMaxSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".horizMaxSpeed", value.AsString());
-          }
-       }
-public float horizResistFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".horizResistFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".horizResistFactor", value.AsString());
-          }
-       }
-public float horizResistSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".horizResistSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".horizResistSpeed", value.AsString());
-          }
-       }
-public String imageAnimPrefix
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".imageAnimPrefix").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".imageAnimPrefix", value.AsString());
-          }
-       }
-public String imageAnimPrefixFP
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".imageAnimPrefixFP").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".imageAnimPrefixFP", value.AsString());
-          }
-       }
-public coSFXTrack impactHardSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactHardSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactHardSound", value.ToString());
-          }
-       }
-public coSFXTrack impactMetalSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactMetalSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactMetalSound", value.ToString());
-          }
-       }
-public coSFXTrack impactSnowSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactSnowSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactSnowSound", value.ToString());
-          }
-       }
-public coSFXTrack impactSoftSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactSoftSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactSoftSound", value.ToString());
-          }
-       }
-public coSFXTrack impactWaterEasy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterEasy");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactWaterEasy", value.ToString());
-          }
-       }
-public coSFXTrack impactWaterHard
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterHard");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactWaterHard", value.ToString());
-          }
-       }
-public coSFXTrack impactWaterMedium
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterMedium");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactWaterMedium", value.ToString());
-          }
-       }
-public float jetJumpEnergyDrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetJumpEnergyDrain").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetJumpEnergyDrain", value.AsString());
-          }
-       }
-public float jetJumpForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetJumpForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetJumpForce", value.AsString());
-          }
-       }
-public float jetJumpSurfaceAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetJumpSurfaceAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetJumpSurfaceAngle", value.AsString());
-          }
-       }
-public float jetMaxJumpSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetMaxJumpSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetMaxJumpSpeed", value.AsString());
-          }
-       }
-public float jetMinJumpEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetMinJumpEnergy").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetMinJumpEnergy", value.AsString());
-          }
-       }
-public float jetMinJumpSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetMinJumpSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetMinJumpSpeed", value.AsString());
-          }
-       }
-public int jumpDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jumpDelay").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jumpDelay", value.AsString());
-          }
-       }
-public float jumpEnergyDrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jumpEnergyDrain").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jumpEnergyDrain", value.AsString());
-          }
-       }
-public float jumpForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jumpForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jumpForce", value.AsString());
-          }
-       }
-public float jumpSurfaceAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jumpSurfaceAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jumpSurfaceAngle", value.AsString());
-          }
-       }
-public bool jumpTowardsNormal
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jumpTowardsNormal").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jumpTowardsNormal", value.AsString());
-          }
-       }
-public float landSequenceTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".landSequenceTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".landSequenceTime", value.AsString());
-          }
-       }
-public float maxBackwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxBackwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxBackwardSpeed", value.AsString());
-          }
-       }
-public float maxCrouchBackwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxCrouchBackwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxCrouchBackwardSpeed", value.AsString());
-          }
-       }
-public float maxCrouchForwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxCrouchForwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxCrouchForwardSpeed", value.AsString());
-          }
-       }
-public float maxCrouchSideSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxCrouchSideSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxCrouchSideSpeed", value.AsString());
-          }
-       }
-public float maxForwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxForwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxForwardSpeed", value.AsString());
-          }
-       }
-public float maxFreelookAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxFreelookAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxFreelookAngle", value.AsString());
-          }
-       }
-public float maxJumpSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxJumpSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxJumpSpeed", value.AsString());
-          }
-       }
-public float maxLookAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxLookAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxLookAngle", value.AsString());
-          }
-       }
-public float maxProneBackwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxProneBackwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxProneBackwardSpeed", value.AsString());
-          }
-       }
-public float maxProneForwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxProneForwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxProneForwardSpeed", value.AsString());
-          }
-       }
-public float maxProneSideSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxProneSideSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxProneSideSpeed", value.AsString());
-          }
-       }
-public float maxSideSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxSideSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxSideSpeed", value.AsString());
-          }
-       }
-public float maxSprintBackwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxSprintBackwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxSprintBackwardSpeed", value.AsString());
-          }
-       }
-public float maxSprintForwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxSprintForwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxSprintForwardSpeed", value.AsString());
-          }
-       }
-public float maxSprintSideSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxSprintSideSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxSprintSideSpeed", value.AsString());
-          }
-       }
-public float maxStepHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxStepHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxStepHeight", value.AsString());
-          }
-       }
-public float maxTimeScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxTimeScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxTimeScale", value.AsString());
-          }
-       }
-public float maxUnderwaterBackwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxUnderwaterBackwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxUnderwaterBackwardSpeed", value.AsString());
-          }
-       }
-public float maxUnderwaterForwardSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxUnderwaterForwardSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxUnderwaterForwardSpeed", value.AsString());
-          }
-       }
-public float maxUnderwaterSideSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxUnderwaterSideSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxUnderwaterSideSpeed", value.AsString());
-          }
-       }
-public float mediumSplashSoundVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mediumSplashSoundVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mediumSplashSoundVelocity", value.AsString());
-          }
-       }
-public float minImpactSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minImpactSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minImpactSpeed", value.AsString());
-          }
-       }
-public float minJumpEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minJumpEnergy").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minJumpEnergy", value.AsString());
-          }
-       }
-public float minJumpSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minJumpSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minJumpSpeed", value.AsString());
-          }
-       }
-public float minLateralImpactSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minLateralImpactSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minLateralImpactSpeed", value.AsString());
-          }
-       }
-public float minLookAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minLookAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minLookAngle", value.AsString());
-          }
-       }
-public float minRunEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minRunEnergy").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minRunEnergy", value.AsString());
-          }
-       }
-public float minSprintEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minSprintEnergy").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minSprintEnergy", value.AsString());
-          }
-       }
-public coSFXTrack movingBubblesSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".movingBubblesSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".movingBubblesSound", value.ToString());
-          }
-       }
-public String physicsPlayerType
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".physicsPlayerType").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".physicsPlayerType", value.AsString());
-          }
-       }
-public float pickupRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pickupRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pickupRadius", value.AsString());
-          }
-       }
-public Point3F proneBoundingBox
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".proneBoundingBox").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".proneBoundingBox", value.AsString());
-          }
-       }
-public float proneForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".proneForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".proneForce", value.AsString());
-          }
-       }
-public int recoverDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".recoverDelay").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".recoverDelay", value.AsString());
-          }
-       }
-public float recoverRunForceScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".recoverRunForceScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".recoverRunForceScale", value.AsString());
-          }
-       }
-public bool renderFirstPerson
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderFirstPerson").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderFirstPerson", value.AsString());
-          }
-       }
-public float runEnergyDrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".runEnergyDrain").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".runEnergyDrain", value.AsString());
-          }
-       }
-public float runForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".runForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".runForce", value.AsString());
-          }
-       }
-public float runSurfaceAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".runSurfaceAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".runSurfaceAngle", value.AsString());
-          }
-       }
-public String shapeNameFP
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shapeNameFP").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shapeNameFP", value.AsString());
-          }
-       }
-public coSplashData splash
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splash");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splash", value.ToString());
-          }
-       }
-public float splashAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashAngle", value.AsString());
-          }
-       }
-public coParticleEmitterData splashEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashEmitter", value.ToString());
-          }
-       }
-public float splashFreqMod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashFreqMod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashFreqMod", value.AsString());
-          }
-       }
-public float splashVelEpsilon
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashVelEpsilon").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashVelEpsilon", value.AsString());
-          }
-       }
-public float splashVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashVelocity", value.AsString());
-          }
-       }
-public bool sprintCanJump
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sprintCanJump").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sprintCanJump", value.AsString());
-          }
-       }
-public float sprintEnergyDrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sprintEnergyDrain").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sprintEnergyDrain", value.AsString());
-          }
-       }
-public float sprintForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sprintForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sprintForce", value.AsString());
-          }
-       }
-public float sprintPitchScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sprintPitchScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sprintPitchScale", value.AsString());
-          }
-       }
-public float sprintStrafeScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sprintStrafeScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sprintStrafeScale", value.AsString());
-          }
-       }
-public float sprintYawScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sprintYawScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sprintYawScale", value.AsString());
-          }
-       }
-public Point3F swimBoundingBox
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".swimBoundingBox").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".swimBoundingBox", value.AsString());
-          }
-       }
-public float swimForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".swimForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".swimForce", value.AsString());
-          }
-       }
-public bool transitionToLand
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".transitionToLand").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".transitionToLand", value.AsString());
-          }
-       }
-public float upMaxSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".upMaxSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".upMaxSpeed", value.AsString());
-          }
-       }
-public float upResistFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".upResistFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".upResistFactor", value.AsString());
-          }
-       }
-public float upResistSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".upResistSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".upResistSpeed", value.AsString());
-          }
-       }
-public coSFXTrack waterBreathSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waterBreathSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waterBreathSound", value.ToString());
-          }
-       }
-}}
+        }
+    }

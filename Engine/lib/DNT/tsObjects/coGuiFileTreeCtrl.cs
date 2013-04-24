@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiFileTreeCtrl))]
-    public class coGuiFileTreeCtrl: coGuiTreeViewCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiFileTreeCtrl))]
+    public class coGuiFileTreeCtrl : coGuiTreeViewCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFileTreeCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiFileTreeCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFileTreeCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiFileTreeCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiFileTreeCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiFileTreeCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Vector of file patterns. If not empty, only files matching the pattern will be shown in the control. 
+        /// </summary>
+        public String fileFilter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fileFilter").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fileFilter", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Path in game directory that should be displayed in the control. 
+        /// </summary>
+        public String rootPath
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rootPath").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rootPath", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coGuiFileTreeCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coGuiFileTreeCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coGuiFileTreeCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiFileTreeCtrl ts)
+        public static implicit operator string(coGuiFileTreeCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coGuiFileTreeCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiFileTreeCtrl ts)
+        public static implicit operator int(coGuiFileTreeCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coGuiFileTreeCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiFileTreeCtrl ts)
+        public static implicit operator uint(coGuiFileTreeCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,47 +249,32 @@ public coGuiFileTreeCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiFileTreeCtrl(ts);
             }
-public String fileFilter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fileFilter").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fileFilter", value.AsString());
-          }
-       }
-public String rootPath
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rootPath").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rootPath", value.AsString());
-          }
-       }
-/// <summary>
-/// ( GuiFileTreeCtrl, getSelectedPath, const char*, 2, 2, getSelectedPath() - returns the currently selected path in the tree)
-/// 
-/// </summary>
-public  string getSelectedPath(){
-return TorqueScriptTemplate.m_ts.fnGuiFileTreeCtrl_getSelectedPath(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiFileTreeCtrl, reload, void, 2, 2, () - Reread the directory tree hierarchy. )
-/// 
-/// </summary>
-public  void reload(){
-TorqueScriptTemplate.m_ts.fnGuiFileTreeCtrl_reload(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiFileTreeCtrl, setSelectedPath, bool, 3, 3, setSelectedPath(path) - expands the tree to the specified path)
-/// 
-/// </summary>
-public  bool setSelectedPath(string a2){
-return TorqueScriptTemplate.m_ts.fnGuiFileTreeCtrl_setSelectedPath(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// ( GuiFileTreeCtrl, getSelectedPath, const char*, 2, 2, getSelectedPath() - returns the currently selected path in the tree)
+        /// 
+        /// </summary>
+        public string getSelectedPath()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiFileTreeCtrl_getSelectedPath(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiFileTreeCtrl, reload, void, 2, 2, () - Reread the directory tree hierarchy. )
+        /// 
+        /// </summary>
+        public void reload()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiFileTreeCtrl_reload(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiFileTreeCtrl, setSelectedPath, bool, 3, 3, setSelectedPath(path) - expands the tree to the specified path)
+        /// 
+        /// </summary>
+        public bool setSelectedPath(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiFileTreeCtrl_setSelectedPath(_mSimObjectId, a2);
+            }
+        }
+    }

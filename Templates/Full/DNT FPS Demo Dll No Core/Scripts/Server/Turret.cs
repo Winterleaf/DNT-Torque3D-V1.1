@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -71,9 +71,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "TurretShapeData", "onAdd", "(%this, %obj)", 2, 2900, false)]
         public void TurretShapeData_OnAdd(coTurretShapeData thisobj, coShapeBase obj)
             {
-            ShapeBase.setRechargeRate(obj, thisobj["rechargeRate"].AsFloat());
-            ShapeBase.setEnergyLevel(obj, thisobj["MaxEnergy"].AsFloat());
-            ShapeBase.setRepairRate(obj, 0);
+            obj.setRechargeRate(thisobj["rechargeRate"].AsFloat());
+            obj.setEnergyLevel(thisobj["MaxEnergy"].AsFloat());
+            obj.setRepairRate(0);
 
 
             if (obj["mountable"] == "1" || obj["mountable"] == "")
@@ -104,8 +104,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 obj["entranceThread"] = "0";
                 int et = obj["entranceThread"].AsInt();
                 string es = thisobj["enterSequence"];
-                ShapeBase.playThread(obj, et, es);
-                ShapeBase.pauseThread(obj, et);
+                obj.playThread(et, es);
+                obj.pauseThread(et);
                 }
             else
                 {
@@ -138,8 +138,6 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             coTurretShape turretid = turret.Create();
 
             turretid.setTransform(transform);
-
-            SceneObject.setTransform(turretid, transform);
             ((coSimSet) "MissioinGroup").pushToBack(turretid);
             return turretid;
             }
@@ -219,9 +217,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             int et = turret["entranceThread"].AsInt();
 
-            ShapeBase.setThreadDir(turret, et, false);
-            ShapeBase.setThreadPosition(turret, et, 0);
-            ShapeBase.playThread(turret, et, "");
+            turret.setThreadDir(et, false);
+            turret.setThreadPosition(et, 0);
+            turret.playThread(et, "");
             }
 
         [Torque_Decorations.TorqueCallBack("", "TurretShapeData", "onUnmountObject", "(%this, %turret, %player)", 3, 2900, false)]
@@ -234,9 +232,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             // Play the entrance thread backwards for an exit
 
-            ShapeBase.setThreadDir(turret, et, false);
-            ShapeBase.setThreadPosition(turret, et, (float) 1.0);
-            ShapeBase.playThread(turret, et, "");
+            turret.setThreadDir(et, false);
+            turret.setThreadPosition(et, (float) 1.0);
+            turret.playThread(et, "");
             }
 
         [Torque_Decorations.TorqueCallBack("", "TurretShapeData", "mountPlayer", "(%this, %turret, %player)", 3, 2900, false)]

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoForestEditorCtrl))]
-    public class coForestEditorCtrl: coEditTSCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoForestEditorCtrl))]
+    public class coForestEditorCtrl : coEditTSCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestEditorCtrl(string simobjectid) : base(simobjectid){ }
+        public coForestEditorCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestEditorCtrl(uint simobjectid): base(simobjectid){ }
+        public coForestEditorCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestEditorCtrl(int simobjectid): base(simobjectid){ }
+        public coForestEditorCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coForestEditorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coForestEditorCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coForestEditorCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coForestEditorCtrl ts)
+        public static implicit operator string(coForestEditorCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coForestEditorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coForestEditorCtrl ts)
+        public static implicit operator int(coForestEditorCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coForestEditorCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coForestEditorCtrl ts)
+        public static implicit operator uint(coForestEditorCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,39 +231,50 @@ public coForestEditorCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coForestEditorCtrl(ts);
             }
-/// <summary>
-/// ( ForestEditorCtrl, deleteMeshSafe, void, 3, 3, ( ForestItemData obj ) )
-/// 
-/// </summary>
-public  void deleteMeshSafe(string a2){
-TorqueScriptTemplate.m_ts.fnForestEditorCtrl_deleteMeshSafe(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( ForestEditorCtrl, getActiveTool, S32, 2, 2, () )
-/// 
-/// </summary>
-public  int getActiveTool(){
-return TorqueScriptTemplate.m_ts.fnForestEditorCtrl_getActiveTool(_mSimObjectId);
-}
-/// <summary>
-/// ( ForestEditorCtrl, isDirty, bool, 2, 2,  )
-/// 
-/// </summary>
-public  bool isDirty(){
-return TorqueScriptTemplate.m_ts.fnForestEditorCtrl_isDirty(_mSimObjectId);
-}
-/// <summary>
-/// ( ForestEditorCtrl, setActiveTool, void, 3, 3, ( ForestTool tool ) )
-/// 
-/// </summary>
-public  void setActiveTool(string a2){
-TorqueScriptTemplate.m_ts.fnForestEditorCtrl_setActiveTool(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( ForestEditorCtrl, updateActiveForest, void, 2, 2, () )
-/// 
-/// </summary>
-public  void updateActiveForest(){
-TorqueScriptTemplate.m_ts.fnForestEditorCtrl_updateActiveForest(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// ( ForestEditorCtrl, deleteMeshSafe, void, 3, 3, ( ForestItemData obj ) )
+        /// 
+        /// </summary>
+        public void deleteMeshSafe(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnForestEditorCtrl_deleteMeshSafe(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( ForestEditorCtrl, getActiveTool, S32, 2, 2, () )
+        /// 
+        /// </summary>
+        public int getActiveTool()
+            {
+            return TorqueScriptTemplate.m_ts.fnForestEditorCtrl_getActiveTool(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( ForestEditorCtrl, isDirty, bool, 2, 2,  )
+        /// 
+        /// </summary>
+        public bool isDirty()
+            {
+            return TorqueScriptTemplate.m_ts.fnForestEditorCtrl_isDirty(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( ForestEditorCtrl, setActiveTool, void, 3, 3, ( ForestTool tool ) )
+        /// 
+        /// </summary>
+        public void setActiveTool(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnForestEditorCtrl_setActiveTool(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( ForestEditorCtrl, updateActiveForest, void, 2, 2, () )
+        /// 
+        /// </summary>
+        public void updateActiveForest()
+            {
+            TorqueScriptTemplate.m_ts.fnForestEditorCtrl_updateActiveForest(_mSimObjectId);
+            }
+        }
+    }

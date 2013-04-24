@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoRenderPassStateToken))]
-    public class coRenderPassStateToken: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoRenderPassStateToken))]
+    public class coRenderPassStateToken : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRenderPassStateToken(string simobjectid) : base(simobjectid){ }
+        public coRenderPassStateToken(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRenderPassStateToken(uint simobjectid): base(simobjectid){ }
+        public coRenderPassStateToken(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRenderPassStateToken(int simobjectid): base(simobjectid){ }
+        public coRenderPassStateToken(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Enables or disables this token.
+        /// </summary>
+        public bool enabled
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".enabled").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".enabled", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coRenderPassStateToken(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coRenderPassStateToken(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coRenderPassStateToken(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coRenderPassStateToken ts)
+        public static implicit operator string(coRenderPassStateToken ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coRenderPassStateToken(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coRenderPassStateToken ts)
+        public static implicit operator int(coRenderPassStateToken ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coRenderPassStateToken(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coRenderPassStateToken ts)
+        public static implicit operator uint(coRenderPassStateToken ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,36 +240,32 @@ public coRenderPassStateToken(int simobjectid): base(simobjectid){ }
             {
             return new coRenderPassStateToken(ts);
             }
-public bool enabled
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".enabled").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".enabled", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Disables the token.)
-/// 
-/// </summary>
-public  void disable(){
-TorqueScriptTemplate.m_ts.fnRenderPassStateToken_disable(_mSimObjectId);
-}
-/// <summary>
-/// @brief Enables the token. )
-/// 
-/// </summary>
-public  void enable(){
-TorqueScriptTemplate.m_ts.fnRenderPassStateToken_enable(_mSimObjectId);
-}
-/// <summary>
-/// @brief Toggles the token from enabled to disabled or vice versa. )
-/// 
-/// </summary>
-public  void toggle(){
-TorqueScriptTemplate.m_ts.fnRenderPassStateToken_toggle(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Disables the token.)
+        /// 
+        /// </summary>
+        public void disable()
+            {
+            TorqueScriptTemplate.m_ts.fnRenderPassStateToken_disable(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Enables the token. )
+        /// 
+        /// </summary>
+        public void enable()
+            {
+            TorqueScriptTemplate.m_ts.fnRenderPassStateToken_enable(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Toggles the token from enabled to disabled or vice versa. )
+        /// 
+        /// </summary>
+        public void toggle()
+            {
+            TorqueScriptTemplate.m_ts.fnRenderPassStateToken_toggle(_mSimObjectId);
+            }
+        }
+    }

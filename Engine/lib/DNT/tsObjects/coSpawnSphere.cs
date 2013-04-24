@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,127 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSpawnSphere))]
-    public class coSpawnSphere: coMissionMarker
-{
+    [TypeConverter(typeof (tsObjectConvertercoSpawnSphere))]
+    public class coSpawnSphere : coMissionMarker
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSpawnSphere(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSpawnSphere(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSpawnSphere(int simobjectid): base(simobjectid){ }
+        public coSpawnSphere(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSpawnSphere(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSpawnSphere(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Flag to spawn object as soon as SpawnSphere is created, true to enable or false to disable. 
+        /// </summary>
+        public bool autoSpawn
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoSpawn").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoSpawn", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Deprecated 
+        /// </summary>
+        public float indoorWeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".indoorWeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".indoorWeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Deprecated 
+        /// </summary>
+        public float outdoorWeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".outdoorWeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".outdoorWeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Deprecated 
+        /// </summary>
+        public float radius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".radius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".radius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Object class to create (eg. Player, AIPlayer, Debris etc) 
+        /// </summary>
+        public String spawnClass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".spawnClass").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".spawnClass", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Predefined datablock assigned to the object when created 
+        /// </summary>
+        public String spawnDatablock
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".spawnDatablock").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".spawnDatablock", value.AsString()); }
+            }
+
+        /// <summary>
+        /// String containing semicolon (;) delimited properties to set when the object is created. 
+        /// </summary>
+        public String spawnProperties
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".spawnProperties").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".spawnProperties", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Command to execute immediately after spawning an object. New object id is stored in $SpawnObject. Max 255 characters. 
+        /// </summary>
+        public String spawnScript
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".spawnScript").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".spawnScript", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Flag to set the spawned object's transform to the SpawnSphere's transform. 
+        /// </summary>
+        public bool spawnTransform
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".spawnTransform").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".spawnTransform", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Deprecated 
+        /// </summary>
+        public float sphereWeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sphereWeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sphereWeight", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +225,9 @@ public coSpawnSphere(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +235,17 @@ public coSpawnSphere(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +257,15 @@ public coSpawnSphere(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSpawnSphere ts)
+        public static implicit operator string(coSpawnSphere ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +285,7 @@ public coSpawnSphere(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSpawnSphere ts)
+        public static implicit operator int(coSpawnSphere ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +306,7 @@ public coSpawnSphere(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSpawnSphere ts)
+        public static implicit operator uint(coSpawnSphere ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,125 +321,18 @@ public coSpawnSphere(int simobjectid): base(simobjectid){ }
             {
             return new coSpawnSphere(ts);
             }
-public bool autoSpawn
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoSpawn").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoSpawn", value.AsString());
-          }
-       }
-public float indoorWeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".indoorWeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".indoorWeight", value.AsString());
-          }
-       }
-public float outdoorWeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".outdoorWeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".outdoorWeight", value.AsString());
-          }
-       }
-public float radius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".radius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".radius", value.AsString());
-          }
-       }
-public String spawnClass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".spawnClass").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".spawnClass", value.AsString());
-          }
-       }
-public String spawnDatablock
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".spawnDatablock").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".spawnDatablock", value.AsString());
-          }
-       }
-public String spawnProperties
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".spawnProperties").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".spawnProperties", value.AsString());
-          }
-       }
-public String spawnScript
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".spawnScript").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".spawnScript", value.AsString());
-          }
-       }
-public bool spawnTransform
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".spawnTransform").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".spawnTransform", value.AsString());
-          }
-       }
-public float sphereWeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sphereWeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sphereWeight", value.AsString());
-          }
-       }
-/// <summary>
-/// (SpawnSphere, spawnObject, S32, 2, 3,
-///    ([string additionalProps]) Spawns the object based on the SpawnSphere's 
-///    class, datablock, properties, and script settings. Allows you to pass in 
-///    extra properties.
-///    @hide )
-/// 
-/// </summary>
-public  int spawnObject(string a2= ""){
-return TorqueScriptTemplate.m_ts.fnSpawnSphere_spawnObject(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// (SpawnSphere, spawnObject, S32, 2, 3,
+        ///    ([string additionalProps]) Spawns the object based on the SpawnSphere's 
+        ///    class, datablock, properties, and script settings. Allows you to pass in 
+        ///    extra properties.
+        ///    @hide )
+        /// 
+        /// </summary>
+        public int spawnObject(string a2 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnSpawnSphere_spawnObject(_mSimObjectId, a2);
+            }
+        }
+    }

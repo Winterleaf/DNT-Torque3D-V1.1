@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,63 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiTSCtrl))]
-    public class coGuiTSCtrl: coGuiContainer
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiTSCtrl))]
+    public class coGuiTSCtrl : coGuiContainer
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTSCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiTSCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTSCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiTSCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTSCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiTSCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Z rotation angle of camera. 
+        /// </summary>
+        public float cameraZRot
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraZRot").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraZRot", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The vertical field of view in degrees or zero to use the normal camera FOV. 
+        /// </summary>
+        public float forceFOV
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".forceFOV").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".forceFOV", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The share of the per-frame reflection update work this control's rendering should run.\n     The reflect update priorities of all visible GuiTSCtrls are added together and each control is assigned      a share of the per-frame reflection update time according to its percentage of the total priority value. 
+        /// </summary>
+        public float reflectPriority
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectPriority").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectPriority", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +163,9 @@ public coGuiTSCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +173,17 @@ public coGuiTSCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +195,15 @@ public coGuiTSCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiTSCtrl ts)
+        public static implicit operator string(coGuiTSCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +223,7 @@ public coGuiTSCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiTSCtrl ts)
+        public static implicit operator int(coGuiTSCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +244,7 @@ public coGuiTSCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiTSCtrl ts)
+        public static implicit operator uint(coGuiTSCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,73 +259,49 @@ public coGuiTSCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiTSCtrl(ts);
             }
-public float cameraZRot
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraZRot").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraZRot", value.AsString());
-          }
-       }
-public float forceFOV
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".forceFOV").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".forceFOV", value.AsString());
-          }
-       }
-public float reflectPriority
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectPriority").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectPriority", value.AsString());
-          }
-       }
-/// <summary>
-/// Given the camera's current FOV, get the distance from the camera's viewpoint at which the given radius will fit in the render area.
-///    @param radius Radius in world-space units which should fit in the view.
-///    @return The distance from the viewpoint at which the given radius would be fully visible. )
-/// 
-/// </summary>
-public  float calculateViewDistance(float radius){
-return TorqueScriptTemplate.m_ts.fnGuiTSCtrl_calculateViewDistance(_mSimObjectId, radius);
-}
-/// <summary>
-/// Get the ratio between world-space units and pixels.
-///    @return The amount of world-space units covered by the extent of a single pixel. )
-/// 
-/// </summary>
-public  Point2F getWorldToScreenScale(){
-return new Point2F ( TorqueScriptTemplate.m_ts.fnGuiTSCtrl_getWorldToScreenScale(_mSimObjectId));
-}
-/// <summary>
-/// Transform world-space coordinates to screen-space (x, y, depth) coordinates.
-///    @param worldPosition The world-space position to transform to screen-space.
-///    @return The  )
-/// 
-/// </summary>
-public  Point3F project(Point3F worldPosition){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnGuiTSCtrl_project(_mSimObjectId, worldPosition.AsString()));
-}
-/// <summary>
-/// Transform 3D screen-space coordinates (x, y, depth) to world space.
-///    This method can be, for example, used to find the world-space position relating to the current mouse cursor position.
-///    @param screenPosition The x/y position on the screen plus the depth from the screen-plane outwards.
-///    @return The world-space position corresponding to the given screen-space coordinates. )
-/// 
-/// </summary>
-public  Point3F unproject(Point3F screenPosition){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnGuiTSCtrl_unproject(_mSimObjectId, screenPosition.AsString()));
-}
-}}
+
+        /// <summary>
+        /// Given the camera's current FOV, get the distance from the camera's viewpoint at which the given radius will fit in the render area.
+        ///    @param radius Radius in world-space units which should fit in the view.
+        ///    @return The distance from the viewpoint at which the given radius would be fully visible. )
+        /// 
+        /// </summary>
+        public float calculateViewDistance(float radius)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiTSCtrl_calculateViewDistance(_mSimObjectId, radius);
+            }
+
+        /// <summary>
+        /// Get the ratio between world-space units and pixels.
+        ///    @return The amount of world-space units covered by the extent of a single pixel. )
+        /// 
+        /// </summary>
+        public Point2F getWorldToScreenScale()
+            {
+            return new Point2F(TorqueScriptTemplate.m_ts.fnGuiTSCtrl_getWorldToScreenScale(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Transform world-space coordinates to screen-space (x, y, depth) coordinates.
+        ///    @param worldPosition The world-space position to transform to screen-space.
+        ///    @return The  )
+        /// 
+        /// </summary>
+        public Point3F project(Point3F worldPosition)
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnGuiTSCtrl_project(_mSimObjectId, worldPosition.AsString()));
+            }
+
+        /// <summary>
+        /// Transform 3D screen-space coordinates (x, y, depth) to world space.
+        ///    This method can be, for example, used to find the world-space position relating to the current mouse cursor position.
+        ///    @param screenPosition The x/y position on the screen plus the depth from the screen-plane outwards.
+        ///    @return The world-space position corresponding to the given screen-space coordinates. )
+        /// 
+        /// </summary>
+        public Point3F unproject(Point3F screenPosition)
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnGuiTSCtrl_unproject(_mSimObjectId, screenPosition.AsString()));
+            }
+        }
+    }

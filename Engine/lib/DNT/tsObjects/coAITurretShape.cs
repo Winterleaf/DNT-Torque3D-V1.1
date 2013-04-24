@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoAITurretShape))]
-    public class coAITurretShape: coTurretShape
-{
+    [TypeConverter(typeof (tsObjectConvertercoAITurretShape))]
+    public class coAITurretShape : coTurretShape
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAITurretShape(string simobjectid) : base(simobjectid){ }
+        public coAITurretShape(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAITurretShape(uint simobjectid): base(simobjectid){ }
+        public coAITurretShape(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAITurretShape(int simobjectid): base(simobjectid){ }
+        public coAITurretShape(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coAITurretShape(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coAITurretShape(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coAITurretShape(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coAITurretShape ts)
+        public static implicit operator string(coAITurretShape ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coAITurretShape(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coAITurretShape ts)
+        public static implicit operator int(coAITurretShape ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coAITurretShape(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coAITurretShape ts)
+        public static implicit operator uint(coAITurretShape ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,146 +231,181 @@ public coAITurretShape(int simobjectid): base(simobjectid){ }
             {
             return new coAITurretShape(ts);
             }
-/// <summary>
-/// @brief Activate a turret from a deactive state.)
-/// 
-/// </summary>
-public  void activateTurret(){
-TorqueScriptTemplate.m_ts.fnAITurretShape_activateTurret(_mSimObjectId);
-}
-/// <summary>
-/// @brief Adds object to the turret's ignore list.
-///    All objects in this list will be ignored by the turret's targeting.
-///    @param obj The ShapeBase object to ignore.)
-/// 
-/// </summary>
-public  void addToIgnoreList(string obj){
-TorqueScriptTemplate.m_ts.fnAITurretShape_addToIgnoreList(_mSimObjectId, obj);
-}
-/// <summary>
-/// @brief Deactivate a turret from an active state.)
-/// 
-/// </summary>
-public  void deactivateTurret(){
-TorqueScriptTemplate.m_ts.fnAITurretShape_deactivateTurret(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the turret's current target.
-///    @returns The object that is the target's current target, or 0 if no target.)
-/// 
-/// </summary>
-public  string getTarget(){
-return TorqueScriptTemplate.m_ts.fnAITurretShape_getTarget(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the turret's defined projectile velocity that helps with target leading.
-///    @returns The defined weapon projectile speed, or 0 if leading is disabled.)
-/// 
-/// </summary>
-public  float getWeaponLeadVelocity(){
-return TorqueScriptTemplate.m_ts.fnAITurretShape_getWeaponLeadVelocity(_mSimObjectId);
-}
-/// <summary>
-/// @brief Indicates if the turret has a target.
-///    @returns True if the turret has a target.)
-/// 
-/// </summary>
-public  bool hasTarget(){
-return TorqueScriptTemplate.m_ts.fnAITurretShape_hasTarget(_mSimObjectId);
-}
-/// <summary>
-/// @brief Recenter the turret's weapon.)
-/// 
-/// </summary>
-public  void recenterTurret(){
-TorqueScriptTemplate.m_ts.fnAITurretShape_recenterTurret(_mSimObjectId);
-}
-/// <summary>
-/// @brief Removes object from the turret's ignore list.
-///    All objects in this list will be ignored by the turret's targeting.
-///    @param obj The ShapeBase object to once again allow for targeting.)
-/// 
-/// </summary>
-public  void removeFromIgnoreList(string obj){
-TorqueScriptTemplate.m_ts.fnAITurretShape_removeFromIgnoreList(_mSimObjectId, obj);
-}
-/// <summary>
-/// @brief Resets the turret's target tracking.
-///    Only resets the internal target tracking.  Does not modify the turret's facing.)
-/// 
-/// </summary>
-public  void resetTarget(){
-TorqueScriptTemplate.m_ts.fnAITurretShape_resetTarget(_mSimObjectId);
-}
-/// <summary>
-/// @brief Set the firing state of the turret's guns.
-///    @param fire Set to true to activate all guns.  False to deactivate them.)
-/// 
-/// </summary>
-public  void setAllGunsFiring(bool fire){
-TorqueScriptTemplate.m_ts.fnAITurretShape_setAllGunsFiring(_mSimObjectId, fire);
-}
-/// <summary>
-/// @brief Set the firing state of the given gun slot.
-///    @param slot The gun to modify.  Valid range is 0-3 that corresponds to the weapon mount point.
-///    @param fire Set to true to activate the gun.  False to deactivate it.)
-/// 
-/// </summary>
-public  void setGunSlotFiring(int slot, bool fire){
-TorqueScriptTemplate.m_ts.fnAITurretShape_setGunSlotFiring(_mSimObjectId, slot, fire);
-}
-/// <summary>
-/// @brief Set the turret's current state.
-///    Normally the turret's state comes from updating the state machine but this method 
-///    allows you to override this and jump to the requested state immediately.
-///    @param newState The name of the new state.
-///    @param force Is true then force the full processing of the new state even if it is the 
-///    same as the current state.  If false then only the time out value is reset and the state's 
-///    script method is called, if any.)
-/// 
-/// </summary>
-public  void setTurretState(string newState, bool force){
-TorqueScriptTemplate.m_ts.fnAITurretShape_setTurretState(_mSimObjectId, newState, force);
-}
-/// <summary>
-/// @brief Set the turret's projectile velocity to help lead the target.
-///    This value normally comes from AITurretShapeData::weaponLeadVelocity but this method 
-///    allows you to override the datablock value.  This can be useful if the turret changes 
-///    ammunition, uses a different weapon than the default, is damaged, etc.
-///    @note Setting this to 0 will disable target leading.)
-/// 
-/// </summary>
-public  void setWeaponLeadVelocity(float velocity){
-TorqueScriptTemplate.m_ts.fnAITurretShape_setWeaponLeadVelocity(_mSimObjectId, velocity);
-}
-/// <summary>
-/// @brief Begin scanning for a target.)
-/// 
-/// </summary>
-public  void startScanForTargets(){
-TorqueScriptTemplate.m_ts.fnAITurretShape_startScanForTargets(_mSimObjectId);
-}
-/// <summary>
-/// @brief Have the turret track the current target.)
-/// 
-/// </summary>
-public  void startTrackingTarget(){
-TorqueScriptTemplate.m_ts.fnAITurretShape_startTrackingTarget(_mSimObjectId);
-}
-/// <summary>
-/// @brief Stop scanning for targets.
-///    @note Only impacts the scanning for new targets.  Does not effect a turret's current 
-///    target lock.)
-/// 
-/// </summary>
-public  void stopScanForTargets(){
-TorqueScriptTemplate.m_ts.fnAITurretShape_stopScanForTargets(_mSimObjectId);
-}
-/// <summary>
-/// @brief Stop the turret from tracking the current target.)
-/// 
-/// </summary>
-public  void stopTrackingTarget(){
-TorqueScriptTemplate.m_ts.fnAITurretShape_stopTrackingTarget(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Activate a turret from a deactive state.)
+        /// 
+        /// </summary>
+        public void activateTurret()
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_activateTurret(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Adds object to the turret's ignore list.
+        ///    All objects in this list will be ignored by the turret's targeting.
+        ///    @param obj The ShapeBase object to ignore.)
+        /// 
+        /// </summary>
+        public void addToIgnoreList(string obj)
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_addToIgnoreList(_mSimObjectId, obj);
+            }
+
+        /// <summary>
+        /// @brief Deactivate a turret from an active state.)
+        /// 
+        /// </summary>
+        public void deactivateTurret()
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_deactivateTurret(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the turret's current target.
+        ///    @returns The object that is the target's current target, or 0 if no target.)
+        /// 
+        /// </summary>
+        public string getTarget()
+            {
+            return TorqueScriptTemplate.m_ts.fnAITurretShape_getTarget(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the turret's defined projectile velocity that helps with target leading.
+        ///    @returns The defined weapon projectile speed, or 0 if leading is disabled.)
+        /// 
+        /// </summary>
+        public float getWeaponLeadVelocity()
+            {
+            return TorqueScriptTemplate.m_ts.fnAITurretShape_getWeaponLeadVelocity(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Indicates if the turret has a target.
+        ///    @returns True if the turret has a target.)
+        /// 
+        /// </summary>
+        public bool hasTarget()
+            {
+            return TorqueScriptTemplate.m_ts.fnAITurretShape_hasTarget(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Recenter the turret's weapon.)
+        /// 
+        /// </summary>
+        public void recenterTurret()
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_recenterTurret(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Removes object from the turret's ignore list.
+        ///    All objects in this list will be ignored by the turret's targeting.
+        ///    @param obj The ShapeBase object to once again allow for targeting.)
+        /// 
+        /// </summary>
+        public void removeFromIgnoreList(string obj)
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_removeFromIgnoreList(_mSimObjectId, obj);
+            }
+
+        /// <summary>
+        /// @brief Resets the turret's target tracking.
+        ///    Only resets the internal target tracking.  Does not modify the turret's facing.)
+        /// 
+        /// </summary>
+        public void resetTarget()
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_resetTarget(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Set the firing state of the turret's guns.
+        ///    @param fire Set to true to activate all guns.  False to deactivate them.)
+        /// 
+        /// </summary>
+        public void setAllGunsFiring(bool fire)
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_setAllGunsFiring(_mSimObjectId, fire);
+            }
+
+        /// <summary>
+        /// @brief Set the firing state of the given gun slot.
+        ///    @param slot The gun to modify.  Valid range is 0-3 that corresponds to the weapon mount point.
+        ///    @param fire Set to true to activate the gun.  False to deactivate it.)
+        /// 
+        /// </summary>
+        public void setGunSlotFiring(int slot, bool fire)
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_setGunSlotFiring(_mSimObjectId, slot, fire);
+            }
+
+        /// <summary>
+        /// @brief Set the turret's current state.
+        ///    Normally the turret's state comes from updating the state machine but this method 
+        ///    allows you to override this and jump to the requested state immediately.
+        ///    @param newState The name of the new state.
+        ///    @param force Is true then force the full processing of the new state even if it is the 
+        ///    same as the current state.  If false then only the time out value is reset and the state's 
+        ///    script method is called, if any.)
+        /// 
+        /// </summary>
+        public void setTurretState(string newState, bool force)
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_setTurretState(_mSimObjectId, newState, force);
+            }
+
+        /// <summary>
+        /// @brief Set the turret's projectile velocity to help lead the target.
+        ///    This value normally comes from AITurretShapeData::weaponLeadVelocity but this method 
+        ///    allows you to override the datablock value.  This can be useful if the turret changes 
+        ///    ammunition, uses a different weapon than the default, is damaged, etc.
+        ///    @note Setting this to 0 will disable target leading.)
+        /// 
+        /// </summary>
+        public void setWeaponLeadVelocity(float velocity)
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_setWeaponLeadVelocity(_mSimObjectId, velocity);
+            }
+
+        /// <summary>
+        /// @brief Begin scanning for a target.)
+        /// 
+        /// </summary>
+        public void startScanForTargets()
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_startScanForTargets(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Have the turret track the current target.)
+        /// 
+        /// </summary>
+        public void startTrackingTarget()
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_startTrackingTarget(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Stop scanning for targets.
+        ///    @note Only impacts the scanning for new targets.  Does not effect a turret's current 
+        ///    target lock.)
+        /// 
+        /// </summary>
+        public void stopScanForTargets()
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_stopScanForTargets(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Stop the turret from tracking the current target.)
+        /// 
+        /// </summary>
+        public void stopTrackingTarget()
+            {
+            TorqueScriptTemplate.m_ts.fnAITurretShape_stopTrackingTarget(_mSimObjectId);
+            }
+        }
+    }

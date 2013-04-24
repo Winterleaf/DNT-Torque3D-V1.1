@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,63 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoAIPlayer))]
-    public class coAIPlayer: coPlayer
-{
+    [TypeConverter(typeof (tsObjectConvertercoAIPlayer))]
+    public class coAIPlayer : coPlayer
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIPlayer(string simobjectid) : base(simobjectid){ }
+        public coAIPlayer(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIPlayer(uint simobjectid): base(simobjectid){ }
+        public coAIPlayer(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coAIPlayer(int simobjectid): base(simobjectid){ }
+        public coAIPlayer(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Distance from destination before stopping.\n\n     When the AIPlayer is moving to a given destination it will move to within      this distance of the destination and then stop. By providing this tolerance      it helps the AIPlayer from never reaching its destination due to minor obstacles,      rounding errors on its position calculation, etc. By default it is set to 0.25.\n
+        /// </summary>
+        public float mMoveTolerance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mMoveTolerance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mMoveTolerance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The number of ticks to wait before testing if the AIPlayer is stuck.\n\n     When the AIPlayer is asked to move, this property is the number of ticks to wait      before the AIPlayer starts to check if it is stuck. This delay allows the AIPlayer      to accelerate to full speed without its initial slow start being considered as stuck.\n     @note Set to zero to have the stuck test start immediately.\n
+        /// </summary>
+        public int moveStuckTestDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".moveStuckTestDelay").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".moveStuckTestDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Distance tolerance on stuck check.\n\n     When the AIPlayer is moving to a given destination, if it ever moves less than      this tolerance during a single tick, the AIPlayer is considered stuck. At this point      the onMoveStuck() callback is called on the datablock.\n
+        /// </summary>
+        public float moveStuckTolerance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".moveStuckTolerance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".moveStuckTolerance", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +163,9 @@ public coAIPlayer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +173,17 @@ public coAIPlayer(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +195,15 @@ public coAIPlayer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coAIPlayer ts)
+        public static implicit operator string(coAIPlayer ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +223,7 @@ public coAIPlayer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coAIPlayer ts)
+        public static implicit operator int(coAIPlayer ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +244,7 @@ public coAIPlayer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coAIPlayer ts)
+        public static implicit operator uint(coAIPlayer ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,157 +259,145 @@ public coAIPlayer(int simobjectid): base(simobjectid){ }
             {
             return new coAIPlayer(ts);
             }
-public float mMoveTolerance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mMoveTolerance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mMoveTolerance", value.AsString());
-          }
-       }
-public int moveStuckTestDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".moveStuckTestDelay").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".moveStuckTestDelay", value.AsString());
-          }
-       }
-public float moveStuckTolerance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".moveStuckTolerance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".moveStuckTolerance", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Use this to stop aiming at an object or a point.
-///    
-///    @see setAimLocation()
-///    @see setAimObject())
-/// 
-/// </summary>
-public  void clearAim(){
-TorqueScriptTemplate.m_ts.fnAIPlayer_clearAim(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns the point the AIPlayer is aiming at.
-/// 
-///    This will reflect the position set by setAimLocation(), 
-///    or the position of the object that the bot is now aiming at.  
-///    If the bot is not aiming at anything, this value will 
-///    change to whatever point the bot's current line-of-sight intercepts.
-/// 
-///    @return World space coordinates of the object AI is aiming at. Formatted as \"X Y Z\".
-///    
-///    @see setAimLocation()
-///    @see setAimObject())
-/// 
-/// </summary>
-public  Point3F getAimLocation(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnAIPlayer_getAimLocation(_mSimObjectId));
-}
-/// <summary>
-/// @brief Gets the object the AIPlayer is targeting.
-/// 
-///    @return Returns -1 if no object is being aimed at, 
-///    or the SimObjectID of the object the AIPlayer is aiming at.
-///    
-///    @see setAimObject())
-/// 
-/// </summary>
-public  int getAimObject(){
-return TorqueScriptTemplate.m_ts.fnAIPlayer_getAimObject(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the AIPlayer's current destination.
-/// 
-///    @return Returns a point containing the \"x y z\" position 
-///    of the AIPlayer's current move destination. If no move destination 
-///    has yet been set, this returns \"0 0 0\".
-///    
-///    @see setMoveDestination())
-/// 
-/// </summary>
-public  Point3F getMoveDestination(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnAIPlayer_getMoveDestination(_mSimObjectId));
-}
-/// <summary>
-/// @brief Gets the move speed of an AI object.
-/// 
-///    @return A speed multiplier between 0.0 and 1.0.
-/// 
-///    @see setMoveSpeed())
-/// 
-/// </summary>
-public  float getMoveSpeed(){
-return TorqueScriptTemplate.m_ts.fnAIPlayer_getMoveSpeed(_mSimObjectId);
-}
-/// <summary>
-/// @brief Tells the AIPlayer to aim at the location provided.
-/// 
-///    @param target An \"x y z\" position in the game world to target.
-///    
-///    @see getAimLocation())
-/// 
-/// </summary>
-public  void setAimLocation(Point3F target){
-TorqueScriptTemplate.m_ts.fnAIPlayer_setAimLocation(_mSimObjectId, target.AsString());
-}
-/// <summary>
-/// ( AIPlayer, setAimObject, void, 3, 4, ( GameBase obj, [Point3F offset] )
-///               Sets the bot's target object. Optionally set an offset from target location.
-/// 			  @hide)
-/// 
-/// </summary>
-public  void setAimObject(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnAIPlayer_setAimObject(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// @brief Tells the AI to move to the location provided
-/// 
-///    @param goal Coordinates in world space representing location to move to.
-///    @param slowDown A boolean value. If set to true, the bot will slow down 
-///    when it gets within 5-meters of its move destination. If false, the bot 
-///    will stop abruptly when it reaches the move destination. By default, this is true.
-/// 
-///    @note Upon reaching a move destination, the bot will clear its move destination and 
-///    calls to getMoveDestination will return \"0 0 0\".
-///    
-///    @see getMoveDestination())
-/// 
-/// </summary>
-public  void setMoveDestination(Point3F goal, bool slowDown){
-TorqueScriptTemplate.m_ts.fnAIPlayer_setMoveDestination(_mSimObjectId, goal.AsString(), slowDown);
-}
-/// <summary>
-/// @brief Sets the move speed for an AI object.
-/// 
-///    @param speed A speed multiplier between 0.0 and 1.0.  
-///    This is multiplied by the AIPlayer's base movement rates (as defined in 
-///    its PlayerData datablock)
-///    
-///    @see getMoveDestination())
-/// 
-/// </summary>
-public  void setMoveSpeed(float speed){
-TorqueScriptTemplate.m_ts.fnAIPlayer_setMoveSpeed(_mSimObjectId, speed);
-}
-/// <summary>
-/// @brief Tells the AIPlayer to stop moving.)
-/// 
-/// </summary>
-public  void stop(){
-TorqueScriptTemplate.m_ts.fnAIPlayer_stop(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Use this to stop aiming at an object or a point.
+        ///    
+        ///    @see setAimLocation()
+        ///    @see setAimObject())
+        /// 
+        /// </summary>
+        public void clearAim()
+            {
+            TorqueScriptTemplate.m_ts.fnAIPlayer_clearAim(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns the point the AIPlayer is aiming at.
+        /// 
+        ///    This will reflect the position set by setAimLocation(), 
+        ///    or the position of the object that the bot is now aiming at.  
+        ///    If the bot is not aiming at anything, this value will 
+        ///    change to whatever point the bot's current line-of-sight intercepts.
+        /// 
+        ///    @return World space coordinates of the object AI is aiming at. Formatted as \"X Y Z\".
+        ///    
+        ///    @see setAimLocation()
+        ///    @see setAimObject())
+        /// 
+        /// </summary>
+        public Point3F getAimLocation()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnAIPlayer_getAimLocation(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// @brief Gets the object the AIPlayer is targeting.
+        /// 
+        ///    @return Returns -1 if no object is being aimed at, 
+        ///    or the SimObjectID of the object the AIPlayer is aiming at.
+        ///    
+        ///    @see setAimObject())
+        /// 
+        /// </summary>
+        public int getAimObject()
+            {
+            return TorqueScriptTemplate.m_ts.fnAIPlayer_getAimObject(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the AIPlayer's current destination.
+        /// 
+        ///    @return Returns a point containing the \"x y z\" position 
+        ///    of the AIPlayer's current move destination. If no move destination 
+        ///    has yet been set, this returns \"0 0 0\".
+        ///    
+        ///    @see setMoveDestination())
+        /// 
+        /// </summary>
+        public Point3F getMoveDestination()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnAIPlayer_getMoveDestination(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// @brief Gets the move speed of an AI object.
+        /// 
+        ///    @return A speed multiplier between 0.0 and 1.0.
+        /// 
+        ///    @see setMoveSpeed())
+        /// 
+        /// </summary>
+        public float getMoveSpeed()
+            {
+            return TorqueScriptTemplate.m_ts.fnAIPlayer_getMoveSpeed(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Tells the AIPlayer to aim at the location provided.
+        /// 
+        ///    @param target An \"x y z\" position in the game world to target.
+        ///    
+        ///    @see getAimLocation())
+        /// 
+        /// </summary>
+        public void setAimLocation(Point3F target)
+            {
+            TorqueScriptTemplate.m_ts.fnAIPlayer_setAimLocation(_mSimObjectId, target.AsString());
+            }
+
+        /// <summary>
+        /// ( AIPlayer, setAimObject, void, 3, 4, ( GameBase obj, [Point3F offset] )
+        ///               Sets the bot's target object. Optionally set an offset from target location.
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public void setAimObject(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnAIPlayer_setAimObject(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// @brief Tells the AI to move to the location provided
+        /// 
+        ///    @param goal Coordinates in world space representing location to move to.
+        ///    @param slowDown A boolean value. If set to true, the bot will slow down 
+        ///    when it gets within 5-meters of its move destination. If false, the bot 
+        ///    will stop abruptly when it reaches the move destination. By default, this is true.
+        /// 
+        ///    @note Upon reaching a move destination, the bot will clear its move destination and 
+        ///    calls to getMoveDestination will return \"0 0 0\".
+        ///    
+        ///    @see getMoveDestination())
+        /// 
+        /// </summary>
+        public void setMoveDestination(Point3F goal, bool slowDown)
+            {
+            TorqueScriptTemplate.m_ts.fnAIPlayer_setMoveDestination(_mSimObjectId, goal.AsString(), slowDown);
+            }
+
+        /// <summary>
+        /// @brief Sets the move speed for an AI object.
+        /// 
+        ///    @param speed A speed multiplier between 0.0 and 1.0.  
+        ///    This is multiplied by the AIPlayer's base movement rates (as defined in 
+        ///    its PlayerData datablock)
+        ///    
+        ///    @see getMoveDestination())
+        /// 
+        /// </summary>
+        public void setMoveSpeed(float speed)
+            {
+            TorqueScriptTemplate.m_ts.fnAIPlayer_setMoveSpeed(_mSimObjectId, speed);
+            }
+
+        /// <summary>
+        /// @brief Tells the AIPlayer to stop moving.)
+        /// 
+        /// </summary>
+        public void stop()
+            {
+            TorqueScriptTemplate.m_ts.fnAIPlayer_stop(_mSimObjectId);
+            }
+        }
+    }

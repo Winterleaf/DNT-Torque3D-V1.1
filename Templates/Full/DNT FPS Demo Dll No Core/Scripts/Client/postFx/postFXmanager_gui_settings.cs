@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -168,7 +168,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsRefreshHDR", "%this", 1, 104040, false)]
-        public void PostFXManagersettingsRefreshHDR(string thisobj)
+        public void PostFXManagersettingsRefreshHDR(coSimSet thisobj)
             {
             //Apply the enabled flag 
             console.Call("ppOptionsEnableHDR", "setValue", new[] {console.GetVarString("$PostFXManager::PostFX::EnableHDR")});
@@ -190,7 +190,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.Call("ppOptionsHDRToneMappingAmount", "setValue", new[] {console.GetVarString("$HDRPostFX::enableToneMapping")});
             console.Call("ppOptionsHDRWhiteCutoff", "setValue", new[] {console.GetVarString("$HDRPostFX::whiteCutoff")});
 
-            console.SetVar(SimSet.findObjectByInternalName(thisobj, "ColorCorrectionFileName", true), console.GetVarString("$HDRPostFX::colorCorrectionRamp"));
+            console.SetVar(thisobj.findObjectByInternalName("ColorCorrectionFileName", true), console.GetVarString("$HDRPostFX::colorCorrectionRamp"));
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsRefreshLightrays", "%this", 1, 104050, false)]

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoActionMap))]
-    public class coActionMap: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoActionMap))]
+    public class coActionMap : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coActionMap(string simobjectid) : base(simobjectid){ }
+        public coActionMap(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coActionMap(uint simobjectid): base(simobjectid){ }
+        public coActionMap(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coActionMap(int simobjectid): base(simobjectid){ }
+        public coActionMap(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coActionMap(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coActionMap(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coActionMap(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coActionMap ts)
+        public static implicit operator string(coActionMap ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coActionMap(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coActionMap ts)
+        public static implicit operator int(coActionMap ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coActionMap(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coActionMap ts)
+        public static implicit operator uint(coActionMap ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,197 +231,224 @@ public coActionMap(int simobjectid): base(simobjectid){ }
             {
             return new coActionMap(ts);
             }
-/// <summary>
-/// ( ActionMap, bind, bool, 5, 10, actionMap.bind( device, action, [modifier spec, mod...], command ) 
-/// 			  @hide)
-/// 
-/// </summary>
-public  bool bind(string a2, string a3, string a4, string a5= "", string a6= "", string a7= "", string a8= "", string a9= ""){
-return TorqueScriptTemplate.m_ts.fnActionMap_bind(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9);
-}
-/// <summary>
-///  ),
-///     @brief Associates a make command and optional break command to a specified input device action.
-///     Must include parenthesis and semicolon in the make and break command strings.
-///     @param device The device to bind to. Can be a keyboard, mouse, joystick or gamepad.
-///     @param action The device action to bind to. The action is dependant upon the device. Specify a key for keyboards.
-///     @param makeCmd The command to execute when the device/action is made.
-///     @param breakCmd [optional] The command to execute when the device or action is unmade.
-///     @return True the bind was successful, false if the device was unknown or description failed.
-/// 	@tsexample
-/// 	// Print to the console when the spacebar is pressed
-/// 	function onSpaceDown()
-/// 	{
-/// 	   echo(\"Space bar down!\");
-/// 	}
-/// 	// Print to the console when the spacebar is released
-/// 	function onSpaceUp()
-/// 	{
-/// 	   echo(\"Space bar up!\");
-/// 	}
-///    // Bind the commands onSpaceDown() and onSpaceUp() to spacebar events
-/// 	moveMap.bindCmd(keyboard, \"space\", \"onSpaceDown();\", \"onSpaceUp();\");
-/// 	@endtsexample)
-/// 
-/// </summary>
-public  bool bindCmd(string device, string action, string makeCmd, string breakCmd){
-return TorqueScriptTemplate.m_ts.fnActionMap_bindCmd(_mSimObjectId, device, action, makeCmd, breakCmd);
-}
-/// <summary>
-/// ( ActionMap, bindObj, bool, 6, 11, (device, action, [modifier spec, mod...], command, object)
-/// 			  @hide)
-/// 
-/// </summary>
-public  bool bindObj(string a2, string a3, string a4, string a5, string a6= "", string a7= "", string a8= "", string a9= "", string a10= ""){
-return TorqueScriptTemplate.m_ts.fnActionMap_bindObj(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10);
-}
-/// <summary>
-/// @brief Gets the ActionMap binding for the specified command.
-///    Use getField() on the return value to get the device and action of the binding.
-///    @param command The function to search bindings for.
-///    @return The binding against the specified command. Returns an empty string(\"\") 
-///    if a binding wasn't found.
-/// 	@tsexample
-/// 	// Find what the function \"jump()\" is bound to in moveMap
-/// 	%bind = moveMap.getBinding( \"jump\" );
-/// 	if ( %bind !$= \"\" )
-/// 	{
-/// 	// Find out what device is used in the binding
-/// 		%device = getField( %bind, 0 );
-/// 	// Find out what action (such as a key) is used in the binding
-/// 		%action = getField( %bind, 1 );
-/// 	}
-/// 	@endtsexample
-///    @see getField)
-/// 
-/// </summary>
-public  string getBinding(string command){
-return TorqueScriptTemplate.m_ts.fnActionMap_getBinding(_mSimObjectId, command);
-}
-/// <summary>
-/// @brief Gets ActionMap command for the device and action.
-///    @param device The device that was bound. Can be a keyboard, mouse, joystick or a gamepad.
-///    @param action The device action that was bound.  The action is dependant upon the device. Specify a key for keyboards.
-///    @return The command against the specified device and action.
-/// 	@tsexample
-/// 	// Find what function is bound to a device\'s action
-/// 	// In this example, \"jump()\" was assigned to the space key in another script
-/// 	%command = moveMap.getCommand(\"keyboard\", \"space\");
-/// 	// Should print \"jump\" in the console
-/// 	echo(%command)
-/// 	@endtsexample)
-/// 
-/// </summary>
-public  string getCommand(string device, string action){
-return TorqueScriptTemplate.m_ts.fnActionMap_getCommand(_mSimObjectId, device, action);
-}
-/// <summary>
-/// @brief Gets the Dead zone for the specified device and action.
-///    @param device The device that was bound.  Can be a keyboard, mouse, joystick or a gamepad.
-///    @param action The device action that was bound. The action is dependant upon the device. Specify a key for keyboards.
-///    @return The dead zone for the specified device and action. Returns \"0 0\" if there is no dead zone  
-///    or an empty string(\"\") if the mapping was not found.
-/// 	@tsexample
-/// 	%deadZone = moveMap.getDeadZone( \"gamepad\", \"thumbrx\");
-/// 	@endtsexample)
-/// 
-/// </summary>
-public  string getDeadZone(string device, string action){
-return TorqueScriptTemplate.m_ts.fnActionMap_getDeadZone(_mSimObjectId, device, action);
-}
-/// <summary>
-/// @brief Get any scaling on the specified device and action.
-///    @param device The device that was bound. Can be keyboard, mouse, joystick or gamepad.
-///    @param action The device action that was bound. The action is dependant upon the device. Specify a key for keyboards.
-///    @return Any scaling applied to the specified device and action.
-/// 	@tsexample
-/// 	%scale = %moveMap.getScale( \"gamepad\", \"thumbrx\");
-/// 	@endtsexample)
-/// 
-/// </summary>
-public  float getScale(string device, string action){
-return TorqueScriptTemplate.m_ts.fnActionMap_getScale(_mSimObjectId, device, action);
-}
-/// <summary>
-/// @brief Determines if the specified device and action is inverted.
-///    Should only be used for scrolling devices or gamepad/joystick axes.
-///    @param device The device that was bound. Can be a keyboard, mouse, joystick or a gamepad.
-///    @param action The device action that was bound.  The action is dependant upon the device. Specify a key for keyboards.
-///    @return True if the specified device and action is inverted.
-/// 	@tsexample
-///    %if ( moveMap.isInverted( \"mouse\", \"xaxis\"))
-///       echo(\"Mouse's xAxis is inverted\");
-/// 	@endtsexample)
-/// 
-/// </summary>
-public  bool isInverted(string device, string action){
-return TorqueScriptTemplate.m_ts.fnActionMap_isInverted(_mSimObjectId, device, action);
-}
-/// <summary>
-/// @brief Pop the ActionMap off the %ActionMap stack.
-///    Deactivates an %ActionMap and removes it from the @ActionMap stack.
-/// 	@tsexample
-/// 	// Deactivate moveMap
-/// 	moveMap.pop();
-/// 	@endtsexample
-///    @see ActionMap)
-/// 
-/// </summary>
-public  void pop(){
-TorqueScriptTemplate.m_ts.fnActionMap_pop(_mSimObjectId);
-}
-/// <summary>
-/// @brief Push the ActionMap onto the %ActionMap stack.
-///    Activates an ActionMap and placees it at the top of the ActionMap stack.
-/// 	@tsexample
-/// 	// Make moveMap the active action map
-/// 	moveMap.push();
-/// 	@endtsexample
-///    @see ActionMap)
-/// 
-/// </summary>
-public  void push(){
-TorqueScriptTemplate.m_ts.fnActionMap_push(_mSimObjectId);
-}
-/// <summary>
-/// @brief Saves the ActionMap to a file or dumps it to the console.
-///    @param fileName The file path to save the ActionMap to. If a filename is not specified 
-///     the ActionMap will be dumped to the console.
-///    @param append Whether to write the ActionMap at the end of the file or overwrite it.
-/// 	@tsexample
-/// 	// Write out the actionmap into the config.cs file
-///    moveMap.save( \"scripts/client/config.cs\" );
-/// 	@endtsexample)
-/// 
-/// </summary>
-public  void save(string fileName, bool append){
-TorqueScriptTemplate.m_ts.fnActionMap_save(_mSimObjectId, fileName, append);
-}
-/// <summary>
-/// @brief Removes the binding on an input device and action.
-///    @param device The device to unbind from. Can be a keyboard, mouse, joystick or a gamepad.
-///    @param action The device action to unbind from. The action is dependant upon the device. Specify a key for keyboards.
-///    @return True if the unbind was successful, false if the device was unknown or description failed.
-/// 	@tsexample
-/// 	moveMap.unbind(\"keyboard\", \"space\");
-/// 	@endtsexample)
-/// 
-/// </summary>
-public  bool unbind(string device, string action){
-return TorqueScriptTemplate.m_ts.fnActionMap_unbind(_mSimObjectId, device, action);
-}
-/// <summary>
-/// @brief Remove any object-binding on an input device and action.
-///    @param device The device to bind to.  Can be keyboard, mouse, joystick or gamepad.
-///    @param action The device action to unbind from. The action is dependant upon the device. Specify a key for keyboards.
-///    @param obj The object to perform unbind against.
-///    @return True if the unbind was successful, false if the device was unknown or description failed.
-/// 	@tsexample
-///    moveMap.unbindObj(\"keyboard\", \"numpad1\", \"rangeChange\", %player);
-///    @endtsexample)
-/// 
-/// </summary>
-public  bool unbindObj(string device, string action, string obj){
-return TorqueScriptTemplate.m_ts.fnActionMap_unbindObj(_mSimObjectId, device, action, obj);
-}
-}}
+
+        /// <summary>
+        /// ( ActionMap, bind, bool, 5, 10, actionMap.bind( device, action, [modifier spec, mod...], command ) 
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public bool bind(string a2, string a3, string a4, string a5 = "", string a6 = "", string a7 = "", string a8 = "", string a9 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_bind(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9);
+            }
+
+        /// <summary>
+        ///  ),
+        ///     @brief Associates a make command and optional break command to a specified input device action.
+        ///     Must include parenthesis and semicolon in the make and break command strings.
+        ///     @param device The device to bind to. Can be a keyboard, mouse, joystick or gamepad.
+        ///     @param action The device action to bind to. The action is dependant upon the device. Specify a key for keyboards.
+        ///     @param makeCmd The command to execute when the device/action is made.
+        ///     @param breakCmd [optional] The command to execute when the device or action is unmade.
+        ///     @return True the bind was successful, false if the device was unknown or description failed.
+        /// 	@tsexample
+        /// 	// Print to the console when the spacebar is pressed
+        /// 	function onSpaceDown()
+        /// 	{
+        /// 	   echo(\"Space bar down!\");
+        /// 	}
+        /// 	// Print to the console when the spacebar is released
+        /// 	function onSpaceUp()
+        /// 	{
+        /// 	   echo(\"Space bar up!\");
+        /// 	}
+        ///    // Bind the commands onSpaceDown() and onSpaceUp() to spacebar events
+        /// 	moveMap.bindCmd(keyboard, \"space\", \"onSpaceDown();\", \"onSpaceUp();\");
+        /// 	@endtsexample)
+        /// 
+        /// </summary>
+        public bool bindCmd(string device, string action, string makeCmd, string breakCmd)
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_bindCmd(_mSimObjectId, device, action, makeCmd, breakCmd);
+            }
+
+        /// <summary>
+        /// ( ActionMap, bindObj, bool, 6, 11, (device, action, [modifier spec, mod...], command, object)
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public bool bindObj(string a2, string a3, string a4, string a5, string a6 = "", string a7 = "", string a8 = "", string a9 = "", string a10 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_bindObj(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10);
+            }
+
+        /// <summary>
+        /// @brief Gets the ActionMap binding for the specified command.
+        ///    Use getField() on the return value to get the device and action of the binding.
+        ///    @param command The function to search bindings for.
+        ///    @return The binding against the specified command. Returns an empty string(\"\") 
+        ///    if a binding wasn't found.
+        /// 	@tsexample
+        /// 	// Find what the function \"jump()\" is bound to in moveMap
+        /// 	%bind = moveMap.getBinding( \"jump\" );
+        /// 	if ( %bind !$= \"\" )
+        /// 	{
+        /// 	// Find out what device is used in the binding
+        /// 		%device = getField( %bind, 0 );
+        /// 	// Find out what action (such as a key) is used in the binding
+        /// 		%action = getField( %bind, 1 );
+        /// 	}
+        /// 	@endtsexample
+        ///    @see getField)
+        /// 
+        /// </summary>
+        public string getBinding(string command)
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_getBinding(_mSimObjectId, command);
+            }
+
+        /// <summary>
+        /// @brief Gets ActionMap command for the device and action.
+        ///    @param device The device that was bound. Can be a keyboard, mouse, joystick or a gamepad.
+        ///    @param action The device action that was bound.  The action is dependant upon the device. Specify a key for keyboards.
+        ///    @return The command against the specified device and action.
+        /// 	@tsexample
+        /// 	// Find what function is bound to a device\'s action
+        /// 	// In this example, \"jump()\" was assigned to the space key in another script
+        /// 	%command = moveMap.getCommand(\"keyboard\", \"space\");
+        /// 	// Should print \"jump\" in the console
+        /// 	echo(%command)
+        /// 	@endtsexample)
+        /// 
+        /// </summary>
+        public string getCommand(string device, string action)
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_getCommand(_mSimObjectId, device, action);
+            }
+
+        /// <summary>
+        /// @brief Gets the Dead zone for the specified device and action.
+        ///    @param device The device that was bound.  Can be a keyboard, mouse, joystick or a gamepad.
+        ///    @param action The device action that was bound. The action is dependant upon the device. Specify a key for keyboards.
+        ///    @return The dead zone for the specified device and action. Returns \"0 0\" if there is no dead zone  
+        ///    or an empty string(\"\") if the mapping was not found.
+        /// 	@tsexample
+        /// 	%deadZone = moveMap.getDeadZone( \"gamepad\", \"thumbrx\");
+        /// 	@endtsexample)
+        /// 
+        /// </summary>
+        public string getDeadZone(string device, string action)
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_getDeadZone(_mSimObjectId, device, action);
+            }
+
+        /// <summary>
+        /// @brief Get any scaling on the specified device and action.
+        ///    @param device The device that was bound. Can be keyboard, mouse, joystick or gamepad.
+        ///    @param action The device action that was bound. The action is dependant upon the device. Specify a key for keyboards.
+        ///    @return Any scaling applied to the specified device and action.
+        /// 	@tsexample
+        /// 	%scale = %moveMap.getScale( \"gamepad\", \"thumbrx\");
+        /// 	@endtsexample)
+        /// 
+        /// </summary>
+        public float getScale(string device, string action)
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_getScale(_mSimObjectId, device, action);
+            }
+
+        /// <summary>
+        /// @brief Determines if the specified device and action is inverted.
+        ///    Should only be used for scrolling devices or gamepad/joystick axes.
+        ///    @param device The device that was bound. Can be a keyboard, mouse, joystick or a gamepad.
+        ///    @param action The device action that was bound.  The action is dependant upon the device. Specify a key for keyboards.
+        ///    @return True if the specified device and action is inverted.
+        /// 	@tsexample
+        ///    %if ( moveMap.isInverted( \"mouse\", \"xaxis\"))
+        ///       echo(\"Mouse's xAxis is inverted\");
+        /// 	@endtsexample)
+        /// 
+        /// </summary>
+        public bool isInverted(string device, string action)
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_isInverted(_mSimObjectId, device, action);
+            }
+
+        /// <summary>
+        /// @brief Pop the ActionMap off the %ActionMap stack.
+        ///    Deactivates an %ActionMap and removes it from the @ActionMap stack.
+        /// 	@tsexample
+        /// 	// Deactivate moveMap
+        /// 	moveMap.pop();
+        /// 	@endtsexample
+        ///    @see ActionMap)
+        /// 
+        /// </summary>
+        public void pop()
+            {
+            TorqueScriptTemplate.m_ts.fnActionMap_pop(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Push the ActionMap onto the %ActionMap stack.
+        ///    Activates an ActionMap and placees it at the top of the ActionMap stack.
+        /// 	@tsexample
+        /// 	// Make moveMap the active action map
+        /// 	moveMap.push();
+        /// 	@endtsexample
+        ///    @see ActionMap)
+        /// 
+        /// </summary>
+        public void push()
+            {
+            TorqueScriptTemplate.m_ts.fnActionMap_push(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Saves the ActionMap to a file or dumps it to the console.
+        ///    @param fileName The file path to save the ActionMap to. If a filename is not specified 
+        ///     the ActionMap will be dumped to the console.
+        ///    @param append Whether to write the ActionMap at the end of the file or overwrite it.
+        /// 	@tsexample
+        /// 	// Write out the actionmap into the config.cs file
+        ///    moveMap.save( \"scripts/client/config.cs\" );
+        /// 	@endtsexample)
+        /// 
+        /// </summary>
+        public void save(string fileName, bool append)
+            {
+            TorqueScriptTemplate.m_ts.fnActionMap_save(_mSimObjectId, fileName, append);
+            }
+
+        /// <summary>
+        /// @brief Removes the binding on an input device and action.
+        ///    @param device The device to unbind from. Can be a keyboard, mouse, joystick or a gamepad.
+        ///    @param action The device action to unbind from. The action is dependant upon the device. Specify a key for keyboards.
+        ///    @return True if the unbind was successful, false if the device was unknown or description failed.
+        /// 	@tsexample
+        /// 	moveMap.unbind(\"keyboard\", \"space\");
+        /// 	@endtsexample)
+        /// 
+        /// </summary>
+        public bool unbind(string device, string action)
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_unbind(_mSimObjectId, device, action);
+            }
+
+        /// <summary>
+        /// @brief Remove any object-binding on an input device and action.
+        ///    @param device The device to bind to.  Can be keyboard, mouse, joystick or gamepad.
+        ///    @param action The device action to unbind from. The action is dependant upon the device. Specify a key for keyboards.
+        ///    @param obj The object to perform unbind against.
+        ///    @return True if the unbind was successful, false if the device was unknown or description failed.
+        /// 	@tsexample
+        ///    moveMap.unbindObj(\"keyboard\", \"numpad1\", \"rangeChange\", %player);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public bool unbindObj(string device, string action, string obj)
+            {
+            return TorqueScriptTemplate.m_ts.fnActionMap_unbindObj(_mSimObjectId, device, action, obj);
+            }
+        }
+    }

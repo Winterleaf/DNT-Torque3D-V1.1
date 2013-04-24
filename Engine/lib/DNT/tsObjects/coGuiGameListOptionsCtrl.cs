@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiGameListOptionsCtrl))]
-    public class coGuiGameListOptionsCtrl: coGuiGameListMenuCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiGameListOptionsCtrl))]
+    public class coGuiGameListOptionsCtrl : coGuiGameListMenuCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListOptionsCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiGameListOptionsCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListOptionsCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiGameListOptionsCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListOptionsCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiGameListOptionsCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coGuiGameListOptionsCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coGuiGameListOptionsCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coGuiGameListOptionsCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiGameListOptionsCtrl ts)
+        public static implicit operator string(coGuiGameListOptionsCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coGuiGameListOptionsCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiGameListOptionsCtrl ts)
+        public static implicit operator int(coGuiGameListOptionsCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coGuiGameListOptionsCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiGameListOptionsCtrl ts)
+        public static implicit operator uint(coGuiGameListOptionsCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,46 +231,55 @@ public coGuiGameListOptionsCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiGameListOptionsCtrl(ts);
             }
-/// <summary>
-/// Add a row to the list control.
-///    @param label The text to display on the row as a label.
-///    @param options A tab separated list of options.
-///    @param wrapOptions Specify true to allow options to wrap at each end or false to prevent wrapping.
-///    @param callback Name of a script function to use as a callback when this row is activated.
-///    @param icon [optional] Index of the icon to use as a marker.
-///    @param yPad [optional] An extra amount of height padding before the row. Does nothing on the first row.
-///    @param enabled [optional] If this row is initially enabled. )
-/// 
-/// </summary>
-public  void addRow(string label, string options, bool wrapOptions, string callback, int icon, int yPad, bool enabled){
-TorqueScriptTemplate.m_ts.fnGuiGameListOptionsCtrl_addRow(_mSimObjectId, label, options, wrapOptions, callback, icon, yPad, enabled);
-}
-/// <summary>
-/// Gets the text for the currently selected option of the given row.
-///    @param row Index of the row to get the option from.
-///    @return A string representing the text currently displayed as the selected option on the given row. If there is no such displayed text then the empty string is returned. )
-/// 
-/// </summary>
-public  string getCurrentOption(int row){
-return TorqueScriptTemplate.m_ts.fnGuiGameListOptionsCtrl_getCurrentOption(_mSimObjectId, row);
-}
-/// <summary>
-/// Set the row's current option to the one specified
-///    @param row Index of the row to set an option on.
-///    @param option The option to be made active.
-///    @return True if the row contained the option and was set, false otherwise. )
-/// 
-/// </summary>
-public  bool selectOption(int row, string option){
-return TorqueScriptTemplate.m_ts.fnGuiGameListOptionsCtrl_selectOption(_mSimObjectId, row, option);
-}
-/// <summary>
-/// Sets the list of options on the given row.
-///    @param row Index of the row to set options on.
-///    @param optionsList A tab separated list of options for the control. )
-/// 
-/// </summary>
-public  void setOptions(int row, string optionsList){
-TorqueScriptTemplate.m_ts.fnGuiGameListOptionsCtrl_setOptions(_mSimObjectId, row, optionsList);
-}
-}}
+
+        /// <summary>
+        /// Add a row to the list control.
+        ///    @param label The text to display on the row as a label.
+        ///    @param options A tab separated list of options.
+        ///    @param wrapOptions Specify true to allow options to wrap at each end or false to prevent wrapping.
+        ///    @param callback Name of a script function to use as a callback when this row is activated.
+        ///    @param icon [optional] Index of the icon to use as a marker.
+        ///    @param yPad [optional] An extra amount of height padding before the row. Does nothing on the first row.
+        ///    @param enabled [optional] If this row is initially enabled. )
+        /// 
+        /// </summary>
+        public void addRow(string label, string options, bool wrapOptions, string callback, int icon, int yPad, bool enabled)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiGameListOptionsCtrl_addRow(_mSimObjectId, label, options, wrapOptions, callback, icon, yPad, enabled);
+            }
+
+        /// <summary>
+        /// Gets the text for the currently selected option of the given row.
+        ///    @param row Index of the row to get the option from.
+        ///    @return A string representing the text currently displayed as the selected option on the given row. If there is no such displayed text then the empty string is returned. )
+        /// 
+        /// </summary>
+        public string getCurrentOption(int row)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiGameListOptionsCtrl_getCurrentOption(_mSimObjectId, row);
+            }
+
+        /// <summary>
+        /// Set the row's current option to the one specified
+        ///    @param row Index of the row to set an option on.
+        ///    @param option The option to be made active.
+        ///    @return True if the row contained the option and was set, false otherwise. )
+        /// 
+        /// </summary>
+        public bool selectOption(int row, string option)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiGameListOptionsCtrl_selectOption(_mSimObjectId, row, option);
+            }
+
+        /// <summary>
+        /// Sets the list of options on the given row.
+        ///    @param row Index of the row to set options on.
+        ///    @param optionsList A tab separated list of options for the control. )
+        /// 
+        /// </summary>
+        public void setOptions(int row, string optionsList)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiGameListOptionsCtrl_setOptions(_mSimObjectId, row, optionsList);
+            }
+        }
+    }

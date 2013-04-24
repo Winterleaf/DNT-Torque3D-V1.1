@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,226 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoFlyingVehicleData))]
-    public class coFlyingVehicleData: coVehicleData
-{
+    [TypeConverter(typeof (tsObjectConvertercoFlyingVehicleData))]
+    public class coFlyingVehicleData : coVehicleData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFlyingVehicleData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coFlyingVehicleData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coFlyingVehicleData(int simobjectid): base(simobjectid){ }
+        public coFlyingVehicleData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coFlyingVehicleData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coFlyingVehicleData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// @brief Corrective torque applied to level out the vehicle when moving at less    than maxAutoSpeed.\n\n   The torque is inversely proportional to vehicle speed. 
+        /// </summary>
+        public float autoAngularForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoAngularForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoAngularForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Scale factor applied to steering input if speed is less than    maxAutoSpeed to.improve handling at very low speeds.\n\n   Smaller values make steering less sensitive. 
+        /// </summary>
+        public float autoInputDamping
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoInputDamping").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoInputDamping", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Corrective force applied to slow the vehicle when moving at less than    maxAutoSpeed.\n\n   The force is inversely proportional to vehicle speed. 
+        /// </summary>
+        public float autoLinearForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoLinearForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoLinearForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Emitter to generate particles for backward jet thrust.\n\n   Backward jet thrust particles are emitted from model nodes JetNozzleX    and JetNozzleY. 
+        /// </summary>
+        public coParticleEmitterData backwardJetEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".backwardJetEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".backwardJetEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief The vehicle's height off the ground when useCreateHeight is active.\n\n   This can help avoid problems with spawning the vehicle. 
+        /// </summary>
+        public float createHoverHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".createHoverHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".createHoverHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Emitter to generate particles for downward jet thrust.\n\n   Downward jet thrust particles are emitted from model nodes JetNozzle2    and JetNozzle3. 
+        /// </summary>
+        public coParticleEmitterData downJetEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".downJetEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".downJetEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Looping engine sound. 
+        /// </summary>
+        public coSFXProfile engineSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".engineSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".engineSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Emitter to generate particles for forward jet thrust.\n\n   Forward jet thrust particles are emitted from model nodes JetNozzle0    and JetNozzle1. 
+        /// </summary>
+        public coParticleEmitterData forwardJetEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".forwardJetEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".forwardJetEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Damping force in the opposite direction to sideways velocity.\n\n   Provides \bite\ into the wind for climbing/diving and turning). 
+        /// </summary>
+        public float horizontalSurfaceForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".horizontalSurfaceForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".horizontalSurfaceForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The vehicle's height off the ground when at rest. 
+        /// </summary>
+        public float hoverHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hoverHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hoverHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Looping sound to play while the vehicle is jetting. 
+        /// </summary>
+        public coSFXProfile jetSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum X and Y (horizontal plane) maneuvering force.\n\n   The actual force applied depends on the current thrust. 
+        /// </summary>
+        public float maneuveringForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maneuveringForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maneuveringForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum speed for automatic vehicle control assistance - vehicles    travelling at speeds above this value do not get control assitance. 
+        /// </summary>
+        public float maxAutoSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxAutoSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxAutoSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum speed at which to start generating contrail particles. 
+        /// </summary>
+        public float minTrailSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minTrailSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minTrailSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Damping torque against rolling maneuvers (rotation about the y-axis),    proportional to linear velocity.\n\n   Acts to adjust roll to a stable position over time as the vehicle moves. 
+        /// </summary>
+        public float rollForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rollForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rollForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Rotational drag factor (slows vehicle rotation speed in all axes). 
+        /// </summary>
+        public float rotationalDrag
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotationalDrag").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotationalDrag", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum X and Z (sideways and vertical) steering force.\n\n   The actual force applied depends on the current steering input. 
+        /// </summary>
+        public float steeringForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".steeringForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".steeringForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Roll force induced by sideways steering input value (controls how much    the vehicle rolls when turning). 
+        /// </summary>
+        public float steeringRollForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".steeringRollForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".steeringRollForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Emitter to generate contrail particles from model nodes contrail0 - contrail3. 
+        /// </summary>
+        public coParticleEmitterData trailEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".trailEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".trailEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Damping force in the opposite direction to vertical velocity.\n\n   Controls side slip; lower numbers give more slide. 
+        /// </summary>
+        public float verticalSurfaceForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".verticalSurfaceForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".verticalSurfaceForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Multiplier applied to the jetForce (defined in VehicleData) when thrusting vertically. 
+        /// </summary>
+        public float vertThrustMultiple
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".vertThrustMultiple").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".vertThrustMultiple", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +324,9 @@ public coFlyingVehicleData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +334,17 @@ public coFlyingVehicleData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +356,15 @@ public coFlyingVehicleData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coFlyingVehicleData ts)
+        public static implicit operator string(coFlyingVehicleData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +384,7 @@ public coFlyingVehicleData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coFlyingVehicleData ts)
+        public static implicit operator int(coFlyingVehicleData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +405,7 @@ public coFlyingVehicleData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coFlyingVehicleData ts)
+        public static implicit operator uint(coFlyingVehicleData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,235 +420,5 @@ public coFlyingVehicleData(int simobjectid): base(simobjectid){ }
             {
             return new coFlyingVehicleData(ts);
             }
-public float autoAngularForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoAngularForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoAngularForce", value.AsString());
-          }
-       }
-public float autoInputDamping
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoInputDamping").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoInputDamping", value.AsString());
-          }
-       }
-public float autoLinearForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoLinearForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoLinearForce", value.AsString());
-          }
-       }
-public coParticleEmitterData backwardJetEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".backwardJetEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".backwardJetEmitter", value.ToString());
-          }
-       }
-public float createHoverHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".createHoverHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".createHoverHeight", value.AsString());
-          }
-       }
-public coParticleEmitterData downJetEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".downJetEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".downJetEmitter", value.ToString());
-          }
-       }
-public coSFXProfile engineSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".engineSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".engineSound", value.ToString());
-          }
-       }
-public coParticleEmitterData forwardJetEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".forwardJetEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".forwardJetEmitter", value.ToString());
-          }
-       }
-public float horizontalSurfaceForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".horizontalSurfaceForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".horizontalSurfaceForce", value.AsString());
-          }
-       }
-public float hoverHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hoverHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hoverHeight", value.AsString());
-          }
-       }
-public coSFXProfile jetSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetSound", value.ToString());
-          }
-       }
-public float maneuveringForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maneuveringForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maneuveringForce", value.AsString());
-          }
-       }
-public float maxAutoSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxAutoSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxAutoSpeed", value.AsString());
-          }
-       }
-public float minTrailSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minTrailSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minTrailSpeed", value.AsString());
-          }
-       }
-public float rollForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rollForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rollForce", value.AsString());
-          }
-       }
-public float rotationalDrag
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotationalDrag").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotationalDrag", value.AsString());
-          }
-       }
-public float steeringForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".steeringForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".steeringForce", value.AsString());
-          }
-       }
-public float steeringRollForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".steeringRollForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".steeringRollForce", value.AsString());
-          }
-       }
-public coParticleEmitterData trailEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".trailEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".trailEmitter", value.ToString());
-          }
-       }
-public float verticalSurfaceForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".verticalSurfaceForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".verticalSurfaceForce", value.AsString());
-          }
-       }
-public float vertThrustMultiple
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".vertThrustMultiple").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".vertThrustMultiple", value.AsString());
-          }
-       }
-}}
+        }
+    }

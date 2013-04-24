@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,63 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoMissionArea))]
-    public class coMissionArea: coNetObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoMissionArea))]
+    public class coMissionArea : coNetObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMissionArea(string simobjectid) : base(simobjectid){ }
+        public coMissionArea(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMissionArea(uint simobjectid): base(simobjectid){ }
+        public coMissionArea(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMissionArea(int simobjectid): base(simobjectid){ }
+        public coMissionArea(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Four corners (X1, X2, Y1, Y2) that makes up the level's boundaries
+        /// </summary>
+        public RectI area
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".area").AsRectI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".area", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Represents the top of the mission area, used by FlyingVehicle. 
+        /// </summary>
+        public float flightCeiling
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flightCeiling").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flightCeiling", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Distance from ceiling before FlyingVehicle thrust is cut off. 
+        /// </summary>
+        public float flightCeilingRange
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flightCeilingRange").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flightCeilingRange", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +163,9 @@ public coMissionArea(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +173,17 @@ public coMissionArea(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +195,15 @@ public coMissionArea(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coMissionArea ts)
+        public static implicit operator string(coMissionArea ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +223,7 @@ public coMissionArea(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coMissionArea ts)
+        public static implicit operator int(coMissionArea ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +244,7 @@ public coMissionArea(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coMissionArea ts)
+        public static implicit operator uint(coMissionArea ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,67 +259,41 @@ public coMissionArea(int simobjectid): base(simobjectid){ }
             {
             return new coMissionArea(ts);
             }
-public RectI area
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".area").AsRectI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".area", value.AsString());
-          }
-       }
-public float flightCeiling
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flightCeiling").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flightCeiling", value.AsString());
-          }
-       }
-public float flightCeilingRange
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flightCeilingRange").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flightCeilingRange", value.AsString());
-          }
-       }
-/// <summary>
-/// Returns 4 fields: starting x, starting y, extents x, extents y.)
-/// 
-/// </summary>
-public  string getArea(){
-return TorqueScriptTemplate.m_ts.fnMissionArea_getArea(_mSimObjectId);
-}
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Force trigger an inspectPostApply. This will transmit 
-///                    material and other fields ( not including nodes ) to client objects.
-///                    )
-/// 
-/// </summary>
-public  void postApply(){
-TorqueScriptTemplate.m_ts.fnMissionArea_postApply(_mSimObjectId);
-}
-/// <summary>
-/// @brief - Defines the size of the MissionArea
-/// 			  param x Starting X coordinate position for MissionArea
-/// 			  param y Starting Y coordinate position for MissionArea
-/// 			  param width New width of the MissionArea
-/// 			  param height New height of the MissionArea
-///            @note Only the server object may be set.
-/// 			  )
-/// 
-/// </summary>
-public  void setArea(int x, int y, int width, int height){
-TorqueScriptTemplate.m_ts.fnMissionArea_setArea(_mSimObjectId, x, y, width, height);
-}
-}}
+
+        /// <summary>
+        /// Returns 4 fields: starting x, starting y, extents x, extents y.)
+        /// 
+        /// </summary>
+        public string getArea()
+            {
+            return TorqueScriptTemplate.m_ts.fnMissionArea_getArea(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Force trigger an inspectPostApply. This will transmit 
+        ///                    material and other fields ( not including nodes ) to client objects.
+        ///                    )
+        /// 
+        /// </summary>
+        public void postApply()
+            {
+            TorqueScriptTemplate.m_ts.fnMissionArea_postApply(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief - Defines the size of the MissionArea
+        /// 			  param x Starting X coordinate position for MissionArea
+        /// 			  param y Starting Y coordinate position for MissionArea
+        /// 			  param width New width of the MissionArea
+        /// 			  param height New height of the MissionArea
+        ///            @note Only the server object may be set.
+        /// 			  )
+        /// 
+        /// </summary>
+        public void setArea(int x, int y, int width, int height)
+            {
+            TorqueScriptTemplate.m_ts.fnMissionArea_setArea(_mSimObjectId, x, y, width, height);
+            }
+        }
+    }

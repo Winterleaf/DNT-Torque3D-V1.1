@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +94,90 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiGradientCtrl))]
-    public class coGuiGradientCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiGradientCtrl))]
+    public class coGuiGradientCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGradientCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiGradientCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGradientCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiGradientCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGradientCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiGradientCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool actionOnMove
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".actionOnMove").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".actionOnMove", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorF baseColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public GuiGradientCtrl__PickMode displayMode
+            {
+            get { return (GuiGradientCtrl__PickMode) Enum.Parse(typeof (GuiGradientCtrl__PickMode), dnTorque.self.GetVar(_mSimObjectId + ".displayMode")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".displayMode", value.ToString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorF pickColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pickColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pickColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool showReticle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showReticle").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showReticle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int swatchFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".swatchFactor").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".swatchFactor", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +191,9 @@ public coGuiGradientCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +201,17 @@ public coGuiGradientCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +223,15 @@ public coGuiGradientCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiGradientCtrl ts)
+        public static implicit operator string(coGuiGradientCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +251,7 @@ public coGuiGradientCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiGradientCtrl ts)
+        public static implicit operator int(coGuiGradientCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +272,7 @@ public coGuiGradientCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiGradientCtrl ts)
+        public static implicit operator uint(coGuiGradientCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,83 +287,23 @@ public coGuiGradientCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiGradientCtrl(ts);
             }
-public bool actionOnMove
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".actionOnMove").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".actionOnMove", value.AsString());
-          }
-       }
-public ColorF baseColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString());
-          }
-       }
-public GuiGradientCtrl__PickMode displayMode
-       {
-       get
-          {          return (GuiGradientCtrl__PickMode)Enum.Parse(typeof(GuiGradientCtrl__PickMode), dnTorque.self.GetVar(_mSimObjectId + ".displayMode"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".displayMode", value.ToString());
-          }
-       }
-public ColorF pickColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pickColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pickColor", value.AsString());
-          }
-       }
-public bool showReticle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showReticle").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showReticle", value.AsString());
-          }
-       }
-public int swatchFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".swatchFactor").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".swatchFactor", value.AsString());
-          }
-       }
-/// <summary>
-/// (GuiGradientCtrl, getColor, const char*, 3, 3, Get color value)
-/// 
-/// </summary>
-public  string getColor(string a2){
-return TorqueScriptTemplate.m_ts.fnGuiGradientCtrl_getColor(_mSimObjectId, a2);
-}
-/// <summary>
-/// (GuiGradientCtrl, getColorCount, S32, 2, 2, Get color count)
-/// 
-/// </summary>
-public  int getColorCount(){
-return TorqueScriptTemplate.m_ts.fnGuiGradientCtrl_getColorCount(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// (GuiGradientCtrl, getColor, const char*, 3, 3, Get color value)
+        /// 
+        /// </summary>
+        public string getColor(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiGradientCtrl_getColor(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (GuiGradientCtrl, getColorCount, S32, 2, 2, Get color count)
+        /// 
+        /// </summary>
+        public int getColorCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiGradientCtrl_getColorCount(_mSimObjectId);
+            }
+        }
+    }

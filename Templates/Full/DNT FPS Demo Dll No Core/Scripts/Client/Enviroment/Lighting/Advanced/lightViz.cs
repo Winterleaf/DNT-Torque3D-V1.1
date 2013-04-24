@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -234,7 +234,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             {
             if (enabled == "")
                 {
-                console.SetVar("$AL_DepthVisualizeVar", ((coPostEffect)"AL_DepthVisualize").GetEnabled());
+                console.SetVar("$AL_DepthVisualizeVar", ((coPostEffect) "AL_DepthVisualize").GetEnabled());
                 console.Call("AL_DepthVisualize", "toggle");
                 }
             else if (enabled.AsBool())

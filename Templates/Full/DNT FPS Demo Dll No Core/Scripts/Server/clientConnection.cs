@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -116,8 +116,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             AddToServerGuidList(client["guid"]);
             // Set admin status
-
-            if (NetConnection.getAddress(client) == "local")
+            if (client.getAddress() == "local")
                 {
                 client["isAdmin"] = true.AsString();
                 client["isSuperAdmin"] = true.AsString();
@@ -138,7 +137,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             client["team"] = "";
             client["score"] = "0";
 
-            console.print("CADD: " + client + " " + NetConnection.getAddress(client));
+            console.print("CADD: " + client + " " + client.getAddress());
 
 
             // If the mission is running, go ahead download it to the client
@@ -214,7 +213,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             console.removeTaggedString(client["playerName"]);
 
-            console.print(string.Format("CDROP: {0} {1}", client, NetConnection.getAddress(client)));
+            console.print(string.Format("CDROP: {0} {1}", client, client.getAddress()));
 
 
             Server__PlayerCount--;

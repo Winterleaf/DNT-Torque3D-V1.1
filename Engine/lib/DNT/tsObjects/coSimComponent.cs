@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSimComponent))]
-    public class coSimComponent: coNetObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoSimComponent))]
+    public class coSimComponent : coNetObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSimComponent(string simobjectid) : base(simobjectid){ }
+        public coSimComponent(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSimComponent(uint simobjectid): base(simobjectid){ }
+        public coSimComponent(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSimComponent(int simobjectid): base(simobjectid){ }
+        public coSimComponent(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Places the object in a component set for later use in new levels. 
+        /// </summary>
+        public bool Template
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".Template").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".Template", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coSimComponent(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coSimComponent(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coSimComponent(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSimComponent ts)
+        public static implicit operator string(coSimComponent ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coSimComponent(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSimComponent ts)
+        public static implicit operator int(coSimComponent ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coSimComponent(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSimComponent ts)
+        public static implicit operator uint(coSimComponent ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,86 +240,92 @@ public coSimComponent(int simobjectid): base(simobjectid){ }
             {
             return new coSimComponent(ts);
             }
-public bool Template
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".Template").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".Template", value.AsString());
-          }
-       }
-/// <summary>
-/// ( SimComponent, addComponents, bool, 3, 64, %obj.addComponents( %compObjName, %compObjName2, ... );
-/// 			  Adds additional components to current list.
-/// 			  @param Up to 62 component names
-/// 			  @return Returns true on success, false otherwise.)
-/// 
-/// </summary>
-public  bool addComponents(string a2, string a3= "", string a4= "", string a5= "", string a6= "", string a7= "", string a8= "", string a9= "", string a10= "", string a11= "", string a12= "", string a13= "", string a14= "", string a15= "", string a16= "", string a17= "", string a18= "", string a19= "", string a20= "", string a21= "", string a22= "", string a23= "", string a24= "", string a25= "", string a26= "", string a27= "", string a28= "", string a29= "", string a30= "", string a31= "", string a32= "", string a33= "", string a34= "", string a35= "", string a36= "", string a37= "", string a38= "", string a39= "", string a40= "", string a41= "", string a42= "", string a43= "", string a44= "", string a45= "", string a46= "", string a47= "", string a48= "", string a49= "", string a50= "", string a51= "", string a52= "", string a53= "", string a54= "", string a55= "", string a56= "", string a57= "", string a58= "", string a59= "", string a60= "", string a61= "", string a62= "", string a63= ""){
-return TorqueScriptTemplate.m_ts.fnSimComponent_addComponents(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63);
-}
-/// <summary>
-/// ( SimComponent, getComponent, S32, 3, 3, (idx) Get the component corresponding to the given index.
-/// 			  @param idx An integer index value corresponding to the desired component.
-/// 			  @return The id of the component at the given index as an integer)
-/// 
-/// </summary>
-public  int getComponent(string a2){
-return TorqueScriptTemplate.m_ts.fnSimComponent_getComponent(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( SimComponent, getComponentCount, S32, 2, 2, () Get the current component count
-/// 			  @return The number of components in the list as an integer)
-/// 
-/// </summary>
-public  int getComponentCount(){
-return TorqueScriptTemplate.m_ts.fnSimComponent_getComponentCount(_mSimObjectId);
-}
-/// <summary>
-/// (SimComponent, getIsTemplate, bool, 2, 2, () Check whether SimComponent is currently a template
-/// 			  @return true if is a template and false if not)
-/// 
-/// </summary>
-public  bool getIsTemplate(){
-return TorqueScriptTemplate.m_ts.fnSimComponent_getIsTemplate(_mSimObjectId);
-}
-/// <summary>
-/// (SimComponent, isEnabled, bool, 2, 2, () Check whether SimComponent is currently enabled
-/// 			  @return true if enabled and false if not)
-/// 
-/// </summary>
-public  bool isEnabled(){
-return TorqueScriptTemplate.m_ts.fnSimComponent_isEnabled(_mSimObjectId);
-}
-/// <summary>
-/// ( SimComponent, removeComponents, bool, 3, 64, %obj.removeComponents( %compObjName, %compObjName2, ... );
-/// 			  Removes components by name from current list.
-/// 			  @param objNamex Up to 62 component names
-/// 			  @return Returns true on success, false otherwise.)
-/// 
-/// </summary>
-public  bool removeComponents(string a2, string a3= "", string a4= "", string a5= "", string a6= "", string a7= "", string a8= "", string a9= "", string a10= "", string a11= "", string a12= "", string a13= "", string a14= "", string a15= "", string a16= "", string a17= "", string a18= "", string a19= "", string a20= "", string a21= "", string a22= "", string a23= "", string a24= "", string a25= "", string a26= "", string a27= "", string a28= "", string a29= "", string a30= "", string a31= "", string a32= "", string a33= "", string a34= "", string a35= "", string a36= "", string a37= "", string a38= "", string a39= "", string a40= "", string a41= "", string a42= "", string a43= "", string a44= "", string a45= "", string a46= "", string a47= "", string a48= "", string a49= "", string a50= "", string a51= "", string a52= "", string a53= "", string a54= "", string a55= "", string a56= "", string a57= "", string a58= "", string a59= "", string a60= "", string a61= "", string a62= "", string a63= ""){
-return TorqueScriptTemplate.m_ts.fnSimComponent_removeComponents(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63);
-}
-/// <summary>
-/// (SimComponent, setEnabled, void, 3, 3, (enabled) Sets or unsets the enabled flag
-/// 			  @param enabled Boolean value
-/// 			  @return No return value)
-/// 
-/// </summary>
-public  void setEnabled(string a2){
-TorqueScriptTemplate.m_ts.fnSimComponent_setEnabled(_mSimObjectId, a2);
-}
-/// <summary>
-/// (SimComponent, setIsTemplate, void, 3, 3, (template) Sets or unsets the template flag
-/// 			  @param template Boolean value
-/// 			  @return No return value)
-/// 
-/// </summary>
-public  void setIsTemplate(string a2){
-TorqueScriptTemplate.m_ts.fnSimComponent_setIsTemplate(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// ( SimComponent, addComponents, bool, 3, 64, %obj.addComponents( %compObjName, %compObjName2, ... );
+        /// 			  Adds additional components to current list.
+        /// 			  @param Up to 62 component names
+        /// 			  @return Returns true on success, false otherwise.)
+        /// 
+        /// </summary>
+        public bool addComponents(string a2, string a3 = "", string a4 = "", string a5 = "", string a6 = "", string a7 = "", string a8 = "", string a9 = "", string a10 = "", string a11 = "", string a12 = "", string a13 = "", string a14 = "", string a15 = "", string a16 = "", string a17 = "", string a18 = "", string a19 = "", string a20 = "", string a21 = "", string a22 = "", string a23 = "", string a24 = "", string a25 = "", string a26 = "", string a27 = "", string a28 = "", string a29 = "", string a30 = "", string a31 = "", string a32 = "", string a33 = "", string a34 = "", string a35 = "", string a36 = "", string a37 = "", string a38 = "", string a39 = "", string a40 = "", string a41 = "", string a42 = "", string a43 = "", string a44 = "", string a45 = "", string a46 = "", string a47 = "", string a48 = "", string a49 = "", string a50 = "", string a51 = "", string a52 = "", string a53 = "", string a54 = "", string a55 = "", string a56 = "", string a57 = "", string a58 = "", string a59 = "", string a60 = "", string a61 = "", string a62 = "", string a63 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnSimComponent_addComponents(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63);
+            }
+
+        /// <summary>
+        /// ( SimComponent, getComponent, S32, 3, 3, (idx) Get the component corresponding to the given index.
+        /// 			  @param idx An integer index value corresponding to the desired component.
+        /// 			  @return The id of the component at the given index as an integer)
+        /// 
+        /// </summary>
+        public int getComponent(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnSimComponent_getComponent(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( SimComponent, getComponentCount, S32, 2, 2, () Get the current component count
+        /// 			  @return The number of components in the list as an integer)
+        /// 
+        /// </summary>
+        public int getComponentCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnSimComponent_getComponentCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (SimComponent, getIsTemplate, bool, 2, 2, () Check whether SimComponent is currently a template
+        /// 			  @return true if is a template and false if not)
+        /// 
+        /// </summary>
+        public bool getIsTemplate()
+            {
+            return TorqueScriptTemplate.m_ts.fnSimComponent_getIsTemplate(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (SimComponent, isEnabled, bool, 2, 2, () Check whether SimComponent is currently enabled
+        /// 			  @return true if enabled and false if not)
+        /// 
+        /// </summary>
+        public bool isEnabled()
+            {
+            return TorqueScriptTemplate.m_ts.fnSimComponent_isEnabled(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( SimComponent, removeComponents, bool, 3, 64, %obj.removeComponents( %compObjName, %compObjName2, ... );
+        /// 			  Removes components by name from current list.
+        /// 			  @param objNamex Up to 62 component names
+        /// 			  @return Returns true on success, false otherwise.)
+        /// 
+        /// </summary>
+        public bool removeComponents(string a2, string a3 = "", string a4 = "", string a5 = "", string a6 = "", string a7 = "", string a8 = "", string a9 = "", string a10 = "", string a11 = "", string a12 = "", string a13 = "", string a14 = "", string a15 = "", string a16 = "", string a17 = "", string a18 = "", string a19 = "", string a20 = "", string a21 = "", string a22 = "", string a23 = "", string a24 = "", string a25 = "", string a26 = "", string a27 = "", string a28 = "", string a29 = "", string a30 = "", string a31 = "", string a32 = "", string a33 = "", string a34 = "", string a35 = "", string a36 = "", string a37 = "", string a38 = "", string a39 = "", string a40 = "", string a41 = "", string a42 = "", string a43 = "", string a44 = "", string a45 = "", string a46 = "", string a47 = "", string a48 = "", string a49 = "", string a50 = "", string a51 = "", string a52 = "", string a53 = "", string a54 = "", string a55 = "", string a56 = "", string a57 = "", string a58 = "", string a59 = "", string a60 = "", string a61 = "", string a62 = "", string a63 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnSimComponent_removeComponents(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63);
+            }
+
+        /// <summary>
+        /// (SimComponent, setEnabled, void, 3, 3, (enabled) Sets or unsets the enabled flag
+        /// 			  @param enabled Boolean value
+        /// 			  @return No return value)
+        /// 
+        /// </summary>
+        public void setEnabled(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnSimComponent_setEnabled(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (SimComponent, setIsTemplate, void, 3, 3, (template) Sets or unsets the template flag
+        /// 			  @param template Boolean value
+        /// 			  @return No return value)
+        /// 
+        /// </summary>
+        public void setIsTemplate(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnSimComponent_setIsTemplate(_mSimObjectId, a2);
+            }
+        }
+    }

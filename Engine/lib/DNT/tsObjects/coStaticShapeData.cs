@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoStaticShapeData))]
-    public class coStaticShapeData: coShapeBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoStaticShapeData))]
+    public class coStaticShapeData : coShapeBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coStaticShapeData(string simobjectid) : base(simobjectid){ }
+        public coStaticShapeData(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coStaticShapeData(uint simobjectid): base(simobjectid){ }
+        public coStaticShapeData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coStaticShapeData(int simobjectid): base(simobjectid){ }
+        public coStaticShapeData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief An integer value which, if speficied, is added to the value retured by getType().\n\n   This allows you to extend the type mask for a StaticShape that uses this datablock. Type masks    are used for container queries, etc.
+        /// </summary>
+        public int dynamicType
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicType").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicType", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Deprecated\n\n @internal
+        /// </summary>
+        public bool noIndividualDamage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".noIndividualDamage").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".noIndividualDamage", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coStaticShapeData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coStaticShapeData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coStaticShapeData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coStaticShapeData ts)
+        public static implicit operator string(coStaticShapeData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coStaticShapeData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coStaticShapeData ts)
+        public static implicit operator int(coStaticShapeData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coStaticShapeData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coStaticShapeData ts)
+        public static implicit operator uint(coStaticShapeData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,26 +249,5 @@ public coStaticShapeData(int simobjectid): base(simobjectid){ }
             {
             return new coStaticShapeData(ts);
             }
-public int dynamicType
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicType").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicType", value.AsString());
-          }
-       }
-public bool noIndividualDamage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".noIndividualDamage").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".noIndividualDamage", value.AsString());
-          }
-       }
-}}
+        }
+    }

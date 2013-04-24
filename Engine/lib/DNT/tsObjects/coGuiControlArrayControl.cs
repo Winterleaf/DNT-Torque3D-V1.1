@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiControlArrayControl))]
-    public class coGuiControlArrayControl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiControlArrayControl))]
+    public class coGuiControlArrayControl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiControlArrayControl(string simobjectid) : base(simobjectid){ }
+        public coGuiControlArrayControl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiControlArrayControl(uint simobjectid): base(simobjectid){ }
+        public coGuiControlArrayControl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiControlArrayControl(int simobjectid): base(simobjectid){ }
+        public coGuiControlArrayControl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Number of colums in the array. 
+        /// </summary>
+        public int colCount
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colCount").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colCount", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Size of each individual column. 
+        /// </summary>
+        public VectorInt colSizes
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colSizes").AsVectorInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colSizes", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Padding to put between columns. 
+        /// </summary>
+        public int colSpacing
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colSpacing").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colSpacing", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Heigth of a row in the array. 
+        /// </summary>
+        public int rowSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rowSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rowSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Padding to put between rows. 
+        /// </summary>
+        public int rowSpacing
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rowSpacing").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rowSpacing", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiControlArrayControl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiControlArrayControl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiControlArrayControl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiControlArrayControl ts)
+        public static implicit operator string(coGuiControlArrayControl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiControlArrayControl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiControlArrayControl ts)
+        public static implicit operator int(coGuiControlArrayControl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiControlArrayControl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiControlArrayControl ts)
+        public static implicit operator uint(coGuiControlArrayControl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,59 +277,5 @@ public coGuiControlArrayControl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiControlArrayControl(ts);
             }
-public int colCount
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colCount").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colCount", value.AsString());
-          }
-       }
-public VectorInt  colSizes
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colSizes").AsVectorInt ();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colSizes", value.AsString());
-          }
-       }
-public int colSpacing
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colSpacing").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colSpacing", value.AsString());
-          }
-       }
-public int rowSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rowSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rowSize", value.AsString());
-          }
-       }
-public int rowSpacing
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rowSpacing").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rowSpacing", value.AsString());
-          }
-       }
-}}
+        }
+    }

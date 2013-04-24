@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,226 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoParticleData))]
-    public class coParticleData: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoParticleData))]
+    public class coParticleData : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coParticleData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coParticleData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coParticleData(int simobjectid): base(simobjectid){ }
+        public coParticleData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coParticleData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coParticleData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// If true, allow the particle texture to be an animated sprite. 
+        /// </summary>
+        public bool animateTexture
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animateTexture").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animateTexture", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief A list of frames and/or frame ranges to use for particle    animation if animateTexture is true.\n\n   Each frame token must be separated by whitespace. A frame token must be    a positive integer frame number or a range of frame numbers separated    with a '-'. The range separator, '-', cannot have any whitspace around    it.\n\n   Ranges can be specified to move through the frames in reverse as well    as forward (eg. 19-14). Frame numbers exceeding the number of tiles will    wrap.\n   @tsexample\n   animTexFrames = \0-16 20 19 18 17 31-21\;\n   @endtsexample\n 
+        /// </summary>
+        public String animTexFrames
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animTexFrames").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animTexFrames", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Texture file to use for this particle if animateTexture is true.\n\n   Deprecated. Use textureName instead. 
+        /// </summary>
+        public String animTexName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animTexName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animTexName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief The number of frames, in rows and columns stored in textureName    (when animateTexture is true).\n\n   A maximum of 256 frames can be stored in a single texture when using    animTexTiling. Value should be \NumColumns NumRows\, for example \4 4\. 
+        /// </summary>
+        public Point2I animTexTiling
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".animTexTiling").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".animTexTiling", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Particle RGBA color keyframe values.\n\n   The particle color will linearly interpolate between the color/time keys    over the lifetime of the particle. 
+        /// </summary>
+        public ColorF colors
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colors").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colors", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Constant acceleration to apply to this particle. 
+        /// </summary>
+        public float constantAcceleration
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".constantAcceleration").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".constantAcceleration", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Particle physics drag amount. 
+        /// </summary>
+        public float dragCoefficient
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dragCoefficient").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dragCoefficient", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If animateTexture is true, this defines the frames per second of the    sprite animation. 
+        /// </summary>
+        public int framesPerSec
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".framesPerSec").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".framesPerSec", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Strength of gravity on the particles. 
+        /// </summary>
+        public float gravityCoefficient
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gravityCoefficient").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gravityCoefficient", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Amount of emitter velocity to add to particle initial velocity. 
+        /// </summary>
+        public float inheritedVelFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".inheritedVelFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".inheritedVelFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Time in milliseconds before this particle is destroyed. 
+        /// </summary>
+        public int lifetimeMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetimeMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance in lifetime of particle, from 0 - lifetimeMS. 
+        /// </summary>
+        public int lifetimeVarianceMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVarianceMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVarianceMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Particle size keyframe values.\n\n   The particle size will linearly interpolate between the size/time keys    over the lifetime of the particle. 
+        /// </summary>
+        public float sizes
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sizes").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sizes", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum allowed spin speed of this particle, between spinRandomMin and 10000. 
+        /// </summary>
+        public float spinRandomMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".spinRandomMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".spinRandomMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum allowed spin speed of this particle, between -10000 and spinRandomMax. 
+        /// </summary>
+        public float spinRandomMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".spinRandomMin").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".spinRandomMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Speed at which to spin the particle. 
+        /// </summary>
+        public float spinSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".spinSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".spinSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief 4 element array defining the UV coords into textureName to use    for this particle.\n\n   Coords should be set for the first tile only when using animTexTiling;    coordinates for other tiles will be calculated automatically. \0 0\ is    top left and \1 1\ is bottom right. 
+        /// </summary>
+        public Point2F textureCoords
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureCoords").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureCoords", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Texture file to use for this particle. 
+        /// </summary>
+        public String textureName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Time keys used with the colors and sizes keyframes.\n\n   Values are from 0.0 (particle creation) to 1.0 (end of lifespace). 
+        /// </summary>
+        public float times
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".times").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".times", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Controls how particles blend with the scene.\n\n   If true, particles blend like ParticleBlendStyle NORMAL, if false,    blend like ParticleBlendStyle ADDITIVE.\n   @note If ParticleEmitterData::blendStyle is set, it will override this value. 
+        /// </summary>
+        public bool useInvAlpha
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useInvAlpha").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useInvAlpha", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Strength of wind on the particles. 
+        /// </summary>
+        public float windCoefficient
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".windCoefficient").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".windCoefficient", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +325,9 @@ public coParticleData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +335,17 @@ public coParticleData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +357,15 @@ public coParticleData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coParticleData ts)
+        public static implicit operator string(coParticleData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +385,7 @@ public coParticleData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coParticleData ts)
+        public static implicit operator int(coParticleData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +406,7 @@ public coParticleData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coParticleData ts)
+        public static implicit operator uint(coParticleData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,250 +421,22 @@ public coParticleData(int simobjectid): base(simobjectid){ }
             {
             return new coParticleData(ts);
             }
-public bool animateTexture
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animateTexture").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animateTexture", value.AsString());
-          }
-       }
-public String animTexFrames
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animTexFrames").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animTexFrames", value.AsString());
-          }
-       }
-public String animTexName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animTexName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animTexName", value.AsString());
-          }
-       }
-public Point2I animTexTiling
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".animTexTiling").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".animTexTiling", value.AsString());
-          }
-       }
-public ColorF colors
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colors").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colors", value.AsString());
-          }
-       }
-public float constantAcceleration
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".constantAcceleration").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".constantAcceleration", value.AsString());
-          }
-       }
-public float dragCoefficient
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dragCoefficient").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dragCoefficient", value.AsString());
-          }
-       }
-public int framesPerSec
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".framesPerSec").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".framesPerSec", value.AsString());
-          }
-       }
-public float gravityCoefficient
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gravityCoefficient").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gravityCoefficient", value.AsString());
-          }
-       }
-public float inheritedVelFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".inheritedVelFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".inheritedVelFactor", value.AsString());
-          }
-       }
-public int lifetimeMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetimeMS", value.AsString());
-          }
-       }
-public int lifetimeVarianceMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVarianceMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVarianceMS", value.AsString());
-          }
-       }
-public float sizes
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sizes").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sizes", value.AsString());
-          }
-       }
-public float spinRandomMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".spinRandomMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".spinRandomMax", value.AsString());
-          }
-       }
-public float spinRandomMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".spinRandomMin").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".spinRandomMin", value.AsString());
-          }
-       }
-public float spinSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".spinSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".spinSpeed", value.AsString());
-          }
-       }
-public Point2F textureCoords
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textureCoords").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureCoords", value.AsString());
-          }
-       }
-public String textureName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textureName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureName", value.AsString());
-          }
-       }
-public float times
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".times").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".times", value.AsString());
-          }
-       }
-public bool useInvAlpha
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useInvAlpha").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useInvAlpha", value.AsString());
-          }
-       }
-public float windCoefficient
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".windCoefficient").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".windCoefficient", value.AsString());
-          }
-       }
-/// <summary>
-/// Reloads this particle.
-///    @tsexample
-///    // Get the editor's current particle
-///    %particle = PE_ParticleEditor.currParticle
-///    // Change a particle value
-///    %particle.setFieldValue( %propertyField, %value );
-///    // Reload it
-///    %particle.reload();
-///    @endtsexample )
-/// 
-/// </summary>
-public  void reload(){
-TorqueScriptTemplate.m_ts.fnParticleData_reload(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Reloads this particle.
+        ///    @tsexample
+        ///    // Get the editor's current particle
+        ///    %particle = PE_ParticleEditor.currParticle
+        ///    // Change a particle value
+        ///    %particle.setFieldValue( %propertyField, %value );
+        ///    // Reload it
+        ///    %particle.reload();
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public void reload()
+            {
+            TorqueScriptTemplate.m_ts.fnParticleData_reload(_mSimObjectId);
+            }
+        }
+    }

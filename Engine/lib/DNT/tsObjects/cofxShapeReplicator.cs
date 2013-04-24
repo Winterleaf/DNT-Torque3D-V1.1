@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,271 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercofxShapeReplicator))]
-    public class cofxShapeReplicator: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercofxShapeReplicator))]
+    public class cofxShapeReplicator : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public cofxShapeReplicator(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public cofxShapeReplicator(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public cofxShapeReplicator(int simobjectid): base(simobjectid){ }
+        public cofxShapeReplicator(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public cofxShapeReplicator(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public cofxShapeReplicator(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Align shapes to surface normal when set. 
+        /// </summary>
+        public bool AlignToTerrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AlignToTerrain").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AlignToTerrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum surface angle allowed for shape instances. 
+        /// </summary>
+        public int AllowedTerrainSlope
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowedTerrainSlope").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowedTerrainSlope", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Shapes will be placed on InteriorInstances when set. 
+        /// </summary>
+        public bool AllowOnInteriors
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnInteriors").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowOnInteriors", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Shapes will be placed on Static shapes when set. 
+        /// </summary>
+        public bool AllowOnStatics
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnStatics").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowOnStatics", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Shapes will be placed on terrain when set. 
+        /// </summary>
+        public bool AllowOnTerrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnTerrain").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowOnTerrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Shapes will be placed on/under water when set. 
+        /// </summary>
+        public bool AllowOnWater
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnWater").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowOnWater", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Shapes will be placed on water when set. Requires AllowOnWater. 
+        /// </summary>
+        public bool AllowWaterSurface
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".AllowWaterSurface").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".AllowWaterSurface", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Replicated shapes are hidden when set to true. 
+        /// </summary>
+        public bool HideReplications
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".HideReplications").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".HideReplications", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Placement area inner radius on the X axis 
+        /// </summary>
+        public int InnerRadiusX
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".InnerRadiusX").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".InnerRadiusX", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Placement area inner radius on the Y axis 
+        /// </summary>
+        public int InnerRadiusY
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".InnerRadiusY").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".InnerRadiusY", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Allow physics interactions with shapes. 
+        /// </summary>
+        public bool Interactions
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".Interactions").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".Interactions", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Offset shapes by this amount vertically. 
+        /// </summary>
+        public int OffsetZ
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OffsetZ").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OffsetZ", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Placement area outer radius on the X axis 
+        /// </summary>
+        public int OuterRadiusX
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OuterRadiusX").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OuterRadiusX", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Placement area outer radius on the Y axis 
+        /// </summary>
+        public int OuterRadiusY
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".OuterRadiusY").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".OuterRadiusY", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Height of the placement ring in world units. 
+        /// </summary>
+        public int PlacementAreaHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".PlacementAreaHeight").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".PlacementAreaHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color of the placement ring. 
+        /// </summary>
+        public ColorF PlacementColour
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".PlacementColour").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".PlacementColour", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Random seed for shape placement. 
+        /// </summary>
+        public int Seed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".Seed").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".Seed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum shape instance count. 
+        /// </summary>
+        public int ShapeCount
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeCount").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeCount", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Filename of shape to replicate. 
+        /// </summary>
+        public String ShapeFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of times to try placing a shape instance before giving up. 
+        /// </summary>
+        public int ShapeRetries
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeRetries").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeRetries", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum shape rotation angles. 
+        /// </summary>
+        public Point3F ShapeRotateMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeRotateMax").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeRotateMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum shape rotation angles.
+        /// </summary>
+        public Point3F ShapeRotateMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeRotateMin").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeRotateMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum shape scale. 
+        /// </summary>
+        public Point3F ShapeScaleMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeScaleMax").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeScaleMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum shape scale. 
+        /// </summary>
+        public Point3F ShapeScaleMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeScaleMin").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeScaleMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Draw placement rings when set to true. 
+        /// </summary>
+        public bool ShowPlacementArea
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShowPlacementArea").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ShowPlacementArea", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Surface normals will be multiplied by these values when AlignToTerrain is enabled. 
+        /// </summary>
+        public Point3F TerrainAlignment
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".TerrainAlignment").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".TerrainAlignment", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +370,9 @@ public cofxShapeReplicator(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +380,17 @@ public cofxShapeReplicator(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +402,15 @@ public cofxShapeReplicator(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( cofxShapeReplicator ts)
+        public static implicit operator string(cofxShapeReplicator ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +430,7 @@ public cofxShapeReplicator(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( cofxShapeReplicator ts)
+        public static implicit operator int(cofxShapeReplicator ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +451,7 @@ public cofxShapeReplicator(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( cofxShapeReplicator ts)
+        public static implicit operator uint(cofxShapeReplicator ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,290 +466,5 @@ public cofxShapeReplicator(int simobjectid): base(simobjectid){ }
             {
             return new cofxShapeReplicator(ts);
             }
-public bool AlignToTerrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AlignToTerrain").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AlignToTerrain", value.AsString());
-          }
-       }
-public int AllowedTerrainSlope
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowedTerrainSlope").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowedTerrainSlope", value.AsString());
-          }
-       }
-public bool AllowOnInteriors
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnInteriors").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowOnInteriors", value.AsString());
-          }
-       }
-public bool AllowOnStatics
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnStatics").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowOnStatics", value.AsString());
-          }
-       }
-public bool AllowOnTerrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnTerrain").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowOnTerrain", value.AsString());
-          }
-       }
-public bool AllowOnWater
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowOnWater").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowOnWater", value.AsString());
-          }
-       }
-public bool AllowWaterSurface
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".AllowWaterSurface").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".AllowWaterSurface", value.AsString());
-          }
-       }
-public bool HideReplications
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".HideReplications").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".HideReplications", value.AsString());
-          }
-       }
-public int InnerRadiusX
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".InnerRadiusX").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".InnerRadiusX", value.AsString());
-          }
-       }
-public int InnerRadiusY
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".InnerRadiusY").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".InnerRadiusY", value.AsString());
-          }
-       }
-public bool Interactions
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".Interactions").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".Interactions", value.AsString());
-          }
-       }
-public int OffsetZ
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OffsetZ").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OffsetZ", value.AsString());
-          }
-       }
-public int OuterRadiusX
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OuterRadiusX").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OuterRadiusX", value.AsString());
-          }
-       }
-public int OuterRadiusY
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".OuterRadiusY").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".OuterRadiusY", value.AsString());
-          }
-       }
-public int PlacementAreaHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".PlacementAreaHeight").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".PlacementAreaHeight", value.AsString());
-          }
-       }
-public ColorF PlacementColour
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".PlacementColour").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".PlacementColour", value.AsString());
-          }
-       }
-public int Seed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".Seed").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".Seed", value.AsString());
-          }
-       }
-public int ShapeCount
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShapeCount").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShapeCount", value.AsString());
-          }
-       }
-public String ShapeFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShapeFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShapeFile", value.AsString());
-          }
-       }
-public int ShapeRetries
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShapeRetries").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShapeRetries", value.AsString());
-          }
-       }
-public Point3F ShapeRotateMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShapeRotateMax").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShapeRotateMax", value.AsString());
-          }
-       }
-public Point3F ShapeRotateMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShapeRotateMin").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShapeRotateMin", value.AsString());
-          }
-       }
-public Point3F ShapeScaleMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShapeScaleMax").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShapeScaleMax", value.AsString());
-          }
-       }
-public Point3F ShapeScaleMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShapeScaleMin").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShapeScaleMin", value.AsString());
-          }
-       }
-public bool ShowPlacementArea
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ShowPlacementArea").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ShowPlacementArea", value.AsString());
-          }
-       }
-public Point3F TerrainAlignment
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".TerrainAlignment").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".TerrainAlignment", value.AsString());
-          }
-       }
-}}
+        }
+    }

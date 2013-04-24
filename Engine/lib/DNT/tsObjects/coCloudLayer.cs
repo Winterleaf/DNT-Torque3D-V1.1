@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoCloudLayer))]
-    public class coCloudLayer: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoCloudLayer))]
+    public class coCloudLayer : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCloudLayer(string simobjectid) : base(simobjectid){ }
+        public coCloudLayer(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCloudLayer(uint simobjectid): base(simobjectid){ }
+        public coCloudLayer(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCloudLayer(int simobjectid): base(simobjectid){ }
+        public coCloudLayer(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Base cloud color before lighting. 
+        /// </summary>
+        public ColorF baseColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Fraction of sky covered by clouds 0-1. 
+        /// </summary>
+        public float coverage
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coverage").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coverage", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Brightness scale so CloudLayer can be overblown if desired. 
+        /// </summary>
+        public float exposure
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".exposure").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".exposure", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Abstract number which controls the curvature and height of the dome mesh. 
+        /// </summary>
+        public float height
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".height").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".height", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls the direction this slot scrolls. 
+        /// </summary>
+        public Point2F texDirection
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texDirection").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texDirection", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls the texture repeat of this slot. 
+        /// </summary>
+        public float texScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls the speed this slot scrolls. 
+        /// </summary>
+        public float texSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// An RGBA texture which should contain normals and opacity (density). 
+        /// </summary>
+        public String texture
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texture").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texture", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Overall scalar to texture scroll speed. 
+        /// </summary>
+        public float windSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".windSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".windSpeed", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +217,9 @@ public coCloudLayer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +227,17 @@ public coCloudLayer(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +249,15 @@ public coCloudLayer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coCloudLayer ts)
+        public static implicit operator string(coCloudLayer ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +277,7 @@ public coCloudLayer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coCloudLayer ts)
+        public static implicit operator int(coCloudLayer ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +298,7 @@ public coCloudLayer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coCloudLayer ts)
+        public static implicit operator uint(coCloudLayer ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,103 +313,5 @@ public coCloudLayer(int simobjectid): base(simobjectid){ }
             {
             return new coCloudLayer(ts);
             }
-public ColorF baseColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString());
-          }
-       }
-public float coverage
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coverage").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coverage", value.AsString());
-          }
-       }
-public float exposure
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".exposure").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".exposure", value.AsString());
-          }
-       }
-public float height
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".height").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".height", value.AsString());
-          }
-       }
-public Point2F texDirection
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texDirection").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texDirection", value.AsString());
-          }
-       }
-public float texScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texScale", value.AsString());
-          }
-       }
-public float texSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texSpeed", value.AsString());
-          }
-       }
-public String texture
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texture").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texture", value.AsString());
-          }
-       }
-public float windSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".windSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".windSpeed", value.AsString());
-          }
-       }
-}}
+        }
+    }

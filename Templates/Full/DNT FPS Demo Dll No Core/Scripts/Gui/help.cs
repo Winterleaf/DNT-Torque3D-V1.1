@@ -45,12 +45,13 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
 
 using WinterLeaf.Classes;
+using WinterLeaf.tsObjects;
 
 #endregion
 
@@ -83,13 +84,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "HelpFileList", "onSelect", "(this,row)", 2, 30000, false)]
         public void HelpFileListonSelect(string thisobj, string row)
             {
-            string fo = new Torque_Class_Helper("FileObject").Create().AsString();
-            FileObject.openForRead(fo, console.GetVarString(thisobj + ".fileName[" + row + "]"));
+            coFileObject fo = new Torque_Class_Helper("FileObject").Create().AsString();
+            fo.openForRead(console.GetVarString(thisobj + ".fileName[" + row + "]"));
             string text = "";
-            while (!FileObject.isEOF(fo))
-                text += FileObject.readLine(fo) + "\n";
+            while (!fo.isEOF())
+                text += fo.readLine() + "\n";
 
-            FileObject.close(fo);
+            fo.close();
             console.Call("HelpText", "setText", new[] {text});
             }
 
@@ -99,8 +100,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.Call("Canvas", "pushDialog", new[] {"HelpDlg"});
             if (helpname == "")
                 return;
-            int index = GuiTextListCtrl.findTextIndex("HelpFileList", helpname);
-            GuiTextListCtrl.setSelectedRow("HelpFileList", index);
+
+            coGuiTextListCtrl HelpFileList = "HelpFileList";
+            int index = HelpFileList.findTextIndex(helpname);
+            HelpFileList.setSelectedRow(index);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "contextHelp", "(%helpName)", 0, 30000, false)]

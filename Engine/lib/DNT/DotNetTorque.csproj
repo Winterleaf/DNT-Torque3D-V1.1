@@ -463,6 +463,7 @@
     <Compile Include="tsObjects\coSimpleComponentInterface.cs" />
     <Compile Include="tsObjects\coSimpleNetObject.cs" />
     <Compile Include="tsObjects\coSimSet.cs" />
+    <Compile Include="tsObjects\coSimXMLDocument.cs" />
     <Compile Include="tsObjects\coSkyBox.cs" />
     <Compile Include="tsObjects\coSpawnSphere.cs" />
     <Compile Include="tsObjects\coSplash.cs" />

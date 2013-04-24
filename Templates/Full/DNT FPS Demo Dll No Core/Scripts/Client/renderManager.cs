@@ -45,12 +45,13 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
 
 using WinterLeaf.Classes;
+using WinterLeaf.tsObjects;
 
 #endregion
 
@@ -91,7 +92,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             Torque_Class_Helper tchb = new Torque_Class_Helper("RenderPassStateBin");
             tchb.Props.Add("renderOrder", "0.001");
             tchb.Props.Add("stateToken", "AL_FormatToken");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+
+            coRenderPassManager DiffuseRenderPassManager = "DiffuseRenderPassManager";
+
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
 
             #endregion
 
@@ -104,7 +109,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Sky");
             tchb.Props.Add("renderOrder", "0.1");
             tchb.Props.Add("processAddOrder", "0.1");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -114,7 +120,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Begin");
             tchb.Props.Add("renderOrder", "0.2");
             tchb.Props.Add("processAddOrder", "0.2");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -126,7 +132,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Interior");
             tchb.Props.Add("renderOrder", "0.3");
             tchb.Props.Add("processAddOrder", "0.3");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -135,7 +142,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb = new Torque_Class_Helper("RenderTerrainMgr");
             tchb.Props.Add("renderOrder", "0.4");
             tchb.Props.Add("processAddOrder", "0.4");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -145,7 +153,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Mesh");
             tchb.Props.Add("renderOrder", "0.5");
             tchb.Props.Add("processAddOrder", "0.5");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -154,7 +163,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb = new Torque_Class_Helper("RenderImposterMgr");
             tchb.Props.Add("renderOrder", "0.56");
             tchb.Props.Add("processAddOrder", "0.56");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -164,7 +174,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Object");
             tchb.Props.Add("renderOrder", "0.6");
             tchb.Props.Add("processAddOrder", "0.6");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -174,7 +185,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Shadow");
             tchb.Props.Add("renderOrder", "0.7");
             tchb.Props.Add("processAddOrder", "0.7");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -184,7 +196,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Decal");
             tchb.Props.Add("renderOrder", "0.8");
             tchb.Props.Add("processAddOrder", "0.8");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -194,7 +207,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Occluder");
             tchb.Props.Add("renderOrder", "0.9");
             tchb.Props.Add("processAddOrder", "0.9");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -209,7 +223,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "ObjectTranslucent");
             tchb.Props.Add("renderOrder", "1");
             tchb.Props.Add("processAddOrder", "1");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -219,7 +234,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Water");
             tchb.Props.Add("renderOrder", "1.2");
             tchb.Props.Add("processAddOrder", "1.2");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -229,7 +245,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Foliage");
             tchb.Props.Add("renderOrder", "1.3");
             tchb.Props.Add("processAddOrder", "1.3");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -238,7 +255,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb = new Torque_Class_Helper("RenderParticleMgr");
             tchb.Props.Add("renderOrder", "1.35");
             tchb.Props.Add("processAddOrder", "1.35");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -247,7 +265,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb = new Torque_Class_Helper("RenderTranslucentMgr");
             tchb.Props.Add("renderOrder", "1.4");
             tchb.Props.Add("processAddOrder", "1.4");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -258,7 +277,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb = new Torque_Class_Helper("RenderGlowMgr", "GlowBin");
             tchb.Props.Add("renderOrder", "1.5");
             tchb.Props.Add("processAddOrder", "1.5");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -271,7 +291,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb.PropsAddString("bintype", "Editor");
             tchb.Props.Add("renderOrder", "1.6");
             tchb.Props.Add("processAddOrder", "1.6");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
 
@@ -282,7 +303,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             tchb = new Torque_Class_Helper("RenderPassStateBin");
             tchb.Props.Add("renderOrder", "1.7");
             tchb.Props.Add("stateToken", "AL_FormatToken");
-            RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            //RenderPassManager.addManager("DiffuseRenderPassManager", tchb.Create().AsString());
+            DiffuseRenderPassManager.addManager(tchb.Create().AsString());
 
             #endregion
             }

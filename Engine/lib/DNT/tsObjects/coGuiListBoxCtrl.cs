@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiListBoxCtrl))]
-    public class coGuiListBoxCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiListBoxCtrl))]
+    public class coGuiListBoxCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiListBoxCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiListBoxCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiListBoxCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiListBoxCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiListBoxCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiListBoxCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// If true, will allow the selection of multiple items in the listbox.\n
+        /// </summary>
+        public bool allowMultipleSelections
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".allowMultipleSelections").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".allowMultipleSelections", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, colored items will render a colored rectangular bullet next to the item text.\n
+        /// </summary>
+        public bool colorBullet
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorBullet").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorBullet", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the width of the listbox will match the width of its parent control.\n
+        /// </summary>
+        public bool fitParentWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fitParentWidth").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fitParentWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// A script snippet to control what is displayed in the list for a SimObject. Within this snippet, $ThisControl is bound to the guiListBoxCtrl and $ThisObject to the contained object in question.\n
+        /// </summary>
+        public String makeNameCallback
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".makeNameCallback").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".makeNameCallback", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If populated with the name of another GuiListBoxCtrl, then this list box will mirror the contents of the mirrorSet listbox.\n
+        /// </summary>
+        public String mirrorSet
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mirrorSet").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mirrorSet", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiListBoxCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiListBoxCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiListBoxCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiListBoxCtrl ts)
+        public static implicit operator string(coGuiListBoxCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiListBoxCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiListBoxCtrl ts)
+        public static implicit operator int(coGuiListBoxCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiListBoxCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiListBoxCtrl ts)
+        public static implicit operator uint(coGuiListBoxCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,434 +277,428 @@ public coGuiListBoxCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiListBoxCtrl(ts);
             }
-public bool allowMultipleSelections
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".allowMultipleSelections").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".allowMultipleSelections", value.AsString());
-          }
-       }
-public bool colorBullet
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorBullet").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorBullet", value.AsString());
-          }
-       }
-public bool fitParentWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fitParentWidth").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fitParentWidth", value.AsString());
-          }
-       }
-public String makeNameCallback
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".makeNameCallback").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".makeNameCallback", value.AsString());
-          }
-       }
-public String mirrorSet
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mirrorSet").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mirrorSet", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Checks if there is an item with the exact text of what is passed in, and if so
-///    the item is removed from the list and adds that item's data to the filtered list.
-///    @param itemName Name of the item that we wish to add to the filtered item list of the GuiListBoxCtrl.
-///    @tsexample
-///    // Define the itemName that we wish to add to the filtered item list.
-///    %itemName = \"This Item Name\";
-///    // Add the item name to the filtered item list.
-///    %thisGuiListBoxCtrl.addFilteredItem(%filteredItemName);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void addFilteredItem(string newItem){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_addFilteredItem(_mSimObjectId, newItem);
-}
-/// <summary>
-///  ),
-///    @brief Adds an item to the end of the list with an optional color.
-///    @param newItem New item to add to the list.
-///    @param color Optional color parameter to add to the new item.
-///    @tsexample
-///    // Define the item to add to the list.
-///    %newItem = \"Gideon's Blue Coat\";
-///    // Define the optional color for the new list item.
-///    %color = \"0.0 0.0 1.0\";
-///    // Inform the GuiListBoxCtrl object to add the item to the end of the list with the defined color.
-///    %thisGuiListBoxCtrl.addItem(%newItem,%color);
-///    @endtsexample
-///    @return If not void, return value and description
-///    @see GuiControl
-///    @hide)
-/// 
-/// </summary>
-public  int addItem(string newItem, string color){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_addItem(_mSimObjectId, newItem, color);
-}
-/// <summary>
-/// @brief Removes any custom coloring from an item at the defined index id in the list.
-///    @param index Index id for the item to clear any custom color from.
-///    @tsexample
-///    // Define the index id
-///    %index = \"4\";
-///    // Request the GuiListBoxCtrl object to remove any custom coloring from the defined index entry
-///    %thisGuiListBoxCtrl.clearItemColor(%index);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void clearItemColor(int index){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_clearItemColor(_mSimObjectId, index);
-}
-/// <summary>
-/// @brief Clears all the items in the listbox.
-///    @tsexample
-///    // Inform the GuiListBoxCtrl object to clear all items from its list.
-///    %thisGuiListBoxCtrl.clearItems();
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void clearItems(){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_clearItems(_mSimObjectId);
-}
-/// <summary>
-/// @brief Sets all currently selected items to unselected.
-///    Detailed description
-///    @tsexample
-///    // Inform the GuiListBoxCtrl object to set all of its items to unselected./n
-///    %thisGuiListBoxCtrl.clearSelection();
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void clearSelection(){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_clearSelection(_mSimObjectId);
-}
-/// <summary>
-/// @brief Removes the list entry at the requested index id from the control and clears the memory associated with it.
-///    @param itemIndex Index id location to remove the item from.
-///    @tsexample
-///    // Define the index id we want to remove from the list
-///    %itemIndex = \"8\";
-///    // Inform the GuiListBoxCtrl object to remove the item at the defined index id.
-///    %thisGuiListBoxCtrl.deleteItem(%itemIndex);
-///    @endtsexample
-///    @see References)
-/// 
-/// </summary>
-public  void deleteItem(int itemIndex){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_deleteItem(_mSimObjectId, itemIndex);
-}
-/// <summary>
-/// @brief Informs the GuiListBoxCtrl object to mirror the contents of the GuiListBoxCtrl stored in the mirrorSet field.
-///    @tsexample
-///    \\ Inform the object to mirror the object located at %thisGuiListBox.mirrorSet
-///    %thisGuiListBox.doMirror();
-///    @endtsexample
-///    @see GuiCore)
-/// 
-/// </summary>
-public  void doMirror(){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_doMirror(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns index of item with matching text or -1 if none found.
-///    @param findText Text in the list to find.
-///    @param isCaseSensitive If true, the search will be case sensitive.
-///    @tsexample
-///    // Define the text we wish to find in the list.
-///    %findText = \"Hickory Smoked Gideon\"/n/n
-///    // Define if this is a case sensitive search or not.
-///    %isCaseSensitive = \"false\";
-///    // Ask the GuiListBoxCtrl object what item id in the list matches the requested text.
-///    %matchingId = %thisGuiListBoxCtrl.findItemText(%findText,%isCaseSensitive);
-///    @endtsexample
-///    @return Index id of item with matching text or -1 if none found.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  int findItemText(string findText, bool bCaseSensitive){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_findItemText(_mSimObjectId, findText, bCaseSensitive);
-}
-/// <summary>
-/// @brief Returns the number of items in the list.
-///    @tsexample
-///    // Request the number of items in the list of the GuiListBoxCtrl object.
-///    %listItemCount = %thisGuiListBoxCtrl.getItemCount();
-///    @endtsexample
-///    @return The number of items in the list.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  int getItemCount(){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getItemCount(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns the object associated with an item. This only makes sense if you are mirroring a simset.
-///    @param index Index id to request the associated item from.
-///    @tsexample
-///    // Define the index id
-///    %index = \"12\";
-///    // Request the item from the GuiListBoxCtrl object
-///    %object = %thisGuiListBoxCtrl.getItemObject(%index);
-///    @endtsexample
-///    @return The object associated with the item in the list.
-///    @see References)
-/// 
-/// </summary>
-public  string getItemObject(int index){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getItemObject(_mSimObjectId, index);
-}
-/// <summary>
-/// @brief Returns the text of the item at the specified index.
-///    @param index Index id to return the item text from.
-///    @tsexample
-///    // Define the index id entry to request the text from
-///    %index = \"12\";
-///    // Request the item id text from the GuiListBoxCtrl object.
-///    %text = %thisGuiListBoxCtrl.getItemText(%index);
-///    @endtsexample
-///    @return The text of the requested index id.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  string getItemText(int index){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getItemText(_mSimObjectId, index);
-}
-/// <summary>
-/// @brief Request the item index for the item that was last clicked.
-///    @tsexample
-///    // Request the item index for the last clicked item in the list
-///    %lastClickedIndex = %thisGuiListBoxCtrl.getLastClickItem();
-///    @endtsexample
-///    @return Index id for the last clicked item in the list.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  int getLastClickItem(){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getLastClickItem(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns the number of items currently selected.
-///    @tsexample
-///    // Request the number of currently selected items
-///    %selectedItemCount = %thisGuiListBoxCtrl.getSelCount();
-///    @endtsexample
-///    @return Number of currently selected items.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  int getSelCount(){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getSelCount(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns the selected items index or -1 if none selected. If multiple selections exist it returns the first selected item. 
-///    @tsexample
-///    // Request the index id of the currently selected item
-///    %selectedItemId = %thisGuiListBoxCtrl.getSelectedItem();
-///    @endtsexample
-///    @return The selected items index or -1 if none selected.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  int getSelectedItem(){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getSelectedItem(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns a space delimited list of the selected items indexes in the list.
-///    @tsexample
-///    // Request a space delimited list of the items in the GuiListBoxCtrl object.
-///    %selectionList = %thisGuiListBoxCtrl.getSelectedItems();
-///    @endtsexample
-///    @return Space delimited list of the selected items indexes in the list
-///    @see GuiControl)
-/// 
-/// </summary>
-public  string getSelectedItems(){
-return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getSelectedItems(_mSimObjectId);
-}
-/// <summary>
-/// @brief Inserts an item into the list at the specified index and returns the index assigned or -1 on error.
-///    @param text Text item to add.
-///    @param index Index id to insert the list item text at.
-///    @tsexample
-///    // Define the text to insert
-///    %text = \"Secret Agent Gideon\";
-///    // Define the index entry to insert the text at
-///    %index = \"14\";
-///    // In form the GuiListBoxCtrl object to insert the text at the defined index.
-///    %assignedId = %thisGuiListBoxCtrl.insertItem(%text,%index);
-///    @endtsexample
-///    @return If successful will return the index id assigned. If unsuccessful, will return -1.
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void insertItem(string text, int index){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_insertItem(_mSimObjectId, text, index);
-}
-/// <summary>
-/// @brief Removes an item of the entered name from the filtered items list.
-///    @param itemName Name of the item to remove from the filtered list.
-///    @tsexample
-///    // Define the itemName that you wish to remove.
-///    %itemName = \"This Item Name\";
-///    // Remove the itemName from the GuiListBoxCtrl
-///    %thisGuiListBoxCtrl.removeFilteredItem(%itemName);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void removeFilteredItem(string itemName){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_removeFilteredItem(_mSimObjectId, itemName);
-}
-/// <summary>
-/// @brief Sets the currently selected item at the specified index.
-///    @param indexId Index Id to set selected.
-///    @tsexample
-///    // Define the index id that we wish to select.
-///    %selectId = \"4\";
-///    // Inform the GuiListBoxCtrl object to set the requested index as selected.
-///    %thisGuiListBoxCtrl.setCurSel(%selectId);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setCurSel(int indexId){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setCurSel(_mSimObjectId, indexId);
-}
-/// <summary>
-/// @brief Sets the current selection range from index start to stop. If no stop is specified it sets from start index to the end of the list
-///    @param indexStart Index Id to start selection.
-///    @param indexStop Index Id to end selection.
-///    @tsexample
-///    // Set start id
-///    %indexStart = \"3\";
-///    // Set end id
-///    %indexEnd = \"6\";
-///    // Request the GuiListBoxCtrl object to select the defined range.
-///    %thisGuiListBoxCtrl.setCurSelRange(%indexStart,%indexEnd);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setCurSelRange(int indexStart, int indexStop){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setCurSelRange(_mSimObjectId, indexStart, indexStop);
-}
-/// <summary>
-/// @brief Sets the color of a single list entry at the specified index id.
-///    @param index Index id to modify the color of in the list.
-///    @param color Color value to set the list entry to.
-///    @tsexample
-///    // Define the index id value
-///    %index = \"5\";
-///    // Define the color value
-///    %color = \"1.0 0.0 0.0\";
-///    // Inform the GuiListBoxCtrl object to change the color of the requested index
-///    %thisGuiListBoxCtrl.setItemColor(%index,%color);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setItemColor(int index, ColorF color){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setItemColor(_mSimObjectId, index, color.AsString());
-}
-/// <summary>
-/// @brief Sets the items text at the specified index.
-///    @param index Index id to set the item text at.
-///    @param newtext Text to change the list item at index id to.
-///    @tsexample
-///    // Define the index id/n
-///    %index = \"12\";
-///    // Define the text to set the list item to
-///    %newtext = \"Gideon's Fancy Goggles\";
-///    // Inform the GuiListBoxCtrl object to change the text at the requested index
-///    %thisGuiListBoxCtrl.setItemText(%index,%newText);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setItemText(int index, string newtext){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setItemText(_mSimObjectId, index, newtext);
-}
-/// <summary>
-/// @brief Set the tooltip text to display for the given list item.
-///    @param index Index id to change the tooltip text
-///    @param text Text for the tooltip.
-///    @tsexample
-///    // Define the index id
-///    %index = \"12\";
-///    // Define the tooltip text
-///    %tooltip = \"Gideon's goggles can see through space and time.\"
-///    // Inform the GuiListBoxCtrl object to set the tooltop for the item at the defined index id
-///    %thisGuiListBoxCtrl.setItemToolTip(%index,%tooltip);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setItemTooltip(int index, string text){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setItemTooltip(_mSimObjectId, index, text);
-}
-/// <summary>
-/// @brief Enable or disable multiple selections for this GuiListBoxCtrl object.
-///    @param allowMultSelections Boolean variable to set the use of multiple selections or not.
-///    @tsexample
-///    // Define the multiple selection use state.
-///    %allowMultSelections = \"true\";
-///    // Set the allow  multiple selection state on the GuiListBoxCtrl object.
-///    %thisGuiListBoxCtrl.setMultipleSelection(%allowMultSelections);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setMultipleSelection(bool allowMultSelections){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setMultipleSelection(_mSimObjectId, allowMultSelections);
-}
-/// <summary>
-/// @brief Sets the item at the index specified to selected or not.
-///    Detailed description
-///    @param index Item index to set selected or unselected.
-///    @param setSelected Boolean selection state to set the requested item index.
-///    @tsexample
-///    // Define the index
-///    %index = \"5\";
-///    // Define the selection state
-///    %selected = \"true\"
-///    // Inform the GuiListBoxCtrl object of the new selection state for the requested index entry.
-///    %thisGuiListBoxCtrl.setSelected(%index,%selected);
-///    @endtsexample
-///    @see GuiControl)
-/// 
-/// </summary>
-public  void setSelected(int index, bool setSelected){
-TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setSelected(_mSimObjectId, index, setSelected);
-}
-}}
+
+        /// <summary>
+        /// @brief Checks if there is an item with the exact text of what is passed in, and if so
+        ///    the item is removed from the list and adds that item's data to the filtered list.
+        ///    @param itemName Name of the item that we wish to add to the filtered item list of the GuiListBoxCtrl.
+        ///    @tsexample
+        ///    // Define the itemName that we wish to add to the filtered item list.
+        ///    %itemName = \"This Item Name\";
+        ///    // Add the item name to the filtered item list.
+        ///    %thisGuiListBoxCtrl.addFilteredItem(%filteredItemName);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void addFilteredItem(string newItem)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_addFilteredItem(_mSimObjectId, newItem);
+            }
+
+        /// <summary>
+        ///  ),
+        ///    @brief Adds an item to the end of the list with an optional color.
+        ///    @param newItem New item to add to the list.
+        ///    @param color Optional color parameter to add to the new item.
+        ///    @tsexample
+        ///    // Define the item to add to the list.
+        ///    %newItem = \"Gideon's Blue Coat\";
+        ///    // Define the optional color for the new list item.
+        ///    %color = \"0.0 0.0 1.0\";
+        ///    // Inform the GuiListBoxCtrl object to add the item to the end of the list with the defined color.
+        ///    %thisGuiListBoxCtrl.addItem(%newItem,%color);
+        ///    @endtsexample
+        ///    @return If not void, return value and description
+        ///    @see GuiControl
+        ///    @hide)
+        /// 
+        /// </summary>
+        public int addItem(string newItem, string color)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_addItem(_mSimObjectId, newItem, color);
+            }
+
+        /// <summary>
+        /// @brief Removes any custom coloring from an item at the defined index id in the list.
+        ///    @param index Index id for the item to clear any custom color from.
+        ///    @tsexample
+        ///    // Define the index id
+        ///    %index = \"4\";
+        ///    // Request the GuiListBoxCtrl object to remove any custom coloring from the defined index entry
+        ///    %thisGuiListBoxCtrl.clearItemColor(%index);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void clearItemColor(int index)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_clearItemColor(_mSimObjectId, index);
+            }
+
+        /// <summary>
+        /// @brief Clears all the items in the listbox.
+        ///    @tsexample
+        ///    // Inform the GuiListBoxCtrl object to clear all items from its list.
+        ///    %thisGuiListBoxCtrl.clearItems();
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void clearItems()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_clearItems(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Sets all currently selected items to unselected.
+        ///    Detailed description
+        ///    @tsexample
+        ///    // Inform the GuiListBoxCtrl object to set all of its items to unselected./n
+        ///    %thisGuiListBoxCtrl.clearSelection();
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void clearSelection()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_clearSelection(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Removes the list entry at the requested index id from the control and clears the memory associated with it.
+        ///    @param itemIndex Index id location to remove the item from.
+        ///    @tsexample
+        ///    // Define the index id we want to remove from the list
+        ///    %itemIndex = \"8\";
+        ///    // Inform the GuiListBoxCtrl object to remove the item at the defined index id.
+        ///    %thisGuiListBoxCtrl.deleteItem(%itemIndex);
+        ///    @endtsexample
+        ///    @see References)
+        /// 
+        /// </summary>
+        public void deleteItem(int itemIndex)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_deleteItem(_mSimObjectId, itemIndex);
+            }
+
+        /// <summary>
+        /// @brief Informs the GuiListBoxCtrl object to mirror the contents of the GuiListBoxCtrl stored in the mirrorSet field.
+        ///    @tsexample
+        ///    \\ Inform the object to mirror the object located at %thisGuiListBox.mirrorSet
+        ///    %thisGuiListBox.doMirror();
+        ///    @endtsexample
+        ///    @see GuiCore)
+        /// 
+        /// </summary>
+        public void doMirror()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_doMirror(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns index of item with matching text or -1 if none found.
+        ///    @param findText Text in the list to find.
+        ///    @param isCaseSensitive If true, the search will be case sensitive.
+        ///    @tsexample
+        ///    // Define the text we wish to find in the list.
+        ///    %findText = \"Hickory Smoked Gideon\"/n/n
+        ///    // Define if this is a case sensitive search or not.
+        ///    %isCaseSensitive = \"false\";
+        ///    // Ask the GuiListBoxCtrl object what item id in the list matches the requested text.
+        ///    %matchingId = %thisGuiListBoxCtrl.findItemText(%findText,%isCaseSensitive);
+        ///    @endtsexample
+        ///    @return Index id of item with matching text or -1 if none found.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public int findItemText(string findText, bool bCaseSensitive)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_findItemText(_mSimObjectId, findText, bCaseSensitive);
+            }
+
+        /// <summary>
+        /// @brief Returns the number of items in the list.
+        ///    @tsexample
+        ///    // Request the number of items in the list of the GuiListBoxCtrl object.
+        ///    %listItemCount = %thisGuiListBoxCtrl.getItemCount();
+        ///    @endtsexample
+        ///    @return The number of items in the list.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public int getItemCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getItemCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns the object associated with an item. This only makes sense if you are mirroring a simset.
+        ///    @param index Index id to request the associated item from.
+        ///    @tsexample
+        ///    // Define the index id
+        ///    %index = \"12\";
+        ///    // Request the item from the GuiListBoxCtrl object
+        ///    %object = %thisGuiListBoxCtrl.getItemObject(%index);
+        ///    @endtsexample
+        ///    @return The object associated with the item in the list.
+        ///    @see References)
+        /// 
+        /// </summary>
+        public string getItemObject(int index)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getItemObject(_mSimObjectId, index);
+            }
+
+        /// <summary>
+        /// @brief Returns the text of the item at the specified index.
+        ///    @param index Index id to return the item text from.
+        ///    @tsexample
+        ///    // Define the index id entry to request the text from
+        ///    %index = \"12\";
+        ///    // Request the item id text from the GuiListBoxCtrl object.
+        ///    %text = %thisGuiListBoxCtrl.getItemText(%index);
+        ///    @endtsexample
+        ///    @return The text of the requested index id.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public string getItemText(int index)
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getItemText(_mSimObjectId, index);
+            }
+
+        /// <summary>
+        /// @brief Request the item index for the item that was last clicked.
+        ///    @tsexample
+        ///    // Request the item index for the last clicked item in the list
+        ///    %lastClickedIndex = %thisGuiListBoxCtrl.getLastClickItem();
+        ///    @endtsexample
+        ///    @return Index id for the last clicked item in the list.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public int getLastClickItem()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getLastClickItem(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns the number of items currently selected.
+        ///    @tsexample
+        ///    // Request the number of currently selected items
+        ///    %selectedItemCount = %thisGuiListBoxCtrl.getSelCount();
+        ///    @endtsexample
+        ///    @return Number of currently selected items.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public int getSelCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getSelCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns the selected items index or -1 if none selected. If multiple selections exist it returns the first selected item. 
+        ///    @tsexample
+        ///    // Request the index id of the currently selected item
+        ///    %selectedItemId = %thisGuiListBoxCtrl.getSelectedItem();
+        ///    @endtsexample
+        ///    @return The selected items index or -1 if none selected.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public int getSelectedItem()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getSelectedItem(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns a space delimited list of the selected items indexes in the list.
+        ///    @tsexample
+        ///    // Request a space delimited list of the items in the GuiListBoxCtrl object.
+        ///    %selectionList = %thisGuiListBoxCtrl.getSelectedItems();
+        ///    @endtsexample
+        ///    @return Space delimited list of the selected items indexes in the list
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public string getSelectedItems()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_getSelectedItems(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Inserts an item into the list at the specified index and returns the index assigned or -1 on error.
+        ///    @param text Text item to add.
+        ///    @param index Index id to insert the list item text at.
+        ///    @tsexample
+        ///    // Define the text to insert
+        ///    %text = \"Secret Agent Gideon\";
+        ///    // Define the index entry to insert the text at
+        ///    %index = \"14\";
+        ///    // In form the GuiListBoxCtrl object to insert the text at the defined index.
+        ///    %assignedId = %thisGuiListBoxCtrl.insertItem(%text,%index);
+        ///    @endtsexample
+        ///    @return If successful will return the index id assigned. If unsuccessful, will return -1.
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void insertItem(string text, int index)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_insertItem(_mSimObjectId, text, index);
+            }
+
+        /// <summary>
+        /// @brief Removes an item of the entered name from the filtered items list.
+        ///    @param itemName Name of the item to remove from the filtered list.
+        ///    @tsexample
+        ///    // Define the itemName that you wish to remove.
+        ///    %itemName = \"This Item Name\";
+        ///    // Remove the itemName from the GuiListBoxCtrl
+        ///    %thisGuiListBoxCtrl.removeFilteredItem(%itemName);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void removeFilteredItem(string itemName)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_removeFilteredItem(_mSimObjectId, itemName);
+            }
+
+        /// <summary>
+        /// @brief Sets the currently selected item at the specified index.
+        ///    @param indexId Index Id to set selected.
+        ///    @tsexample
+        ///    // Define the index id that we wish to select.
+        ///    %selectId = \"4\";
+        ///    // Inform the GuiListBoxCtrl object to set the requested index as selected.
+        ///    %thisGuiListBoxCtrl.setCurSel(%selectId);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setCurSel(int indexId)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setCurSel(_mSimObjectId, indexId);
+            }
+
+        /// <summary>
+        /// @brief Sets the current selection range from index start to stop. If no stop is specified it sets from start index to the end of the list
+        ///    @param indexStart Index Id to start selection.
+        ///    @param indexStop Index Id to end selection.
+        ///    @tsexample
+        ///    // Set start id
+        ///    %indexStart = \"3\";
+        ///    // Set end id
+        ///    %indexEnd = \"6\";
+        ///    // Request the GuiListBoxCtrl object to select the defined range.
+        ///    %thisGuiListBoxCtrl.setCurSelRange(%indexStart,%indexEnd);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setCurSelRange(int indexStart, int indexStop)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setCurSelRange(_mSimObjectId, indexStart, indexStop);
+            }
+
+        /// <summary>
+        /// @brief Sets the color of a single list entry at the specified index id.
+        ///    @param index Index id to modify the color of in the list.
+        ///    @param color Color value to set the list entry to.
+        ///    @tsexample
+        ///    // Define the index id value
+        ///    %index = \"5\";
+        ///    // Define the color value
+        ///    %color = \"1.0 0.0 0.0\";
+        ///    // Inform the GuiListBoxCtrl object to change the color of the requested index
+        ///    %thisGuiListBoxCtrl.setItemColor(%index,%color);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setItemColor(int index, ColorF color)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setItemColor(_mSimObjectId, index, color.AsString());
+            }
+
+        /// <summary>
+        /// @brief Sets the items text at the specified index.
+        ///    @param index Index id to set the item text at.
+        ///    @param newtext Text to change the list item at index id to.
+        ///    @tsexample
+        ///    // Define the index id/n
+        ///    %index = \"12\";
+        ///    // Define the text to set the list item to
+        ///    %newtext = \"Gideon's Fancy Goggles\";
+        ///    // Inform the GuiListBoxCtrl object to change the text at the requested index
+        ///    %thisGuiListBoxCtrl.setItemText(%index,%newText);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setItemText(int index, string newtext)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setItemText(_mSimObjectId, index, newtext);
+            }
+
+        /// <summary>
+        /// @brief Set the tooltip text to display for the given list item.
+        ///    @param index Index id to change the tooltip text
+        ///    @param text Text for the tooltip.
+        ///    @tsexample
+        ///    // Define the index id
+        ///    %index = \"12\";
+        ///    // Define the tooltip text
+        ///    %tooltip = \"Gideon's goggles can see through space and time.\"
+        ///    // Inform the GuiListBoxCtrl object to set the tooltop for the item at the defined index id
+        ///    %thisGuiListBoxCtrl.setItemToolTip(%index,%tooltip);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setItemTooltip(int index, string text)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setItemTooltip(_mSimObjectId, index, text);
+            }
+
+        /// <summary>
+        /// @brief Enable or disable multiple selections for this GuiListBoxCtrl object.
+        ///    @param allowMultSelections Boolean variable to set the use of multiple selections or not.
+        ///    @tsexample
+        ///    // Define the multiple selection use state.
+        ///    %allowMultSelections = \"true\";
+        ///    // Set the allow  multiple selection state on the GuiListBoxCtrl object.
+        ///    %thisGuiListBoxCtrl.setMultipleSelection(%allowMultSelections);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setMultipleSelection(bool allowMultSelections)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setMultipleSelection(_mSimObjectId, allowMultSelections);
+            }
+
+        /// <summary>
+        /// @brief Sets the item at the index specified to selected or not.
+        ///    Detailed description
+        ///    @param index Item index to set selected or unselected.
+        ///    @param setSelected Boolean selection state to set the requested item index.
+        ///    @tsexample
+        ///    // Define the index
+        ///    %index = \"5\";
+        ///    // Define the selection state
+        ///    %selected = \"true\"
+        ///    // Inform the GuiListBoxCtrl object of the new selection state for the requested index entry.
+        ///    %thisGuiListBoxCtrl.setSelected(%index,%selected);
+        ///    @endtsexample
+        ///    @see GuiControl)
+        /// 
+        /// </summary>
+        public void setSelected(int index, bool setSelected)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiListBoxCtrl_setSelected(_mSimObjectId, index, setSelected);
+            }
+        }
+    }

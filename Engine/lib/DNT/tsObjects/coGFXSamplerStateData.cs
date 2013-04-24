@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,199 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGFXSamplerStateData))]
-    public class coGFXSamplerStateData: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoGFXSamplerStateData))]
+    public class coGFXSamplerStateData : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGFXSamplerStateData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGFXSamplerStateData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGFXSamplerStateData(int simobjectid): base(simobjectid){ }
+        public coGFXSamplerStateData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGFXSamplerStateData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGFXSamplerStateData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// The texture address mode for the u coordinate. The default is GFXAddressWrap. 
+        /// </summary>
+        public TypeGFXTextureAddressMode addressModeU
+            {
+            get { return (TypeGFXTextureAddressMode) Enum.Parse(typeof (TypeGFXTextureAddressMode), dnTorque.self.GetVar(_mSimObjectId + ".addressModeU")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".addressModeU", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The texture address mode for the v coordinate. The default is GFXAddressWrap. 
+        /// </summary>
+        public TypeGFXTextureAddressMode addressModeV
+            {
+            get { return (TypeGFXTextureAddressMode) Enum.Parse(typeof (TypeGFXTextureAddressMode), dnTorque.self.GetVar(_mSimObjectId + ".addressModeV")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".addressModeV", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The texture address mode for the w coordinate. The default is GFXAddressWrap. 
+        /// </summary>
+        public TypeGFXTextureAddressMode addressModeW
+            {
+            get { return (TypeGFXTextureAddressMode) Enum.Parse(typeof (TypeGFXTextureAddressMode), dnTorque.self.GetVar(_mSimObjectId + ".addressModeW")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".addressModeW", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The first alpha argument for the texture stage. The default value is GFXTATexture. 
+        /// </summary>
+        public GFXTextureArgument alphaArg1
+            {
+            get { return (GFXTextureArgument) Enum.Parse(typeof (GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".alphaArg1")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaArg1", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The second alpha argument for the texture stage. The default value is GFXTADiffuse. 
+        /// </summary>
+        public GFXTextureArgument alphaArg2
+            {
+            get { return (GFXTextureArgument) Enum.Parse(typeof (GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".alphaArg2")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaArg2", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The third alpha channel selector operand for triadic operations (multiply, add, and linearly interpolate). The default value is GFXTACurrent. 
+        /// </summary>
+        public GFXTextureArgument alphaArg3
+            {
+            get { return (GFXTextureArgument) Enum.Parse(typeof (GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".alphaArg3")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaArg3", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The texture alpha blending operation. The default value is GFXTOPModulate. 
+        /// </summary>
+        public TypeGFXTextureOp alphaOp
+            {
+            get { return (TypeGFXTextureOp) Enum.Parse(typeof (TypeGFXTextureOp), dnTorque.self.GetVar(_mSimObjectId + ".alphaOp")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaOp", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The first color argument for the texture stage. The default value is GFXTACurrent. 
+        /// </summary>
+        public GFXTextureArgument colorArg1
+            {
+            get { return (GFXTextureArgument) Enum.Parse(typeof (GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".colorArg1")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorArg1", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The second color argument for the texture stage. The default value is GFXTATexture. 
+        /// </summary>
+        public GFXTextureArgument colorArg2
+            {
+            get { return (GFXTextureArgument) Enum.Parse(typeof (GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".colorArg2")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorArg2", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The third color argument for triadic operations (multiply, add, and linearly interpolate). The default value is GFXTACurrent. 
+        /// </summary>
+        public GFXTextureArgument colorArg3
+            {
+            get { return (GFXTextureArgument) Enum.Parse(typeof (GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".colorArg3")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorArg3", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The texture magnification filter. The default is GFXTextureFilterLinear. 
+        /// </summary>
+        public TypeGFXTextureFilterType magFilter
+            {
+            get { return (TypeGFXTextureFilterType) Enum.Parse(typeof (TypeGFXTextureFilterType), dnTorque.self.GetVar(_mSimObjectId + ".magFilter")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".magFilter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The maximum texture anisotropy. The default value is 1. 
+        /// </summary>
+        public int maxAnisotropy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxAnisotropy").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxAnisotropy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The texture minification filter. The default is GFXTextureFilterLinear. 
+        /// </summary>
+        public TypeGFXTextureFilterType minFilter
+            {
+            get { return (TypeGFXTextureFilterType) Enum.Parse(typeof (TypeGFXTextureFilterType), dnTorque.self.GetVar(_mSimObjectId + ".minFilter")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minFilter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The texture mipmap filter used during minification. The default is GFXTextureFilterLinear. 
+        /// </summary>
+        public TypeGFXTextureFilterType mipFilter
+            {
+            get { return (TypeGFXTextureFilterType) Enum.Parse(typeof (TypeGFXTextureFilterType), dnTorque.self.GetVar(_mSimObjectId + ".mipFilter")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mipFilter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The mipmap level of detail bias. The default value is zero. 
+        /// </summary>
+        public float mipLODBias
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mipLODBias").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mipLODBias", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The selection of the destination register for the result of this stage. The default is GFXTACurrent. 
+        /// </summary>
+        public TypeGFXTextureArgument resultArg
+            {
+            get { return (TypeGFXTextureArgument) Enum.Parse(typeof (TypeGFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".resultArg")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".resultArg", value.ToString()); }
+            }
+
+        /// <summary>
+        /// The texture color blending operation. The default value is GFXTOPDisable which disables the sampler. 
+        /// </summary>
+        public TypeGFXTextureOp textureColorOp
+            {
+            get { return (TypeGFXTextureOp) Enum.Parse(typeof (TypeGFXTextureOp), dnTorque.self.GetVar(_mSimObjectId + ".textureColorOp")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureColorOp", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Sets the texture transform state. The default is GFXTTFFDisable. 
+        /// </summary>
+        public TypeGFXTextureTransformFlags textureTransform
+            {
+            get { return (TypeGFXTextureTransformFlags) Enum.Parse(typeof (TypeGFXTextureTransformFlags), dnTorque.self.GetVar(_mSimObjectId + ".textureTransform")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureTransform", value.ToString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +298,9 @@ public coGFXSamplerStateData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +308,17 @@ public coGFXSamplerStateData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +330,15 @@ public coGFXSamplerStateData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGFXSamplerStateData ts)
+        public static implicit operator string(coGFXSamplerStateData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +358,7 @@ public coGFXSamplerStateData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGFXSamplerStateData ts)
+        public static implicit operator int(coGFXSamplerStateData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +379,7 @@ public coGFXSamplerStateData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGFXSamplerStateData ts)
+        public static implicit operator uint(coGFXSamplerStateData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,186 +394,5 @@ public coGFXSamplerStateData(int simobjectid): base(simobjectid){ }
             {
             return new coGFXSamplerStateData(ts);
             }
-public TypeGFXTextureAddressMode addressModeU
-       {
-       get
-          {          return (TypeGFXTextureAddressMode)Enum.Parse(typeof(TypeGFXTextureAddressMode), dnTorque.self.GetVar(_mSimObjectId + ".addressModeU"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".addressModeU", value.ToString());
-          }
-       }
-public TypeGFXTextureAddressMode addressModeV
-       {
-       get
-          {          return (TypeGFXTextureAddressMode)Enum.Parse(typeof(TypeGFXTextureAddressMode), dnTorque.self.GetVar(_mSimObjectId + ".addressModeV"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".addressModeV", value.ToString());
-          }
-       }
-public TypeGFXTextureAddressMode addressModeW
-       {
-       get
-          {          return (TypeGFXTextureAddressMode)Enum.Parse(typeof(TypeGFXTextureAddressMode), dnTorque.self.GetVar(_mSimObjectId + ".addressModeW"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".addressModeW", value.ToString());
-          }
-       }
-public GFXTextureArgument alphaArg1
-       {
-       get
-          {          return (GFXTextureArgument)Enum.Parse(typeof(GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".alphaArg1"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaArg1", value.ToString());
-          }
-       }
-public GFXTextureArgument alphaArg2
-       {
-       get
-          {          return (GFXTextureArgument)Enum.Parse(typeof(GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".alphaArg2"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaArg2", value.ToString());
-          }
-       }
-public GFXTextureArgument alphaArg3
-       {
-       get
-          {          return (GFXTextureArgument)Enum.Parse(typeof(GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".alphaArg3"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaArg3", value.ToString());
-          }
-       }
-public TypeGFXTextureOp alphaOp
-       {
-       get
-          {          return (TypeGFXTextureOp)Enum.Parse(typeof(TypeGFXTextureOp), dnTorque.self.GetVar(_mSimObjectId + ".alphaOp"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alphaOp", value.ToString());
-          }
-       }
-public GFXTextureArgument colorArg1
-       {
-       get
-          {          return (GFXTextureArgument)Enum.Parse(typeof(GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".colorArg1"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorArg1", value.ToString());
-          }
-       }
-public GFXTextureArgument colorArg2
-       {
-       get
-          {          return (GFXTextureArgument)Enum.Parse(typeof(GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".colorArg2"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorArg2", value.ToString());
-          }
-       }
-public GFXTextureArgument colorArg3
-       {
-       get
-          {          return (GFXTextureArgument)Enum.Parse(typeof(GFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".colorArg3"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorArg3", value.ToString());
-          }
-       }
-public TypeGFXTextureFilterType magFilter
-       {
-       get
-          {          return (TypeGFXTextureFilterType)Enum.Parse(typeof(TypeGFXTextureFilterType), dnTorque.self.GetVar(_mSimObjectId + ".magFilter"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".magFilter", value.ToString());
-          }
-       }
-public int maxAnisotropy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxAnisotropy").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxAnisotropy", value.AsString());
-          }
-       }
-public TypeGFXTextureFilterType minFilter
-       {
-       get
-          {          return (TypeGFXTextureFilterType)Enum.Parse(typeof(TypeGFXTextureFilterType), dnTorque.self.GetVar(_mSimObjectId + ".minFilter"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minFilter", value.ToString());
-          }
-       }
-public TypeGFXTextureFilterType mipFilter
-       {
-       get
-          {          return (TypeGFXTextureFilterType)Enum.Parse(typeof(TypeGFXTextureFilterType), dnTorque.self.GetVar(_mSimObjectId + ".mipFilter"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mipFilter", value.ToString());
-          }
-       }
-public float mipLODBias
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mipLODBias").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mipLODBias", value.AsString());
-          }
-       }
-public TypeGFXTextureArgument resultArg
-       {
-       get
-          {          return (TypeGFXTextureArgument)Enum.Parse(typeof(TypeGFXTextureArgument), dnTorque.self.GetVar(_mSimObjectId + ".resultArg"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".resultArg", value.ToString());
-          }
-       }
-public TypeGFXTextureOp textureColorOp
-       {
-       get
-          {          return (TypeGFXTextureOp)Enum.Parse(typeof(TypeGFXTextureOp), dnTorque.self.GetVar(_mSimObjectId + ".textureColorOp"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureColorOp", value.ToString());
-          }
-       }
-public TypeGFXTextureTransformFlags textureTransform
-       {
-       get
-          {          return (TypeGFXTextureTransformFlags)Enum.Parse(typeof(TypeGFXTextureTransformFlags), dnTorque.self.GetVar(_mSimObjectId + ".textureTransform"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureTransform", value.ToString());
-          }
-       }
-}}
+        }
+    }

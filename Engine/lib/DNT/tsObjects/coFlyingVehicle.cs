@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoFlyingVehicle))]
-    public class coFlyingVehicle: coVehicle
-{
+    [TypeConverter(typeof (tsObjectConvertercoFlyingVehicle))]
+    public class coFlyingVehicle : coVehicle
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFlyingVehicle(string simobjectid) : base(simobjectid){ }
+        public coFlyingVehicle(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFlyingVehicle(uint simobjectid): base(simobjectid){ }
+        public coFlyingVehicle(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFlyingVehicle(int simobjectid): base(simobjectid){ }
+        public coFlyingVehicle(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coFlyingVehicle(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coFlyingVehicle(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coFlyingVehicle(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coFlyingVehicle ts)
+        public static implicit operator string(coFlyingVehicle ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coFlyingVehicle(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coFlyingVehicle ts)
+        public static implicit operator int(coFlyingVehicle ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coFlyingVehicle(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coFlyingVehicle ts)
+        public static implicit operator uint(coFlyingVehicle ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,13 +231,16 @@ public coFlyingVehicle(int simobjectid): base(simobjectid){ }
             {
             return new coFlyingVehicle(ts);
             }
-/// <summary>
-/// @brief Set whether the vehicle should temporarily use the createHoverHeight 
-///    specified in the datablock.This can help avoid problems with spawning.
-///    @param enabled true to use the datablock createHoverHeight, false otherwise )
-/// 
-/// </summary>
-public  void useCreateHeight(bool enabled){
-TorqueScriptTemplate.m_ts.fnFlyingVehicle_useCreateHeight(_mSimObjectId, enabled);
-}
-}}
+
+        /// <summary>
+        /// @brief Set whether the vehicle should temporarily use the createHoverHeight 
+        ///    specified in the datablock.This can help avoid problems with spawning.
+        ///    @param enabled true to use the datablock createHoverHeight, false otherwise )
+        /// 
+        /// </summary>
+        public void useCreateHeight(bool enabled)
+            {
+            TorqueScriptTemplate.m_ts.fnFlyingVehicle_useCreateHeight(_mSimObjectId, enabled);
+            }
+        }
+    }

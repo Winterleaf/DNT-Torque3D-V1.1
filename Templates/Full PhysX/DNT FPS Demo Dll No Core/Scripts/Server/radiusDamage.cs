@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -71,7 +71,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // objects.
             Dictionary<uint, float> r = console.initContainerRadiusSearch(new Point3F(position), radius, (uint) SceneObjectTypesAsUint.ShapeBaseObjectType);
             float halfRadius = radius/(float) 2.0;
-            foreach (uint targetObject in r.Keys)
+            foreach (coPlayer targetObject in r.Keys)
                 {
                 // Calculate how much exposure the current object has to
                 // the explosive force.  The object types listed are objects
@@ -80,7 +80,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
                 UInt32 mask = (uint) SceneObjectTypesAsUint.InteriorObjectType | (uint) SceneObjectTypesAsUint.TerrainObjectType | (uint) SceneObjectTypesAsUint.StaticShapeObjectType | (uint) SceneObjectTypesAsUint.VehicleObjectType;
 
-                float coverage = Util.calcExplosionCoverage(new Point3F(position), (int) targetObject, mask);
+                float coverage = Util.calcExplosionCoverage(new Point3F(position), targetObject, mask);
                 if (!coverage.AsBool())
                     continue;
                 float dist = r[targetObject];
@@ -95,10 +95,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 // Apply the impulse
                 if (!impulse.AsBool())
                     continue;
-                TransformF impulseVec = new TransformF(SceneObject.getWorldBoxCenter(targetObject.AsString())) - new TransformF(position);
+                TransformF impulseVec = new TransformF(targetObject.getWorldBoxCenter()) - new TransformF(position);
                 impulseVec = impulseVec.normalizeSafe();
                 impulseVec = impulseVec.vectorScale(impulse*distScale);
-                ShapeBase.applyImpulse(targetObject.AsString(), new Point3F(position), impulseVec.MPosition);
+                targetObject.applyImpulse(new Point3F(position), impulseVec.MPosition);
                 }
             }
         }

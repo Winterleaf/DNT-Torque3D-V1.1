@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,415 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXDescription))]
-    public class coSFXDescription: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXDescription))]
+    public class coSFXDescription : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXDescription(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSFXDescription(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSFXDescription(int simobjectid): base(simobjectid){ }
+        public coSFXDescription(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSFXDescription(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSFXDescription(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Inner sound cone angle in degrees.\n     This value determines the angle of the inner volume cone that protrudes out in the direction      of a sound. Within this cone, the sound source retains full volume that is unaffected by sound cone      settings (though still affected by distance attenuation.)\n\n     Valid values are from 0 to 360. Must be less than coneOutsideAngle. Default is 360. Only for 3D sounds.\n\n     @ref SFXSource_cones 
+        /// </summary>
+        public int coneInsideAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coneInsideAngle").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coneInsideAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Outer sound cone angle in degrees.\n     This value determines the angle of the outer volume cone that protrudes out in the direction of a sound      and surrounds the inner volume cone. Within this cone, volume will linearly interpolate from the outer cone      hull inwards to the inner coner hull starting with the base volume scaled by coneOutsideVolume and ramping      up/down to the full base volume.\n\n     Valid values are from 0 to 360. Must be = coneInsideAngle. Default is 360. Only for 3D sounds.\n\n     @ref SFXSource_cones 
+        /// </summary>
+        public int coneOutsideAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coneOutsideAngle").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coneOutsideAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines the volume scale factor applied the a source's base volume level outside of the outer cone.\n     In the outer cone, starting from outside the inner cone, the scale factor smoothly interpolates from 1.0 (within the inner cone)      to this value. At the moment, the allowed range is 0.0 (silence) to 1.0 (no attenuation) as amplification is only supported on      XAudio2 but not on the other devices.\n\n     Only for 3D sound.\n\n     @ref SFXSource_cones 
+        /// </summary>
+        public float coneOutsideVolume
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coneOutsideVolume").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coneOutsideVolume", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Easing curve for fade-in transition.\n     Volume fade-ins will interpolate volume along this curve.\n\n     @ref SFXSource_fades 
+        /// </summary>
+        public EaseF fadeInEase
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeInEase").AsEaseF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeInEase", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of seconds to gradually fade in volume from zero when playback starts.\n     Must be = 0.\n\n     @ref SFXSource_fades 
+        /// </summary>
+        public float fadeInTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeInTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeInTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Fade each cycle of a loop in and/or out; otherwise only fade-in first cycle.\n     By default, volume fading is applied to the beginning and end of the playback range, i.e. a fade-in segment      is placed at the beginning of the sound and a fade-out segment is paced at the end of a sound. However,      when looping playback, this may be undesirable as each iteration of the sound will then have a fade-in and      fade-out effect.\n\n     To set up looping sounds such that a fade-in is applied only when the sound is first started (or playback resumed)      and a fade-out is only applied when the sound is explicitly paused or stopped, set this field to true.\n\n     Default is false.\n\n     @ref SFXSource_fades 
+        /// </summary>
+        public bool fadeLoops
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeLoops").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeLoops", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Easing curve for fade-out transition.\n     Volume fade-outs will interpolate volume along this curve.\n\n     @ref SFXSource_fades 
+        /// </summary>
+        public EaseF fadeOutEase
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutEase").AsEaseF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeOutEase", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of seconds to gradually fade out volume down to zero when playback is stopped or paused.\n     Must be =0.\n\n     @ref SFXSource_fades 
+        /// </summary>
+        public float fadeOutTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeOutTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, sounds played with this description will have a position and orientation in space.\n     Unlike a non-positional sound, a 3D sound will have its volume attenuated depending on the distance to the      listener in space. The farther the sound moves away from the listener, the less audible it will be.\n\n     Non-positional sounds, in contrast, will remain at their original volume regardless of where the listener is.\n\n     @note Whether a sound is positional or non-positional cannot be changed once the sound was created so this field       determines up front which is the case for a given sound.\n\n     @ref SFX_3d\n     @ref SFXSource_volume 
+        /// </summary>
+        public bool is3D
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".is3D").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".is3D", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the sound will be played in an endless loop.\n\n     Default is false. 
+        /// </summary>
+        public bool isLooping
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isLooping").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isLooping", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, incrementally stream sounds; otherwise sounds are loaded in full.\n\n     @ref SFX_streaming 
+        /// </summary>
+        public bool isStreaming
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isStreaming").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isStreaming", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The distance at which attenuation stops.\n     In the linear distance model, the attenuated volume will be zero at this distance.\n\n     In the logarithmic model, attenuation will simply stop at this distance and the sound will keep its attenuated      volume from there on out. As such, it primarily functions as a cutoff factor to exponential distance attentuation      to limit the number of voices relevant to updates.\n\n     Only applies to 3D sounds.\n     @see LevelInfo::soundDistanceModel\n\n     @ref SFX_3d\n     @ref SFXSource_volume 
+        /// </summary>
+        public float maxDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Names of the parameters to which sources using this description will automatically be linked.\n\n     Individual parameters are identified by their #internalName.\n\n     @ref SFX_interactive 
+        /// </summary>
+        public String parameters
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".parameters").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".parameters", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Pitch shift to apply to playback.\n\n     The pitch assigned to a sound determines the speed at which it is played back. A pitch shift of 1 plays the      sound at its default speed. A greater shift factor speeds up playback and a smaller shift factor slows it down.\n\n     Must be 0. Default is 1. 
+        /// </summary>
+        public float pitch
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pitch").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pitch", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Priority level for virtualization of sounds (1 = base level).\n     When there are more concurrently active sounds than supported by the audio mixer, some of the sounds      need to be culled. Which sounds are culled first depends primarily on total audibility of individual sounds.      However, the priority of invidual sounds may be decreased or decreased through this field.\n\n     @ref SFXSound_virtualization 
+        /// </summary>
+        public float priority
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".priority").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".priority", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Distance at which volume attenuation begins.\n     Up to this distance, the sound retains its base volume.\n\n     In the linear distance model, the volume will linearly from this distance onwards up to maxDistance where it      reaches zero.\n\n     In the logarithmic distance model, the reference distance determine how fast the sound volume decreases      with distance. Each referenceDistance steps (scaled by the rolloff factor), the volume halves.\n\n     A rule of thumb is that for sounds that require you to be close to hear them in the real world, set the reference      distance to small values whereas for sounds that are widely audible set it to larger values.\n\n     Only applies to 3D sounds.\n     @see LevelInfo::soundDistanceModel\n\n     @ref SFX_3d\n     @ref SFXSource_volume 
+        /// </summary>
+        public float referenceDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".referenceDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".referenceDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Multiplies SFXEnvironment::airAbsorptionHR.\n     @note SUPPORTED: EAX Only\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbAirAbsorptionFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbAirAbsorptionFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbAirAbsorptionFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Direct path level (at low and mid frequencies).\n     @note SUPPORTED: EAX/I3DL2/FMODSFX\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public int reverbDirect
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbDirect").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbDirect", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Relative direct path level at high frequencies.\n     @note SUPPORTED: EAX/I3DL2\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public int reverbDirectHF
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbDirectHF").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbDirectHF", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Per-source doppler factor.\n     @note SUPPORTED: EAX Only\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbDopplerFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbDopplerFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbDopplerFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Main exclusion control (attenuation at high frequencies).\n     @note SUPPORTED: EAX Only\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public int reverbExclusion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbExclusion").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbExclusion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Exclusion low-frequency level re. main control.\n     @note SUPPORTED: EAX Only\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbExclusionLFRatio
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbExclusionLFRatio").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbExclusionLFRatio", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bitfield combination of per-sound reverb flags.\n     @see REVERB_DIRECTHFAUTO\n     @see REVERB_ROOMAUTO\n     @see REVERB_ROOMHFAUTO\n     @see REVERB_INSTANCE0\n     @see REVERB_INSTANCE1\n     @see REVERB_INSTANCE2\n     @see REVERB_INSTANCE3\n 
+        /// </summary>
+        public int reverbFlags
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbFlags").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbFlags", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Main obstruction control (attenuation at high frequencies).\n     @note SUPPORTED: EAX/I3DL2\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public int reverbObstruction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbObstruction").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbObstruction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Obstruction low-frequency level re. main control.\n     @note SUPPORTED: EAX/I3DL2\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbObstructionLFRatio
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbObstructionLFRatio").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbObstructionLFRatio", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Main occlusion control (attenuation at high frequencies).     @note SUPPORTED: EAX/I3DL2\n\n     \n@see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public int reverbOcclusion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbOcclusion").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbOcclusion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Relative occlusion control for direct path.\n     @note SUPPORTED: EAX Only\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbOcclusionDirectRatio
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbOcclusionDirectRatio").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbOcclusionDirectRatio", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Occlusion low-frequency level re. main control.\n     @note SUPPORTED: EAX/I3DL2\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbOcclusionLFRatio
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbOcclusionLFRatio").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbOcclusionLFRatio", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Relative occlusion control for room effect.\n     @note SUPPORTED: EAX Only\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbOcclusionRoomRatio
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbOcclusionRoomRatio").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbOcclusionRoomRatio", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Outside sound cone level at high frequencies.\n     @note SUPPORTED: EAX Only\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public int reverbOutsideVolumeHF
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbOutsideVolumeHF").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbOutsideVolumeHF", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Per-source logarithmic falloff factor.\n     @note SUPPORTED: EAX Only\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbReverbRolloffFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbReverbRolloffFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbReverbRolloffFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Room effect level (at low and mid frequencies).\n     @note SUPPORTED: EAX/I3DL2/FMODSFX\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public int reverbRoom
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbRoom").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbRoom", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Relative room effect level at high frequencies.\n     @note SUPPORTED: EAX/I3DL2\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public int reverbRoomHF
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbRoomHF").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbRoomHF", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Room effect falloff factor.\n     @note SUPPORTED: EAX/I3DL2\n\n     @see http://www.atc.creative.com/algorithms/eax20.pdf 
+        /// </summary>
+        public float reverbRoomRolloffFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbRoomRolloffFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbRoomRolloffFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Scale factor to apply to logarithmic distance attenuation curve. If -1, the global rolloff setting is used.\n\n     @note Per-sound rolloff is only supported on OpenAL and FMOD at the moment. With other divices, the global rolloff setting       is used for all sounds.\n     @see LevelInfo::soundDistanceModel 
+        /// </summary>
+        public float rolloffFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rolloffFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rolloffFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on random displacement of 3D sound positions.\n     When a 3D sound is created and given its initial position in space, this field is used to determine      the amount of randomization applied to the actual position given to the sound system.\n\n     The randomization uses the following scheme:     @verbatim\n     x += rand( - scatterDistance[ 0 ], scatterDistance[ 0 ] 
+        /// </summary>
+        public Point3F scatterDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scatterDistance").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scatterDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Group that sources playing with this description should be put into.\n\n     When a sound source is allocated, it will be made a child of the source group that is listed in its \n     description. This group will then modulate several properties of the sound as it is played.\n\n     For example, one use of groups is to segregate sounds so that volume levels of different sound      groups such as interface audio and game audio can be controlled independently.\n\n     @ref SFXSource_hierarchies 
+        /// </summary>
+        public coSFXSource sourceGroup
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sourceGroup"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sourceGroup", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Number of seconds of sample data per single streaming packet.\n     This field allows to fine-tune streaming for individual sounds. The streaming system      processes streamed sounds in batches called packets. Each packet will contain a set amount      of sample data determined by this field. The greater its value, the more sample data each      packet contains, the more work is done per packet.\n\n     @note This field only takes effect when Torque's own sound system performs the streaming.       When FMOD is used, this field is ignored and streaming is performed by FMOD.\n\n     @ref SFX_streaming 
+        /// </summary>
+        public int streamPacketSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".streamPacketSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".streamPacketSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of sample packets to read and buffer in advance.\n     This field determines the number of packets that the streaming system will try to keep buffered      in advance. As such it determines the number of packets that can be consumed by the sound      device before the playback queue is running dry. Greater values thus allow for more lag      in the streaming pipeline.\n\n     @note This field only takes effect when Torque's own sound system performs the streaming.       When FMOD is used, this field is ignored and streaming is performed by FMOD.\n\n     @ref SFX_streaming 
+        /// </summary>
+        public int streamReadAhead
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".streamReadAhead").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".streamReadAhead", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, use the reverb properties defined here on sounds.\n     By default, sounds will be assigned a generic reverb profile. By setting this flag to true,      a custom reverb setup can be defined using the \Reverb\ properties that will then be assigned      to sounds playing with the description.\n\n     @ref SFX_reverb 
+        /// </summary>
+        public bool useCustomReverb
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useCustomReverb").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useCustomReverb", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the sound is allowed to be mixed in hardware.\n     If true, the sound system will try to allocate the voice for the sound directly      on the sound hardware for mixing by the hardware mixer. Be aware that a hardware mixer      may not provide all features available to sounds mixed in software.\n\n     @note This flag currently only takes effect when using FMOD.\n\n     @note Generally, it is preferable to let sounds be mixed in software.\n\n 
+        /// </summary>
+        public bool useHardware
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useHardware").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useHardware", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Base volume level for the sound.\n\n     This will be the starting point for volume attenuation on the sound. The final effective volume of      a sound will be dependent on a number of parameters.\n\n     Must be between 0 (mute) and 1 (full volume). Default is 1.\n\n     @ref SFXSource_volume 
+        /// </summary>
+        public float volume
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".volume").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".volume", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +514,9 @@ public coSFXDescription(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +524,17 @@ public coSFXDescription(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +546,15 @@ public coSFXDescription(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXDescription ts)
+        public static implicit operator string(coSFXDescription ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +574,7 @@ public coSFXDescription(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXDescription ts)
+        public static implicit operator int(coSFXDescription ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +595,7 @@ public coSFXDescription(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXDescription ts)
+        public static implicit operator uint(coSFXDescription ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,466 +610,5 @@ public coSFXDescription(int simobjectid): base(simobjectid){ }
             {
             return new coSFXDescription(ts);
             }
-public int coneInsideAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coneInsideAngle").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coneInsideAngle", value.AsString());
-          }
-       }
-public int coneOutsideAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coneOutsideAngle").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coneOutsideAngle", value.AsString());
-          }
-       }
-public float coneOutsideVolume
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coneOutsideVolume").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coneOutsideVolume", value.AsString());
-          }
-       }
-public EaseF fadeInEase
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeInEase").AsEaseF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeInEase", value.AsString());
-          }
-       }
-public float fadeInTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeInTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeInTime", value.AsString());
-          }
-       }
-public bool fadeLoops
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeLoops").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeLoops", value.AsString());
-          }
-       }
-public EaseF fadeOutEase
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutEase").AsEaseF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeOutEase", value.AsString());
-          }
-       }
-public float fadeOutTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeOutTime", value.AsString());
-          }
-       }
-public bool is3D
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".is3D").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".is3D", value.AsString());
-          }
-       }
-public bool isLooping
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isLooping").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isLooping", value.AsString());
-          }
-       }
-public bool isStreaming
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isStreaming").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isStreaming", value.AsString());
-          }
-       }
-public float maxDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxDistance", value.AsString());
-          }
-       }
-public String parameters
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".parameters").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".parameters", value.AsString());
-          }
-       }
-public float pitch
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pitch").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pitch", value.AsString());
-          }
-       }
-public float priority
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".priority").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".priority", value.AsString());
-          }
-       }
-public float referenceDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".referenceDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".referenceDistance", value.AsString());
-          }
-       }
-public float reverbAirAbsorptionFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbAirAbsorptionFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbAirAbsorptionFactor", value.AsString());
-          }
-       }
-public int reverbDirect
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbDirect").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbDirect", value.AsString());
-          }
-       }
-public int reverbDirectHF
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbDirectHF").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbDirectHF", value.AsString());
-          }
-       }
-public float reverbDopplerFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbDopplerFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbDopplerFactor", value.AsString());
-          }
-       }
-public int reverbExclusion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbExclusion").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbExclusion", value.AsString());
-          }
-       }
-public float reverbExclusionLFRatio
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbExclusionLFRatio").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbExclusionLFRatio", value.AsString());
-          }
-       }
-public int reverbFlags
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbFlags").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbFlags", value.AsString());
-          }
-       }
-public int reverbObstruction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbObstruction").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbObstruction", value.AsString());
-          }
-       }
-public float reverbObstructionLFRatio
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbObstructionLFRatio").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbObstructionLFRatio", value.AsString());
-          }
-       }
-public int reverbOcclusion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbOcclusion").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbOcclusion", value.AsString());
-          }
-       }
-public float reverbOcclusionDirectRatio
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbOcclusionDirectRatio").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbOcclusionDirectRatio", value.AsString());
-          }
-       }
-public float reverbOcclusionLFRatio
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbOcclusionLFRatio").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbOcclusionLFRatio", value.AsString());
-          }
-       }
-public float reverbOcclusionRoomRatio
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbOcclusionRoomRatio").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbOcclusionRoomRatio", value.AsString());
-          }
-       }
-public int reverbOutsideVolumeHF
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbOutsideVolumeHF").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbOutsideVolumeHF", value.AsString());
-          }
-       }
-public float reverbReverbRolloffFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbReverbRolloffFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbReverbRolloffFactor", value.AsString());
-          }
-       }
-public int reverbRoom
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbRoom").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbRoom", value.AsString());
-          }
-       }
-public int reverbRoomHF
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbRoomHF").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbRoomHF", value.AsString());
-          }
-       }
-public float reverbRoomRolloffFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbRoomRolloffFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbRoomRolloffFactor", value.AsString());
-          }
-       }
-public float rolloffFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rolloffFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rolloffFactor", value.AsString());
-          }
-       }
-public Point3F scatterDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scatterDistance").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scatterDistance", value.AsString());
-          }
-       }
-public coSFXSource sourceGroup
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sourceGroup");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sourceGroup", value.ToString());
-          }
-       }
-public int streamPacketSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".streamPacketSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".streamPacketSize", value.AsString());
-          }
-       }
-public int streamReadAhead
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".streamReadAhead").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".streamReadAhead", value.AsString());
-          }
-       }
-public bool useCustomReverb
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useCustomReverb").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useCustomReverb", value.AsString());
-          }
-       }
-public bool useHardware
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useHardware").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useHardware", value.AsString());
-          }
-       }
-public float volume
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".volume").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".volume", value.AsString());
-          }
-       }
-}}
+        }
+    }

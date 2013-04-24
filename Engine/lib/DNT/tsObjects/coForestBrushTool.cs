@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoForestBrushTool))]
-    public class coForestBrushTool: coForestTool
-{
+    [TypeConverter(typeof (tsObjectConvertercoForestBrushTool))]
+    public class coForestBrushTool : coForestTool
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestBrushTool(string simobjectid) : base(simobjectid){ }
+        public coForestBrushTool(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestBrushTool(uint simobjectid): base(simobjectid){ }
+        public coForestBrushTool(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coForestBrushTool(int simobjectid): base(simobjectid){ }
+        public coForestBrushTool(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Brush Hardness 
+        /// </summary>
+        public float hardness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hardness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hardness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ForestBrushTool__BrushMode mode
+            {
+            get { return (ForestBrushTool__BrushMode) Enum.Parse(typeof (ForestBrushTool__BrushMode), dnTorque.self.GetVar(_mSimObjectId + ".mode")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mode", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Brush Pressure 
+        /// </summary>
+        public float pressure
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pressure").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pressure", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Brush Size 
+        /// </summary>
+        public float size
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".size").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".size", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coForestBrushTool(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coForestBrushTool(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coForestBrushTool(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coForestBrushTool ts)
+        public static implicit operator string(coForestBrushTool ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coForestBrushTool(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coForestBrushTool ts)
+        public static implicit operator int(coForestBrushTool ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coForestBrushTool(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coForestBrushTool ts)
+        public static implicit operator uint(coForestBrushTool ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,54 +268,14 @@ public coForestBrushTool(int simobjectid): base(simobjectid){ }
             {
             return new coForestBrushTool(ts);
             }
-public float hardness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hardness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hardness", value.AsString());
-          }
-       }
-public ForestBrushTool__BrushMode mode
-       {
-       get
-          {          return (ForestBrushTool__BrushMode)Enum.Parse(typeof(ForestBrushTool__BrushMode), dnTorque.self.GetVar(_mSimObjectId + ".mode"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mode", value.ToString());
-          }
-       }
-public float pressure
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pressure").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pressure", value.AsString());
-          }
-       }
-public float size
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".size").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".size", value.AsString());
-          }
-       }
-/// <summary>
-/// ( ForestBrushTool, collectElements, void, 2, 2,  )
-/// 
-/// </summary>
-public  void collectElements(){
-TorqueScriptTemplate.m_ts.fnForestBrushTool_collectElements(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// ( ForestBrushTool, collectElements, void, 2, 2,  )
+        /// 
+        /// </summary>
+        public void collectElements()
+            {
+            TorqueScriptTemplate.m_ts.fnForestBrushTool_collectElements(_mSimObjectId);
+            }
+        }
+    }

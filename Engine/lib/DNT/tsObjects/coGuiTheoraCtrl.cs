@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +94,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiTheoraCtrl))]
-    public class coGuiTheoraCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiTheoraCtrl))]
+    public class coGuiTheoraCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTheoraCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiTheoraCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTheoraCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiTheoraCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTheoraCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiTheoraCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Fill color when video is not playing. 
+        /// </summary>
+        public ColorI backgroundColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".backgroundColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".backgroundColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to automatically match control extents to the video size. 
+        /// </summary>
+        public bool matchVideoSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".matchVideoSize").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".matchVideoSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to start playing video when control is woken up. 
+        /// </summary>
+        public bool playOnWake
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".playOnWake").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".playOnWake", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, displays an overlay on top of the video with useful debugging information. 
+        /// </summary>
+        public bool renderDebugInfo
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderDebugInfo").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderDebugInfo", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to stop video when control is set to sleep.\n\n     If this is not set to true, the video will be paused when the control is put to sleep. This is because there is no support      for seeking in the video stream in the player backend and letting the time source used to synchronize video (either audio      or a raw timer) get far ahead of frame decoding will cause possibly very long delays when the control is woken up again. 
+        /// </summary>
+        public bool stopOnSleep
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".stopOnSleep").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stopOnSleep", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Theora video file to play. 
+        /// </summary>
+        public String theoraFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".theoraFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".theoraFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The routine to use for Y'CbCr to RGB conversion. 
+        /// </summary>
+        public OggTheoraDecoder__ETranscoder transcoder
+            {
+            get { return (OggTheoraDecoder__ETranscoder) Enum.Parse(typeof (OggTheoraDecoder__ETranscoder), dnTorque.self.GetVar(_mSimObjectId + ".transcoder")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".transcoder", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +200,9 @@ public coGuiTheoraCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +210,17 @@ public coGuiTheoraCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +232,15 @@ public coGuiTheoraCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiTheoraCtrl ts)
+        public static implicit operator string(coGuiTheoraCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +260,7 @@ public coGuiTheoraCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiTheoraCtrl ts)
+        public static implicit operator int(coGuiTheoraCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +281,7 @@ public coGuiTheoraCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiTheoraCtrl ts)
+        public static implicit operator uint(coGuiTheoraCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,128 +296,65 @@ public coGuiTheoraCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiTheoraCtrl(ts);
             }
-public ColorI backgroundColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".backgroundColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".backgroundColor", value.AsString());
-          }
-       }
-public bool matchVideoSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".matchVideoSize").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".matchVideoSize", value.AsString());
-          }
-       }
-public bool playOnWake
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".playOnWake").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".playOnWake", value.AsString());
-          }
-       }
-public bool renderDebugInfo
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderDebugInfo").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderDebugInfo", value.AsString());
-          }
-       }
-public bool stopOnSleep
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".stopOnSleep").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stopOnSleep", value.AsString());
-          }
-       }
-public String theoraFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".theoraFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".theoraFile", value.AsString());
-          }
-       }
-public OggTheoraDecoder__ETranscoder transcoder
-       {
-       get
-          {          return (OggTheoraDecoder__ETranscoder)Enum.Parse(typeof(OggTheoraDecoder__ETranscoder), dnTorque.self.GetVar(_mSimObjectId + ".transcoder"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".transcoder", value.ToString());
-          }
-       }
-/// <summary>
-/// Get the current playback time.
-///    @return The elapsed playback time in seconds. )
-/// 
-/// </summary>
-public  float getCurrentTime(){
-return TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_getCurrentTime(_mSimObjectId);
-}
-/// <summary>
-/// Test whether the video has finished playing.
-///    @return True if the video has finished playing, false otherwise. )
-/// 
-/// </summary>
-public  bool isPlaybackDone(){
-return TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_isPlaybackDone(_mSimObjectId);
-}
-/// <summary>
-/// Pause playback of the video.  If the video is not currently playing, the call is ignored.
-///    While stopped, the control displays the last frame. )
-/// 
-/// </summary>
-public  void pause(){
-TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_pause(_mSimObjectId);
-}
-/// <summary>
-/// Start playing the video.  If the video is already playing, the call is ignored. )
-/// 
-/// </summary>
-public  void play(){
-TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_play(_mSimObjectId);
-}
-/// <summary>
-/// Set the video file to play.  If a video is already playing, playback is stopped and 
-///    the new video file is loaded.
-///    @param filename The video file to load. )
-/// 
-/// </summary>
-public  void setFile(string filename){
-TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_setFile(_mSimObjectId, filename);
-}
-/// <summary>
-/// Stop playback of the video.  The next call to play() will then start playback from the beginning of the video.
-///    While stopped, the control renders empty with just the background color. )
-/// 
-/// </summary>
-public  void stop(){
-TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_stop(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Get the current playback time.
+        ///    @return The elapsed playback time in seconds. )
+        /// 
+        /// </summary>
+        public float getCurrentTime()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_getCurrentTime(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Test whether the video has finished playing.
+        ///    @return True if the video has finished playing, false otherwise. )
+        /// 
+        /// </summary>
+        public bool isPlaybackDone()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_isPlaybackDone(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Pause playback of the video.  If the video is not currently playing, the call is ignored.
+        ///    While stopped, the control displays the last frame. )
+        /// 
+        /// </summary>
+        public void pause()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_pause(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Start playing the video.  If the video is already playing, the call is ignored. )
+        /// 
+        /// </summary>
+        public void play()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_play(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Set the video file to play.  If a video is already playing, playback is stopped and 
+        ///    the new video file is loaded.
+        ///    @param filename The video file to load. )
+        /// 
+        /// </summary>
+        public void setFile(string filename)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_setFile(_mSimObjectId, filename);
+            }
+
+        /// <summary>
+        /// Stop playback of the video.  The next call to play() will then start playback from the beginning of the video.
+        ///    While stopped, the control renders empty with just the background color. )
+        /// 
+        /// </summary>
+        public void stop()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTheoraCtrl_stop(_mSimObjectId);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoMeshRoad))]
-    public class coMeshRoad: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoMeshRoad))]
+    public class coMeshRoad : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMeshRoad(string simobjectid) : base(simobjectid){ }
+        public coMeshRoad(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMeshRoad(uint simobjectid): base(simobjectid){ }
+        public coMeshRoad(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMeshRoad(int simobjectid): base(simobjectid){ }
+        public coMeshRoad(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Material for the bottom surface of the road. 
+        /// </summary>
+        public String bottomMaterial
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bottomMaterial").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bottomMaterial", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Angle in degrees - MeshRoad will subdivide the spline if its curve is greater than this threshold. 
+        /// </summary>
+        public float breakAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".breakAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".breakAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Do not modify, for internal use. 
+        /// </summary>
+        public String Node
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".Node").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".Node", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Material for the left, right, front, and back surfaces of the road. 
+        /// </summary>
+        public String sideMaterial
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sideMaterial").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sideMaterial", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The length in meters of textures mapped to the MeshRoad. 
+        /// </summary>
+        public float textureLength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureLength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureLength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Material for the upper surface of the road. 
+        /// </summary>
+        public String topMaterial
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".topMaterial").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".topMaterial", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Subdivide segments widthwise this many times when generating vertices. 
+        /// </summary>
+        public int widthSubdivisions
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".widthSubdivisions").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".widthSubdivisions", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +198,9 @@ public coMeshRoad(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +208,17 @@ public coMeshRoad(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +230,15 @@ public coMeshRoad(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coMeshRoad ts)
+        public static implicit operator string(coMeshRoad ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +258,7 @@ public coMeshRoad(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coMeshRoad ts)
+        public static implicit operator int(coMeshRoad ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +279,7 @@ public coMeshRoad(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coMeshRoad ts)
+        public static implicit operator uint(coMeshRoad ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,109 +294,39 @@ public coMeshRoad(int simobjectid): base(simobjectid){ }
             {
             return new coMeshRoad(ts);
             }
-public String bottomMaterial
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bottomMaterial").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bottomMaterial", value.AsString());
-          }
-       }
-public float breakAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".breakAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".breakAngle", value.AsString());
-          }
-       }
-public String Node
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".Node").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".Node", value.AsString());
-          }
-       }
-public String sideMaterial
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sideMaterial").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sideMaterial", value.AsString());
-          }
-       }
-public float textureLength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textureLength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureLength", value.AsString());
-          }
-       }
-public String topMaterial
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".topMaterial").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".topMaterial", value.AsString());
-          }
-       }
-public int widthSubdivisions
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".widthSubdivisions").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".widthSubdivisions", value.AsString());
-          }
-       }
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Force trigger an inspectPostApply. This will transmit 
-///                    material and other fields ( not including nodes ) to client objects.
-///                    )
-/// 
-/// </summary>
-public  void postApply(){
-TorqueScriptTemplate.m_ts.fnMeshRoad_postApply(_mSimObjectId);
-}
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Force MeshRoad to recreate its geometry.
-///                    )
-/// 
-/// </summary>
-public  void regenerate(){
-TorqueScriptTemplate.m_ts.fnMeshRoad_regenerate(_mSimObjectId);
-}
-/// <summary>
-/// Intended as a helper to developers and editor scripts.
-///                    Sets the depth in meters of a particular node.
-///                    )
-/// 
-/// </summary>
-public  void setNodeDepth(int idx, float meters){
-TorqueScriptTemplate.m_ts.fnMeshRoad_setNodeDepth(_mSimObjectId, idx, meters);
-}
-}}
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Force trigger an inspectPostApply. This will transmit 
+        ///                    material and other fields ( not including nodes ) to client objects.
+        ///                    )
+        /// 
+        /// </summary>
+        public void postApply()
+            {
+            TorqueScriptTemplate.m_ts.fnMeshRoad_postApply(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Force MeshRoad to recreate its geometry.
+        ///                    )
+        /// 
+        /// </summary>
+        public void regenerate()
+            {
+            TorqueScriptTemplate.m_ts.fnMeshRoad_regenerate(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Intended as a helper to developers and editor scripts.
+        ///                    Sets the depth in meters of a particular node.
+        ///                    )
+        /// 
+        /// </summary>
+        public void setNodeDepth(int idx, float meters)
+            {
+            TorqueScriptTemplate.m_ts.fnMeshRoad_setNodeDepth(_mSimObjectId, idx, meters);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,90 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoFileDialog))]
-    public class coFileDialog: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoFileDialog))]
+    public class coFileDialog : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileDialog(string simobjectid) : base(simobjectid){ }
+        public coFileDialog(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileDialog(uint simobjectid): base(simobjectid){ }
+        public coFileDialog(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileDialog(int simobjectid): base(simobjectid){ }
+        public coFileDialog(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// True/False whether to set the working directory to the directory returned by the dialog. 
+        /// </summary>
+        public bool changePath
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".changePath").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".changePath", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The default file path when the dialog is shown. 
+        /// </summary>
+        public String defaultFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".defaultFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".defaultFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The default directory path when the dialog is shown. 
+        /// </summary>
+        public String defaultPath
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".defaultPath").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".defaultPath", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The default file name when the dialog is shown. 
+        /// </summary>
+        public String fileName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fileName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fileName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The filter string for limiting the types of files visible in the dialog. It makes use of the pipe symbol '|'    as a delimiter. For example:\n\n   'All Files|*.*'\n\n   'Image Files|*.png;*.jpg|Png Files|*.png|Jepg Files|*.jpg' 
+        /// </summary>
+        public String filters
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".filters").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".filters", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The title for the dialog. 
+        /// </summary>
+        public String title
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".title").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".title", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +189,9 @@ public coFileDialog(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +199,17 @@ public coFileDialog(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +221,15 @@ public coFileDialog(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coFileDialog ts)
+        public static implicit operator string(coFileDialog ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +249,7 @@ public coFileDialog(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coFileDialog ts)
+        public static implicit operator int(coFileDialog ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +270,7 @@ public coFileDialog(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coFileDialog ts)
+        public static implicit operator uint(coFileDialog ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,160 +285,97 @@ public coFileDialog(int simobjectid): base(simobjectid){ }
             {
             return new coFileDialog(ts);
             }
-public bool changePath
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".changePath").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".changePath", value.AsString());
-          }
-       }
-public String defaultFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".defaultFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".defaultFile", value.AsString());
-          }
-       }
-public String defaultPath
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".defaultPath").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".defaultPath", value.AsString());
-          }
-       }
-public String fileName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fileName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fileName", value.AsString());
-          }
-       }
-public String filters
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".filters").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".filters", value.AsString());
-          }
-       }
-public String title
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".title").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".title", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Launches the OS file browser
-/// 
-///    After an Execute() call, the chosen file name and path is available in one of two areas.  
-///    If only a single file selection is permitted, the results will be stored in the @a fileName 
-///    attribute.
-/// 
-///    If multiple file selection is permitted, the results will be stored in the 
-///    @a files array.  The total number of files in the array will be stored in the 
-///    @a fileCount attribute.
-/// 
-///    @tsexample
-///    // NOTE: This is not he preferred class to use, but this still works
-///    // Create the file dialog
-///    %baseFileDialog = new FileDialog()
-///    {
-///       // Allow browsing of all file types
-///       filters = \"*.*\";
-///       // No default file
-///       defaultFile = ;
-///       // Set default path relative to project
-///       defaultPath = \"./\";
-///       // Set the title
-///       title = \"Durpa\";
-///       // Allow changing of path you are browsing
-///       changePath = true;
-///    };
-///     // Launch the file dialog
-///     %baseFileDialog.Execute();
-///     
-///     // Don't forget to cleanup
-///     %baseFileDialog.delete();
-/// 
-///     // A better alternative is to use the 
-///     // derived classes which are specific to file open and save
-///     // Create a dialog dedicated to opening files
-///     %openFileDlg = new OpenFileDialog()
-///     {
-///        // Look for jpg image files
-///        // First part is the descriptor|second part is the extension
-///        Filters = \"Jepg Files|*.jpg\";
-///        // Allow browsing through other folders
-///        ChangePath = true;
-///        // Only allow opening of one file at a time
-///        MultipleFiles = false;
-///     };
-///     // Launch the open file dialog
-///     %result = %openFileDlg.Execute();
-///     // Obtain the chosen file name and path
-///     if ( %result )
-///     {
-///        %seletedFile = %openFileDlg.file;
-///     }
-///     else
-///     {
-///        %selectedFile = \"\";
-///     }
-///     // Cleanup
-///     %openFileDlg.delete();
-/// 
-///     // Create a dialog dedicated to saving a file
-///     %saveFileDlg = new SaveFileDialog()
-///     {
-///        // Only allow for saving of COLLADA files
-///        Filters = \"COLLADA Files (*.dae)|*.dae|\";
-///        // Default save path to where the WorldEditor last saved
-///        DefaultPath = $pref::WorldEditor::LastPath;
-///        // No default file specified
-///        DefaultFile = \"\";
-///        // Do not allow the user to change to a new directory
-///        ChangePath = false;
-///        // Prompt the user if they are going to overwrite an existing file
-///        OverwritePrompt = true;
-///     };
-///     // Launch the save file dialog
-///     %result = %saveFileDlg.Execute();
-///     // Obtain the file name
-///     %selectedFile = \"\";
-///     if ( %result )
-///        %selectedFile = %saveFileDlg.file;
-///     // Cleanup
-///     %saveFileDlg.delete();
-///    @endtsexample
-/// 
-///    @return True if the file was selected was successfully found (opened) or declared (saved).)
-/// 
-/// </summary>
-public  bool Execute(){
-return TorqueScriptTemplate.m_ts.fnFileDialog_Execute(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Launches the OS file browser
+        /// 
+        ///    After an Execute() call, the chosen file name and path is available in one of two areas.  
+        ///    If only a single file selection is permitted, the results will be stored in the @a fileName 
+        ///    attribute.
+        /// 
+        ///    If multiple file selection is permitted, the results will be stored in the 
+        ///    @a files array.  The total number of files in the array will be stored in the 
+        ///    @a fileCount attribute.
+        /// 
+        ///    @tsexample
+        ///    // NOTE: This is not he preferred class to use, but this still works
+        ///    // Create the file dialog
+        ///    %baseFileDialog = new FileDialog()
+        ///    {
+        ///       // Allow browsing of all file types
+        ///       filters = \"*.*\";
+        ///       // No default file
+        ///       defaultFile = ;
+        ///       // Set default path relative to project
+        ///       defaultPath = \"./\";
+        ///       // Set the title
+        ///       title = \"Durpa\";
+        ///       // Allow changing of path you are browsing
+        ///       changePath = true;
+        ///    };
+        ///     // Launch the file dialog
+        ///     %baseFileDialog.Execute();
+        ///     
+        ///     // Don't forget to cleanup
+        ///     %baseFileDialog.delete();
+        /// 
+        ///     // A better alternative is to use the 
+        ///     // derived classes which are specific to file open and save
+        ///     // Create a dialog dedicated to opening files
+        ///     %openFileDlg = new OpenFileDialog()
+        ///     {
+        ///        // Look for jpg image files
+        ///        // First part is the descriptor|second part is the extension
+        ///        Filters = \"Jepg Files|*.jpg\";
+        ///        // Allow browsing through other folders
+        ///        ChangePath = true;
+        ///        // Only allow opening of one file at a time
+        ///        MultipleFiles = false;
+        ///     };
+        ///     // Launch the open file dialog
+        ///     %result = %openFileDlg.Execute();
+        ///     // Obtain the chosen file name and path
+        ///     if ( %result )
+        ///     {
+        ///        %seletedFile = %openFileDlg.file;
+        ///     }
+        ///     else
+        ///     {
+        ///        %selectedFile = \"\";
+        ///     }
+        ///     // Cleanup
+        ///     %openFileDlg.delete();
+        /// 
+        ///     // Create a dialog dedicated to saving a file
+        ///     %saveFileDlg = new SaveFileDialog()
+        ///     {
+        ///        // Only allow for saving of COLLADA files
+        ///        Filters = \"COLLADA Files (*.dae)|*.dae|\";
+        ///        // Default save path to where the WorldEditor last saved
+        ///        DefaultPath = $pref::WorldEditor::LastPath;
+        ///        // No default file specified
+        ///        DefaultFile = \"\";
+        ///        // Do not allow the user to change to a new directory
+        ///        ChangePath = false;
+        ///        // Prompt the user if they are going to overwrite an existing file
+        ///        OverwritePrompt = true;
+        ///     };
+        ///     // Launch the save file dialog
+        ///     %result = %saveFileDlg.Execute();
+        ///     // Obtain the file name
+        ///     %selectedFile = \"\";
+        ///     if ( %result )
+        ///        %selectedFile = %saveFileDlg.file;
+        ///     // Cleanup
+        ///     %saveFileDlg.delete();
+        ///    @endtsexample
+        /// 
+        ///    @return True if the file was selected was successfully found (opened) or declared (saved).)
+        /// 
+        /// </summary>
+        public bool Execute()
+            {
+            return TorqueScriptTemplate.m_ts.fnFileDialog_Execute(_mSimObjectId);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoNetObject))]
-    public class coNetObject: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoNetObject))]
+    public class coNetObject : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coNetObject(string simobjectid) : base(simobjectid){ }
+        public coNetObject(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coNetObject(uint simobjectid): base(simobjectid){ }
+        public coNetObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coNetObject(int simobjectid): base(simobjectid){ }
+        public coNetObject(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coNetObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coNetObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coNetObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coNetObject ts)
+        public static implicit operator string(coNetObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coNetObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coNetObject ts)
+        public static implicit operator int(coNetObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coNetObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coNetObject ts)
+        public static implicit operator uint(coNetObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,124 +231,141 @@ public coNetObject(int simobjectid): base(simobjectid){ }
             {
             return new coNetObject(ts);
             }
-/// <summary>
-/// @brief Undo the effects of a scopeToClient() call.
-/// 
-///    @param client The connection to remove this object's scoping from 
-///    
-///    @see scopeToClient())
-/// 
-/// </summary>
-public  void clearScopeToClient(string client){
-TorqueScriptTemplate.m_ts.fnNetObject_clearScopeToClient(_mSimObjectId, client);
-}
-/// <summary>
-/// @brief Returns a pointer to the client object when on a local connection.
-/// 
-///    Short-Circuit-Networking: this is only valid for a local-client / singleplayer situation.
-/// 
-///    @returns the SimObject ID of the client object.
-/// 
-///    @tsexample
-///       // Psuedo-code, some values left out for this example
-///       %node = new ParticleEmitterNode(){};
-///       %clientObject = %node.getClientObject();
-///       if(isObject(%clientObject)
-///       	%clientObject.setTransform(\"0 0 0\");
-///    @endtsexample
-///    
-///    @see @ref local_connections)
-/// 
-/// </summary>
-public  int getClientObject(){
-return TorqueScriptTemplate.m_ts.fnNetObject_getClientObject(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the ghost index of this object from the server.
-/// 
-///    @returns The ghost ID of this NetObject on the server
-/// 
-///    @tsexample
-///       %ghostID = LocalClientConnection.getGhostId( %serverObject );
-///    @endtsexample)
-/// 
-/// </summary>
-public  int getGhostID(){
-return TorqueScriptTemplate.m_ts.fnNetObject_getGhostID(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns a pointer to the client object when on a local connection.
-/// 
-///    Short-Circuit-Netorking: this is only valid for a local-client / singleplayer situation.
-///    
-///    @returns The SimObject ID of the server object.
-///    @tsexample
-///       // Psuedo-code, some values left out for this example
-///       %node = new ParticleEmitterNode(){};
-///       %serverObject = %node.getServerObject();
-///       if(isObject(%serverObject)
-///       	%serverObject.setTransform(\"0 0 0\");
-///    @endtsexample
-///    
-///    @see @ref local_connections)
-/// 
-/// </summary>
-public  int getServerObject(){
-return TorqueScriptTemplate.m_ts.fnNetObject_getServerObject(_mSimObjectId);
-}
-/// <summary>
-/// @brief Called to check if an object resides on the clientside.
-///    @return True if the object resides on the client, false otherwise.)
-/// 
-/// </summary>
-public  bool isClientObject(){
-return TorqueScriptTemplate.m_ts.fnNetObject_isClientObject(_mSimObjectId);
-}
-/// <summary>
-/// @brief Checks if an object resides on the server.
-///    @return True if the object resides on the server, false otherwise.)
-/// 
-/// </summary>
-public  bool isServerObject(){
-return TorqueScriptTemplate.m_ts.fnNetObject_isServerObject(_mSimObjectId);
-}
-/// <summary>
-/// @brief Cause the NetObject to be forced as scoped on the specified NetConnection.
-/// 
-///    @param client The connection this object will always be scoped to
-/// 
-///    @tsexample
-///       // Called to create new cameras in TorqueScript
-///       // %this - The active GameConnection
-///       // %spawnPoint - The spawn point location where we creat the camera
-///       function GameConnection::spawnCamera(%this, %spawnPoint)
-///       {
-///       	// If this connection's camera exists
-///       	if(isObject(%this.camera))
-///       	{
-///       		// Add it to the mission group to be cleaned up later
-///       		MissionCleanup.add( %this.camera );
-///       		// Force it to scope to the client side
-///       		%this.camera.scopeToClient(%this);
-///       	}
-///       }
-///    @endtsexample
-///    
-///    @see clearScopeToClient())
-/// 
-/// </summary>
-public  void scopeToClient(string client){
-TorqueScriptTemplate.m_ts.fnNetObject_scopeToClient(_mSimObjectId, client);
-}
-/// <summary>
-/// @brief Always scope this object on all connections.
-/// 
-///    The object is marked as ScopeAlways and is immediately ghosted to 
-///    all active connections.  This function has no effect if the object 
-///    is not marked as Ghostable.)
-/// 
-/// </summary>
-public  void setScopeAlways(){
-TorqueScriptTemplate.m_ts.fnNetObject_setScopeAlways(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Undo the effects of a scopeToClient() call.
+        /// 
+        ///    @param client The connection to remove this object's scoping from 
+        ///    
+        ///    @see scopeToClient())
+        /// 
+        /// </summary>
+        public void clearScopeToClient(string client)
+            {
+            TorqueScriptTemplate.m_ts.fnNetObject_clearScopeToClient(_mSimObjectId, client);
+            }
+
+        /// <summary>
+        /// @brief Returns a pointer to the client object when on a local connection.
+        /// 
+        ///    Short-Circuit-Networking: this is only valid for a local-client / singleplayer situation.
+        /// 
+        ///    @returns the SimObject ID of the client object.
+        /// 
+        ///    @tsexample
+        ///       // Psuedo-code, some values left out for this example
+        ///       %node = new ParticleEmitterNode(){};
+        ///       %clientObject = %node.getClientObject();
+        ///       if(isObject(%clientObject)
+        ///       	%clientObject.setTransform(\"0 0 0\");
+        ///    @endtsexample
+        ///    
+        ///    @see @ref local_connections)
+        /// 
+        /// </summary>
+        public int getClientObject()
+            {
+            return TorqueScriptTemplate.m_ts.fnNetObject_getClientObject(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the ghost index of this object from the server.
+        /// 
+        ///    @returns The ghost ID of this NetObject on the server
+        /// 
+        ///    @tsexample
+        ///       %ghostID = LocalClientConnection.getGhostId( %serverObject );
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public int getGhostID()
+            {
+            return TorqueScriptTemplate.m_ts.fnNetObject_getGhostID(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns a pointer to the client object when on a local connection.
+        /// 
+        ///    Short-Circuit-Netorking: this is only valid for a local-client / singleplayer situation.
+        ///    
+        ///    @returns The SimObject ID of the server object.
+        ///    @tsexample
+        ///       // Psuedo-code, some values left out for this example
+        ///       %node = new ParticleEmitterNode(){};
+        ///       %serverObject = %node.getServerObject();
+        ///       if(isObject(%serverObject)
+        ///       	%serverObject.setTransform(\"0 0 0\");
+        ///    @endtsexample
+        ///    
+        ///    @see @ref local_connections)
+        /// 
+        /// </summary>
+        public int getServerObject()
+            {
+            return TorqueScriptTemplate.m_ts.fnNetObject_getServerObject(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Called to check if an object resides on the clientside.
+        ///    @return True if the object resides on the client, false otherwise.)
+        /// 
+        /// </summary>
+        public bool isClientObject()
+            {
+            return TorqueScriptTemplate.m_ts.fnNetObject_isClientObject(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Checks if an object resides on the server.
+        ///    @return True if the object resides on the server, false otherwise.)
+        /// 
+        /// </summary>
+        public bool isServerObject()
+            {
+            return TorqueScriptTemplate.m_ts.fnNetObject_isServerObject(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Cause the NetObject to be forced as scoped on the specified NetConnection.
+        /// 
+        ///    @param client The connection this object will always be scoped to
+        /// 
+        ///    @tsexample
+        ///       // Called to create new cameras in TorqueScript
+        ///       // %this - The active GameConnection
+        ///       // %spawnPoint - The spawn point location where we creat the camera
+        ///       function GameConnection::spawnCamera(%this, %spawnPoint)
+        ///       {
+        ///       	// If this connection's camera exists
+        ///       	if(isObject(%this.camera))
+        ///       	{
+        ///       		// Add it to the mission group to be cleaned up later
+        ///       		MissionCleanup.add( %this.camera );
+        ///       		// Force it to scope to the client side
+        ///       		%this.camera.scopeToClient(%this);
+        ///       	}
+        ///       }
+        ///    @endtsexample
+        ///    
+        ///    @see clearScopeToClient())
+        /// 
+        /// </summary>
+        public void scopeToClient(string client)
+            {
+            TorqueScriptTemplate.m_ts.fnNetObject_scopeToClient(_mSimObjectId, client);
+            }
+
+        /// <summary>
+        /// @brief Always scope this object on all connections.
+        /// 
+        ///    The object is marked as ScopeAlways and is immediately ghosted to 
+        ///    all active connections.  This function has no effect if the object 
+        ///    is not marked as Ghostable.)
+        /// 
+        /// </summary>
+        public void setScopeAlways()
+            {
+            TorqueScriptTemplate.m_ts.fnNetObject_setScopeAlways(_mSimObjectId);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,127 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiWindowCtrl))]
-    public class coGuiWindowCtrl: coGuiContainer
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiWindowCtrl))]
+    public class coGuiWindowCtrl : coGuiContainer
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiWindowCtrl(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiWindowCtrl(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coGuiWindowCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiWindowCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiWindowCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coGuiWindowCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Whether the window has a close button. 
+        /// </summary>
+        public bool canClose
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".canClose").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".canClose", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the window can be collapsed by clicking its title bar. 
+        /// </summary>
+        public bool canCollapse
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".canCollapse").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".canCollapse", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the window has a maximize button. 
+        /// </summary>
+        public bool canMaximize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".canMaximize").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".canMaximize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the window has a minimize button. 
+        /// </summary>
+        public bool canMinimize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".canMinimize").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".canMinimize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the window can be moved by dragging its titlebar. 
+        /// </summary>
+        public bool canMove
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".canMove").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".canMove", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Script code to execute when the window is closed. 
+        /// </summary>
+        public String closeCommand
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".closeCommand").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".closeCommand", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the window will snap to the edges of other windows when moved close to them. 
+        /// </summary>
+        public bool edgeSnap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".edgeSnap").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".edgeSnap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the window can be resized vertically. 
+        /// </summary>
+        public bool resizeHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".resizeHeight").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".resizeHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether the window can be resized horizontally. 
+        /// </summary>
+        public bool resizeWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".resizeWidth").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".resizeWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Text label to display in titlebar. 
+        /// </summary>
+        public String text
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".text").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".text", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +225,9 @@ public coGuiWindowCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +235,17 @@ public coGuiWindowCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +257,15 @@ public coGuiWindowCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiWindowCtrl ts)
+        public static implicit operator string(coGuiWindowCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +285,7 @@ public coGuiWindowCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiWindowCtrl ts)
+        public static implicit operator int(coGuiWindowCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +306,7 @@ public coGuiWindowCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiWindowCtrl ts)
+        public static implicit operator uint(coGuiWindowCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,142 +321,41 @@ public coGuiWindowCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiWindowCtrl(ts);
             }
-public bool canClose
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".canClose").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".canClose", value.AsString());
-          }
-       }
-public bool canCollapse
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".canCollapse").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".canCollapse", value.AsString());
-          }
-       }
-public bool canMaximize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".canMaximize").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".canMaximize", value.AsString());
-          }
-       }
-public bool canMinimize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".canMinimize").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".canMinimize", value.AsString());
-          }
-       }
-public bool canMove
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".canMove").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".canMove", value.AsString());
-          }
-       }
-public String closeCommand
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".closeCommand").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".closeCommand", value.AsString());
-          }
-       }
-public bool edgeSnap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".edgeSnap").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".edgeSnap", value.AsString());
-          }
-       }
-public bool resizeHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".resizeHeight").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".resizeHeight", value.AsString());
-          }
-       }
-public bool resizeWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".resizeWidth").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".resizeWidth", value.AsString());
-          }
-       }
-public String text
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".text").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".text", value.AsString());
-          }
-       }
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void attachTo(string window){
-TorqueScriptTemplate.m_ts.fnGuiWindowCtrl_attachTo(_mSimObjectId, window);
-}
-/// <summary>
-/// Bring the window to the front. )
-/// 
-/// </summary>
-public  void selectWindow(){
-TorqueScriptTemplate.m_ts.fnGuiWindowCtrl_selectWindow(_mSimObjectId);
-}
-/// <summary>
-/// Set the window's collapsing state. )
-/// 
-/// </summary>
-public  void setCollapseGroup(bool state){
-TorqueScriptTemplate.m_ts.fnGuiWindowCtrl_setCollapseGroup(_mSimObjectId, state);
-}
-/// <summary>
-/// Toggle the window collapsing. )
-/// 
-/// </summary>
-public  void toggleCollapseGroup(){
-TorqueScriptTemplate.m_ts.fnGuiWindowCtrl_toggleCollapseGroup(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void attachTo(string window)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiWindowCtrl_attachTo(_mSimObjectId, window);
+            }
+
+        /// <summary>
+        /// Bring the window to the front. )
+        /// 
+        /// </summary>
+        public void selectWindow()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiWindowCtrl_selectWindow(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Set the window's collapsing state. )
+        /// 
+        /// </summary>
+        public void setCollapseGroup(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiWindowCtrl_setCollapseGroup(_mSimObjectId, state);
+            }
+
+        /// <summary>
+        /// Toggle the window collapsing. )
+        /// 
+        /// </summary>
+        public void toggleCollapseGroup()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiWindowCtrl_toggleCollapseGroup(_mSimObjectId);
+            }
+        }
+    }

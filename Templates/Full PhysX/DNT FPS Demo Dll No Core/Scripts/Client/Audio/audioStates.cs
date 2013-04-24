@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -112,7 +112,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             for (uint i = 0; i < group.getCount(); i++)
                 {
                 coSFXState obj = group.getObject(i);
-                if (obj != thisobj && obj.isMemberOfClass("SFXState") && GuiControl.isActive(obj))
+                if (obj != thisobj && obj.isMemberOfClass("SFXState") && obj.isActive())
                     obj.deactivate();
                 }
             }

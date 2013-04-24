@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSettings))]
-    public class coSettings: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoSettings))]
+    public class coSettings : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSettings(string simobjectid) : base(simobjectid){ }
+        public coSettings(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSettings(uint simobjectid): base(simobjectid){ }
+        public coSettings(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSettings(int simobjectid): base(simobjectid){ }
+        public coSettings(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// The file path and name to be saved to and loaded from.
+        /// </summary>
+        public String file
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".file").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".file", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coSettings(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coSettings(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coSettings(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSettings ts)
+        public static implicit operator string(coSettings ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coSettings(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSettings ts)
+        public static implicit operator int(coSettings ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coSettings(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSettings ts)
+        public static implicit operator uint(coSettings ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,99 +240,113 @@ public coSettings(int simobjectid): base(simobjectid){ }
             {
             return new coSettings(ts);
             }
-public String file
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".file").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".file", value.AsString());
-          }
-       }
-/// <summary>
-/// (Settings, beginGroup, void, 3, 4, settingObj.beginGroup(groupName, fromStart = false);)
-/// 
-/// </summary>
-public  void beginGroup(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnSettings_beginGroup(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (Settings, clearGroups, void, 2, 2, settingObj.clearGroups();)
-/// 
-/// </summary>
-public  void clearGroups(){
-TorqueScriptTemplate.m_ts.fnSettings_clearGroups(_mSimObjectId);
-}
-/// <summary>
-/// (Settings, endGroup, void, 2, 2, settingObj.endGroup();)
-/// 
-/// </summary>
-public  void endGroup(){
-TorqueScriptTemplate.m_ts.fnSettings_endGroup(_mSimObjectId);
-}
-/// <summary>
-/// (Settings, findFirstValue, const char*, 2, 5, settingObj.findFirstValue();)
-/// 
-/// </summary>
-public  string findFirstValue(string a2= "", string a3= "", string a4= ""){
-return TorqueScriptTemplate.m_ts.fnSettings_findFirstValue(_mSimObjectId, a2, a3, a4);
-}
-/// <summary>
-/// (Settings, findNextValue, const char*, 2, 2, settingObj.findNextValue();)
-/// 
-/// </summary>
-public  string findNextValue(){
-return TorqueScriptTemplate.m_ts.fnSettings_findNextValue(_mSimObjectId);
-}
-/// <summary>
-/// (Settings, getCurrentGroups, const char*, 2, 2, settingObj.getCurrentGroups();)
-/// 
-/// </summary>
-public  string getCurrentGroups(){
-return TorqueScriptTemplate.m_ts.fnSettings_getCurrentGroups(_mSimObjectId);
-}
-/// <summary>
-/// (Settings, read, bool, 2, 2, %success = settingObj.read();)
-/// 
-/// </summary>
-public  bool read(){
-return TorqueScriptTemplate.m_ts.fnSettings_read(_mSimObjectId);
-}
-/// <summary>
-/// (Settings, remove, void, 3, 4, settingObj.remove(settingName, includeDefaults = false);)
-/// 
-/// </summary>
-public  void remove(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnSettings_remove(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (Settings, setDefaultValue, void, 4, 4, settingObj.setDefaultValue(settingName, value);)
-/// 
-/// </summary>
-public  void setDefaultValue(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnSettings_setDefaultValue(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (Settings, setValue, void, 3, 4, settingObj.setValue(settingName, value);)
-/// 
-/// </summary>
-public  void setValue(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnSettings_setValue(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (Settings, value, const char*, 3, 4, settingObj.value(settingName, defaultValue);)
-/// 
-/// </summary>
-public  string value(string a2, string a3= ""){
-return TorqueScriptTemplate.m_ts.fnSettings_value(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (Settings, write, bool, 2, 2, %success = settingObj.write();)
-/// 
-/// </summary>
-public  bool write(){
-return TorqueScriptTemplate.m_ts.fnSettings_write(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// (Settings, beginGroup, void, 3, 4, settingObj.beginGroup(groupName, fromStart = false);)
+        /// 
+        /// </summary>
+        public void beginGroup(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnSettings_beginGroup(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (Settings, clearGroups, void, 2, 2, settingObj.clearGroups();)
+        /// 
+        /// </summary>
+        public void clearGroups()
+            {
+            TorqueScriptTemplate.m_ts.fnSettings_clearGroups(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Settings, endGroup, void, 2, 2, settingObj.endGroup();)
+        /// 
+        /// </summary>
+        public void endGroup()
+            {
+            TorqueScriptTemplate.m_ts.fnSettings_endGroup(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Settings, findFirstValue, const char*, 2, 5, settingObj.findFirstValue();)
+        /// 
+        /// </summary>
+        public string findFirstValue(string a2 = "", string a3 = "", string a4 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnSettings_findFirstValue(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// (Settings, findNextValue, const char*, 2, 2, settingObj.findNextValue();)
+        /// 
+        /// </summary>
+        public string findNextValue()
+            {
+            return TorqueScriptTemplate.m_ts.fnSettings_findNextValue(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Settings, getCurrentGroups, const char*, 2, 2, settingObj.getCurrentGroups();)
+        /// 
+        /// </summary>
+        public string getCurrentGroups()
+            {
+            return TorqueScriptTemplate.m_ts.fnSettings_getCurrentGroups(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Settings, read, bool, 2, 2, %success = settingObj.read();)
+        /// 
+        /// </summary>
+        public bool read()
+            {
+            return TorqueScriptTemplate.m_ts.fnSettings_read(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// (Settings, remove, void, 3, 4, settingObj.remove(settingName, includeDefaults = false);)
+        /// 
+        /// </summary>
+        public void remove(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnSettings_remove(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (Settings, setDefaultValue, void, 4, 4, settingObj.setDefaultValue(settingName, value);)
+        /// 
+        /// </summary>
+        public void setDefaultValue(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnSettings_setDefaultValue(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (Settings, setValue, void, 3, 4, settingObj.setValue(settingName, value);)
+        /// 
+        /// </summary>
+        public void setValue(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnSettings_setValue(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (Settings, value, const char*, 3, 4, settingObj.value(settingName, defaultValue);)
+        /// 
+        /// </summary>
+        public string value(string a2, string a3 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnSettings_value(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (Settings, write, bool, 2, 2, %success = settingObj.write();)
+        /// 
+        /// </summary>
+        public bool write()
+            {
+            return TorqueScriptTemplate.m_ts.fnSettings_write(_mSimObjectId);
+            }
+        }
+    }

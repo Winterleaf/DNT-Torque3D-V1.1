@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoMarker))]
-    public class coMarker: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoMarker))]
+    public class coMarker : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMarker(string simobjectid) : base(simobjectid){ }
+        public coMarker(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMarker(uint simobjectid): base(simobjectid){ }
+        public coMarker(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coMarker(int simobjectid): base(simobjectid){ }
+        public coMarker(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Milliseconds to next marker in sequence.\n
+        /// </summary>
+        public int msToNext
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".msToNext").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".msToNext", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Marker position in sequence of markers on this path.\n
+        /// </summary>
+        public int seqNum
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".seqNum").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".seqNum", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Path smoothing at this marker/knot. \Linear\�means no smoothing, while \Spline\ means to smooth.\n
+        /// </summary>
+        public Marker__SmoothingType smoothingType
+            {
+            get { return (Marker__SmoothingType) Enum.Parse(typeof (Marker__SmoothingType), dnTorque.self.GetVar(_mSimObjectId + ".smoothingType")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".smoothingType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Type of this marker/knot. A \normal\ knot will have a smooth camera translation/rotation effect.\n\Position Only\�will do the same for translations, leaving rotation un-touched.\nLastly, a \Kink\ means the rotation will take effect immediately for an abrupt rotation change.\n
+        /// </summary>
+        public Marker__KnotType type
+            {
+            get { return (Marker__KnotType) Enum.Parse(typeof (Marker__KnotType), dnTorque.self.GetVar(_mSimObjectId + ".type")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".type", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coMarker(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coMarker(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coMarker(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coMarker ts)
+        public static implicit operator string(coMarker ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coMarker(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coMarker ts)
+        public static implicit operator int(coMarker ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coMarker(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coMarker ts)
+        public static implicit operator uint(coMarker ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,46 +268,5 @@ public coMarker(int simobjectid): base(simobjectid){ }
             {
             return new coMarker(ts);
             }
-public int msToNext
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".msToNext").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".msToNext", value.AsString());
-          }
-       }
-public int seqNum
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".seqNum").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".seqNum", value.AsString());
-          }
-       }
-public Marker__SmoothingType smoothingType
-       {
-       get
-          {          return (Marker__SmoothingType)Enum.Parse(typeof(Marker__SmoothingType), dnTorque.self.GetVar(_mSimObjectId + ".smoothingType"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".smoothingType", value.ToString());
-          }
-       }
-public Marker__KnotType type
-       {
-       get
-          {          return (Marker__KnotType)Enum.Parse(typeof(Marker__KnotType), dnTorque.self.GetVar(_mSimObjectId + ".type"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".type", value.ToString());
-          }
-       }
-}}
+        }
+    }

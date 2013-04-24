@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoFieldBrushObject))]
-    public class coFieldBrushObject: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoFieldBrushObject))]
+    public class coFieldBrushObject : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFieldBrushObject(string simobjectid) : base(simobjectid){ }
+        public coFieldBrushObject(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFieldBrushObject(uint simobjectid): base(simobjectid){ }
+        public coFieldBrushObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFieldBrushObject(int simobjectid): base(simobjectid){ }
+        public coFieldBrushObject(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String description
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".description").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".description", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String sortName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sortName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sortName", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coFieldBrushObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coFieldBrushObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coFieldBrushObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coFieldBrushObject ts)
+        public static implicit operator string(coFieldBrushObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coFieldBrushObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coFieldBrushObject ts)
+        public static implicit operator int(coFieldBrushObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coFieldBrushObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coFieldBrushObject ts)
+        public static implicit operator uint(coFieldBrushObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,64 +249,51 @@ public coFieldBrushObject(int simobjectid): base(simobjectid){ }
             {
             return new coFieldBrushObject(ts);
             }
-public String description
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".description").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".description", value.AsString());
-          }
-       }
-public String sortName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sortName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sortName", value.AsString());
-          }
-       }
-/// <summary>
-/// (FieldBrushObject, copyFields, void, 3, 4, (simObject, [fieldList]) Copy selected static-fields for selected object./
-///                                                         @param simObject Object to copy static-fields from.
-///                                                         @param fieldList fields to filter static-fields against.
-/// 			                                            @return No return value.)
-/// 
-/// </summary>
-public  void copyFields(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnFieldBrushObject_copyFields(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (FieldBrushObject, pasteFields, void, 3, 3, (simObject) Paste copied static-fields to selected object./
-///                                                         @param simObject Object to paste static-fields to.
-/// 			                                            @return No return value.)
-/// 
-/// </summary>
-public  void pasteFields(string a2){
-TorqueScriptTemplate.m_ts.fnFieldBrushObject_pasteFields(_mSimObjectId, a2);
-}
-/// <summary>
-/// (FieldBrushObject, queryFields, const char*, 3, 4, (simObject, [groupList]) Query available static-fields for selected object./
-///                                                                 @param simObject Object to query static-fields on.
-///                                                                 @param groupList groups to filter static-fields against.
-/// 			                                                    @return Space-seperated static-field list.)
-/// 
-/// </summary>
-public  string queryFields(string a2, string a3= ""){
-return TorqueScriptTemplate.m_ts.fnFieldBrushObject_queryFields(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// (FieldBrushObject, queryGroups, const char*, 3, 3, (simObject) Query available static-field groups for selected object./
-///                                                                 @param simObject Object to query static-field groups on.
-/// 			                                                    @return Space-seperated static-field group list.)
-/// 
-/// </summary>
-public  string queryGroups(string a2){
-return TorqueScriptTemplate.m_ts.fnFieldBrushObject_queryGroups(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// (FieldBrushObject, copyFields, void, 3, 4, (simObject, [fieldList]) Copy selected static-fields for selected object./
+        ///                                                         @param simObject Object to copy static-fields from.
+        ///                                                         @param fieldList fields to filter static-fields against.
+        /// 			                                            @return No return value.)
+        /// 
+        /// </summary>
+        public void copyFields(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnFieldBrushObject_copyFields(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (FieldBrushObject, pasteFields, void, 3, 3, (simObject) Paste copied static-fields to selected object./
+        ///                                                         @param simObject Object to paste static-fields to.
+        /// 			                                            @return No return value.)
+        /// 
+        /// </summary>
+        public void pasteFields(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnFieldBrushObject_pasteFields(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (FieldBrushObject, queryFields, const char*, 3, 4, (simObject, [groupList]) Query available static-fields for selected object./
+        ///                                                                 @param simObject Object to query static-fields on.
+        ///                                                                 @param groupList groups to filter static-fields against.
+        /// 			                                                    @return Space-seperated static-field list.)
+        /// 
+        /// </summary>
+        public string queryFields(string a2, string a3 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnFieldBrushObject_queryFields(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// (FieldBrushObject, queryGroups, const char*, 3, 3, (simObject) Query available static-field groups for selected object./
+        ///                                                                 @param simObject Object to query static-field groups on.
+        /// 			                                                    @return Space-seperated static-field group list.)
+        /// 
+        /// </summary>
+        public string queryGroups(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnFieldBrushObject_queryGroups(_mSimObjectId, a2);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPhysicsShape))]
-    public class coPhysicsShape: coGameBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoPhysicsShape))]
+    public class coPhysicsShape : coGameBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicsShape(string simobjectid) : base(simobjectid){ }
+        public coPhysicsShape(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicsShape(uint simobjectid): base(simobjectid){ }
+        public coPhysicsShape(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicsShape(int simobjectid): base(simobjectid){ }
+        public coPhysicsShape(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Enables or disables playing of an ambient animation upon loading the shape.\n\n      @note The ambient animation must be named \ambient\. 
+        /// </summary>
+        public bool playAmbient
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".playAmbient").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".playAmbient", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coPhysicsShape(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coPhysicsShape(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coPhysicsShape(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPhysicsShape ts)
+        public static implicit operator string(coPhysicsShape ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coPhysicsShape(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPhysicsShape ts)
+        public static implicit operator int(coPhysicsShape ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coPhysicsShape(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPhysicsShape ts)
+        public static implicit operator uint(coPhysicsShape ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,43 +240,39 @@ public coPhysicsShape(int simobjectid): base(simobjectid){ }
             {
             return new coPhysicsShape(ts);
             }
-public bool playAmbient
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".playAmbient").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".playAmbient", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Disables rendering and physical simulation.
-///    Calling destroy() will also spawn any explosions, debris, and/or destroyedShape 
-///    defined for it, as well as remove it from the scene graph.
-///    Destroyed objects are only created on the server. Ghosting will later update the client.
-///    @note This does not actually delete the PhysicsShape. )
-/// 
-/// </summary>
-public  void destroy(){
-TorqueScriptTemplate.m_ts.fnPhysicsShape_destroy(_mSimObjectId);
-}
-/// <summary>
-/// @brief Returns if a PhysicsShape has been destroyed or not. )
-/// 
-/// </summary>
-public  bool isDestroyed(){
-return TorqueScriptTemplate.m_ts.fnPhysicsShape_isDestroyed(_mSimObjectId);
-}
-/// <summary>
-/// @brief Restores the shape to its state before being destroyed.
-///    Re-enables rendering and physical simulation on the object and 
-///    adds it to the client's scene graph. 
-///    Has no effect if the shape is not destroyed.)
-/// 
-/// </summary>
-public  void restore(){
-TorqueScriptTemplate.m_ts.fnPhysicsShape_restore(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Disables rendering and physical simulation.
+        ///    Calling destroy() will also spawn any explosions, debris, and/or destroyedShape 
+        ///    defined for it, as well as remove it from the scene graph.
+        ///    Destroyed objects are only created on the server. Ghosting will later update the client.
+        ///    @note This does not actually delete the PhysicsShape. )
+        /// 
+        /// </summary>
+        public void destroy()
+            {
+            TorqueScriptTemplate.m_ts.fnPhysicsShape_destroy(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Returns if a PhysicsShape has been destroyed or not. )
+        /// 
+        /// </summary>
+        public bool isDestroyed()
+            {
+            return TorqueScriptTemplate.m_ts.fnPhysicsShape_isDestroyed(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Restores the shape to its state before being destroyed.
+        ///    Re-enables rendering and physical simulation on the object and 
+        ///    adds it to the client's scene graph. 
+        ///    Has no effect if the shape is not destroyed.)
+        /// 
+        /// </summary>
+        public void restore()
+            {
+            TorqueScriptTemplate.m_ts.fnPhysicsShape_restore(_mSimObjectId);
+            }
+        }
+    }

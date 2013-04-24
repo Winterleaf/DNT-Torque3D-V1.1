@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiGameListMenuProfile))]
-    public class coGuiGameListMenuProfile: coGuiControlProfile
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiGameListMenuProfile))]
+    public class coGuiGameListMenuProfile : coGuiControlProfile
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListMenuProfile(string simobjectid) : base(simobjectid){ }
+        public coGuiGameListMenuProfile(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListMenuProfile(uint simobjectid): base(simobjectid){ }
+        public coGuiGameListMenuProfile(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiGameListMenuProfile(int simobjectid): base(simobjectid){ }
+        public coGuiGameListMenuProfile(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Position of the lower right corner of the row hit area (relative to row's top left corner) 
+        /// </summary>
+        public Point2I hitAreaLowerRight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hitAreaLowerRight").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hitAreaLowerRight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Position of the upper left corner of the row hit area (relative to row's top left corner) 
+        /// </summary>
+        public Point2I hitAreaUpperLeft
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hitAreaUpperLeft").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hitAreaUpperLeft", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Offset from the row's top left corner at which to render the row icon 
+        /// </summary>
+        public Point2I iconOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".iconOffset").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".iconOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The base size (\width height\) of a row 
+        /// </summary>
+        public Point2I rowSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rowSize").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rowSize", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coGuiGameListMenuProfile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coGuiGameListMenuProfile(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coGuiGameListMenuProfile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiGameListMenuProfile ts)
+        public static implicit operator string(coGuiGameListMenuProfile ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coGuiGameListMenuProfile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiGameListMenuProfile ts)
+        public static implicit operator int(coGuiGameListMenuProfile ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coGuiGameListMenuProfile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiGameListMenuProfile ts)
+        public static implicit operator uint(coGuiGameListMenuProfile ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,48 +268,5 @@ public coGuiGameListMenuProfile(int simobjectid): base(simobjectid){ }
             {
             return new coGuiGameListMenuProfile(ts);
             }
-public Point2I hitAreaLowerRight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hitAreaLowerRight").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hitAreaLowerRight", value.AsString());
-          }
-       }
-public Point2I hitAreaUpperLeft
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hitAreaUpperLeft").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hitAreaUpperLeft", value.AsString());
-          }
-       }
-public Point2I iconOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".iconOffset").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".iconOffset", value.AsString());
-          }
-       }
-public Point2I rowSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rowSize").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rowSize", value.AsString());
-          }
-       }
-}}
+        }
+    }

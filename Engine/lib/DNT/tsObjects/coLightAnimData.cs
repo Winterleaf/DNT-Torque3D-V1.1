@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,217 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoLightAnimData))]
-    public class coLightAnimData: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoLightAnimData))]
+    public class coLightAnimData : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coLightAnimData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coLightAnimData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coLightAnimData(int simobjectid): base(simobjectid){ }
+        public coLightAnimData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coLightAnimData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coLightAnimData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// The value of the A key in the keyframe sequence. 
+        /// </summary>
+        public float brightnessA
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brightnessA").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brightnessA", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The keyframe sequence encoded into a string where characters from A to Z define      a position between the two animation values. 
+        /// </summary>
+        public String brightnessKeys
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brightnessKeys").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brightnessKeys", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The animation time for keyframe sequence. 
+        /// </summary>
+        public float brightnessPeriod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brightnessPeriod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brightnessPeriod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true the transition between keyframes will be smooth. 
+        /// </summary>
+        public bool brightnessSmooth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brightnessSmooth").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brightnessSmooth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The value of the Z key in the keyframe sequence. 
+        /// </summary>
+        public float brightnessZ
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brightnessZ").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brightnessZ", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The value of the A key in the keyframe sequence. 
+        /// </summary>
+        public float colorA
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorA").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorA", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The keyframe sequence encoded into a string where characters from A to Z define      a position between the two animation values. 
+        /// </summary>
+        public String colorKeys
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorKeys").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorKeys", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The animation time for keyframe sequence. 
+        /// </summary>
+        public float colorPeriod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorPeriod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorPeriod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true the transition between keyframes will be smooth. 
+        /// </summary>
+        public bool colorSmooth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorSmooth").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorSmooth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The value of the Z key in the keyframe sequence. 
+        /// </summary>
+        public float colorZ
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorZ").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".colorZ", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The value of the A key in the keyframe sequence. 
+        /// </summary>
+        public float offsetA
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".offsetA").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".offsetA", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The keyframe sequence encoded into a string where characters from A to Z define      a position between the two animation values. 
+        /// </summary>
+        public String offsetKeys
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".offsetKeys").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".offsetKeys", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The animation time for keyframe sequence. 
+        /// </summary>
+        public float offsetPeriod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".offsetPeriod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".offsetPeriod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true the transition between keyframes will be smooth. 
+        /// </summary>
+        public bool offsetSmooth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".offsetSmooth").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".offsetSmooth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The value of the Z key in the keyframe sequence. 
+        /// </summary>
+        public float offsetZ
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".offsetZ").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".offsetZ", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The value of the A key in the keyframe sequence. 
+        /// </summary>
+        public float rotA
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotA").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotA", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The keyframe sequence encoded into a string where characters from A to Z define      a position between the two animation values. 
+        /// </summary>
+        public String rotKeys
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotKeys").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotKeys", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The animation time for keyframe sequence. 
+        /// </summary>
+        public float rotPeriod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotPeriod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotPeriod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true the transition between keyframes will be smooth. 
+        /// </summary>
+        public bool rotSmooth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotSmooth").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotSmooth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The value of the Z key in the keyframe sequence. 
+        /// </summary>
+        public float rotZ
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotZ").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rotZ", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +315,9 @@ public coLightAnimData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +325,17 @@ public coLightAnimData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +347,15 @@ public coLightAnimData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coLightAnimData ts)
+        public static implicit operator string(coLightAnimData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +375,7 @@ public coLightAnimData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coLightAnimData ts)
+        public static implicit operator int(coLightAnimData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +396,7 @@ public coLightAnimData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coLightAnimData ts)
+        public static implicit operator uint(coLightAnimData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,224 +411,5 @@ public coLightAnimData(int simobjectid): base(simobjectid){ }
             {
             return new coLightAnimData(ts);
             }
-public float brightnessA
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brightnessA").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brightnessA", value.AsString());
-          }
-       }
-public String brightnessKeys
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brightnessKeys").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brightnessKeys", value.AsString());
-          }
-       }
-public float brightnessPeriod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brightnessPeriod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brightnessPeriod", value.AsString());
-          }
-       }
-public bool brightnessSmooth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brightnessSmooth").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brightnessSmooth", value.AsString());
-          }
-       }
-public float brightnessZ
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brightnessZ").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brightnessZ", value.AsString());
-          }
-       }
-public float colorA
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorA").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorA", value.AsString());
-          }
-       }
-public String colorKeys
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorKeys").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorKeys", value.AsString());
-          }
-       }
-public float colorPeriod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorPeriod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorPeriod", value.AsString());
-          }
-       }
-public bool colorSmooth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorSmooth").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorSmooth", value.AsString());
-          }
-       }
-public float colorZ
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".colorZ").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".colorZ", value.AsString());
-          }
-       }
-public float offsetA
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".offsetA").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".offsetA", value.AsString());
-          }
-       }
-public String offsetKeys
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".offsetKeys").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".offsetKeys", value.AsString());
-          }
-       }
-public float offsetPeriod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".offsetPeriod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".offsetPeriod", value.AsString());
-          }
-       }
-public bool offsetSmooth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".offsetSmooth").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".offsetSmooth", value.AsString());
-          }
-       }
-public float offsetZ
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".offsetZ").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".offsetZ", value.AsString());
-          }
-       }
-public float rotA
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotA").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotA", value.AsString());
-          }
-       }
-public String rotKeys
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotKeys").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotKeys", value.AsString());
-          }
-       }
-public float rotPeriod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotPeriod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotPeriod", value.AsString());
-          }
-       }
-public bool rotSmooth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotSmooth").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotSmooth", value.AsString());
-          }
-       }
-public float rotZ
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rotZ").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rotZ", value.AsString());
-          }
-       }
-}}
+        }
+    }

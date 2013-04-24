@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiAutoScrollCtrl))]
-    public class coGuiAutoScrollCtrl: coGuiTickCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiAutoScrollCtrl))]
+    public class coGuiAutoScrollCtrl : coGuiTickCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiAutoScrollCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiAutoScrollCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiAutoScrollCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiAutoScrollCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiAutoScrollCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiAutoScrollCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Padding to put around child control (in pixels). 
+        /// </summary>
+        public int childBorder
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".childBorder").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".childBorder", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the scrolling will reset to the beginning once completing a cycle. 
+        /// </summary>
+        public bool isLooping
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".isLooping").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".isLooping", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Seconds to wait after scrolling completes before resetting and starting over.\n\n     @note Only takes effect if #isLooping is true. 
+        /// </summary>
+        public float resetDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".resetDelay").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".resetDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Direction in which the child control is moved. 
+        /// </summary>
+        public GuiAutoScrollCtrl__Direction scrollDirection
+            {
+            get { return (GuiAutoScrollCtrl__Direction) Enum.Parse(typeof (GuiAutoScrollCtrl__Direction), dnTorque.self.GetVar(_mSimObjectId + ".scrollDirection")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scrollDirection", value.ToString()); }
+            }
+
+        /// <summary>
+        /// If true, the child control will be completely scrolled out of sight; otherwise it will only scroll      until the other end becomes visible. 
+        /// </summary>
+        public bool scrollOutOfSight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scrollOutOfSight").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scrollOutOfSight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Scrolling speed in pixels per second. 
+        /// </summary>
+        public float scrollSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".scrollSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".scrollSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Seconds to wait before starting to scroll. 
+        /// </summary>
+        public float startDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".startDelay").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".startDelay", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +199,9 @@ public coGuiAutoScrollCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +209,17 @@ public coGuiAutoScrollCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +231,15 @@ public coGuiAutoScrollCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiAutoScrollCtrl ts)
+        public static implicit operator string(coGuiAutoScrollCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +259,7 @@ public coGuiAutoScrollCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiAutoScrollCtrl ts)
+        public static implicit operator int(coGuiAutoScrollCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +280,7 @@ public coGuiAutoScrollCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiAutoScrollCtrl ts)
+        public static implicit operator uint(coGuiAutoScrollCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,87 +295,14 @@ public coGuiAutoScrollCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiAutoScrollCtrl(ts);
             }
-public int childBorder
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".childBorder").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".childBorder", value.AsString());
-          }
-       }
-public bool isLooping
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".isLooping").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".isLooping", value.AsString());
-          }
-       }
-public float resetDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".resetDelay").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".resetDelay", value.AsString());
-          }
-       }
-public GuiAutoScrollCtrl__Direction scrollDirection
-       {
-       get
-          {          return (GuiAutoScrollCtrl__Direction)Enum.Parse(typeof(GuiAutoScrollCtrl__Direction), dnTorque.self.GetVar(_mSimObjectId + ".scrollDirection"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scrollDirection", value.ToString());
-          }
-       }
-public bool scrollOutOfSight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scrollOutOfSight").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scrollOutOfSight", value.AsString());
-          }
-       }
-public float scrollSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".scrollSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".scrollSpeed", value.AsString());
-          }
-       }
-public float startDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".startDelay").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".startDelay", value.AsString());
-          }
-       }
-/// <summary>
-/// Reset scrolling. )
-/// 
-/// </summary>
-public  void reset(){
-TorqueScriptTemplate.m_ts.fnGuiAutoScrollCtrl_reset(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Reset scrolling. )
+        /// 
+        /// </summary>
+        public void reset()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiAutoScrollCtrl_reset(_mSimObjectId);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoFileObject))]
-    public class coFileObject: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoFileObject))]
+    public class coFileObject : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileObject(string simobjectid) : base(simobjectid){ }
+        public coFileObject(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileObject(uint simobjectid): base(simobjectid){ }
+        public coFileObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileObject(int simobjectid): base(simobjectid){ }
+        public coFileObject(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coFileObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coFileObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coFileObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coFileObject ts)
+        public static implicit operator string(coFileObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coFileObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coFileObject ts)
+        public static implicit operator int(coFileObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coFileObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coFileObject ts)
+        public static implicit operator uint(coFileObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,205 +231,224 @@ public coFileObject(int simobjectid): base(simobjectid){ }
             {
             return new coFileObject(ts);
             }
-/// <summary>
-/// @brief Close the file.
-///    
-///    It is EXTREMELY important that you call this function when you are finished reading or writing to a file. 
-///    Failing to do so is not only a bad programming practice, but could result in bad data or corrupt files. 
-///    Remember: Open, Read/Write, Close, Delete...in that order!
-///    
-///    @tsexample
-///    // Create a file object for reading
-///    %fileRead = new FileObject();
-///    // Open a text file, if it exists
-///    %fileRead.OpenForRead(\"./test.txt\");
-///    // Peek the first line
-///    %line = %fileRead.peekLine();
-///    // Print the line we just peeked
-///    echo(%line);
-///    // If we peek again...
-///    %line = %fileRead.peekLine();
-///    // We will get the same output as the first time
-///    // since the stream did not move forward
-///    echo(%line);
-///    // Close the file when finished
-///    %fileWrite.close();
-///    // Cleanup the file object
-///    %fileWrite.delete();
-///    @endtsexample)
-/// 
-/// </summary>
-public  void close(){
-TorqueScriptTemplate.m_ts.fnFileObject_close(_mSimObjectId);
-}
-/// <summary>
-/// @brief Determines if the parser for this FileObject has reached the end of the file
-///    
-///    @tsexample
-///    // Create a file object for reading
-///    %fileRead = new FileObject();
-///    // Open a text file, if it exists
-///    %fileRead.OpenForRead(\"./test.txt\");
-///    // Keep reading until we reach the end of the file
-///    while( !%fileRead.isEOF() )
-///    {
-///       %line = %fileRead.readline();
-///       echo(%line);
-///    }
-///    // Made it to the end
-///    echo(\"Finished reading file\");
-///    @endtsexample
-/// 
-///    @return True if the parser has reached the end of the file, false otherwise)
-/// 
-/// </summary>
-public  bool isEOF(){
-return TorqueScriptTemplate.m_ts.fnFileObject_isEOF(_mSimObjectId);
-}
-/// <summary>
-/// @brief Open a specified file for writing, adding data to the end of the file
-///    
-///    There is no limit as to what kind of file you can write. Any format and data is allowable, not just text. Unlike openForWrite(), 
-///    which will erase an existing file if it is opened, openForAppend() preserves data in an existing file and adds to it.
-/// 
-///    @param filename Path, name, and extension of file to append to
-///    
-///    @tsexample
-///    // Create a file object for writing
-///    %fileWrite = new FileObject();
-///    // Open a file to write to, if it does not exist it will be created
-///    // If it does exist, whatever we write will be added to the end
-///    %result = %fileWrite.OpenForAppend(\"./test.txt\");
-///    @endtsexample
-/// 
-///    @return True if file was successfully opened, false otherwise)
-/// 
-/// </summary>
-public  bool openForAppend(string filename){
-return TorqueScriptTemplate.m_ts.fnFileObject_openForAppend(_mSimObjectId, filename);
-}
-/// <summary>
-/// @brief Open a specified file for reading
-///    
-///    There is no limit as to what kind of file you can read. Any format and data contained within is accessible, not just text
-/// 
-///    @param filename Path, name, and extension of file to be read
-///    
-///    @tsexample
-///    // Create a file object for reading
-///    %fileRead = new FileObject();
-///    // Open a text file, if it exists
-///    %result = %fileRead.OpenForRead(\"./test.txt\");
-///    @endtsexample
-/// 
-///    @return True if file was successfully opened, false otherwise)
-/// 
-/// </summary>
-public  bool openForRead(string filename){
-return TorqueScriptTemplate.m_ts.fnFileObject_openForRead(_mSimObjectId, filename);
-}
-/// <summary>
-/// @brief Open a specified file for writing
-///    
-///    There is no limit as to what kind of file you can write. Any format and data is allowable, not just text
-/// 
-///    @param filename Path, name, and extension of file to write to
-///    
-///    @tsexample
-///    // Create a file object for writing
-///    %fileWrite = new FileObject();
-///    // Open a file to write to, if it does not exist it will be created
-///    %result = %fileWrite.OpenForWrite(\"./test.txt\");
-///    @endtsexample
-/// 
-///    @return True if file was successfully opened, false otherwise)
-/// 
-/// </summary>
-public  bool openForWrite(string filename){
-return TorqueScriptTemplate.m_ts.fnFileObject_openForWrite(_mSimObjectId, filename);
-}
-/// <summary>
-/// @brief Read a line from the file without moving the stream position.
-///    
-///    Emphasis on *line*, as in you cannot parse individual characters or chunks of data.  
-///    There is no limitation as to what kind of data you can read. Unlike readLine, the parser does not move forward after reading.
-/// 
-///    @param filename Path, name, and extension of file to be read
-///    
-///    @tsexample
-///    // Create a file object for reading
-///    %fileRead = new FileObject();
-///    // Open a text file, if it exists
-///    %fileRead.OpenForRead(\"./test.txt\");
-///    // Peek the first line
-///    %line = %fileRead.peekLine();
-///    // Print the line we just peeked
-///    echo(%line);
-///    // If we peek again...
-///    %line = %fileRead.peekLine();
-///    // We will get the same output as the first time
-///    // since the stream did not move forward
-///    echo(%line);
-///    @endtsexample
-/// 
-///    @return String containing the line of data that was just peeked)
-/// 
-/// </summary>
-public  string peekLine(){
-return TorqueScriptTemplate.m_ts.fnFileObject_peekLine(_mSimObjectId);
-}
-/// <summary>
-/// @brief Read a line from file.
-///    
-///    Emphasis on *line*, as in you cannot parse individual characters or chunks of data.  
-///    There is no limitation as to what kind of data you can read.
-///    
-///    @tsexample
-///    // Create a file object for reading
-///    %fileRead = new FileObject();
-///    // Open a text file, if it exists
-///    %fileRead.OpenForRead(\"./test.txt\");
-///    // Read in the first line
-///    %line = %fileRead.readline();
-///    // Print the line we just read
-///    echo(%line);
-///    @endtsexample
-/// 
-///    @return String containing the line of data that was just read)
-/// 
-/// </summary>
-public  string readLine(){
-return TorqueScriptTemplate.m_ts.fnFileObject_readLine(_mSimObjectId);
-}
-/// <summary>
-/// @brief Write a line to the file, if it was opened for writing.
-///    
-///    There is no limit as to what kind of text you can write. Any format and data is allowable, not just text. 
-///    Be careful of what you write, as whitespace, current values, and literals will be preserved.
-/// 
-///    @param text The data we are writing out to file.
-///    
-///    @tsexample
-///    // Create a file object for writing
-///    %fileWrite = new FileObject();
-///    // Open a file to write to, if it does not exist it will be created
-///    %fileWrite.OpenForWrite(\"./test.txt\");
-///    // Write a line to the text files
-///    %fileWrite.writeLine(\"READ. READ CODE. CODE\");
-///    @endtsexample
-/// 
-///    @return True if file was successfully opened, false otherwise)
-/// 
-/// </summary>
-public  void writeLine(string text){
-TorqueScriptTemplate.m_ts.fnFileObject_writeLine(_mSimObjectId, text);
-}
-/// <summary>
-/// ( FileObject, writeObject, void, 3, 4, FileObject.writeObject(SimObject, object prepend) 
-/// 			  @hide)
-/// 
-/// </summary>
-public  void writeObject(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnFileObject_writeObject(_mSimObjectId, a2, a3);
-}
-}}
+
+        /// <summary>
+        /// @brief Close the file.
+        ///    
+        ///    It is EXTREMELY important that you call this function when you are finished reading or writing to a file. 
+        ///    Failing to do so is not only a bad programming practice, but could result in bad data or corrupt files. 
+        ///    Remember: Open, Read/Write, Close, Delete...in that order!
+        ///    
+        ///    @tsexample
+        ///    // Create a file object for reading
+        ///    %fileRead = new FileObject();
+        ///    // Open a text file, if it exists
+        ///    %fileRead.OpenForRead(\"./test.txt\");
+        ///    // Peek the first line
+        ///    %line = %fileRead.peekLine();
+        ///    // Print the line we just peeked
+        ///    echo(%line);
+        ///    // If we peek again...
+        ///    %line = %fileRead.peekLine();
+        ///    // We will get the same output as the first time
+        ///    // since the stream did not move forward
+        ///    echo(%line);
+        ///    // Close the file when finished
+        ///    %fileWrite.close();
+        ///    // Cleanup the file object
+        ///    %fileWrite.delete();
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void close()
+            {
+            TorqueScriptTemplate.m_ts.fnFileObject_close(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Determines if the parser for this FileObject has reached the end of the file
+        ///    
+        ///    @tsexample
+        ///    // Create a file object for reading
+        ///    %fileRead = new FileObject();
+        ///    // Open a text file, if it exists
+        ///    %fileRead.OpenForRead(\"./test.txt\");
+        ///    // Keep reading until we reach the end of the file
+        ///    while( !%fileRead.isEOF() )
+        ///    {
+        ///       %line = %fileRead.readline();
+        ///       echo(%line);
+        ///    }
+        ///    // Made it to the end
+        ///    echo(\"Finished reading file\");
+        ///    @endtsexample
+        /// 
+        ///    @return True if the parser has reached the end of the file, false otherwise)
+        /// 
+        /// </summary>
+        public bool isEOF()
+            {
+            return TorqueScriptTemplate.m_ts.fnFileObject_isEOF(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Open a specified file for writing, adding data to the end of the file
+        ///    
+        ///    There is no limit as to what kind of file you can write. Any format and data is allowable, not just text. Unlike openForWrite(), 
+        ///    which will erase an existing file if it is opened, openForAppend() preserves data in an existing file and adds to it.
+        /// 
+        ///    @param filename Path, name, and extension of file to append to
+        ///    
+        ///    @tsexample
+        ///    // Create a file object for writing
+        ///    %fileWrite = new FileObject();
+        ///    // Open a file to write to, if it does not exist it will be created
+        ///    // If it does exist, whatever we write will be added to the end
+        ///    %result = %fileWrite.OpenForAppend(\"./test.txt\");
+        ///    @endtsexample
+        /// 
+        ///    @return True if file was successfully opened, false otherwise)
+        /// 
+        /// </summary>
+        public bool openForAppend(string filename)
+            {
+            return TorqueScriptTemplate.m_ts.fnFileObject_openForAppend(_mSimObjectId, filename);
+            }
+
+        /// <summary>
+        /// @brief Open a specified file for reading
+        ///    
+        ///    There is no limit as to what kind of file you can read. Any format and data contained within is accessible, not just text
+        /// 
+        ///    @param filename Path, name, and extension of file to be read
+        ///    
+        ///    @tsexample
+        ///    // Create a file object for reading
+        ///    %fileRead = new FileObject();
+        ///    // Open a text file, if it exists
+        ///    %result = %fileRead.OpenForRead(\"./test.txt\");
+        ///    @endtsexample
+        /// 
+        ///    @return True if file was successfully opened, false otherwise)
+        /// 
+        /// </summary>
+        public bool openForRead(string filename)
+            {
+            return TorqueScriptTemplate.m_ts.fnFileObject_openForRead(_mSimObjectId, filename);
+            }
+
+        /// <summary>
+        /// @brief Open a specified file for writing
+        ///    
+        ///    There is no limit as to what kind of file you can write. Any format and data is allowable, not just text
+        /// 
+        ///    @param filename Path, name, and extension of file to write to
+        ///    
+        ///    @tsexample
+        ///    // Create a file object for writing
+        ///    %fileWrite = new FileObject();
+        ///    // Open a file to write to, if it does not exist it will be created
+        ///    %result = %fileWrite.OpenForWrite(\"./test.txt\");
+        ///    @endtsexample
+        /// 
+        ///    @return True if file was successfully opened, false otherwise)
+        /// 
+        /// </summary>
+        public bool openForWrite(string filename)
+            {
+            return TorqueScriptTemplate.m_ts.fnFileObject_openForWrite(_mSimObjectId, filename);
+            }
+
+        /// <summary>
+        /// @brief Read a line from the file without moving the stream position.
+        ///    
+        ///    Emphasis on *line*, as in you cannot parse individual characters or chunks of data.  
+        ///    There is no limitation as to what kind of data you can read. Unlike readLine, the parser does not move forward after reading.
+        /// 
+        ///    @param filename Path, name, and extension of file to be read
+        ///    
+        ///    @tsexample
+        ///    // Create a file object for reading
+        ///    %fileRead = new FileObject();
+        ///    // Open a text file, if it exists
+        ///    %fileRead.OpenForRead(\"./test.txt\");
+        ///    // Peek the first line
+        ///    %line = %fileRead.peekLine();
+        ///    // Print the line we just peeked
+        ///    echo(%line);
+        ///    // If we peek again...
+        ///    %line = %fileRead.peekLine();
+        ///    // We will get the same output as the first time
+        ///    // since the stream did not move forward
+        ///    echo(%line);
+        ///    @endtsexample
+        /// 
+        ///    @return String containing the line of data that was just peeked)
+        /// 
+        /// </summary>
+        public string peekLine()
+            {
+            return TorqueScriptTemplate.m_ts.fnFileObject_peekLine(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Read a line from file.
+        ///    
+        ///    Emphasis on *line*, as in you cannot parse individual characters or chunks of data.  
+        ///    There is no limitation as to what kind of data you can read.
+        ///    
+        ///    @tsexample
+        ///    // Create a file object for reading
+        ///    %fileRead = new FileObject();
+        ///    // Open a text file, if it exists
+        ///    %fileRead.OpenForRead(\"./test.txt\");
+        ///    // Read in the first line
+        ///    %line = %fileRead.readline();
+        ///    // Print the line we just read
+        ///    echo(%line);
+        ///    @endtsexample
+        /// 
+        ///    @return String containing the line of data that was just read)
+        /// 
+        /// </summary>
+        public string readLine()
+            {
+            return TorqueScriptTemplate.m_ts.fnFileObject_readLine(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Write a line to the file, if it was opened for writing.
+        ///    
+        ///    There is no limit as to what kind of text you can write. Any format and data is allowable, not just text. 
+        ///    Be careful of what you write, as whitespace, current values, and literals will be preserved.
+        /// 
+        ///    @param text The data we are writing out to file.
+        ///    
+        ///    @tsexample
+        ///    // Create a file object for writing
+        ///    %fileWrite = new FileObject();
+        ///    // Open a file to write to, if it does not exist it will be created
+        ///    %fileWrite.OpenForWrite(\"./test.txt\");
+        ///    // Write a line to the text files
+        ///    %fileWrite.writeLine(\"READ. READ CODE. CODE\");
+        ///    @endtsexample
+        /// 
+        ///    @return True if file was successfully opened, false otherwise)
+        /// 
+        /// </summary>
+        public void writeLine(string text)
+            {
+            TorqueScriptTemplate.m_ts.fnFileObject_writeLine(_mSimObjectId, text);
+            }
+
+        /// <summary>
+        /// ( FileObject, writeObject, void, 3, 4, FileObject.writeObject(SimObject, object prepend) 
+        /// 			  @hide)
+        /// 
+        /// </summary>
+        public void writeObject(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnFileObject_writeObject(_mSimObjectId, a2, a3);
+            }
+        }
+    }

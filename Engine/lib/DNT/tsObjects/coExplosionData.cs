@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,388 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoExplosionData))]
-    public class coExplosionData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoExplosionData))]
+    public class coExplosionData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coExplosionData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coExplosionData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coExplosionData(int simobjectid): base(simobjectid){ }
+        public coExplosionData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coExplosionData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coExplosionData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// @brief Amplitude of camera shaking, defined in the \X Y Z\ axes.\n\n   Set any value to 0 to disable shaking in that axis. 
+        /// </summary>
+        public Point3F camShakeAmp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeAmp").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeAmp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Duration (in seconds) to shake the camera. 
+        /// </summary>
+        public float camShakeDuration
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeDuration").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeDuration", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Falloff value for the camera shake. 
+        /// </summary>
+        public float camShakeFalloff
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeFalloff").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeFalloff", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Frequency of camera shaking, defined in the \X Y Z\ axes. 
+        /// </summary>
+        public Point3F camShakeFreq
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeFreq").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeFreq", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Radial distance that a camera's position must be within relative to the    center of the explosion to be shaken. 
+        /// </summary>
+        public float camShakeRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// List of DebrisData objects to spawn with this explosion. 
+        /// </summary>
+        public coDebrisData debris
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debris"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debris", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Number of debris objects to create. 
+        /// </summary>
+        public int debrisNum
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisNum").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisNum", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance in the number of debris objects to create (must be from 0 - debrisNum). 
+        /// </summary>
+        public int debrisNumVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisNumVariance").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisNumVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum reference angle, from the vertical plane, to eject debris from. 
+        /// </summary>
+        public float debrisPhiMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisPhiMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisPhiMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum reference angle, from the vertical plane, to eject debris from. 
+        /// </summary>
+        public float debrisPhiMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisPhiMin").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisPhiMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum angle, from the horizontal plane, to eject debris from. 
+        /// </summary>
+        public float debrisThetaMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisThetaMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisThetaMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum angle, from the horizontal plane, to eject debris from. 
+        /// </summary>
+        public float debrisThetaMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisThetaMin").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisThetaMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Velocity to toss debris at. 
+        /// </summary>
+        public float debrisVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance in the debris initial velocity (must be = 0). 
+        /// </summary>
+        public float debrisVelocityVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".debrisVelocityVariance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".debrisVelocityVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Amount of time, in milliseconds, to delay the start of the explosion effect    from the creation of the Explosion object. 
+        /// </summary>
+        public int delayMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".delayMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".delayMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance, in milliseconds, of delayMS. 
+        /// </summary>
+        public int delayVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".delayVariance").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".delayVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief List of additional ParticleEmitterData objects to spawn with this    explosion.\n\n   @see particleEmitter 
+        /// </summary>
+        public coParticleEmitterData emitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".emitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".emitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// \X Y Z\ scale factor applied to the explosionShape model at the start    of the explosion. 
+        /// </summary>
+        public Point3F explosionScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".explosionScale").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".explosionScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Optional DTS or DAE shape to place at the center of the explosion.\n\n   The iambient/i animation of this model will be played automatically at    the start of the explosion. 
+        /// </summary>
+        public String explosionShape
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".explosionShape").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".explosionShape", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls whether the visual effects of the explosion always face the camera. 
+        /// </summary>
+        public bool faceViewer
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".faceViewer").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".faceViewer", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Lifetime, in milliseconds, of the Explosion object.\n\n   @note If explosionShape is defined and contains an iambient/i animation,    this field is ignored, and the playSpeed scaled duration of the animation    is used instead. 
+        /// </summary>
+        public int lifetimeMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetimeMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance, in milliseconds, of the lifetimeMS of the Explosion object.\n 
+        /// </summary>
+        public int lifetimeVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVariance").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Final brightness of the PointLight created by this explosion.\n\n   @see lightStartBrightness 
+        /// </summary>
+        public float lightEndBrightness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightEndBrightness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightEndBrightness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Final color of the PointLight created by this explosion.\n\n   @see lightStartColor 
+        /// </summary>
+        public ColorF lightEndColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightEndColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightEndColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Final radius of the PointLight created by this explosion.\n\n   @see lightStartRadius 
+        /// </summary>
+        public float lightEndRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightEndRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightEndRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Distance (in the explosion normal direction) of the PointLight position    from the explosion center. 
+        /// </summary>
+        public float lightNormalOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightNormalOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightNormalOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Initial brightness of the PointLight created by this explosion.\n\n   Brightness is linearly interpolated from lightStartBrightness to    lightEndBrightness over the lifetime of the explosion.\n   @see lifetimeMS 
+        /// </summary>
+        public float lightStartBrightness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightStartBrightness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightStartBrightness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Initial color of the PointLight created by this explosion.\n\n   Color is linearly interpolated from lightStartColor to lightEndColor    over the lifetime of the explosion.\n   @see lifetimeMS 
+        /// </summary>
+        public ColorF lightStartColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightStartColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightStartColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Initial radius of the PointLight created by this explosion.\n\n   Radius is linearly interpolated from lightStartRadius to lightEndRadius    over the lifetime of the explosion.\n   @see lifetimeMS 
+        /// </summary>
+        public float lightStartRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightStartRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightStartRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Offset distance (in a random direction) of the center of the explosion    from the Explosion object position.\n\n   Most often used to create some variance in position for subExplosion effects. 
+        /// </summary>
+        public float offset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".offset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".offset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Density of the particle cloud created at the start of the explosion.\n\n   @see particleEmitter 
+        /// </summary>
+        public int particleDensity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".particleDensity").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".particleDensity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Emitter used to generate a cloud of particles at the start of the explosion.\n\n   Explosions can generate two different particle effects. The first is a    single burst of particles at the start of the explosion emitted in a    spherical cloud using particleEmitter.\n\n   The second effect spawns the list of ParticleEmitters given by the emitter[]    field. These emitters generate particles in the normal way throughout the    lifetime of the explosion. 
+        /// </summary>
+        public coParticleEmitterData particleEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".particleEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".particleEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Radial distance from the explosion center at which cloud particles    are emitted.\n\n   @see particleEmitter 
+        /// </summary>
+        public float particleRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".particleRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".particleRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Time scale at which to play the explosionShape iambient/i sequence. 
+        /// </summary>
+        public float playSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".playSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".playSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls whether the camera shakes during this explosion. 
+        /// </summary>
+        public bool shakeCamera
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shakeCamera").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shakeCamera", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief \X Y Z\ size keyframes used to scale the explosionShape model.\n\n   The explosionShape (if defined) will be scaled using the times/sizes    keyframes over the lifetime of the explosion.\n   @see lifetimeMS 
+        /// </summary>
+        public Point3F sizes
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sizes").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sizes", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Non-looping sound effect that will be played at the start of the explosion. 
+        /// </summary>
+        public coSFXTrack soundProfile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".soundProfile"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundProfile", value.ToString()); }
+            }
+
+        /// <summary>
+        /// List of additional ExplosionData objects to create at the start of the    explosion. 
+        /// </summary>
+        public coExplosionData subExplosion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".subExplosion"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".subExplosion", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Time keyframes used to scale the explosionShape model.\n\n   Values should be in increasing order from 0.0 - 1.0, and correspond to    the life of the Explosion where 0 is the beginning and 1 is the end of    the explosion lifetime.\n   @see lifetimeMS 
+        /// </summary>
+        public float times
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".times").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".times", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +487,9 @@ public coExplosionData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +497,17 @@ public coExplosionData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +519,15 @@ public coExplosionData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coExplosionData ts)
+        public static implicit operator string(coExplosionData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +547,7 @@ public coExplosionData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coExplosionData ts)
+        public static implicit operator int(coExplosionData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +568,7 @@ public coExplosionData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coExplosionData ts)
+        public static implicit operator uint(coExplosionData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,433 +583,5 @@ public coExplosionData(int simobjectid): base(simobjectid){ }
             {
             return new coExplosionData(ts);
             }
-public Point3F camShakeAmp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".camShakeAmp").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".camShakeAmp", value.AsString());
-          }
-       }
-public float camShakeDuration
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".camShakeDuration").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".camShakeDuration", value.AsString());
-          }
-       }
-public float camShakeFalloff
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".camShakeFalloff").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".camShakeFalloff", value.AsString());
-          }
-       }
-public Point3F camShakeFreq
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".camShakeFreq").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".camShakeFreq", value.AsString());
-          }
-       }
-public float camShakeRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".camShakeRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".camShakeRadius", value.AsString());
-          }
-       }
-public coDebrisData debris
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debris");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debris", value.ToString());
-          }
-       }
-public int debrisNum
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisNum").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisNum", value.AsString());
-          }
-       }
-public int debrisNumVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisNumVariance").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisNumVariance", value.AsString());
-          }
-       }
-public float debrisPhiMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisPhiMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisPhiMax", value.AsString());
-          }
-       }
-public float debrisPhiMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisPhiMin").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisPhiMin", value.AsString());
-          }
-       }
-public float debrisThetaMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisThetaMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisThetaMax", value.AsString());
-          }
-       }
-public float debrisThetaMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisThetaMin").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisThetaMin", value.AsString());
-          }
-       }
-public float debrisVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisVelocity", value.AsString());
-          }
-       }
-public float debrisVelocityVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".debrisVelocityVariance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".debrisVelocityVariance", value.AsString());
-          }
-       }
-public int delayMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".delayMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".delayMS", value.AsString());
-          }
-       }
-public int delayVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".delayVariance").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".delayVariance", value.AsString());
-          }
-       }
-public coParticleEmitterData emitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".emitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".emitter", value.ToString());
-          }
-       }
-public Point3F explosionScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".explosionScale").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".explosionScale", value.AsString());
-          }
-       }
-public String explosionShape
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".explosionShape").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".explosionShape", value.AsString());
-          }
-       }
-public bool faceViewer
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".faceViewer").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".faceViewer", value.AsString());
-          }
-       }
-public int lifetimeMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetimeMS", value.AsString());
-          }
-       }
-public int lifetimeVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVariance").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVariance", value.AsString());
-          }
-       }
-public float lightEndBrightness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightEndBrightness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightEndBrightness", value.AsString());
-          }
-       }
-public ColorF lightEndColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightEndColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightEndColor", value.AsString());
-          }
-       }
-public float lightEndRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightEndRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightEndRadius", value.AsString());
-          }
-       }
-public float lightNormalOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightNormalOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightNormalOffset", value.AsString());
-          }
-       }
-public float lightStartBrightness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightStartBrightness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightStartBrightness", value.AsString());
-          }
-       }
-public ColorF lightStartColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightStartColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightStartColor", value.AsString());
-          }
-       }
-public float lightStartRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightStartRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightStartRadius", value.AsString());
-          }
-       }
-public float offset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".offset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".offset", value.AsString());
-          }
-       }
-public int particleDensity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".particleDensity").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".particleDensity", value.AsString());
-          }
-       }
-public coParticleEmitterData particleEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".particleEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".particleEmitter", value.ToString());
-          }
-       }
-public float particleRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".particleRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".particleRadius", value.AsString());
-          }
-       }
-public float playSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".playSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".playSpeed", value.AsString());
-          }
-       }
-public bool shakeCamera
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shakeCamera").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shakeCamera", value.AsString());
-          }
-       }
-public Point3F sizes
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sizes").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sizes", value.AsString());
-          }
-       }
-public coSFXTrack soundProfile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".soundProfile");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".soundProfile", value.ToString());
-          }
-       }
-public coExplosionData subExplosion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".subExplosion");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".subExplosion", value.ToString());
-          }
-       }
-public float times
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".times").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".times", value.AsString());
-          }
-       }
-}}
+        }
+    }

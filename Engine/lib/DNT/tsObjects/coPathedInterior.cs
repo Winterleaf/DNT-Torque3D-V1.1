@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPathedInterior))]
-    public class coPathedInterior: coGameBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoPathedInterior))]
+    public class coPathedInterior : coGameBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPathedInterior(string simobjectid) : base(simobjectid){ }
+        public coPathedInterior(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPathedInterior(uint simobjectid): base(simobjectid){ }
+        public coPathedInterior(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPathedInterior(int simobjectid): base(simobjectid){ }
+        public coPathedInterior(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TransformF basePosition
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".basePosition").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".basePosition", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TransformF baseRotation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseRotation").AsTransformF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseRotation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Point3F baseScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseScale").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int interiorIndex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".interiorIndex").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".interiorIndex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public String interiorResource
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".interiorResource").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".interiorResource", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coPathedInterior(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coPathedInterior(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coPathedInterior(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPathedInterior ts)
+        public static implicit operator string(coPathedInterior ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coPathedInterior(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPathedInterior ts)
+        public static implicit operator int(coPathedInterior ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coPathedInterior(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPathedInterior ts)
+        public static implicit operator uint(coPathedInterior ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,73 +277,23 @@ public coPathedInterior(int simobjectid): base(simobjectid){ }
             {
             return new coPathedInterior(ts);
             }
-public TransformF basePosition
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".basePosition").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".basePosition", value.AsString());
-          }
-       }
-public TransformF baseRotation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseRotation").AsTransformF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseRotation", value.AsString());
-          }
-       }
-public Point3F baseScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseScale").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseScale", value.AsString());
-          }
-       }
-public int interiorIndex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".interiorIndex").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".interiorIndex", value.AsString());
-          }
-       }
-public String interiorResource
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".interiorResource").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".interiorResource", value.AsString());
-          }
-       }
-/// <summary>
-/// (PathedInterior, setPathPosition, void, 3, 3, )
-/// 
-/// </summary>
-public  void setPathPosition(string a2){
-TorqueScriptTemplate.m_ts.fnPathedInterior_setPathPosition(_mSimObjectId, a2);
-}
-/// <summary>
-/// (PathedInterior, setTargetPosition, void, 3, 3, )
-/// 
-/// </summary>
-public  void setTargetPosition(string a2){
-TorqueScriptTemplate.m_ts.fnPathedInterior_setTargetPosition(_mSimObjectId, a2);
-}
-}}
+
+        /// <summary>
+        /// (PathedInterior, setPathPosition, void, 3, 3, )
+        /// 
+        /// </summary>
+        public void setPathPosition(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnPathedInterior_setPathPosition(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// (PathedInterior, setTargetPosition, void, 3, 3, )
+        /// 
+        /// </summary>
+        public void setTargetPosition(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnPathedInterior_setTargetPosition(_mSimObjectId, a2);
+            }
+        }
+    }

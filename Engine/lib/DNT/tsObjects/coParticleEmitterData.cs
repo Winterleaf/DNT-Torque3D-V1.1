@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,280 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoParticleEmitterData))]
-    public class coParticleEmitterData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoParticleEmitterData))]
+    public class coParticleEmitterData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coParticleEmitterData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coParticleEmitterData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coParticleEmitterData(int simobjectid): base(simobjectid){ }
+        public coParticleEmitterData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coParticleEmitterData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coParticleEmitterData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// The direction aligned particles should face, only valid if alignParticles is true. 
+        /// </summary>
+        public Point3F alignDirection
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alignDirection").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alignDirection", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, particles always face along the axis defined by alignDirection. 
+        /// </summary>
+        public bool alignParticles
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".alignParticles").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alignParticles", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Used to generate the final particle color by controlling interpolation      between the particle color and the particle color multiplied by the      ambient light color. 
+        /// </summary>
+        public float ambientFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambientFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ambientFactor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// String value that controls how emitted particles blend with the scene. 
+        /// </summary>
+        public ParticleRenderInst__BlendStyle blendStyle
+            {
+            get { return (ParticleRenderInst__BlendStyle) Enum.Parse(typeof (ParticleRenderInst__BlendStyle), dnTorque.self.GetVar(_mSimObjectId + ".blendStyle")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendStyle", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Distance along ejection Z axis from which to eject particles. 
+        /// </summary>
+        public float ejectionOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ejectionOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ejectionOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Time (in milliseconds) between each particle ejection. 
+        /// </summary>
+        public int ejectionPeriodMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ejectionPeriodMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ejectionPeriodMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Particle ejection velocity. 
+        /// </summary>
+        public float ejectionVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ejectionVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ejectionVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// This particle system should not use the mixed-resolution renderer.      If your particle system has large amounts of overdraw, consider      disabling this option. 
+        /// </summary>
+        public bool highResOnly
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".highResOnly").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".highResOnly", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Lifetime of emitted particles (in milliseconds). 
+        /// </summary>
+        public int lifetimeMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetimeMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance in particle lifetime from 0 - lifetimeMS. 
+        /// </summary>
+        public int lifetimeVarianceMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVarianceMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVarianceMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, particles will be oriented to face in the direction they are moving. 
+        /// </summary>
+        public bool orientOnVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".orientOnVelocity").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".orientOnVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, Particles will always face the camera. 
+        /// </summary>
+        public bool orientParticles
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".orientParticles").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".orientParticles", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If false, particles emitted in the same frame have their positions      adjusted. If true, adjustment is skipped and particles will clump      together. 
+        /// </summary>
+        public bool overrideAdvance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".overrideAdvance").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".overrideAdvance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief List of space or TAB delimited ParticleData datablock names.\n\n     A random one of these datablocks is selected each time a particle is      emitted. 
+        /// </summary>
+        public String particles
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".particles").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".particles", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance in ejection period, from 1 - ejectionPeriodMS. 
+        /// </summary>
+        public int periodVarianceMS
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".periodVarianceMS").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".periodVarianceMS", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Reference angle, from the vertical plane, to eject particles from. 
+        /// </summary>
+        public float phiReferenceVel
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".phiReferenceVel").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".phiReferenceVel", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance from the reference angle, from 0 - 360. 
+        /// </summary>
+        public float phiVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".phiVariance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".phiVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls whether particles are rendered onto reflective surfaces like water. 
+        /// </summary>
+        public bool renderReflection
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderReflection").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderReflection", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, reverses the normal draw order of particles.\n\n     Particles are normally drawn from newest to oldest, or in Z order      (furthest first) if sortParticles is true. Setting this field to      true will reverse that order: oldest first, or nearest first if      sortParticles is true. 
+        /// </summary>
+        public bool reverseOrder
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverseOrder").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverseOrder", value.AsString()); }
+            }
+
+        /// <summary>
+        /// For soft particles, the distance (in meters) where particles will be      faded based on the difference in depth between the particle and the      scene geometry. 
+        /// </summary>
+        public float softnessDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".softnessDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".softnessDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, particles are sorted furthest to nearest.
+        /// </summary>
+        public bool sortParticles
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sortParticles").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sortParticles", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Optional texture to override ParticleData::textureName. 
+        /// </summary>
+        public String textureName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textureName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum angle, from the horizontal plane, to eject particles from. 
+        /// </summary>
+        public float thetaMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".thetaMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".thetaMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum angle, from the horizontal plane, to eject from. 
+        /// </summary>
+        public float thetaMin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".thetaMin").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".thetaMin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, use emitter specified colors instead of datablock colors.\n\n     Useful for ShapeBase dust and WheeledVehicle wheel particle emitters that use      the current material to control particle color. 
+        /// </summary>
+        public bool useEmitterColors
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useEmitterColors").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useEmitterColors", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, use emitter specified sizes instead of datablock sizes.\n     Useful for Debris particle emitters that control the particle size. 
+        /// </summary>
+        public bool useEmitterSizes
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useEmitterSizes").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useEmitterSizes", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Variance for ejection velocity, from 0 - ejectionVelocity. 
+        /// </summary>
+        public float velocityVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".velocityVariance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".velocityVariance", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +380,9 @@ public coParticleEmitterData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +390,17 @@ public coParticleEmitterData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +412,15 @@ public coParticleEmitterData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coParticleEmitterData ts)
+        public static implicit operator string(coParticleEmitterData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +440,7 @@ public coParticleEmitterData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coParticleEmitterData ts)
+        public static implicit operator int(coParticleEmitterData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +461,7 @@ public coParticleEmitterData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coParticleEmitterData ts)
+        public static implicit operator uint(coParticleEmitterData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,315 +476,22 @@ public coParticleEmitterData(int simobjectid): base(simobjectid){ }
             {
             return new coParticleEmitterData(ts);
             }
-public Point3F alignDirection
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alignDirection").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alignDirection", value.AsString());
-          }
-       }
-public bool alignParticles
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".alignParticles").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".alignParticles", value.AsString());
-          }
-       }
-public float ambientFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ambientFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ambientFactor", value.AsString());
-          }
-       }
-public ParticleRenderInst__BlendStyle blendStyle
-       {
-       get
-          {          return (ParticleRenderInst__BlendStyle)Enum.Parse(typeof(ParticleRenderInst__BlendStyle), dnTorque.self.GetVar(_mSimObjectId + ".blendStyle"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".blendStyle", value.ToString());
-          }
-       }
-public float ejectionOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ejectionOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ejectionOffset", value.AsString());
-          }
-       }
-public int ejectionPeriodMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ejectionPeriodMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ejectionPeriodMS", value.AsString());
-          }
-       }
-public float ejectionVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ejectionVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ejectionVelocity", value.AsString());
-          }
-       }
-public bool highResOnly
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".highResOnly").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".highResOnly", value.AsString());
-          }
-       }
-public int lifetimeMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetimeMS", value.AsString());
-          }
-       }
-public int lifetimeVarianceMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVarianceMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVarianceMS", value.AsString());
-          }
-       }
-public bool orientOnVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".orientOnVelocity").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".orientOnVelocity", value.AsString());
-          }
-       }
-public bool orientParticles
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".orientParticles").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".orientParticles", value.AsString());
-          }
-       }
-public bool overrideAdvance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".overrideAdvance").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".overrideAdvance", value.AsString());
-          }
-       }
-public String particles
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".particles").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".particles", value.AsString());
-          }
-       }
-public int periodVarianceMS
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".periodVarianceMS").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".periodVarianceMS", value.AsString());
-          }
-       }
-public float phiReferenceVel
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".phiReferenceVel").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".phiReferenceVel", value.AsString());
-          }
-       }
-public float phiVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".phiVariance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".phiVariance", value.AsString());
-          }
-       }
-public bool renderReflection
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderReflection").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderReflection", value.AsString());
-          }
-       }
-public bool reverseOrder
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverseOrder").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverseOrder", value.AsString());
-          }
-       }
-public float softnessDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".softnessDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".softnessDistance", value.AsString());
-          }
-       }
-public bool sortParticles
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sortParticles").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sortParticles", value.AsString());
-          }
-       }
-public String textureName
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textureName").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textureName", value.AsString());
-          }
-       }
-public float thetaMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".thetaMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".thetaMax", value.AsString());
-          }
-       }
-public float thetaMin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".thetaMin").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".thetaMin", value.AsString());
-          }
-       }
-public bool useEmitterColors
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useEmitterColors").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useEmitterColors", value.AsString());
-          }
-       }
-public bool useEmitterSizes
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useEmitterSizes").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useEmitterSizes", value.AsString());
-          }
-       }
-public float velocityVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".velocityVariance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".velocityVariance", value.AsString());
-          }
-       }
-/// <summary>
-/// Reloads the ParticleData datablocks and other fields used by this emitter.
-///    @tsexample
-///    // Get the editor's current particle emitter
-///    %emitter = PE_EmitterEditor.currEmitter
-///    // Change a field value
-///    %emitter.setFieldValue( %propertyField, %value );
-///    // Reload this emitter
-///    %emitter.reload();
-///    @endtsexample)
-/// 
-/// </summary>
-public  void reload(){
-TorqueScriptTemplate.m_ts.fnParticleEmitterData_reload(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Reloads the ParticleData datablocks and other fields used by this emitter.
+        ///    @tsexample
+        ///    // Get the editor's current particle emitter
+        ///    %emitter = PE_EmitterEditor.currEmitter
+        ///    // Change a field value
+        ///    %emitter.setFieldValue( %propertyField, %value );
+        ///    // Reload this emitter
+        ///    %emitter.reload();
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void reload()
+            {
+            TorqueScriptTemplate.m_ts.fnParticleEmitterData_reload(_mSimObjectId);
+            }
+        }
+    }

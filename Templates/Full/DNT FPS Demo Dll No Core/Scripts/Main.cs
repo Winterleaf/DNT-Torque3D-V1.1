@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -78,10 +78,34 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts
             console.SetVar("$WORD::AA", 5);
             }
 
+        //private void RunTestCases()
+        //    {
+        //    console.error("Test 01   result: '" + Util.dnt_testcase_1("Hello String") + "'");
+        //    console.error("Test 02   result: '" + Util.dnt_testcase_2(new AngAxisF(1, 2, 3, 4)) + "'");
+        //    console.error("Test 03   result: '" + Util.dnt_testcase_3(new Box3F(1, 2, 3, 4, 5, 6)) + "'");
+        //    console.error("Test 04   result: '" + Util.dnt_testcase_4(new ColorF(1, 2, 3, 4)) + "'");
+        //    console.error("Test 05   result: '" + Util.dnt_testcase_5(new ColorI(1, 2, 3, 4)) + "'");
+        //    console.error("Test 06.1 result: '" + Util.dnt_testcase_6(new EaseF(1, 2)) + "'");
+        //    console.error("Test 06.2 result: '" + Util.dnt_testcase_6(new EaseF(1, 2, 3)) + "'");
+        //    console.error("Test 06.3 result: '" + Util.dnt_testcase_6(new EaseF(1, 2, 3, 4)) + "'");
+        //    console.error("Test 07   result: '" + Util.dnt_testcase_7(new Point2F(1, 2)) + "'");
+        //    console.error("Test 08   result: '" + Util.dnt_testcase_8(new Point2I(1, 2)) + "'");
+        //    console.error("Test 09   result: '" + Util.dnt_testcase_9(new Point3F(1, 2, 3)) + "'");
+        //    console.error("Test 10   result: '" + Util.dnt_testcase_10(new Point4F(1, 2, 3, 4)) + "'");
+        //    console.error("Test 12.1 result: '" + Util.dnt_testcase_12(new RectF(new Point2F(1, 2), new Point2F(3, 4))) + "'");
+        //    console.error("Test 12.2 result: '" + Util.dnt_testcase_12(new RectF("1 2 3 4")) + "'");
+        //    console.error("Test 13.1 result: '" + Util.dnt_testcase_13(new RectI(new Point2I(1, 2), new Point2I(3, 4))) + "'");
+        //    console.error("Test 13.2 result: '" + Util.dnt_testcase_13(new RectI("1 2 3 4")) + "'");
+        //    console.error("test 14   result: '" + Util.dnt_testcase_14(new RectSpacingI(1, 2, 3, 4)) + "'");
+        //    console.error("test 15   result: '" + Util.dnt_testcase_15(new TransformF(1, 2, 3, 4, 5, 6, 7)) + "'");
+
+        //    }
+
 
         [Torque_Decorations.TorqueCallBack("", "", "onStart", "", 0, 1200, false)]
         public void onStart()
             {
+            // RunTestCases();
             console.error(Util.getPackageList());
             console.Call("dnEval", new[] {"client.Load_Defaults()"});
             console.Call("dnEval", new[] {"server.Load_Defaults()"});

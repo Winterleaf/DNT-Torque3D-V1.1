@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -106,7 +106,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 if (resX.AsInt() >= deskResX.AsInt() || resY.AsInt() >= deskResY.AsInt())
                     {
                     console.print("Warning: The requested windowed resolution is equal to or larger than the current desktop resolution. Attempting to find a better resolution");
-                    string rescount = GuiCanvas.getModeCount("Canvas").AsString();
+                    string rescount = ((coGuiCanvas) "Canvas").getModeCount().AsString();
                     for (int i = (rescount.AsInt() - 1); i >= 0; i--)
                         {
                         string testRes = canvas.getMode(i);
@@ -175,7 +175,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void resetCanvas()
             {
             if (console.isObject("Canvas"))
-                GuiCanvas.repaint("Canvas", 0);
+                ((coGuiCanvas) "Canvas").repaint(0);
             }
 
         //---------------------------------------------------------------------------------------------
@@ -190,7 +190,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         // Full screen handling
         //---------------------------------------------------------------------------------------------
         [Torque_Decorations.TorqueCallBack("", "GuiCanvas", "attemptFullscreenToggle", "(%this)", 1, 22000, false)]
-        public void attemptFullscreenToggle(string thisobj)
+        public void attemptFullscreenToggle(coGuiCanvas thisobj)
             {
             if (EditorIsActive() && !console.Call(thisobj, "isFullScreen").AsBool())
                 {
@@ -202,7 +202,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 console.Call("MessageBoxOk", new[] {"Windowed Mode Required", "Please exit the GUI Editor to switch to full screen."});
                 return;
                 }
-            GuiCanvas.toggleFullscreen(thisobj);
+            thisobj.toggleFullscreen();
             }
         }
     }

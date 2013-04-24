@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiTextEditSliderBitmapCtrl))]
-    public class coGuiTextEditSliderBitmapCtrl: coGuiTextEditCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiTextEditSliderBitmapCtrl))]
+    public class coGuiTextEditSliderBitmapCtrl : coGuiTextEditCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextEditSliderBitmapCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiTextEditSliderBitmapCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextEditSliderBitmapCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiTextEditSliderBitmapCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTextEditSliderBitmapCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiTextEditSliderBitmapCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Unused 
+        /// </summary>
+        public String bitmap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the control will accept giving focus to the user when the mouse wheel is used.\n
+        /// </summary>
+        public bool focusOnMouseWheel
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".focusOnMouseWheel").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".focusOnMouseWheel", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Character format type to place in the control.\n
+        /// </summary>
+        public String format
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".format").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".format", value.AsString()); }
+            }
+
+        /// <summary>
+        /// How far to increment the slider on each step.\n
+        /// </summary>
+        public float increment
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".increment").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".increment", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum vertical and horizontal range to allow in the control.\n
+        /// </summary>
+        public Point2F range
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".range").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiTextEditSliderBitmapCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiTextEditSliderBitmapCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiTextEditSliderBitmapCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiTextEditSliderBitmapCtrl ts)
+        public static implicit operator string(coGuiTextEditSliderBitmapCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiTextEditSliderBitmapCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiTextEditSliderBitmapCtrl ts)
+        public static implicit operator int(coGuiTextEditSliderBitmapCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiTextEditSliderBitmapCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiTextEditSliderBitmapCtrl ts)
+        public static implicit operator uint(coGuiTextEditSliderBitmapCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,59 +277,5 @@ public coGuiTextEditSliderBitmapCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiTextEditSliderBitmapCtrl(ts);
             }
-public String bitmap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString());
-          }
-       }
-public bool focusOnMouseWheel
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".focusOnMouseWheel").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".focusOnMouseWheel", value.AsString());
-          }
-       }
-public String format
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".format").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".format", value.AsString());
-          }
-       }
-public float increment
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".increment").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".increment", value.AsString());
-          }
-       }
-public Point2F range
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".range").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString());
-          }
-       }
-}}
+        }
+    }

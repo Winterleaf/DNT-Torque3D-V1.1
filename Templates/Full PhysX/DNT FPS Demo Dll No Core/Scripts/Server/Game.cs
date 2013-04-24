@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -327,7 +327,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             coSimDataBlock playerdatablock = player.getDataBlock();
             string junk = playerdatablock["mainWeapon.image"];
 
-            ShapeBase.mountImage(player, junk == "" ? junk : "LurkerWeaponImage", 0, true, "");
+            if (junk == "")
+                player.mountImage("LurkerWeaponImage", 0, true, "");
+            else
+                player.mountImage(junk, 0, true, "");
+
+            //ShapeBase.mountImage(player, junk == "" ? junk : "LurkerWeaponImage", 0, true, "");
             }
 
         [Torque_Decorations.TorqueCallBack("", "GameConnection", "onLeaveMissionArea", "%client", 1, 51, false)]
@@ -353,7 +358,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 coSimSet simSet = client["ownedTurrets"];
 
                 for (uint i = 0; i < simSet.getCount(); i++)
-                    SimObject.schedule(simSet.getObject(i), "10", "delete");
+                    {
+                    ((coSimObject) simSet.getObject(i)).schedule("10", "delete");
+                    }
+                //SimObject.schedule(simSet.getObject(i), "10", "delete");
                 }
 
 
@@ -684,7 +692,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 // Create a default player
                 player = console.SpawnObject(Game__DefaultPlayerClass, Game__DefaultPlayerDataBlock, "", "", "");
 
-                if (SimObject.SimObject_isMemberOfClass(player, "Player"))
+                if (player.isMemberOfClass("Player"))
+                    //if (SimObject.SimObject_isMemberOfClass(player, "Player"))
                     console.warn("Trying to spawn a class that does not derive from player!!!!!");
                 // Treat %spawnPoint as a transform
                 player.setTransform(new TransformF(spawnpoint));

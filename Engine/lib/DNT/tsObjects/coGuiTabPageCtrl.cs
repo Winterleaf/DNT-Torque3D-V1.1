@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiTabPageCtrl))]
-    public class coGuiTabPageCtrl: coGuiTextCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiTabPageCtrl))]
+    public class coGuiTabPageCtrl : coGuiTextCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTabPageCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiTabPageCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTabPageCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiTabPageCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiTabPageCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiTabPageCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Determines whether to resize this page when it is added to the tab book.    If true, the page will be resized according to the tab book extents and    itabPosition/i property. 
+        /// </summary>
+        public bool fitBook
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fitBook").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fitBook", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coGuiTabPageCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coGuiTabPageCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coGuiTabPageCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiTabPageCtrl ts)
+        public static implicit operator string(coGuiTabPageCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coGuiTabPageCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiTabPageCtrl ts)
+        public static implicit operator int(coGuiTabPageCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coGuiTabPageCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiTabPageCtrl ts)
+        public static implicit operator uint(coGuiTabPageCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,22 +240,14 @@ public coGuiTabPageCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiTabPageCtrl(ts);
             }
-public bool fitBook
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fitBook").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fitBook", value.AsString());
-          }
-       }
-/// <summary>
-/// Select this page in its tab book. )
-/// 
-/// </summary>
-public  void select(){
-TorqueScriptTemplate.m_ts.fnGuiTabPageCtrl_select(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Select this page in its tab book. )
+        /// 
+        /// </summary>
+        public void select()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiTabPageCtrl_select(_mSimObjectId);
+            }
+        }
+    }

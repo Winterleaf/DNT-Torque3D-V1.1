@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiHealthBarHud))]
-    public class coGuiHealthBarHud: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiHealthBarHud))]
+    public class coGuiHealthBarHud : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiHealthBarHud(string simobjectid) : base(simobjectid){ }
+        public coGuiHealthBarHud(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiHealthBarHud(uint simobjectid): base(simobjectid){ }
+        public coGuiHealthBarHud(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiHealthBarHud(int simobjectid): base(simobjectid){ }
+        public coGuiHealthBarHud(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// As the health bar depletes, this color will represent the health loss amount. 
+        /// </summary>
+        public ColorF damageFillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageFillColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damageFillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, display the energy value rather than the damage value. 
+        /// </summary>
+        public bool displayEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".displayEnergy").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".displayEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Standard color for the background of the control. 
+        /// </summary>
+        public ColorF fillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the control's frame. 
+        /// </summary>
+        public ColorF frameColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Speed at which the control will pulse. 
+        /// </summary>
+        public int pulseRate
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pulseRate").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pulseRate", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Health level the control must be under before the control will pulse. 
+        /// </summary>
+        public float pulseThreshold
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pulseThreshold").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pulseThreshold", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, we draw the background color of the control. 
+        /// </summary>
+        public bool showFill
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFill").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFill", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, we draw the frame of the control. 
+        /// </summary>
+        public bool showFrame
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFrame").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFrame", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +208,9 @@ public coGuiHealthBarHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +218,17 @@ public coGuiHealthBarHud(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +240,15 @@ public coGuiHealthBarHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiHealthBarHud ts)
+        public static implicit operator string(coGuiHealthBarHud ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +268,7 @@ public coGuiHealthBarHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiHealthBarHud ts)
+        public static implicit operator int(coGuiHealthBarHud ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +289,7 @@ public coGuiHealthBarHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiHealthBarHud ts)
+        public static implicit operator uint(coGuiHealthBarHud ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,92 +304,5 @@ public coGuiHealthBarHud(int simobjectid): base(simobjectid){ }
             {
             return new coGuiHealthBarHud(ts);
             }
-public ColorF damageFillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damageFillColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damageFillColor", value.AsString());
-          }
-       }
-public bool displayEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".displayEnergy").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".displayEnergy", value.AsString());
-          }
-       }
-public ColorF fillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString());
-          }
-       }
-public ColorF frameColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString());
-          }
-       }
-public int pulseRate
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pulseRate").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pulseRate", value.AsString());
-          }
-       }
-public float pulseThreshold
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pulseThreshold").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pulseThreshold", value.AsString());
-          }
-       }
-public bool showFill
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFill").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFill", value.AsString());
-          }
-       }
-public bool showFrame
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFrame").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFrame", value.AsString());
-          }
-       }
-}}
+        }
+    }

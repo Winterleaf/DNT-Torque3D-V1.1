@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPlayer))]
-    public class coPlayer: coShapeBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoPlayer))]
+    public class coPlayer : coShapeBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPlayer(string simobjectid) : base(simobjectid){ }
+        public coPlayer(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPlayer(uint simobjectid): base(simobjectid){ }
+        public coPlayer(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPlayer(int simobjectid): base(simobjectid){ }
+        public coPlayer(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +136,9 @@ public coPlayer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +146,17 @@ public coPlayer(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +168,15 @@ public coPlayer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPlayer ts)
+        public static implicit operator string(coPlayer ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +196,7 @@ public coPlayer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPlayer ts)
+        public static implicit operator int(coPlayer ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +217,7 @@ public coPlayer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPlayer ts)
+        public static implicit operator uint(coPlayer ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,334 +232,369 @@ public coPlayer(int simobjectid): base(simobjectid){ }
             {
             return new coPlayer(ts);
             }
-/// <summary>
-/// @brief Allow all poses a chance to occur.
-///    This method resets any poses that have manually been blocked from occuring.  
-///    This includes the regular pose states such as sprinting, crouch, being prone 
-///    and swimming.  It also includes being able to jump and jet jump.  While this 
-///    is allowing these poses to occur it doesn't mean that they all can due to other 
-///    conditions.  We're just not manually blocking them from being allowed.
-///    @see allowJumping()
-///    @see allowJetJumping()
-///    @see allowSprinting()
-///    @see allowCrouching()
-///    @see allowProne()
-///    @see allowSwimming() )
-/// 
-/// </summary>
-public  void allowAllPoses(){
-TorqueScriptTemplate.m_ts.fnPlayer_allowAllPoses(_mSimObjectId);
-}
-/// <summary>
-/// @brief Set if the Player is allowed to crouch.
-///    The default is to allow crouching unless there are other environmental concerns 
-///    that prevent it.  This method is mainly used to explicitly disallow crouching 
-///    at any time.
-///    @param state Set to true to allow crouching, false to disable it.
-///    @see allowAllPoses() )
-/// 
-/// </summary>
-public  void allowCrouching(bool state){
-TorqueScriptTemplate.m_ts.fnPlayer_allowCrouching(_mSimObjectId, state);
-}
-/// <summary>
-/// @brief Set if the Player is allowed to jet jump.
-///    The default is to allow jet jumping unless there are other environmental concerns 
-///    that prevent it.  This method is mainly used to explicitly disallow jet jumping 
-///    at any time.
-///    @param state Set to true to allow jet jumping, false to disable it.
-///    @see allowAllPoses() )
-/// 
-/// </summary>
-public  void allowJetJumping(bool state){
-TorqueScriptTemplate.m_ts.fnPlayer_allowJetJumping(_mSimObjectId, state);
-}
-/// <summary>
-/// @brief Set if the Player is allowed to jump.
-///    The default is to allow jumping unless there are other environmental concerns 
-///    that prevent it.  This method is mainly used to explicitly disallow jumping 
-///    at any time.
-///    @param state Set to true to allow jumping, false to disable it.
-///    @see allowAllPoses() )
-/// 
-/// </summary>
-public  void allowJumping(bool state){
-TorqueScriptTemplate.m_ts.fnPlayer_allowJumping(_mSimObjectId, state);
-}
-/// <summary>
-/// @brief Set if the Player is allowed to go prone.
-///    The default is to allow being prone unless there are other environmental concerns 
-///    that prevent it.  This method is mainly used to explicitly disallow going prone 
-///    at any time.
-///    @param state Set to true to allow being prone, false to disable it.
-///    @see allowAllPoses() )
-/// 
-/// </summary>
-public  void allowProne(bool state){
-TorqueScriptTemplate.m_ts.fnPlayer_allowProne(_mSimObjectId, state);
-}
-/// <summary>
-/// @brief Set if the Player is allowed to sprint.
-///    The default is to allow sprinting unless there are other environmental concerns 
-///    that prevent it.  This method is mainly used to explicitly disallow sprinting 
-///    at any time.
-///    @param state Set to true to allow sprinting, false to disable it.
-///    @see allowAllPoses() )
-/// 
-/// </summary>
-public  void allowSprinting(bool state){
-TorqueScriptTemplate.m_ts.fnPlayer_allowSprinting(_mSimObjectId, state);
-}
-/// <summary>
-/// @brief Set if the Player is allowed to swim.
-///    The default is to allow swimming unless there are other environmental concerns 
-///    that prevent it.  This method is mainly used to explicitly disallow swimming 
-///    at any time.
-///    @param state Set to true to allow swimming, false to disable it.
-///    @see allowAllPoses() )
-/// 
-/// </summary>
-public  void allowSwimming(bool state){
-TorqueScriptTemplate.m_ts.fnPlayer_allowSwimming(_mSimObjectId, state);
-}
-/// <summary>
-/// @brief Check if it is safe to dismount at this position.
-/// 
-///    Internally this method casts a ray from oldPos to pos to determine if it hits the 
-///    terrain, an interior object, a water object, another player, a static shape, 
-///    a vehicle (exluding the one currently mounted), or physical zone.  If this ray 
-///    is in the clear, then the player's bounding box is also checked for a collision at 
-///    the pos position.  If this displaced bounding box is also in the clear, then 
-///    checkDismountPoint() returns true.
-/// 
-///    @param oldPos The player's current position
-///    @param pos The dismount position to check
-///    @return True if the dismount position is clear, false if not
-///    
-///    @note The player must be already mounted for this method to not assert.)
-/// 
-/// </summary>
-public  bool checkDismountPoint(Point3F oldPos, Point3F pos){
-return TorqueScriptTemplate.m_ts.fnPlayer_checkDismountPoint(_mSimObjectId, oldPos.AsString(), pos.AsString());
-}
-/// <summary>
-/// @brief Clears the player's current control object.
-///    Returns control to the player. This internally calls 
-///    Player::setControlObject(0).
-///    @tsexample
-/// 		%player.clearControlObject();
-///       echo(%player.getControlObject()); //-- Returns 0, player assumes control
-///       %player.setControlObject(%vehicle);
-///       echo(%player.getControlObject()); //-- Returns %vehicle, player controls the vehicle now.
-/// 	@endtsexample
-///    @note If the player does not have a control object, the player will receive all moves 
-///    from its GameConnection.  If you're looking to remove control from the player itself 
-///    (i.e. stop sending moves to the player) use GameConnection::setControlObject() to transfer 
-///    control to another object, such as a camera.
-///    @see setControlObject()
-///    @see getControlObject()
-///    @see GameConnection::setControlObject())
-/// 
-/// </summary>
-public  void clearControlObject(){
-TorqueScriptTemplate.m_ts.fnPlayer_clearControlObject(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the current object we are controlling.
-///    @return ID of the ShapeBase object we control, or 0 if not controlling an 
-///    object.
-///    @see setControlObject()
-///    @see clearControlObject())
-/// 
-/// </summary>
-public  int getControlObject(){
-return TorqueScriptTemplate.m_ts.fnPlayer_getControlObject(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the named damage location and modifier for a given world position.
-/// 
-///    the Player object can simulate different hit locations based on a pre-defined set 
-///    of PlayerData defined percentages.  These hit percentages divide up the Player's 
-///    bounding box into different regions.  The diagram below demonstrates how the various 
-///    PlayerData properties split up the bounding volume:
-/// 
-///    img src=\"images/player_damageloc.png\">
-/// 
-///    While you may pass in any world position and getDamageLocation() will provide a best-fit 
-///    location, you should be aware that this can produce some interesting results.  For example, 
-///    any position that is above PlayerData::boxHeadPercentage will be considered a 'head' hit, even 
-///    if the world position is high in the sky.  Therefore it may be wise to keep the passed in point 
-///    to somewhere on the surface of, or within, the Player's bounding volume.
-/// 
-///    @note This method will not return an accurate location when the player is 
-///    prone or swimming.
-/// 
-///    @param pos A world position for which to retrieve a body region on this player.
-/// 
-///    @return a string containing two words (space separated strings), where the 
-///    first is a location and the second is a modifier.
-/// 
-///    Posible locations:ul>
-///    li>head/li>
-///    li>torso/li>
-///    li>legs/li>/ul>
-/// 
-///    Head modifiers:ul>
-///    li>left_back/li>
-///    li>middle_back/li>
-///    li>right_back/li>
-///    li>left_middle/li>
-///    li>middle_middle/li>
-///    li>right_middle/li>
-///    li>left_front/li>
-///    li>middle_front/li>
-///    li>right_front/li>/ul>
-/// 
-///    Legs/Torso modifiers:ul>
-///    li>front_left/li>
-///    li>front_right/li>
-///    li>back_left/li>
-///    li>back_right/li>/ul>
-/// 
-///    @see PlayerData::boxHeadPercentage
-///    @see PlayerData::boxHeadFrontPercentage
-///    @see PlayerData::boxHeadBackPercentage
-///    @see PlayerData::boxHeadLeftPercentage
-///    @see PlayerData::boxHeadRightPercentage
-///    @see PlayerData::boxTorsoPercentage
-///    )
-/// 
-/// </summary>
-public  string getDamageLocation(Point3F pos){
-return TorqueScriptTemplate.m_ts.fnPlayer_getDamageLocation(_mSimObjectId, pos.AsString());
-}
-/// <summary>
-/// @brief Get the number of death animations available to this player.
-///    Death animations are assumed to be named death1-N using consecutive indices. )
-/// 
-/// </summary>
-public  int getNumDeathAnimations(){
-return TorqueScriptTemplate.m_ts.fnPlayer_getNumDeathAnimations(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the name of the player's current pose.
-/// 
-///    The pose is one of the following:ul>
-///    li>Stand - Standard movement pose./li>
-///    li>Sprint - Sprinting pose./li>
-///    li>Crouch - Crouch pose./li>
-///    li>Prone - Prone pose./li>
-///    li>Swim - Swimming pose./li>/ul>
-/// 
-///    @return The current pose; one of: \"Stand\", \"Sprint\", \"Crouch\", \"Prone\", \"Swim\" )
-/// 
-/// </summary>
-public  string getPose(){
-return TorqueScriptTemplate.m_ts.fnPlayer_getPose(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the name of the player's current state.
-/// 
-///    The state is one of the following:ul>
-///    li>Dead - The Player is dead./li>
-///    li>Mounted - The Player is mounted to an object such as a vehicle./li>
-///    li>Move - The Player is free to move.  The usual state./li>
-///    li>Recover - The Player is recovering from a fall.  See PlayerData::recoverDelay./li>/ul>
-/// 
-///    @return The current state; one of: \"Dead\", \"Mounted\", \"Move\", \"Recover\" )
-/// 
-/// </summary>
-public  string getState(){
-return TorqueScriptTemplate.m_ts.fnPlayer_getState(_mSimObjectId);
-}
-/// <summary>
-/// @brief Set the main action sequence to play for this player.
-///    @param name Name of the action sequence to set
-///    @param hold Set to false to get a callback on the datablock when the sequence ends (PlayerData::animationDone()).  
-///    When set to true no callback is made.
-///    @param fsp True if first person and none of the spine nodes in the shape should animate.  False will allow the shape's 
-///    spine nodes to animate.
-///    @return True if succesful, false if failed
-///    
-///    @note The spine nodes for the Player's shape are named as follows:ul>
-///    li>Bip01 Pelvis/li>
-///    li>Bip01 Spine/li>
-///    li>Bip01 Spine1/li>
-///    li>Bip01 Spine2/li>
-///    li>Bip01 Neck/li>
-///    li>Bip01 Head/li>/ul>
-///    
-///    You cannot use setActionThread() to have the Player play one of the motion 
-///    determined action animation sequences.  These sequences are chosen based on how 
-///    the Player moves and the Player's current pose.  The names of these sequences are:ul>
-///    li>root/li>
-///    li>run/li>
-///    li>side/li>
-///    li>side_right/li>
-///    li>crouch_root/li>
-///    li>crouch_forward/li>
-///    li>crouch_backward/li>
-///    li>crouch_side/li>
-///    li>crouch_right/li>
-///    li>prone_root/li>
-///    li>prone_forward/li>
-///    li>prone_backward/li>
-///    li>swim_root/li>
-///    li>swim_forward/li>
-///    li>swim_backward/li>
-///    li>swim_left/li>
-///    li>swim_right/li>
-///    li>fall/li>
-///    li>jump/li>
-///    li>standjump/li>
-///    li>land/li>
-///    li>jet/li>/ul>
-///    
-///    If the player moves in any direction then the animation sequence set using this 
-///    method will be cancelled and the chosen mation-based sequence will take over.  This makes 
-///    great for times when the Player cannot move, such as when mounted, or when it doesn't matter 
-///    if the action sequence changes, such as waving and saluting.
-///    
-///    @tsexample
-///       // Place the player in a sitting position after being mounted
-///       %player.setActionThread( \"sitting\", true, true );
-/// 	@endtsexample)
-/// 
-/// </summary>
-public  bool setActionThread(string name, bool hold, bool fsp){
-return TorqueScriptTemplate.m_ts.fnPlayer_setActionThread(_mSimObjectId, name, hold, fsp);
-}
-/// <summary>
-/// @brief Set the sequence that controls the player's arms (dynamically adjusted 
-///    to match look direction).
-///    @param name Name of the sequence to play on the player's arms.
-///    @return true if successful, false if failed.
-///    @note By default the 'look' sequence is used, if available.)
-/// 
-/// </summary>
-public  bool setArmThread(string name){
-return TorqueScriptTemplate.m_ts.fnPlayer_setArmThread(_mSimObjectId, name);
-}
-/// <summary>
-/// @brief Set the object to be controlled by this player
-/// 
-///    It is possible to have the moves sent to the Player object from the 
-///    GameConnection to be passed along to another object.  This happens, for example 
-///    when a player is mounted to a vehicle.  The move commands pass through the Player 
-///    and on to the vehicle (while the player remains stationary within the vehicle).  
-///    With setControlObject() you can have the Player pass along its moves to any object.  
-///    One possible use is for a player to move a remote controlled vehicle.  In this case 
-///    the player does not mount the vehicle directly, but still wants to be able to control it.
-/// 
-///    @param obj Object to control with this player
-///    @return True if the object is valid, false if not
-/// 
-///    @see getControlObject()
-///    @see clearControlObject()
-///    @see GameConnection::setControlObject())
-/// 
-/// </summary>
-public  bool setControlObject(string obj){
-return TorqueScriptTemplate.m_ts.fnPlayer_setControlObject(_mSimObjectId, obj);
-}
-}}
+
+        /// <summary>
+        /// @brief Allow all poses a chance to occur.
+        ///    This method resets any poses that have manually been blocked from occuring.  
+        ///    This includes the regular pose states such as sprinting, crouch, being prone 
+        ///    and swimming.  It also includes being able to jump and jet jump.  While this 
+        ///    is allowing these poses to occur it doesn't mean that they all can due to other 
+        ///    conditions.  We're just not manually blocking them from being allowed.
+        ///    @see allowJumping()
+        ///    @see allowJetJumping()
+        ///    @see allowSprinting()
+        ///    @see allowCrouching()
+        ///    @see allowProne()
+        ///    @see allowSwimming() )
+        /// 
+        /// </summary>
+        public void allowAllPoses()
+            {
+            TorqueScriptTemplate.m_ts.fnPlayer_allowAllPoses(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Set if the Player is allowed to crouch.
+        ///    The default is to allow crouching unless there are other environmental concerns 
+        ///    that prevent it.  This method is mainly used to explicitly disallow crouching 
+        ///    at any time.
+        ///    @param state Set to true to allow crouching, false to disable it.
+        ///    @see allowAllPoses() )
+        /// 
+        /// </summary>
+        public void allowCrouching(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnPlayer_allowCrouching(_mSimObjectId, state);
+            }
+
+        /// <summary>
+        /// @brief Set if the Player is allowed to jet jump.
+        ///    The default is to allow jet jumping unless there are other environmental concerns 
+        ///    that prevent it.  This method is mainly used to explicitly disallow jet jumping 
+        ///    at any time.
+        ///    @param state Set to true to allow jet jumping, false to disable it.
+        ///    @see allowAllPoses() )
+        /// 
+        /// </summary>
+        public void allowJetJumping(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnPlayer_allowJetJumping(_mSimObjectId, state);
+            }
+
+        /// <summary>
+        /// @brief Set if the Player is allowed to jump.
+        ///    The default is to allow jumping unless there are other environmental concerns 
+        ///    that prevent it.  This method is mainly used to explicitly disallow jumping 
+        ///    at any time.
+        ///    @param state Set to true to allow jumping, false to disable it.
+        ///    @see allowAllPoses() )
+        /// 
+        /// </summary>
+        public void allowJumping(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnPlayer_allowJumping(_mSimObjectId, state);
+            }
+
+        /// <summary>
+        /// @brief Set if the Player is allowed to go prone.
+        ///    The default is to allow being prone unless there are other environmental concerns 
+        ///    that prevent it.  This method is mainly used to explicitly disallow going prone 
+        ///    at any time.
+        ///    @param state Set to true to allow being prone, false to disable it.
+        ///    @see allowAllPoses() )
+        /// 
+        /// </summary>
+        public void allowProne(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnPlayer_allowProne(_mSimObjectId, state);
+            }
+
+        /// <summary>
+        /// @brief Set if the Player is allowed to sprint.
+        ///    The default is to allow sprinting unless there are other environmental concerns 
+        ///    that prevent it.  This method is mainly used to explicitly disallow sprinting 
+        ///    at any time.
+        ///    @param state Set to true to allow sprinting, false to disable it.
+        ///    @see allowAllPoses() )
+        /// 
+        /// </summary>
+        public void allowSprinting(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnPlayer_allowSprinting(_mSimObjectId, state);
+            }
+
+        /// <summary>
+        /// @brief Set if the Player is allowed to swim.
+        ///    The default is to allow swimming unless there are other environmental concerns 
+        ///    that prevent it.  This method is mainly used to explicitly disallow swimming 
+        ///    at any time.
+        ///    @param state Set to true to allow swimming, false to disable it.
+        ///    @see allowAllPoses() )
+        /// 
+        /// </summary>
+        public void allowSwimming(bool state)
+            {
+            TorqueScriptTemplate.m_ts.fnPlayer_allowSwimming(_mSimObjectId, state);
+            }
+
+        /// <summary>
+        /// @brief Check if it is safe to dismount at this position.
+        /// 
+        ///    Internally this method casts a ray from oldPos to pos to determine if it hits the 
+        ///    terrain, an interior object, a water object, another player, a static shape, 
+        ///    a vehicle (exluding the one currently mounted), or physical zone.  If this ray 
+        ///    is in the clear, then the player's bounding box is also checked for a collision at 
+        ///    the pos position.  If this displaced bounding box is also in the clear, then 
+        ///    checkDismountPoint() returns true.
+        /// 
+        ///    @param oldPos The player's current position
+        ///    @param pos The dismount position to check
+        ///    @return True if the dismount position is clear, false if not
+        ///    
+        ///    @note The player must be already mounted for this method to not assert.)
+        /// 
+        /// </summary>
+        public bool checkDismountPoint(Point3F oldPos, Point3F pos)
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_checkDismountPoint(_mSimObjectId, oldPos.AsString(), pos.AsString());
+            }
+
+        /// <summary>
+        /// @brief Clears the player's current control object.
+        ///    Returns control to the player. This internally calls 
+        ///    Player::setControlObject(0).
+        ///    @tsexample
+        /// 		%player.clearControlObject();
+        ///       echo(%player.getControlObject()); //-- Returns 0, player assumes control
+        ///       %player.setControlObject(%vehicle);
+        ///       echo(%player.getControlObject()); //-- Returns %vehicle, player controls the vehicle now.
+        /// 	@endtsexample
+        ///    @note If the player does not have a control object, the player will receive all moves 
+        ///    from its GameConnection.  If you're looking to remove control from the player itself 
+        ///    (i.e. stop sending moves to the player) use GameConnection::setControlObject() to transfer 
+        ///    control to another object, such as a camera.
+        ///    @see setControlObject()
+        ///    @see getControlObject()
+        ///    @see GameConnection::setControlObject())
+        /// 
+        /// </summary>
+        public void clearControlObject()
+            {
+            TorqueScriptTemplate.m_ts.fnPlayer_clearControlObject(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the current object we are controlling.
+        ///    @return ID of the ShapeBase object we control, or 0 if not controlling an 
+        ///    object.
+        ///    @see setControlObject()
+        ///    @see clearControlObject())
+        /// 
+        /// </summary>
+        public int getControlObject()
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_getControlObject(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the named damage location and modifier for a given world position.
+        /// 
+        ///    the Player object can simulate different hit locations based on a pre-defined set 
+        ///    of PlayerData defined percentages.  These hit percentages divide up the Player's 
+        ///    bounding box into different regions.  The diagram below demonstrates how the various 
+        ///    PlayerData properties split up the bounding volume:
+        /// 
+        ///    img src=\"images/player_damageloc.png\">
+        /// 
+        ///    While you may pass in any world position and getDamageLocation() will provide a best-fit 
+        ///    location, you should be aware that this can produce some interesting results.  For example, 
+        ///    any position that is above PlayerData::boxHeadPercentage will be considered a 'head' hit, even 
+        ///    if the world position is high in the sky.  Therefore it may be wise to keep the passed in point 
+        ///    to somewhere on the surface of, or within, the Player's bounding volume.
+        /// 
+        ///    @note This method will not return an accurate location when the player is 
+        ///    prone or swimming.
+        /// 
+        ///    @param pos A world position for which to retrieve a body region on this player.
+        /// 
+        ///    @return a string containing two words (space separated strings), where the 
+        ///    first is a location and the second is a modifier.
+        /// 
+        ///    Posible locations:ul>
+        ///    li>head/li>
+        ///    li>torso/li>
+        ///    li>legs/li>/ul>
+        /// 
+        ///    Head modifiers:ul>
+        ///    li>left_back/li>
+        ///    li>middle_back/li>
+        ///    li>right_back/li>
+        ///    li>left_middle/li>
+        ///    li>middle_middle/li>
+        ///    li>right_middle/li>
+        ///    li>left_front/li>
+        ///    li>middle_front/li>
+        ///    li>right_front/li>/ul>
+        /// 
+        ///    Legs/Torso modifiers:ul>
+        ///    li>front_left/li>
+        ///    li>front_right/li>
+        ///    li>back_left/li>
+        ///    li>back_right/li>/ul>
+        /// 
+        ///    @see PlayerData::boxHeadPercentage
+        ///    @see PlayerData::boxHeadFrontPercentage
+        ///    @see PlayerData::boxHeadBackPercentage
+        ///    @see PlayerData::boxHeadLeftPercentage
+        ///    @see PlayerData::boxHeadRightPercentage
+        ///    @see PlayerData::boxTorsoPercentage
+        ///    )
+        /// 
+        /// </summary>
+        public string getDamageLocation(Point3F pos)
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_getDamageLocation(_mSimObjectId, pos.AsString());
+            }
+
+        /// <summary>
+        /// @brief Get the number of death animations available to this player.
+        ///    Death animations are assumed to be named death1-N using consecutive indices. )
+        /// 
+        /// </summary>
+        public int getNumDeathAnimations()
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_getNumDeathAnimations(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the name of the player's current pose.
+        /// 
+        ///    The pose is one of the following:ul>
+        ///    li>Stand - Standard movement pose./li>
+        ///    li>Sprint - Sprinting pose./li>
+        ///    li>Crouch - Crouch pose./li>
+        ///    li>Prone - Prone pose./li>
+        ///    li>Swim - Swimming pose./li>/ul>
+        /// 
+        ///    @return The current pose; one of: \"Stand\", \"Sprint\", \"Crouch\", \"Prone\", \"Swim\" )
+        /// 
+        /// </summary>
+        public string getPose()
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_getPose(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the name of the player's current state.
+        /// 
+        ///    The state is one of the following:ul>
+        ///    li>Dead - The Player is dead./li>
+        ///    li>Mounted - The Player is mounted to an object such as a vehicle./li>
+        ///    li>Move - The Player is free to move.  The usual state./li>
+        ///    li>Recover - The Player is recovering from a fall.  See PlayerData::recoverDelay./li>/ul>
+        /// 
+        ///    @return The current state; one of: \"Dead\", \"Mounted\", \"Move\", \"Recover\" )
+        /// 
+        /// </summary>
+        public string getState()
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_getState(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Set the main action sequence to play for this player.
+        ///    @param name Name of the action sequence to set
+        ///    @param hold Set to false to get a callback on the datablock when the sequence ends (PlayerData::animationDone()).  
+        ///    When set to true no callback is made.
+        ///    @param fsp True if first person and none of the spine nodes in the shape should animate.  False will allow the shape's 
+        ///    spine nodes to animate.
+        ///    @return True if succesful, false if failed
+        ///    
+        ///    @note The spine nodes for the Player's shape are named as follows:ul>
+        ///    li>Bip01 Pelvis/li>
+        ///    li>Bip01 Spine/li>
+        ///    li>Bip01 Spine1/li>
+        ///    li>Bip01 Spine2/li>
+        ///    li>Bip01 Neck/li>
+        ///    li>Bip01 Head/li>/ul>
+        ///    
+        ///    You cannot use setActionThread() to have the Player play one of the motion 
+        ///    determined action animation sequences.  These sequences are chosen based on how 
+        ///    the Player moves and the Player's current pose.  The names of these sequences are:ul>
+        ///    li>root/li>
+        ///    li>run/li>
+        ///    li>side/li>
+        ///    li>side_right/li>
+        ///    li>crouch_root/li>
+        ///    li>crouch_forward/li>
+        ///    li>crouch_backward/li>
+        ///    li>crouch_side/li>
+        ///    li>crouch_right/li>
+        ///    li>prone_root/li>
+        ///    li>prone_forward/li>
+        ///    li>prone_backward/li>
+        ///    li>swim_root/li>
+        ///    li>swim_forward/li>
+        ///    li>swim_backward/li>
+        ///    li>swim_left/li>
+        ///    li>swim_right/li>
+        ///    li>fall/li>
+        ///    li>jump/li>
+        ///    li>standjump/li>
+        ///    li>land/li>
+        ///    li>jet/li>/ul>
+        ///    
+        ///    If the player moves in any direction then the animation sequence set using this 
+        ///    method will be cancelled and the chosen mation-based sequence will take over.  This makes 
+        ///    great for times when the Player cannot move, such as when mounted, or when it doesn't matter 
+        ///    if the action sequence changes, such as waving and saluting.
+        ///    
+        ///    @tsexample
+        ///       // Place the player in a sitting position after being mounted
+        ///       %player.setActionThread( \"sitting\", true, true );
+        /// 	@endtsexample)
+        /// 
+        /// </summary>
+        public bool setActionThread(string name, bool hold, bool fsp)
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_setActionThread(_mSimObjectId, name, hold, fsp);
+            }
+
+        /// <summary>
+        /// @brief Set the sequence that controls the player's arms (dynamically adjusted 
+        ///    to match look direction).
+        ///    @param name Name of the sequence to play on the player's arms.
+        ///    @return true if successful, false if failed.
+        ///    @note By default the 'look' sequence is used, if available.)
+        /// 
+        /// </summary>
+        public bool setArmThread(string name)
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_setArmThread(_mSimObjectId, name);
+            }
+
+        /// <summary>
+        /// @brief Set the object to be controlled by this player
+        /// 
+        ///    It is possible to have the moves sent to the Player object from the 
+        ///    GameConnection to be passed along to another object.  This happens, for example 
+        ///    when a player is mounted to a vehicle.  The move commands pass through the Player 
+        ///    and on to the vehicle (while the player remains stationary within the vehicle).  
+        ///    With setControlObject() you can have the Player pass along its moves to any object.  
+        ///    One possible use is for a player to move a remote controlled vehicle.  In this case 
+        ///    the player does not mount the vehicle directly, but still wants to be able to control it.
+        /// 
+        ///    @param obj Object to control with this player
+        ///    @return True if the object is valid, false if not
+        /// 
+        ///    @see getControlObject()
+        ///    @see clearControlObject()
+        ///    @see GameConnection::setControlObject())
+        /// 
+        /// </summary>
+        public bool setControlObject(string obj)
+            {
+            return TorqueScriptTemplate.m_ts.fnPlayer_setControlObject(_mSimObjectId, obj);
+            }
+        }
+    }

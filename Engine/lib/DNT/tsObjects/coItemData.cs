@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,136 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoItemData))]
-    public class coItemData: coShapeBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoItemData))]
+    public class coItemData : coShapeBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coItemData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coItemData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coItemData(int simobjectid): base(simobjectid){ }
+        public coItemData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coItemData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coItemData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// A floating-point value specifying how 'bouncy' this ItemData is.
+        /// </summary>
+        public float elasticity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elasticity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elasticity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// A floating-point value specifying how much velocity is lost to impact and sliding friction.
+        /// </summary>
+        public float friction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Floating point value to multiply the existing gravity with, just for this ItemData.
+        /// </summary>
+        public float gravityMod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gravityMod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gravityMod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Color value to make this light. Example: \1.0,1.0,1.0\\n\n   @see lightType\n
+        /// </summary>
+        public ColorF lightColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, this ItemData will only cast a light if the Item for this ItemData has a static value of true.\n\n   @see lightType\n
+        /// </summary>
+        public bool lightOnlyStatic
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightOnlyStatic").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightOnlyStatic", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Distance from the center point of this ItemData for the light to affect\n\n   @see lightType\n
+        /// </summary>
+        public float lightRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Time value for the light of this ItemData, used to control the pulse speed of the PulsingLight LightType.\n\n   @see lightType\n
+        /// </summary>
+        public int lightTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightTime").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Type of light to apply to this ItemData. Options are NoLight, ConstantLight, PulsingLight. Default is NoLight. 
+        /// </summary>
+        public Item__LightType lightType
+            {
+            get { return (Item__LightType) Enum.Parse(typeof (Item__LightType), dnTorque.self.GetVar(_mSimObjectId + ".lightType")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lightType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Maximum velocity that this ItemData is able to move.
+        /// </summary>
+        public float maxVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Determines if only simple server-side collision will be used (for pick ups).\n\n   If set to true then only simple, server-side collision detection will be used. This is often the case    if the item is used for a pick up object, such as ammo. If set to false then a full collision volume    will be used as defined by the shape. The default is true.\n   @note Only applies when using a physics library.\n   @see TurretShape and ProximityMine for examples that should set this to false to allow them to be    shot by projectiles.\n
+        /// </summary>
+        public bool simpleServerCollision
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".simpleServerCollision").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".simpleServerCollision", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, ItemData will 'stick' to any surface it collides with.\n\n   When an item does stick to a surface, the Item::onStickyCollision() callback is called. The Item has methods to retrieve    the world position and normal the Item is stuck to.\n   @note Valid objects to stick to must be of StaticShapeObjectType.\n
+        /// </summary>
+        public bool sticky
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sticky").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sticky", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +236,9 @@ public coItemData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +246,17 @@ public coItemData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +268,15 @@ public coItemData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coItemData ts)
+        public static implicit operator string(coItemData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +296,7 @@ public coItemData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coItemData ts)
+        public static implicit operator int(coItemData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +317,7 @@ public coItemData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coItemData ts)
+        public static implicit operator uint(coItemData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,124 +332,5 @@ public coItemData(int simobjectid): base(simobjectid){ }
             {
             return new coItemData(ts);
             }
-public float elasticity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elasticity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elasticity", value.AsString());
-          }
-       }
-public float friction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString());
-          }
-       }
-public float gravityMod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gravityMod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gravityMod", value.AsString());
-          }
-       }
-public ColorF lightColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightColor", value.AsString());
-          }
-       }
-public bool lightOnlyStatic
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightOnlyStatic").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightOnlyStatic", value.AsString());
-          }
-       }
-public float lightRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightRadius", value.AsString());
-          }
-       }
-public int lightTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lightTime").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightTime", value.AsString());
-          }
-       }
-public Item__LightType lightType
-       {
-       get
-          {          return (Item__LightType)Enum.Parse(typeof(Item__LightType), dnTorque.self.GetVar(_mSimObjectId + ".lightType"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lightType", value.ToString());
-          }
-       }
-public float maxVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxVelocity", value.AsString());
-          }
-       }
-public bool simpleServerCollision
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".simpleServerCollision").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".simpleServerCollision", value.AsString());
-          }
-       }
-public bool sticky
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sticky").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sticky", value.AsString());
-          }
-       }
-}}
+        }
+    }

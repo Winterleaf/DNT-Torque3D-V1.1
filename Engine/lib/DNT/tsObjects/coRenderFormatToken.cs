@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoRenderFormatToken))]
-    public class coRenderFormatToken: coRenderPassStateToken
-{
+    [TypeConverter(typeof (tsObjectConvertercoRenderFormatToken))]
+    public class coRenderFormatToken : coRenderPassStateToken
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRenderFormatToken(string simobjectid) : base(simobjectid){ }
+        public coRenderFormatToken(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRenderFormatToken(uint simobjectid): base(simobjectid){ }
+        public coRenderFormatToken(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coRenderFormatToken(int simobjectid): base(simobjectid){ }
+        public coRenderFormatToken(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Anti-ailiasing level for the this token. 0 disables, -1 uses adapter default.
+        /// </summary>
+        public int aaLevel
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".aaLevel").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".aaLevel", value.AsString()); }
+            }
+
+        /// <summary>
+        /// This PostEffect will be run when the render target is changed to the format specified    by this token. It is used to copy/format data into the token rendertarget
+        /// </summary>
+        public coPostEffect copyEffect
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".copyEffect"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".copyEffect", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Sets the depth/stencil buffer format for this token.
+        /// </summary>
+        public TypeGFXFormat depthFormat
+            {
+            get { return (TypeGFXFormat) Enum.Parse(typeof (TypeGFXFormat), dnTorque.self.GetVar(_mSimObjectId + ".depthFormat")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".depthFormat", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Sets the color buffer format for this token.
+        /// </summary>
+        public TypeGFXFormat format
+            {
+            get { return (TypeGFXFormat) Enum.Parse(typeof (TypeGFXFormat), dnTorque.self.GetVar(_mSimObjectId + ".format")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".format", value.ToString()); }
+            }
+
+        /// <summary>
+        /// This PostEffect will be run when the render target is changed back to the format    active prior to this token. It is used to copy/format data from the token rendertarget to the backbuffer.
+        /// </summary>
+        public coPostEffect resolveEffect
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".resolveEffect"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".resolveEffect", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coRenderFormatToken(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coRenderFormatToken(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coRenderFormatToken(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coRenderFormatToken ts)
+        public static implicit operator string(coRenderFormatToken ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coRenderFormatToken(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coRenderFormatToken ts)
+        public static implicit operator int(coRenderFormatToken ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coRenderFormatToken(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coRenderFormatToken ts)
+        public static implicit operator uint(coRenderFormatToken ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,57 +277,5 @@ public coRenderFormatToken(int simobjectid): base(simobjectid){ }
             {
             return new coRenderFormatToken(ts);
             }
-public int aaLevel
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".aaLevel").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".aaLevel", value.AsString());
-          }
-       }
-public coPostEffect copyEffect
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".copyEffect");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".copyEffect", value.ToString());
-          }
-       }
-public TypeGFXFormat depthFormat
-       {
-       get
-          {          return (TypeGFXFormat)Enum.Parse(typeof(TypeGFXFormat), dnTorque.self.GetVar(_mSimObjectId + ".depthFormat"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".depthFormat", value.ToString());
-          }
-       }
-public TypeGFXFormat format
-       {
-       get
-          {          return (TypeGFXFormat)Enum.Parse(typeof(TypeGFXFormat), dnTorque.self.GetVar(_mSimObjectId + ".format"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".format", value.ToString());
-          }
-       }
-public coPostEffect resolveEffect
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".resolveEffect");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".resolveEffect", value.ToString());
-          }
-       }
-}}
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +94,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiIconButtonCtrl))]
-    public class coGuiIconButtonCtrl: coGuiButtonCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiIconButtonCtrl))]
+    public class coGuiIconButtonCtrl : coGuiButtonCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiIconButtonCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiIconButtonCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiIconButtonCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiIconButtonCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiIconButtonCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiIconButtonCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// If true, the text and icon will be automatically sized to the size of the control.\n
+        /// </summary>
+        public bool autoSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".autoSize").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".autoSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Margin area around the button.\n
+        /// </summary>
+        public Point2I buttonMargin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".buttonMargin").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".buttonMargin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bitmap file for the icon to display on the button.\n
+        /// </summary>
+        public String iconBitmap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".iconBitmap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".iconBitmap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Where to place the icon on the control. Options are 0 (None), 1 (Left), 2 (Right), 3 (Center).\n
+        /// </summary>
+        public GuiIconButtonCtrl__IconLocation iconLocation
+            {
+            get { return (GuiIconButtonCtrl__IconLocation) Enum.Parse(typeof (GuiIconButtonCtrl__IconLocation), dnTorque.self.GetVar(_mSimObjectId + ".iconLocation")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".iconLocation", value.ToString()); }
+            }
+
+        /// <summary>
+        /// If true, will make sure the icon is square.\n
+        /// </summary>
+        public bool makeIconSquare
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".makeIconSquare").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".makeIconSquare", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the icon will be scaled to be the same size as the button.\n
+        /// </summary>
+        public bool sizeIconToButton
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sizeIconToButton").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sizeIconToButton", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Where to place the text on the control.\n																										  Options are 0 (None), 1 (Bottom), 2 (Right), 3 (Top), 4 (Left), 5 (Center).\n
+        /// </summary>
+        public GuiIconButtonCtrl__TextLocation textLocation
+            {
+            get { return (GuiIconButtonCtrl__TextLocation) Enum.Parse(typeof (GuiIconButtonCtrl__TextLocation), dnTorque.self.GetVar(_mSimObjectId + ".textLocation")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textLocation", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Margin between the icon and the text.\n
+        /// </summary>
+        public int textMargin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textMargin").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textMargin", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +209,9 @@ public coGuiIconButtonCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +219,17 @@ public coGuiIconButtonCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +241,15 @@ public coGuiIconButtonCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiIconButtonCtrl ts)
+        public static implicit operator string(coGuiIconButtonCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +269,7 @@ public coGuiIconButtonCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiIconButtonCtrl ts)
+        public static implicit operator int(coGuiIconButtonCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +290,7 @@ public coGuiIconButtonCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiIconButtonCtrl ts)
+        public static implicit operator uint(coGuiIconButtonCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,106 +305,23 @@ public coGuiIconButtonCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiIconButtonCtrl(ts);
             }
-public bool autoSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".autoSize").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".autoSize", value.AsString());
-          }
-       }
-public Point2I buttonMargin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".buttonMargin").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".buttonMargin", value.AsString());
-          }
-       }
-public String iconBitmap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".iconBitmap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".iconBitmap", value.AsString());
-          }
-       }
-public GuiIconButtonCtrl__IconLocation iconLocation
-       {
-       get
-          {          return (GuiIconButtonCtrl__IconLocation)Enum.Parse(typeof(GuiIconButtonCtrl__IconLocation), dnTorque.self.GetVar(_mSimObjectId + ".iconLocation"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".iconLocation", value.ToString());
-          }
-       }
-public bool makeIconSquare
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".makeIconSquare").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".makeIconSquare", value.AsString());
-          }
-       }
-public bool sizeIconToButton
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sizeIconToButton").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sizeIconToButton", value.AsString());
-          }
-       }
-public GuiIconButtonCtrl__TextLocation textLocation
-       {
-       get
-          {          return (GuiIconButtonCtrl__TextLocation)Enum.Parse(typeof(GuiIconButtonCtrl__TextLocation), dnTorque.self.GetVar(_mSimObjectId + ".textLocation"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textLocation", value.ToString());
-          }
-       }
-public int textMargin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textMargin").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textMargin", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Set the bitmap to use for the button portion of this control.
-///    @param buttonFilename Filename for the image
-///    @tsexample
-///    // Define the button filename
-///    %buttonFilename = \"pearlButton\";
-///    // Inform the GuiIconButtonCtrl control to update its main button graphic to the defined bitmap
-///    %thisGuiIconButtonCtrl.setBitmap(%buttonFilename);
-///    @endtsexample
-///    @see GuiControl
-///    @see GuiButtonCtrl)
-/// 
-/// </summary>
-public  void setBitmap(string buttonFilename){
-TorqueScriptTemplate.m_ts.fnGuiIconButtonCtrl_setBitmap(_mSimObjectId, buttonFilename);
-}
-}}
+
+        /// <summary>
+        /// @brief Set the bitmap to use for the button portion of this control.
+        ///    @param buttonFilename Filename for the image
+        ///    @tsexample
+        ///    // Define the button filename
+        ///    %buttonFilename = \"pearlButton\";
+        ///    // Inform the GuiIconButtonCtrl control to update its main button graphic to the defined bitmap
+        ///    %thisGuiIconButtonCtrl.setBitmap(%buttonFilename);
+        ///    @endtsexample
+        ///    @see GuiControl
+        ///    @see GuiButtonCtrl)
+        /// 
+        /// </summary>
+        public void setBitmap(string buttonFilename)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiIconButtonCtrl_setBitmap(_mSimObjectId, buttonFilename);
+            }
+        }
+    }

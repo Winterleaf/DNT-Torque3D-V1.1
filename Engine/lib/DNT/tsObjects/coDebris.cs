@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoDebris))]
-    public class coDebris: coGameBase
-{
+    [TypeConverter(typeof (tsObjectConvertercoDebris))]
+    public class coDebris : coGameBase
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDebris(string simobjectid) : base(simobjectid){ }
+        public coDebris(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDebris(uint simobjectid): base(simobjectid){ }
+        public coDebris(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDebris(int simobjectid): base(simobjectid){ }
+        public coDebris(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Length of time for this debris object to exist. When expired, the object will be deleted.\n\n     The initial lifetime value comes from the DebrisData datablock.\n     @see DebrisData::lifetime\n     @see DebrisData::lifetimeVariance\n
+        /// </summary>
+        public float lifetime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetime", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coDebris(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coDebris(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coDebris(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coDebris ts)
+        public static implicit operator string(coDebris ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coDebris(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coDebris ts)
+        public static implicit operator int(coDebris ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coDebris(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coDebris ts)
+        public static implicit operator uint(coDebris ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,40 +240,32 @@ public coDebris(int simobjectid): base(simobjectid){ }
             {
             return new coDebris(ts);
             }
-public float lifetime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetime", value.AsString());
-          }
-       }
-/// <summary>
-/// 1.0 1.0 1.0, 1.0 0.0 0.0), 
-///    @brief Manually set this piece of debris at the given position with the given velocity.
-/// 
-///    Usually you do not manually create Debris objects as they are generated through other means, 
-///    such as an Explosion.  This method exists when you do manually create a Debris object and 
-///    want to have it start moving.
-/// 
-///    @param inputPosition Position to place the debris.
-///    @param inputVelocity Velocity to move the debris after it has been placed.
-///    @return Always returns true.
-/// 
-///    @tsexample
-///       // Define the position
-///       %position = \"1.0 1.0 1.0\";
-///       // Define the velocity
-///       %velocity = \"1.0 0.0 0.0\";
-///       // Inform the debris object of its new position and velocity
-///       %debris.init(%position,%velocity);
-///    @endtsexample)
-/// 
-/// </summary>
-public  bool init(string inputPosition, string inputVelocity){
-return TorqueScriptTemplate.m_ts.fnDebris_init(_mSimObjectId, inputPosition, inputVelocity);
-}
-}}
+
+        /// <summary>
+        /// 1.0 1.0 1.0, 1.0 0.0 0.0), 
+        ///    @brief Manually set this piece of debris at the given position with the given velocity.
+        /// 
+        ///    Usually you do not manually create Debris objects as they are generated through other means, 
+        ///    such as an Explosion.  This method exists when you do manually create a Debris object and 
+        ///    want to have it start moving.
+        /// 
+        ///    @param inputPosition Position to place the debris.
+        ///    @param inputVelocity Velocity to move the debris after it has been placed.
+        ///    @return Always returns true.
+        /// 
+        ///    @tsexample
+        ///       // Define the position
+        ///       %position = \"1.0 1.0 1.0\";
+        ///       // Define the velocity
+        ///       %velocity = \"1.0 0.0 0.0\";
+        ///       // Inform the debris object of its new position and velocity
+        ///       %debris.init(%position,%velocity);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public bool init(string inputPosition, string inputVelocity)
+            {
+            return TorqueScriptTemplate.m_ts.fnDebris_init(_mSimObjectId, inputPosition, inputVelocity);
+            }
+        }
+    }

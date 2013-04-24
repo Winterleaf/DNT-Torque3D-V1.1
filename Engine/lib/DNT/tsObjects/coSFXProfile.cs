@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXProfile))]
-    public class coSFXProfile: coSFXTrack
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXProfile))]
+    public class coSFXProfile : coSFXTrack
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXProfile(string simobjectid) : base(simobjectid){ }
+        public coSFXProfile(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXProfile(uint simobjectid): base(simobjectid){ }
+        public coSFXProfile(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXProfile(int simobjectid): base(simobjectid){ }
+        public coSFXProfile(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// %Path to the sound file.\n     If the extension is left out, it will be inferred by the sound system. This allows to      easily switch the sound format without having to go through the profiles and change the      filenames there, too.\n 
+        /// </summary>
+        public String filename
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".filename").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".filename", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to preload sound data when the profile is added to system.\n     @note This flag is ignored by streamed sounds.\n\n     @ref SFXProfile_loading 
+        /// </summary>
+        public bool preload
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".preload").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".preload", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coSFXProfile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coSFXProfile(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coSFXProfile(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXProfile ts)
+        public static implicit operator string(coSFXProfile ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coSFXProfile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXProfile ts)
+        public static implicit operator int(coSFXProfile ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coSFXProfile(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXProfile ts)
+        public static implicit operator uint(coSFXProfile ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,34 +249,15 @@ public coSFXProfile(int simobjectid): base(simobjectid){ }
             {
             return new coSFXProfile(ts);
             }
-public String filename
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".filename").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".filename", value.AsString());
-          }
-       }
-public bool preload
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".preload").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".preload", value.AsString());
-          }
-       }
-/// <summary>
-/// Return the length of the sound data in seconds.
-///    @return The length of the sound data in seconds or 0 if the sound referenced by the profile could not be found. )
-/// 
-/// </summary>
-public  float getSoundDuration(){
-return TorqueScriptTemplate.m_ts.fnSFXProfile_getSoundDuration(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Return the length of the sound data in seconds.
+        ///    @return The length of the sound data in seconds or 0 if the sound referenced by the profile could not be found. )
+        /// 
+        /// </summary>
+        public float getSoundDuration()
+            {
+            return TorqueScriptTemplate.m_ts.fnSFXProfile_getSoundDuration(_mSimObjectId);
+            }
+        }
+    }

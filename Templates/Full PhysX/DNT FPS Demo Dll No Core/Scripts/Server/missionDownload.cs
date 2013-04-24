@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -88,7 +88,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             client["currentPhase"] = "1";
             // Start with the CRC
 
-            GameConnection.setMissionCRC(client, iGlobal["$missionCRC"]);
+            client.setMissionCRC(iGlobal["$missionCRC"]);
 
             // Send over the datablocks...
             // OnDataBlocksDone will get called when have confirmation

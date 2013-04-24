@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -72,7 +72,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void ServerCmdNetSimulateLag(coGameConnection client, int msDelay, float packetLossPercent)
             {
             if (client["isAdmin"].AsBool())
-                NetConnection.setSimulatedNetParams(client, (packetLossPercent/100.0f), msDelay);
+                client.setSimulatedNetParams((packetLossPercent/100.0f), msDelay);
             }
 
         //----------------------------------------------------------------------------
@@ -374,7 +374,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdUnmountWeapon", "(%client)", 1, 100, false)]
         public void ServerCmdUnmountWeapon(coGameConnection client)
             {
-            ShapeBase.unmountImage(client, iGlobal["$WeaponSlot"]);
+            ((coPlayer) client["player"]).unmountImage(iGlobal["$WeaponSlot"]);
+            //ShapeBase.unmountImage(client, iGlobal["$WeaponSlot"]);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdReloadWeapon", "(%client)", 1, 100, false)]

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoFileStreamObject))]
-    public class coFileStreamObject: coStreamObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoFileStreamObject))]
+    public class coFileStreamObject : coStreamObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileStreamObject(string simobjectid) : base(simobjectid){ }
+        public coFileStreamObject(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileStreamObject(uint simobjectid): base(simobjectid){ }
+        public coFileStreamObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coFileStreamObject(int simobjectid): base(simobjectid){ }
+        public coFileStreamObject(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coFileStreamObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coFileStreamObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coFileStreamObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coFileStreamObject ts)
+        public static implicit operator string(coFileStreamObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coFileStreamObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coFileStreamObject ts)
+        public static implicit operator int(coFileStreamObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coFileStreamObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coFileStreamObject ts)
+        public static implicit operator uint(coFileStreamObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,55 +231,60 @@ public coFileStreamObject(int simobjectid): base(simobjectid){ }
             {
             return new coFileStreamObject(ts);
             }
-/// <summary>
-/// @brief Close the file. You can no longer read or write to it unless you open it again.
-///    
-///    @tsexample
-///    // Create a file stream object for reading
-///    %fsObject = new FileStreamObject();
-///    // Open a file for reading
-///    %fsObject.open(\"./test.txt\", \"read\");
-///    // Always remember to close a file stream when finished
-///    %fsObject.close();
-///    @endtsexample
-///    
-///    @see open())
-/// 
-/// </summary>
-public  void close(){
-TorqueScriptTemplate.m_ts.fnFileStreamObject_close(_mSimObjectId);
-}
-/// <summary>
-/// @brief Open a file for reading, writing, reading and writing, or appending
-///    
-///    Using \"Read\" for the open mode allows you to parse the contents of file, but not making modifications. \"Write\" will create a new 
-///    file if it does not exist, or erase the contents of an existing file when opened. Write also allows you to modify the contents of the file.
-/// 
-///    \"ReadWrite\" will provide the ability to parse data (read it in) and manipulate data (write it out) interchangeably. Keep in mind the stream can 
-///    move during each operation. Finally, \"WriteAppend\" will open a file if it exists, but will not clear the contents. You can write new data starting 
-///     at the end of the files existing contents.
-/// 
-///    @param filename Name of file to open
-///    @param openMode One of \"Read\", \"Write\", \"ReadWrite\" or \"WriteAppend\"
-/// 
-///    @tsexample
-///    // Create a file stream object for reading
-///    %fsObject = new FileStreamObject();
-///    // Open a file for reading
-///    %fsObject.open(\"./test.txt\", \"read\");
-///    // Get the status and print it
-///    %status = %fsObject.getStatus();
-///    echo(%status);
-///    // Always remember to close a file stream when finished
-///    %fsObject.close();
-///    @endtsexample
-/// 
-///    @return True if the file was successfully opened, false if something went wrong
-///    
-///    @see close())
-/// 
-/// </summary>
-public  bool open(string filename, string openMode){
-return TorqueScriptTemplate.m_ts.fnFileStreamObject_open(_mSimObjectId, filename, openMode);
-}
-}}
+
+        /// <summary>
+        /// @brief Close the file. You can no longer read or write to it unless you open it again.
+        ///    
+        ///    @tsexample
+        ///    // Create a file stream object for reading
+        ///    %fsObject = new FileStreamObject();
+        ///    // Open a file for reading
+        ///    %fsObject.open(\"./test.txt\", \"read\");
+        ///    // Always remember to close a file stream when finished
+        ///    %fsObject.close();
+        ///    @endtsexample
+        ///    
+        ///    @see open())
+        /// 
+        /// </summary>
+        public void close()
+            {
+            TorqueScriptTemplate.m_ts.fnFileStreamObject_close(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Open a file for reading, writing, reading and writing, or appending
+        ///    
+        ///    Using \"Read\" for the open mode allows you to parse the contents of file, but not making modifications. \"Write\" will create a new 
+        ///    file if it does not exist, or erase the contents of an existing file when opened. Write also allows you to modify the contents of the file.
+        /// 
+        ///    \"ReadWrite\" will provide the ability to parse data (read it in) and manipulate data (write it out) interchangeably. Keep in mind the stream can 
+        ///    move during each operation. Finally, \"WriteAppend\" will open a file if it exists, but will not clear the contents. You can write new data starting 
+        ///     at the end of the files existing contents.
+        /// 
+        ///    @param filename Name of file to open
+        ///    @param openMode One of \"Read\", \"Write\", \"ReadWrite\" or \"WriteAppend\"
+        /// 
+        ///    @tsexample
+        ///    // Create a file stream object for reading
+        ///    %fsObject = new FileStreamObject();
+        ///    // Open a file for reading
+        ///    %fsObject.open(\"./test.txt\", \"read\");
+        ///    // Get the status and print it
+        ///    %status = %fsObject.getStatus();
+        ///    echo(%status);
+        ///    // Always remember to close a file stream when finished
+        ///    %fsObject.close();
+        ///    @endtsexample
+        /// 
+        ///    @return True if the file was successfully opened, false if something went wrong
+        ///    
+        ///    @see close())
+        /// 
+        /// </summary>
+        public bool open(string filename, string openMode)
+            {
+            return TorqueScriptTemplate.m_ts.fnFileStreamObject_open(_mSimObjectId, filename, openMode);
+            }
+        }
+    }

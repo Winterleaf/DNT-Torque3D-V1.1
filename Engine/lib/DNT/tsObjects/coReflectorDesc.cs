@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoReflectorDesc))]
-    public class coReflectorDesc: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoReflectorDesc))]
+    public class coReflectorDesc : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coReflectorDesc(string simobjectid) : base(simobjectid){ }
+        public coReflectorDesc(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coReflectorDesc(uint simobjectid): base(simobjectid){ }
+        public coReflectorDesc(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coReflectorDesc(int simobjectid): base(simobjectid){ }
+        public coReflectorDesc(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Scale applied to lod calculation of objects rendering into      this reflection ( modulates $pref::TS::detailAdjust ). 
+        /// </summary>
+        public float detailAdjust
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailAdjust").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailAdjust", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Far plane distance to use when rendering reflections. 
+        /// </summary>
+        public float farDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".farDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".farDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If less than maxRateMs has elapsed since this relfection was last      updated, then do not update it again. This 'skip' can be disabled by      setting maxRateMs to zero. 
+        /// </summary>
+        public int maxRateMs
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxRateMs").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxRateMs", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Near plane distance to use when rendering this reflection. Adjust      this to limit self-occlusion artifacts. 
+        /// </summary>
+        public float nearDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".nearDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".nearDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Object types which render into this reflection. 
+        /// </summary>
+        public int objectTypeMask
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".objectTypeMask").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".objectTypeMask", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Priority for updating this reflection, relative to others. 
+        /// </summary>
+        public float priority
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".priority").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".priority", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Size in pixels of the (square) reflection texture. For a cubemap      this value is interpreted as size of each face. 
+        /// </summary>
+        public int texSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If available on the device use HOQs to determine if the reflective object      is visible before updating its reflection. 
+        /// </summary>
+        public bool useOcclusionQuery
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useOcclusionQuery").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useOcclusionQuery", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +207,9 @@ public coReflectorDesc(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +217,17 @@ public coReflectorDesc(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +239,15 @@ public coReflectorDesc(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coReflectorDesc ts)
+        public static implicit operator string(coReflectorDesc ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +267,7 @@ public coReflectorDesc(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coReflectorDesc ts)
+        public static implicit operator int(coReflectorDesc ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +288,7 @@ public coReflectorDesc(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coReflectorDesc ts)
+        public static implicit operator uint(coReflectorDesc ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,92 +303,5 @@ public coReflectorDesc(int simobjectid): base(simobjectid){ }
             {
             return new coReflectorDesc(ts);
             }
-public float detailAdjust
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailAdjust").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailAdjust", value.AsString());
-          }
-       }
-public float farDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".farDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".farDist", value.AsString());
-          }
-       }
-public int maxRateMs
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxRateMs").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxRateMs", value.AsString());
-          }
-       }
-public float nearDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".nearDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".nearDist", value.AsString());
-          }
-       }
-public int objectTypeMask
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".objectTypeMask").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".objectTypeMask", value.AsString());
-          }
-       }
-public float priority
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".priority").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".priority", value.AsString());
-          }
-       }
-public int texSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texSize", value.AsString());
-          }
-       }
-public bool useOcclusionQuery
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useOcclusionQuery").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useOcclusionQuery", value.AsString());
-          }
-       }
-}}
+        }
+    }

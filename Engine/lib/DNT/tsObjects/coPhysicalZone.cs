@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPhysicalZone))]
-    public class coPhysicalZone: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoPhysicalZone))]
+    public class coPhysicalZone : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicalZone(string simobjectid) : base(simobjectid){ }
+        public coPhysicalZone(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicalZone(uint simobjectid): base(simobjectid){ }
+        public coPhysicalZone(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicalZone(int simobjectid): base(simobjectid){ }
+        public coPhysicalZone(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Three-element floating point value representing forces in three axes to apply to objects entering PhysicalZone.
+        /// </summary>
+        public Point3F appliedForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".appliedForce").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".appliedForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Gravity in PhysicalZone. Multiplies against standard gravity.
+        /// </summary>
+        public float gravityMod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gravityMod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gravityMod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The polyhedron type is really a quadrilateral and consists of a corner   point followed by three vectors representing the edges extending from the corner. 
+        /// </summary>
+        public Polyhedron polyhedron
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".polyhedron").AsPolyhedron(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".polyhedron", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Multiply velocity of objects entering zone by this value every tick.
+        /// </summary>
+        public float velocityMod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".velocityMod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".velocityMod", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +172,9 @@ public coPhysicalZone(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +182,17 @@ public coPhysicalZone(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +204,15 @@ public coPhysicalZone(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPhysicalZone ts)
+        public static implicit operator string(coPhysicalZone ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +232,7 @@ public coPhysicalZone(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPhysicalZone ts)
+        public static implicit operator int(coPhysicalZone ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +253,7 @@ public coPhysicalZone(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPhysicalZone ts)
+        public static implicit operator uint(coPhysicalZone ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,74 +268,35 @@ public coPhysicalZone(int simobjectid): base(simobjectid){ }
             {
             return new coPhysicalZone(ts);
             }
-public Point3F appliedForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".appliedForce").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".appliedForce", value.AsString());
-          }
-       }
-public float gravityMod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gravityMod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gravityMod", value.AsString());
-          }
-       }
-public Polyhedron polyhedron
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".polyhedron").AsPolyhedron();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".polyhedron", value.AsString());
-          }
-       }
-public float velocityMod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".velocityMod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".velocityMod", value.AsString());
-          }
-       }
-/// <summary>
-/// Activate the physical zone's effects.
-/// 													@tsexample
-/// 														// Activate effects for a specific physical zone.
-/// 														%thisPhysicalZone.activate();
-/// 													@endtsexample
-/// 													@ingroup Datablocks
-/// 				  )
-/// 
-/// </summary>
-public  void activate(){
-TorqueScriptTemplate.m_ts.fnPhysicalZone_activate(_mSimObjectId);
-}
-/// <summary>
-/// Deactivate the physical zone's effects.
-/// 													@tsexample
-/// 														// Deactivate effects for a specific physical zone.
-/// 														%thisPhysicalZone.deactivate();
-/// 													@endtsexample
-/// 													@ingroup Datablocks
-/// 				  )
-/// 
-/// </summary>
-public  void deactivate(){
-TorqueScriptTemplate.m_ts.fnPhysicalZone_deactivate(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Activate the physical zone's effects.
+        /// 													@tsexample
+        /// 														// Activate effects for a specific physical zone.
+        /// 														%thisPhysicalZone.activate();
+        /// 													@endtsexample
+        /// 													@ingroup Datablocks
+        /// 				  )
+        /// 
+        /// </summary>
+        public void activate()
+            {
+            TorqueScriptTemplate.m_ts.fnPhysicalZone_activate(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Deactivate the physical zone's effects.
+        /// 													@tsexample
+        /// 														// Deactivate effects for a specific physical zone.
+        /// 														%thisPhysicalZone.deactivate();
+        /// 													@endtsexample
+        /// 													@ingroup Datablocks
+        /// 				  )
+        /// 
+        /// </summary>
+        public void deactivate()
+            {
+            TorqueScriptTemplate.m_ts.fnPhysicalZone_deactivate(_mSimObjectId);
+            }
+        }
+    }

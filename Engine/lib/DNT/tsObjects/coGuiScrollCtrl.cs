@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +94,108 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiScrollCtrl))]
-    public class coGuiScrollCtrl: coGuiContainer
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiScrollCtrl))]
+    public class coGuiScrollCtrl : coGuiContainer
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiScrollCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiScrollCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiScrollCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiScrollCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiScrollCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiScrollCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Padding region to put around child contents. 
+        /// </summary>
+        public Point2I childMargin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".childMargin").AsPoint2I(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".childMargin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool constantThumbHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".constantThumbHeight").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".constantThumbHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// When to display the horizontal scrollbar.
+        /// </summary>
+        public GuiScrollCtrl__ScrollBarBehavior hScrollBar
+            {
+            get { return (GuiScrollCtrl__ScrollBarBehavior) Enum.Parse(typeof (GuiScrollCtrl__ScrollBarBehavior), dnTorque.self.GetVar(_mSimObjectId + ".hScrollBar")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hScrollBar", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Horizontal scrolling not allowed if set.
+        /// </summary>
+        public bool lockHorizScroll
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lockHorizScroll").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lockHorizScroll", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Vertical scrolling not allowed if set.
+        /// </summary>
+        public bool lockVertScroll
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lockVertScroll").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lockVertScroll", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Pixels/Tick - if not positive then mousewheel scrolling occurs instantly (like other scrolling).
+        /// </summary>
+        public int mouseWheelScrollSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mouseWheelScrollSpeed").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mouseWheelScrollSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// When to display the vertical scrollbar.
+        /// </summary>
+        public GuiScrollCtrl__ScrollBarBehavior vScrollBar
+            {
+            get { return (GuiScrollCtrl__ScrollBarBehavior) Enum.Parse(typeof (GuiScrollCtrl__ScrollBarBehavior), dnTorque.self.GetVar(_mSimObjectId + ".vScrollBar")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".vScrollBar", value.ToString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool willFirstRespond
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".willFirstRespond").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".willFirstRespond", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +209,9 @@ public coGuiScrollCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +219,17 @@ public coGuiScrollCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +241,15 @@ public coGuiScrollCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiScrollCtrl ts)
+        public static implicit operator string(coGuiScrollCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +269,7 @@ public coGuiScrollCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiScrollCtrl ts)
+        public static implicit operator int(coGuiScrollCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +290,7 @@ public coGuiScrollCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiScrollCtrl ts)
+        public static implicit operator uint(coGuiScrollCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,152 +305,83 @@ public coGuiScrollCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiScrollCtrl(ts);
             }
-public Point2I childMargin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".childMargin").AsPoint2I();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".childMargin", value.AsString());
-          }
-       }
-public bool constantThumbHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".constantThumbHeight").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".constantThumbHeight", value.AsString());
-          }
-       }
-public GuiScrollCtrl__ScrollBarBehavior hScrollBar
-       {
-       get
-          {          return (GuiScrollCtrl__ScrollBarBehavior)Enum.Parse(typeof(GuiScrollCtrl__ScrollBarBehavior), dnTorque.self.GetVar(_mSimObjectId + ".hScrollBar"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hScrollBar", value.ToString());
-          }
-       }
-public bool lockHorizScroll
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lockHorizScroll").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lockHorizScroll", value.AsString());
-          }
-       }
-public bool lockVertScroll
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lockVertScroll").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lockVertScroll", value.AsString());
-          }
-       }
-public int mouseWheelScrollSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mouseWheelScrollSpeed").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mouseWheelScrollSpeed", value.AsString());
-          }
-       }
-public GuiScrollCtrl__ScrollBarBehavior vScrollBar
-       {
-       get
-          {          return (GuiScrollCtrl__ScrollBarBehavior)Enum.Parse(typeof(GuiScrollCtrl__ScrollBarBehavior), dnTorque.self.GetVar(_mSimObjectId + ".vScrollBar"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".vScrollBar", value.ToString());
-          }
-       }
-public bool willFirstRespond
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".willFirstRespond").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".willFirstRespond", value.AsString());
-          }
-       }
-/// <summary>
-/// Refresh sizing and positioning of child controls. )
-/// 
-/// </summary>
-public  void computeSizes(){
-TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_computeSizes(_mSimObjectId);
-}
-/// <summary>
-/// Get the current coordinates of the scrolled content.
-///    @return The current position of the scrolled content. )
-/// 
-/// </summary>
-public  Point2I getScrollPosition(){
-return new Point2I ( TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_getScrollPosition(_mSimObjectId));
-}
-/// <summary>
-/// Get the current X coordinate of the scrolled content.
-///    @return The current X coordinate of the scrolled content. )
-/// 
-/// </summary>
-public  int getScrollPositionX(){
-return TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_getScrollPositionX(_mSimObjectId);
-}
-/// <summary>
-/// Get the current Y coordinate of the scrolled content.
-///    @return The current Y coordinate of the scrolled content. )
-/// 
-/// </summary>
-public  int getScrollPositionY(){
-return TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_getScrollPositionY(_mSimObjectId);
-}
-/// <summary>
-/// Scroll all the way to the bottom of the vertical scrollbar and the left of the horizontal bar. )
-/// 
-/// </summary>
-public  void scrollToBottom(){
-TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_scrollToBottom(_mSimObjectId);
-}
-/// <summary>
-/// Scroll the control so that the given child @a control is visible.
-///    @param control A child control. )
-/// 
-/// </summary>
-public  void scrollToObject(string control){
-TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_scrollToObject(_mSimObjectId, control);
-}
-/// <summary>
-/// Scroll all the way to the top of the vertical and left of the horizontal scrollbar. )
-/// 
-/// </summary>
-public  void scrollToTop(){
-TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_scrollToTop(_mSimObjectId);
-}
-/// <summary>
-/// Set the position of the scrolled content.
-///    @param x Position on X axis.
-///    @param y Position on y axis. )
-/// 
-/// </summary>
-public  void setScrollPosition(int x, int y){
-TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_setScrollPosition(_mSimObjectId, x, y);
-}
-}}
+
+        /// <summary>
+        /// Refresh sizing and positioning of child controls. )
+        /// 
+        /// </summary>
+        public void computeSizes()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_computeSizes(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the current coordinates of the scrolled content.
+        ///    @return The current position of the scrolled content. )
+        /// 
+        /// </summary>
+        public Point2I getScrollPosition()
+            {
+            return new Point2I(TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_getScrollPosition(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// Get the current X coordinate of the scrolled content.
+        ///    @return The current X coordinate of the scrolled content. )
+        /// 
+        /// </summary>
+        public int getScrollPositionX()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_getScrollPositionX(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Get the current Y coordinate of the scrolled content.
+        ///    @return The current Y coordinate of the scrolled content. )
+        /// 
+        /// </summary>
+        public int getScrollPositionY()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_getScrollPositionY(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Scroll all the way to the bottom of the vertical scrollbar and the left of the horizontal bar. )
+        /// 
+        /// </summary>
+        public void scrollToBottom()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_scrollToBottom(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Scroll the control so that the given child @a control is visible.
+        ///    @param control A child control. )
+        /// 
+        /// </summary>
+        public void scrollToObject(string control)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_scrollToObject(_mSimObjectId, control);
+            }
+
+        /// <summary>
+        /// Scroll all the way to the top of the vertical and left of the horizontal scrollbar. )
+        /// 
+        /// </summary>
+        public void scrollToTop()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_scrollToTop(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Set the position of the scrolled content.
+        ///    @param x Position on X axis.
+        ///    @param y Position on y axis. )
+        /// 
+        /// </summary>
+        public void setScrollPosition(int x, int y)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiScrollCtrl_setScrollPosition(_mSimObjectId, x, y);
+            }
+        }
+    }

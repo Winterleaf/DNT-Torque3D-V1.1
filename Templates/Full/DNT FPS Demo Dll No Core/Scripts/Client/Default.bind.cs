@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -127,12 +127,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             {
             if (val.AsBool())
                 {
-                GuiCanvas.setContent("canvas", "HudlessPlayGui");
+                ((coGuiCanvas) "canvas").setContent("HudlessPlayGui");
                 Util._schedule("10", "0", "doScreenShot", val);
                 }
             else
                 {
-                GuiCanvas.setContent("canvas", "PlayGui");
+                ((coGuiCanvas) "canvas").setContent("PlayGui");
                 }
             }
 
@@ -172,7 +172,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "moveup", "(val)", 1, 11001, false)]
         public void moveup(string val)
             {
-            string obj = GameConnection.getControlObject("ServerConnection");
+            string obj = ((coGameConnection) "ServerConnection").getControlObject();
             if (console.isInNamespaceHierarchy(obj, "Camera"))
                 console.SetVar("$mvUpAction", val.AsInt()*movementSpeed);
             }
@@ -180,7 +180,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "movedown", "(val)", 1, 11001, false)]
         public void movedown(string val)
             {
-            string obj = GameConnection.getControlObject("ServerConnection");
+            string obj = ((coGameConnection) "ServerConnection").getControlObject();
             if (console.isInNamespaceHierarchy(obj, "Camera"))
                 console.SetVar("$mvDownAction", val.AsInt()*movementSpeed);
             }
@@ -226,7 +226,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void yaw(string val)
             {
             float yawAdj = getMouseAdjustAmount(val).AsFloat();
-            if (GameConnection.isControlObjectRotDampedCamera("ServerConnection"))
+            if (((coGameConnection) "ServerConnection").isControlObjectRotDampedCamera())
                 {
                 yawAdj = Util.mClamp(yawAdj, (-Util.m2Pi() + (float) 0.01), (Util.m2Pi() - (float) 0.01));
                 yawAdj *= (float) 0.5;
@@ -239,7 +239,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void pitch(string val)
             {
             float pitchAdj = getMouseAdjustAmount(val).AsFloat();
-            if (GameConnection.isControlObjectRotDampedCamera("ServerConnection"))
+            if (((coGameConnection) "ServerConnection").isControlObjectRotDampedCamera())
                 {
                 pitchAdj = Util.mClamp(pitchAdj, (-Util.m2Pi() + (float) 0.01), (Util.m2Pi() - (float) 0.01));
                 pitchAdj *= (float) 0.5;
@@ -288,7 +288,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void gamepadYaw(string val)
             {
             float yawAdj = getGamepadAdjustAmount(val).AsFloat();
-            if (GameConnection.isControlObjectRotDampedCamera("ServerConnection"))
+            if (((coGameConnection) "ServerConnection").isControlObjectRotDampedCamera())
                 {
                 yawAdj = Util.mClamp(yawAdj, (float) (-Util.m2Pi() + 0.01), (float) (Util.m2Pi() - 0.01));
                 yawAdj *= (float) 0.5;
@@ -310,7 +310,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void gamepadPitch(string val)
             {
             float pitchAdj = getGamepadAdjustAmount(val).AsFloat();
-            if (GameConnection.isControlObjectRotDampedCamera("ServerConnection"))
+            if (((coGameConnection) "ServerConnection").isControlObjectRotDampedCamera())
                 {
                 pitchAdj = Util.mClamp(pitchAdj, (float) (-Util.m2Pi() + 0.01), (float) (Util.m2Pi() - 0.01));
                 pitchAdj *= (float) 0.5;
@@ -408,9 +408,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void turnOffZoom()
             {
             console.SetVar("ServerConnection.zoomed", false);
-            console.Call("setFov", new[] {GameConnection.getControlCameraDefaultFov("ServerConnection").AsString()});
-            GuiControl.setVisible("Reticle", true);
-            GuiControl.setVisible("zoomReticle", false);
+            console.Call("setFov", new[] {((coGameConnection) "ServerConnection").getControlCameraDefaultFov().AsString()});
+            ((coGuiControl) "Reticle").setVisible(true);
+            ((coGuiControl) "zoomReticle").setVisible(false);
 
 
             ppOptionsUpdateDOFSettings();
@@ -430,8 +430,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 {
                 console.SetVar("ServerConnection.zoomed", true);
                 console.Call("setFov", new[] {console.GetVarString("$Player::CurrentFOV")});
-                GuiControl.setVisible("Reticle", false);
-                GuiControl.setVisible("zoomReticle", true);
+                ((coGuiControl) "Reticle").setVisible(false);
+                ((coGuiControl) "zoomReticle").setVisible(true);
+
 
                 DOFPostEffectsetAutoFocus("DOFPostEffect", true);
 
@@ -460,7 +461,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void toggleFirstPerson(string val)
             {
             if (val.AsBool())
-                GameConnection.setFirstPerson("ServerConnection", !GameConnection.isFirstPerson("ServerConnection"));
+                ((coGameConnection) "ServerConnection").setFirstPerson(!((coGameConnection) "ServerConnection").isFirstPerson());
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "toggleCamera", "(val)", 1, 11001, false)]
@@ -571,7 +572,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 {
                 //Util._lockMouse("false");
                 showCursor();
-                GuiCanvas.pushDialog("Canvas", "OptionsDlg");
+                ((coGuiCanvas) "Canvas").pushDialog("OptionsDlg");
                 }
             }
 
@@ -670,19 +671,19 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "carjack", "()", 0, 11001, false)]
         public void carjack()
             {
-            string player = GameConnection.getControlObject("LocalClientConnection");
+            coPlayer player = ((coGameConnection) "LocalClientConnection").getControlObject();
             if (console.GetClassName(player) != "Player")
                 return;
-            Point3F eyeVec = ShapeBase.getEyeVector(player);
+            Point3F eyeVec = player.getEyeVector();
 
-            Point3F startPos = ShapeBase.getEyePoint(player);
+            Point3F startPos = player.getEyePoint();
 
             Point3F endPos = startPos + eyeVec.vectorScale(1000);
 
-            string target = Util.containerRayCast(startPos, endPos, (uint) SceneObjectTypesAsUint.VehicleObjectType, "", false);
-            if (!target.AsBool())
+            coPlayer target = Util.containerRayCast(startPos, endPos, (uint) SceneObjectTypesAsUint.VehicleObjectType, "", false);
+            if (!target.isObject())
                 return;
-            int mount = SceneObject.getMountNodeObject(target, 0);
+            int mount = target.getMountNodeObject(0);
             if (mount.AsBool() && console.GetClassName(mount.AsString()) == "AIPlayer")
                 console.commandToServer("carUnmountObj", new[] {mount.AsString()});
             }
@@ -690,8 +691,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "getOut", "()", 0, 11001, false)]
         public void getOut()
             {
-            ActionMap.pop("vehicleMap");
-            ActionMap.push("moveMap");
+            ((coActionMap) "vehicleMap").pop();
+            ((coActionMap) "moveMap").push();
             console.commandToServer("dismountVehicle");
             }
 

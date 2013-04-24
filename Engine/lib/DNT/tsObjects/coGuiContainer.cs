@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +94,99 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiContainer))]
-    public class coGuiContainer: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiContainer))]
+    public class coGuiContainer : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiContainer(string simobjectid) : base(simobjectid){ }
+        public coGuiContainer(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiContainer(uint simobjectid): base(simobjectid){ }
+        public coGuiContainer(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiContainer(int simobjectid): base(simobjectid){ }
+        public coGuiContainer(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool anchorBottom
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".anchorBottom").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".anchorBottom", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool anchorLeft
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".anchorLeft").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".anchorLeft", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool anchorRight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".anchorRight").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".anchorRight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool anchorTop
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".anchorTop").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".anchorTop", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public Docking__DockingType docking
+            {
+            get { return (Docking__DockingType) Enum.Parse(typeof (Docking__DockingType), dnTorque.self.GetVar(_mSimObjectId + ".docking")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".docking", value.ToString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RectSpacingI margin
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".margin").AsRectSpacingI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".margin", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RectSpacingI padding
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".padding").AsRectSpacingI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".padding", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +200,9 @@ public coGuiContainer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +210,17 @@ public coGuiContainer(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +232,15 @@ public coGuiContainer(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiContainer ts)
+        public static implicit operator string(coGuiContainer ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +260,7 @@ public coGuiContainer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiContainer ts)
+        public static implicit operator int(coGuiContainer ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +281,7 @@ public coGuiContainer(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiContainer ts)
+        public static implicit operator uint(coGuiContainer ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,80 +296,5 @@ public coGuiContainer(int simobjectid): base(simobjectid){ }
             {
             return new coGuiContainer(ts);
             }
-public bool anchorBottom
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".anchorBottom").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".anchorBottom", value.AsString());
-          }
-       }
-public bool anchorLeft
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".anchorLeft").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".anchorLeft", value.AsString());
-          }
-       }
-public bool anchorRight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".anchorRight").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".anchorRight", value.AsString());
-          }
-       }
-public bool anchorTop
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".anchorTop").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".anchorTop", value.AsString());
-          }
-       }
-public Docking__DockingType docking
-       {
-       get
-          {          return (Docking__DockingType)Enum.Parse(typeof(Docking__DockingType), dnTorque.self.GetVar(_mSimObjectId + ".docking"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".docking", value.ToString());
-          }
-       }
-public RectSpacingI margin
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".margin").AsRectSpacingI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".margin", value.AsString());
-          }
-       }
-public RectSpacingI padding
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".padding").AsRectSpacingI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".padding", value.AsString());
-          }
-       }
-}}
+        }
+    }

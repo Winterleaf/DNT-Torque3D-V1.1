@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoInteriorInstance))]
-    public class coInteriorInstance: coSceneZoneSpace
-{
+    [TypeConverter(typeof (tsObjectConvertercoInteriorInstance))]
+    public class coInteriorInstance : coSceneZoneSpace
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coInteriorInstance(string simobjectid) : base(simobjectid){ }
+        public coInteriorInstance(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coInteriorInstance(uint simobjectid): base(simobjectid){ }
+        public coInteriorInstance(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coInteriorInstance(int simobjectid): base(simobjectid){ }
+        public coInteriorInstance(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Path and filename of the Interior file (.DIF) to load for this InteriorInstance.
+        /// </summary>
+        public String interiorFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".interiorFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".interiorFile", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +144,9 @@ public coInteriorInstance(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +154,17 @@ public coInteriorInstance(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +176,15 @@ public coInteriorInstance(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coInteriorInstance ts)
+        public static implicit operator string(coInteriorInstance ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +204,7 @@ public coInteriorInstance(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coInteriorInstance ts)
+        public static implicit operator int(coInteriorInstance ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +225,7 @@ public coInteriorInstance(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coInteriorInstance ts)
+        public static implicit operator uint(coInteriorInstance ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,143 +240,149 @@ public coInteriorInstance(int simobjectid): base(simobjectid){ }
             {
             return new coInteriorInstance(ts);
             }
-public String interiorFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".interiorFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".interiorFile", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Change one of the materials on the shape.
-/// 
-///    This method changes materials per mapTo with others. The material that 
-///    is being replaced is mapped to unmapped_mat as a part of this transition.
-/// 
-///    @note Warning, right now this only sort of works. It doesn't do a live 
-///    update like it should.\b
-/// 
-///    @param mapTo The name of the material target to remap (from getTargetName)
-///    @param oldMat The old Material that was mapped 
-///    @param newMat The new Material to map
-/// 
-///    @tsexample
-///    // remap the first material in the shape
-///    %mapTo = %interiorObject.getTargetName( 0 );
-///    %interiorObject.changeMaterial( %mapTo, 0, MyMaterial );
-///    @endtsexample )
-/// 
-/// </summary>
-public  void changeMaterial(string mapTo, string oldMat, string newMat){
-TorqueScriptTemplate.m_ts.fnInteriorInstance_changeMaterial(_mSimObjectId, mapTo, oldMat, newMat);
-}
-/// <summary>
-/// @brief Exports the Interior to a Collada file
-/// 
-///    @param bakeTransform Bakes the InteriorInstance's transform into the vertex positions
-///    
-///    @tsexample
-///    // Export to COLLADA, do not bakeTransform
-///    %interiorObject.exportToCollada(0);
-///    @endtsexample)
-/// 
-/// </summary>
-public  void exportToCollada(bool bakeTransform){
-TorqueScriptTemplate.m_ts.fnInteriorInstance_exportToCollada(_mSimObjectId, bakeTransform);
-}
-/// <summary>
-/// @brief Get the interior file name
-///    
-/// 
-///    @return The name of the interior's model file in .DIF.
-/// 
-///    @tsexample
-///    %interiorObject.getModelFile();
-///    @endtsexample)
-/// 
-/// </summary>
-public  string getModelFile(){
-return TorqueScriptTemplate.m_ts.fnInteriorInstance_getModelFile(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the number of detail levels interior was created with
-///    
-///    @tsexample
-///    %numLODs = %interiorObject.getNumDetailLevels();
-///    echo(%numLODs);
-///    @endtsexample)
-/// 
-/// </summary>
-public  int getNumDetailLevels(){
-return TorqueScriptTemplate.m_ts.fnInteriorInstance_getNumDetailLevels(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the number of materials used by interior
-///    
-///    @param	detailLevel Interior level of detail to scan
-/// 
-///    @return The number of materials used by the interior at a specified detail level
-/// 
-///    @tsexample
-///    // Find materials used at first level of detail
-///    %targetCount = %interiorObject.getTargetCount(1);
-///    echo(%targetCount);
-///    @endtsexample)
-/// 
-/// </summary>
-public  int getTargetCount(uint detailLevel){
-return TorqueScriptTemplate.m_ts.fnInteriorInstance_getTargetCount(_mSimObjectId, detailLevel);
-}
-/// <summary>
-/// @brief Get the name of the indexed shape material
-///    
-///    @param	detailLevel Target LOD
-///    @param	targetNum Index mapped to the target
-/// 
-///    @return The name of the target (material) at the specified detail level and index
-/// 
-///    @tsexample
-///    // First level of detail, top of the index map
-///    %targetName = %interiorObject.getTargetName(1, 0);
-///    echo(%targetName);
-///    @endtsexample)
-/// 
-/// </summary>
-public  string getTargetName(int detailLevel, int targetNum){
-return TorqueScriptTemplate.m_ts.fnInteriorInstance_getTargetName(_mSimObjectId, detailLevel, targetNum);
-}
-/// <summary>
-/// @brief This sets the alarm mode of the interior
-/// 
-///    The alarm mode is used when debugging bad geometry for an interior. When on, the the bad verties 
-///    will be rendered a different color.
-/// 
-///    @param alarmMode If true the interior will be in an alarm state next frame. Options are \'On\' or \'Off\'.
-///    
-///    @tsexample
-///    // Turn on alarm mode debugging for interior
-///    %interiorObject.setAlarmMode(\"On\");
-///    @endtsexample)
-/// 
-/// </summary>
-public  void setAlarmMode(string alarmMode){
-TorqueScriptTemplate.m_ts.fnInteriorInstance_setAlarmMode(_mSimObjectId, alarmMode);
-}
-/// <summary>
-/// @brief Manually changes the current detail level, rather than automatically via view distance
-///    
-///    @param level Detail level to force.
-/// 
-///    @tsexample
-///    %interiorObject.setDetailLevel(2);
-///    @endtsexample)
-/// 
-/// </summary>
-public  void setDetailLevel(int level){
-TorqueScriptTemplate.m_ts.fnInteriorInstance_setDetailLevel(_mSimObjectId, level);
-}
-}}
+
+        /// <summary>
+        /// @brief Change one of the materials on the shape.
+        /// 
+        ///    This method changes materials per mapTo with others. The material that 
+        ///    is being replaced is mapped to unmapped_mat as a part of this transition.
+        /// 
+        ///    @note Warning, right now this only sort of works. It doesn't do a live 
+        ///    update like it should.\b
+        /// 
+        ///    @param mapTo The name of the material target to remap (from getTargetName)
+        ///    @param oldMat The old Material that was mapped 
+        ///    @param newMat The new Material to map
+        /// 
+        ///    @tsexample
+        ///    // remap the first material in the shape
+        ///    %mapTo = %interiorObject.getTargetName( 0 );
+        ///    %interiorObject.changeMaterial( %mapTo, 0, MyMaterial );
+        ///    @endtsexample )
+        /// 
+        /// </summary>
+        public void changeMaterial(string mapTo, string oldMat, string newMat)
+            {
+            TorqueScriptTemplate.m_ts.fnInteriorInstance_changeMaterial(_mSimObjectId, mapTo, oldMat, newMat);
+            }
+
+        /// <summary>
+        /// @brief Exports the Interior to a Collada file
+        /// 
+        ///    @param bakeTransform Bakes the InteriorInstance's transform into the vertex positions
+        ///    
+        ///    @tsexample
+        ///    // Export to COLLADA, do not bakeTransform
+        ///    %interiorObject.exportToCollada(0);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void exportToCollada(bool bakeTransform)
+            {
+            TorqueScriptTemplate.m_ts.fnInteriorInstance_exportToCollada(_mSimObjectId, bakeTransform);
+            }
+
+        /// <summary>
+        /// @brief Get the interior file name
+        ///    
+        /// 
+        ///    @return The name of the interior's model file in .DIF.
+        /// 
+        ///    @tsexample
+        ///    %interiorObject.getModelFile();
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public string getModelFile()
+            {
+            return TorqueScriptTemplate.m_ts.fnInteriorInstance_getModelFile(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the number of detail levels interior was created with
+        ///    
+        ///    @tsexample
+        ///    %numLODs = %interiorObject.getNumDetailLevels();
+        ///    echo(%numLODs);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public int getNumDetailLevels()
+            {
+            return TorqueScriptTemplate.m_ts.fnInteriorInstance_getNumDetailLevels(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the number of materials used by interior
+        ///    
+        ///    @param	detailLevel Interior level of detail to scan
+        /// 
+        ///    @return The number of materials used by the interior at a specified detail level
+        /// 
+        ///    @tsexample
+        ///    // Find materials used at first level of detail
+        ///    %targetCount = %interiorObject.getTargetCount(1);
+        ///    echo(%targetCount);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public int getTargetCount(uint detailLevel)
+            {
+            return TorqueScriptTemplate.m_ts.fnInteriorInstance_getTargetCount(_mSimObjectId, detailLevel);
+            }
+
+        /// <summary>
+        /// @brief Get the name of the indexed shape material
+        ///    
+        ///    @param	detailLevel Target LOD
+        ///    @param	targetNum Index mapped to the target
+        /// 
+        ///    @return The name of the target (material) at the specified detail level and index
+        /// 
+        ///    @tsexample
+        ///    // First level of detail, top of the index map
+        ///    %targetName = %interiorObject.getTargetName(1, 0);
+        ///    echo(%targetName);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public string getTargetName(int detailLevel, int targetNum)
+            {
+            return TorqueScriptTemplate.m_ts.fnInteriorInstance_getTargetName(_mSimObjectId, detailLevel, targetNum);
+            }
+
+        /// <summary>
+        /// @brief This sets the alarm mode of the interior
+        /// 
+        ///    The alarm mode is used when debugging bad geometry for an interior. When on, the the bad verties 
+        ///    will be rendered a different color.
+        /// 
+        ///    @param alarmMode If true the interior will be in an alarm state next frame. Options are \'On\' or \'Off\'.
+        ///    
+        ///    @tsexample
+        ///    // Turn on alarm mode debugging for interior
+        ///    %interiorObject.setAlarmMode(\"On\");
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void setAlarmMode(string alarmMode)
+            {
+            TorqueScriptTemplate.m_ts.fnInteriorInstance_setAlarmMode(_mSimObjectId, alarmMode);
+            }
+
+        /// <summary>
+        /// @brief Manually changes the current detail level, rather than automatically via view distance
+        ///    
+        ///    @param level Detail level to force.
+        /// 
+        ///    @tsexample
+        ///    %interiorObject.setDetailLevel(2);
+        ///    @endtsexample)
+        /// 
+        /// </summary>
+        public void setDetailLevel(int level)
+            {
+            TorqueScriptTemplate.m_ts.fnInteriorInstance_setDetailLevel(_mSimObjectId, level);
+            }
+        }
+    }

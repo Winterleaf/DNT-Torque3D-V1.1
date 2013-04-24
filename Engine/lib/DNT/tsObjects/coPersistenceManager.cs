@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPersistenceManager))]
-    public class coPersistenceManager: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoPersistenceManager))]
+    public class coPersistenceManager : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPersistenceManager(string simobjectid) : base(simobjectid){ }
+        public coPersistenceManager(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPersistenceManager(uint simobjectid): base(simobjectid){ }
+        public coPersistenceManager(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPersistenceManager(int simobjectid): base(simobjectid){ }
+        public coPersistenceManager(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coPersistenceManager(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coPersistenceManager(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coPersistenceManager(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPersistenceManager ts)
+        public static implicit operator string(coPersistenceManager ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coPersistenceManager(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPersistenceManager ts)
+        public static implicit operator int(coPersistenceManager ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coPersistenceManager(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPersistenceManager ts)
+        public static implicit operator uint(coPersistenceManager ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,109 +231,136 @@ public coPersistenceManager(int simobjectid): base(simobjectid){ }
             {
             return new coPersistenceManager(ts);
             }
-/// <summary>
-/// ( PersistenceManager, clearAll, void, 2, 2, ()
-///               Clears all the tracked objects without saving them. )
-/// 
-/// </summary>
-public  void clearAll(){
-TorqueScriptTemplate.m_ts.fnPersistenceManager_clearAll(_mSimObjectId);
-}
-/// <summary>
-/// ( PersistenceManager, deleteObjectsFromFile, void, 3, 3, ( fileName )
-///               Delete all of the objects that are created from the given file. )
-/// 
-/// </summary>
-public  void deleteObjectsFromFile(string a2){
-TorqueScriptTemplate.m_ts.fnPersistenceManager_deleteObjectsFromFile(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( PersistenceManager, getDirtyObject, S32, 3, 3, ( index )
-///               Returns the ith dirty object. )
-/// 
-/// </summary>
-public  int getDirtyObject(string a2){
-return TorqueScriptTemplate.m_ts.fnPersistenceManager_getDirtyObject(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( PersistenceManager, getDirtyObjectCount, S32, 2, 2, ()
-///               Returns the number of dirty objects. )
-/// 
-/// </summary>
-public  int getDirtyObjectCount(){
-return TorqueScriptTemplate.m_ts.fnPersistenceManager_getDirtyObjectCount(_mSimObjectId);
-}
-/// <summary>
-/// ( PersistenceManager, hasDirty, bool, 2, 2, ()
-///               Returns true if the manager has dirty objects to save. )
-/// 
-/// </summary>
-public  bool hasDirty(){
-return TorqueScriptTemplate.m_ts.fnPersistenceManager_hasDirty(_mSimObjectId);
-}
-/// <summary>
-/// ( PersistenceManager, isDirty, bool, 3, 3, (SimObject object)
-///               Returns true if the SimObject is on the dirty list.)
-/// 
-/// </summary>
-public  bool isDirty(string a2){
-return TorqueScriptTemplate.m_ts.fnPersistenceManager_isDirty(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( PersistenceManager, listDirty, void, 2, 2, ()
-///               Prints the dirty list to the console.)
-/// 
-/// </summary>
-public  void listDirty(){
-TorqueScriptTemplate.m_ts.fnPersistenceManager_listDirty(_mSimObjectId);
-}
-/// <summary>
-/// ( PersistenceManager, removeDirty, void, 3, 3, (SimObject object)
-///               Remove a SimObject from the dirty list.)
-/// 
-/// </summary>
-public  void removeDirty(string a2){
-TorqueScriptTemplate.m_ts.fnPersistenceManager_removeDirty(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( PersistenceManager, removeField, void, 4, 4, (SimObject object, string fieldName)
-///               Remove a specific field from an object declaration.)
-/// 
-/// </summary>
-public  void removeField(string a2, string a3){
-TorqueScriptTemplate.m_ts.fnPersistenceManager_removeField(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( PersistenceManager, removeObjectFromFile, void, 3, 4, (SimObject object, [filename])
-///               Remove an existing SimObject from a file (can optionally specify a different file than \
-///                the one it was created in.)
-/// 
-/// </summary>
-public  void removeObjectFromFile(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnPersistenceManager_removeObjectFromFile(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( PersistenceManager, saveDirty, bool, 2, 2, ()
-///               Saves all of the SimObject's on the dirty list to their respective files.)
-/// 
-/// </summary>
-public  bool saveDirty(){
-return TorqueScriptTemplate.m_ts.fnPersistenceManager_saveDirty(_mSimObjectId);
-}
-/// <summary>
-/// ( PersistenceManager, saveDirtyObject, bool, 3, 3, (SimObject object)
-///               Save a dirty SimObject to it's file.)
-/// 
-/// </summary>
-public  bool saveDirtyObject(string a2){
-return TorqueScriptTemplate.m_ts.fnPersistenceManager_saveDirtyObject(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( PersistenceManager, setDirty, void, 3, 4, (SimObject object, [filename])
-///               Mark an existing SimObject as dirty (will be written out when saveDirty() is called).)
-/// 
-/// </summary>
-public  void setDirty(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnPersistenceManager_setDirty(_mSimObjectId, a2, a3);
-}
-}}
+
+        /// <summary>
+        /// ( PersistenceManager, clearAll, void, 2, 2, ()
+        ///               Clears all the tracked objects without saving them. )
+        /// 
+        /// </summary>
+        public void clearAll()
+            {
+            TorqueScriptTemplate.m_ts.fnPersistenceManager_clearAll(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, deleteObjectsFromFile, void, 3, 3, ( fileName )
+        ///               Delete all of the objects that are created from the given file. )
+        /// 
+        /// </summary>
+        public void deleteObjectsFromFile(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnPersistenceManager_deleteObjectsFromFile(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, getDirtyObject, S32, 3, 3, ( index )
+        ///               Returns the ith dirty object. )
+        /// 
+        /// </summary>
+        public int getDirtyObject(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnPersistenceManager_getDirtyObject(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, getDirtyObjectCount, S32, 2, 2, ()
+        ///               Returns the number of dirty objects. )
+        /// 
+        /// </summary>
+        public int getDirtyObjectCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnPersistenceManager_getDirtyObjectCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, hasDirty, bool, 2, 2, ()
+        ///               Returns true if the manager has dirty objects to save. )
+        /// 
+        /// </summary>
+        public bool hasDirty()
+            {
+            return TorqueScriptTemplate.m_ts.fnPersistenceManager_hasDirty(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, isDirty, bool, 3, 3, (SimObject object)
+        ///               Returns true if the SimObject is on the dirty list.)
+        /// 
+        /// </summary>
+        public bool isDirty(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnPersistenceManager_isDirty(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, listDirty, void, 2, 2, ()
+        ///               Prints the dirty list to the console.)
+        /// 
+        /// </summary>
+        public void listDirty()
+            {
+            TorqueScriptTemplate.m_ts.fnPersistenceManager_listDirty(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, removeDirty, void, 3, 3, (SimObject object)
+        ///               Remove a SimObject from the dirty list.)
+        /// 
+        /// </summary>
+        public void removeDirty(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnPersistenceManager_removeDirty(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, removeField, void, 4, 4, (SimObject object, string fieldName)
+        ///               Remove a specific field from an object declaration.)
+        /// 
+        /// </summary>
+        public void removeField(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnPersistenceManager_removeField(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, removeObjectFromFile, void, 3, 4, (SimObject object, [filename])
+        ///               Remove an existing SimObject from a file (can optionally specify a different file than \
+        ///                the one it was created in.)
+        /// 
+        /// </summary>
+        public void removeObjectFromFile(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnPersistenceManager_removeObjectFromFile(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, saveDirty, bool, 2, 2, ()
+        ///               Saves all of the SimObject's on the dirty list to their respective files.)
+        /// 
+        /// </summary>
+        public bool saveDirty()
+            {
+            return TorqueScriptTemplate.m_ts.fnPersistenceManager_saveDirty(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, saveDirtyObject, bool, 3, 3, (SimObject object)
+        ///               Save a dirty SimObject to it's file.)
+        /// 
+        /// </summary>
+        public bool saveDirtyObject(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnPersistenceManager_saveDirtyObject(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( PersistenceManager, setDirty, void, 3, 4, (SimObject object, [filename])
+        ///               Mark an existing SimObject as dirty (will be written out when saveDirty() is called).)
+        /// 
+        /// </summary>
+        public void setDirty(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnPersistenceManager_setDirty(_mSimObjectId, a2, a3);
+            }
+        }
+    }

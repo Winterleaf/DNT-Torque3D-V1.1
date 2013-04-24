@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTerrainMaterial))]
-    public class coTerrainMaterial: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoTerrainMaterial))]
+    public class coTerrainMaterial : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTerrainMaterial(string simobjectid) : base(simobjectid){ }
+        public coTerrainMaterial(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTerrainMaterial(uint simobjectid): base(simobjectid){ }
+        public coTerrainMaterial(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTerrainMaterial(int simobjectid): base(simobjectid){ }
+        public coTerrainMaterial(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Changes how far camera can see the detail map rendering on the material 
+        /// </summary>
+        public float detailDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Detail map for the material 
+        /// </summary>
+        public String detailMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Used to scale the detail map to the material square 
+        /// </summary>
+        public float detailSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Exponentially sharpens or lightens the detail map rendering on the material 
+        /// </summary>
+        public float detailStrength
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailStrength").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".detailStrength", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Base texture for the material 
+        /// </summary>
+        public String diffuseMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".diffuseMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".diffuseMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Used to scale the diffuse map to the material square 
+        /// </summary>
+        public float diffuseSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".diffuseSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".diffuseSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bump map for the material 
+        /// </summary>
+        public String normalMap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".normalMap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".normalMap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Used to scale the height from the normal map to give some self 	  occlusion effect (aka parallax) to the terrain material 
+        /// </summary>
+        public float parallaxScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".parallaxScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".parallaxScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Makes that terrain material project along the sides of steep 	  slopes instead of projected downwards
+        /// </summary>
+        public bool useSideProjection
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useSideProjection").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useSideProjection", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +216,9 @@ public coTerrainMaterial(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +226,17 @@ public coTerrainMaterial(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +248,15 @@ public coTerrainMaterial(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTerrainMaterial ts)
+        public static implicit operator string(coTerrainMaterial ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +276,7 @@ public coTerrainMaterial(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTerrainMaterial ts)
+        public static implicit operator int(coTerrainMaterial ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +297,7 @@ public coTerrainMaterial(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTerrainMaterial ts)
+        public static implicit operator uint(coTerrainMaterial ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,103 +312,5 @@ public coTerrainMaterial(int simobjectid): base(simobjectid){ }
             {
             return new coTerrainMaterial(ts);
             }
-public float detailDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailDistance", value.AsString());
-          }
-       }
-public String detailMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailMap", value.AsString());
-          }
-       }
-public float detailSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailSize", value.AsString());
-          }
-       }
-public float detailStrength
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".detailStrength").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".detailStrength", value.AsString());
-          }
-       }
-public String diffuseMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".diffuseMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".diffuseMap", value.AsString());
-          }
-       }
-public float diffuseSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".diffuseSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".diffuseSize", value.AsString());
-          }
-       }
-public String normalMap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".normalMap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".normalMap", value.AsString());
-          }
-       }
-public float parallaxScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".parallaxScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".parallaxScale", value.AsString());
-          }
-       }
-public bool useSideProjection
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useSideProjection").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useSideProjection", value.AsString());
-          }
-       }
-}}
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,81 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiClockHud))]
-    public class coGuiClockHud: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiClockHud))]
+    public class coGuiClockHud : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiClockHud(string simobjectid) : base(simobjectid){ }
+        public coGuiClockHud(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiClockHud(uint simobjectid): base(simobjectid){ }
+        public coGuiClockHud(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiClockHud(int simobjectid): base(simobjectid){ }
+        public coGuiClockHud(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Standard color for the background of the control. 
+        /// </summary>
+        public ColorF fillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the control's frame. 
+        /// </summary>
+        public ColorF frameColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, draws a background color behind the control.
+        /// </summary>
+        public bool showFill
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFill").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFill", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, draws a frame around the control. 
+        /// </summary>
+        public bool showFrame
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showFrame").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showFrame", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color for the text on this control. 
+        /// </summary>
+        public ColorF textColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".textColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".textColor", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +181,9 @@ public coGuiClockHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +191,17 @@ public coGuiClockHud(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +213,15 @@ public coGuiClockHud(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiClockHud ts)
+        public static implicit operator string(coGuiClockHud ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +241,7 @@ public coGuiClockHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiClockHud ts)
+        public static implicit operator int(coGuiClockHud ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +262,7 @@ public coGuiClockHud(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiClockHud ts)
+        public static implicit operator uint(coGuiClockHud ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,59 +277,5 @@ public coGuiClockHud(int simobjectid): base(simobjectid){ }
             {
             return new coGuiClockHud(ts);
             }
-public ColorF fillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString());
-          }
-       }
-public ColorF frameColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString());
-          }
-       }
-public bool showFill
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFill").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFill", value.AsString());
-          }
-       }
-public bool showFrame
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".showFrame").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".showFrame", value.AsString());
-          }
-       }
-public ColorF textColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".textColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".textColor", value.AsString());
-          }
-       }
-}}
+        }
+    }

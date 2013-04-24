@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,18 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
 using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +73,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +94,280 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXPlayList))]
-    public class coSFXPlayList: coSFXTrack
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXPlayList))]
+    public class coSFXPlayList : coSFXTrack
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXPlayList(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSFXPlayList(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSFXPlayList(int simobjectid): base(simobjectid){ }
+        public coSFXPlayList(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSFXPlayList(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSFXPlayList(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Seconds to wait after moving into slot before #transitionIn. 
+        /// </summary>
+        public float delayTimeIn
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeIn").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".delayTimeIn", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on randomization of #delayTimeIn.\n\n      @ref SFXPlayList_randomization\n 
+        /// </summary>
+        public Point2F delayTimeInVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeInVariance").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".delayTimeInVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Seconds to wait before moving out of slot after #transitionOut. 
+        /// </summary>
+        public float delayTimeOut
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeOut").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".delayTimeOut", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on randomization of #delayTimeOut.\n\n      @ref SFXPlayList_randomization\n 
+        /// </summary>
+        public Point2F delayTimeOutVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeOutVariance").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".delayTimeOutVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Seconds to fade sound in (-1 to use the track's own fadeInTime.)\n      @see SFXDescription::fadeTimeIn 
+        /// </summary>
+        public float fadeTimeIn
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeIn").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeIn", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on randomization of #fadeInTime.\n\n      @ref SFXPlayList_randomization\n 
+        /// </summary>
+        public Point2F fadeTimeInVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeInVariance").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeInVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Seconds to fade sound out (-1 to use the track's own fadeOutTime.)\n      @see SFXDescription::fadeTimeOut 
+        /// </summary>
+        public float fadeTimeOut
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeOut").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeOut", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on randomization of #fadeOutTime\n\n      @ref SFXPlayList_randomization\n 
+        /// </summary>
+        public Point2F fadeTimeOutVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeOutVariance").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeOutVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Behavior when description has looping enabled.\n     The loop mode determines whether the list will loop over a single slot or loop over      all the entire list of slots being played.\n\n     @see SFXDescription::isLooping 
+        /// </summary>
+        public SFXPlayList__ELoopMode loopMode
+            {
+            get { return (SFXPlayList__ELoopMode) Enum.Parse(typeof (SFXPlayList__ELoopMode), dnTorque.self.GetVar(_mSimObjectId + ".loopMode")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".loopMode", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @c maxDistance to apply to 3D sounds in this slot (1 to use @c maxDistance of track's own description).\n      @see SFXDescription::maxDistance 
+        /// </summary>
+        public float maxDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on randomization of #maxDistance.\n\n      @ref SFXPlayList_randomization\n 
+        /// </summary>
+        public Point2F maxDistanceVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxDistanceVariance").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxDistanceVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of slots to play.\n     Up to a maximum of 16, this field determines the number of slots that are taken from the      list for playback. Only slots that have a valid #track assigned will be considered for      this. 
+        /// </summary>
+        public int numSlotsToPlay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".numSlotsToPlay").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".numSlotsToPlay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Scale factor to apply to pitch of sounds played on this list slot.\n      This value will scale the actual pitch set on the track assigned to the slot, i.e. a value of 0.5 will       cause the track to play at half its assigned speed. 
+        /// </summary>
+        public float pitchScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pitchScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pitchScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on randomization of #pitchScale.\n\n      @ref SFXPlayList_randomization\n 
+        /// </summary>
+        public Point2F pitchScaleVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pitchScaleVariance").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pitchScaleVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Slot playback order randomization pattern.\n     By setting this field to something other than \NotRandom\ to order in which slots of the      playlist are processed can be changed from sequential to a random pattern. This allows to      to create more varied playback patterns.\n     Defaults to \NotRandom\. 
+        /// </summary>
+        public SFXPlayList__ERandomMode random
+            {
+            get { return (SFXPlayList__ERandomMode) Enum.Parse(typeof (SFXPlayList__ERandomMode), dnTorque.self.GetVar(_mSimObjectId + ".random")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".random", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @c referenceDistance to set for 3D sounds in this slot (1 to use @c referenceDistance of track's own description).\n      @see SFXDescription::referenceDistance 
+        /// </summary>
+        public float referenceDistance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".referenceDistance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".referenceDistance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on randomization of #referenceDistance.\n\n      @ref SFXPlayList_randomization\n 
+        /// </summary>
+        public Point2F referenceDistanceVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".referenceDistanceVariance").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".referenceDistanceVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of times to loop this slot. 
+        /// </summary>
+        public int repeatCount
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".repeatCount").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".repeatCount", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Behavior when an already playing sound is encountered on this slot from a previous cycle.\n      Each slot can have an arbitrary number of sounds playing on it from previous cycles. This field determines       how SFXController will handle these sources. 
+        /// </summary>
+        public SFXPlayList__EReplayMode replay
+            {
+            get { return (SFXPlayList__EReplayMode) Enum.Parse(typeof (SFXPlayList__EReplayMode), dnTorque.self.GetVar(_mSimObjectId + ".replay")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".replay", value.ToString()); }
+            }
+
+        /// <summary>
+        /// State that must be active for this slot to play.\n\n      @ref SFXPlayList_states 
+        /// </summary>
+        public coSFXState state
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".state"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".state", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Behavior when assigned state is deactivated while slot is playing.\n\n      @ref SFXPlayList_states 
+        /// </summary>
+        public SFXPlayList__EStateMode stateMode
+            {
+            get { return (SFXPlayList__EStateMode) Enum.Parse(typeof (SFXPlayList__EStateMode), dnTorque.self.GetVar(_mSimObjectId + ".stateMode")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stateMode", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Enable/disable execution tracing for this playlist (local only).\n     If this is true, SFXControllers attached to the list will automatically run in trace mode. 
+        /// </summary>
+        public bool trace
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".trace").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".trace", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Track to play in this slot.\n      This must be set for the slot to be considered for playback. Other settings for a slot       will not take effect except this field is set. 
+        /// </summary>
+        public coSFXTrack track
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".track"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".track", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Behavior when moving into this slot.\n      After the delayIn time has expired (if any), this slot determines what the controller       will do before actually playing the slot. 
+        /// </summary>
+        public SFXPlayList__ETransitionMode transitionIn
+            {
+            get { return (SFXPlayList__ETransitionMode) Enum.Parse(typeof (SFXPlayList__ETransitionMode), dnTorque.self.GetVar(_mSimObjectId + ".transitionIn")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".transitionIn", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Behavior when moving out of this slot.\n      After the #detailTimeOut has expired (if any), this slot determines what the controller       will do before moving on to the next slot. 
+        /// </summary>
+        public SFXPlayList__ETransitionMode transitionOut
+            {
+            get { return (SFXPlayList__ETransitionMode) Enum.Parse(typeof (SFXPlayList__ETransitionMode), dnTorque.self.GetVar(_mSimObjectId + ".transitionOut")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".transitionOut", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Scale factor to apply to volume of sounds played on this list slot.\n      This value will scale the actual volume level set on the track assigned to the slot, i.e. a value of 0.5 will       cause the track to play at half-volume. 
+        /// </summary>
+        public float volumeScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".volumeScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".volumeScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Bounds on randomization of #volumeScale.\n\n      @ref SFXPlayList_randomization\n 
+        /// </summary>
+        public Point2F volumeScaleVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".volumeScaleVariance").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".volumeScaleVariance", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +380,9 @@ public coSFXPlayList(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +390,17 @@ public coSFXPlayList(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +412,15 @@ public coSFXPlayList(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXPlayList ts)
+        public static implicit operator string(coSFXPlayList ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +440,7 @@ public coSFXPlayList(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXPlayList ts)
+        public static implicit operator int(coSFXPlayList ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +461,7 @@ public coSFXPlayList(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXPlayList ts)
+        public static implicit operator uint(coSFXPlayList ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,295 +476,5 @@ public coSFXPlayList(int simobjectid): base(simobjectid){ }
             {
             return new coSFXPlayList(ts);
             }
-public float delayTimeIn
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeIn").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".delayTimeIn", value.AsString());
-          }
-       }
-public Point2F delayTimeInVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeInVariance").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".delayTimeInVariance", value.AsString());
-          }
-       }
-public float delayTimeOut
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeOut").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".delayTimeOut", value.AsString());
-          }
-       }
-public Point2F delayTimeOutVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeOutVariance").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".delayTimeOutVariance", value.AsString());
-          }
-       }
-public float fadeTimeIn
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeIn").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeIn", value.AsString());
-          }
-       }
-public Point2F fadeTimeInVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeInVariance").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeInVariance", value.AsString());
-          }
-       }
-public float fadeTimeOut
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeOut").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeOut", value.AsString());
-          }
-       }
-public Point2F fadeTimeOutVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeOutVariance").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeOutVariance", value.AsString());
-          }
-       }
-public SFXPlayList__ELoopMode loopMode
-       {
-       get
-          {          return (SFXPlayList__ELoopMode)Enum.Parse(typeof(SFXPlayList__ELoopMode), dnTorque.self.GetVar(_mSimObjectId + ".loopMode"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".loopMode", value.ToString());
-          }
-       }
-public float maxDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxDistance", value.AsString());
-          }
-       }
-public Point2F maxDistanceVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxDistanceVariance").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxDistanceVariance", value.AsString());
-          }
-       }
-public int numSlotsToPlay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".numSlotsToPlay").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".numSlotsToPlay", value.AsString());
-          }
-       }
-public float pitchScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pitchScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pitchScale", value.AsString());
-          }
-       }
-public Point2F pitchScaleVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pitchScaleVariance").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pitchScaleVariance", value.AsString());
-          }
-       }
-public SFXPlayList__ERandomMode random
-       {
-       get
-          {          return (SFXPlayList__ERandomMode)Enum.Parse(typeof(SFXPlayList__ERandomMode), dnTorque.self.GetVar(_mSimObjectId + ".random"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".random", value.ToString());
-          }
-       }
-public float referenceDistance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".referenceDistance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".referenceDistance", value.AsString());
-          }
-       }
-public Point2F referenceDistanceVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".referenceDistanceVariance").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".referenceDistanceVariance", value.AsString());
-          }
-       }
-public int repeatCount
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".repeatCount").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".repeatCount", value.AsString());
-          }
-       }
-public SFXPlayList__EReplayMode replay
-       {
-       get
-          {          return (SFXPlayList__EReplayMode)Enum.Parse(typeof(SFXPlayList__EReplayMode), dnTorque.self.GetVar(_mSimObjectId + ".replay"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".replay", value.ToString());
-          }
-       }
-public coSFXState state
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".state");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".state", value.ToString());
-          }
-       }
-public SFXPlayList__EStateMode stateMode
-       {
-       get
-          {          return (SFXPlayList__EStateMode)Enum.Parse(typeof(SFXPlayList__EStateMode), dnTorque.self.GetVar(_mSimObjectId + ".stateMode"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".stateMode", value.ToString());
-          }
-       }
-public bool trace
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".trace").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".trace", value.AsString());
-          }
-       }
-public coSFXTrack track
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".track");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".track", value.ToString());
-          }
-       }
-public SFXPlayList__ETransitionMode transitionIn
-       {
-       get
-          {          return (SFXPlayList__ETransitionMode)Enum.Parse(typeof(SFXPlayList__ETransitionMode), dnTorque.self.GetVar(_mSimObjectId + ".transitionIn"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".transitionIn", value.ToString());
-          }
-       }
-public SFXPlayList__ETransitionMode transitionOut
-       {
-       get
-          {          return (SFXPlayList__ETransitionMode)Enum.Parse(typeof(SFXPlayList__ETransitionMode), dnTorque.self.GetVar(_mSimObjectId + ".transitionOut"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".transitionOut", value.ToString());
-          }
-       }
-public float volumeScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".volumeScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".volumeScale", value.AsString());
-          }
-       }
-public Point2F volumeScaleVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".volumeScaleVariance").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".volumeScaleVariance", value.AsString());
-          }
-       }
-}}
+        }
+    }

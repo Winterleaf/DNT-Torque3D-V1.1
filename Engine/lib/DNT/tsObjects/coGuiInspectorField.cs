@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiInspectorField))]
-    public class coGuiInspectorField: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiInspectorField))]
+    public class coGuiInspectorField : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiInspectorField(string simobjectid) : base(simobjectid){ }
+        public coGuiInspectorField(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiInspectorField(uint simobjectid): base(simobjectid){ }
+        public coGuiInspectorField(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiInspectorField(int simobjectid): base(simobjectid){ }
+        public coGuiInspectorField(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coGuiInspectorField(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coGuiInspectorField(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coGuiInspectorField(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiInspectorField ts)
+        public static implicit operator string(coGuiInspectorField ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coGuiInspectorField(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiInspectorField ts)
+        public static implicit operator int(coGuiInspectorField ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coGuiInspectorField(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiInspectorField ts)
+        public static implicit operator uint(coGuiInspectorField ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,53 +231,68 @@ public coGuiInspectorField(int simobjectid): base(simobjectid){ }
             {
             return new coGuiInspectorField(ts);
             }
-/// <summary>
-/// ( GuiInspectorField, apply, void, 3, 4, ( string newValue, bool callbacks=true ) - Set the field's value. Suppress callbacks for undo if callbacks=false. )
-/// 
-/// </summary>
-public  void apply(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiInspectorField_apply(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// ( GuiInspectorField, applyWithoutUndo, void, 3, 3, () - Set field value without recording undo (same as 'apply( value, false )'). )
-/// 
-/// </summary>
-public  void applyWithoutUndo(string a2){
-TorqueScriptTemplate.m_ts.fnGuiInspectorField_applyWithoutUndo(_mSimObjectId, a2);
-}
-/// <summary>
-/// ( GuiInspectorField, getData, const char*, 2, 2, () - Return the value currently displayed on the field. )
-/// 
-/// </summary>
-public  string getData(){
-return TorqueScriptTemplate.m_ts.fnGuiInspectorField_getData(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiInspectorField, getInspectedFieldName, const char*, 2, 2, () - Return the name of the field edited by this inspector field. )
-/// 
-/// </summary>
-public  string getInspectedFieldName(){
-return TorqueScriptTemplate.m_ts.fnGuiInspectorField_getInspectedFieldName(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiInspectorField, getInspectedFieldType, const char*, 2, 2, () - Return the type of the field edited by this inspector field. )
-/// 
-/// </summary>
-public  string getInspectedFieldType(){
-return TorqueScriptTemplate.m_ts.fnGuiInspectorField_getInspectedFieldType(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiInspectorField, getInspector, S32, 2, 2, () - Return the GuiInspector to which this field belongs. )
-/// 
-/// </summary>
-public  int getInspector(){
-return TorqueScriptTemplate.m_ts.fnGuiInspectorField_getInspector(_mSimObjectId);
-}
-/// <summary>
-/// ( GuiInspectorField, reset, void, 2, 2, () - Reset to default value. )
-/// 
-/// </summary>
-public  void reset(){
-TorqueScriptTemplate.m_ts.fnGuiInspectorField_reset(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// ( GuiInspectorField, apply, void, 3, 4, ( string newValue, bool callbacks=true ) - Set the field's value. Suppress callbacks for undo if callbacks=false. )
+        /// 
+        /// </summary>
+        public void apply(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspectorField_apply(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( GuiInspectorField, applyWithoutUndo, void, 3, 3, () - Set field value without recording undo (same as 'apply( value, false )'). )
+        /// 
+        /// </summary>
+        public void applyWithoutUndo(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspectorField_applyWithoutUndo(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( GuiInspectorField, getData, const char*, 2, 2, () - Return the value currently displayed on the field. )
+        /// 
+        /// </summary>
+        public string getData()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiInspectorField_getData(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiInspectorField, getInspectedFieldName, const char*, 2, 2, () - Return the name of the field edited by this inspector field. )
+        /// 
+        /// </summary>
+        public string getInspectedFieldName()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiInspectorField_getInspectedFieldName(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiInspectorField, getInspectedFieldType, const char*, 2, 2, () - Return the type of the field edited by this inspector field. )
+        /// 
+        /// </summary>
+        public string getInspectedFieldType()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiInspectorField_getInspectedFieldType(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiInspectorField, getInspector, S32, 2, 2, () - Return the GuiInspector to which this field belongs. )
+        /// 
+        /// </summary>
+        public int getInspector()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiInspectorField_getInspector(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiInspectorField, reset, void, 2, 2, () - Reset to default value. )
+        /// 
+        /// </summary>
+        public void reset()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiInspectorField_reset(_mSimObjectId);
+            }
+        }
+    }

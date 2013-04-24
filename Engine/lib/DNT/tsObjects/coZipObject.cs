@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoZipObject))]
-    public class coZipObject: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoZipObject))]
+    public class coZipObject : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coZipObject(string simobjectid) : base(simobjectid){ }
+        public coZipObject(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coZipObject(uint simobjectid): base(simobjectid){ }
+        public coZipObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coZipObject(int simobjectid): base(simobjectid){ }
+        public coZipObject(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coZipObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coZipObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coZipObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coZipObject ts)
+        public static implicit operator string(coZipObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coZipObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coZipObject ts)
+        public static implicit operator int(coZipObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coZipObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coZipObject ts)
+        public static implicit operator uint(coZipObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,159 +231,180 @@ public coZipObject(int simobjectid): base(simobjectid){ }
             {
             return new coZipObject(ts);
             }
-/// <summary>
-/// @brief Add a file to the zip archive
-///    
-///    @param filename The path and name of the file to add to the zip archive.
-///    @param pathInZip The path and name to be given to the file within the zip archive.
-///    @param replace If a file already exists within the zip archive at the same location as this 
-///    new file, this parameter indicates if it should be replaced.  By default, it will be replaced.
-///    @return True if the file was successfully added to the zip archive.)
-/// 
-/// </summary>
-public  bool addFile(string filename, string pathInZip, bool replace){
-return TorqueScriptTemplate.m_ts.fnZipObject_addFile(_mSimObjectId, filename, pathInZip, replace);
-}
-/// <summary>
-/// @brief Close an already opened zip archive.
-///    @see openArchive())
-/// 
-/// </summary>
-public  void closeArchive(){
-TorqueScriptTemplate.m_ts.fnZipObject_closeArchive(_mSimObjectId);
-}
-/// <summary>
-/// @brief Close a previously opened file within the zip archive.
-///    @param stream The StreamObject of a previously opened file within the zip archive.
-///    @see openFileForRead()
-///    @see openFileForWrite())
-/// 
-/// </summary>
-public  void closeFile(string stream){
-TorqueScriptTemplate.m_ts.fnZipObject_closeFile(_mSimObjectId, stream);
-}
-/// <summary>
-/// @brief Deleted the given file from the zip archive
-///    @param pathInZip The path and name of the file to be deleted from the zip archive.
-///    @return True of the file was successfully deleted.
-/// 
-///    @note Files that have been deleted from the archive will still show up with a 
-///    getFileEntryCount() until you close the archive.  If you need to have the file 
-///    count up to date with only valid files within the archive, you could close and then 
-///    open the archive again.
-/// 
-///    @see getFileEntryCount()
-///    @see closeArchive()
-///    @see openArchive())
-/// 
-/// </summary>
-public  bool deleteFile(string pathInZip){
-return TorqueScriptTemplate.m_ts.fnZipObject_deleteFile(_mSimObjectId, pathInZip);
-}
-/// <summary>
-/// @brief Extact a file from the zip archive and save it to the requested location.
-///    @param pathInZip The path and name of the file to be extracted within the zip archive.
-///    @param filename The path and name to give the extracted file.
-///    @return True if the file was successfully extracted.)
-/// 
-/// </summary>
-public  bool extractFile(string pathInZip, string filename){
-return TorqueScriptTemplate.m_ts.fnZipObject_extractFile(_mSimObjectId, pathInZip, filename);
-}
-/// <summary>
-/// @brief Get information on the requested file within the zip archive.
-/// 
-///    This methods provides five different pieces of information for the requested file:
-///    ul>li>filename - The path and name of the file within the zip archive/li>
-///    li>uncompressed size/li>
-///    li>compressed size/li>
-///    li>compression method/li>
-///    li>CRC32/li>/ul>
-/// 
-///    Use getFileEntryCount() to obtain the total number of files within the archive.
-/// 
-///    @param index The index of the file within the zip archive.  Use getFileEntryCount() to determine the number of files.
-///    @return A tab delimited list of information on the requested file, or an empty string if the file could not be found.
-/// 
-///    @see getFileEntryCount())
-/// 
-/// </summary>
-public  string getFileEntry(int index){
-return TorqueScriptTemplate.m_ts.fnZipObject_getFileEntry(_mSimObjectId, index);
-}
-/// <summary>
-/// @brief Get the number of files within the zip archive.
-/// 
-///    Use getFileEntry() to retrive information on each file within the archive.
-/// 
-///    @return The number of files within the zip archive.
-/// 
-///    @note The returned count will include any files that have been deleted from 
-///    the archive using deleteFile().  To clear out all deleted files, you could 
-///    close and then open the archive again.
-/// 
-///    @see getFileEntry()
-///    @see closeArchive()
-///    @see openArchive())
-/// 
-/// </summary>
-public  int getFileEntryCount(){
-return TorqueScriptTemplate.m_ts.fnZipObject_getFileEntryCount(_mSimObjectId);
-}
-/// <summary>
-/// read ),
-///    @brief Open a zip archive for manipulation.
-/// 
-///    Once a zip archive is opened use the various ZipObject methods for 
-///    working with the files within the archive.  Be sure to close the archive when 
-///    you are done with it.
-/// 
-///    @param filename The path and file name of the zip archive to open.
-///    @param accessMode One of read, write or readwrite
-/// 
-///    @return True is the archive was successfully opened.
-///    
-///    @note If you wish to make any changes to the archive, be sure to open it 
-///    with a write or readwrite access mode.
-/// 
-///    @see closeArchive())
-/// 
-/// </summary>
-public  bool openArchive(string filename, string accessMode){
-return TorqueScriptTemplate.m_ts.fnZipObject_openArchive(_mSimObjectId, filename, accessMode);
-}
-/// <summary>
-/// @brief Open a file within the zip archive for reading.
-/// 
-///    Be sure to close the file when you are done with it.
-/// 
-///    @param filename The path and name of the file to open within the zip archive.
-/// 
-///    @return A standard StreamObject is returned for working with the file.
-///    @note You must first open the zip archive before working with files within it.
-/// 
-///    @see closeFile()
-///    @see openArchive())
-/// 
-/// </summary>
-public  string openFileForRead(string filename){
-return TorqueScriptTemplate.m_ts.fnZipObject_openFileForRead(_mSimObjectId, filename);
-}
-/// <summary>
-/// @brief Open a file within the zip archive for writing to.
-///    
-///    Be sure to close the file when you are done with it.
-/// 
-///    @param filename The path and name of the file to open within the zip archive.
-/// 
-///    @return A standard StreamObject is returned for working with the file.
-///    @note You must first open the zip archive before working with files within it.
-/// 
-///    @see closeFile()
-///    @see openArchive())
-/// 
-/// </summary>
-public  string openFileForWrite(string filename){
-return TorqueScriptTemplate.m_ts.fnZipObject_openFileForWrite(_mSimObjectId, filename);
-}
-}}
+
+        /// <summary>
+        /// @brief Add a file to the zip archive
+        ///    
+        ///    @param filename The path and name of the file to add to the zip archive.
+        ///    @param pathInZip The path and name to be given to the file within the zip archive.
+        ///    @param replace If a file already exists within the zip archive at the same location as this 
+        ///    new file, this parameter indicates if it should be replaced.  By default, it will be replaced.
+        ///    @return True if the file was successfully added to the zip archive.)
+        /// 
+        /// </summary>
+        public bool addFile(string filename, string pathInZip, bool replace)
+            {
+            return TorqueScriptTemplate.m_ts.fnZipObject_addFile(_mSimObjectId, filename, pathInZip, replace);
+            }
+
+        /// <summary>
+        /// @brief Close an already opened zip archive.
+        ///    @see openArchive())
+        /// 
+        /// </summary>
+        public void closeArchive()
+            {
+            TorqueScriptTemplate.m_ts.fnZipObject_closeArchive(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Close a previously opened file within the zip archive.
+        ///    @param stream The StreamObject of a previously opened file within the zip archive.
+        ///    @see openFileForRead()
+        ///    @see openFileForWrite())
+        /// 
+        /// </summary>
+        public void closeFile(string stream)
+            {
+            TorqueScriptTemplate.m_ts.fnZipObject_closeFile(_mSimObjectId, stream);
+            }
+
+        /// <summary>
+        /// @brief Deleted the given file from the zip archive
+        ///    @param pathInZip The path and name of the file to be deleted from the zip archive.
+        ///    @return True of the file was successfully deleted.
+        /// 
+        ///    @note Files that have been deleted from the archive will still show up with a 
+        ///    getFileEntryCount() until you close the archive.  If you need to have the file 
+        ///    count up to date with only valid files within the archive, you could close and then 
+        ///    open the archive again.
+        /// 
+        ///    @see getFileEntryCount()
+        ///    @see closeArchive()
+        ///    @see openArchive())
+        /// 
+        /// </summary>
+        public bool deleteFile(string pathInZip)
+            {
+            return TorqueScriptTemplate.m_ts.fnZipObject_deleteFile(_mSimObjectId, pathInZip);
+            }
+
+        /// <summary>
+        /// @brief Extact a file from the zip archive and save it to the requested location.
+        ///    @param pathInZip The path and name of the file to be extracted within the zip archive.
+        ///    @param filename The path and name to give the extracted file.
+        ///    @return True if the file was successfully extracted.)
+        /// 
+        /// </summary>
+        public bool extractFile(string pathInZip, string filename)
+            {
+            return TorqueScriptTemplate.m_ts.fnZipObject_extractFile(_mSimObjectId, pathInZip, filename);
+            }
+
+        /// <summary>
+        /// @brief Get information on the requested file within the zip archive.
+        /// 
+        ///    This methods provides five different pieces of information for the requested file:
+        ///    ul>li>filename - The path and name of the file within the zip archive/li>
+        ///    li>uncompressed size/li>
+        ///    li>compressed size/li>
+        ///    li>compression method/li>
+        ///    li>CRC32/li>/ul>
+        /// 
+        ///    Use getFileEntryCount() to obtain the total number of files within the archive.
+        /// 
+        ///    @param index The index of the file within the zip archive.  Use getFileEntryCount() to determine the number of files.
+        ///    @return A tab delimited list of information on the requested file, or an empty string if the file could not be found.
+        /// 
+        ///    @see getFileEntryCount())
+        /// 
+        /// </summary>
+        public string getFileEntry(int index)
+            {
+            return TorqueScriptTemplate.m_ts.fnZipObject_getFileEntry(_mSimObjectId, index);
+            }
+
+        /// <summary>
+        /// @brief Get the number of files within the zip archive.
+        /// 
+        ///    Use getFileEntry() to retrive information on each file within the archive.
+        /// 
+        ///    @return The number of files within the zip archive.
+        /// 
+        ///    @note The returned count will include any files that have been deleted from 
+        ///    the archive using deleteFile().  To clear out all deleted files, you could 
+        ///    close and then open the archive again.
+        /// 
+        ///    @see getFileEntry()
+        ///    @see closeArchive()
+        ///    @see openArchive())
+        /// 
+        /// </summary>
+        public int getFileEntryCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnZipObject_getFileEntryCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// read ),
+        ///    @brief Open a zip archive for manipulation.
+        /// 
+        ///    Once a zip archive is opened use the various ZipObject methods for 
+        ///    working with the files within the archive.  Be sure to close the archive when 
+        ///    you are done with it.
+        /// 
+        ///    @param filename The path and file name of the zip archive to open.
+        ///    @param accessMode One of read, write or readwrite
+        /// 
+        ///    @return True is the archive was successfully opened.
+        ///    
+        ///    @note If you wish to make any changes to the archive, be sure to open it 
+        ///    with a write or readwrite access mode.
+        /// 
+        ///    @see closeArchive())
+        /// 
+        /// </summary>
+        public bool openArchive(string filename, string accessMode)
+            {
+            return TorqueScriptTemplate.m_ts.fnZipObject_openArchive(_mSimObjectId, filename, accessMode);
+            }
+
+        /// <summary>
+        /// @brief Open a file within the zip archive for reading.
+        /// 
+        ///    Be sure to close the file when you are done with it.
+        /// 
+        ///    @param filename The path and name of the file to open within the zip archive.
+        /// 
+        ///    @return A standard StreamObject is returned for working with the file.
+        ///    @note You must first open the zip archive before working with files within it.
+        /// 
+        ///    @see closeFile()
+        ///    @see openArchive())
+        /// 
+        /// </summary>
+        public string openFileForRead(string filename)
+            {
+            return TorqueScriptTemplate.m_ts.fnZipObject_openFileForRead(_mSimObjectId, filename);
+            }
+
+        /// <summary>
+        /// @brief Open a file within the zip archive for writing to.
+        ///    
+        ///    Be sure to close the file when you are done with it.
+        /// 
+        ///    @param filename The path and name of the file to open within the zip archive.
+        /// 
+        ///    @return A standard StreamObject is returned for working with the file.
+        ///    @note You must first open the zip archive before working with files within it.
+        /// 
+        ///    @see closeFile()
+        ///    @see openArchive())
+        /// 
+        /// </summary>
+        public string openFileForWrite(string filename)
+            {
+            return TorqueScriptTemplate.m_ts.fnZipObject_openFileForWrite(_mSimObjectId, filename);
+            }
+        }
+    }

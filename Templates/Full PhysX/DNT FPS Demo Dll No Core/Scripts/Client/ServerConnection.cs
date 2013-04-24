@@ -45,12 +45,13 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
 
 using WinterLeaf.Classes;
+using WinterLeaf.tsObjects;
 
 #endregion
 
@@ -85,9 +86,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             if (!Util.isToolBuild() && console.Call_Classname("Editor", "checkActiveLoadDone").AsBool())
                 return;
-            if (GuiCanvas.getContent("Canvas") == console.Call("PlayGui", "getID").AsInt())
+            if (((coGuiCanvas) "Canvas").getContent() == console.Call("PlayGui", "getID").AsInt())
                 return;
-            GuiCanvas.setContent("Canvas", "PlayGui");
+            ((coGuiCanvas) "Canvas").setContent("PlayGui");
             console.Call("ControlsHelpDlg", "toggle");
             }
 
@@ -105,21 +106,21 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             }
 
         [Torque_Decorations.TorqueCallBack("", "GameConnection", "setLagIcon", "(%this,%state)", 2, 9000, false)]
-        public void GameConnectionsetLagIcon(string thisobj, bool state)
+        public void GameConnectionsetLagIcon(coNetConnection thisobj, bool state)
             {
-            if (NetConnection.getAddress(thisobj) == "local")
+            if (thisobj.getAddress() == "local")
                 return;
 
-            GuiControl.setVisible("LagIcon", state);
+            ((coGuiControl) "LagIcon").setVisible(state);
             }
 
         [Torque_Decorations.TorqueCallBack("", "GameConnection", "onFlash", "(%this,%state)", 2, 9000, false)]
         public void GameConnectiononFlash(string thisobj, string state)
             {
             if (state.AsBool())
-                PostEffect.enable("FlashFx");
+                ((coPostEffect) "FlashFx").enable();
             else
-                PostEffect.disable("FlashFx");
+                ((coPostEffect) "FlashFx").disable();
             }
 
         // Called on the new connection object after connect() succeeds.
@@ -127,7 +128,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void GameConnectiononConnectionAccepted(string thisobj)
             {
             // Called on the new connection object after connect() succeeds.
-            GuiControl.setVisible("LagIcon", false);
+            ((coGuiControl) "LagIcon").setVisible(false);
             // Startup the physics world on the client before any
             // datablocks and objects are ghosted over.
             console.Call("physicsInitWorld", new[] {"client"});
@@ -249,8 +250,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.SetVar("$sceneLighting::terminateLighting", true);
             // Clear misc script stuff
 
-            MessageVector.clear("HudMessageVector");
-            GuiControl.setValue("LagIcon", false.AsString());
+            ((coMessageVector) "HudMessageVector").clear();
+
+            ((coGuiControl) "LagIcon").setValue(false.AsString());
 
 
             PlayerListGuiClear("PlayerListGui");
@@ -262,10 +264,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             clientCmdClearCenterPrint();
 
             if (console.isObject("MainMenuGui"))
-                GuiCanvas.setContent("Canvas", "MainMenuGui");
+                ((coGuiCanvas) "Canvas").setContent("MainMenuGui");
 
             else if (console.isObject("UnifiedMainMenuGui"))
-                GuiCanvas.setContent("Canvas", "UnifiedMainMenuGui");
+                ((coGuiCanvas) "Canvas").setContent("UnifiedMainMenuGui");
 
             console.Call("physicsDestroyWorld", new[] {"client"});
 

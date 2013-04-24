@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -182,11 +182,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         // AggregateControl.setValue( ) propagates the value to any control that has an 
         // internal name.
         [Torque_Decorations.TorqueCallBack("", "AggregateControl", "setValue", "(%this, %val, %child)", 3, 33000, false)]
-        public void AggregateControlsetValue(string thisobj, string val, string child)
+        public void AggregateControlsetValue(coGuiControl thisobj, string val, string child)
             {
-            for (uint i = 0; i < SimSet.getCount(thisobj); i++)
+            for (uint i = 0; i < thisobj.getCount(); i++)
                 {
-                string obj = SimSet.getObject(thisobj, i);
+                string obj = thisobj.getObject(i);
                 if (obj == child)
                     continue;
                 if (console.GetVarString(obj + ".internalName") != "")
@@ -197,11 +197,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         // AggregateControl.getValue() uses the value of the first control that has an
         // internal name, if it has not cached a value via .setValue
         [Torque_Decorations.TorqueCallBack("", "AggregateControl", "getValue", "(%this)", 1, 33000, false)]
-        public string AggregateControlgetValue(string thisobj)
+        public string AggregateControlgetValue(coGuiControl thisobj)
             {
-            for (uint i = 0; i < SimSet.getCount(thisobj); i++)
+            for (uint i = 0; i < thisobj.getCount(); i++)
                 {
-                string obj = SimSet.getObject(thisobj, i);
+                string obj = thisobj.getObject(i);
                 if (console.GetVarString(obj + ".internalName") != "")
                     return console.Call(obj, "getValue");
                 }
@@ -315,16 +315,16 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             }
 
         [Torque_Decorations.TorqueCallBack("", "QuickEditDropDownTextEditCtrl", "updateFromChild", "(%this, %ctrl )", 2, 33000, false)]
-        public void QuickEditDropDownTextEditCtrlupdateFromChild(string thisobj, string ctrl)
+        public void QuickEditDropDownTextEditCtrlupdateFromChild(coGuiControl thisobj, string ctrl)
             {
             switch (console.GetVarString(ctrl + ".internalName"))
                 {
                     case "PopUpMenu":
-                        SimSet.findObjectByInternalName(thisobj, console.Call(ctrl, "getText"), false);
+                        thisobj.findObjectByInternalName(console.Call(ctrl, "getText"), false);
                         break;
                     case "TextEdit":
                         {
-                        string popup = SimSet.findObjectByInternalName(thisobj, "PopupMenu", false);
+                        string popup = thisobj.findObjectByInternalName("PopupMenu", false);
                         console.Call(popup, "changeTextByID", new[] {console.Call(popup, "getSelected"), console.Call(ctrl, "getText")});
                         console.Call(thisobj, "onRenameItem");
                         }

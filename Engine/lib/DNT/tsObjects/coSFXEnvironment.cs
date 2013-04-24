@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,262 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSFXEnvironment))]
-    public class coSFXEnvironment: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoSFXEnvironment))]
+    public class coSFXEnvironment : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSFXEnvironment(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSFXEnvironment(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSFXEnvironment(int simobjectid): base(simobjectid){ }
+        public coSFXEnvironment(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSFXEnvironment(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSFXEnvironment(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Change in level per meter at high frequencies. 
+        /// </summary>
+        public float airAbsorptionHF
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".airAbsorptionHF").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".airAbsorptionHF", value.AsString()); }
+            }
+
+        /// <summary>
+        /// High-frequency to mid-frequency decay time ratio. 
+        /// </summary>
+        public float decayHFRatio
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".decayHFRatio").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".decayHFRatio", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Low-frequency to mid-frequency decay time ratio. 
+        /// </summary>
+        public float decayLFRatio
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".decayLFRatio").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".decayLFRatio", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Reverberation decay time at mid frequencies. 
+        /// </summary>
+        public float decayTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".decayTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".decayTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Value that controls the modal density in the late reverberation decay. 
+        /// </summary>
+        public float density
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Value that controls the echo density in the late reverberation decay. 
+        /// </summary>
+        public float diffusion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".diffusion").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".diffusion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Echo depth. 
+        /// </summary>
+        public float echoDepth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".echoDepth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".echoDepth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Echo time. 
+        /// </summary>
+        public float echoTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".echoTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".echoTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Environment diffusion. 
+        /// </summary>
+        public float envDiffusion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".envDiffusion").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".envDiffusion", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Environment size in meters. 
+        /// </summary>
+        public float envSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".envSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".envSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// A bitfield of reverb flags.\n     @see REVERB_DECAYTIMESCALE\n     @see REVERB_REFLECTIONSSCALE\n     @see REVERB_REFLECTIONSDELAYSCALE\n     @see REVERB_REVERBSCALE\n     @see REVERB_REVERBDELAYSCALE\n     @see REVERB_DECAYHFLIMIT\n     @see REVERB_ECHOTIMESCALE\n     @see REVERB_MODULATIONTIMESCALE\n     @see REVERB_CORE0\n     @see REVERB_CORE1\n     @see REVERB_HIGHQUALITYREVERB\n     @see REVERB_HIGHQUALITYDPL2REVERB\n 
+        /// </summary>
+        public int flags
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flags").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flags", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Reference high frequency in Hertz. 
+        /// </summary>
+        public float HFReference
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".HFReference").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".HFReference", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Reference low frequency in Hertz. 
+        /// </summary>
+        public float LFReference
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".LFReference").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".LFReference", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Modulation depth. 
+        /// </summary>
+        public float modulationDepth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".modulationDepth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".modulationDepth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Modulation time. 
+        /// </summary>
+        public float modulationTime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".modulationTime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".modulationTime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Early reflections level relative to room effect. 
+        /// </summary>
+        public int reflections
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflections").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflections", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Initial reflection delay time. 
+        /// </summary>
+        public float reflectionsDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectionsDelay").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectionsDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Early reflections panning vector. 
+        /// </summary>
+        public float reflectionsPan
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectionsPan").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectionsPan", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Late reverberation level relative to room effect. 
+        /// </summary>
+        public int reverb
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverb").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverb", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Late reverberation delay time relative to initial reflection. 
+        /// </summary>
+        public float reverbDelay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbDelay").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbDelay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Late reverberation panning vector. 
+        /// </summary>
+        public float reverbPan
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reverbPan").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reverbPan", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Room effect level at mid-frequencies. 
+        /// </summary>
+        public int room
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".room").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".room", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Relative room effect level at high frequencies. 
+        /// </summary>
+        public int roomHF
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".roomHF").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".roomHF", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Relative room effect level at low frequencies. 
+        /// </summary>
+        public int roomLF
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".roomLF").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".roomLF", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Logarithmic distance attenuation rolloff scale factor for reverb room size effect. 
+        /// </summary>
+        public float roomRolloffFactor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".roomRolloffFactor").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".roomRolloffFactor", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +360,9 @@ public coSFXEnvironment(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +370,17 @@ public coSFXEnvironment(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +392,15 @@ public coSFXEnvironment(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSFXEnvironment ts)
+        public static implicit operator string(coSFXEnvironment ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +420,7 @@ public coSFXEnvironment(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSFXEnvironment ts)
+        public static implicit operator int(coSFXEnvironment ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +441,7 @@ public coSFXEnvironment(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSFXEnvironment ts)
+        public static implicit operator uint(coSFXEnvironment ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,279 +456,5 @@ public coSFXEnvironment(int simobjectid): base(simobjectid){ }
             {
             return new coSFXEnvironment(ts);
             }
-public float airAbsorptionHF
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".airAbsorptionHF").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".airAbsorptionHF", value.AsString());
-          }
-       }
-public float decayHFRatio
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".decayHFRatio").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".decayHFRatio", value.AsString());
-          }
-       }
-public float decayLFRatio
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".decayLFRatio").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".decayLFRatio", value.AsString());
-          }
-       }
-public float decayTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".decayTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".decayTime", value.AsString());
-          }
-       }
-public float density
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString());
-          }
-       }
-public float diffusion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".diffusion").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".diffusion", value.AsString());
-          }
-       }
-public float echoDepth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".echoDepth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".echoDepth", value.AsString());
-          }
-       }
-public float echoTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".echoTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".echoTime", value.AsString());
-          }
-       }
-public float envDiffusion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".envDiffusion").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".envDiffusion", value.AsString());
-          }
-       }
-public float envSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".envSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".envSize", value.AsString());
-          }
-       }
-public int flags
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flags").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flags", value.AsString());
-          }
-       }
-public float HFReference
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".HFReference").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".HFReference", value.AsString());
-          }
-       }
-public float LFReference
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".LFReference").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".LFReference", value.AsString());
-          }
-       }
-public float modulationDepth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".modulationDepth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".modulationDepth", value.AsString());
-          }
-       }
-public float modulationTime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".modulationTime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".modulationTime", value.AsString());
-          }
-       }
-public int reflections
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflections").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflections", value.AsString());
-          }
-       }
-public float reflectionsDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectionsDelay").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectionsDelay", value.AsString());
-          }
-       }
-public float reflectionsPan
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectionsPan").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectionsPan", value.AsString());
-          }
-       }
-public int reverb
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverb").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverb", value.AsString());
-          }
-       }
-public float reverbDelay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbDelay").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbDelay", value.AsString());
-          }
-       }
-public float reverbPan
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reverbPan").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reverbPan", value.AsString());
-          }
-       }
-public int room
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".room").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".room", value.AsString());
-          }
-       }
-public int roomHF
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".roomHF").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".roomHF", value.AsString());
-          }
-       }
-public int roomLF
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".roomLF").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".roomLF", value.AsString());
-          }
-       }
-public float roomRolloffFactor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".roomRolloffFactor").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".roomRolloffFactor", value.AsString());
-          }
-       }
-}}
+        }
+    }

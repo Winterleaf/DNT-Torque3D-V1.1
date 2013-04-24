@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,45 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTurretShape))]
-    public class coTurretShape: coItem
-{
+    [TypeConverter(typeof (tsObjectConvertercoTurretShape))]
+    public class coTurretShape : coItem
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTurretShape(string simobjectid) : base(simobjectid){ }
+        public coTurretShape(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTurretShape(uint simobjectid): base(simobjectid){ }
+        public coTurretShape(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coTurretShape(int simobjectid): base(simobjectid){ }
+        public coTurretShape(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Respawn the turret after it has been destroyed.\n\n   If true, the turret will respawn after it is destroyed.\n
+        /// </summary>
+        public bool respawn
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".respawn").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".respawn", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +145,9 @@ public coTurretShape(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +155,17 @@ public coTurretShape(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +177,15 @@ public coTurretShape(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTurretShape ts)
+        public static implicit operator string(coTurretShape ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +205,7 @@ public coTurretShape(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTurretShape ts)
+        public static implicit operator int(coTurretShape ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +226,7 @@ public coTurretShape(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTurretShape ts)
+        public static implicit operator uint(coTurretShape ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,87 +241,93 @@ public coTurretShape(int simobjectid): base(simobjectid){ }
             {
             return new coTurretShape(ts);
             }
-public bool respawn
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".respawn").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".respawn", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Does the turret respawn after it has been destroyed.
-///    @returns True if the turret respawns.)
-/// 
-/// </summary>
-public  bool doRespawn(){
-return TorqueScriptTemplate.m_ts.fnTurretShape_doRespawn(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get if the turret is allowed to fire through moves.
-///    @return True if the turret is allowed to fire through moves. )
-/// 
-/// </summary>
-public  bool getAllowManualFire(){
-return TorqueScriptTemplate.m_ts.fnTurretShape_getAllowManualFire(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get if the turret is allowed to rotate through moves.
-///    @return True if the turret is allowed to rotate through moves. )
-/// 
-/// </summary>
-public  bool getAllowManualRotation(){
-return TorqueScriptTemplate.m_ts.fnTurretShape_getAllowManualRotation(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get the name of the turret's current state.
-/// 
-///    The state is one of the following:ul>
-///    li>Dead - The TurretShape is destroyed./li>
-///    li>Mounted - The TurretShape is mounted to an object such as a vehicle./li>
-///    li>Ready - The TurretShape is free to move.  The usual state./li>/ul>
-/// 
-///    @return The current state; one of: \"Dead\", \"Mounted\", \"Ready\" )
-/// 
-/// </summary>
-public  string getState(){
-return TorqueScriptTemplate.m_ts.fnTurretShape_getState(_mSimObjectId);
-}
-/// <summary>
-/// @brief Get Euler rotation of this turret's heading and pitch nodes.
-///    @return the orientation of the turret's heading and pitch nodes in the 
-///    form of rotations around the X, Y and Z axes in degrees. )
-/// 
-/// </summary>
-public  Point3F getTurretEulerRotation(){
-return new Point3F ( TorqueScriptTemplate.m_ts.fnTurretShape_getTurretEulerRotation(_mSimObjectId));
-}
-/// <summary>
-/// @brief Set if the turret is allowed to fire through moves.
-///    @param allow If true then the turret may be fired through moves.)
-/// 
-/// </summary>
-public  void setAllowManualFire(bool allow){
-TorqueScriptTemplate.m_ts.fnTurretShape_setAllowManualFire(_mSimObjectId, allow);
-}
-/// <summary>
-/// @brief Set if the turret is allowed to rotate through moves.
-///    @param allow If true then the turret may be rotated through moves.)
-/// 
-/// </summary>
-public  void setAllowManualRotation(bool allow){
-TorqueScriptTemplate.m_ts.fnTurretShape_setAllowManualRotation(_mSimObjectId, allow);
-}
-/// <summary>
-/// @brief Set Euler rotation of this turret's heading and pitch nodes in degrees.
-///    @param rot The rotation in degrees.  The pitch is the X component and the 
-///    heading is the Z component.  The Y component is ignored.)
-/// 
-/// </summary>
-public  void setTurretEulerRotation(Point3F rot){
-TorqueScriptTemplate.m_ts.fnTurretShape_setTurretEulerRotation(_mSimObjectId, rot.AsString());
-}
-}}
+
+        /// <summary>
+        /// @brief Does the turret respawn after it has been destroyed.
+        ///    @returns True if the turret respawns.)
+        /// 
+        /// </summary>
+        public bool doRespawn()
+            {
+            return TorqueScriptTemplate.m_ts.fnTurretShape_doRespawn(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get if the turret is allowed to fire through moves.
+        ///    @return True if the turret is allowed to fire through moves. )
+        /// 
+        /// </summary>
+        public bool getAllowManualFire()
+            {
+            return TorqueScriptTemplate.m_ts.fnTurretShape_getAllowManualFire(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get if the turret is allowed to rotate through moves.
+        ///    @return True if the turret is allowed to rotate through moves. )
+        /// 
+        /// </summary>
+        public bool getAllowManualRotation()
+            {
+            return TorqueScriptTemplate.m_ts.fnTurretShape_getAllowManualRotation(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get the name of the turret's current state.
+        /// 
+        ///    The state is one of the following:ul>
+        ///    li>Dead - The TurretShape is destroyed./li>
+        ///    li>Mounted - The TurretShape is mounted to an object such as a vehicle./li>
+        ///    li>Ready - The TurretShape is free to move.  The usual state./li>/ul>
+        /// 
+        ///    @return The current state; one of: \"Dead\", \"Mounted\", \"Ready\" )
+        /// 
+        /// </summary>
+        public string getState()
+            {
+            return TorqueScriptTemplate.m_ts.fnTurretShape_getState(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// @brief Get Euler rotation of this turret's heading and pitch nodes.
+        ///    @return the orientation of the turret's heading and pitch nodes in the 
+        ///    form of rotations around the X, Y and Z axes in degrees. )
+        /// 
+        /// </summary>
+        public Point3F getTurretEulerRotation()
+            {
+            return new Point3F(TorqueScriptTemplate.m_ts.fnTurretShape_getTurretEulerRotation(_mSimObjectId));
+            }
+
+        /// <summary>
+        /// @brief Set if the turret is allowed to fire through moves.
+        ///    @param allow If true then the turret may be fired through moves.)
+        /// 
+        /// </summary>
+        public void setAllowManualFire(bool allow)
+            {
+            TorqueScriptTemplate.m_ts.fnTurretShape_setAllowManualFire(_mSimObjectId, allow);
+            }
+
+        /// <summary>
+        /// @brief Set if the turret is allowed to rotate through moves.
+        ///    @param allow If true then the turret may be rotated through moves.)
+        /// 
+        /// </summary>
+        public void setAllowManualRotation(bool allow)
+            {
+            TorqueScriptTemplate.m_ts.fnTurretShape_setAllowManualRotation(_mSimObjectId, allow);
+            }
+
+        /// <summary>
+        /// @brief Set Euler rotation of this turret's heading and pitch nodes in degrees.
+        ///    @param rot The rotation in degrees.  The pitch is the X component and the 
+        ///    heading is the Z component.  The Y component is ignored.)
+        /// 
+        /// </summary>
+        public void setTurretEulerRotation(Point3F rot)
+            {
+            TorqueScriptTemplate.m_ts.fnTurretShape_setTurretEulerRotation(_mSimObjectId, rot.AsString());
+            }
+        }
+    }

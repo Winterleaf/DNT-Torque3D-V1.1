@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -122,7 +122,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (obj["isTeleporting"].AsBool())
                 return;
             // Get the location of our target position
-            coSceneObject exit = entrance["exit"];
+            coTrigger exit = entrance["exit"];
 
             bool valid = TeleporterTriggerVerifyObject(thisobj, obj, entrance, exit);
             if (!valid)
@@ -173,7 +173,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // Tell the client to play the 2D sound for the player that teleported.
             if (((coSimObject) thisobj["teleportSound"]).isObject() && ((coGameConnection) obj["client"]).isObject())
                 {
-                GameConnection.play2D(obj, thisobj["teleportSound"]);
+                ((coGameConnection) obj["client"]).play2D(thisobj["teleportSound"]);
+                //GameConnection.play2D(obj, thisobj["teleportSound"]);
                 }
             }
 
@@ -225,7 +226,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             }
 
         [Torque_Decorations.TorqueCallBack("", "TeleporterTrigger", "teleFrag", "(%this, %player, %exit)", 3, 1800, false)]
-        public void TeleporterTriggerTeleFrag(coSimDataBlock thisobj, coPlayer player, coSceneObject exit)
+        public void TeleporterTriggerTeleFrag(coSimDataBlock thisobj, coPlayer player, coTrigger exit)
             {
             // When a telefrag happens, there are two cases we have to consider.
             // The first case occurs when the player's bounding box is much larger than the exit location, 
@@ -262,7 +263,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // same trigger). For this case we check all objects contained within the trigger
             // and telefrag all players.
 
-            int objectsInExit = Trigger.getNumObjects(exit);
+            int objectsInExit = exit.getNumObjects();
             // Loop through all objects in the teleporter exit
             // And kill any players
             for (int i = 0; i < objectsInExit; i++)
@@ -275,7 +276,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 if (objectInTeleporter == player)
                     continue;
 
-                ShapeBaseDamage(objectInTeleporter, player, SceneObject.getTransform(exit).MPosition, 10000, "Telefrag");
+                ShapeBaseDamage(objectInTeleporter, player, exit.getTransform().MPosition, 10000, "Telefrag");
                 }
             }
 

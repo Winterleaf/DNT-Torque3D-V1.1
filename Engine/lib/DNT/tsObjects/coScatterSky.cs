@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,244 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoScatterSky))]
-    public class coScatterSky: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoScatterSky))]
+    public class coScatterSky : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coScatterSky(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coScatterSky(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coScatterSky(int simobjectid): base(simobjectid){ }
+        public coScatterSky(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coScatterSky(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coScatterSky(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Modulates the ambient color of sunlight. 
+        /// </summary>
+        public ColorF ambientScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambientScale").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ambientScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The horizontal angle of the sun measured clockwise from the positive Y world axis. This field is networked. 
+        /// </summary>
+        public float azimuth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".azimuth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".azimuth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The brightness of the ScatterSky's light object. 
+        /// </summary>
+        public float brightness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brightness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brightness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables/disables shadows cast by objects due to ScatterSky light. 
+        /// </summary>
+        public bool castShadows
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The elevation angle of the sun above or below the horizon. This field is networked. 
+        /// </summary>
+        public float elevation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elevation").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elevation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls the contrast of the sky and sun during daytime. 
+        /// </summary>
+        public float exposure
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".exposure").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".exposure", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Changes the size and intensity of the flare. 
+        /// </summary>
+        public float flareScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flareScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flareScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Datablock for the flare produced by the ScatterSky. 
+        /// </summary>
+        public coLightFlareData flareType
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flareType"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flareType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Modulates the fog color. Note that this overrides the LevelInfo.fogColor      property, so you should not use LevelInfo.fogColor if the level contains      a ScatterSky object. 
+        /// </summary>
+        public ColorF fogScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fogScale").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fogScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Affects the size and intensity of light scattering around the sun. 
+        /// </summary>
+        public float mieScattering
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mieScattering").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mieScattering", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The horizontal angle of the moon measured clockwise from the positive Y world axis. This is not animated by time or networked. 
+        /// </summary>
+        public float moonAzimuth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".moonAzimuth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".moonAzimuth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The elevation angle of the moon above or below the horizon. This is not animated by time or networked. 
+        /// </summary>
+        public float moonElevation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".moonElevation").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".moonElevation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enable or disable rendering of the moon sprite during night. 
+        /// </summary>
+        public bool moonEnabled
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".moonEnabled").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".moonEnabled", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color of light cast by the directional light during night. 
+        /// </summary>
+        public ColorF moonLightColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".moonLightColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".moonLightColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Material for the moon sprite. 
+        /// </summary>
+        public String moonMat
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".moonMat").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".moonMat", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls size the moon sprite renders, specified as a fractional amount of the screen height. 
+        /// </summary>
+        public float moonScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".moonScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".moonScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The ambient color during night. Also used for the sky color if useNightCubemap is false. 
+        /// </summary>
+        public ColorF nightColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".nightColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".nightColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Cubemap visible during night. 
+        /// </summary>
+        public String nightCubemap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".nightCubemap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".nightCubemap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The fog color during night. 
+        /// </summary>
+        public ColorF nightFogColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".nightFogColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".nightFogColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls how blue the atmosphere is during the day. 
+        /// </summary>
+        public float rayleighScattering
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rayleighScattering").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rayleighScattering", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Global brightness and intensity applied to the sky and objects in the level. 
+        /// </summary>
+        public float skyBrightness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".skyBrightness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".skyBrightness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Modulates the directional color of sunlight. 
+        /// </summary>
+        public ColorF sunScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".sunScale").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".sunScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Transition to the nightCubemap during night. If false we use nightColor. 
+        /// </summary>
+        public bool useNightCubemap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useNightCubemap").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useNightCubemap", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +343,9 @@ public coScatterSky(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +353,17 @@ public coScatterSky(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +375,15 @@ public coScatterSky(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coScatterSky ts)
+        public static implicit operator string(coScatterSky ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +403,7 @@ public coScatterSky(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coScatterSky ts)
+        public static implicit operator int(coScatterSky ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +424,7 @@ public coScatterSky(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coScatterSky ts)
+        public static implicit operator uint(coScatterSky ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,265 +439,15 @@ public coScatterSky(int simobjectid): base(simobjectid){ }
             {
             return new coScatterSky(ts);
             }
-public ColorF ambientScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ambientScale").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ambientScale", value.AsString());
-          }
-       }
-public float azimuth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".azimuth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".azimuth", value.AsString());
-          }
-       }
-public float brightness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brightness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brightness", value.AsString());
-          }
-       }
-public bool castShadows
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString());
-          }
-       }
-public float elevation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elevation").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elevation", value.AsString());
-          }
-       }
-public float exposure
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".exposure").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".exposure", value.AsString());
-          }
-       }
-public float flareScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flareScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flareScale", value.AsString());
-          }
-       }
-public coLightFlareData flareType
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flareType");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flareType", value.ToString());
-          }
-       }
-public ColorF fogScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fogScale").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fogScale", value.AsString());
-          }
-       }
-public float mieScattering
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mieScattering").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mieScattering", value.AsString());
-          }
-       }
-public float moonAzimuth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".moonAzimuth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".moonAzimuth", value.AsString());
-          }
-       }
-public float moonElevation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".moonElevation").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".moonElevation", value.AsString());
-          }
-       }
-public bool moonEnabled
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".moonEnabled").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".moonEnabled", value.AsString());
-          }
-       }
-public ColorF moonLightColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".moonLightColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".moonLightColor", value.AsString());
-          }
-       }
-public String moonMat
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".moonMat").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".moonMat", value.AsString());
-          }
-       }
-public float moonScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".moonScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".moonScale", value.AsString());
-          }
-       }
-public ColorF nightColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".nightColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".nightColor", value.AsString());
-          }
-       }
-public String nightCubemap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".nightCubemap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".nightCubemap", value.AsString());
-          }
-       }
-public ColorF nightFogColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".nightFogColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".nightFogColor", value.AsString());
-          }
-       }
-public float rayleighScattering
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rayleighScattering").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rayleighScattering", value.AsString());
-          }
-       }
-public float skyBrightness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".skyBrightness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".skyBrightness", value.AsString());
-          }
-       }
-public ColorF sunScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".sunScale").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".sunScale", value.AsString());
-          }
-       }
-public bool useNightCubemap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useNightCubemap").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useNightCubemap", value.AsString());
-          }
-       }
-/// <summary>
-/// Apply a full network update of all fields to all clients.                   
-///                   )
-/// 
-/// </summary>
-public  void applyChanges(){
-TorqueScriptTemplate.m_ts.fnScatterSky_applyChanges(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Apply a full network update of all fields to all clients.                   
+        ///                   )
+        /// 
+        /// </summary>
+        public void applyChanges()
+            {
+            TorqueScriptTemplate.m_ts.fnScatterSky_applyChanges(_mSimObjectId);
+            }
+        }
+    }

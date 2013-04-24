@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,72 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoWheeledVehicleSpring))]
-    public class coWheeledVehicleSpring: coSimDataBlock
-{
+    [TypeConverter(typeof (tsObjectConvertercoWheeledVehicleSpring))]
+    public class coWheeledVehicleSpring : coSimDataBlock
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicleSpring(string simobjectid) : base(simobjectid){ }
+        public coWheeledVehicleSpring(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicleSpring(uint simobjectid): base(simobjectid){ }
+        public coWheeledVehicleSpring(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicleSpring(int simobjectid): base(simobjectid){ }
+        public coWheeledVehicleSpring(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Force applied to equalize extension of the spring on the opposite    wheel.\n\n   This force helps to keep the suspension balanced when opposite wheels    are at different heights. 
+        /// </summary>
+        public float antiSwayForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".antiSwayForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".antiSwayForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Force applied to slow changes to the extension of this spring.\n\n   Increasing this makes the suspension stiffer which can help stabilise    bouncy vehicles. 
+        /// </summary>
+        public float damping
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damping").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damping", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum spring force (when compressed to minimum length, 0).\n\n   Increasing this will make the vehicle suspension ride higher (for a given    vehicle mass), and also make the vehicle more bouncy when landing jumps. 
+        /// </summary>
+        public float force
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".force").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".force", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum spring length. ie. how far the wheel can extend from the    root hub position.\n\n   This should be set to the vertical (Z) distance the hub travels in the    associated spring animation. 
+        /// </summary>
+        public float length
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".length").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".length", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +171,9 @@ public coWheeledVehicleSpring(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +181,17 @@ public coWheeledVehicleSpring(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +203,15 @@ public coWheeledVehicleSpring(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coWheeledVehicleSpring ts)
+        public static implicit operator string(coWheeledVehicleSpring ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +231,7 @@ public coWheeledVehicleSpring(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coWheeledVehicleSpring ts)
+        public static implicit operator int(coWheeledVehicleSpring ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +252,7 @@ public coWheeledVehicleSpring(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coWheeledVehicleSpring ts)
+        public static implicit operator uint(coWheeledVehicleSpring ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,48 +267,5 @@ public coWheeledVehicleSpring(int simobjectid): base(simobjectid){ }
             {
             return new coWheeledVehicleSpring(ts);
             }
-public float antiSwayForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".antiSwayForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".antiSwayForce", value.AsString());
-          }
-       }
-public float damping
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damping").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damping", value.AsString());
-          }
-       }
-public float force
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".force").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".force", value.AsString());
-          }
-       }
-public float length
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".length").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".length", value.AsString());
-          }
-       }
-}}
+        }
+    }

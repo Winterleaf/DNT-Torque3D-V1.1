@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +93,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoPhysicsForce))]
-    public class coPhysicsForce: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoPhysicsForce))]
+    public class coPhysicsForce : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicsForce(string simobjectid) : base(simobjectid){ }
+        public coPhysicsForce(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicsForce(uint simobjectid): base(simobjectid){ }
+        public coPhysicsForce(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coPhysicsForce(int simobjectid): base(simobjectid){ }
+        public coPhysicsForce(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +136,9 @@ public coPhysicsForce(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +146,17 @@ public coPhysicsForce(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +168,15 @@ public coPhysicsForce(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coPhysicsForce ts)
+        public static implicit operator string(coPhysicsForce ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +196,7 @@ public coPhysicsForce(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coPhysicsForce ts)
+        public static implicit operator int(coPhysicsForce ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +217,7 @@ public coPhysicsForce(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coPhysicsForce ts)
+        public static implicit operator uint(coPhysicsForce ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,35 +232,42 @@ public coPhysicsForce(int simobjectid): base(simobjectid){ }
             {
             return new coPhysicsForce(ts);
             }
-/// <summary>
-/// @brief Attempts to associate the PhysicsForce with a PhysicsBody.
-///    Performs a physics ray cast of the provided length and direction. The %PhysicsForce  
-///    will attach itself to the first dynamic PhysicsBody the ray collides with. 
-///    On every tick, the attached body will be attracted towards the position of the %PhysicsForce.
-///    A %PhysicsForce can only be attached to one body at a time.
-///    @note To determine if an %attach was successful, check isAttached() immediately after 
-///    calling this function.n)
-/// 
-/// </summary>
-public  void attach(Point3F start, Point3F direction, float maxDist){
-TorqueScriptTemplate.m_ts.fnPhysicsForce_attach(_mSimObjectId, start.AsString(), direction.AsString(), maxDist);
-}
-/// <summary>
-/// @brief Disassociates the PhysicsForce from any attached PhysicsBody.
-///    @param force Optional force to apply to the attached PhysicsBody 
-///    before detaching.
-///    @note Has no effect if the %PhysicsForce is not attached to anything.)
-/// 
-/// </summary>
-public  void detach(Point3F force){
-TorqueScriptTemplate.m_ts.fnPhysicsForce_detach(_mSimObjectId, force.AsString());
-}
-/// <summary>
-/// @brief Returns true if the %PhysicsForce is currently attached to an object.
-///    @see PhysicsForce::attach())
-/// 
-/// </summary>
-public  bool isAttached(){
-return TorqueScriptTemplate.m_ts.fnPhysicsForce_isAttached(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// @brief Attempts to associate the PhysicsForce with a PhysicsBody.
+        ///    Performs a physics ray cast of the provided length and direction. The %PhysicsForce  
+        ///    will attach itself to the first dynamic PhysicsBody the ray collides with. 
+        ///    On every tick, the attached body will be attracted towards the position of the %PhysicsForce.
+        ///    A %PhysicsForce can only be attached to one body at a time.
+        ///    @note To determine if an %attach was successful, check isAttached() immediately after 
+        ///    calling this function.n)
+        /// 
+        /// </summary>
+        public void attach(Point3F start, Point3F direction, float maxDist)
+            {
+            TorqueScriptTemplate.m_ts.fnPhysicsForce_attach(_mSimObjectId, start.AsString(), direction.AsString(), maxDist);
+            }
+
+        /// <summary>
+        /// @brief Disassociates the PhysicsForce from any attached PhysicsBody.
+        ///    @param force Optional force to apply to the attached PhysicsBody 
+        ///    before detaching.
+        ///    @note Has no effect if the %PhysicsForce is not attached to anything.)
+        /// 
+        /// </summary>
+        public void detach(Point3F force)
+            {
+            TorqueScriptTemplate.m_ts.fnPhysicsForce_detach(_mSimObjectId, force.AsString());
+            }
+
+        /// <summary>
+        /// @brief Returns true if the %PhysicsForce is currently attached to an object.
+        ///    @see PhysicsForce::attach())
+        /// 
+        /// </summary>
+        public bool isAttached()
+            {
+            return TorqueScriptTemplate.m_ts.fnPhysicsForce_isAttached(_mSimObjectId);
+            }
+        }
+    }

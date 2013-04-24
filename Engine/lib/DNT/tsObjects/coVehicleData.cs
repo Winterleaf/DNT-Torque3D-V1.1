@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,433 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoVehicleData))]
-    public class coVehicleData: coShapeBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoVehicleData))]
+    public class coVehicleData : coShapeBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coVehicleData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coVehicleData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coVehicleData(int simobjectid): base(simobjectid){ }
+        public coVehicleData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coVehicleData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coVehicleData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Collision friction coefficient.\nHow well this object will slide against    objects it collides with. 
+        /// </summary>
+        public float bodyFriction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bodyFriction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bodyFriction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Collision 'bounciness'.\nNormally in the range 0 (not bouncy at all) to    1 (100% bounciness). 
+        /// </summary>
+        public float bodyRestitution
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bodyRestitution").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bodyRestitution", value.AsString()); }
+            }
+
+        /// <summary>
+        /// How quickly the camera moves back towards the vehicle when stopped.\n\n   @see cameraLag. 
+        /// </summary>
+        public float cameraDecay
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraDecay").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraDecay", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief How much the camera lags behind the vehicle depending on vehicle speed.\n\n   Increasing this value will make the camera fall further behind the vehicle    as it accelerates away.\n\n@see cameraDecay. 
+        /// </summary>
+        public float cameraLag
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraLag").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraLag", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Vertical (Z axis) height of the camera above the vehicle. 
+        /// </summary>
+        public float cameraOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the camera will roll with the vehicle. If false, the camera will    always have the positive Z axis as up. 
+        /// </summary>
+        public bool cameraRoll
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraRoll").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraRoll", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Damage to this vehicle after a collision (multiplied by collision    velocity).\n\nCurrently unused. 
+        /// </summary>
+        public float collDamageMultiplier
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".collDamageMultiplier").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".collDamageMultiplier", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum collision velocity to cause damage to this vehicle.\nCurrently unused. 
+        /// </summary>
+        public float collDamageThresholdVel
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".collDamageThresholdVel").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".collDamageThresholdVel", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum distance between objects for them to be considered as colliding. 
+        /// </summary>
+        public float collisionTol
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".collisionTol").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".collisionTol", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum relative velocity between objects for collisions to be resolved    as contacts.\nVelocities greater than this are handled as collisions. 
+        /// </summary>
+        public float contactTol
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".contactTol").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".contactTol", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Array of particle emitters used to generate damage (dust, smoke etc)    effects.\n\n   Currently, the first two emitters (indices 0 and 1) are used when the damage    level exceeds the associated damageLevelTolerance. The 3rd emitter is used    when the emitter point is underwater.\n\n   @see damageEmitterOffset 
+        /// </summary>
+        public coParticleEmitterData damageEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damageEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Object space \x y z\ offsets used to emit particles for the    active damageEmitter.\n\n   @tsexample\n   // damage levels\n   damageLevelTolerance[0] = 0.5;\n   damageEmitter[0] = SmokeEmitter;\n   // emit offsets (used for all active damage level emitters)\n   damageEmitterOffset[0] = \0.5 3 1\;\n   damageEmitterOffset[1] = \-0.5 3 1\;\n   numDmgEmitterAreas = 2;\n   @endtsexample\n 
+        /// </summary>
+        public Point3F damageEmitterOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageEmitterOffset").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damageEmitterOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Damage levels (as a percentage of maxDamage) above which to begin    emitting particles from the associated damageEmitter.\n\n   Levels should be in order of increasing damage.\n\n   @see damageEmitterOffset 
+        /// </summary>
+        public float damageLevelTolerance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageLevelTolerance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".damageLevelTolerance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Dust particle emitter.\n\n@see triggerDustHeight\n\n@see dustHeight
+        /// </summary>
+        public coParticleEmitterData dustEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dustEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dustEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Height above ground at which to emit particles from the dustEmitter. 
+        /// </summary>
+        public float dustHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dustHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dustHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Sound to play when exiting the water. 
+        /// </summary>
+        public coSFXProfile exitingWater
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".exitingWater"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".exitingWater", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Minimum velocity when leaving the water for the exitingWater sound to play. 
+        /// </summary>
+        public float exitSplashSoundVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".exitSplashSoundVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".exitSplashSoundVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play on a 'hard' impact.\n\n   This sound is played if the impact speed = hardImpactSpeed.\n\n   @see hardImpactSpeed 
+        /// </summary>
+        public coSFXProfile hardImpactSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hardImpactSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hardImpactSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Minimum collision speed for the hardImpactSound to be played. 
+        /// </summary>
+        public float hardImpactSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hardImpactSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hardImpactSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum velocity when entering the water for the imapactWaterHard sound    to play.\n\n@see impactWaterHard 
+        /// </summary>
+        public float hardSplashSoundVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".hardSplashSoundVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hardSplashSoundVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Sound to play when entering the water with speed = softSplashSoundVelocity    and  mediumSplashSoundVelocity. 
+        /// </summary>
+        public coSFXProfile impactWaterEasy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterEasy"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactWaterEasy", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Sound to play when entering the water with speed = hardSplashSoundVelocity. 
+        /// </summary>
+        public coSFXProfile impactWaterHard
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterHard"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactWaterHard", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Sound to play when entering the water with speed = mediumSplashSoundVelocity    and  hardSplashSoundVelocity. 
+        /// </summary>
+        public coSFXProfile impactWaterMedium
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterMedium"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".impactWaterMedium", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Number of integration steps per tick.\nIncrease this to improve simulation    stability (also increases simulation processing time). 
+        /// </summary>
+        public int integration
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".integration").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".integration", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Energy amount to drain for each tick the vehicle is jetting.\n\n   Once the vehicle's energy level reaches 0, it will no longer be able to jet. 
+        /// </summary>
+        public float jetEnergyDrain
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetEnergyDrain").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetEnergyDrain", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Additional force applied to the vehicle when it is jetting.\n\n   For WheeledVehicles, the force is applied in the forward direction. For    FlyingVehicles, the force is applied in the thrust direction. 
+        /// </summary>
+        public float jetForce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetForce").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetForce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Define the box used to estimate the vehicle's moment of inertia.\n\n   Currently only used by WheeledVehicle; other vehicle types use a    unit sphere to compute inertia. 
+        /// </summary>
+        public Point3F massBox
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".massBox").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".massBox", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Defines the vehicle's center of mass (offset from the origin of the model). 
+        /// </summary>
+        public Point3F massCenter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".massCenter").AsPoint3F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".massCenter", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum drag coefficient.\nCurrently unused. 
+        /// </summary>
+        public float maxDrag
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxDrag").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxDrag", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Maximum yaw (horizontal) and pitch (vertical) steering angle in radians. 
+        /// </summary>
+        public float maxSteeringAngle
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxSteeringAngle").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxSteeringAngle", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum velocity when entering the water for the imapactWaterMedium sound    to play.\n\n@see impactWaterMedium 
+        /// </summary>
+        public float mediumSplashSoundVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".mediumSplashSoundVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".mediumSplashSoundVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum drag coefficient.\nCurrently only used by FlyingVehicle. 
+        /// </summary>
+        public float minDrag
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minDrag").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minDrag", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum collision speed for the onImpact callback to be invoked. 
+        /// </summary>
+        public float minImpactSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minImpactSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minImpactSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum vehicle energy level to begin jetting. 
+        /// </summary>
+        public float minJetEnergy
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minJetEnergy").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minJetEnergy", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Unused 
+        /// </summary>
+        public float minRollSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minRollSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minRollSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Number of damageEmitterOffset values to use for each damageEmitter.\n\n   @see damageEmitterOffset 
+        /// </summary>
+        public float numDmgEmitterAreas
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".numDmgEmitterAreas").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".numDmgEmitterAreas", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Sound to play on a 'soft' impact.\n\n   This sound is played if the impact speed is  hardImpactSpeed and =    softImpactSpeed.\n\n   @see softImpactSpeed 
+        /// </summary>
+        public coSFXProfile softImpactSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".softImpactSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".softImpactSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Minimum collision speed for the softImpactSound to be played. 
+        /// </summary>
+        public float softImpactSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".softImpactSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".softImpactSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum velocity when entering the water for the imapactWaterEasy sound    to play.\n\n@see impactWaterEasy 
+        /// </summary>
+        public float softSplashSoundVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".softSplashSoundVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".softSplashSoundVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Array of particle emitters used to generate splash effects. 
+        /// </summary>
+        public coParticleEmitterData splashEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Number of splash particles to generate based on vehicle speed.\n\n   This value is multiplied by the current speed to determine how many    particles to generate each frame. 
+        /// </summary>
+        public float splashFreqMod
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashFreqMod").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashFreqMod", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Minimum speed when moving through water to generate splash particles. 
+        /// </summary>
+        public float splashVelEpsilon
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".splashVelEpsilon").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".splashVelEpsilon", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum height above surface to emit dust particles.\n\n   If the vehicle is less than triggerDustHeight above a static surface    with a material that has 'showDust' set to true, the vehicle will emit    particles from the dustEmitter. 
+        /// </summary>
+        public float triggerDustHeight
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".triggerDustHeight").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".triggerDustHeight", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Looping sound to play while moving through the water. 
+        /// </summary>
+        public coSFXProfile waterWakeSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waterWakeSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waterWakeSound", value.ToString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +532,9 @@ public coVehicleData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +542,17 @@ public coVehicleData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +564,15 @@ public coVehicleData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coVehicleData ts)
+        public static implicit operator string(coVehicleData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +592,7 @@ public coVehicleData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coVehicleData ts)
+        public static implicit operator int(coVehicleData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +613,7 @@ public coVehicleData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coVehicleData ts)
+        public static implicit operator uint(coVehicleData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,488 +628,5 @@ public coVehicleData(int simobjectid): base(simobjectid){ }
             {
             return new coVehicleData(ts);
             }
-public float bodyFriction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bodyFriction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bodyFriction", value.AsString());
-          }
-       }
-public float bodyRestitution
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bodyRestitution").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bodyRestitution", value.AsString());
-          }
-       }
-public float cameraDecay
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraDecay").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraDecay", value.AsString());
-          }
-       }
-public float cameraLag
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraLag").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraLag", value.AsString());
-          }
-       }
-public float cameraOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraOffset", value.AsString());
-          }
-       }
-public bool cameraRoll
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraRoll").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraRoll", value.AsString());
-          }
-       }
-public float collDamageMultiplier
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".collDamageMultiplier").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".collDamageMultiplier", value.AsString());
-          }
-       }
-public float collDamageThresholdVel
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".collDamageThresholdVel").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".collDamageThresholdVel", value.AsString());
-          }
-       }
-public float collisionTol
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".collisionTol").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".collisionTol", value.AsString());
-          }
-       }
-public float contactTol
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".contactTol").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".contactTol", value.AsString());
-          }
-       }
-public coParticleEmitterData damageEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damageEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damageEmitter", value.ToString());
-          }
-       }
-public Point3F damageEmitterOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damageEmitterOffset").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damageEmitterOffset", value.AsString());
-          }
-       }
-public float damageLevelTolerance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".damageLevelTolerance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".damageLevelTolerance", value.AsString());
-          }
-       }
-public coParticleEmitterData dustEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dustEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dustEmitter", value.ToString());
-          }
-       }
-public float dustHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dustHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dustHeight", value.AsString());
-          }
-       }
-public coSFXProfile exitingWater
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".exitingWater");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".exitingWater", value.ToString());
-          }
-       }
-public float exitSplashSoundVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".exitSplashSoundVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".exitSplashSoundVelocity", value.AsString());
-          }
-       }
-public coSFXProfile hardImpactSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hardImpactSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hardImpactSound", value.ToString());
-          }
-       }
-public float hardImpactSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hardImpactSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hardImpactSpeed", value.AsString());
-          }
-       }
-public float hardSplashSoundVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".hardSplashSoundVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".hardSplashSoundVelocity", value.AsString());
-          }
-       }
-public coSFXProfile impactWaterEasy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterEasy");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactWaterEasy", value.ToString());
-          }
-       }
-public coSFXProfile impactWaterHard
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterHard");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactWaterHard", value.ToString());
-          }
-       }
-public coSFXProfile impactWaterMedium
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".impactWaterMedium");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".impactWaterMedium", value.ToString());
-          }
-       }
-public int integration
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".integration").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".integration", value.AsString());
-          }
-       }
-public float jetEnergyDrain
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetEnergyDrain").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetEnergyDrain", value.AsString());
-          }
-       }
-public float jetForce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetForce").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetForce", value.AsString());
-          }
-       }
-public Point3F massBox
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".massBox").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".massBox", value.AsString());
-          }
-       }
-public Point3F massCenter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".massCenter").AsPoint3F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".massCenter", value.AsString());
-          }
-       }
-public float maxDrag
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxDrag").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxDrag", value.AsString());
-          }
-       }
-public float maxSteeringAngle
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxSteeringAngle").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxSteeringAngle", value.AsString());
-          }
-       }
-public float mediumSplashSoundVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".mediumSplashSoundVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".mediumSplashSoundVelocity", value.AsString());
-          }
-       }
-public float minDrag
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minDrag").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minDrag", value.AsString());
-          }
-       }
-public float minImpactSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minImpactSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minImpactSpeed", value.AsString());
-          }
-       }
-public float minJetEnergy
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minJetEnergy").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minJetEnergy", value.AsString());
-          }
-       }
-public float minRollSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minRollSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minRollSpeed", value.AsString());
-          }
-       }
-public float numDmgEmitterAreas
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".numDmgEmitterAreas").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".numDmgEmitterAreas", value.AsString());
-          }
-       }
-public coSFXProfile softImpactSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".softImpactSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".softImpactSound", value.ToString());
-          }
-       }
-public float softImpactSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".softImpactSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".softImpactSpeed", value.AsString());
-          }
-       }
-public float softSplashSoundVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".softSplashSoundVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".softSplashSoundVelocity", value.AsString());
-          }
-       }
-public coParticleEmitterData splashEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashEmitter", value.ToString());
-          }
-       }
-public float splashFreqMod
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashFreqMod").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashFreqMod", value.AsString());
-          }
-       }
-public float splashVelEpsilon
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".splashVelEpsilon").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".splashVelEpsilon", value.AsString());
-          }
-       }
-public float triggerDustHeight
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".triggerDustHeight").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".triggerDustHeight", value.AsString());
-          }
-       }
-public coSFXProfile waterWakeSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waterWakeSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waterWakeSound", value.ToString());
-          }
-       }
-}}
+        }
+    }

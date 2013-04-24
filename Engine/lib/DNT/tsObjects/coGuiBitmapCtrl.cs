@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,54 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoGuiBitmapCtrl))]
-    public class coGuiBitmapCtrl: coGuiControl
-{
+    [TypeConverter(typeof (tsObjectConvertercoGuiBitmapCtrl))]
+    public class coGuiBitmapCtrl : coGuiControl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiBitmapCtrl(string simobjectid) : base(simobjectid){ }
+        public coGuiBitmapCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiBitmapCtrl(uint simobjectid): base(simobjectid){ }
+        public coGuiBitmapCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coGuiBitmapCtrl(int simobjectid): base(simobjectid){ }
+        public coGuiBitmapCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// The bitmap file to display in the control. 
+        /// </summary>
+        public String bitmap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, the bitmap is tiled inside the control rather than stretched to fit. 
+        /// </summary>
+        public bool wrap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".wrap").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".wrap", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +153,9 @@ public coGuiBitmapCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +163,17 @@ public coGuiBitmapCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +185,15 @@ public coGuiBitmapCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coGuiBitmapCtrl ts)
+        public static implicit operator string(coGuiBitmapCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +213,7 @@ public coGuiBitmapCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coGuiBitmapCtrl ts)
+        public static implicit operator int(coGuiBitmapCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +234,7 @@ public coGuiBitmapCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coGuiBitmapCtrl ts)
+        public static implicit operator uint(coGuiBitmapCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,44 +249,27 @@ public coGuiBitmapCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coGuiBitmapCtrl(ts);
             }
-public String bitmap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bitmap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bitmap", value.AsString());
-          }
-       }
-public bool wrap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".wrap").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".wrap", value.AsString());
-          }
-       }
-/// <summary>
-/// ( GuiBitmapCtrl, setBitmap, void, 3, 4,
-///    ( String filename | String filename, bool resize ) Assign an image to the control.
-///    @hide )
-/// 
-/// </summary>
-public  void setBitmap(string a2, string a3= ""){
-TorqueScriptTemplate.m_ts.fnGuiBitmapCtrl_setBitmap(_mSimObjectId, a2, a3);
-}
-/// <summary>
-/// Set the offset of the bitmap within the control.
-///    @param x The x-axis offset of the image.
-///    @param y The y-axis offset of the image.)
-/// 
-/// </summary>
-public  void setValue(int x, int y){
-TorqueScriptTemplate.m_ts.fnGuiBitmapCtrl_setValue(_mSimObjectId, x, y);
-}
-}}
+
+        /// <summary>
+        /// ( GuiBitmapCtrl, setBitmap, void, 3, 4,
+        ///    ( String filename | String filename, bool resize ) Assign an image to the control.
+        ///    @hide )
+        /// 
+        /// </summary>
+        public void setBitmap(string a2, string a3 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiBitmapCtrl_setBitmap(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// Set the offset of the bitmap within the control.
+        ///    @param x The x-axis offset of the image.
+        ///    @param y The y-axis offset of the image.)
+        /// 
+        /// </summary>
+        public void setValue(int x, int y)
+            {
+            TorqueScriptTemplate.m_ts.fnGuiBitmapCtrl_setValue(_mSimObjectId, x, y);
+            }
+        }
+    }

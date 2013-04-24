@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoWheeledVehicleData))]
-    public class coWheeledVehicleData: coVehicleData
-{
+    [TypeConverter(typeof (tsObjectConvertercoWheeledVehicleData))]
+    public class coWheeledVehicleData : coVehicleData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicleData(string simobjectid) : base(simobjectid){ }
+        public coWheeledVehicleData(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicleData(uint simobjectid): base(simobjectid){ }
+        public coWheeledVehicleData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWheeledVehicleData(int simobjectid): base(simobjectid){ }
+        public coWheeledVehicleData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief Torque applied when braking.\n\n   This controls how fast the vehicle will stop when the brakes are applied. 
+        /// </summary>
+        public float brakeTorque
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brakeTorque").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brakeTorque", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Braking torque applied by the engine when the throttle and brake    are both 0.\n\n   This controls how quickly the vehicle will coast to a stop. 
+        /// </summary>
+        public float engineBrake
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".engineBrake").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".engineBrake", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Looping engine sound.\n\n   The pitch is dynamically adjusted based on the current engine RPM 
+        /// </summary>
+        public coSFXTrack engineSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".engineSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".engineSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Torque available from the engine at 100% throttle.\n\n   This controls vehicle acceleration. ie. how fast it will reach maximum speed. 
+        /// </summary>
+        public float engineTorque
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".engineTorque").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".engineTorque", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Looping sound played when the vehicle is jetting. 
+        /// </summary>
+        public coSFXTrack jetSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".jetSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".jetSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum linear velocity of each wheel.\n\n   This caps the maximum speed of the vehicle. 
+        /// </summary>
+        public float maxWheelSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxWheelSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxWheelSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Looping sound played while any of the wheels is slipping.\n\n   The volume is dynamically adjusted based on how much the wheels are slipping. 
+        /// </summary>
+        public coSFXTrack squealSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".squealSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".squealSound", value.ToString()); }
+            }
+
+        /// <summary>
+        /// ParticleEmitterData datablock used to generate particles from each wheel    when the vehicle is moving and the wheel is in contact with the ground.
+        /// </summary>
+        public coParticleEmitterData tireEmitter
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".tireEmitter"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".tireEmitter", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Sound played when the wheels impact the ground.\nCurrently unused. 
+        /// </summary>
+        public coSFXTrack WheelImpactSound
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".WheelImpactSound"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".WheelImpactSound", value.ToString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +216,9 @@ public coWheeledVehicleData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +226,17 @@ public coWheeledVehicleData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +248,15 @@ public coWheeledVehicleData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coWheeledVehicleData ts)
+        public static implicit operator string(coWheeledVehicleData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +276,7 @@ public coWheeledVehicleData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coWheeledVehicleData ts)
+        public static implicit operator int(coWheeledVehicleData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +297,7 @@ public coWheeledVehicleData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coWheeledVehicleData ts)
+        public static implicit operator uint(coWheeledVehicleData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,103 +312,5 @@ public coWheeledVehicleData(int simobjectid): base(simobjectid){ }
             {
             return new coWheeledVehicleData(ts);
             }
-public float brakeTorque
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brakeTorque").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brakeTorque", value.AsString());
-          }
-       }
-public float engineBrake
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".engineBrake").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".engineBrake", value.AsString());
-          }
-       }
-public coSFXTrack engineSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".engineSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".engineSound", value.ToString());
-          }
-       }
-public float engineTorque
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".engineTorque").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".engineTorque", value.AsString());
-          }
-       }
-public coSFXTrack jetSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".jetSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".jetSound", value.ToString());
-          }
-       }
-public float maxWheelSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxWheelSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxWheelSpeed", value.AsString());
-          }
-       }
-public coSFXTrack squealSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".squealSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".squealSound", value.ToString());
-          }
-       }
-public coParticleEmitterData tireEmitter
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".tireEmitter");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".tireEmitter", value.ToString());
-          }
-       }
-public coSFXTrack WheelImpactSound
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".WheelImpactSound");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".WheelImpactSound", value.ToString());
-          }
-       }
-}}
+        }
+    }

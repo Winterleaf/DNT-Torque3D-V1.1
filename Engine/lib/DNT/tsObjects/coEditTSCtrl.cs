@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,208 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoEditTSCtrl))]
-    public class coEditTSCtrl: coGuiTSCtrl
-{
+    [TypeConverter(typeof (tsObjectConvertercoEditTSCtrl))]
+    public class coEditTSCtrl : coGuiTSCtrl
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coEditTSCtrl(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coEditTSCtrl(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coEditTSCtrl(int simobjectid): base(simobjectid){ }
+        public coEditTSCtrl(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coEditTSCtrl(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coEditTSCtrl(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool allowBorderMove
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".allowBorderMove").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".allowBorderMove", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int borderMovePixelSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderMovePixelSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".borderMovePixelSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float borderMoveSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderMoveSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".borderMoveSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int consoleCircleSegments
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".consoleCircleSegments").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".consoleCircleSegments", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI consoleFillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".consoleFillColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".consoleFillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI consoleFrameColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".consoleFrameColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".consoleFrameColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int consoleLineWidth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".consoleLineWidth").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".consoleLineWidth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int consoleSphereLevel
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".consoleSphereLevel").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".consoleSphereLevel", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public coGizmoProfile gizmoProfile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gizmoProfile"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gizmoProfile", value.ToString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI gridColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gridColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI gridMinorTickColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridMinorTickColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gridMinorTickColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI gridOriginColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridOriginColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gridOriginColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float gridSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridSize").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gridSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI missionAreaFillColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".missionAreaFillColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".missionAreaFillColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ColorI missionAreaFrameColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".missionAreaFrameColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".missionAreaFrameColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// How high above and below the terrain to render the mission area bounds. 
+        /// </summary>
+        public float missionAreaHeightAdjust
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".missionAreaHeightAdjust").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".missionAreaHeightAdjust", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool renderMissionArea
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderMissionArea").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderMissionArea", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Whether to render the grid in orthographic axial projections. 
+        /// </summary>
+        public bool renderOrthoGrid
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderOrthoGrid").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderOrthoGrid", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Grid patch pixel size below which to switch to coarser grid resolutions. 
+        /// </summary>
+        public float renderOrthoGridPixelBias
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".renderOrthoGridPixelBias").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderOrthoGridPixelBias", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +307,9 @@ public coEditTSCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +317,17 @@ public coEditTSCtrl(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +339,15 @@ public coEditTSCtrl(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coEditTSCtrl ts)
+        public static implicit operator string(coEditTSCtrl ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +367,7 @@ public coEditTSCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coEditTSCtrl ts)
+        public static implicit operator int(coEditTSCtrl ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +388,7 @@ public coEditTSCtrl(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coEditTSCtrl ts)
+        public static implicit operator uint(coEditTSCtrl ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,290 +403,104 @@ public coEditTSCtrl(int simobjectid): base(simobjectid){ }
             {
             return new coEditTSCtrl(ts);
             }
-public bool allowBorderMove
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".allowBorderMove").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".allowBorderMove", value.AsString());
-          }
-       }
-public int borderMovePixelSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".borderMovePixelSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".borderMovePixelSize", value.AsString());
-          }
-       }
-public float borderMoveSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".borderMoveSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".borderMoveSpeed", value.AsString());
-          }
-       }
-public int consoleCircleSegments
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".consoleCircleSegments").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".consoleCircleSegments", value.AsString());
-          }
-       }
-public ColorI consoleFillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".consoleFillColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".consoleFillColor", value.AsString());
-          }
-       }
-public ColorI consoleFrameColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".consoleFrameColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".consoleFrameColor", value.AsString());
-          }
-       }
-public int consoleLineWidth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".consoleLineWidth").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".consoleLineWidth", value.AsString());
-          }
-       }
-public int consoleSphereLevel
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".consoleSphereLevel").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".consoleSphereLevel", value.AsString());
-          }
-       }
-public coGizmoProfile gizmoProfile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gizmoProfile");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gizmoProfile", value.ToString());
-          }
-       }
-public ColorI gridColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gridColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gridColor", value.AsString());
-          }
-       }
-public ColorI gridMinorTickColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gridMinorTickColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gridMinorTickColor", value.AsString());
-          }
-       }
-public ColorI gridOriginColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gridOriginColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gridOriginColor", value.AsString());
-          }
-       }
-public float gridSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gridSize").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gridSize", value.AsString());
-          }
-       }
-public ColorI missionAreaFillColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".missionAreaFillColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".missionAreaFillColor", value.AsString());
-          }
-       }
-public ColorI missionAreaFrameColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".missionAreaFrameColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".missionAreaFrameColor", value.AsString());
-          }
-       }
-public float missionAreaHeightAdjust
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".missionAreaHeightAdjust").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".missionAreaHeightAdjust", value.AsString());
-          }
-       }
-public bool renderMissionArea
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderMissionArea").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderMissionArea", value.AsString());
-          }
-       }
-public bool renderOrthoGrid
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderOrthoGrid").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderOrthoGrid", value.AsString());
-          }
-       }
-public float renderOrthoGridPixelBias
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".renderOrthoGridPixelBias").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".renderOrthoGridPixelBias", value.AsString());
-          }
-       }
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  int getDisplayType(){
-return TorqueScriptTemplate.m_ts.fnEditTSCtrl_getDisplayType(_mSimObjectId);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  int getGizmo(){
-return TorqueScriptTemplate.m_ts.fnEditTSCtrl_getGizmo(_mSimObjectId);
-}
-/// <summary>
-/// Return the FOV for orthographic views. )
-/// 
-/// </summary>
-public  float getOrthoFOV(){
-return TorqueScriptTemplate.m_ts.fnEditTSCtrl_getOrthoFOV(_mSimObjectId);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  bool isMiddleMouseDown(){
-return TorqueScriptTemplate.m_ts.fnEditTSCtrl_isMiddleMouseDown(_mSimObjectId);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void renderBox(Point3F pos, Point3F size){
-TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderBox(_mSimObjectId, pos.AsString(), size.AsString());
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void renderCircle(Point3F pos, Point3F normal, float radius, int segments){
-TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderCircle(_mSimObjectId, pos.AsString(), normal.AsString(), radius, segments);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void renderLine(Point3F start, Point3F end, float lineWidth){
-TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderLine(_mSimObjectId, start.AsString(), end.AsString(), lineWidth);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void renderSphere(Point3F pos, float radius, int sphereLevel){
-TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderSphere(_mSimObjectId, pos.AsString(), radius, sphereLevel);
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void renderTriangle(Point3F a, Point3F b, Point3F c){
-TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderTriangle(_mSimObjectId, a.AsString(), b.AsString(), c.AsString());
-}
-/// <summary>
-///  )
-/// 
-/// </summary>
-public  void setDisplayType(int displayType){
-TorqueScriptTemplate.m_ts.fnEditTSCtrl_setDisplayType(_mSimObjectId, displayType);
-}
-/// <summary>
-/// Set the FOV for to use for orthographic views. )
-/// 
-/// </summary>
-public  void setOrthoFOV(float fov){
-TorqueScriptTemplate.m_ts.fnEditTSCtrl_setOrthoFOV(_mSimObjectId, fov);
-}
-}}
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public int getDisplayType()
+            {
+            return TorqueScriptTemplate.m_ts.fnEditTSCtrl_getDisplayType(_mSimObjectId);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public int getGizmo()
+            {
+            return TorqueScriptTemplate.m_ts.fnEditTSCtrl_getGizmo(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Return the FOV for orthographic views. )
+        /// 
+        /// </summary>
+        public float getOrthoFOV()
+            {
+            return TorqueScriptTemplate.m_ts.fnEditTSCtrl_getOrthoFOV(_mSimObjectId);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public bool isMiddleMouseDown()
+            {
+            return TorqueScriptTemplate.m_ts.fnEditTSCtrl_isMiddleMouseDown(_mSimObjectId);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void renderBox(Point3F pos, Point3F size)
+            {
+            TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderBox(_mSimObjectId, pos.AsString(), size.AsString());
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void renderCircle(Point3F pos, Point3F normal, float radius, int segments)
+            {
+            TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderCircle(_mSimObjectId, pos.AsString(), normal.AsString(), radius, segments);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void renderLine(Point3F start, Point3F end, float lineWidth)
+            {
+            TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderLine(_mSimObjectId, start.AsString(), end.AsString(), lineWidth);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void renderSphere(Point3F pos, float radius, int sphereLevel)
+            {
+            TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderSphere(_mSimObjectId, pos.AsString(), radius, sphereLevel);
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void renderTriangle(Point3F a, Point3F b, Point3F c)
+            {
+            TorqueScriptTemplate.m_ts.fnEditTSCtrl_renderTriangle(_mSimObjectId, a.AsString(), b.AsString(), c.AsString());
+            }
+
+        /// <summary>
+        ///  )
+        /// 
+        /// </summary>
+        public void setDisplayType(int displayType)
+            {
+            TorqueScriptTemplate.m_ts.fnEditTSCtrl_setDisplayType(_mSimObjectId, displayType);
+            }
+
+        /// <summary>
+        /// Set the FOV for to use for orthographic views. )
+        /// 
+        /// </summary>
+        public void setOrthoFOV(float fov)
+            {
+            TorqueScriptTemplate.m_ts.fnEditTSCtrl_setOrthoFOV(_mSimObjectId, fov);
+            }
+        }
+    }

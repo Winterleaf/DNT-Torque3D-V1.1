@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,90 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoCubemapData))]
-    public class coCubemapData: coSimObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoCubemapData))]
+    public class coCubemapData : coSimObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCubemapData(string simobjectid) : base(simobjectid){ }
+        public coCubemapData(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCubemapData(uint simobjectid): base(simobjectid){ }
+        public coCubemapData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coCubemapData(int simobjectid): base(simobjectid){ }
+        public coCubemapData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// @brief The 6 cubemap face textures for a static cubemap.\n\n   They are in the following order:\n    - cubeFace[0] is -X\n    - cubeFace[1] is +X\n    - cubeFace[2] is -Z\n    - cubeFace[3] is +Z\n    - cubeFace[4] is -Y\n    - cubeFace[5] is +Y\n 
+        /// </summary>
+        public String cubeFace
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cubeFace").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cubeFace", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Set to true if this is a dynamic cubemap. The default is false. 
+        /// </summary>
+        public bool dynamic
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamic").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamic", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The far clip distance used when rendering to the dynamic cubemap. 
+        /// </summary>
+        public float dynamicFarDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicFarDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicFarDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The near clip distance used when rendering to the dynamic cubemap. 
+        /// </summary>
+        public float dynamicNearDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicNearDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicNearDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The typemask used to filter the objects rendered to the dynamic cubemap. 
+        /// </summary>
+        public int dynamicObjectTypeMask
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicObjectTypeMask").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicObjectTypeMask", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The size of each dynamic cubemap face in pixels. 
+        /// </summary>
+        public int dynamicSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".dynamicSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".dynamicSize", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -128,10 +189,9 @@ public coCubemapData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +199,17 @@ public coCubemapData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +221,15 @@ public coCubemapData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coCubemapData ts)
+        public static implicit operator string(coCubemapData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +249,7 @@ public coCubemapData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coCubemapData ts)
+        public static implicit operator int(coCubemapData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +270,7 @@ public coCubemapData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coCubemapData ts)
+        public static implicit operator uint(coCubemapData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,85 +285,24 @@ public coCubemapData(int simobjectid): base(simobjectid){ }
             {
             return new coCubemapData(ts);
             }
-public String cubeFace
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cubeFace").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cubeFace", value.AsString());
-          }
-       }
-public bool dynamic
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamic").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamic", value.AsString());
-          }
-       }
-public float dynamicFarDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicFarDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicFarDist", value.AsString());
-          }
-       }
-public float dynamicNearDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicNearDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicNearDist", value.AsString());
-          }
-       }
-public int dynamicObjectTypeMask
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicObjectTypeMask").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicObjectTypeMask", value.AsString());
-          }
-       }
-public int dynamicSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".dynamicSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".dynamicSize", value.AsString());
-          }
-       }
-/// <summary>
-/// Returns the script filename of where the CubemapData object was 
-///    defined.  This is used by the material editor. )
-/// 
-/// </summary>
-public  new  string getFilename(){
-return TorqueScriptTemplate.m_ts.fnCubemapData_getFilename(_mSimObjectId);
-}
-/// <summary>
-/// Update the assigned cubemaps faces. )
-/// 
-/// </summary>
-public  void updateFaces(){
-TorqueScriptTemplate.m_ts.fnCubemapData_updateFaces(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// Returns the script filename of where the CubemapData object was 
+        ///    defined.  This is used by the material editor. )
+        /// 
+        /// </summary>
+        public new string getFilename()
+            {
+            return TorqueScriptTemplate.m_ts.fnCubemapData_getFilename(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// Update the assigned cubemaps faces. )
+        /// 
+        /// </summary>
+        public void updateFaces()
+            {
+            TorqueScriptTemplate.m_ts.fnCubemapData_updateFaces(_mSimObjectId);
+            }
+        }
+    }

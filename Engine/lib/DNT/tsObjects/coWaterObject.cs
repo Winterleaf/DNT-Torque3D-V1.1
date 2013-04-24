@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,478 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoWaterObject))]
-    public class coWaterObject: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoWaterObject))]
+    public class coWaterObject : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coWaterObject(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coWaterObject(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coWaterObject(int simobjectid): base(simobjectid){ }
+        public coWaterObject(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coWaterObject(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coWaterObject(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Changes color of water fog. 
+        /// </summary>
+        public ColorI baseColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Relative opacity or transparency of the water surface. 
+        /// </summary>
+        public float clarity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".clarity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".clarity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Cubemap used instead of reflection texture if fullReflect is off. 
+        /// </summary>
+        public String cubemap
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cubemap").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cubemap", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Affects buoyancy of an object, thus affecting the Z velocity of a player (jumping, falling, etc.
+        /// </summary>
+        public float density
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Depth in world units, the max range of the color gradient texture. 
+        /// </summary>
+        public float depthGradientMax
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".depthGradientMax").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".depthGradientMax", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 1D texture defining the base water color by depth 
+        /// </summary>
+        public String depthGradientTex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".depthGradientTex").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".depthGradientTex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Max distance that distortion algorithm is performed. 		 The lower, the more distorted the effect.
+        /// </summary>
+        public float distortEndDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".distortEndDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".distortEndDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines the scaling down of distortion 		 in shallow water.
+        /// </summary>
+        public float distortFullDepth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".distortFullDepth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".distortFullDepth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Determines start of distortion effect where water		  surface intersects the camera near plane.
+        /// </summary>
+        public float distortStartDist
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".distortStartDist").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".distortStartDist", value.AsString()); }
+            }
+
+        /// <summary>
+        /// When true the water colors don't react to changes to environment lighting. 
+        /// </summary>
+        public bool emissive
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".emissive").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".emissive", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public float foamAmbientLerp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamAmbientLerp").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".foamAmbientLerp", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public Point2F foamDir
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamDir").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".foamDir", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public float foamMaxDepth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamMaxDepth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".foamMaxDepth", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public float foamOpacity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamOpacity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".foamOpacity", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public float foamRippleInfluence
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamRippleInfluence").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".foamRippleInfluence", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float foamSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".foamSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Diffuse texture for foam in shallow water (advanced lighting only) 
+        /// </summary>
+        public String foamTex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamTex").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".foamTex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// 			 applied to the surface.
+        /// </summary>
+        public Point2F foamTexScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamTexScale").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".foamTexScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Extent of fresnel affecting reflection fogging. 
+        /// </summary>
+        public float fresnelBias
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fresnelBias").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fresnelBias", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Measures intensity of affect on reflection based on fogging. 
+        /// </summary>
+        public float fresnelPower
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fresnelPower").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fresnelPower", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables dynamic reflection rendering. 
+        /// </summary>
+        public bool fullReflect
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fullReflect").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fullReflect", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Liquid type of WaterBlock, such as water, ocean, lava		  Currently only Water is defined and used.
+        /// </summary>
+        public String liquidType
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".liquidType").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".liquidType", value.AsString()); }
+            }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        public float overallFoamOpacity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".overallFoamOpacity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".overallFoamOpacity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Master variable affecting entire surface
+        /// </summary>
+        public float overallRippleMagnitude
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".overallRippleMagnitude").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".overallRippleMagnitude", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Master variable affecting entire body 		  of water's undulation 
+        /// </summary>
+        public float overallWaveMagnitude
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".overallWaveMagnitude").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".overallWaveMagnitude", value.AsString()); }
+            }
+
+        /// <summary>
+        /// scale up or down the detail level for objects rendered in a reflection 
+        /// </summary>
+        public float reflectDetailAdjust
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectDetailAdjust").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectDetailAdjust", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Overall scalar to the reflectivity of the water surface. 
+        /// </summary>
+        public float reflectivity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectivity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectivity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Affects the sort time of reflected objects. 
+        /// </summary>
+        public int reflectMaxRateMs
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectMaxRateMs").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectMaxRateMs", value.AsString()); }
+            }
+
+        /// <summary>
+        /// always use z up as the reflection normal 
+        /// </summary>
+        public bool reflectNormalUp
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectNormalUp").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectNormalUp", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Affects the sort order of reflected objects. 
+        /// </summary>
+        public float reflectPriority
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectPriority").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectPriority", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The texture size used for reflections (square) 
+        /// </summary>
+        public int reflectTexSize
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".reflectTexSize").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".reflectTexSize", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Modifies the direction of ripples on the surface. 
+        /// </summary>
+        public Point2F rippleDir
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rippleDir").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rippleDir", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Intensifies the vertext modification of the surface. 
+        /// </summary>
+        public float rippleMagnitude
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rippleMagnitude").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rippleMagnitude", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Modifies speed of surface ripples.
+        /// </summary>
+        public float rippleSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rippleSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rippleSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Normal map used to simulate small surface ripples 
+        /// </summary>
+        public String rippleTex
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rippleTex").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rippleTex", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Intensifies the affect of the normal map 			 applied to the surface.
+        /// </summary>
+        public Point2F rippleTexScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".rippleTexScale").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".rippleTexScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Ambient sound environment when listener is submerged. 
+        /// </summary>
+        public coSFXAmbience soundAmbience
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".soundAmbience"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundAmbience", value.ToString()); }
+            }
+
+        /// <summary>
+        /// Color used for specularity on the water surface ( sun only ). 
+        /// </summary>
+        public ColorF specularColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".specularColor").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".specularColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Power used for specularity on the water surface ( sun only ). 
+        /// </summary>
+        public float specularPower
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".specularPower").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".specularPower", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Changes the color shading of objects beneath		  the water surface.
+        /// </summary>
+        public ColorI underwaterColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".underwaterColor").AsColorI(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".underwaterColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// turn off reflection rendering when occluded (delayed). 
+        /// </summary>
+        public bool useOcclusionQuery
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useOcclusionQuery").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useOcclusionQuery", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Affects drag force applied to an object submerged in this container. 
+        /// </summary>
+        public float viscosity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".viscosity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".viscosity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Intensity of underwater fogging. 
+        /// </summary>
+        public float waterFogDensity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waterFogDensity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waterFogDensity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Delta, or limit, applied to waterFogDensity. 
+        /// </summary>
+        public float waterFogDensityOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waterFogDensityOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waterFogDensityOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Direction waves flow toward shores. 
+        /// </summary>
+        public Point2F waveDir
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waveDir").AsPoint2F(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waveDir", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Height of water undulation. 
+        /// </summary>
+        public float waveMagnitude
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waveMagnitude").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waveMagnitude", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Speed of water undulation. 
+        /// </summary>
+        public float waveSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".waveSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".waveSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The refract color intensity scaled at wetDepth. 
+        /// </summary>
+        public float wetDarkening
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".wetDarkening").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".wetDarkening", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The depth in world units at which full darkening will be received,		  giving a wet look to objects underwater. 
+        /// </summary>
+        public float wetDepth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".wetDepth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".wetDepth", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +577,9 @@ public coWaterObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +587,17 @@ public coWaterObject(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +609,15 @@ public coWaterObject(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coWaterObject ts)
+        public static implicit operator string(coWaterObject ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +637,7 @@ public coWaterObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coWaterObject ts)
+        public static implicit operator int(coWaterObject ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +658,7 @@ public coWaterObject(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coWaterObject ts)
+        public static implicit operator uint(coWaterObject ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,543 +673,5 @@ public coWaterObject(int simobjectid): base(simobjectid){ }
             {
             return new coWaterObject(ts);
             }
-public ColorI baseColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString());
-          }
-       }
-public float clarity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".clarity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".clarity", value.AsString());
-          }
-       }
-public String cubemap
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cubemap").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cubemap", value.AsString());
-          }
-       }
-public float density
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString());
-          }
-       }
-public float depthGradientMax
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".depthGradientMax").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".depthGradientMax", value.AsString());
-          }
-       }
-public String depthGradientTex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".depthGradientTex").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".depthGradientTex", value.AsString());
-          }
-       }
-public float distortEndDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".distortEndDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".distortEndDist", value.AsString());
-          }
-       }
-public float distortFullDepth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".distortFullDepth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".distortFullDepth", value.AsString());
-          }
-       }
-public float distortStartDist
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".distortStartDist").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".distortStartDist", value.AsString());
-          }
-       }
-public bool emissive
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".emissive").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".emissive", value.AsString());
-          }
-       }
-public float foamAmbientLerp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".foamAmbientLerp").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".foamAmbientLerp", value.AsString());
-          }
-       }
-public Point2F foamDir
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".foamDir").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".foamDir", value.AsString());
-          }
-       }
-public float foamMaxDepth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".foamMaxDepth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".foamMaxDepth", value.AsString());
-          }
-       }
-public float foamOpacity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".foamOpacity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".foamOpacity", value.AsString());
-          }
-       }
-public float foamRippleInfluence
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".foamRippleInfluence").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".foamRippleInfluence", value.AsString());
-          }
-       }
-public float foamSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".foamSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".foamSpeed", value.AsString());
-          }
-       }
-public String foamTex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".foamTex").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".foamTex", value.AsString());
-          }
-       }
-public Point2F foamTexScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".foamTexScale").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".foamTexScale", value.AsString());
-          }
-       }
-public float fresnelBias
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fresnelBias").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fresnelBias", value.AsString());
-          }
-       }
-public float fresnelPower
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fresnelPower").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fresnelPower", value.AsString());
-          }
-       }
-public bool fullReflect
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fullReflect").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fullReflect", value.AsString());
-          }
-       }
-public String liquidType
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".liquidType").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".liquidType", value.AsString());
-          }
-       }
-public float overallFoamOpacity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".overallFoamOpacity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".overallFoamOpacity", value.AsString());
-          }
-       }
-public float overallRippleMagnitude
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".overallRippleMagnitude").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".overallRippleMagnitude", value.AsString());
-          }
-       }
-public float overallWaveMagnitude
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".overallWaveMagnitude").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".overallWaveMagnitude", value.AsString());
-          }
-       }
-public float reflectDetailAdjust
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectDetailAdjust").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectDetailAdjust", value.AsString());
-          }
-       }
-public float reflectivity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectivity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectivity", value.AsString());
-          }
-       }
-public int reflectMaxRateMs
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectMaxRateMs").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectMaxRateMs", value.AsString());
-          }
-       }
-public bool reflectNormalUp
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectNormalUp").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectNormalUp", value.AsString());
-          }
-       }
-public float reflectPriority
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectPriority").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectPriority", value.AsString());
-          }
-       }
-public int reflectTexSize
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".reflectTexSize").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".reflectTexSize", value.AsString());
-          }
-       }
-public Point2F rippleDir
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rippleDir").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rippleDir", value.AsString());
-          }
-       }
-public float rippleMagnitude
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rippleMagnitude").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rippleMagnitude", value.AsString());
-          }
-       }
-public float rippleSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rippleSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rippleSpeed", value.AsString());
-          }
-       }
-public String rippleTex
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rippleTex").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rippleTex", value.AsString());
-          }
-       }
-public Point2F rippleTexScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".rippleTexScale").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".rippleTexScale", value.AsString());
-          }
-       }
-public coSFXAmbience soundAmbience
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".soundAmbience");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".soundAmbience", value.ToString());
-          }
-       }
-public ColorF specularColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".specularColor").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".specularColor", value.AsString());
-          }
-       }
-public float specularPower
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".specularPower").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".specularPower", value.AsString());
-          }
-       }
-public ColorI underwaterColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".underwaterColor").AsColorI();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".underwaterColor", value.AsString());
-          }
-       }
-public bool useOcclusionQuery
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useOcclusionQuery").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useOcclusionQuery", value.AsString());
-          }
-       }
-public float viscosity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".viscosity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".viscosity", value.AsString());
-          }
-       }
-public float waterFogDensity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waterFogDensity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waterFogDensity", value.AsString());
-          }
-       }
-public float waterFogDensityOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waterFogDensityOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waterFogDensityOffset", value.AsString());
-          }
-       }
-public Point2F waveDir
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waveDir").AsPoint2F();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waveDir", value.AsString());
-          }
-       }
-public float waveMagnitude
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waveMagnitude").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waveMagnitude", value.AsString());
-          }
-       }
-public float waveSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".waveSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".waveSpeed", value.AsString());
-          }
-       }
-public float wetDarkening
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".wetDarkening").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".wetDarkening", value.AsString());
-          }
-       }
-public float wetDepth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".wetDepth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".wetDepth", value.AsString());
-          }
-       }
-}}
+        }
+    }

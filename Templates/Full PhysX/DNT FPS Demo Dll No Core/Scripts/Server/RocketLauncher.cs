@@ -45,7 +45,7 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
@@ -91,7 +91,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 // We fire our weapon using the straight ahead aiming point of the gun
                 // We'll need to "skew" the projectile a little bit.  We start by getting
                 // the straight ahead aiming point of the gun
-                Point3F vec = ShapeBase.getMuzzleVector(obj, slot.AsInt());
+                Point3F vec = obj.getMuzzleVector(slot.AsInt());
                 Random r = new Random();
                 TransformF matrix = new TransformF();
                 matrix.MPosition.x = (float) ((r.NextDouble() - .5)*2*Math.PI*0.008);
@@ -112,7 +112,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 Torque_Class_Helper tch = new Torque_Class_Helper(thisobj["projectileType"], "");
                 tch.Props.Add("dataBlock", thisobj["projectile"]);
                 tch.Props.Add("initialVelocity", '"' + muzzleVelocity.ToString() + '"');
-                tch.Props.Add("initialPosition", '"' + ShapeBase.getMuzzlePoint(obj, slot.AsInt()).ToString() + '"');
+                tch.Props.Add("initialPosition", '"' + obj.getMuzzlePoint(slot.AsInt()).AsString() + '"');
                 tch.Props.Add("sourceObject", obj);
                 tch.Props.Add("sourceSlot", slot);
                 tch.Props.Add("client", obj["client"]);

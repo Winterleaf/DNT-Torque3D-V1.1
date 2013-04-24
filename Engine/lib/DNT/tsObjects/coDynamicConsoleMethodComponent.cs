@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,28 +92,36 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoDynamicConsoleMethodComponent))]
-    public class coDynamicConsoleMethodComponent: coSimComponent
-{
+    [TypeConverter(typeof (tsObjectConvertercoDynamicConsoleMethodComponent))]
+    public class coDynamicConsoleMethodComponent : coSimComponent
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDynamicConsoleMethodComponent(string simobjectid) : base(simobjectid){ }
+        public coDynamicConsoleMethodComponent(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDynamicConsoleMethodComponent(uint simobjectid): base(simobjectid){ }
+        public coDynamicConsoleMethodComponent(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDynamicConsoleMethodComponent(int simobjectid): base(simobjectid){ }
+        public coDynamicConsoleMethodComponent(int simobjectid) : base(simobjectid)
+            {
+            }
 
 
         /// <summary>
@@ -128,10 +135,9 @@ public coDynamicConsoleMethodComponent(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +145,17 @@ public coDynamicConsoleMethodComponent(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +167,15 @@ public coDynamicConsoleMethodComponent(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coDynamicConsoleMethodComponent ts)
+        public static implicit operator string(coDynamicConsoleMethodComponent ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +195,7 @@ public coDynamicConsoleMethodComponent(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coDynamicConsoleMethodComponent ts)
+        public static implicit operator int(coDynamicConsoleMethodComponent ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +216,7 @@ public coDynamicConsoleMethodComponent(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coDynamicConsoleMethodComponent ts)
+        public static implicit operator uint(coDynamicConsoleMethodComponent ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,16 +231,19 @@ public coDynamicConsoleMethodComponent(int simobjectid): base(simobjectid){ }
             {
             return new coDynamicConsoleMethodComponent(ts);
             }
-/// <summary>
-/// ( DynamicConsoleMethodComponent, callMethod, void, 3, 64 , (methodName, argi) Calls script defined method
-/// 			  @param methodName The method's name as a string
-/// 			  @param argi Any arguments to pass to the method
-/// 			  @return No return value
-/// 			  @note %obj.callMethod( %methodName, %arg1, %arg2, ... );)
-/// 
-/// 
-/// </summary>
-public  void callMethod(string a2, string a3= "", string a4= "", string a5= "", string a6= "", string a7= "", string a8= "", string a9= "", string a10= "", string a11= "", string a12= "", string a13= "", string a14= "", string a15= "", string a16= "", string a17= "", string a18= "", string a19= "", string a20= "", string a21= "", string a22= "", string a23= "", string a24= "", string a25= "", string a26= "", string a27= "", string a28= "", string a29= "", string a30= "", string a31= "", string a32= "", string a33= "", string a34= "", string a35= "", string a36= "", string a37= "", string a38= "", string a39= "", string a40= "", string a41= "", string a42= "", string a43= "", string a44= "", string a45= "", string a46= "", string a47= "", string a48= "", string a49= "", string a50= "", string a51= "", string a52= "", string a53= "", string a54= "", string a55= "", string a56= "", string a57= "", string a58= "", string a59= "", string a60= "", string a61= "", string a62= "", string a63= ""){
-TorqueScriptTemplate.m_ts.fnDynamicConsoleMethodComponent_callMethod(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63);
-}
-}}
+
+        /// <summary>
+        /// ( DynamicConsoleMethodComponent, callMethod, void, 3, 64 , (methodName, argi) Calls script defined method
+        /// 			  @param methodName The method's name as a string
+        /// 			  @param argi Any arguments to pass to the method
+        /// 			  @return No return value
+        /// 			  @note %obj.callMethod( %methodName, %arg1, %arg2, ... );)
+        /// 
+        /// 
+        /// </summary>
+        public void callMethod(string a2, string a3 = "", string a4 = "", string a5 = "", string a6 = "", string a7 = "", string a8 = "", string a9 = "", string a10 = "", string a11 = "", string a12 = "", string a13 = "", string a14 = "", string a15 = "", string a16 = "", string a17 = "", string a18 = "", string a19 = "", string a20 = "", string a21 = "", string a22 = "", string a23 = "", string a24 = "", string a25 = "", string a26 = "", string a27 = "", string a28 = "", string a29 = "", string a30 = "", string a31 = "", string a32 = "", string a33 = "", string a34 = "", string a35 = "", string a36 = "", string a37 = "", string a38 = "", string a39 = "", string a40 = "", string a41 = "", string a42 = "", string a43 = "", string a44 = "", string a45 = "", string a46 = "", string a47 = "", string a48 = "", string a49 = "", string a50 = "", string a51 = "", string a52 = "", string a53 = "", string a54 = "", string a55 = "", string a56 = "", string a57 = "", string a58 = "", string a59 = "", string a60 = "", string a61 = "", string a62 = "", string a63 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnDynamicConsoleMethodComponent_callMethod(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63);
+            }
+        }
+    }

@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
-using System.ComponentModel;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +93,154 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoSun))]
-    public class coSun: coSceneObject
-{
+    [TypeConverter(typeof (tsObjectConvertercoSun))]
+    public class coSun : coSceneObject
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coSun(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSun(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coSun(int simobjectid): base(simobjectid){ }
+        public coSun(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSun(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coSun(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// Color shading applied to surfaces not      in direct contact with light source, such as in the shadows or interiors.
+        /// </summary>
+        public ColorF ambient
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambient").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ambient", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The horizontal angle of the sun measured clockwise from the positive Y world axis. 
+        /// </summary>
+        public float azimuth
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".azimuth").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".azimuth", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Adjust the Sun's global contrast/intensity
+        /// </summary>
+        public float brightness
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".brightness").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".brightness", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enables/disables shadows cast by objects due to Sun light
+        /// </summary>
+        public bool castShadows
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Color shading applied to surfaces in direct contact with light source.
+        /// </summary>
+        public ColorF color
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Enable or disable rendering of the corona sprite. 
+        /// </summary>
+        public bool coronaEnabled
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coronaEnabled").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coronaEnabled", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Texture for the corona sprite. 
+        /// </summary>
+        public String coronaMaterial
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coronaMaterial").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coronaMaterial", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Controls size the corona sprite renders, specified as a fractional amount of the screen height. 
+        /// </summary>
+        public float coronaScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coronaScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coronaScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Modulates the corona sprite color ( if coronaUseLightColor is false ). 
+        /// </summary>
+        public ColorF coronaTint
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coronaTint").AsColorF(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coronaTint", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Modulate the corona sprite color by the color of the light ( overrides coronaTint ). 
+        /// </summary>
+        public bool coronaUseLightColor
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".coronaUseLightColor").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".coronaUseLightColor", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The elevation angle of the sun above or below the horizon. 
+        /// </summary>
+        public float elevation
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elevation").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elevation", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Changes the size and intensity of the flare. 
+        /// </summary>
+        public float flareScale
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flareScale").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flareScale", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Datablock for the flare produced by the Sun 
+        /// </summary>
+        public coLightFlareData flareType
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".flareType"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".flareType", value.ToString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +253,9 @@ public coSun(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +263,17 @@ public coSun(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +285,15 @@ public coSun(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coSun ts)
+        public static implicit operator string(coSun ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +313,7 @@ public coSun(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coSun ts)
+        public static implicit operator int(coSun ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +334,7 @@ public coSun(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coSun ts)
+        public static implicit operator uint(coSun ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,161 +349,23 @@ public coSun(int simobjectid): base(simobjectid){ }
             {
             return new coSun(ts);
             }
-public ColorF ambient
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ambient").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ambient", value.AsString());
-          }
-       }
-public float azimuth
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".azimuth").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".azimuth", value.AsString());
-          }
-       }
-public float brightness
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".brightness").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".brightness", value.AsString());
-          }
-       }
-public bool castShadows
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".castShadows").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".castShadows", value.AsString());
-          }
-       }
-public ColorF color
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString());
-          }
-       }
-public bool coronaEnabled
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coronaEnabled").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coronaEnabled", value.AsString());
-          }
-       }
-public String coronaMaterial
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coronaMaterial").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coronaMaterial", value.AsString());
-          }
-       }
-public float coronaScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coronaScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coronaScale", value.AsString());
-          }
-       }
-public ColorF coronaTint
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coronaTint").AsColorF();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coronaTint", value.AsString());
-          }
-       }
-public bool coronaUseLightColor
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".coronaUseLightColor").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".coronaUseLightColor", value.AsString());
-          }
-       }
-public float elevation
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elevation").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elevation", value.AsString());
-          }
-       }
-public float flareScale
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flareScale").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flareScale", value.AsString());
-          }
-       }
-public coLightFlareData flareType
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".flareType");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".flareType", value.ToString());
-          }
-       }
-/// <summary>
-/// (Sun, animate, void, 7, 7, animate( F32 duration, F32 startAzimuth, F32 endAzimuth, F32 startElevation, F32 endElevation ))
-/// 
-/// </summary>
-public  void animate(string a2, string a3, string a4, string a5, string a6){
-TorqueScriptTemplate.m_ts.fnSun_animate(_mSimObjectId, a2, a3, a4, a5, a6);
-}
-/// <summary>
-/// (Sun, apply, void, 2, 2, )
-/// 
-/// </summary>
-public  void apply(){
-TorqueScriptTemplate.m_ts.fnSun_apply(_mSimObjectId);
-}
-}}
+
+        /// <summary>
+        /// (Sun, animate, void, 7, 7, animate( F32 duration, F32 startAzimuth, F32 endAzimuth, F32 startElevation, F32 endElevation ))
+        /// 
+        /// </summary>
+        public void animate(string a2, string a3, string a4, string a5, string a6)
+            {
+            TorqueScriptTemplate.m_ts.fnSun_animate(_mSimObjectId, a2, a3, a4, a5, a6);
+            }
+
+        /// <summary>
+        /// (Sun, apply, void, 2, 2, )
+        /// 
+        /// </summary>
+        public void apply()
+            {
+            TorqueScriptTemplate.m_ts.fnSun_apply(_mSimObjectId);
+            }
+        }
+    }

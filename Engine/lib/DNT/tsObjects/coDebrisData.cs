@@ -1,5 +1,4 @@
-
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -45,16 +44,16 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
+using WinterLeaf.Classes;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -72,7 +71,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -93,29 +92,244 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoDebrisData))]
-    public class coDebrisData: coGameBaseData
-{
+    [TypeConverter(typeof (tsObjectConvertercoDebrisData))]
+    public class coDebrisData : coGameBaseData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-public coDebrisData(string simobjectid) : base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coDebrisData(uint simobjectid): base(simobjectid){ }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-public coDebrisData(int simobjectid): base(simobjectid){ }
+        public coDebrisData(string simobjectid) : base(simobjectid)
+            {
+            }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coDebrisData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="simobjectid"></param>
+        public coDebrisData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+
+        /// <summary>
+        /// @brief Radius at which the standard elasticity and friction apply.\n\nOnly used when useRaduisMass is true.\n@see useRadiusMass.\n
+        /// </summary>
+        public float baseRadius
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseRadius").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".baseRadius", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Allowed variance in the value of numBounces.\n\nMust be less than numBounces.\n@see numBounces\n
+        /// </summary>
+        public int bounceVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bounceVariance").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bounceVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief A floating-point value specifying how 'bouncy' this object is.\n\nMust be in the range of -10 to 10.\n
+        /// </summary>
+        public float elasticity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".elasticity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".elasticity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief List of particle emitters to spawn along with this debris object.\n\nThese are optional. You could have Debris made up of only a shape.\n
+        /// </summary>
+        public coParticleEmitterData emitters
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".emitters"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".emitters", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, this debris object will explode after it has bounced max times.\n\nBe sure to provide an ExplosionData datablock for this to take effect.\n@see explosion\n
+        /// </summary>
+        public bool explodeOnMaxBounce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".explodeOnMaxBounce").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".explodeOnMaxBounce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief ExplosionData to spawn along with this debris object.\n\nThis is optional as not all Debris explode.\n
+        /// </summary>
+        public coExplosionData explosion
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".explosion"); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".explosion", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief If true, this debris object will fade out when destroyed.\n\nThis fade occurs over the last second of the Debris' lifetime.\n
+        /// </summary>
+        public bool fade
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".fade").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".fade", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief A floating-point value specifying how much velocity is lost to impact and sliding friction.\n\nMust be in the range of -10 to 10.\n
+        /// </summary>
+        public float friction
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString()); }
+            }
+
+        /// <summary>
+        /// How much gravity affects debris.
+        /// </summary>
+        public float gravModifier
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".gravModifier").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".gravModifier", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, this debris object will not collide with water, acting as if the water is not there.
+        /// </summary>
+        public bool ignoreWater
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".ignoreWater").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".ignoreWater", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Amount of time until this debris object is destroyed.\n\nMust be in the range of 0 to 1000.\n@see lifetimeVariance
+        /// </summary>
+        public float lifetime
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetime").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetime", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Allowed variance in the value of lifetime.\n\nMust be less than lifetime.\n@see lifetime\n
+        /// </summary>
+        public float lifetimeVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVariance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVariance", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum speed that this debris object will rotate.\n\nMust be in the range of -10000 to 10000.\n@see minSpinSpeed\n
+        /// </summary>
+        public float maxSpinSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxSpinSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxSpinSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum speed that this debris object will rotate.\n\nMust be in the range of -10000 to 1000, and must be less than maxSpinSpeed.\n@see maxSpinSpeed\n
+        /// </summary>
+        public float minSpinSpeed
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minSpinSpeed").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minSpinSpeed", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief How many times to allow this debris object to bounce until it either explodes, becomes static or snaps (defined in explodeOnMaxBounce, staticOnMaxBounce, snapOnMaxBounce).\n\n   Must be within the range of 0 to 10000.\n   @see bounceVariance\n
+        /// </summary>
+        public int numBounces
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".numBounces").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".numBounces", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Object model to use for this debris object.\n\nThis shape is optional. You could have Debris made up of only particles.\n
+        /// </summary>
+        public String shapeFile
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, this debris object will snap into a resting position on the last bounce.
+        /// </summary>
+        public bool snapOnMaxBounce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".snapOnMaxBounce").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".snapOnMaxBounce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// If true, this debris object becomes static after it has bounced max times.
+        /// </summary>
+        public bool staticOnMaxBounce
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".staticOnMaxBounce").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".staticOnMaxBounce", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Max velocity magnitude.
+        /// </summary>
+        public float terminalVelocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".terminalVelocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".terminalVelocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Texture imagemap to use for this debris object.\n\nNot used any more.\n
+        /// </summary>
+        public String texture
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".texture").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".texture", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Use mass calculations based on radius.\n\nAllows for the adjustment of elasticity and friction based on the Debris size.\n@see baseRadius\n
+        /// </summary>
+        public bool useRadiusMass
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".useRadiusMass").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".useRadiusMass", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Speed at which this debris object will move.\n\n@see velocityVariance\n
+        /// </summary>
+        public float velocity
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".velocity").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".velocity", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Allowed variance in the value of velocity\n\nMust be less than velocity.\n@see velocity\n
+        /// </summary>
+        public float velocityVariance
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".velocityVariance").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".velocityVariance", value.AsString()); }
+            }
 
         /// <summary>
         /// 
@@ -128,10 +342,9 @@ public coDebrisData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -139,16 +352,17 @@ public coDebrisData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -160,16 +374,15 @@ public coDebrisData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coDebrisData ts)
+        public static implicit operator string(coDebrisData ts)
             {
             return ts._mSimObjectId;
             }
@@ -189,7 +402,7 @@ public coDebrisData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coDebrisData ts)
+        public static implicit operator int(coDebrisData ts)
             {
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -210,7 +423,7 @@ public coDebrisData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coDebrisData ts)
+        public static implicit operator uint(coDebrisData ts)
             {
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
@@ -225,257 +438,5 @@ public coDebrisData(int simobjectid): base(simobjectid){ }
             {
             return new coDebrisData(ts);
             }
-public float baseRadius
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".baseRadius").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".baseRadius", value.AsString());
-          }
-       }
-public int bounceVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".bounceVariance").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".bounceVariance", value.AsString());
-          }
-       }
-public float elasticity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".elasticity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".elasticity", value.AsString());
-          }
-       }
-public coParticleEmitterData emitters
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".emitters");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".emitters", value.ToString());
-          }
-       }
-public bool explodeOnMaxBounce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".explodeOnMaxBounce").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".explodeOnMaxBounce", value.AsString());
-          }
-       }
-public coExplosionData explosion
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".explosion");
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".explosion", value.ToString());
-          }
-       }
-public bool fade
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".fade").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".fade", value.AsString());
-          }
-       }
-public float friction
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString());
-          }
-       }
-public float gravModifier
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".gravModifier").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".gravModifier", value.AsString());
-          }
-       }
-public bool ignoreWater
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".ignoreWater").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".ignoreWater", value.AsString());
-          }
-       }
-public float lifetime
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetime").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetime", value.AsString());
-          }
-       }
-public float lifetimeVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".lifetimeVariance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".lifetimeVariance", value.AsString());
-          }
-       }
-public float maxSpinSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxSpinSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxSpinSpeed", value.AsString());
-          }
-       }
-public float minSpinSpeed
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minSpinSpeed").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minSpinSpeed", value.AsString());
-          }
-       }
-public int numBounces
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".numBounces").AsInt();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".numBounces", value.AsString());
-          }
-       }
-public String shapeFile
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".shapeFile").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".shapeFile", value.AsString());
-          }
-       }
-public bool snapOnMaxBounce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".snapOnMaxBounce").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".snapOnMaxBounce", value.AsString());
-          }
-       }
-public bool staticOnMaxBounce
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".staticOnMaxBounce").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".staticOnMaxBounce", value.AsString());
-          }
-       }
-public float terminalVelocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".terminalVelocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".terminalVelocity", value.AsString());
-          }
-       }
-public String texture
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".texture").AsString();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".texture", value.AsString());
-          }
-       }
-public bool useRadiusMass
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".useRadiusMass").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".useRadiusMass", value.AsString());
-          }
-       }
-public float velocity
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".velocity").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".velocity", value.AsString());
-          }
-       }
-public float velocityVariance
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".velocityVariance").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".velocityVariance", value.AsString());
-          }
-       }
-}}
+        }
+    }

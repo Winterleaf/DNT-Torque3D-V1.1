@@ -45,13 +45,14 @@
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
 // 
-// Last updated: 04/10/2013
+// 
 // 
 
 #region
 
 using WinterLeaf;
 using WinterLeaf.Classes;
+using WinterLeaf.tsObjects;
 
 #endregion
 
@@ -134,43 +135,43 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 {
                 if (shaderVer.AsFloat() > 2.0)
                     {
-                    console.Call(SimSet.findObjectByInternalName("MeshQualityGroup", "Lowest", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("TextureQualityGroup", "Lowest", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("LightingQualityGroup", "Lowest", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("ShaderQualityGroup", "Lowest", true), "apply");
+                    console.Call(((coSimSet) "MeshQualityGroup").findObjectByInternalName("Lowest", true), "apply");
+                    console.Call(((coSimSet) "TextureQualityGroup").findObjectByInternalName("Lowest", true), "apply");
+                    console.Call(((coSimSet) "LightingQualityGroup").findObjectByInternalName("Lowest", true), "apply");
+                    console.Call(((coSimSet) "ShaderQualityGroup").findObjectByInternalName("Lowest", true), "apply");
                     }
                 else
                     {
-                    console.Call(SimSet.findObjectByInternalName("MeshQualityGroup", "Lowest", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("TextureQualityGroup", "Lowest", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("LightingQualityGroup", "Lowest", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("ShaderQualityGroup", "Lowest", true), "apply");
+                    console.Call(((coSimSet) "MeshQualityGroup").findObjectByInternalName("Lowest", true), "apply");
+                    console.Call(((coSimSet) "TextureQualityGroup").findObjectByInternalName("Lowest", true), "apply");
+                    console.Call(((coSimSet) "LightingQualityGroup").findObjectByInternalName("Lowest", true), "apply");
+                    console.Call(((coSimSet) "ShaderQualityGroup").findObjectByInternalName("Lowest", true), "apply");
                     }
                 }
             else
                 {
                 if (videoMem.AsInt() > 1000)
                     {
-                    console.Call(SimSet.findObjectByInternalName("MeshQualityGroup", "High", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("TextureQualityGroup", "High", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("LightingQualityGroup", "High", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("ShaderQualityGroup", "High", true), "apply");
+                    console.Call(((coSimSet) "MeshQualityGroup").findObjectByInternalName("High", true), "apply");
+                    console.Call(((coSimSet) "TextureQualityGroup").findObjectByInternalName("High", true), "apply");
+                    console.Call(((coSimSet) "LightingQualityGroup").findObjectByInternalName("High", true), "apply");
+                    console.Call(((coSimSet) "ShaderQualityGroup").findObjectByInternalName("High", true), "apply");
                     }
                 else if (videoMem.AsInt() > 400 || videoMem.AsInt() == 0)
                     {
-                    console.Call(SimSet.findObjectByInternalName("MeshQualityGroup", "Normal", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("TextureQualityGroup", "Normal", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("LightingQualityGroup", "Normal", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("ShaderQualityGroup", "Normal", true), "apply");
+                    console.Call(((coSimSet) "MeshQualityGroup").findObjectByInternalName("Normal", true), "apply");
+                    console.Call(((coSimSet) "TextureQualityGroup").findObjectByInternalName("Normal", true), "apply");
+                    console.Call(((coSimSet) "LightingQualityGroup").findObjectByInternalName("Normal", true), "apply");
+                    console.Call(((coSimSet) "ShaderQualityGroup").findObjectByInternalName("Normal", true), "apply");
                     if (videoMem.AsInt() == 0)
                         return "Torque was unable to detect available video memory. Applying 'Normal' quality.";
                     }
                 else
                     {
-                    console.Call(SimSet.findObjectByInternalName("MeshQualityGroup", "Low", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("TextureQualityGroup", "Low", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("LightingQualityGroup", "Low", true), "apply");
-                    console.Call(SimSet.findObjectByInternalName("ShaderQualityGroup", "Low", true), "apply");
+                    console.Call(((coSimSet) "MeshQualityGroup").findObjectByInternalName("Low", true), "apply");
+                    console.Call(((coSimSet) "TextureQualityGroup").findObjectByInternalName("Low", true), "apply");
+                    console.Call(((coSimSet) "LightingQualityGroup").findObjectByInternalName("Low", true), "apply");
+                    console.Call(((coSimSet) "ShaderQualityGroup").findObjectByInternalName("Low", true), "apply");
                     }
                 }
             return "Graphics quality settings have been auto detected.";
