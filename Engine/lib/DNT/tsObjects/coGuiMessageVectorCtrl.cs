@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiMessageVectorCtrl))]
     public class coGuiMessageVectorCtrl : coGuiControl
         {
+        private ColorI _matchColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -156,7 +158,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI matchColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".matchColor").AsColorI(); }
+            get
+                {
+                if (_matchColor != null)
+                    _matchColor.DetachAllEvents();
+                _matchColor = dnTorque.self.GetVar(_mSimObjectId + ".matchColor").AsColorI();
+                _matchColor.OnChangeNotification += _matchColor_OnChangeNotification;
+                return _matchColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".matchColor", value.AsString()); }
             }
 
@@ -276,6 +285,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiMessageVectorCtrl(uint ts)
             {
             return new coGuiMessageVectorCtrl(ts);
+            }
+
+        private void _matchColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".matchColor", e.NewValue);
             }
 
         /// <summary>

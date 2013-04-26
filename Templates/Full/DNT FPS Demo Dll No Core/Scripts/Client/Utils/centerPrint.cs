@@ -86,7 +86,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 }
 
             new coGuiMLTextCtrl("CenterPrintText").setText("<just:center>" + message);
-            centerPrintDlg["Extent"] = Util.firstWord(centerPrintDlg["extent"]) + " " + sGlobal["$CenterPrintSizes[" + size + "]"];
+            centerPrintDlg["extent"] = Util.firstWord(centerPrintDlg["extent"]) + " " + sGlobal["$CenterPrintSizes[" + size + "]"];
 
             if (time.AsInt() > 0)
                 centerPrintDlg["removePrint"] = Util._schedule((time.AsInt()*1000).AsString(), "0", "clientCmdClearCenterPrint").AsString();

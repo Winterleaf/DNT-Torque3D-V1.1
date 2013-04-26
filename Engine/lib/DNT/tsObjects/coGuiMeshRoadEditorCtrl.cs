@@ -100,6 +100,11 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiMeshRoadEditorCtrl))]
     public class coGuiMeshRoadEditorCtrl : coEditTSCtrl
         {
+        private Point3F _DefaultNormal;
+        private ColorI _HoverNodeColor;
+        private ColorI _HoverSplineColor;
+        private ColorI _SelectedSplineColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -124,7 +129,6 @@ namespace WinterLeaf.tsObjects
             {
             }
 
-
         /// <summary>
         /// Default Material used by the Mesh Road Editor on bottom surface road creation. 
         /// </summary>
@@ -148,7 +152,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F DefaultNormal
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".DefaultNormal").AsPoint3F(); }
+            get
+                {
+                if (_DefaultNormal != null)
+                    _DefaultNormal.DetachAllEvents();
+                _DefaultNormal = dnTorque.self.GetVar(_mSimObjectId + ".DefaultNormal").AsPoint3F();
+                _DefaultNormal.OnChangeNotification += _DefaultNormal_OnChangeNotification;
+                return _DefaultNormal;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".DefaultNormal", value.AsString()); }
             }
 
@@ -166,7 +177,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI HoverNodeColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".HoverNodeColor").AsColorI(); }
+            get
+                {
+                if (_HoverNodeColor != null)
+                    _HoverNodeColor.DetachAllEvents();
+                _HoverNodeColor = dnTorque.self.GetVar(_mSimObjectId + ".HoverNodeColor").AsColorI();
+                _HoverNodeColor.OnChangeNotification += _HoverNodeColor_OnChangeNotification;
+                return _HoverNodeColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".HoverNodeColor", value.AsString()); }
             }
 
@@ -175,7 +193,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI HoverSplineColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".HoverSplineColor").AsColorI(); }
+            get
+                {
+                if (_HoverSplineColor != null)
+                    _HoverSplineColor.DetachAllEvents();
+                _HoverSplineColor = dnTorque.self.GetVar(_mSimObjectId + ".HoverSplineColor").AsColorI();
+                _HoverSplineColor.OnChangeNotification += _HoverSplineColor_OnChangeNotification;
+                return _HoverSplineColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".HoverSplineColor", value.AsString()); }
             }
 
@@ -193,7 +218,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI SelectedSplineColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".SelectedSplineColor").AsColorI(); }
+            get
+                {
+                if (_SelectedSplineColor != null)
+                    _SelectedSplineColor.DetachAllEvents();
+                _SelectedSplineColor = dnTorque.self.GetVar(_mSimObjectId + ".SelectedSplineColor").AsColorI();
+                _SelectedSplineColor.OnChangeNotification += _SelectedSplineColor_OnChangeNotification;
+                return _SelectedSplineColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".SelectedSplineColor", value.AsString()); }
             }
 
@@ -214,6 +246,7 @@ namespace WinterLeaf.tsObjects
             get { return dnTorque.self.GetVar(_mSimObjectId + ".topMaterialName").AsString(); }
             set { dnTorque.self.SetVar(_mSimObjectId + ".topMaterialName", value.AsString()); }
             }
+
 
         /// <summary>
         /// 
@@ -321,6 +354,26 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiMeshRoadEditorCtrl(uint ts)
             {
             return new coGuiMeshRoadEditorCtrl(ts);
+            }
+
+        private void _DefaultNormal_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".DefaultNormal", e.NewValue);
+            }
+
+        private void _HoverNodeColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".HoverNodeColor", e.NewValue);
+            }
+
+        private void _HoverSplineColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".HoverSplineColor", e.NewValue);
+            }
+
+        private void _SelectedSplineColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".SelectedSplineColor", e.NewValue);
             }
         }
     }

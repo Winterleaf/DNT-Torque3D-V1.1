@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoProjectileData))]
     public class coProjectileData : coGameBaseData
         {
+        private Point3F _scale;
+
         /// <summary>
         /// 
         /// </summary>
@@ -265,7 +267,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F scale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F(); }
+            get
+                {
+                if (_scale != null)
+                    _scale.DetachAllEvents();
+                _scale = dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F();
+                _scale.OnChangeNotification += _scale_OnChangeNotification;
+                return _scale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".scale", value.AsString()); }
             }
 
@@ -411,6 +420,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coProjectileData(uint ts)
             {
             return new coProjectileData(ts);
+            }
+
+        private void _scale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".scale", e.NewValue);
             }
         }
     }

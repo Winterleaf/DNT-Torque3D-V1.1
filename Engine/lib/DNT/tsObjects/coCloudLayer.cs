@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoCloudLayer))]
     public class coCloudLayer : coSceneObject
         {
+        private ColorF _baseColor;
+        private Point2F _texDirection;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +132,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF baseColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorF(); }
+            get
+                {
+                if (_baseColor != null)
+                    _baseColor.DetachAllEvents();
+                _baseColor = dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorF();
+                _baseColor.OnChangeNotification += _baseColor_OnChangeNotification;
+                return _baseColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString()); }
             }
 
@@ -165,7 +175,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F texDirection
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".texDirection").AsPoint2F(); }
+            get
+                {
+                if (_texDirection != null)
+                    _texDirection.DetachAllEvents();
+                _texDirection = dnTorque.self.GetVar(_mSimObjectId + ".texDirection").AsPoint2F();
+                _texDirection.OnChangeNotification += _texDirection_OnChangeNotification;
+                return _texDirection;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".texDirection", value.AsString()); }
             }
 
@@ -312,6 +329,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coCloudLayer(uint ts)
             {
             return new coCloudLayer(ts);
+            }
+
+        private void _baseColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".baseColor", e.NewValue);
+            }
+
+        private void _texDirection_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".texDirection", e.NewValue);
             }
         }
     }

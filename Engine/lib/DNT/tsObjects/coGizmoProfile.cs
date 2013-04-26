@@ -101,6 +101,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGizmoProfile))]
     public class coGizmoProfile : coSimObject
         {
+        private ColorI _gridColor;
+        private Point3F _gridSize;
+
         /// <summary>
         /// 
         /// </summary>
@@ -167,7 +170,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI gridColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridColor").AsColorI(); }
+            get
+                {
+                if (_gridColor != null)
+                    _gridColor.DetachAllEvents();
+                _gridColor = dnTorque.self.GetVar(_mSimObjectId + ".gridColor").AsColorI();
+                _gridColor.OnChangeNotification += _gridColor_OnChangeNotification;
+                return _gridColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".gridColor", value.AsString()); }
             }
 
@@ -176,7 +186,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F gridSize
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridSize").AsPoint3F(); }
+            get
+                {
+                if (_gridSize != null)
+                    _gridSize.DetachAllEvents();
+                _gridSize = dnTorque.self.GetVar(_mSimObjectId + ".gridSize").AsPoint3F();
+                _gridSize.OnChangeNotification += _gridSize_OnChangeNotification;
+                return _gridSize;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".gridSize", value.AsString()); }
             }
 
@@ -412,6 +429,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGizmoProfile(uint ts)
             {
             return new coGizmoProfile(ts);
+            }
+
+        private void _gridColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".gridColor", e.NewValue);
+            }
+
+        private void _gridSize_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".gridSize", e.NewValue);
             }
         }
     }

@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoSFXFMODEvent))]
     public class coSFXFMODEvent : coSFXTrack
         {
+        private Point2F _fmodParameterRanges;
+
         /// <summary>
         /// 
         /// </summary>
@@ -147,7 +149,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F fmodParameterRanges
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fmodParameterRanges").AsPoint2F(); }
+            get
+                {
+                if (_fmodParameterRanges != null)
+                    _fmodParameterRanges.DetachAllEvents();
+                _fmodParameterRanges = dnTorque.self.GetVar(_mSimObjectId + ".fmodParameterRanges").AsPoint2F();
+                _fmodParameterRanges.OnChangeNotification += _fmodParameterRanges_OnChangeNotification;
+                return _fmodParameterRanges;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fmodParameterRanges", value.AsString()); }
             }
 
@@ -267,6 +276,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coSFXFMODEvent(uint ts)
             {
             return new coSFXFMODEvent(ts);
+            }
+
+        private void _fmodParameterRanges_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fmodParameterRanges", e.NewValue);
             }
         }
     }

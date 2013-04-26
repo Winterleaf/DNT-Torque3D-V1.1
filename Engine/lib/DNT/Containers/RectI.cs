@@ -93,10 +93,10 @@ namespace WinterLeaf.Containers
     /// RectI container
     /// </summary>
     [TypeConverter(typeof (RectIIConverter))]
-    public class RectI : IConvertible
+    public class RectI : Notifier, IConvertible
         {
-        private Point2I _mExtent = new Point2I(0, 0);
-        private Point2I _mPoint = new Point2I(0, 0);
+        private Point2I _mExtent;
+        private Point2I _mPoint;
 
         /// <summary>
         /// Creates RectI from string
@@ -105,10 +105,10 @@ namespace WinterLeaf.Containers
         public RectI(string recti)
             {
             string[] vals = recti.Split(' ');
-            mPoint.x = vals[0].AsInt();
-            mPoint.y = vals[1].AsInt();
-            _mExtent.x = vals[2].AsInt();
-            _mExtent.y = vals[3].AsInt();
+            _mPoint = new Point2I(vals[0].AsInt(), vals[1].AsInt());
+            _mExtent = new Point2I(vals[2].AsInt(), vals[3].AsInt());
+            _mPoint.OnChangeNotification += __OnChangeNotification;
+            _mExtent.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -119,7 +119,11 @@ namespace WinterLeaf.Containers
         public RectI(Point2I point, Point2I extent)
             {
             _mPoint = point;
+            _mPoint.DetachAllEvents();
             _mExtent = extent;
+            _mExtent.DetachAllEvents();
+            _mPoint.OnChangeNotification += __OnChangeNotification;
+            _mExtent.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -128,7 +132,13 @@ namespace WinterLeaf.Containers
         public Point2I mPoint
             {
             get { return _mPoint; }
-            set { _mPoint = value; }
+            set
+                {
+                _mPoint = value;
+                _mPoint.DetachAllEvents();
+                _mPoint.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -137,7 +147,13 @@ namespace WinterLeaf.Containers
         public Point2I mExtent
             {
             get { return _mExtent; }
-            set { _mExtent = value; }
+            set
+                {
+                _mExtent = value;
+                _mExtent.DetachAllEvents();
+                _mExtent.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -300,10 +316,25 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
+        ~RectI()
+            {
+            this.DetachAllEvents();
+            }
+
+        private void __OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            Notify(AsString());
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public string AsString()
             {
-            return string.Format("{0} {1} {2} {3} ", _mPoint.x, _mPoint.y, _mExtent.x, _mExtent.y);
+            if ((mPoint) != null && (mExtent) != null)
+                return string.Format("{0} {1} {2} {3} ", _mPoint.x, _mPoint.y, _mExtent.x, _mExtent.y);
+            return "";
             }
 
         /// <summary>
@@ -313,7 +344,7 @@ namespace WinterLeaf.Containers
         /// 
         public override string ToString()
             {
-            return string.Format("{0} {1} {2} {3} ", _mPoint.x, _mPoint.y, _mExtent.x, _mExtent.y);
+            return AsString();
             }
         }
     }

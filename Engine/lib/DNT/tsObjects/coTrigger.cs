@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoTrigger))]
     public class coTrigger : coGameBase
         {
+        private Polyhedron _polyhedron;
+
         /// <summary>
         /// 
         /// </summary>
@@ -147,7 +149,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Polyhedron polyhedron
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".polyhedron").AsPolyhedron(); }
+            get
+                {
+                if (_polyhedron != null)
+                    _polyhedron.DetachAllEvents();
+                _polyhedron = dnTorque.self.GetVar(_mSimObjectId + ".polyhedron").AsPolyhedron();
+                _polyhedron.OnChangeNotification += _polyhedron_OnChangeNotification;
+                return _polyhedron;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".polyhedron", value.AsString()); }
             }
 
@@ -267,6 +276,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coTrigger(uint ts)
             {
             return new coTrigger(ts);
+            }
+
+        private void _polyhedron_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".polyhedron", e.NewValue);
             }
 
         /// <summary>

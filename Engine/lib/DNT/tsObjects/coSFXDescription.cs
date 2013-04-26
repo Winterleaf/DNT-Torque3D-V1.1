@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoSFXDescription))]
     public class coSFXDescription : coSimDataBlock
         {
+        private EaseF _fadeInEase;
+        private EaseF _fadeOutEase;
+        private Point3F _scatterDistance;
+
         /// <summary>
         /// 
         /// </summary>
@@ -157,7 +161,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public EaseF fadeInEase
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeInEase").AsEaseF(); }
+            get
+                {
+                if (_fadeInEase != null)
+                    _fadeInEase.DetachAllEvents();
+                _fadeInEase = dnTorque.self.GetVar(_mSimObjectId + ".fadeInEase").AsEaseF();
+                _fadeInEase.OnChangeNotification += _fadeInEase_OnChangeNotification;
+                return _fadeInEase;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fadeInEase", value.AsString()); }
             }
 
@@ -184,7 +195,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public EaseF fadeOutEase
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutEase").AsEaseF(); }
+            get
+                {
+                if (_fadeOutEase != null)
+                    _fadeOutEase.DetachAllEvents();
+                _fadeOutEase = dnTorque.self.GetVar(_mSimObjectId + ".fadeOutEase").AsEaseF();
+                _fadeOutEase.OnChangeNotification += _fadeOutEase_OnChangeNotification;
+                return _fadeOutEase;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fadeOutEase", value.AsString()); }
             }
 
@@ -445,7 +463,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F scatterDistance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".scatterDistance").AsPoint3F(); }
+            get
+                {
+                if (_scatterDistance != null)
+                    _scatterDistance.DetachAllEvents();
+                _scatterDistance = dnTorque.self.GetVar(_mSimObjectId + ".scatterDistance").AsPoint3F();
+                _scatterDistance.OnChangeNotification += _scatterDistance_OnChangeNotification;
+                return _scatterDistance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".scatterDistance", value.AsString()); }
             }
 
@@ -609,6 +634,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coSFXDescription(uint ts)
             {
             return new coSFXDescription(ts);
+            }
+
+        private void _fadeInEase_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fadeInEase", e.NewValue);
+            }
+
+        private void _fadeOutEase_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fadeOutEase", e.NewValue);
+            }
+
+        private void _scatterDistance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".scatterDistance", e.NewValue);
             }
         }
     }

@@ -137,7 +137,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 coSimObject entranceeffect = entrance["entranceEffect"];
                 foreach (coGameConnection client in ClientGroup)
                     {
-                    console.commandToClient(client, "PlayTeleportEffect", new[] {entrance["position"], entranceeffect.getId().AsString()});
+                    if (console.isObject(client))
+                        console.commandToClient(client, "PlayTeleportEffect", new[] {entrance["position"], entranceeffect.getId().AsString()});
                     }
                 }
             catch (Exception)
@@ -152,7 +153,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 coSimObject exitEffect = entrance["exitEffect"];
                 foreach (coGameConnection client in ClientGroup)
                     {
-                    console.commandToClient(client, "PlayTeleportEffect", new[] {entrance["position"], exitEffect.getId().AsString()});
+                    if (console.isObject(client))
+                        console.commandToClient(client, "PlayTeleportEffect", new[] {entrance["position"], exitEffect.getId().AsString()});
                     }
                 }
             catch (Exception)

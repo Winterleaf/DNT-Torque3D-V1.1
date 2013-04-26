@@ -77,6 +77,7 @@
     <Compile Include="Containers\ColorF.cs" />
     <Compile Include="Containers\ColorI.cs" />
     <Compile Include="Containers\EaseF.cs" />
+    <Compile Include="Containers\Notifier.cs" />
     <Compile Include="Containers\Point2F.cs" />
     <Compile Include="Containers\Point2I.cs" />
     <Compile Include="Containers\Point3F.cs" />

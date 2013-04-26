@@ -101,6 +101,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiScrollCtrl))]
     public class coGuiScrollCtrl : coGuiContainer
         {
+        private Point2I _childMargin;
+
         /// <summary>
         /// 
         /// </summary>
@@ -130,7 +132,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I childMargin
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".childMargin").AsPoint2I(); }
+            get
+                {
+                if (_childMargin != null)
+                    _childMargin.DetachAllEvents();
+                _childMargin = dnTorque.self.GetVar(_mSimObjectId + ".childMargin").AsPoint2I();
+                _childMargin.OnChangeNotification += _childMargin_OnChangeNotification;
+                return _childMargin;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".childMargin", value.AsString()); }
             }
 
@@ -304,6 +313,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiScrollCtrl(uint ts)
             {
             return new coGuiScrollCtrl(ts);
+            }
+
+        private void _childMargin_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".childMargin", e.NewValue);
             }
 
         /// <summary>

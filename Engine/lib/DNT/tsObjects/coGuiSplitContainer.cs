@@ -101,6 +101,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiSplitContainer))]
     public class coGuiSplitContainer : coGuiContainer
         {
+        private Point2I _splitPoint;
+
         /// <summary>
         /// 
         /// </summary>
@@ -157,7 +159,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I splitPoint
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".splitPoint").AsPoint2I(); }
+            get
+                {
+                if (_splitPoint != null)
+                    _splitPoint.DetachAllEvents();
+                _splitPoint = dnTorque.self.GetVar(_mSimObjectId + ".splitPoint").AsPoint2I();
+                _splitPoint.OnChangeNotification += _splitPoint_OnChangeNotification;
+                return _splitPoint;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".splitPoint", value.AsString()); }
             }
 
@@ -277,6 +286,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiSplitContainer(uint ts)
             {
             return new coGuiSplitContainer(ts);
+            }
+
+        private void _splitPoint_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".splitPoint", e.NewValue);
             }
         }
     }

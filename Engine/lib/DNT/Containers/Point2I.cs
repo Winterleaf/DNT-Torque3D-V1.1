@@ -94,8 +94,11 @@ namespace WinterLeaf.Containers
     /// Used to hold CSharp equiv of the Point2I Torque Class.
     /// </summary>
     [TypeConverter(typeof (Point2IIConverter))]
-    public sealed class Point2I : IConvertible
+    public sealed class Point2I : Notifier, IConvertible
         {
+        private int _x;
+        private int _y;
+
         /// <summary>
         /// 
         /// </summary>
@@ -123,12 +126,28 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
-        public int x { get; set; }
+        public int x
+            {
+            get { return _x; }
+            set
+                {
+                _x = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public int y { get; set; }
+        public int y
+            {
+            get { return _y; }
+            set
+                {
+                _y = value;
+                Notify(AsString());
+                }
+            }
 
         #region IConvertible Members
 
@@ -286,6 +305,14 @@ namespace WinterLeaf.Containers
             }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~Point2I()
+            {
+            this.DetachAllEvents();
+            }
 
         /// <summary>
         /// 

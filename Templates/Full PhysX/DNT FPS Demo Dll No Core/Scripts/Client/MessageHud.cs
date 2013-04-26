@@ -51,6 +51,7 @@
 #region
 
 using WinterLeaf.Classes;
+using WinterLeaf.Containers;
 using WinterLeaf.tsObjects;
 
 #endregion
@@ -77,23 +78,29 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             coGuiBitmapBorderCtrl outerChatHud = "outerChatHud";
             coGuiBitmapBorderCtrl MessageHud_Frame = "MessageHud_Frame";
 
-            string windowPos = "0 " + outerChatHud["position"].Split(' ')[1] + (outerChatHud["extent"].Split(' ')[1].AsInt() + 1);
+            //string windowPos = "0 " + outerChatHud["position"].Split(' ')[1] + (outerChatHud["extent"].Split(' ')[1].AsInt() + 1);
+            Point2I windowPos = new Point2I(0, (outerChatHud.position.y + outerChatHud.extent.y + 1));
 
-            string windowExt = outerChatHud["extent"].Split(' ')[0] + " " + MessageHud_Frame["extent"].Split(' ')[1];
+            //            string windowExt = outerChatHud["extent"].Split(' ')[0] + " " + MessageHud_Frame["extent"].Split(' ')[1];
+            Point2I windowExt = new Point2I(outerChatHud.extent.x, MessageHud_Frame.extent.y);
 
 
-            int textExtent = MessageHud_Text["extent"].Split(' ')[0].AsInt() + 14;
-            int ctrlExtent = MessageHud_Frame["extent"].Split(' ')[0].AsInt();
+            //int textExtent = MessageHud_Text["extent"].Split(' ')[0].AsInt() + 14;
+            int textExtent = MessageHud_Text.extent.x + 14;
+            //int ctrlExtent = MessageHud_Frame["extent"].Split(' ')[0].AsInt();
+            int ctrlExtent = MessageHud_Frame.extent.x;
 
             new coGuiCanvas("Canvas").pushDialog(thisobj);
 
-            MessageHud_Frame["position"] = windowPos;
-            MessageHud_Frame["extent"] = windowExt;
+            MessageHud_Frame.position = windowPos;
+            MessageHud_Frame.extent = windowExt;
 
             coGuiTextEditCtrl MessageHud_Edit = "MessageHud_Edit";
 
-            MessageHud_Edit["position"] = Util.setWord(MessageHud_Edit["position"], 0, (textExtent + offset).AsString());
-            MessageHud_Edit["extent"] = Util.setWord(MessageHud_Edit["extent"], 0, ((ctrlExtent - textExtent - (2*offset))).AsString());
+            MessageHud_Edit.position.x = textExtent + offset;
+
+
+            MessageHud_Edit.extent.x = (ctrlExtent - textExtent - (2*offset));
 
             thisobj.setVisible(true);
 
@@ -122,15 +129,15 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void MessageHudToggleState(coGuiControl thisobj)
             {
             if (thisobj.isVisible())
-                thisobj.call("close");
+                MessageHudClose(thisobj);
             else
-                thisobj.call("open");
+                MessageHudOpen(thisobj);
             }
 
         [Torque_Decorations.TorqueCallBack("", "MessageHud_Edit", "onEscape", "(this)", 1, 5000, false)]
         public void MessageHudEditOnEscape(coGuiControl thisobj)
             {
-            thisobj.call("close");
+            MessageHudClose("MessageHud");
             }
 
         [Torque_Decorations.TorqueCallBack("", "MessageHud_Edit", "eval", "(this)", 1, 5000, false)]
@@ -143,7 +150,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 {
                 console.commandToServer(MessageHud["isTeamMsg"].AsBool() ? "teamMessageSent" : "messageSent", new[] {text});
                 }
-            MessageHud.call("close");
+            //MessageHud.call("close");
+            MessageHudClose(MessageHud);
             }
 
         //----------------------------------------------------------------------------

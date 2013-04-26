@@ -101,6 +101,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoPostEffect))]
     public class coPostEffect : coSimGroup
         {
+        private ColorF _targetClearColor;
+        private Point2F _targetScale;
+        private Point2I _targetSize;
+
         /// <summary>
         /// 
         /// </summary>
@@ -239,7 +243,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF targetClearColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".targetClearColor").AsColorF(); }
+            get
+                {
+                if (_targetClearColor != null)
+                    _targetClearColor.DetachAllEvents();
+                _targetClearColor = dnTorque.self.GetVar(_mSimObjectId + ".targetClearColor").AsColorF();
+                _targetClearColor.OnChangeNotification += _targetClearColor_OnChangeNotification;
+                return _targetClearColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".targetClearColor", value.AsString()); }
             }
 
@@ -266,7 +277,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F targetScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".targetScale").AsPoint2F(); }
+            get
+                {
+                if (_targetScale != null)
+                    _targetScale.DetachAllEvents();
+                _targetScale = dnTorque.self.GetVar(_mSimObjectId + ".targetScale").AsPoint2F();
+                _targetScale.OnChangeNotification += _targetScale_OnChangeNotification;
+                return _targetScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".targetScale", value.AsString()); }
             }
 
@@ -275,7 +293,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I targetSize
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".targetSize").AsPoint2I(); }
+            get
+                {
+                if (_targetSize != null)
+                    _targetSize.DetachAllEvents();
+                _targetSize = dnTorque.self.GetVar(_mSimObjectId + ".targetSize").AsPoint2I();
+                _targetSize.OnChangeNotification += _targetSize_OnChangeNotification;
+                return _targetSize;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".targetSize", value.AsString()); }
             }
 
@@ -394,6 +419,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coPostEffect(uint ts)
             {
             return new coPostEffect(ts);
+            }
+
+        private void _targetClearColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".targetClearColor", e.NewValue);
+            }
+
+        private void _targetScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".targetScale", e.NewValue);
+            }
+
+        private void _targetSize_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".targetSize", e.NewValue);
             }
 
         /// <summary>

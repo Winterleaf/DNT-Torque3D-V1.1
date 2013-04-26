@@ -81,19 +81,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             healthkit_instance.call("schedulePop");
 
-            try
+
+            coGameConnection client = player["client"];
+            if (!client.isObject())
+                return;
+            using (BackgroundWorker bwr = new BackgroundWorker())
                 {
-                coGameConnection client = player["client"];
-                if (client == 0)
-                    return;
-                using (BackgroundWorker bwr = new BackgroundWorker())
-                    {
-                    bwr.DoWork += bwr_UpdateHealth;
-                    bwr.RunWorkerAsync(new HealthKitHelper(player, healthkit_instance));
-                    }
-                }
-            catch (Exception)
-                {
+                bwr.DoWork += bwr_UpdateHealth;
+                bwr.RunWorkerAsync(new HealthKitHelper(player, healthkit_instance));
                 }
 
             AudioServerPlay3D("HealthUseSound", player.getTransform());
@@ -110,7 +105,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             coPlayer player = new coPlayer(((HealthKitHelper) e.Argument).player);
 
-            if (player == 0)
+            if (!player.isObject())
                 return;
             // Would be better to add a onRepair() callback to shapeBase.cpp in order to
             // prevent any excess/unneccesary schedules from this.  But for the time
@@ -131,9 +126,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 lock (m_ts.tick)
                     {
                     //update the player if he is alive.
-                    if (console.isObject(player) && player.getState() != "Dead")
-                        lock (m_ts.tick)
-                            PlayerUpdateHealth(player);
+                    if (player.isObject() && player.getState() != "Dead")
+                        PlayerUpdateHealth(player);
                     else
                         //No reason to keep updating if they are dead.
                         break;

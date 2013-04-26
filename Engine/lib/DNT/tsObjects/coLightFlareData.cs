@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoLightFlareData))]
     public class coLightFlareData : coSimDataBlock
         {
+        private RectF _elementRect;
+        private ColorF _elementTint;
+
         /// <summary>
         /// 
         /// </summary>
@@ -124,7 +127,6 @@ namespace WinterLeaf.tsObjects
             {
             }
 
-
         /// <summary>
         /// Where this element appears along the flare beam. 
         /// </summary>
@@ -139,7 +141,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public RectF elementRect
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".elementRect").AsRectF(); }
+            get
+                {
+                if (_elementRect != null)
+                    _elementRect.DetachAllEvents();
+                _elementRect = dnTorque.self.GetVar(_mSimObjectId + ".elementRect").AsRectF();
+                _elementRect.OnChangeNotification += _elementRect_OnChangeNotification;
+                return _elementRect;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".elementRect", value.AsString()); }
             }
 
@@ -166,7 +175,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF elementTint
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".elementTint").AsColorF(); }
+            get
+                {
+                if (_elementTint != null)
+                    _elementTint.DetachAllEvents();
+                _elementTint = dnTorque.self.GetVar(_mSimObjectId + ".elementTint").AsColorF();
+                _elementTint.OnChangeNotification += _elementTint_OnChangeNotification;
+                return _elementTint;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".elementTint", value.AsString()); }
             }
 
@@ -223,6 +239,7 @@ namespace WinterLeaf.tsObjects
             get { return dnTorque.self.GetVar(_mSimObjectId + ".renderReflectPass").AsBool(); }
             set { dnTorque.self.SetVar(_mSimObjectId + ".renderReflectPass", value.AsString()); }
             }
+
 
         /// <summary>
         /// 
@@ -330,6 +347,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coLightFlareData(uint ts)
             {
             return new coLightFlareData(ts);
+            }
+
+        private void _elementRect_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".elementRect", e.NewValue);
+            }
+
+        private void _elementTint_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".elementTint", e.NewValue);
             }
 
         /// <summary>

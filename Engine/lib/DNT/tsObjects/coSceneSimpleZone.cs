@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoSceneSimpleZone))]
     public class coSceneSimpleZone : coSceneZoneSpace
         {
+        private ColorF _ambientLightColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +131,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF ambientLightColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambientLightColor").AsColorF(); }
+            get
+                {
+                if (_ambientLightColor != null)
+                    _ambientLightColor.DetachAllEvents();
+                _ambientLightColor = dnTorque.self.GetVar(_mSimObjectId + ".ambientLightColor").AsColorF();
+                _ambientLightColor.OnChangeNotification += _ambientLightColor_OnChangeNotification;
+                return _ambientLightColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ambientLightColor", value.AsString()); }
             }
 
@@ -249,6 +258,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coSceneSimpleZone(uint ts)
             {
             return new coSceneSimpleZone(ts);
+            }
+
+        private void _ambientLightColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ambientLightColor", e.NewValue);
             }
         }
     }

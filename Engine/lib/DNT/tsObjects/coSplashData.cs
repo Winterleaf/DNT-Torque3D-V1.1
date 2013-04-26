@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoSplashData))]
     public class coSplashData : coGameBaseData
         {
+        private ColorF _colors;
+        private Point3F _scale;
+
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +142,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF colors
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".colors").AsColorF(); }
+            get
+                {
+                if (_colors != null)
+                    _colors.DetachAllEvents();
+                _colors = dnTorque.self.GetVar(_mSimObjectId + ".colors").AsColorF();
+                _colors.OnChangeNotification += _colors_OnChangeNotification;
+                return _colors;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".colors", value.AsString()); }
             }
 
@@ -247,7 +257,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F scale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F(); }
+            get
+                {
+                if (_scale != null)
+                    _scale.DetachAllEvents();
+                _scale = dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F();
+                _scale.OnChangeNotification += _scale_OnChangeNotification;
+                return _scale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".scale", value.AsString()); }
             }
 
@@ -429,6 +446,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coSplashData(uint ts)
             {
             return new coSplashData(ts);
+            }
+
+        private void _colors_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".colors", e.NewValue);
+            }
+
+        private void _scale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".scale", e.NewValue);
             }
         }
     }

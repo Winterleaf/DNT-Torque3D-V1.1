@@ -101,6 +101,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoPxCloth))]
     public class coPxCloth : coGameBase
         {
+        private Point2I _samples;
+        private Point2F _size;
+
         /// <summary>
         /// 
         /// </summary>
@@ -203,7 +206,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I samples
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".samples").AsPoint2I(); }
+            get
+                {
+                if (_samples != null)
+                    _samples.DetachAllEvents();
+                _samples = dnTorque.self.GetVar(_mSimObjectId + ".samples").AsPoint2I();
+                _samples.OnChangeNotification += _samples_OnChangeNotification;
+                return _samples;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".samples", value.AsString()); }
             }
 
@@ -221,7 +231,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F size
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".size").AsPoint2F(); }
+            get
+                {
+                if (_size != null)
+                    _size.DetachAllEvents();
+                _size = dnTorque.self.GetVar(_mSimObjectId + ".size").AsPoint2F();
+                _size.OnChangeNotification += _size_OnChangeNotification;
+                return _size;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".size", value.AsString()); }
             }
 
@@ -349,6 +366,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coPxCloth(uint ts)
             {
             return new coPxCloth(ts);
+            }
+
+        private void _samples_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".samples", e.NewValue);
+            }
+
+        private void _size_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".size", e.NewValue);
             }
         }
     }

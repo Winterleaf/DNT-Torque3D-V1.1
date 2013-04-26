@@ -68,6 +68,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__activateDirectInput()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__activateDirectInput'");
+
+
             SafeNativeMethods.mwle_fn__activateDirectInput();
             }
 
@@ -83,6 +87,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__addMaterialMapping(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__addMaterialMapping'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -106,6 +112,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__addTaggedString(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__addTaggedString'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -118,6 +126,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__aiAddPlayer(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__aiAddPlayer'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -134,6 +144,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__aiConnect(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__aiConnect'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -192,6 +204,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__buildTaggedString(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__buildTaggedString'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -227,6 +241,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__call(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__call'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -258,6 +274,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__cancel(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__cancel'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__cancel(sba1);
@@ -269,6 +287,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__cancelAll(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__cancelAll'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__cancelAll(sba1);
@@ -280,6 +300,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__clearClientPaths()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__clearClientPaths'");
+
+
             SafeNativeMethods.mwle_fn__clearClientPaths();
             }
 
@@ -289,6 +313,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__clearServerPaths()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__clearServerPaths'");
+
+
             SafeNativeMethods.mwle_fn__clearServerPaths();
             }
 
@@ -300,6 +328,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__closeNetPort()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__closeNetPort'");
+
+
             SafeNativeMethods.mwle_fn__closeNetPort();
             }
 
@@ -314,6 +346,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__containerFindFirst(string a1, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__containerFindFirst'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", a1, a2, a3, a4, a5));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -336,6 +370,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__containerFindNext()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__containerFindNext'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__containerFindNext(returnbuff);
@@ -350,6 +387,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__dbgIsConnected()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__dbgIsConnected'");
+
+
             return SafeNativeMethods.mwle_fn__dbgIsConnected() >= 1;
             }
 
@@ -362,6 +403,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__deactivateDirectInput()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__deactivateDirectInput'");
+
+
             SafeNativeMethods.mwle_fn__deactivateDirectInput();
             }
 
@@ -374,6 +419,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__disableJoystick()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__disableJoystick'");
+
+
             SafeNativeMethods.mwle_fn__disableJoystick();
             }
 
@@ -385,6 +434,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__disableXInput()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__disableXInput'");
+
+
             SafeNativeMethods.mwle_fn__disableXInput();
             }
 
@@ -396,6 +449,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__dumpMaterialInstances()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__dumpMaterialInstances'");
+
+
             SafeNativeMethods.mwle_fn__dumpMaterialInstances();
             }
 
@@ -406,6 +463,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__dumpProcessList()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__dumpProcessList'");
+
+
             SafeNativeMethods.mwle_fn__dumpProcessList();
             }
 
@@ -420,6 +481,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__echo(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__echo'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -452,6 +515,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__enableJoystick()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__enableJoystick'");
+
+
             return SafeNativeMethods.mwle_fn__enableJoystick() >= 1;
             }
 
@@ -464,6 +531,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__enableSamples(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__enableSamples'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -480,6 +549,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__enableXInput()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__enableXInput'");
+
+
             return SafeNativeMethods.mwle_fn__enableXInput() >= 1;
             }
 
@@ -495,6 +568,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__error(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__error'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -524,6 +599,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__eval(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__eval'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -544,6 +621,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__execPrefs(string a1, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__execPrefs'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a1, a2, a3));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -561,6 +640,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__expandFilename(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__expandFilename'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -575,6 +656,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getBuildString()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getBuildString'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getBuildString(returnbuff);
@@ -589,6 +673,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getClipboard()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getClipboard'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getClipboard(returnbuff);
@@ -602,6 +689,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getCompileTimeString()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getCompileTimeString'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getCompileTimeString(returnbuff);
@@ -615,6 +705,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getEngineName()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getEngineName'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getEngineName(returnbuff);
@@ -627,6 +720,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__getEventTimeLeft(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getEventTimeLeft'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__getEventTimeLeft(sba1);
@@ -642,6 +737,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getFunctionPackage(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getFunctionPackage'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -656,6 +753,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getMapEntry(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getMapEntry'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -673,6 +772,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getMaterialMapping(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getMaterialMapping'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -691,6 +792,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getMethodPackage(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getMethodPackage'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -709,6 +812,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getModNameFromPath(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getModNameFromPath'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -724,6 +829,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getPrefsPath(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getPrefsPath'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -749,6 +856,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fn__getRandom(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getRandom'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -764,6 +873,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__getRealTime()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getRealTime'");
+
+
             return SafeNativeMethods.mwle_fn__getRealTime();
             }
 
@@ -773,6 +886,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__getScheduleDuration(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getScheduleDuration'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__getScheduleDuration(sba1);
@@ -784,6 +899,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__getServerCount()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getServerCount'");
+
+
             return SafeNativeMethods.mwle_fn__getServerCount();
             }
 
@@ -796,6 +915,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__getSimTime()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getSimTime'");
+
+
             return SafeNativeMethods.mwle_fn__getSimTime();
             }
 
@@ -817,6 +940,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getTag(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getTag'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -844,6 +969,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getTaggedString(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getTaggedString'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -866,6 +993,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getTemporaryDirectory()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getTemporaryDirectory'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getTemporaryDirectory(returnbuff);
@@ -885,6 +1015,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getTemporaryFileName()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getTemporaryFileName'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getTemporaryFileName(returnbuff);
@@ -897,6 +1030,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__getTimeSinceStart(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getTimeSinceStart'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__getTimeSinceStart(sba1);
@@ -913,6 +1048,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getUniqueInternalName(string a1, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getUniqueInternalName'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a1, a2, a3));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -934,6 +1071,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getUniqueName(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getUniqueName'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -947,6 +1086,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getUserDataDirectory()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getUserDataDirectory'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getUserDataDirectory(returnbuff);
@@ -959,6 +1101,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getUserHomeDirectory()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getUserHomeDirectory'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getUserHomeDirectory(returnbuff);
@@ -975,6 +1120,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getVariable(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getVariable'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -989,6 +1136,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__getVersionNumber()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getVersionNumber'");
+
+
             return SafeNativeMethods.mwle_fn__getVersionNumber();
             }
 
@@ -999,6 +1150,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__getVersionString()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getVersionString'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__getVersionString(returnbuff);
@@ -1028,6 +1182,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__getXInputState(string a1, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__getXInputState'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a1, a2, a3));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1043,6 +1199,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isCurrentScriptToolScript()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isCurrentScriptToolScript'");
+
+
             return SafeNativeMethods.mwle_fn__isCurrentScriptToolScript() >= 1;
             }
 
@@ -1059,6 +1219,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isDefined(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isDefined'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -1071,6 +1233,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isDemo()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isDemo'");
+
+
             return SafeNativeMethods.mwle_fn__isDemo() >= 1;
             }
 
@@ -1080,6 +1246,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isEventPending(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isEventPending'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__isEventPending(sba1) >= 1;
@@ -1095,6 +1263,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isFunction(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isFunction'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__isFunction(sba1) >= 1;
@@ -1106,6 +1276,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isJoystickDetected()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isJoystickDetected'");
+
+
             return SafeNativeMethods.mwle_fn__isJoystickDetected() >= 1;
             }
 
@@ -1118,6 +1292,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isJoystickEnabled()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isJoystickEnabled'");
+
+
             return SafeNativeMethods.mwle_fn__isJoystickEnabled() >= 1;
             }
 
@@ -1132,6 +1310,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isMethod(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isMethod'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -1144,6 +1324,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isObject(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isObject'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__isObject(sba1) >= 1;
@@ -1156,6 +1338,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isPointInside(string a1, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isPointInside'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a1, a2, a3));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1173,6 +1357,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isValidObjectName(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isValidObjectName'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__isValidObjectName(sba1) >= 1;
@@ -1184,6 +1370,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isWebDemo()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isWebDemo'");
+
+
             return SafeNativeMethods.mwle_fn__isWebDemo() >= 1;
             }
 
@@ -1198,6 +1388,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__isXInputConnected(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__isXInputConnected'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__isXInputConnected(sba1) >= 1;
@@ -1212,6 +1404,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__lockMouse(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__lockMouse'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__lockMouse(sba1);
@@ -1223,6 +1417,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__nameToID(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__nameToID'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__nameToID(sba1);
@@ -1260,6 +1456,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__nextToken(string a1, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__nextToken'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a1, a2, a3));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -1275,6 +1473,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__physicsDebugDraw(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsDebugDraw'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__physicsDebugDraw(sba1);
@@ -1286,6 +1486,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__physicsDestroy()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsDestroy'");
+
+
             SafeNativeMethods.mwle_fn__physicsDestroy();
             }
 
@@ -1295,6 +1499,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__physicsDestroyWorld(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsDestroyWorld'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__physicsDestroyWorld(sba1);
@@ -1306,6 +1512,10 @@ namespace WinterLeaf
         /// </summary>
         internal float fn__physicsGetTimeScale()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsGetTimeScale'");
+
+
             return SafeNativeMethods.mwle_fn__physicsGetTimeScale();
             }
 
@@ -1315,6 +1525,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__physicsInit(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsInit'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__physicsInit(sba1) >= 1;
@@ -1326,6 +1538,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__physicsInitWorld(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsInitWorld'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__physicsInitWorld(sba1) >= 1;
@@ -1339,6 +1553,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__physicsPluginPresent()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsPluginPresent'");
+
+
             return SafeNativeMethods.mwle_fn__physicsPluginPresent() >= 1;
             }
 
@@ -1348,6 +1566,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__physicsRestoreState()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsRestoreState'");
+
+
             SafeNativeMethods.mwle_fn__physicsRestoreState();
             }
 
@@ -1357,6 +1579,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__physicsSetTimeScale(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsSetTimeScale'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__physicsSetTimeScale(sba1);
@@ -1368,6 +1592,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__physicsSimulationEnabled()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsSimulationEnabled'");
+
+
             return SafeNativeMethods.mwle_fn__physicsSimulationEnabled() >= 1;
             }
 
@@ -1377,6 +1605,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__physicsStartSimulation(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsStartSimulation'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__physicsStartSimulation(sba1);
@@ -1388,6 +1618,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__physicsStopSimulation(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsStopSimulation'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__physicsStopSimulation(sba1);
@@ -1399,6 +1631,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__physicsStoreState()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__physicsStoreState'");
+
+
             SafeNativeMethods.mwle_fn__physicsStoreState();
             }
 
@@ -1411,6 +1647,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__playJournal(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__playJournal'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -1427,6 +1665,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__popInstantGroup()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__popInstantGroup'");
+
+
             SafeNativeMethods.mwle_fn__popInstantGroup();
             }
 
@@ -1441,6 +1683,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__pushInstantGroup(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__pushInstantGroup'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__pushInstantGroup(sba1);
@@ -1452,6 +1696,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__queryAllServers(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__queryAllServers'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1473,6 +1719,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__queryLanServers(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__queryLanServers'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1494,6 +1742,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__queryMasterServer(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__queryMasterServer'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1514,6 +1764,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__querySingleServer(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__querySingleServer'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -1526,6 +1778,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__realQuit()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__realQuit'");
+
+
             SafeNativeMethods.mwle_fn__realQuit();
             }
 
@@ -1537,6 +1793,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__redbookClose()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookClose'");
+
+
             return SafeNativeMethods.mwle_fn__redbookClose() >= 1;
             }
 
@@ -1548,6 +1808,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__redbookGetDeviceCount()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookGetDeviceCount'");
+
+
             return SafeNativeMethods.mwle_fn__redbookGetDeviceCount();
             }
 
@@ -1559,6 +1823,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__redbookGetDeviceName(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookGetDeviceName'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -1574,6 +1840,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__redbookGetLastError()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookGetLastError'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn__redbookGetLastError(returnbuff);
@@ -1588,6 +1857,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__redbookGetTrackCount()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookGetTrackCount'");
+
+
             return SafeNativeMethods.mwle_fn__redbookGetTrackCount();
             }
 
@@ -1599,6 +1872,10 @@ namespace WinterLeaf
         /// </summary>
         internal float fn__redbookGetVolume()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookGetVolume'");
+
+
             return SafeNativeMethods.mwle_fn__redbookGetVolume();
             }
 
@@ -1610,6 +1887,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__redbookOpen(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookOpen'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__redbookOpen(sba1) >= 1;
@@ -1623,6 +1902,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__redbookPlay(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookPlay'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__redbookPlay(sba1) >= 1;
@@ -1636,6 +1917,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__redbookSetVolume(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookSetVolume'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__redbookSetVolume(sba1) >= 1;
@@ -1649,6 +1932,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__redbookStop()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__redbookStop'");
+
+
             return SafeNativeMethods.mwle_fn__redbookStop() >= 1;
             }
 
@@ -1660,6 +1947,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__reInitMaterials()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__reInitMaterials'");
+
+
             SafeNativeMethods.mwle_fn__reInitMaterials();
             }
 
@@ -1677,6 +1968,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__removeTaggedString(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__removeTaggedString'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__removeTaggedString(sba1);
@@ -1690,6 +1983,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__resetFPSTracker()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__resetFPSTracker'");
+
+
             SafeNativeMethods.mwle_fn__resetFPSTracker();
             }
 
@@ -1703,6 +2000,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__resetXInput()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__resetXInput'");
+
+
             SafeNativeMethods.mwle_fn__resetXInput();
             }
 
@@ -1722,6 +2023,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__rumble(string a1, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__rumble'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a1, a2, a3));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1737,6 +2040,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__saveJournal(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__saveJournal'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__saveJournal(sba1);
@@ -1748,6 +2053,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__schedule(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__schedule'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1779,6 +2086,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__setClipboard(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__setClipboard'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__setClipboard(sba1) >= 1;
@@ -1792,6 +2101,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__setInteriorFocusedDebug(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__setInteriorFocusedDebug'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__setInteriorFocusedDebug(sba1);
@@ -1813,6 +2124,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__setNetPort(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__setNetPort'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -1825,6 +2138,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__setServerInfo(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__setServerInfo'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             return SafeNativeMethods.mwle_fn__setServerInfo(sba1) >= 1;
@@ -1836,6 +2151,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn__setShadowManager(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__setShadowManager'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -1848,6 +2165,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__setShadowVizLight(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__setShadowVizLight'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -1866,6 +2185,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__setVariable(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__setVariable'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -1883,6 +2204,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__sfxCreateSource(string a1, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__sfxCreateSource'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", a1, a2, a3, a4, a5));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1900,6 +2223,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__sfxPlay(string a1, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__sfxPlay'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", a1, a2, a3, a4));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1917,6 +2242,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__sfxPlayOnce(string a1, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__sfxPlayOnce'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", a1, a2, a3, a4, a5));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1933,6 +2260,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn__spawnObject(string a1, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__spawnObject'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", a1, a2, a3, a4, a5));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -1948,6 +2277,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__strToPlayerName(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__strToPlayerName'" + string.Format("\"{0}\" ", a1));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
@@ -1961,6 +2292,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__TestFunction2Args(string a1, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__TestFunction2Args'" + string.Format("\"{0}\" \"{1}\" ", a1, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -1975,6 +2308,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn__testJavaScriptBridge(string a1, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__testJavaScriptBridge'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a1, a2, a3));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -1990,6 +2325,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__tsUpdateImposterImages(string a1)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__tsUpdateImposterImages'" + string.Format("\"{0}\" ", a1));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
 
             SafeNativeMethods.mwle_fn__tsUpdateImposterImages(sba1);
@@ -2007,6 +2344,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn__warn(string a1, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn__warn'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sba1 = new StringBuilder(a1, 4096);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -2039,6 +2378,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_activatePackage(string packageName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_activatePackage'" + string.Format("\"{0}\" ", packageName));
             StringBuilder sbpackageName = new StringBuilder(packageName, 1024);
 
             SafeNativeMethods.mwle_fn_activatePackage(sbpackageName);
@@ -2070,6 +2411,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_addBadWord(string badWord)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_addBadWord'" + string.Format("\"{0}\" ", badWord));
             StringBuilder sbbadWord = new StringBuilder(badWord, 4096);
 
             return SafeNativeMethods.mwle_fn_addBadWord(sbbadWord) >= 1;
@@ -2086,6 +2429,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_addGlobalShaderMacro(string name, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_addGlobalShaderMacro'" + string.Format("\"{0}\" \"{1}\" ", name, value));
             StringBuilder sbname = new StringBuilder(name, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
 
@@ -2101,6 +2446,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_backtrace()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_backtrace'");
+
+
             SafeNativeMethods.mwle_fn_backtrace();
             }
 
@@ -2128,6 +2477,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_calcExplosionCoverage(string pos, int id, uint covMask)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_calcExplosionCoverage'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", pos, id, covMask));
             StringBuilder sbpos = new StringBuilder(pos, 1024);
 
             return SafeNativeMethods.mwle_fn_calcExplosionCoverage(sbpos, id, covMask);
@@ -2140,6 +2491,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_cleanupTexturePool()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_cleanupTexturePool'");
+
+
             SafeNativeMethods.mwle_fn_cleanupTexturePool();
             }
 
@@ -2152,6 +2507,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_clearGFXResourceFlags()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_clearGFXResourceFlags'");
+
+
             SafeNativeMethods.mwle_fn_clearGFXResourceFlags();
             }
 
@@ -2180,6 +2539,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_collapseEscape(string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_collapseEscape'" + string.Format("\"{0}\" ", text));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -2205,6 +2566,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_compile(string fileName, bool overrideNoDSO)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_compile'" + string.Format("\"{0}\" \"{1}\" ", fileName, overrideNoDSO));
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
             return SafeNativeMethods.mwle_fn_compile(sbfileName, overrideNoDSO) >= 1;
@@ -2229,6 +2592,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_containerBoxEmpty(uint mask, string center, float xRadius, float yRadius, float zRadius, bool useClientContainer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_containerBoxEmpty'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" ", mask, center, xRadius, yRadius, zRadius, useClientContainer));
             StringBuilder sbcenter = new StringBuilder(center, 1024);
 
             return SafeNativeMethods.mwle_fn_containerBoxEmpty(mask, sbcenter, xRadius, yRadius, zRadius, useClientContainer) >= 1;
@@ -2258,6 +2623,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_containerRayCast(string start, string end, uint mask, string pExempt, bool useClientContainer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_containerRayCast'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", start, end, mask, pExempt, useClientContainer));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstart = new StringBuilder(start, 1024);
             StringBuilder sbend = new StringBuilder(end, 1024);
@@ -2282,6 +2649,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_containerSearchCurrDist(bool useClientContainer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_containerSearchCurrDist'" + string.Format("\"{0}\" ", useClientContainer));
+
             return SafeNativeMethods.mwle_fn_containerSearchCurrDist(useClientContainer);
             }
 
@@ -2300,6 +2670,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_containerSearchCurrRadiusDist(bool useClientContainer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_containerSearchCurrRadiusDist'" + string.Format("\"{0}\" ", useClientContainer));
+
             return SafeNativeMethods.mwle_fn_containerSearchCurrRadiusDist(useClientContainer);
             }
 
@@ -2330,6 +2703,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_containerSearchNext(bool useClientContainer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_containerSearchNext'" + string.Format("\"{0}\" ", useClientContainer));
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_containerSearchNext(useClientContainer, returnbuff);
@@ -2374,6 +2749,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_containsBadWords(string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_containsBadWords'" + string.Format("\"{0}\" ", text));
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
             return SafeNativeMethods.mwle_fn_containsBadWords(sbtext) >= 1;
@@ -2388,6 +2765,9 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_countBits(int v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_countBits'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_countBits(v);
             }
 
@@ -2403,6 +2783,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_createPath(string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_createPath'" + string.Format("\"{0}\" ", path));
             StringBuilder sbpath = new StringBuilder(path, 4096);
 
             return SafeNativeMethods.mwle_fn_createPath(sbpath) >= 1;
@@ -2418,6 +2800,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_deactivatePackage(string packageName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_deactivatePackage'" + string.Format("\"{0}\" ", packageName));
             StringBuilder sbpackageName = new StringBuilder(packageName, 1024);
 
             SafeNativeMethods.mwle_fn_deactivatePackage(sbpackageName);
@@ -2433,6 +2817,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_debug()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_debug'");
+
+
             SafeNativeMethods.mwle_fn_debug();
             }
 
@@ -2449,6 +2837,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_debugv(string variableName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_debugv'" + string.Format("\"{0}\" ", variableName));
             StringBuilder sbvariableName = new StringBuilder(variableName, 4096);
 
             SafeNativeMethods.mwle_fn_debugv(sbvariableName);
@@ -2462,6 +2852,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_deleteDataBlocks()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_deleteDataBlocks'");
+
+
             SafeNativeMethods.mwle_fn_deleteDataBlocks();
             }
 
@@ -2480,6 +2874,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_deleteVariables(string pattern)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_deleteVariables'" + string.Format("\"{0}\" ", pattern));
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
 
             SafeNativeMethods.mwle_fn_deleteVariables(sbpattern);
@@ -2505,6 +2901,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_describeGFXResources(string resourceTypes, string filePath, bool unflaggedOnly)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_describeGFXResources'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", resourceTypes, filePath, unflaggedOnly));
             StringBuilder sbresourceTypes = new StringBuilder(resourceTypes, 4096);
             StringBuilder sbfilePath = new StringBuilder(filePath, 4096);
 
@@ -2519,6 +2917,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_describeGFXStateBlocks(string filePath)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_describeGFXStateBlocks'" + string.Format("\"{0}\" ", filePath));
             StringBuilder sbfilePath = new StringBuilder(filePath, 4096);
 
             SafeNativeMethods.mwle_fn_describeGFXStateBlocks(sbfilePath);
@@ -2548,6 +2948,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_detag(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_detag'" + string.Format("\"{0}\" ", str));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -2564,6 +2966,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_displaySplashWindow()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_displaySplashWindow'");
+
+
             return SafeNativeMethods.mwle_fn_displaySplashWindow() >= 1;
             }
 
@@ -2574,6 +2980,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_1(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_1'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbchr = new StringBuilder(chr, 4096);
 
@@ -2588,6 +2996,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_10(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_10'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2602,6 +3012,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_12(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_12'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2616,6 +3028,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_13(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_13'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2630,6 +3044,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_14(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_14'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2644,6 +3060,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_15(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_15'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2658,6 +3076,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_2(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_2'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2672,6 +3092,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_3(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_3'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2686,6 +3108,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_4(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_4'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2700,6 +3124,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_5(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_5'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2714,6 +3140,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_6(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_6'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2728,6 +3156,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_7(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_7'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2742,6 +3172,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_8(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_8'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2756,6 +3188,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_dnt_testcase_9(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dnt_testcase_9'" + string.Format("\"{0}\" ", chr));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbchr = new StringBuilder(chr, 1024);
 
@@ -2772,6 +3206,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_dumpConsoleClasses(bool dumpScript, bool dumpEngine)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dumpConsoleClasses'" + string.Format("\"{0}\" \"{1}\" ", dumpScript, dumpEngine));
+
             SafeNativeMethods.mwle_fn_dumpConsoleClasses(dumpScript, dumpEngine);
             }
 
@@ -2784,6 +3221,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_dumpConsoleFunctions(bool dumpScript, bool dumpEngine)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dumpConsoleFunctions'" + string.Format("\"{0}\" \"{1}\" ", dumpScript, dumpEngine));
+
             SafeNativeMethods.mwle_fn_dumpConsoleFunctions(dumpScript, dumpEngine);
             }
 
@@ -2795,6 +3235,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_dumpFontCacheStatus()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dumpFontCacheStatus'");
+
+
             SafeNativeMethods.mwle_fn_dumpFontCacheStatus();
             }
 
@@ -2810,6 +3254,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_dumpNetStats()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dumpNetStats'");
+
+
             SafeNativeMethods.mwle_fn_dumpNetStats();
             }
 
@@ -2821,6 +3269,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_dumpRandomNormalMap()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_dumpRandomNormalMap'");
+
+
             SafeNativeMethods.mwle_fn_dumpRandomNormalMap();
             }
 
@@ -2837,6 +3289,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_duplicateCachedFont(string oldFontName, int oldFontSize, string newFontName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_duplicateCachedFont'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", oldFontName, oldFontSize, newFontName));
             StringBuilder sboldFontName = new StringBuilder(oldFontName, 4096);
             StringBuilder sbnewFontName = new StringBuilder(newFontName, 4096);
 
@@ -2859,6 +3313,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_endsWith(string str, string suffix, bool caseSensitive)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_endsWith'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", str, suffix, caseSensitive));
             StringBuilder sbstr = new StringBuilder(str, 4096);
             StringBuilder sbsuffix = new StringBuilder(suffix, 4096);
 
@@ -2880,6 +3336,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_excludeOtherInstance(string appIdentifer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_excludeOtherInstance'" + string.Format("\"{0}\" ", appIdentifer));
             StringBuilder sbappIdentifer = new StringBuilder(appIdentifer, 4096);
 
             return SafeNativeMethods.mwle_fn_excludeOtherInstance(sbappIdentifer) >= 1;
@@ -2902,6 +3360,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_exec(string fileName, bool noCalls, bool journalScript)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_exec'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", fileName, noCalls, journalScript));
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
             return SafeNativeMethods.mwle_fn_exec(sbfileName, noCalls, journalScript) >= 1;
@@ -2925,6 +3385,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_expandEscape(string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_expandEscape'" + string.Format("\"{0}\" ", text));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -2953,6 +3415,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_export(string pattern, string filename, bool append)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_export'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", pattern, filename, append));
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -2974,6 +3438,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_exportCachedFont(string faceName, int fontSize, string fileName, int padding, int kerning)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_exportCachedFont'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", faceName, fontSize, fileName, padding, kerning));
             StringBuilder sbfaceName = new StringBuilder(faceName, 4096);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -2990,6 +3456,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_fileBase(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_fileBase'" + string.Format("\"{0}\" ", fileName));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -3007,6 +3475,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_fileCreatedTime(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_fileCreatedTime'" + string.Format("\"{0}\" ", fileName));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -3025,6 +3495,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_fileDelete(string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_fileDelete'" + string.Format("\"{0}\" ", path));
             StringBuilder sbpath = new StringBuilder(path, 4096);
 
             return SafeNativeMethods.mwle_fn_fileDelete(sbpath) >= 1;
@@ -3040,6 +3512,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_fileExt(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_fileExt'" + string.Format("\"{0}\" ", fileName));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -3057,6 +3531,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_fileModifiedTime(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_fileModifiedTime'" + string.Format("\"{0}\" ", fileName));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -3074,6 +3550,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_fileName(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_fileName'" + string.Format("\"{0}\" ", fileName));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -3091,6 +3569,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_filePath(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_filePath'" + string.Format("\"{0}\" ", fileName));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -3109,6 +3589,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_fileSize(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_fileSize'" + string.Format("\"{0}\" ", fileName));
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
             return SafeNativeMethods.mwle_fn_fileSize(sbfileName);
@@ -3142,6 +3624,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_filterString(string baseString, string replacementChars)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_filterString'" + string.Format("\"{0}\" \"{1}\" ", baseString, replacementChars));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbbaseString = new StringBuilder(baseString, 4096);
             StringBuilder sbreplacementChars = new StringBuilder(replacementChars, 4096);
@@ -3182,6 +3666,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_findFirstFile(string pattern, bool recurse)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_findFirstFile'" + string.Format("\"{0}\" \"{1}\" ", pattern, recurse));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
 
@@ -3229,6 +3715,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_findFirstFileMultiExpr(string pattern, bool recurse)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_findFirstFileMultiExpr'" + string.Format("\"{0}\" \"{1}\" ", pattern, recurse));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
 
@@ -3256,6 +3744,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_findNextFile(string pattern)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_findNextFile'" + string.Format("\"{0}\" ", pattern));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
 
@@ -3289,6 +3779,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_findNextFileMultiExpr(string pattern)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_findNextFileMultiExpr'" + string.Format("\"{0}\" ", pattern));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
 
@@ -3310,6 +3802,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_firstWord(string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_firstWord'" + string.Format("\"{0}\" ", text));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -3328,6 +3822,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_flagCurrentGFXResources()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_flagCurrentGFXResources'");
+
+
             SafeNativeMethods.mwle_fn_flagCurrentGFXResources();
             }
 
@@ -3338,6 +3836,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_flushTextureCache()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_flushTextureCache'");
+
+
             SafeNativeMethods.mwle_fn_flushTextureCache();
             }
 
@@ -3348,6 +3850,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getActiveDDSFiles()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getActiveDDSFiles'");
+
+
             return SafeNativeMethods.mwle_fn_getActiveDDSFiles();
             }
 
@@ -3358,6 +3864,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getActiveLightManager()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getActiveLightManager'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_getActiveLightManager(returnbuff);
@@ -3371,6 +3880,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getBestHDRFormat()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getBestHDRFormat'");
+
+
             return SafeNativeMethods.mwle_fn_getBestHDRFormat();
             }
 
@@ -3382,6 +3895,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getBitmapInfo(string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getBitmapInfo'" + string.Format("\"{0}\" ", filename));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -3398,6 +3913,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getBoxCenter(string box)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getBoxCenter'" + string.Format("\"{0}\" ", box));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbbox = new StringBuilder(box, 1024);
 
@@ -3413,6 +3930,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getCategoryOfClass(string className)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getCategoryOfClass'" + string.Format("\"{0}\" ", className));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbclassName = new StringBuilder(className, 4096);
 
@@ -3428,6 +3947,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getCurrentActionMap()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getCurrentActionMap'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getCurrentActionMap(returnbuff);
@@ -3444,6 +3966,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getCurrentDirectory()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getCurrentDirectory'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getCurrentDirectory(returnbuff);
@@ -3459,6 +3984,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getDescriptionOfClass(string className)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getDescriptionOfClass'" + string.Format("\"{0}\" ", className));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbclassName = new StringBuilder(className, 4096);
 
@@ -3472,6 +3999,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getDesktopResolution()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getDesktopResolution'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getDesktopResolution(returnbuff);
@@ -3490,6 +4020,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getDirectoryList(string path, int depth)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getDirectoryList'" + string.Format("\"{0}\" \"{1}\" ", path, depth));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbpath = new StringBuilder(path, 4096);
 
@@ -3504,6 +4036,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getDisplayDeviceInformation()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getDisplayDeviceInformation'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_getDisplayDeviceInformation(returnbuff);
@@ -3517,6 +4052,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getDisplayDeviceList()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getDisplayDeviceList'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getDisplayDeviceList(returnbuff);
@@ -3532,6 +4070,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getExecutableName()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getExecutableName'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getExecutableName(returnbuff);
@@ -3556,6 +4097,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getField(string text, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getField'" + string.Format("\"{0}\" \"{1}\" ", text, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -3577,6 +4120,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getFieldCount(string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getFieldCount'" + string.Format("\"{0}\" ", text));
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
             return SafeNativeMethods.mwle_fn_getFieldCount(sbtext);
@@ -3603,6 +4148,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getFields(string text, int startIndex, int endIndex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getFields'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", text, startIndex, endIndex));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -3637,6 +4184,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getFileCount(string pattern, bool recurse)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getFileCount'" + string.Format("\"{0}\" \"{1}\" ", pattern, recurse));
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
 
             return SafeNativeMethods.mwle_fn_getFileCount(sbpattern, recurse);
@@ -3667,6 +4216,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getFileCountMultiExpr(string pattern, bool recurse)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getFileCountMultiExpr'" + string.Format("\"{0}\" \"{1}\" ", pattern, recurse));
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
 
             return SafeNativeMethods.mwle_fn_getFileCountMultiExpr(sbpattern, recurse);
@@ -3684,6 +4235,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getFileCRC(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getFileCRC'" + string.Format("\"{0}\" ", fileName));
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
             return SafeNativeMethods.mwle_fn_getFileCRC(sbfileName);
@@ -3696,6 +4249,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getLightManagerNames()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getLightManagerNames'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getLightManagerNames(returnbuff);
@@ -3713,6 +4269,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getMainDotCsDir()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getMainDotCsDir'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getMainDotCsDir(returnbuff);
@@ -3729,6 +4288,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_getMax(float v1, float v2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getMax'" + string.Format("\"{0}\" \"{1}\" ", v1, v2));
+
             return SafeNativeMethods.mwle_fn_getMax(v1, v2);
             }
 
@@ -3742,6 +4304,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_getMin(float v1, float v2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getMin'" + string.Format("\"{0}\" \"{1}\" ", v1, v2));
+
             return SafeNativeMethods.mwle_fn_getMin(v1, v2);
             }
 
@@ -3752,6 +4317,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getMissionAreaServerObject()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getMissionAreaServerObject'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getMissionAreaServerObject(returnbuff);
@@ -3765,6 +4333,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getPackageList()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getPackageList'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_getPackageList(returnbuff);
@@ -3778,6 +4349,10 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_getPixelShaderVersion()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getPixelShaderVersion'");
+
+
             return SafeNativeMethods.mwle_fn_getPixelShaderVersion();
             }
 
@@ -3789,6 +4364,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getRandomSeed()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getRandomSeed'");
+
+
             return SafeNativeMethods.mwle_fn_getRandomSeed();
             }
 
@@ -3810,6 +4389,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getRecord(string text, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getRecord'" + string.Format("\"{0}\" \"{1}\" ", text, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -3831,6 +4412,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getRecordCount(string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getRecordCount'" + string.Format("\"{0}\" ", text));
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
             return SafeNativeMethods.mwle_fn_getRecordCount(sbtext);
@@ -3857,6 +4440,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getRecords(string text, int startIndex, int endIndex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getRecords'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", text, startIndex, endIndex));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -3881,6 +4466,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getSubStr(string str, int start, int numChars)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getSubStr'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", str, start, numChars));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -3895,6 +4482,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getTextureProfileStats()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getTextureProfileStats'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getTextureProfileStats(returnbuff);
@@ -3914,6 +4504,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getTrailingNumber(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getTrailingNumber'" + string.Format("\"{0}\" ", str));
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
             return SafeNativeMethods.mwle_fn_getTrailingNumber(sbstr);
@@ -3929,6 +4521,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_getWebDeployment()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getWebDeployment'");
+
+
             return SafeNativeMethods.mwle_fn_getWebDeployment() >= 1;
             }
 
@@ -3950,6 +4546,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getWord(string text, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getWord'" + string.Format("\"{0}\" \"{1}\" ", text, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -3972,6 +4570,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_getWordCount(string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getWordCount'" + string.Format("\"{0}\" ", text));
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
             return SafeNativeMethods.mwle_fn_getWordCount(sbtext);
@@ -3998,6 +4598,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getWords(string text, int startIndex, int endIndex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getWords'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", text, startIndex, endIndex));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -4014,6 +4616,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_getWorkingDirectory()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_getWorkingDirectory'");
+
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_getWorkingDirectory(returnbuff);
@@ -4033,6 +4638,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_gotoWebPage(string address)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_gotoWebPage'" + string.Format("\"{0}\" ", address));
             StringBuilder sbaddress = new StringBuilder(address, 4096);
 
             SafeNativeMethods.mwle_fn_gotoWebPage(sbaddress);
@@ -4051,6 +4658,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_importCachedFont(string faceName, int fontSize, string fileName, int padding, int kerning)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_importCachedFont'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", faceName, fontSize, fileName, padding, kerning));
             StringBuilder sbfaceName = new StringBuilder(faceName, 4096);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -4072,6 +4681,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_initContainerRadiusSearch(string pos, float radius, uint mask, bool useClientContainer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_initContainerRadiusSearch'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", pos, radius, mask, useClientContainer));
             StringBuilder sbpos = new StringBuilder(pos, 1024);
 
             SafeNativeMethods.mwle_fn_initContainerRadiusSearch(sbpos, radius, mask, useClientContainer);
@@ -4090,6 +4701,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_initContainerTypeSearch(uint mask, bool useClientContainer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_initContainerTypeSearch'" + string.Format("\"{0}\" \"{1}\" ", mask, useClientContainer));
+
             SafeNativeMethods.mwle_fn_initContainerTypeSearch(mask, useClientContainer);
             }
 
@@ -4105,6 +4719,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isalnum(string str, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isalnum'" + string.Format("\"{0}\" \"{1}\" ", str, index));
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
             return SafeNativeMethods.mwle_fn_isalnum(sbstr, index) >= 1;
@@ -4117,6 +4733,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isClass(string identifier)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isClass'" + string.Format("\"{0}\" ", identifier));
             StringBuilder sbidentifier = new StringBuilder(identifier, 4096);
 
             return SafeNativeMethods.mwle_fn_isClass(sbidentifier) >= 1;
@@ -4130,6 +4748,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isDebugBuild()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isDebugBuild'");
+
+
             return SafeNativeMethods.mwle_fn_isDebugBuild() >= 1;
             }
 
@@ -4146,6 +4768,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_IsDirectory(string directory)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_IsDirectory'" + string.Format("\"{0}\" ", directory));
             StringBuilder sbdirectory = new StringBuilder(directory, 4096);
 
             return SafeNativeMethods.mwle_fn_IsDirectory(sbdirectory) >= 1;
@@ -4162,6 +4786,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isFile(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isFile'" + string.Format("\"{0}\" ", fileName));
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
             return SafeNativeMethods.mwle_fn_isFile(sbfileName) >= 1;
@@ -4177,6 +4803,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isMemberOfClass(string className, string superClassName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isMemberOfClass'" + string.Format("\"{0}\" \"{1}\" ", className, superClassName));
             StringBuilder sbclassName = new StringBuilder(className, 4096);
             StringBuilder sbsuperClassName = new StringBuilder(superClassName, 4096);
 
@@ -4190,6 +4818,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isPackage(string identifier)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isPackage'" + string.Format("\"{0}\" ", identifier));
             StringBuilder sbidentifier = new StringBuilder(identifier, 1024);
 
             return SafeNativeMethods.mwle_fn_isPackage(sbidentifier) >= 1;
@@ -4203,6 +4833,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isShippingBuild()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isShippingBuild'");
+
+
             return SafeNativeMethods.mwle_fn_isShippingBuild() >= 1;
             }
 
@@ -4218,6 +4852,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isspace(string str, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isspace'" + string.Format("\"{0}\" \"{1}\" ", str, index));
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
             return SafeNativeMethods.mwle_fn_isspace(sbstr, index) >= 1;
@@ -4231,6 +4867,10 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isToolBuild()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isToolBuild'");
+
+
             return SafeNativeMethods.mwle_fn_isToolBuild() >= 1;
             }
 
@@ -4245,6 +4885,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_isWriteableFileName(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_isWriteableFileName'" + string.Format("\"{0}\" ", fileName));
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
             return SafeNativeMethods.mwle_fn_isWriteableFileName(sbfileName) >= 1;
@@ -4263,6 +4905,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_lightScene(string completeCallbackFn, string mode)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_lightScene'" + string.Format("\"{0}\" \"{1}\" ", completeCallbackFn, mode));
             StringBuilder sbcompleteCallbackFn = new StringBuilder(completeCallbackFn, 4096);
             StringBuilder sbmode = new StringBuilder(mode, 4096);
 
@@ -4277,6 +4921,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_listGFXResources(bool unflaggedOnly)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_listGFXResources'" + string.Format("\"{0}\" ", unflaggedOnly));
+
             SafeNativeMethods.mwle_fn_listGFXResources(unflaggedOnly);
             }
 
@@ -4288,6 +4935,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_loadObject(string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_loadObject'" + string.Format("\"{0}\" ", filename));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -4304,6 +4953,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_log(string message)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_log'" + string.Format("\"{0}\" ", message));
             StringBuilder sbmessage = new StringBuilder(message, 4096);
 
             SafeNativeMethods.mwle_fn_log(sbmessage);
@@ -4318,6 +4969,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_logError(string message)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_logError'" + string.Format("\"{0}\" ", message));
             StringBuilder sbmessage = new StringBuilder(message, 4096);
 
             SafeNativeMethods.mwle_fn_logError(sbmessage);
@@ -4332,6 +4985,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_logWarning(string message)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_logWarning'" + string.Format("\"{0}\" ", message));
             StringBuilder sbmessage = new StringBuilder(message, 4096);
 
             SafeNativeMethods.mwle_fn_logWarning(sbmessage);
@@ -4351,6 +5006,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_ltrim(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_ltrim'" + string.Format("\"{0}\" ", str));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -4366,6 +5023,10 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_m2Pi()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_m2Pi'");
+
+
             return SafeNativeMethods.mwle_fn_m2Pi();
             }
 
@@ -4378,6 +5039,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mAbs(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mAbs'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mAbs(v);
             }
 
@@ -4390,6 +5054,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mAcos(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mAcos'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mAcos(v);
             }
 
@@ -4406,6 +5073,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_makeFullPath(string path, string cwd)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_makeFullPath'" + string.Format("\"{0}\" \"{1}\" ", path, cwd));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbpath = new StringBuilder(path, 4096);
             StringBuilder sbcwd = new StringBuilder(cwd, 4096);
@@ -4428,6 +5097,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_makeRelativePath(string path, string to)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_makeRelativePath'" + string.Format("\"{0}\" \"{1}\" ", path, to));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbpath = new StringBuilder(path, 4096);
             StringBuilder sbto = new StringBuilder(to, 4096);
@@ -4445,6 +5116,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mAsin(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mAsin'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mAsin(v);
             }
 
@@ -4458,6 +5132,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mAtan(float rise, float run)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mAtan'" + string.Format("\"{0}\" \"{1}\" ", rise, run));
+
             return SafeNativeMethods.mwle_fn_mAtan(rise, run);
             }
 
@@ -4471,6 +5148,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_MatrixCreate(string position, string orientation)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_MatrixCreate'" + string.Format("\"{0}\" \"{1}\" ", position, orientation));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbposition = new StringBuilder(position, 1024);
             StringBuilder sborientation = new StringBuilder(orientation, 1024);
@@ -4488,6 +5167,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_MatrixCreateFromEuler(string angles)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_MatrixCreateFromEuler'" + string.Format("\"{0}\" ", angles));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbangles = new StringBuilder(angles, 1024);
 
@@ -4506,6 +5187,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_MatrixMulPoint(string transform, string point)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_MatrixMulPoint'" + string.Format("\"{0}\" \"{1}\" ", transform, point));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbtransform = new StringBuilder(transform, 1024);
             StringBuilder sbpoint = new StringBuilder(point, 1024);
@@ -4524,6 +5207,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_MatrixMultiply(string left, string right)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_MatrixMultiply'" + string.Format("\"{0}\" \"{1}\" ", left, right));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbleft = new StringBuilder(left, 1024);
             StringBuilder sbright = new StringBuilder(right, 1024);
@@ -4544,6 +5229,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_MatrixMulVector(string transform, string vector)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_MatrixMulVector'" + string.Format("\"{0}\" \"{1}\" ", transform, vector));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbtransform = new StringBuilder(transform, 1024);
             StringBuilder sbvector = new StringBuilder(vector, 1024);
@@ -4561,6 +5248,9 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_mCeil(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mCeil'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mCeil(v);
             }
 
@@ -4575,6 +5265,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mClamp(float v, float min, float max)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mClamp'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", v, min, max));
+
             return SafeNativeMethods.mwle_fn_mClamp(v, min, max);
             }
 
@@ -4587,6 +5280,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mCos(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mCos'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mCos(v);
             }
 
@@ -4599,6 +5295,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mDegToRad(float degrees)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mDegToRad'" + string.Format("\"{0}\" ", degrees));
+
             return SafeNativeMethods.mwle_fn_mDegToRad(degrees);
             }
 
@@ -4616,6 +5315,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_messageBox(string title, string message, int buttons, int icons)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_messageBox'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", title, message, buttons, icons));
             StringBuilder sbtitle = new StringBuilder(title, 4096);
             StringBuilder sbmessage = new StringBuilder(message, 4096);
 
@@ -4632,6 +5333,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_mFloatLength(float v, uint precision)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mFloatLength'" + string.Format("\"{0}\" \"{1}\" ", v, precision));
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_mFloatLength(v, precision, returnbuff);
@@ -4647,6 +5350,9 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_mFloor(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mFloor'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mFloor(v);
             }
 
@@ -4660,6 +5366,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mFMod(float v, float d)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mFMod'" + string.Format("\"{0}\" \"{1}\" ", v, d));
+
             return SafeNativeMethods.mwle_fn_mFMod(v, d);
             }
 
@@ -4672,6 +5381,9 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_mIsPow2(int v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mIsPow2'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mIsPow2(v) >= 1;
             }
 
@@ -4686,6 +5398,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mLerp(float v1, float v2, float time)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mLerp'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", v1, v2, time));
+
             return SafeNativeMethods.mwle_fn_mLerp(v1, v2, time);
             }
 
@@ -4698,6 +5413,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mLog(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mLog'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mLog(v);
             }
 
@@ -4709,6 +5427,10 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mPi()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mPi'");
+
+
             return SafeNativeMethods.mwle_fn_mPi();
             }
 
@@ -4722,6 +5444,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mPow(float v, float p)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mPow'" + string.Format("\"{0}\" \"{1}\" ", v, p));
+
             return SafeNativeMethods.mwle_fn_mPow(v, p);
             }
 
@@ -4734,6 +5459,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mRadToDeg(float radians)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mRadToDeg'" + string.Format("\"{0}\" ", radians));
+
             return SafeNativeMethods.mwle_fn_mRadToDeg(radians);
             }
 
@@ -4746,6 +5474,9 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_mRound(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mRound'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mRound(v);
             }
 
@@ -4758,6 +5489,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mSaturate(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mSaturate'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mSaturate(v);
             }
 
@@ -4770,6 +5504,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mSin(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mSin'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mSin(v);
             }
 
@@ -4786,6 +5523,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_mSolveCubic(float a, float b, float c, float d)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mSolveCubic'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", a, b, c, d));
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_mSolveCubic(a, b, c, d, returnbuff);
@@ -4804,6 +5543,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_mSolveQuadratic(float a, float b, float c)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mSolveQuadratic'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a, b, c));
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_mSolveQuadratic(a, b, c, returnbuff);
@@ -4824,6 +5565,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_mSolveQuartic(float a, float b, float c, float d, float e)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mSolveQuartic'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", a, b, c, d, e));
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_mSolveQuartic(a, b, c, d, e, returnbuff);
@@ -4839,6 +5582,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mSqrt(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mSqrt'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mSqrt(v);
             }
 
@@ -4851,6 +5597,9 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_mTan(float v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_mTan'" + string.Format("\"{0}\" ", v));
+
             return SafeNativeMethods.mwle_fn_mTan(v);
             }
 
@@ -4864,6 +5613,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_openFile(string file)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_openFile'" + string.Format("\"{0}\" ", file));
             StringBuilder sbfile = new StringBuilder(file, 4096);
 
             SafeNativeMethods.mwle_fn_openFile(sbfile);
@@ -4878,6 +5629,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_openFolder(string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_openFolder'" + string.Format("\"{0}\" ", path));
             StringBuilder sbpath = new StringBuilder(path, 4096);
 
             SafeNativeMethods.mwle_fn_openFolder(sbpath);
@@ -4894,6 +5647,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_pathConcat(string path, string file)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_pathConcat'" + string.Format("\"{0}\" \"{1}\" ", path, file));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbpath = new StringBuilder(path, 4096);
             StringBuilder sbfile = new StringBuilder(file, 4096);
@@ -4914,6 +5669,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_pathCopy(string fromFile, string toFile, bool noOverwrite)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_pathCopy'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", fromFile, toFile, noOverwrite));
             StringBuilder sbfromFile = new StringBuilder(fromFile, 4096);
             StringBuilder sbtoFile = new StringBuilder(toFile, 4096);
 
@@ -4941,6 +5698,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_pathOnMissionLoadDone()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_pathOnMissionLoadDone'");
+
+
             SafeNativeMethods.mwle_fn_pathOnMissionLoadDone();
             }
 
@@ -4952,6 +5713,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_playJournalToVideo(string journalFile, string videoFile, string encoder, float framerate, string resolution)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_playJournalToVideo'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", journalFile, videoFile, encoder, framerate, resolution));
             StringBuilder sbjournalFile = new StringBuilder(journalFile, 4096);
             StringBuilder sbvideoFile = new StringBuilder(videoFile, 4096);
             StringBuilder sbencoder = new StringBuilder(encoder, 4096);
@@ -4970,6 +5733,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_populateAllFontCacheRange(uint rangeStart, uint rangeEnd)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_populateAllFontCacheRange'" + string.Format("\"{0}\" \"{1}\" ", rangeStart, rangeEnd));
+
             SafeNativeMethods.mwle_fn_populateAllFontCacheRange(rangeStart, rangeEnd);
             }
 
@@ -4980,6 +5746,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_populateAllFontCacheString(string xstring)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_populateAllFontCacheString'" + string.Format("\"{0}\" ", xstring));
             StringBuilder sbxstring = new StringBuilder(xstring, 4096);
 
             SafeNativeMethods.mwle_fn_populateAllFontCacheString(sbxstring);
@@ -4997,6 +5765,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_populateFontCacheRange(string faceName, int fontSize, uint rangeStart, uint rangeEnd)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_populateFontCacheRange'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", faceName, fontSize, rangeStart, rangeEnd));
             StringBuilder sbfaceName = new StringBuilder(faceName, 4096);
 
             SafeNativeMethods.mwle_fn_populateFontCacheRange(sbfaceName, fontSize, rangeStart, rangeEnd);
@@ -5012,6 +5782,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_populateFontCacheString(string faceName, int fontSize, string xstring)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_populateFontCacheString'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", faceName, fontSize, xstring));
             StringBuilder sbfaceName = new StringBuilder(faceName, 4096);
             StringBuilder sbxstring = new StringBuilder(xstring, 4096);
 
@@ -5025,6 +5797,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_preloadClientDataBlocks()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_preloadClientDataBlocks'");
+
+
             SafeNativeMethods.mwle_fn_preloadClientDataBlocks();
             }
 
@@ -5037,6 +5813,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_profilerDump()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_profilerDump'");
+
+
             SafeNativeMethods.mwle_fn_profilerDump();
             }
 
@@ -5053,6 +5833,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_profilerDumpToFile(string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_profilerDumpToFile'" + string.Format("\"{0}\" ", fileName));
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
             SafeNativeMethods.mwle_fn_profilerDumpToFile(sbfileName);
@@ -5070,6 +5852,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_profilerEnable(bool enable)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_profilerEnable'" + string.Format("\"{0}\" ", enable));
+
             SafeNativeMethods.mwle_fn_profilerEnable(enable);
             }
 
@@ -5084,6 +5869,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_profilerMarkerEnable(string markerName, bool enable)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_profilerMarkerEnable'" + string.Format("\"{0}\" \"{1}\" ", markerName, enable));
             StringBuilder sbmarkerName = new StringBuilder(markerName, 4096);
 
             SafeNativeMethods.mwle_fn_profilerMarkerEnable(sbmarkerName, enable);
@@ -5098,6 +5885,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_profilerReset()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_profilerReset'");
+
+
             SafeNativeMethods.mwle_fn_profilerReset();
             }
 
@@ -5111,6 +5902,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_quit()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_quit'");
+
+
             SafeNativeMethods.mwle_fn_quit();
             }
 
@@ -5125,6 +5920,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_quitWithErrorMessage(string message)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_quitWithErrorMessage'" + string.Format("\"{0}\" ", message));
             StringBuilder sbmessage = new StringBuilder(message, 4096);
 
             SafeNativeMethods.mwle_fn_quitWithErrorMessage(sbmessage);
@@ -5143,6 +5940,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_reloadResource(string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_reloadResource'" + string.Format("\"{0}\" ", path));
             StringBuilder sbpath = new StringBuilder(path, 4096);
 
             SafeNativeMethods.mwle_fn_reloadResource(sbpath);
@@ -5155,6 +5954,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_reloadTextures()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_reloadTextures'");
+
+
             SafeNativeMethods.mwle_fn_reloadTextures();
             }
 
@@ -5175,6 +5978,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_removeField(string text, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_removeField'" + string.Format("\"{0}\" \"{1}\" ", text, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -5190,6 +5995,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_removeGlobalShaderMacro(string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_removeGlobalShaderMacro'" + string.Format("\"{0}\" ", name));
             StringBuilder sbname = new StringBuilder(name, 4096);
 
             SafeNativeMethods.mwle_fn_removeGlobalShaderMacro(sbname);
@@ -5212,6 +6019,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_removeRecord(string text, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_removeRecord'" + string.Format("\"{0}\" \"{1}\" ", text, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -5236,6 +6045,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_removeWord(string text, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_removeWord'" + string.Format("\"{0}\" \"{1}\" ", text, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -5252,6 +6063,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_resetLightManager()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_resetLightManager'");
+
+
             SafeNativeMethods.mwle_fn_resetLightManager();
             }
 
@@ -5269,6 +6084,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_restWords(string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_restWords'" + string.Format("\"{0}\" ", text));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -5290,6 +6107,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_rtrim(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_rtrim'" + string.Format("\"{0}\" ", str));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -5306,6 +6125,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_saveObject(string xobject, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_saveObject'" + string.Format("\"{0}\" \"{1}\" ", xobject, filename));
             StringBuilder sbxobject = new StringBuilder(xobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -5322,6 +6143,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sceneDumpZoneStates(bool updateFirst)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sceneDumpZoneStates'" + string.Format("\"{0}\" ", updateFirst));
+
             SafeNativeMethods.mwle_fn_sceneDumpZoneStates(updateFirst);
             }
 
@@ -5335,6 +6159,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_sceneGetZoneOwner(uint zoneId)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sceneGetZoneOwner'" + string.Format("\"{0}\" ", zoneId));
             StringBuilder returnbuff = new StringBuilder(1024);
 
             SafeNativeMethods.mwle_fn_sceneGetZoneOwner(zoneId, returnbuff);
@@ -5352,6 +6178,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_screenShot(string file, string format, uint tileCount, float tileOverlap)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_screenShot'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", file, format, tileCount, tileOverlap));
             StringBuilder sbfile = new StringBuilder(file, 4096);
             StringBuilder sbformat = new StringBuilder(format, 4096);
 
@@ -5369,6 +6197,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_setCurrentDirectory(string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setCurrentDirectory'" + string.Format("\"{0}\" ", path));
             StringBuilder sbpath = new StringBuilder(path, 4096);
 
             return SafeNativeMethods.mwle_fn_setCurrentDirectory(sbpath) >= 1;
@@ -5393,6 +6223,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_setField(string text, int index, string replacement)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setField'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", text, index, replacement));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
             StringBuilder sbreplacement = new StringBuilder(replacement, 4096);
@@ -5430,6 +6262,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_setInteriorRenderMode(int mode)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setInteriorRenderMode'" + string.Format("\"{0}\" ", mode));
+
             SafeNativeMethods.mwle_fn_setInteriorRenderMode(mode);
             }
 
@@ -5441,6 +6276,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_setLightManager(string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setLightManager'" + string.Format("\"{0}\" ", name));
             StringBuilder sbname = new StringBuilder(name, 4096);
 
             return SafeNativeMethods.mwle_fn_setLightManager(sbname) >= 1;
@@ -5466,6 +6303,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_setLogMode(int mode)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setLogMode'" + string.Format("\"{0}\" ", mode));
+
             SafeNativeMethods.mwle_fn_setLogMode(mode);
             }
 
@@ -5482,6 +6322,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_setPixelShaderVersion(float version)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setPixelShaderVersion'" + string.Format("\"{0}\" ", version));
+
             SafeNativeMethods.mwle_fn_setPixelShaderVersion(version);
             }
 
@@ -5496,6 +6339,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_setRandomSeed(int seed)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setRandomSeed'" + string.Format("\"{0}\" ", seed));
+
             SafeNativeMethods.mwle_fn_setRandomSeed(seed);
             }
 
@@ -5518,6 +6364,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_setRecord(string text, int index, string replacement)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setRecord'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", text, index, replacement));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
             StringBuilder sbreplacement = new StringBuilder(replacement, 4096);
@@ -5533,6 +6381,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_setReflectFormat(int format)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setReflectFormat'" + string.Format("\"{0}\" ", format));
+
             SafeNativeMethods.mwle_fn_setReflectFormat(format);
             }
 
@@ -5555,6 +6406,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_setWord(string text, int index, string replacement)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_setWord'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", text, index, replacement));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtext = new StringBuilder(text, 4096);
             StringBuilder sbreplacement = new StringBuilder(replacement, 4096);
@@ -5586,6 +6439,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_sfxCreateDevice(string provider, string device, bool useHardware, int maxBuffers)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxCreateDevice'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", provider, device, useHardware, maxBuffers));
             StringBuilder sbprovider = new StringBuilder(provider, 4096);
             StringBuilder sbdevice = new StringBuilder(device, 4096);
 
@@ -5604,6 +6459,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sfxDeleteDevice()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxDeleteDevice'");
+
+
             SafeNativeMethods.mwle_fn_sfxDeleteDevice();
             }
 
@@ -5616,6 +6475,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sfxDeleteWhenStopped(string source)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxDeleteWhenStopped'" + string.Format("\"{0}\" ", source));
             StringBuilder sbsource = new StringBuilder(source, 1024);
 
             SafeNativeMethods.mwle_fn_sfxDeleteWhenStopped(sbsource);
@@ -5633,6 +6494,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sfxDumpSources(bool includeGroups)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxDumpSources'" + string.Format("\"{0}\" ", includeGroups));
+
             SafeNativeMethods.mwle_fn_sfxDumpSources(includeGroups);
             }
 
@@ -5649,6 +6513,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_sfxDumpSourcesToString(bool includeGroups)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxDumpSourcesToString'" + string.Format("\"{0}\" ", includeGroups));
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_sfxDumpSourcesToString(includeGroups, returnbuff);
@@ -5682,6 +6548,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_sfxGetAvailableDevices()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxGetAvailableDevices'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_sfxGetAvailableDevices(returnbuff);
@@ -5722,6 +6591,9 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_sfxGetDeviceInfo()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxGetDeviceInfo'");
+
             StringBuilder returnbuff = new StringBuilder(4096);
 
             SafeNativeMethods.mwle_fn_sfxGetDeviceInfo(returnbuff);
@@ -5738,6 +6610,10 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_sfxGetDistanceModel()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxGetDistanceModel'");
+
+
             return SafeNativeMethods.mwle_fn_sfxGetDistanceModel();
             }
 
@@ -5751,6 +6627,10 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_sfxGetDopplerFactor()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxGetDopplerFactor'");
+
+
             return SafeNativeMethods.mwle_fn_sfxGetDopplerFactor();
             }
 
@@ -5766,6 +6646,10 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_sfxGetRolloffFactor()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxGetRolloffFactor'");
+
+
             return SafeNativeMethods.mwle_fn_sfxGetRolloffFactor();
             }
 
@@ -5778,6 +6662,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sfxSetDistanceModel(int model)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxSetDistanceModel'" + string.Format("\"{0}\" ", model));
+
             SafeNativeMethods.mwle_fn_sfxSetDistanceModel(model);
             }
 
@@ -5792,6 +6679,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sfxSetDopplerFactor(float value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxSetDopplerFactor'" + string.Format("\"{0}\" ", value));
+
             SafeNativeMethods.mwle_fn_sfxSetDopplerFactor(value);
             }
 
@@ -5809,6 +6699,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sfxSetRolloffFactor(float value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxSetRolloffFactor'" + string.Format("\"{0}\" ", value));
+
             SafeNativeMethods.mwle_fn_sfxSetRolloffFactor(value);
             }
 
@@ -5821,6 +6714,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sfxStop(string source)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxStop'" + string.Format("\"{0}\" ", source));
             StringBuilder sbsource = new StringBuilder(source, 1024);
 
             SafeNativeMethods.mwle_fn_sfxStop(sbsource);
@@ -5839,6 +6734,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_sfxStopAndDelete(string source)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_sfxStopAndDelete'" + string.Format("\"{0}\" ", source));
             StringBuilder sbsource = new StringBuilder(source, 1024);
 
             SafeNativeMethods.mwle_fn_sfxStopAndDelete(sbsource);
@@ -5850,6 +6747,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimDataBlock_reloadOnLocalClient(string simdatablock)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimDataBlock_reloadOnLocalClient'" + string.Format("\"{0}\" ", simdatablock));
             StringBuilder sbsimdatablock = new StringBuilder(simdatablock, 1024);
 
             SafeNativeMethods.mwle_fn_SimDataBlock_reloadOnLocalClient(sbsimdatablock);
@@ -5865,6 +6764,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_assignFieldsFrom(string simobject, string fromObject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_assignFieldsFrom'" + string.Format("\"{0}\" \"{1}\" ", simobject, fromObject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbfromObject = new StringBuilder(fromObject, 1024);
 
@@ -5877,6 +6778,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_delete(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_delete'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fn_SimObject_delete(sbsimobject);
@@ -5888,6 +6791,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_dumpClassHierarchy(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_dumpClassHierarchy'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fn_SimObject_dumpClassHierarchy(sbsimobject);
@@ -5907,6 +6812,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_dumpMethods(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_dumpMethods'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -5921,6 +6828,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_SimObject_getCanSave(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getCanSave'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fn_SimObject_getCanSave(sbsimobject) >= 1;
@@ -5933,6 +6842,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_getClassName(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getClassName'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -5947,6 +6858,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_getClassNamespace(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getClassNamespace'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -5962,6 +6875,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_SimObject_getDeclarationLine(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getDeclarationLine'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fn_SimObject_getDeclarationLine(sbsimobject);
@@ -5975,6 +6890,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_getDynamicField(string simobject, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getDynamicField'" + string.Format("\"{0}\" \"{1}\" ", simobject, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -5989,6 +6906,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_SimObject_getDynamicFieldCount(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getDynamicFieldCount'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fn_SimObject_getDynamicFieldCount(sbsimobject);
@@ -6002,6 +6921,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_getField(string simobject, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getField'" + string.Format("\"{0}\" \"{1}\" ", simobject, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -6016,6 +6937,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_SimObject_getFieldCount(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getFieldCount'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fn_SimObject_getFieldCount(sbsimobject);
@@ -6028,6 +6951,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_getFieldType(string simobject, string fieldName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getFieldType'" + string.Format("\"{0}\" \"{1}\" ", simobject, fieldName));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbfieldName = new StringBuilder(fieldName, 4096);
@@ -6045,6 +6970,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_getFieldValue(string simobject, string fieldName, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getFieldValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", simobject, fieldName, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbfieldName = new StringBuilder(fieldName, 4096);
@@ -6060,6 +6987,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_getFilename(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getFilename'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -6074,6 +7003,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_SimObject_getSuperClassNamespace(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_getSuperClassNamespace'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -6088,6 +7019,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_SimObject_isExpanded(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_isExpanded'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fn_SimObject_isExpanded(sbsimobject) >= 1;
@@ -6101,6 +7034,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_SimObject_isField(string simobject, string fieldName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_isField'" + string.Format("\"{0}\" \"{1}\" ", simobject, fieldName));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbfieldName = new StringBuilder(fieldName, 4096);
 
@@ -6115,6 +7050,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_SimObject_isInNamespaceHierarchy(string simobject, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_isInNamespaceHierarchy'" + string.Format("\"{0}\" \"{1}\" ", simobject, name));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -6129,6 +7066,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_SimObject_isMemberOfClass(string simobject, string className)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_isMemberOfClass'" + string.Format("\"{0}\" \"{1}\" ", simobject, className));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbclassName = new StringBuilder(className, 4096);
 
@@ -6143,6 +7082,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_SimObject_isMethod(string simobject, string methodName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_isMethod'" + string.Format("\"{0}\" \"{1}\" ", simobject, methodName));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbmethodName = new StringBuilder(methodName, 4096);
 
@@ -6160,6 +7101,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_SimObject_save(string simobject, string fileName, bool selectedOnly, string preAppendString)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_save'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", simobject, fileName, selectedOnly, preAppendString));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
             StringBuilder sbpreAppendString = new StringBuilder(preAppendString, 4096);
@@ -6174,6 +7117,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_setCanSave(string simobject, bool value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_setCanSave'" + string.Format("\"{0}\" \"{1}\" ", simobject, value));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fn_SimObject_setCanSave(sbsimobject, value);
@@ -6186,6 +7131,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_setClassNamespace(string simobject, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_setClassNamespace'" + string.Format("\"{0}\" \"{1}\" ", simobject, name));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -6201,6 +7148,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_setFieldType(string simobject, string fieldName, string type)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_setFieldType'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", simobject, fieldName, type));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbfieldName = new StringBuilder(fieldName, 4096);
             StringBuilder sbtype = new StringBuilder(type, 4096);
@@ -6218,6 +7167,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_SimObject_setFieldValue(string simobject, string fieldName, string value, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_setFieldValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", simobject, fieldName, value, index));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbfieldName = new StringBuilder(fieldName, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -6232,6 +7183,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_setFilename(string simobject, string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_setFilename'" + string.Format("\"{0}\" \"{1}\" ", simobject, fileName));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -6245,6 +7198,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_setIsExpanded(string simobject, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_setIsExpanded'" + string.Format("\"{0}\" \"{1}\" ", simobject, state));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fn_SimObject_setIsExpanded(sbsimobject, state);
@@ -6257,6 +7212,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_SimObject_setSuperClassNamespace(string simobject, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_SimObject_setSuperClassNamespace'" + string.Format("\"{0}\" \"{1}\" ", simobject, name));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -6275,6 +7232,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_StartClientReplication()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_StartClientReplication'");
+
+
             SafeNativeMethods.mwle_fn_StartClientReplication();
             }
 
@@ -6287,6 +7248,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_startFileChangeNotifications()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_startFileChangeNotifications'");
+
+
             SafeNativeMethods.mwle_fn_startFileChangeNotifications();
             }
 
@@ -6301,6 +7266,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_StartFoliageReplication()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_StartFoliageReplication'");
+
+
             SafeNativeMethods.mwle_fn_StartFoliageReplication();
             }
 
@@ -6320,6 +7289,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_startsWith(string str, string prefix, bool caseSensitive)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_startsWith'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", str, prefix, caseSensitive));
             StringBuilder sbstr = new StringBuilder(str, 4096);
             StringBuilder sbprefix = new StringBuilder(prefix, 4096);
 
@@ -6335,6 +7306,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_startVideoCapture(string canvas, string filename, string encoder, float framerate, string resolution)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_startVideoCapture'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", canvas, filename, encoder, framerate, resolution));
             StringBuilder sbcanvas = new StringBuilder(canvas, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
             StringBuilder sbencoder = new StringBuilder(encoder, 4096);
@@ -6352,6 +7325,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_stopFileChangeNotifications()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_stopFileChangeNotifications'");
+
+
             SafeNativeMethods.mwle_fn_stopFileChangeNotifications();
             }
 
@@ -6363,6 +7340,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_stopVideoCapture()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_stopVideoCapture'");
+
+
             SafeNativeMethods.mwle_fn_stopVideoCapture();
             }
 
@@ -6375,6 +7356,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strasc(string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strasc'" + string.Format("\"{0}\" ", chr));
             StringBuilder sbchr = new StringBuilder(chr, 4096);
 
             return SafeNativeMethods.mwle_fn_strasc(sbchr);
@@ -6391,6 +7374,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_strchr(string str, string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strchr'" + string.Format("\"{0}\" \"{1}\" ", str, chr));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
             StringBuilder sbchr = new StringBuilder(chr, 4096);
@@ -6413,6 +7398,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strchrpos(string str, string chr, int start)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strchrpos'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", str, chr, start));
             StringBuilder sbstr = new StringBuilder(str, 4096);
             StringBuilder sbchr = new StringBuilder(chr, 4096);
 
@@ -6436,6 +7423,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strcmp(string str1, string str2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strcmp'" + string.Format("\"{0}\" \"{1}\" ", str1, str2));
             StringBuilder sbstr1 = new StringBuilder(str1, 4096);
             StringBuilder sbstr2 = new StringBuilder(str2, 4096);
 
@@ -6456,6 +7445,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_strformat(string format, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strformat'" + string.Format("\"{0}\" \"{1}\" ", format, value));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbformat = new StringBuilder(format, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -6481,6 +7472,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_stricmp(string str1, string str2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_stricmp'" + string.Format("\"{0}\" \"{1}\" ", str1, str2));
             StringBuilder sbstr1 = new StringBuilder(str1, 4096);
             StringBuilder sbstr2 = new StringBuilder(str2, 4096);
 
@@ -6520,6 +7513,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strinatcmp(string str1, string str2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strinatcmp'" + string.Format("\"{0}\" \"{1}\" ", str1, str2));
             StringBuilder sbstr1 = new StringBuilder(str1, 4096);
             StringBuilder sbstr2 = new StringBuilder(str2, 4096);
 
@@ -6539,6 +7534,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_stripChars(string str, string chars)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_stripChars'" + string.Format("\"{0}\" \"{1}\" ", str, chars));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
             StringBuilder sbchars = new StringBuilder(chars, 4096);
@@ -6563,6 +7560,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_StripMLControlChars(string inString)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_StripMLControlChars'" + string.Format("\"{0}\" ", inString));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbinString = new StringBuilder(inString, 4096);
 
@@ -6583,6 +7582,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_stripTrailingNumber(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_stripTrailingNumber'" + string.Format("\"{0}\" ", str));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -6607,6 +7608,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_strIsMatchExpr(string pattern, string str, bool caseSensitive)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strIsMatchExpr'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", pattern, str, caseSensitive));
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -6630,6 +7633,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fn_strIsMatchMultipleExpr(string patterns, string str, bool caseSensitive)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strIsMatchMultipleExpr'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", patterns, str, caseSensitive));
             StringBuilder sbpatterns = new StringBuilder(patterns, 4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -6646,6 +7651,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strlen(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strlen'" + string.Format("\"{0}\" ", str));
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
             return SafeNativeMethods.mwle_fn_strlen(sbstr);
@@ -6664,6 +7671,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_strlwr(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strlwr'" + string.Format("\"{0}\" ", str));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -6704,6 +7713,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strnatcmp(string str1, string str2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strnatcmp'" + string.Format("\"{0}\" \"{1}\" ", str1, str2));
             StringBuilder sbstr1 = new StringBuilder(str1, 4096);
             StringBuilder sbstr2 = new StringBuilder(str2, 4096);
 
@@ -6723,6 +7734,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strpos(string haystack, string needle, int offset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strpos'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", haystack, needle, offset));
             StringBuilder sbhaystack = new StringBuilder(haystack, 4096);
             StringBuilder sbneedle = new StringBuilder(needle, 4096);
 
@@ -6740,6 +7753,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_strrchr(string str, string chr)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strrchr'" + string.Format("\"{0}\" \"{1}\" ", str, chr));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
             StringBuilder sbchr = new StringBuilder(chr, 4096);
@@ -6762,6 +7777,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strrchrpos(string str, string chr, int start)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strrchrpos'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", str, chr, start));
             StringBuilder sbstr = new StringBuilder(str, 4096);
             StringBuilder sbchr = new StringBuilder(chr, 4096);
 
@@ -6783,6 +7800,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_strrepeat(string str, int numTimes, string delimiter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strrepeat'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", str, numTimes, delimiter));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
             StringBuilder sbdelimiter = new StringBuilder(delimiter, 4096);
@@ -6805,6 +7824,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_strreplace(string source, string from, string to)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strreplace'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", source, from, to));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsource = new StringBuilder(source, 4096);
             StringBuilder sbfrom = new StringBuilder(from, 4096);
@@ -6827,6 +7848,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fn_strstr(string xstring, string substring)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strstr'" + string.Format("\"{0}\" \"{1}\" ", xstring, substring));
             StringBuilder sbxstring = new StringBuilder(xstring, 4096);
             StringBuilder sbsubstring = new StringBuilder(substring, 4096);
 
@@ -6846,6 +7869,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_strupr(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_strupr'" + string.Format("\"{0}\" ", str));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -6864,6 +7889,9 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_trace(bool enable)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_trace'" + string.Format("\"{0}\" ", enable));
+
             SafeNativeMethods.mwle_fn_trace(enable);
             }
 
@@ -6879,6 +7907,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_trim(string str)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_trim'" + string.Format("\"{0}\" ", str));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstr = new StringBuilder(str, 4096);
 
@@ -6912,6 +7942,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_VectorAdd(string a, string b)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorAdd'" + string.Format("\"{0}\" \"{1}\" ", a, b));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
@@ -6948,6 +7980,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_VectorCross(string a, string b)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorCross'" + string.Format("\"{0}\" \"{1}\" ", a, b));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
@@ -6986,6 +8020,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_VectorDist(string a, string b)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorDist'" + string.Format("\"{0}\" \"{1}\" ", a, b));
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
 
@@ -7020,6 +8056,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_VectorDot(string a, string b)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorDot'" + string.Format("\"{0}\" \"{1}\" ", a, b));
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
 
@@ -7053,6 +8091,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fn_VectorLen(string v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorLen'" + string.Format("\"{0}\" ", v));
             StringBuilder sbv = new StringBuilder(v, 1024);
 
             return SafeNativeMethods.mwle_fn_VectorLen(sbv);
@@ -7091,6 +8131,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_VectorLerp(string a, string b, float t)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorLerp'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", a, b, t));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
@@ -7127,6 +8169,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_VectorNormalize(string v)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorNormalize'" + string.Format("\"{0}\" ", v));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbv = new StringBuilder(v, 1024);
 
@@ -7143,6 +8187,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_VectorOrthoBasis(string aa)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorOrthoBasis'" + string.Format("\"{0}\" ", aa));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbaa = new StringBuilder(aa, 1024);
 
@@ -7178,6 +8224,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_VectorScale(string a, float scalar)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorScale'" + string.Format("\"{0}\" \"{1}\" ", a, scalar));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sba = new StringBuilder(a, 1024);
 
@@ -7213,6 +8261,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fn_VectorSub(string a, string b)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_VectorSub'" + string.Format("\"{0}\" \"{1}\" ", a, b));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
@@ -7228,6 +8278,10 @@ namespace WinterLeaf
         /// </summary>
         internal void fn_writeFontCache()
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fn_writeFontCache'");
+
+
             SafeNativeMethods.mwle_fn_writeFontCache();
             }
 
@@ -7238,6 +8292,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnActionMap_bind(string actionmap, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_bind'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" ", actionmap, a2, a3, a4, a5, a6, a7, a8, a9));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -7278,6 +8334,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnActionMap_bindCmd(string actionmap, string device, string action, string makeCmd, string breakCmd)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_bindCmd'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", actionmap, device, action, makeCmd, breakCmd));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbdevice = new StringBuilder(device, 4096);
             StringBuilder sbaction = new StringBuilder(action, 4096);
@@ -7294,6 +8352,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnActionMap_bindObj(string actionmap, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_bindObj'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" ", actionmap, a2, a3, a4, a5, a6, a7, a8, a9, a10));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -7330,6 +8390,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnActionMap_getBinding(string actionmap, string command)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_getBinding'" + string.Format("\"{0}\" \"{1}\" ", actionmap, command));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbcommand = new StringBuilder(command, 4096);
@@ -7354,6 +8416,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnActionMap_getCommand(string actionmap, string device, string action)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_getCommand'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", actionmap, device, action));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbdevice = new StringBuilder(device, 4096);
@@ -7376,6 +8440,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnActionMap_getDeadZone(string actionmap, string device, string action)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_getDeadZone'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", actionmap, device, action));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbdevice = new StringBuilder(device, 4096);
@@ -7397,6 +8463,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnActionMap_getScale(string actionmap, string device, string action)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_getScale'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", actionmap, device, action));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbdevice = new StringBuilder(device, 4096);
             StringBuilder sbaction = new StringBuilder(action, 4096);
@@ -7418,6 +8486,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnActionMap_isInverted(string actionmap, string device, string action)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_isInverted'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", actionmap, device, action));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbdevice = new StringBuilder(device, 4096);
             StringBuilder sbaction = new StringBuilder(action, 4096);
@@ -7437,6 +8507,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnActionMap_pop(string actionmap)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_pop'" + string.Format("\"{0}\" ", actionmap));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
 
             SafeNativeMethods.mwle_fnActionMap_pop(sbactionmap);
@@ -7454,6 +8526,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnActionMap_push(string actionmap)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_push'" + string.Format("\"{0}\" ", actionmap));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
 
             SafeNativeMethods.mwle_fnActionMap_push(sbactionmap);
@@ -7472,6 +8546,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnActionMap_save(string actionmap, string fileName, bool append)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_save'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", actionmap, fileName, append));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -7490,6 +8566,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnActionMap_unbind(string actionmap, string device, string action)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_unbind'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", actionmap, device, action));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbdevice = new StringBuilder(device, 4096);
             StringBuilder sbaction = new StringBuilder(action, 4096);
@@ -7510,6 +8588,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnActionMap_unbindObj(string actionmap, string device, string action, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnActionMap_unbindObj'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", actionmap, device, action, obj));
             StringBuilder sbactionmap = new StringBuilder(actionmap, 1024);
             StringBuilder sbdevice = new StringBuilder(device, 4096);
             StringBuilder sbaction = new StringBuilder(action, 4096);
@@ -7523,6 +8603,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnAIClient_getAimLocation(string aiclient)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_getAimLocation'" + string.Format("\"{0}\" ", aiclient));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
 
@@ -7535,6 +8617,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnAIClient_getLocation(string aiclient)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_getLocation'" + string.Format("\"{0}\" ", aiclient));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
 
@@ -7547,6 +8631,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnAIClient_getMoveDestination(string aiclient)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_getMoveDestination'" + string.Format("\"{0}\" ", aiclient));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
 
@@ -7559,6 +8645,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnAIClient_getTargetObject(string aiclient)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_getTargetObject'" + string.Format("\"{0}\" ", aiclient));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
 
             return SafeNativeMethods.mwle_fnAIClient_getTargetObject(sbaiclient);
@@ -7569,6 +8657,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIClient_missionCycleCleanup(string aiclient)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_missionCycleCleanup'" + string.Format("\"{0}\" ", aiclient));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
 
             SafeNativeMethods.mwle_fnAIClient_missionCycleCleanup(sbaiclient);
@@ -7579,6 +8669,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIClient_move(string aiclient)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_move'" + string.Format("\"{0}\" ", aiclient));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
 
             SafeNativeMethods.mwle_fnAIClient_move(sbaiclient);
@@ -7589,6 +8681,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIClient_moveForward(string aiclient)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_moveForward'" + string.Format("\"{0}\" ", aiclient));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
 
             SafeNativeMethods.mwle_fnAIClient_moveForward(sbaiclient);
@@ -7599,6 +8693,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIClient_setAimLocation(string aiclient, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_setAimLocation'" + string.Format("\"{0}\" \"{1}\" ", aiclient, a2));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -7610,6 +8706,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIClient_setMoveDestination(string aiclient, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_setMoveDestination'" + string.Format("\"{0}\" \"{1}\" ", aiclient, a2));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -7621,6 +8719,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIClient_setMoveSpeed(string aiclient, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_setMoveSpeed'" + string.Format("\"{0}\" \"{1}\" ", aiclient, a2));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -7632,6 +8732,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIClient_setTargetObject(string aiclient, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_setTargetObject'" + string.Format("\"{0}\" \"{1}\" ", aiclient, a2));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -7643,6 +8745,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIClient_stop(string aiclient)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIClient_stop'" + string.Format("\"{0}\" ", aiclient));
             StringBuilder sbaiclient = new StringBuilder(aiclient, 1024);
 
             SafeNativeMethods.mwle_fnAIClient_stop(sbaiclient);
@@ -7654,6 +8758,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnAIConnection_getAddress(string aiconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIConnection_getAddress'" + string.Format("\"{0}\" ", aiconnection));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbaiconnection = new StringBuilder(aiconnection, 1024);
 
@@ -7668,6 +8774,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnAIConnection_getFreeLook(string aiconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIConnection_getFreeLook'" + string.Format("\"{0}\" ", aiconnection));
             StringBuilder sbaiconnection = new StringBuilder(aiconnection, 1024);
 
             return SafeNativeMethods.mwle_fnAIConnection_getFreeLook(sbaiconnection) >= 1;
@@ -7682,6 +8790,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnAIConnection_getMove(string aiconnection, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIConnection_getMove'" + string.Format("\"{0}\" \"{1}\" ", aiconnection, a2));
             StringBuilder sbaiconnection = new StringBuilder(aiconnection, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -7695,6 +8805,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnAIConnection_getTrigger(string aiconnection, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIConnection_getTrigger'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", aiconnection, a2, a3));
             StringBuilder sbaiconnection = new StringBuilder(aiconnection, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -7709,6 +8821,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIConnection_setFreeLook(string aiconnection, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIConnection_setFreeLook'" + string.Format("\"{0}\" \"{1}\" ", aiconnection, a2));
             StringBuilder sbaiconnection = new StringBuilder(aiconnection, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -7724,6 +8838,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIConnection_setMove(string aiconnection, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIConnection_setMove'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", aiconnection, a2, a3));
             StringBuilder sbaiconnection = new StringBuilder(aiconnection, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -7738,6 +8854,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIConnection_setTrigger(string aiconnection, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIConnection_setTrigger'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", aiconnection, a2, a3));
             StringBuilder sbaiconnection = new StringBuilder(aiconnection, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -7754,6 +8872,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIPlayer_clearAim(string aiplayer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_clearAim'" + string.Format("\"{0}\" ", aiplayer));
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
 
             SafeNativeMethods.mwle_fnAIPlayer_clearAim(sbaiplayer);
@@ -7775,6 +8895,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnAIPlayer_getAimLocation(string aiplayer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_getAimLocation'" + string.Format("\"{0}\" ", aiplayer));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
 
@@ -7793,6 +8915,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnAIPlayer_getAimObject(string aiplayer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_getAimObject'" + string.Format("\"{0}\" ", aiplayer));
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
 
             return SafeNativeMethods.mwle_fnAIPlayer_getAimObject(sbaiplayer);
@@ -7810,6 +8934,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnAIPlayer_getMoveDestination(string aiplayer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_getMoveDestination'" + string.Format("\"{0}\" ", aiplayer));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
 
@@ -7827,6 +8953,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnAIPlayer_getMoveSpeed(string aiplayer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_getMoveSpeed'" + string.Format("\"{0}\" ", aiplayer));
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
 
             return SafeNativeMethods.mwle_fnAIPlayer_getMoveSpeed(sbaiplayer);
@@ -7842,6 +8970,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIPlayer_setAimLocation(string aiplayer, string target)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_setAimLocation'" + string.Format("\"{0}\" \"{1}\" ", aiplayer, target));
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
             StringBuilder sbtarget = new StringBuilder(target, 1024);
 
@@ -7856,6 +8986,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIPlayer_setAimObject(string aiplayer, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_setAimObject'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", aiplayer, a2, a3));
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -7879,6 +9011,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIPlayer_setMoveDestination(string aiplayer, string goal, bool slowDown)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_setMoveDestination'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", aiplayer, goal, slowDown));
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
             StringBuilder sbgoal = new StringBuilder(goal, 1024);
 
@@ -7897,6 +9031,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIPlayer_setMoveSpeed(string aiplayer, float speed)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_setMoveSpeed'" + string.Format("\"{0}\" \"{1}\" ", aiplayer, speed));
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
 
             SafeNativeMethods.mwle_fnAIPlayer_setMoveSpeed(sbaiplayer, speed);
@@ -7908,6 +9044,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAIPlayer_stop(string aiplayer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_stop'" + string.Format("\"{0}\" ", aiplayer));
             StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
 
             SafeNativeMethods.mwle_fnAIPlayer_stop(sbaiplayer);
@@ -7919,6 +9057,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_activateTurret(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_activateTurret'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_activateTurret(sbaiturretshape);
@@ -7932,6 +9072,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_addToIgnoreList(string aiturretshape, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_addToIgnoreList'" + string.Format("\"{0}\" \"{1}\" ", aiturretshape, obj));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
             StringBuilder sbobj = new StringBuilder(obj, 1024);
 
@@ -7944,6 +9086,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_deactivateTurret(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_deactivateTurret'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_deactivateTurret(sbaiturretshape);
@@ -7956,6 +9100,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnAITurretShape_getTarget(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_getTarget'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
@@ -7970,6 +9116,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnAITurretShape_getWeaponLeadVelocity(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_getWeaponLeadVelocity'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             return SafeNativeMethods.mwle_fnAITurretShape_getWeaponLeadVelocity(sbaiturretshape);
@@ -7982,6 +9130,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnAITurretShape_hasTarget(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_hasTarget'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             return SafeNativeMethods.mwle_fnAITurretShape_hasTarget(sbaiturretshape) >= 1;
@@ -7993,6 +9143,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_recenterTurret(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_recenterTurret'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_recenterTurret(sbaiturretshape);
@@ -8006,6 +9158,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_removeFromIgnoreList(string aiturretshape, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_removeFromIgnoreList'" + string.Format("\"{0}\" \"{1}\" ", aiturretshape, obj));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
             StringBuilder sbobj = new StringBuilder(obj, 1024);
 
@@ -8019,6 +9173,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_resetTarget(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_resetTarget'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_resetTarget(sbaiturretshape);
@@ -8031,6 +9187,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_setAllGunsFiring(string aiturretshape, bool fire)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_setAllGunsFiring'" + string.Format("\"{0}\" \"{1}\" ", aiturretshape, fire));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_setAllGunsFiring(sbaiturretshape, fire);
@@ -8044,6 +9202,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_setGunSlotFiring(string aiturretshape, int slot, bool fire)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_setGunSlotFiring'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", aiturretshape, slot, fire));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_setGunSlotFiring(sbaiturretshape, slot, fire);
@@ -8061,6 +9221,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_setTurretState(string aiturretshape, string newState, bool force)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_setTurretState'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", aiturretshape, newState, force));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
             StringBuilder sbnewState = new StringBuilder(newState, 4096);
 
@@ -8077,6 +9239,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_setWeaponLeadVelocity(string aiturretshape, float velocity)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_setWeaponLeadVelocity'" + string.Format("\"{0}\" \"{1}\" ", aiturretshape, velocity));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_setWeaponLeadVelocity(sbaiturretshape, velocity);
@@ -8088,6 +9252,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_startScanForTargets(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_startScanForTargets'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_startScanForTargets(sbaiturretshape);
@@ -8099,6 +9265,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_startTrackingTarget(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_startTrackingTarget'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_startTrackingTarget(sbaiturretshape);
@@ -8112,6 +9280,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_stopScanForTargets(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_stopScanForTargets'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_stopScanForTargets(sbaiturretshape);
@@ -8123,6 +9293,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnAITurretShape_stopTrackingTarget(string aiturretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAITurretShape_stopTrackingTarget'" + string.Format("\"{0}\" ", aiturretshape));
             StringBuilder sbaiturretshape = new StringBuilder(aiturretshape, 1024);
 
             SafeNativeMethods.mwle_fnAITurretShape_stopTrackingTarget(sbaiturretshape);
@@ -8137,6 +9309,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_add(string arrayobject, string key, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_add'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", arrayobject, key, value));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -8151,6 +9325,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnArrayObject_append(string arrayobject, string target)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_append'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, target));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbtarget = new StringBuilder(target, 1024);
 
@@ -8163,6 +9339,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_count(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_count'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             return SafeNativeMethods.mwle_fnArrayObject_count(sbarrayobject);
@@ -8175,6 +9353,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_countKey(string arrayobject, string key)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_countKey'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, key));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
 
@@ -8188,6 +9368,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_countValue(string arrayobject, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_countValue'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, value));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
 
@@ -8201,6 +9383,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnArrayObject_crop(string arrayobject, string target)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_crop'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, target));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbtarget = new StringBuilder(target, 1024);
 
@@ -8214,6 +9398,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnArrayObject_duplicate(string arrayobject, string target)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_duplicate'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, target));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbtarget = new StringBuilder(target, 1024);
 
@@ -8226,6 +9412,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_echo(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_echo'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_echo(sbarrayobject);
@@ -8237,6 +9425,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_empty(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_empty'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_empty(sbarrayobject);
@@ -8249,6 +9439,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_erase(string arrayobject, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_erase'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, index));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_erase(sbarrayobject, index);
@@ -8260,6 +9452,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_getCurrent(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_getCurrent'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             return SafeNativeMethods.mwle_fnArrayObject_getCurrent(sbarrayobject);
@@ -8273,6 +9467,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_getIndexFromKey(string arrayobject, string key)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_getIndexFromKey'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, key));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
 
@@ -8287,6 +9483,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_getIndexFromValue(string arrayobject, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_getIndexFromValue'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, value));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
 
@@ -8302,6 +9500,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnArrayObject_getKey(string arrayobject, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_getKey'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
@@ -8318,6 +9518,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnArrayObject_getValue(string arrayobject, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_getValue'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
@@ -8336,6 +9538,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_insert(string arrayobject, string key, string value, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_insert'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", arrayobject, key, value, index));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -8350,6 +9554,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_moveFirst(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_moveFirst'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             return SafeNativeMethods.mwle_fnArrayObject_moveFirst(sbarrayobject);
@@ -8362,6 +9568,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_moveLast(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_moveLast'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             return SafeNativeMethods.mwle_fnArrayObject_moveLast(sbarrayobject);
@@ -8374,6 +9582,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_moveNext(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_moveNext'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             return SafeNativeMethods.mwle_fnArrayObject_moveNext(sbarrayobject);
@@ -8386,6 +9596,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnArrayObject_movePrev(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_movePrev'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             return SafeNativeMethods.mwle_fnArrayObject_movePrev(sbarrayobject);
@@ -8397,6 +9609,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_pop_back(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_pop_back'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_pop_back(sbarrayobject);
@@ -8408,6 +9622,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_pop_front(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_pop_front'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_pop_front(sbarrayobject);
@@ -8422,6 +9638,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_push_back(string arrayobject, string key, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_push_back'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", arrayobject, key, value));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -8436,6 +9654,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_push_front(string arrayobject, string key, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_push_front'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", arrayobject, key, value));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -8450,6 +9670,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_setCurrent(string arrayobject, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_setCurrent'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, index));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_setCurrent(sbarrayobject, index);
@@ -8463,6 +9685,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_setKey(string arrayobject, string key, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_setKey'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", arrayobject, key, index));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
 
@@ -8477,6 +9701,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_setValue(string arrayobject, string value, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_setValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", arrayobject, value, index));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
 
@@ -8490,6 +9716,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sort(string arrayobject, bool ascending)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sort'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, ascending));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sort(sbarrayobject, ascending);
@@ -8501,6 +9729,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sorta(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sorta'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sorta(sbarrayobject);
@@ -8512,6 +9742,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortd(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortd'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortd(sbarrayobject);
@@ -8531,6 +9763,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortf(string arrayobject, string functionName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortf'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, functionName));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbfunctionName = new StringBuilder(functionName, 4096);
 
@@ -8545,6 +9779,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortfd(string arrayobject, string functionName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortfd'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, functionName));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbfunctionName = new StringBuilder(functionName, 4096);
 
@@ -8559,6 +9795,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortfk(string arrayobject, string functionName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortfk'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, functionName));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbfunctionName = new StringBuilder(functionName, 4096);
 
@@ -8573,6 +9811,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortfkd(string arrayobject, string functionName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortfkd'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, functionName));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
             StringBuilder sbfunctionName = new StringBuilder(functionName, 4096);
 
@@ -8586,6 +9826,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortk(string arrayobject, bool ascending)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortk'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, ascending));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortk(sbarrayobject, ascending);
@@ -8597,6 +9839,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortka(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortka'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortka(sbarrayobject);
@@ -8608,6 +9852,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortkd(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortkd'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortkd(sbarrayobject);
@@ -8620,6 +9866,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortn(string arrayobject, bool ascending)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortn'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, ascending));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortn(sbarrayobject, ascending);
@@ -8631,6 +9879,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortna(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortna'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortna(sbarrayobject);
@@ -8642,6 +9892,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortnd(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortnd'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortnd(sbarrayobject);
@@ -8654,6 +9906,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortnk(string arrayobject, bool ascending)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortnk'" + string.Format("\"{0}\" \"{1}\" ", arrayobject, ascending));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortnk(sbarrayobject, ascending);
@@ -8665,6 +9919,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortnka(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortnka'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortnka(sbarrayobject);
@@ -8676,6 +9932,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_sortnkd(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_sortnkd'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_sortnkd(sbarrayobject);
@@ -8687,6 +9945,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_uniqueKey(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_uniqueKey'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_uniqueKey(sbarrayobject);
@@ -8698,6 +9958,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnArrayObject_uniqueValue(string arrayobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnArrayObject_uniqueValue'" + string.Format("\"{0}\" ", arrayobject));
             StringBuilder sbarrayobject = new StringBuilder(arrayobject, 1024);
 
             SafeNativeMethods.mwle_fnArrayObject_uniqueValue(sbarrayobject);
@@ -8711,6 +9973,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_autoFitRadius(string camera, float radius)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_autoFitRadius'" + string.Format("\"{0}\" \"{1}\" ", camera, radius));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_autoFitRadius(sbcamera, radius);
@@ -8724,6 +9988,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnCamera_getAngularVelocity(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_getAngularVelocity'" + string.Format("\"{0}\" ", camera));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
@@ -8738,6 +10004,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnCamera_getMode(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_getMode'" + string.Format("\"{0}\" ", camera));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             return SafeNativeMethods.mwle_fnCamera_getMode(sbcamera);
@@ -8751,6 +10019,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnCamera_getOffset(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_getOffset'" + string.Format("\"{0}\" ", camera));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
@@ -8765,6 +10035,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnCamera_getPosition(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_getPosition'" + string.Format("\"{0}\" ", camera));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
@@ -8779,6 +10051,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnCamera_getRotation(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_getRotation'" + string.Format("\"{0}\" ", camera));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
@@ -8794,6 +10068,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnCamera_getVelocity(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_getVelocity'" + string.Format("\"{0}\" ", camera));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
@@ -8808,6 +10084,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnCamera_isEditOrbitMode(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_isEditOrbitMode'" + string.Format("\"{0}\" ", camera));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             return SafeNativeMethods.mwle_fnCamera_isEditOrbitMode(sbcamera) >= 1;
@@ -8820,6 +10098,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnCamera_isRotationDamped(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_isRotationDamped'" + string.Format("\"{0}\" ", camera));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             return SafeNativeMethods.mwle_fnCamera_isRotationDamped(sbcamera) >= 1;
@@ -8832,6 +10112,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_lookAt(string camera, string point)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_lookAt'" + string.Format("\"{0}\" \"{1}\" ", camera, point));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sbpoint = new StringBuilder(point, 1024);
 
@@ -8846,6 +10128,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setAngularDrag(string camera, float drag)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setAngularDrag'" + string.Format("\"{0}\" \"{1}\" ", camera, drag));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setAngularDrag(sbcamera, drag);
@@ -8859,6 +10143,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setAngularForce(string camera, float force)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setAngularForce'" + string.Format("\"{0}\" \"{1}\" ", camera, force));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setAngularForce(sbcamera, force);
@@ -8872,6 +10158,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setAngularVelocity(string camera, string velocity)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setAngularVelocity'" + string.Format("\"{0}\" \"{1}\" ", camera, velocity));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sbvelocity = new StringBuilder(velocity, 1024);
 
@@ -8886,6 +10174,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setBrakeMultiplier(string camera, float multiplier)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setBrakeMultiplier'" + string.Format("\"{0}\" \"{1}\" ", camera, multiplier));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setBrakeMultiplier(sbcamera, multiplier);
@@ -8899,6 +10189,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setDrag(string camera, float drag)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setDrag'" + string.Format("\"{0}\" \"{1}\" ", camera, drag));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setDrag(sbcamera, drag);
@@ -8912,6 +10204,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setEditOrbitMode(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setEditOrbitMode'" + string.Format("\"{0}\" ", camera));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setEditOrbitMode(sbcamera);
@@ -8924,6 +10218,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setEditOrbitPoint(string camera, string point)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setEditOrbitPoint'" + string.Format("\"{0}\" \"{1}\" ", camera, point));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sbpoint = new StringBuilder(point, 1024);
 
@@ -8938,6 +10234,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setFlyForce(string camera, float force)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setFlyForce'" + string.Format("\"{0}\" \"{1}\" ", camera, force));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setFlyForce(sbcamera, force);
@@ -8952,6 +10250,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setFlyMode(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setFlyMode'" + string.Format("\"{0}\" ", camera));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setFlyMode(sbcamera);
@@ -8965,6 +10265,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setMass(string camera, float mass)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setMass'" + string.Format("\"{0}\" \"{1}\" ", camera, mass));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setMass(sbcamera, mass);
@@ -8979,6 +10281,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setNewtonFlyMode(string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setNewtonFlyMode'" + string.Format("\"{0}\" ", camera));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setNewtonFlyMode(sbcamera);
@@ -8992,6 +10296,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setOffset(string camera, string offset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setOffset'" + string.Format("\"{0}\" \"{1}\" ", camera, offset));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sboffset = new StringBuilder(offset, 1024);
 
@@ -9014,6 +10320,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setOrbitMode(string camera, string orbitObject, string orbitPoint, float minDistance, float maxDistance, float initDistance, bool ownClientObj, string offset, bool xlocked)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setOrbitMode'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" ", camera, orbitObject, orbitPoint, minDistance, maxDistance, initDistance, ownClientObj, offset, xlocked));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sborbitObject = new StringBuilder(orbitObject, 1024);
             StringBuilder sborbitPoint = new StringBuilder(orbitPoint, 1024);
@@ -9038,6 +10346,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnCamera_setOrbitObject(string camera, string orbitObject, string rotation, float minDistance, float maxDistance, float initDistance, bool ownClientObject, string offset, bool xlocked)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setOrbitObject'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" ", camera, orbitObject, rotation, minDistance, maxDistance, initDistance, ownClientObject, offset, xlocked));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sborbitObject = new StringBuilder(orbitObject, 1024);
             StringBuilder sbrotation = new StringBuilder(rotation, 1024);
@@ -9059,6 +10369,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setOrbitPoint(string camera, string orbitPoint, float minDistance, float maxDistance, float initDistance, string offset, bool xlocked)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setOrbitPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" ", camera, orbitPoint, minDistance, maxDistance, initDistance, offset, xlocked));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sborbitPoint = new StringBuilder(orbitPoint, 1024);
             StringBuilder sboffset = new StringBuilder(offset, 1024);
@@ -9074,6 +10386,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setRotation(string camera, string rot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setRotation'" + string.Format("\"{0}\" \"{1}\" ", camera, rot));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sbrot = new StringBuilder(rot, 1024);
 
@@ -9088,6 +10402,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setSpeedMultiplier(string camera, float multiplier)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setSpeedMultiplier'" + string.Format("\"{0}\" \"{1}\" ", camera, multiplier));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setSpeedMultiplier(sbcamera, multiplier);
@@ -9102,6 +10418,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnCamera_setTrackObject(string camera, string trackObject, string offset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setTrackObject'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", camera, trackObject, offset));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sbtrackObject = new StringBuilder(trackObject, 1024);
             StringBuilder sboffset = new StringBuilder(offset, 1024);
@@ -9119,6 +10437,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setValidEditOrbitPoint(string camera, bool validPoint)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setValidEditOrbitPoint'" + string.Format("\"{0}\" \"{1}\" ", camera, validPoint));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
             SafeNativeMethods.mwle_fnCamera_setValidEditOrbitPoint(sbcamera, validPoint);
@@ -9132,6 +10452,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCamera_setVelocity(string camera, string velocity)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCamera_setVelocity'" + string.Format("\"{0}\" \"{1}\" ", camera, velocity));
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
             StringBuilder sbvelocity = new StringBuilder(velocity, 1024);
 
@@ -9144,6 +10466,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCompoundUndoAction_addAction(string compoundundoaction, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCompoundUndoAction_addAction'" + string.Format("\"{0}\" \"{1}\" ", compoundundoaction, a2));
             StringBuilder sbcompoundundoaction = new StringBuilder(compoundundoaction, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9170,6 +10494,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnConsoleLogger_attach(string consolelogger)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnConsoleLogger_attach'" + string.Format("\"{0}\" ", consolelogger));
             StringBuilder sbconsolelogger = new StringBuilder(consolelogger, 1024);
 
             return SafeNativeMethods.mwle_fnConsoleLogger_attach(sbconsolelogger) >= 1;
@@ -9195,6 +10521,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnConsoleLogger_detach(string consolelogger)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnConsoleLogger_detach'" + string.Format("\"{0}\" ", consolelogger));
             StringBuilder sbconsolelogger = new StringBuilder(consolelogger, 1024);
 
             return SafeNativeMethods.mwle_fnConsoleLogger_detach(sbconsolelogger) >= 1;
@@ -9207,6 +10535,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnCubemapData_getFilename(string cubemapdata)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCubemapData_getFilename'" + string.Format("\"{0}\" ", cubemapdata));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbcubemapdata = new StringBuilder(cubemapdata, 1024);
 
@@ -9220,6 +10550,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnCubemapData_updateFaces(string cubemapdata)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnCubemapData_updateFaces'" + string.Format("\"{0}\" ", cubemapdata));
             StringBuilder sbcubemapdata = new StringBuilder(cubemapdata, 1024);
 
             SafeNativeMethods.mwle_fnCubemapData_updateFaces(sbcubemapdata);
@@ -9232,6 +10564,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDbgFileView_clearBreakPositions(string dbgfileview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDbgFileView_clearBreakPositions'" + string.Format("\"{0}\" ", dbgfileview));
             StringBuilder sbdbgfileview = new StringBuilder(dbgfileview, 1024);
 
             SafeNativeMethods.mwle_fnDbgFileView_clearBreakPositions(sbdbgfileview);
@@ -9245,6 +10579,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnDbgFileView_findString(string dbgfileview, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDbgFileView_findString'" + string.Format("\"{0}\" \"{1}\" ", dbgfileview, a2));
             StringBuilder sbdbgfileview = new StringBuilder(dbgfileview, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9260,6 +10596,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnDbgFileView_getCurrentLine(string dbgfileview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDbgFileView_getCurrentLine'" + string.Format("\"{0}\" ", dbgfileview));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbdbgfileview = new StringBuilder(dbgfileview, 1024);
 
@@ -9275,6 +10613,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnDbgFileView_open(string dbgfileview, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDbgFileView_open'" + string.Format("\"{0}\" \"{1}\" ", dbgfileview, a2));
             StringBuilder sbdbgfileview = new StringBuilder(dbgfileview, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9288,6 +10628,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDbgFileView_removeBreak(string dbgfileview, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDbgFileView_removeBreak'" + string.Format("\"{0}\" \"{1}\" ", dbgfileview, a2));
             StringBuilder sbdbgfileview = new StringBuilder(dbgfileview, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9301,6 +10643,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDbgFileView_setBreak(string dbgfileview, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDbgFileView_setBreak'" + string.Format("\"{0}\" \"{1}\" ", dbgfileview, a2));
             StringBuilder sbdbgfileview = new StringBuilder(dbgfileview, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9314,6 +10658,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDbgFileView_setBreakPosition(string dbgfileview, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDbgFileView_setBreakPosition'" + string.Format("\"{0}\" \"{1}\" ", dbgfileview, a2));
             StringBuilder sbdbgfileview = new StringBuilder(dbgfileview, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9327,6 +10673,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDbgFileView_setCurrentLine(string dbgfileview, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDbgFileView_setCurrentLine'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", dbgfileview, a2, a3));
             StringBuilder sbdbgfileview = new StringBuilder(dbgfileview, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -9358,6 +10706,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnDebris_init(string debris, string inputPosition, string inputVelocity)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDebris_init'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", debris, inputPosition, inputVelocity));
             StringBuilder sbdebris = new StringBuilder(debris, 1024);
             StringBuilder sbinputPosition = new StringBuilder(inputPosition, 4096);
             StringBuilder sbinputVelocity = new StringBuilder(inputVelocity, 4096);
@@ -9371,6 +10721,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDebugDrawer_drawBox(string debugdrawer, string a, string b, string color)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDebugDrawer_drawBox'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", debugdrawer, a, b, color));
             StringBuilder sbdebugdrawer = new StringBuilder(debugdrawer, 1024);
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
@@ -9385,6 +10737,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDebugDrawer_drawLine(string debugdrawer, string a, string b, string color)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDebugDrawer_drawLine'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", debugdrawer, a, b, color));
             StringBuilder sbdebugdrawer = new StringBuilder(debugdrawer, 1024);
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
@@ -9399,6 +10753,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDebugDrawer_setLastTTL(string debugdrawer, uint ms)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDebugDrawer_setLastTTL'" + string.Format("\"{0}\" \"{1}\" ", debugdrawer, ms));
             StringBuilder sbdebugdrawer = new StringBuilder(debugdrawer, 1024);
 
             SafeNativeMethods.mwle_fnDebugDrawer_setLastTTL(sbdebugdrawer, ms);
@@ -9410,6 +10766,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDebugDrawer_setLastZTest(string debugdrawer, bool enabled)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDebugDrawer_setLastZTest'" + string.Format("\"{0}\" \"{1}\" ", debugdrawer, enabled));
             StringBuilder sbdebugdrawer = new StringBuilder(debugdrawer, 1024);
 
             SafeNativeMethods.mwle_fnDebugDrawer_setLastZTest(sbdebugdrawer, enabled);
@@ -9421,6 +10779,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDebugDrawer_toggleDrawing(string debugdrawer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDebugDrawer_toggleDrawing'" + string.Format("\"{0}\" ", debugdrawer));
             StringBuilder sbdebugdrawer = new StringBuilder(debugdrawer, 1024);
 
             SafeNativeMethods.mwle_fnDebugDrawer_toggleDrawing(sbdebugdrawer);
@@ -9432,6 +10792,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDebugDrawer_toggleFreeze(string debugdrawer)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDebugDrawer_toggleFreeze'" + string.Format("\"{0}\" ", debugdrawer));
             StringBuilder sbdebugdrawer = new StringBuilder(debugdrawer, 1024);
 
             SafeNativeMethods.mwle_fnDebugDrawer_toggleFreeze(sbdebugdrawer);
@@ -9448,6 +10810,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDecalData_postApply(string decaldata)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDecalData_postApply'" + string.Format("\"{0}\" ", decaldata));
             StringBuilder sbdecaldata = new StringBuilder(decaldata, 1024);
 
             SafeNativeMethods.mwle_fnDecalData_postApply(sbdecaldata);
@@ -9463,6 +10827,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDecalRoad_postApply(string decalroad)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDecalRoad_postApply'" + string.Format("\"{0}\" ", decalroad));
             StringBuilder sbdecalroad = new StringBuilder(decalroad, 1024);
 
             SafeNativeMethods.mwle_fnDecalRoad_postApply(sbdecalroad);
@@ -9476,6 +10842,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDecalRoad_regenerate(string decalroad)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDecalRoad_regenerate'" + string.Format("\"{0}\" ", decalroad));
             StringBuilder sbdecalroad = new StringBuilder(decalroad, 1024);
 
             SafeNativeMethods.mwle_fnDecalRoad_regenerate(sbdecalroad);
@@ -9492,6 +10860,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnDynamicConsoleMethodComponent_callMethod(string dynamicconsolemethodcomponent, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19, string a20, string a21, string a22, string a23, string a24, string a25, string a26, string a27, string a28, string a29, string a30, string a31, string a32, string a33, string a34, string a35, string a36, string a37, string a38, string a39, string a40, string a41, string a42, string a43, string a44, string a45, string a46, string a47, string a48, string a49, string a50, string a51, string a52, string a53, string a54, string a55, string a56, string a57, string a58, string a59, string a60, string a61, string a62, string a63)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnDynamicConsoleMethodComponent_callMethod'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" \"{19}\" \"{20}\" \"{21}\" \"{22}\" \"{23}\" \"{24}\" \"{25}\" \"{26}\" \"{27}\" \"{28}\" \"{29}\" \"{30}\" \"{31}\" \"{32}\" \"{33}\" \"{34}\" \"{35}\" \"{36}\" \"{37}\" \"{38}\" \"{39}\" \"{40}\" \"{41}\" \"{42}\" \"{43}\" \"{44}\" \"{45}\" \"{46}\" \"{47}\" \"{48}\" \"{49}\" \"{50}\" \"{51}\" \"{52}\" \"{53}\" \"{54}\" \"{55}\" \"{56}\" \"{57}\" \"{58}\" \"{59}\" \"{60}\" \"{61}\" \"{62}\" ", dynamicconsolemethodcomponent, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63));
             StringBuilder sbdynamicconsolemethodcomponent = new StringBuilder(dynamicconsolemethodcomponent, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -9565,6 +10935,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnEditTSCtrl_getDisplayType(string edittsctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_getDisplayType'" + string.Format("\"{0}\" ", edittsctrl));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
 
             return SafeNativeMethods.mwle_fnEditTSCtrl_getDisplayType(sbedittsctrl);
@@ -9576,6 +10948,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnEditTSCtrl_getGizmo(string edittsctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_getGizmo'" + string.Format("\"{0}\" ", edittsctrl));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
 
             return SafeNativeMethods.mwle_fnEditTSCtrl_getGizmo(sbedittsctrl);
@@ -9587,6 +10961,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnEditTSCtrl_getOrthoFOV(string edittsctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_getOrthoFOV'" + string.Format("\"{0}\" ", edittsctrl));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
 
             return SafeNativeMethods.mwle_fnEditTSCtrl_getOrthoFOV(sbedittsctrl);
@@ -9598,6 +10974,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnEditTSCtrl_isMiddleMouseDown(string edittsctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_isMiddleMouseDown'" + string.Format("\"{0}\" ", edittsctrl));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
 
             return SafeNativeMethods.mwle_fnEditTSCtrl_isMiddleMouseDown(sbedittsctrl) >= 1;
@@ -9609,6 +10987,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEditTSCtrl_renderBox(string edittsctrl, string pos, string size)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_renderBox'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", edittsctrl, pos, size));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
             StringBuilder sbsize = new StringBuilder(size, 1024);
@@ -9622,6 +11002,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEditTSCtrl_renderCircle(string edittsctrl, string pos, string normal, float radius, int segments)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_renderCircle'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", edittsctrl, pos, normal, radius, segments));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
             StringBuilder sbnormal = new StringBuilder(normal, 1024);
@@ -9635,6 +11017,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEditTSCtrl_renderLine(string edittsctrl, string start, string end, float lineWidth)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_renderLine'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", edittsctrl, start, end, lineWidth));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
             StringBuilder sbstart = new StringBuilder(start, 1024);
             StringBuilder sbend = new StringBuilder(end, 1024);
@@ -9648,6 +11032,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEditTSCtrl_renderSphere(string edittsctrl, string pos, float radius, int sphereLevel)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_renderSphere'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", edittsctrl, pos, radius, sphereLevel));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
 
@@ -9660,6 +11046,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEditTSCtrl_renderTriangle(string edittsctrl, string a, string b, string c)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_renderTriangle'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", edittsctrl, a, b, c));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
             StringBuilder sba = new StringBuilder(a, 1024);
             StringBuilder sbb = new StringBuilder(b, 1024);
@@ -9674,6 +11062,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEditTSCtrl_setDisplayType(string edittsctrl, int displayType)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_setDisplayType'" + string.Format("\"{0}\" \"{1}\" ", edittsctrl, displayType));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
 
             SafeNativeMethods.mwle_fnEditTSCtrl_setDisplayType(sbedittsctrl, displayType);
@@ -9685,6 +11075,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEditTSCtrl_setOrthoFOV(string edittsctrl, float fov)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEditTSCtrl_setOrthoFOV'" + string.Format("\"{0}\" \"{1}\" ", edittsctrl, fov));
             StringBuilder sbedittsctrl = new StringBuilder(edittsctrl, 1024);
 
             SafeNativeMethods.mwle_fnEditTSCtrl_setOrthoFOV(sbedittsctrl, fov);
@@ -9697,6 +11089,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEventManager_dumpEvents(string eventmanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_dumpEvents'" + string.Format("\"{0}\" ", eventmanager));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
 
             SafeNativeMethods.mwle_fnEventManager_dumpEvents(sbeventmanager);
@@ -9710,6 +11104,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEventManager_dumpSubscribers(string eventmanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_dumpSubscribers'" + string.Format("\"{0}\" \"{1}\" ", eventmanager, a2));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9725,6 +11121,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnEventManager_isRegisteredEvent(string eventmanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_isRegisteredEvent'" + string.Format("\"{0}\" \"{1}\" ", eventmanager, a2));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9741,6 +11139,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnEventManager_postEvent(string eventmanager, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_postEvent'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", eventmanager, a2, a3));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -9757,6 +11157,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnEventManager_registerEvent(string eventmanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_registerEvent'" + string.Format("\"{0}\" \"{1}\" ", eventmanager, a2));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9772,6 +11174,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEventManager_remove(string eventmanager, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_remove'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", eventmanager, a2, a3));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -9787,6 +11191,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEventManager_removeAll(string eventmanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_removeAll'" + string.Format("\"{0}\" \"{1}\" ", eventmanager, a2));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9804,6 +11210,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnEventManager_subscribe(string eventmanager, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_subscribe'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", eventmanager, a2, a3, a4));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -9820,6 +11228,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnEventManager_unregisterEvent(string eventmanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnEventManager_unregisterEvent'" + string.Format("\"{0}\" \"{1}\" ", eventmanager, a2));
             StringBuilder sbeventmanager = new StringBuilder(eventmanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9835,6 +11245,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnFieldBrushObject_copyFields(string fieldbrushobject, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFieldBrushObject_copyFields'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", fieldbrushobject, a2, a3));
             StringBuilder sbfieldbrushobject = new StringBuilder(fieldbrushobject, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -9850,6 +11262,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnFieldBrushObject_pasteFields(string fieldbrushobject, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFieldBrushObject_pasteFields'" + string.Format("\"{0}\" \"{1}\" ", fieldbrushobject, a2));
             StringBuilder sbfieldbrushobject = new StringBuilder(fieldbrushobject, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -9865,6 +11279,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnFieldBrushObject_queryFields(string fieldbrushobject, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFieldBrushObject_queryFields'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", fieldbrushobject, a2, a3));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbfieldbrushobject = new StringBuilder(fieldbrushobject, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -9882,6 +11298,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnFieldBrushObject_queryGroups(string fieldbrushobject, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFieldBrushObject_queryGroups'" + string.Format("\"{0}\" \"{1}\" ", fieldbrushobject, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbfieldbrushobject = new StringBuilder(fieldbrushobject, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -9979,6 +11397,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnFileDialog_Execute(string filedialog)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileDialog_Execute'" + string.Format("\"{0}\" ", filedialog));
             StringBuilder sbfiledialog = new StringBuilder(filedialog, 1024);
 
             return SafeNativeMethods.mwle_fnFileDialog_Execute(sbfiledialog) >= 1;
@@ -10014,6 +11434,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnFileObject_close(string fileobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_close'" + string.Format("\"{0}\" ", fileobject));
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
 
             SafeNativeMethods.mwle_fnFileObject_close(sbfileobject);
@@ -10042,6 +11464,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnFileObject_isEOF(string fileobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_isEOF'" + string.Format("\"{0}\" ", fileobject));
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
 
             return SafeNativeMethods.mwle_fnFileObject_isEOF(sbfileobject) >= 1;
@@ -10068,6 +11492,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnFileObject_openForAppend(string fileobject, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_openForAppend'" + string.Format("\"{0}\" \"{1}\" ", fileobject, filename));
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -10093,6 +11519,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnFileObject_openForRead(string fileobject, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_openForRead'" + string.Format("\"{0}\" \"{1}\" ", fileobject, filename));
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -10118,6 +11546,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnFileObject_openForWrite(string fileobject, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_openForWrite'" + string.Format("\"{0}\" \"{1}\" ", fileobject, filename));
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -10153,6 +11583,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnFileObject_peekLine(string fileobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_peekLine'" + string.Format("\"{0}\" ", fileobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
 
@@ -10182,6 +11614,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnFileObject_readLine(string fileobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_readLine'" + string.Format("\"{0}\" ", fileobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
 
@@ -10211,6 +11645,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnFileObject_writeLine(string fileobject, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_writeLine'" + string.Format("\"{0}\" \"{1}\" ", fileobject, text));
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -10224,6 +11660,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnFileObject_writeObject(string fileobject, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileObject_writeObject'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", fileobject, a2, a3));
             StringBuilder sbfileobject = new StringBuilder(fileobject, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -10248,6 +11686,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnFileStreamObject_close(string filestreamobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileStreamObject_close'" + string.Format("\"{0}\" ", filestreamobject));
             StringBuilder sbfilestreamobject = new StringBuilder(filestreamobject, 1024);
 
             SafeNativeMethods.mwle_fnFileStreamObject_close(sbfilestreamobject);
@@ -10285,6 +11725,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnFileStreamObject_open(string filestreamobject, string filename, string openMode)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFileStreamObject_open'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", filestreamobject, filename, openMode));
             StringBuilder sbfilestreamobject = new StringBuilder(filestreamobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
             StringBuilder sbopenMode = new StringBuilder(openMode, 4096);
@@ -10300,6 +11742,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnFlyingVehicle_useCreateHeight(string flyingvehicle, bool enabled)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnFlyingVehicle_useCreateHeight'" + string.Format("\"{0}\" \"{1}\" ", flyingvehicle, enabled));
             StringBuilder sbflyingvehicle = new StringBuilder(flyingvehicle, 1024);
 
             SafeNativeMethods.mwle_fnFlyingVehicle_useCreateHeight(sbflyingvehicle, enabled);
@@ -10311,6 +11755,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForest_clear(string forest)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForest_clear'" + string.Format("\"{0}\" ", forest));
             StringBuilder sbforest = new StringBuilder(forest, 1024);
 
             SafeNativeMethods.mwle_fnForest_clear(sbforest);
@@ -10322,6 +11768,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnForest_isDirty(string forest)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForest_isDirty'" + string.Format("\"{0}\" ", forest));
             StringBuilder sbforest = new StringBuilder(forest, 1024);
 
             return SafeNativeMethods.mwle_fnForest_isDirty(sbforest) >= 1;
@@ -10333,6 +11781,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForest_regenCells(string forest)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForest_regenCells'" + string.Format("\"{0}\" ", forest));
             StringBuilder sbforest = new StringBuilder(forest, 1024);
 
             SafeNativeMethods.mwle_fnForest_regenCells(sbforest);
@@ -10344,6 +11794,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnForest_saveDataFile(string forest, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForest_saveDataFile'" + string.Format("\"{0}\" \"{1}\" ", forest, a2));
             StringBuilder sbforest = new StringBuilder(forest, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -10356,6 +11808,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnForestBrush_containsItemData(string forestbrush, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestBrush_containsItemData'" + string.Format("\"{0}\" \"{1}\" ", forestbrush, a2));
             StringBuilder sbforestbrush = new StringBuilder(forestbrush, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -10368,6 +11822,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestBrushTool_collectElements(string forestbrushtool)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestBrushTool_collectElements'" + string.Format("\"{0}\" ", forestbrushtool));
             StringBuilder sbforestbrushtool = new StringBuilder(forestbrushtool, 1024);
 
             SafeNativeMethods.mwle_fnForestBrushTool_collectElements(sbforestbrushtool);
@@ -10379,6 +11835,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestEditorCtrl_deleteMeshSafe(string foresteditorctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestEditorCtrl_deleteMeshSafe'" + string.Format("\"{0}\" \"{1}\" ", foresteditorctrl, a2));
             StringBuilder sbforesteditorctrl = new StringBuilder(foresteditorctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -10391,6 +11849,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnForestEditorCtrl_getActiveTool(string foresteditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestEditorCtrl_getActiveTool'" + string.Format("\"{0}\" ", foresteditorctrl));
             StringBuilder sbforesteditorctrl = new StringBuilder(foresteditorctrl, 1024);
 
             return SafeNativeMethods.mwle_fnForestEditorCtrl_getActiveTool(sbforesteditorctrl);
@@ -10402,6 +11862,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnForestEditorCtrl_isDirty(string foresteditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestEditorCtrl_isDirty'" + string.Format("\"{0}\" ", foresteditorctrl));
             StringBuilder sbforesteditorctrl = new StringBuilder(foresteditorctrl, 1024);
 
             return SafeNativeMethods.mwle_fnForestEditorCtrl_isDirty(sbforesteditorctrl) >= 1;
@@ -10413,6 +11875,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestEditorCtrl_setActiveTool(string foresteditorctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestEditorCtrl_setActiveTool'" + string.Format("\"{0}\" \"{1}\" ", foresteditorctrl, a2));
             StringBuilder sbforesteditorctrl = new StringBuilder(foresteditorctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -10425,6 +11889,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestEditorCtrl_updateActiveForest(string foresteditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestEditorCtrl_updateActiveForest'" + string.Format("\"{0}\" ", foresteditorctrl));
             StringBuilder sbforesteditorctrl = new StringBuilder(foresteditorctrl, 1024);
 
             SafeNativeMethods.mwle_fnForestEditorCtrl_updateActiveForest(sbforesteditorctrl);
@@ -10436,6 +11902,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestSelectionTool_clearSelection(string forestselectiontool)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestSelectionTool_clearSelection'" + string.Format("\"{0}\" ", forestselectiontool));
             StringBuilder sbforestselectiontool = new StringBuilder(forestselectiontool, 1024);
 
             SafeNativeMethods.mwle_fnForestSelectionTool_clearSelection(sbforestselectiontool);
@@ -10447,6 +11915,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestSelectionTool_copySelection(string forestselectiontool)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestSelectionTool_copySelection'" + string.Format("\"{0}\" ", forestselectiontool));
             StringBuilder sbforestselectiontool = new StringBuilder(forestselectiontool, 1024);
 
             SafeNativeMethods.mwle_fnForestSelectionTool_copySelection(sbforestselectiontool);
@@ -10458,6 +11928,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestSelectionTool_cutSelection(string forestselectiontool)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestSelectionTool_cutSelection'" + string.Format("\"{0}\" ", forestselectiontool));
             StringBuilder sbforestselectiontool = new StringBuilder(forestselectiontool, 1024);
 
             SafeNativeMethods.mwle_fnForestSelectionTool_cutSelection(sbforestselectiontool);
@@ -10469,6 +11941,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestSelectionTool_deleteSelection(string forestselectiontool)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestSelectionTool_deleteSelection'" + string.Format("\"{0}\" ", forestselectiontool));
             StringBuilder sbforestselectiontool = new StringBuilder(forestselectiontool, 1024);
 
             SafeNativeMethods.mwle_fnForestSelectionTool_deleteSelection(sbforestselectiontool);
@@ -10480,6 +11954,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnForestSelectionTool_getSelectionCount(string forestselectiontool)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestSelectionTool_getSelectionCount'" + string.Format("\"{0}\" ", forestselectiontool));
             StringBuilder sbforestselectiontool = new StringBuilder(forestselectiontool, 1024);
 
             return SafeNativeMethods.mwle_fnForestSelectionTool_getSelectionCount(sbforestselectiontool);
@@ -10491,6 +11967,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestSelectionTool_pasteSelection(string forestselectiontool)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestSelectionTool_pasteSelection'" + string.Format("\"{0}\" ", forestselectiontool));
             StringBuilder sbforestselectiontool = new StringBuilder(forestselectiontool, 1024);
 
             SafeNativeMethods.mwle_fnForestSelectionTool_pasteSelection(sbforestselectiontool);
@@ -10510,6 +11988,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnForestWindEmitter_attachToObject(string forestwindemitter, uint objectID)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnForestWindEmitter_attachToObject'" + string.Format("\"{0}\" \"{1}\" ", forestwindemitter, objectID));
             StringBuilder sbforestwindemitter = new StringBuilder(forestwindemitter, 1024);
 
             SafeNativeMethods.mwle_fnForestWindEmitter_attachToObject(sbforestwindemitter, objectID);
@@ -10527,6 +12007,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameBase_applyImpulse(string gamebase, string pos, string vel)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameBase_applyImpulse'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", gamebase, pos, vel));
             StringBuilder sbgamebase = new StringBuilder(gamebase, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
             StringBuilder sbvel = new StringBuilder(vel, 1024);
@@ -10546,6 +12028,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameBase_applyRadialImpulse(string gamebase, string origin, float radius, float magnitude)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameBase_applyRadialImpulse'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", gamebase, origin, radius, magnitude));
             StringBuilder sbgamebase = new StringBuilder(gamebase, 1024);
             StringBuilder sborigin = new StringBuilder(origin, 1024);
 
@@ -10560,6 +12044,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGameBase_getDataBlock(string gamebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameBase_getDataBlock'" + string.Format("\"{0}\" ", gamebase));
             StringBuilder sbgamebase = new StringBuilder(gamebase, 1024);
 
             return SafeNativeMethods.mwle_fnGameBase_getDataBlock(sbgamebase);
@@ -10574,6 +12060,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameBase_setDataBlock(string gamebase, string data)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameBase_setDataBlock'" + string.Format("\"{0}\" \"{1}\" ", gamebase, data));
             StringBuilder sbgamebase = new StringBuilder(gamebase, 1024);
             StringBuilder sbdata = new StringBuilder(data, 1024);
 
@@ -10614,6 +12102,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_activateGhosting(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_activateGhosting'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_activateGhosting(sbgameconnection);
@@ -10627,6 +12117,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_chaseCam(string gameconnection, int size)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_chaseCam'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, size));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_chaseCam(sbgameconnection, size) >= 1;
@@ -10640,6 +12132,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_clearCameraObject(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_clearCameraObject'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_clearCameraObject(sbgameconnection);
@@ -10669,6 +12163,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_delete(string gameconnection, string reason)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_delete'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, reason));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sbreason = new StringBuilder(reason, 4096);
 
@@ -10683,6 +12179,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGameConnection_getCameraObject(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_getCameraObject'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
@@ -10696,6 +12194,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGameConnection_getControlCameraDefaultFov(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_getControlCameraDefaultFov'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_getControlCameraDefaultFov(sbgameconnection);
@@ -10707,6 +12207,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGameConnection_getControlCameraFov(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_getControlCameraFov'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_getControlCameraFov(sbgameconnection);
@@ -10722,6 +12224,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGameConnection_getControlObject(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_getControlObject'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
@@ -10736,6 +12240,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGameConnection_getDamageFlash(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_getDamageFlash'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_getDamageFlash(sbgameconnection);
@@ -10748,6 +12254,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGameConnection_getWhiteOut(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_getWhiteOut'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_getWhiteOut(sbgameconnection);
@@ -10760,6 +12268,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_isAIControlled(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_isAIControlled'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_isAIControlled(sbgameconnection) >= 1;
@@ -10773,6 +12283,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_isControlObjectRotDampedCamera(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_isControlObjectRotDampedCamera'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_isControlObjectRotDampedCamera(sbgameconnection) >= 1;
@@ -10786,6 +12298,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_isDemoPlaying(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_isDemoPlaying'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_isDemoPlaying(sbgameconnection) >= 1;
@@ -10799,6 +12313,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_isDemoRecording(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_isDemoRecording'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_isDemoRecording(sbgameconnection) >= 1;
@@ -10813,6 +12329,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_isFirstPerson(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_isFirstPerson'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             return SafeNativeMethods.mwle_fnGameConnection_isFirstPerson(sbgameconnection) >= 1;
@@ -10825,6 +12343,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_listClassIDs(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_listClassIDs'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_listClassIDs(sbgameconnection);
@@ -10848,6 +12368,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_play2D(string gameconnection, string profile)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_play2D'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, profile));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sbprofile = new StringBuilder(profile, 1024);
 
@@ -10873,6 +12395,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_play3D(string gameconnection, string profile, string location)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_play3D'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", gameconnection, profile, location));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sbprofile = new StringBuilder(profile, 1024);
             StringBuilder sblocation = new StringBuilder(location, 1024);
@@ -10897,6 +12421,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_playDemo(string gameconnection, string demoFileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_playDemo'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, demoFileName));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sbdemoFileName = new StringBuilder(demoFileName, 4096);
 
@@ -10928,6 +12454,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_resetGhosting(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_resetGhosting'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_resetGhosting(sbgameconnection);
@@ -10942,6 +12470,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_setBlackOut(string gameconnection, bool doFade, int timeMS)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_setBlackOut'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", gameconnection, doFade, timeMS));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_setBlackOut(sbgameconnection, doFade, timeMS);
@@ -10956,6 +12486,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_setCameraObject(string gameconnection, string camera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_setCameraObject'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, camera));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sbcamera = new StringBuilder(camera, 1024);
 
@@ -10974,6 +12506,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_setConnectArgs(string gameconnection, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_setConnectArgs'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" ", gameconnection, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -11004,6 +12538,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_setControlCameraFov(string gameconnection, float newFOV)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_setControlCameraFov'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, newFOV));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_setControlCameraFov(sbgameconnection, newFOV);
@@ -11019,6 +12555,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGameConnection_setControlObject(string gameconnection, string ctrlObj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_setControlObject'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, ctrlObj));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sbctrlObj = new StringBuilder(ctrlObj, 1024);
 
@@ -11033,6 +12571,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_setFirstPerson(string gameconnection, bool firstPerson)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_setFirstPerson'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, firstPerson));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_setFirstPerson(sbgameconnection, firstPerson);
@@ -11052,6 +12592,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_setJoinPassword(string gameconnection, string password)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_setJoinPassword'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, password));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sbpassword = new StringBuilder(password, 4096);
 
@@ -11091,6 +12633,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_setMissionCRC(string gameconnection, int CRC)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_setMissionCRC'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, CRC));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_setMissionCRC(sbgameconnection, CRC);
@@ -11112,6 +12656,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_startRecording(string gameconnection, string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_startRecording'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, fileName));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -11126,6 +12672,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_stopRecording(string gameconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_stopRecording'" + string.Format("\"{0}\" ", gameconnection));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_stopRecording(sbgameconnection);
@@ -11173,6 +12721,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGameConnection_transmitDataBlocks(string gameconnection, int sequence)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGameConnection_transmitDataBlocks'" + string.Format("\"{0}\" \"{1}\" ", gameconnection, sequence));
             StringBuilder sbgameconnection = new StringBuilder(gameconnection, 1024);
 
             SafeNativeMethods.mwle_fnGameConnection_transmitDataBlocks(sbgameconnection, sequence);
@@ -11187,6 +12737,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGroundPlane_postApply(string groundplane)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGroundPlane_postApply'" + string.Format("\"{0}\" ", groundplane));
             StringBuilder sbgroundplane = new StringBuilder(groundplane, 1024);
 
             SafeNativeMethods.mwle_fnGroundPlane_postApply(sbgroundplane);
@@ -11198,6 +12750,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiAutoScrollCtrl_reset(string guiautoscrollctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiAutoScrollCtrl_reset'" + string.Format("\"{0}\" ", guiautoscrollctrl));
             StringBuilder sbguiautoscrollctrl = new StringBuilder(guiautoscrollctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiAutoScrollCtrl_reset(sbguiautoscrollctrl);
@@ -11210,6 +12764,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiBitmapButtonCtrl_setBitmap(string guibitmapbuttonctrl, string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiBitmapButtonCtrl_setBitmap'" + string.Format("\"{0}\" \"{1}\" ", guibitmapbuttonctrl, path));
             StringBuilder sbguibitmapbuttonctrl = new StringBuilder(guibitmapbuttonctrl, 1024);
             StringBuilder sbpath = new StringBuilder(path, 4096);
 
@@ -11224,6 +12780,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiBitmapCtrl_setBitmap(string guibitmapctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiBitmapCtrl_setBitmap'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guibitmapctrl, a2, a3));
             StringBuilder sbguibitmapctrl = new StringBuilder(guibitmapctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -11239,6 +12797,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiBitmapCtrl_setValue(string guibitmapctrl, int x, int y)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiBitmapCtrl_setValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guibitmapctrl, x, y));
             StringBuilder sbguibitmapctrl = new StringBuilder(guibitmapctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiBitmapCtrl_setValue(sbguibitmapctrl, x, y);
@@ -11251,6 +12811,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiButtonBaseCtrl_getText(string guibuttonbasectrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiButtonBaseCtrl_getText'" + string.Format("\"{0}\" ", guibuttonbasectrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguibuttonbasectrl = new StringBuilder(guibuttonbasectrl, 1024);
 
@@ -11266,6 +12828,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiButtonBaseCtrl_performClick(string guibuttonbasectrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiButtonBaseCtrl_performClick'" + string.Format("\"{0}\" ", guibuttonbasectrl));
             StringBuilder sbguibuttonbasectrl = new StringBuilder(guibuttonbasectrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiButtonBaseCtrl_performClick(sbguibuttonbasectrl);
@@ -11278,6 +12842,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiButtonBaseCtrl_resetState(string guibuttonbasectrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiButtonBaseCtrl_resetState'" + string.Format("\"{0}\" ", guibuttonbasectrl));
             StringBuilder sbguibuttonbasectrl = new StringBuilder(guibuttonbasectrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiButtonBaseCtrl_resetState(sbguibuttonbasectrl);
@@ -11293,6 +12859,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiButtonBaseCtrl_setStateOn(string guibuttonbasectrl, bool isOn)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiButtonBaseCtrl_setStateOn'" + string.Format("\"{0}\" \"{1}\" ", guibuttonbasectrl, isOn));
             StringBuilder sbguibuttonbasectrl = new StringBuilder(guibuttonbasectrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiButtonBaseCtrl_setStateOn(sbguibuttonbasectrl, isOn);
@@ -11308,6 +12876,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiButtonBaseCtrl_setText(string guibuttonbasectrl, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiButtonBaseCtrl_setText'" + string.Format("\"{0}\" \"{1}\" ", guibuttonbasectrl, text));
             StringBuilder sbguibuttonbasectrl = new StringBuilder(guibuttonbasectrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -11329,6 +12899,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiButtonBaseCtrl_setTextID(string guibuttonbasectrl, string id)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiButtonBaseCtrl_setTextID'" + string.Format("\"{0}\" \"{1}\" ", guibuttonbasectrl, id));
             StringBuilder sbguibuttonbasectrl = new StringBuilder(guibuttonbasectrl, 1024);
             StringBuilder sbid = new StringBuilder(id, 4096);
 
@@ -11343,6 +12915,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiCanvas_clientToScreen(string guicanvas, string coordinate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_clientToScreen'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, coordinate));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sbcoordinate = new StringBuilder(coordinate, 1024);
@@ -11360,6 +12934,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_cursorOff(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_cursorOff'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_cursorOff(sbguicanvas);
@@ -11374,6 +12950,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_cursorOn(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_cursorOn'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_cursorOn(sbguicanvas);
@@ -11391,6 +12969,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiCanvas_getContent(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_getContent'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCanvas_getContent(sbguicanvas);
@@ -11407,6 +12987,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiCanvas_getCursorPos(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_getCursorPos'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
@@ -11426,6 +13008,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiCanvas_getExtent(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_getExtent'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
@@ -11442,6 +13026,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiCanvas_getMode(string guicanvas, int modeId)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_getMode'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, modeId));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
@@ -11463,6 +13049,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiCanvas_getModeCount(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_getModeCount'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCanvas_getModeCount(sbguicanvas);
@@ -11479,6 +13067,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiCanvas_getMouseControl(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_getMouseControl'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCanvas_getMouseControl(sbguicanvas);
@@ -11503,6 +13093,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiCanvas_getVideoMode(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_getVideoMode'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
@@ -11517,6 +13109,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiCanvas_getWindowPosition(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_getWindowPosition'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
@@ -11534,6 +13128,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_hideCursor(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_hideCursor'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_hideCursor(sbguicanvas);
@@ -11552,6 +13148,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiCanvas_isCursorOn(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_isCursorOn'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCanvas_isCursorOn(sbguicanvas) >= 1;
@@ -11570,6 +13168,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiCanvas_isCursorShown(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_isCursorShown'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCanvas_isCursorShown(sbguicanvas) >= 1;
@@ -11581,6 +13181,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiCanvas_isFullscreen(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_isFullscreen'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCanvas_isFullscreen(sbguicanvas) >= 1;
@@ -11592,6 +13194,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiCanvas_isMaximized(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_isMaximized'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCanvas_isMaximized(sbguicanvas) >= 1;
@@ -11603,6 +13207,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiCanvas_isMinimized(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_isMinimized'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCanvas_isMinimized(sbguicanvas) >= 1;
@@ -11614,6 +13220,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_maximizeWindow(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_maximizeWindow'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_maximizeWindow(sbguicanvas);
@@ -11625,6 +13233,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_minimizeWindow(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_minimizeWindow'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_minimizeWindow(sbguicanvas);
@@ -11637,6 +13247,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_popDialog(string guicanvas, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_popDialog'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, a2));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -11650,6 +13262,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_popLayer(string guicanvas, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_popLayer'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, a2));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -11663,6 +13277,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_pushDialog(string guicanvas, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_pushDialog'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guicanvas, a2, a3, a4));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -11683,6 +13299,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_renderFront(string guicanvas, bool enable)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_renderFront'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, enable));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_renderFront(sbguicanvas, enable);
@@ -11701,6 +13319,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_repaint(string guicanvas, int elapsedMS)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_repaint'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, elapsedMS));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_repaint(sbguicanvas, elapsedMS);
@@ -11716,6 +13336,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_reset(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_reset'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_reset(sbguicanvas);
@@ -11727,6 +13349,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_restoreWindow(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_restoreWindow'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_restoreWindow(sbguicanvas);
@@ -11740,6 +13364,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiCanvas_screenToClient(string guicanvas, string coordinate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_screenToClient'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, coordinate));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sbcoordinate = new StringBuilder(coordinate, 1024);
@@ -11760,6 +13386,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_setContent(string guicanvas, string ctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_setContent'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, ctrl));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sbctrl = new StringBuilder(ctrl, 1024);
 
@@ -11778,6 +13406,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_setCursor(string guicanvas, string cursor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_setCursor'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, cursor));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sbcursor = new StringBuilder(cursor, 1024);
 
@@ -11791,6 +13421,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_setCursorPos(string guicanvas, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_setCursorPos'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guicanvas, a2, a3));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -11804,6 +13436,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_setFocus(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_setFocus'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_setFocus(sbguicanvas);
@@ -11823,6 +13457,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_setVideoMode(string guicanvas, string a2, string a3, string a4, string a5, string a6, string a7)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_setVideoMode'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" ", guicanvas, a2, a3, a4, a5, a6, a7));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -11841,6 +13477,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_setWindowPosition(string guicanvas, string position)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_setWindowPosition'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, position));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sbposition = new StringBuilder(position, 1024);
 
@@ -11859,6 +13497,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_setWindowTitle(string guicanvas, string newTitle)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_setWindowTitle'" + string.Format("\"{0}\" \"{1}\" ", guicanvas, newTitle));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
             StringBuilder sbnewTitle = new StringBuilder(newTitle, 4096);
 
@@ -11875,6 +13515,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_showCursor(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_showCursor'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_showCursor(sbguicanvas);
@@ -11891,6 +13533,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCanvas_toggleFullscreen(string guicanvas)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCanvas_toggleFullscreen'" + string.Format("\"{0}\" ", guicanvas));
             StringBuilder sbguicanvas = new StringBuilder(guicanvas, 1024);
 
             SafeNativeMethods.mwle_fnGuiCanvas_toggleFullscreen(sbguicanvas);
@@ -11903,6 +13547,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiCheckBoxCtrl_isStateOn(string guicheckboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCheckBoxCtrl_isStateOn'" + string.Format("\"{0}\" ", guicheckboxctrl));
             StringBuilder sbguicheckboxctrl = new StringBuilder(guicheckboxctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiCheckBoxCtrl_isStateOn(sbguicheckboxctrl) >= 1;
@@ -11917,6 +13563,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiCheckBoxCtrl_setStateOn(string guicheckboxctrl, bool newState)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiCheckBoxCtrl_setStateOn'" + string.Format("\"{0}\" \"{1}\" ", guicheckboxctrl, newState));
             StringBuilder sbguicheckboxctrl = new StringBuilder(guicheckboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiCheckBoxCtrl_setStateOn(sbguicheckboxctrl, newState);
@@ -11928,6 +13576,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiColorPickerCtrl_getSelectorPos(string guicolorpickerctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiColorPickerCtrl_getSelectorPos'" + string.Format("\"{0}\" ", guicolorpickerctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguicolorpickerctrl = new StringBuilder(guicolorpickerctrl, 1024);
 
@@ -11941,6 +13591,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiColorPickerCtrl_setSelectorPos(string guicolorpickerctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiColorPickerCtrl_setSelectorPos'" + string.Format("\"{0}\" \"{1}\" ", guicolorpickerctrl, a2));
             StringBuilder sbguicolorpickerctrl = new StringBuilder(guicolorpickerctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -11953,6 +13605,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiColorPickerCtrl_updateColor(string guicolorpickerctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiColorPickerCtrl_updateColor'" + string.Format("\"{0}\" ", guicolorpickerctrl));
             StringBuilder sbguicolorpickerctrl = new StringBuilder(guicolorpickerctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiColorPickerCtrl_updateColor(sbguicolorpickerctrl);
@@ -11969,6 +13623,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_addGuiControl(string guicontrol, string control)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_addGuiControl'" + string.Format("\"{0}\" \"{1}\" ", guicontrol, control));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
             StringBuilder sbcontrol = new StringBuilder(control, 1024);
 
@@ -11982,6 +13638,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_clearFirstResponder(string guicontrol, bool ignored)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_clearFirstResponder'" + string.Format("\"{0}\" \"{1}\" ", guicontrol, ignored));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiControl_clearFirstResponder(sbguicontrol, ignored);
@@ -11995,6 +13653,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiControl_controlIsChild(string guicontrol, string control)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_controlIsChild'" + string.Format("\"{0}\" \"{1}\" ", guicontrol, control));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
             StringBuilder sbcontrol = new StringBuilder(control, 1024);
 
@@ -12013,6 +13673,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_findHitControl(string guicontrol, int x, int y)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_findHitControl'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guicontrol, x, y));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12038,6 +13700,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_findHitControls(string guicontrol, int x, int y, int width, int height)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_findHitControls'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guicontrol, x, y, width, height));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12053,6 +13717,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiControl_getAspect(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getAspect'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             return SafeNativeMethods.mwle_fnGuiControl_getAspect(sbguicontrol);
@@ -12065,6 +13731,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getCenter(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getCenter'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12079,6 +13747,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getExtent(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getExtent'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12097,6 +13767,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getFirstResponder(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getFirstResponder'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12111,6 +13783,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getGlobalCenter(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getGlobalCenter'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12125,6 +13799,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getGlobalPosition(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getGlobalPosition'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12140,6 +13816,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getMinExtent(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getMinExtent'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12154,6 +13832,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getParent(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getParent'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12168,6 +13848,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getPosition(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getPosition'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12183,6 +13865,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getRoot(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getRoot'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12196,6 +13880,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiControl_getValue(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_getValue'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
@@ -12209,6 +13895,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiControl_isActive(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_isActive'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             return SafeNativeMethods.mwle_fnGuiControl_isActive(sbguicontrol) >= 1;
@@ -12223,6 +13911,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiControl_isAwake(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_isAwake'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             return SafeNativeMethods.mwle_fnGuiControl_isAwake(sbguicontrol) >= 1;
@@ -12238,6 +13928,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiControl_isFirstResponder(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_isFirstResponder'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             return SafeNativeMethods.mwle_fnGuiControl_isFirstResponder(sbguicontrol) >= 1;
@@ -12250,6 +13942,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiControl_isMouseLocked(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_isMouseLocked'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             return SafeNativeMethods.mwle_fnGuiControl_isMouseLocked(sbguicontrol) >= 1;
@@ -12265,6 +13959,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiControl_isVisible(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_isVisible'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             return SafeNativeMethods.mwle_fnGuiControl_isVisible(sbguicontrol) >= 1;
@@ -12276,6 +13972,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_makeFirstResponder(string guicontrol, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_makeFirstResponder'" + string.Format("\"{0}\" \"{1}\" ", guicontrol, a2));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12293,6 +13991,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiControl_pointInControl(string guicontrol, int x, int y)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_pointInControl'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guicontrol, x, y));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             return SafeNativeMethods.mwle_fnGuiControl_pointInControl(sbguicontrol, x, y) >= 1;
@@ -12309,6 +14009,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_resize(string guicontrol, int x, int y, int width, int height)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_resize'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guicontrol, x, y, width, height));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiControl_resize(sbguicontrol, x, y, width, height);
@@ -12320,6 +14022,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setActive(string guicontrol, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setActive'" + string.Format("\"{0}\" \"{1}\" ", guicontrol, state));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiControl_setActive(sbguicontrol, state);
@@ -12333,6 +14037,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setCenter(string guicontrol, int x, int y)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setCenter'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guicontrol, x, y));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiControl_setCenter(sbguicontrol, x, y);
@@ -12346,6 +14052,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setExtent(string guicontrol, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setExtent'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guicontrol, a2, a3));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -12363,6 +14071,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setFirstResponder(string guicontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setFirstResponder'" + string.Format("\"{0}\" ", guicontrol));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiControl_setFirstResponder(sbguicontrol);
@@ -12376,6 +14086,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setPosition(string guicontrol, int x, int y)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setPosition'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guicontrol, x, y));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiControl_setPosition(sbguicontrol, x, y);
@@ -12389,6 +14101,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setPositionGlobal(string guicontrol, int x, int y)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setPositionGlobal'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guicontrol, x, y));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiControl_setPositionGlobal(sbguicontrol, x, y);
@@ -12403,6 +14117,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setProfile(string guicontrol, string profile)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setProfile'" + string.Format("\"{0}\" \"{1}\" ", guicontrol, profile));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
             StringBuilder sbprofile = new StringBuilder(profile, 1024);
 
@@ -12416,6 +14132,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setValue(string guicontrol, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setValue'" + string.Format("\"{0}\" \"{1}\" ", guicontrol, value));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
 
@@ -12430,6 +14148,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiControl_setVisible(string guicontrol, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControl_setVisible'" + string.Format("\"{0}\" \"{1}\" ", guicontrol, state));
             StringBuilder sbguicontrol = new StringBuilder(guicontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiControl_setVisible(sbguicontrol, state);
@@ -12441,6 +14161,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiControlProfile_getStringWidth(string guicontrolprofile, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiControlProfile_getStringWidth'" + string.Format("\"{0}\" \"{1}\" ", guicontrolprofile, a2));
             StringBuilder sbguicontrolprofile = new StringBuilder(guicontrolprofile, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12454,6 +14176,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiDirectoryFileListCtrl_getSelectedFile(string guidirectoryfilelistctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiDirectoryFileListCtrl_getSelectedFile'" + string.Format("\"{0}\" ", guidirectoryfilelistctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguidirectoryfilelistctrl = new StringBuilder(guidirectoryfilelistctrl, 1024);
 
@@ -12468,6 +14192,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiDirectoryFileListCtrl_getSelectedFiles(string guidirectoryfilelistctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiDirectoryFileListCtrl_getSelectedFiles'" + string.Format("\"{0}\" ", guidirectoryfilelistctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguidirectoryfilelistctrl = new StringBuilder(guidirectoryfilelistctrl, 1024);
 
@@ -12481,6 +14207,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiDirectoryFileListCtrl_reload(string guidirectoryfilelistctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiDirectoryFileListCtrl_reload'" + string.Format("\"{0}\" ", guidirectoryfilelistctrl));
             StringBuilder sbguidirectoryfilelistctrl = new StringBuilder(guidirectoryfilelistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiDirectoryFileListCtrl_reload(sbguidirectoryfilelistctrl);
@@ -12493,6 +14221,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiDirectoryFileListCtrl_setFilter(string guidirectoryfilelistctrl, string filter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiDirectoryFileListCtrl_setFilter'" + string.Format("\"{0}\" \"{1}\" ", guidirectoryfilelistctrl, filter));
             StringBuilder sbguidirectoryfilelistctrl = new StringBuilder(guidirectoryfilelistctrl, 1024);
             StringBuilder sbfilter = new StringBuilder(filter, 4096);
 
@@ -12507,6 +14237,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiDirectoryFileListCtrl_setPath(string guidirectoryfilelistctrl, string path, string filter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiDirectoryFileListCtrl_setPath'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guidirectoryfilelistctrl, path, filter));
             StringBuilder sbguidirectoryfilelistctrl = new StringBuilder(guidirectoryfilelistctrl, 1024);
             StringBuilder sbpath = new StringBuilder(path, 4096);
             StringBuilder sbfilter = new StringBuilder(filter, 4096);
@@ -12522,6 +14254,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiDragAndDropControl_startDragging(string guidraganddropcontrol, int x, int y)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiDragAndDropControl_startDragging'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guidraganddropcontrol, x, y));
             StringBuilder sbguidraganddropcontrol = new StringBuilder(guidraganddropcontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiDragAndDropControl_startDragging(sbguidraganddropcontrol, x, y);
@@ -12533,6 +14267,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiDynamicCtrlArrayControl_refresh(string guidynamicctrlarraycontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiDynamicCtrlArrayControl_refresh'" + string.Format("\"{0}\" ", guidynamicctrlarraycontrol));
             StringBuilder sbguidynamicctrlarraycontrol = new StringBuilder(guidynamicctrlarraycontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiDynamicCtrlArrayControl_refresh(sbguidynamicctrlarraycontrol);
@@ -12544,6 +14280,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_addNewCtrl(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_addNewCtrl'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12556,6 +14294,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_addSelection(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_addSelection'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12568,6 +14308,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_bringToFront(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_bringToFront'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiEditCtrl_bringToFront(sbguieditctrl);
@@ -12579,6 +14321,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_clearGuides(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_clearGuides'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12591,6 +14335,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_clearSelection(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_clearSelection'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiEditCtrl_clearSelection(sbguieditctrl);
@@ -12602,6 +14348,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_deleteSelection(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_deleteSelection'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiEditCtrl_deleteSelection(sbguieditctrl);
@@ -12613,6 +14361,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_fitIntoParents(string guieditctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_fitIntoParents'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guieditctrl, a2, a3));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -12626,6 +14376,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiEditCtrl_getContentControl(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_getContentControl'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiEditCtrl_getContentControl(sbguieditctrl);
@@ -12637,6 +14389,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiEditCtrl_getCurrentAddSet(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_getCurrentAddSet'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiEditCtrl_getCurrentAddSet(sbguieditctrl);
@@ -12648,6 +14402,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiEditCtrl_getMouseMode(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_getMouseMode'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
@@ -12661,6 +14417,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiEditCtrl_getNumSelected(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_getNumSelected'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiEditCtrl_getNumSelected(sbguieditctrl);
@@ -12672,6 +14430,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiEditCtrl_getSelection(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_getSelection'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
@@ -12685,6 +14445,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiEditCtrl_getSelectionGlobalBounds(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_getSelectionGlobalBounds'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
@@ -12698,6 +14460,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiEditCtrl_getTrash(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_getTrash'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
@@ -12711,6 +14475,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_justify(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_justify'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12723,6 +14489,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_loadSelection(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_loadSelection'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12735,6 +14503,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_moveSelection(string guieditctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_moveSelection'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guieditctrl, a2, a3));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -12748,6 +14518,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_pushToBack(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_pushToBack'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiEditCtrl_pushToBack(sbguieditctrl);
@@ -12759,6 +14531,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_readGuides(string guieditctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_readGuides'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guieditctrl, a2, a3));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -12772,6 +14546,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_removeSelection(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_removeSelection'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12784,6 +14560,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_saveSelection(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_saveSelection'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12796,6 +14574,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_select(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_select'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12808,6 +14588,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_selectAll(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_selectAll'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiEditCtrl_selectAll(sbguieditctrl);
@@ -12819,6 +14601,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_selectChildren(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_selectChildren'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12831,6 +14615,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_selectParents(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_selectParents'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12843,6 +14629,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_setContentControl(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_setContentControl'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12855,6 +14643,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_setCurrentAddSet(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_setCurrentAddSet'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12867,6 +14657,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_setSnapToGrid(string guieditctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_setSnapToGrid'" + string.Format("\"{0}\" \"{1}\" ", guieditctrl, a2));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12879,6 +14671,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_toggle(string guieditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_toggle'" + string.Format("\"{0}\" ", guieditctrl));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiEditCtrl_toggle(sbguieditctrl);
@@ -12890,6 +14684,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiEditCtrl_writeGuides(string guieditctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiEditCtrl_writeGuides'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guieditctrl, a2, a3));
             StringBuilder sbguieditctrl = new StringBuilder(guieditctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -12903,6 +14699,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiFileTreeCtrl_getSelectedPath(string guifiletreectrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFileTreeCtrl_getSelectedPath'" + string.Format("\"{0}\" ", guifiletreectrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguifiletreectrl = new StringBuilder(guifiletreectrl, 1024);
 
@@ -12916,6 +14714,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFileTreeCtrl_reload(string guifiletreectrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFileTreeCtrl_reload'" + string.Format("\"{0}\" ", guifiletreectrl));
             StringBuilder sbguifiletreectrl = new StringBuilder(guifiletreectrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFileTreeCtrl_reload(sbguifiletreectrl);
@@ -12927,6 +14727,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiFileTreeCtrl_setSelectedPath(string guifiletreectrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFileTreeCtrl_setSelectedPath'" + string.Format("\"{0}\" \"{1}\" ", guifiletreectrl, a2));
             StringBuilder sbguifiletreectrl = new StringBuilder(guifiletreectrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -12940,6 +14742,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiFilterCtrl_getValue(string guifilterctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFilterCtrl_getValue'" + string.Format("\"{0}\" ", guifilterctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguifilterctrl = new StringBuilder(guifilterctrl, 1024);
 
@@ -12954,6 +14758,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFilterCtrl_identity(string guifilterctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFilterCtrl_identity'" + string.Format("\"{0}\" ", guifilterctrl));
             StringBuilder sbguifilterctrl = new StringBuilder(guifilterctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFilterCtrl_identity(sbguifilterctrl);
@@ -12967,6 +14773,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFilterCtrl_setValue(string guifilterctrl, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFilterCtrl_setValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", guifilterctrl, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sbguifilterctrl = new StringBuilder(guifilterctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -12997,6 +14805,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFormCtrl_setCaption(string guiformctrl, string caption)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFormCtrl_setCaption'" + string.Format("\"{0}\" \"{1}\" ", guiformctrl, caption));
             StringBuilder sbguiformctrl = new StringBuilder(guiformctrl, 1024);
             StringBuilder sbcaption = new StringBuilder(caption, 4096);
 
@@ -13009,6 +14819,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_addColumn(string guiframesetctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_addColumn'" + string.Format("\"{0}\" ", guiframesetctrl));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFrameSetCtrl_addColumn(sbguiframesetctrl);
@@ -13020,6 +14832,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_addRow(string guiframesetctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_addRow'" + string.Format("\"{0}\" ", guiframesetctrl));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFrameSetCtrl_addRow(sbguiframesetctrl);
@@ -13034,6 +14848,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_frameBorder(string guiframesetctrl, int index, string state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_frameBorder'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiframesetctrl, index, state));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
             StringBuilder sbstate = new StringBuilder(state, 4096);
 
@@ -13050,6 +14866,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_frameMinExtent(string guiframesetctrl, int index, int width, int height)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_frameMinExtent'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guiframesetctrl, index, width, height));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFrameSetCtrl_frameMinExtent(sbguiframesetctrl, index, width, height);
@@ -13064,6 +14882,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_frameMovable(string guiframesetctrl, int index, string state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_frameMovable'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiframesetctrl, index, state));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
             StringBuilder sbstate = new StringBuilder(state, 4096);
 
@@ -13079,6 +14899,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_framePadding(string guiframesetctrl, int index, string padding)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_framePadding'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiframesetctrl, index, padding));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
             StringBuilder sbpadding = new StringBuilder(padding, 1024);
 
@@ -13092,6 +14914,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiFrameSetCtrl_getColumnCount(string guiframesetctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_getColumnCount'" + string.Format("\"{0}\" ", guiframesetctrl));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiFrameSetCtrl_getColumnCount(sbguiframesetctrl);
@@ -13105,6 +14929,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiFrameSetCtrl_getColumnOffset(string guiframesetctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_getColumnOffset'" + string.Format("\"{0}\" \"{1}\" ", guiframesetctrl, index));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiFrameSetCtrl_getColumnOffset(sbguiframesetctrl, index);
@@ -13117,6 +14943,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiFrameSetCtrl_getFramePadding(string guiframesetctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_getFramePadding'" + string.Format("\"{0}\" \"{1}\" ", guiframesetctrl, index));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
@@ -13131,6 +14959,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiFrameSetCtrl_getRowCount(string guiframesetctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_getRowCount'" + string.Format("\"{0}\" ", guiframesetctrl));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiFrameSetCtrl_getRowCount(sbguiframesetctrl);
@@ -13144,6 +14974,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiFrameSetCtrl_getRowOffset(string guiframesetctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_getRowOffset'" + string.Format("\"{0}\" \"{1}\" ", guiframesetctrl, index));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiFrameSetCtrl_getRowOffset(sbguiframesetctrl, index);
@@ -13155,6 +14987,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_removeColumn(string guiframesetctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_removeColumn'" + string.Format("\"{0}\" ", guiframesetctrl));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFrameSetCtrl_removeColumn(sbguiframesetctrl);
@@ -13166,6 +15000,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_removeRow(string guiframesetctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_removeRow'" + string.Format("\"{0}\" ", guiframesetctrl));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFrameSetCtrl_removeRow(sbguiframesetctrl);
@@ -13181,6 +15017,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_setColumnOffset(string guiframesetctrl, int index, int offset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_setColumnOffset'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiframesetctrl, index, offset));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFrameSetCtrl_setColumnOffset(sbguiframesetctrl, index, offset);
@@ -13196,6 +15034,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_setRowOffset(string guiframesetctrl, int index, int offset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_setRowOffset'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiframesetctrl, index, offset));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFrameSetCtrl_setRowOffset(sbguiframesetctrl, index, offset);
@@ -13207,6 +15047,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiFrameSetCtrl_updateSizes(string guiframesetctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiFrameSetCtrl_updateSizes'" + string.Format("\"{0}\" ", guiframesetctrl));
             StringBuilder sbguiframesetctrl = new StringBuilder(guiframesetctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiFrameSetCtrl_updateSizes(sbguiframesetctrl);
@@ -13218,6 +15060,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGameListMenuCtrl_activateRow(string guigamelistmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_activateRow'" + string.Format("\"{0}\" ", guigamelistmenuctrl));
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiGameListMenuCtrl_activateRow(sbguigamelistmenuctrl);
@@ -13235,6 +15079,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGameListMenuCtrl_addRow(string guigamelistmenuctrl, string label, string callback, int icon, int yPad, bool useHighlightIcon, bool enabled)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_addRow'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" ", guigamelistmenuctrl, label, callback, icon, yPad, useHighlightIcon, enabled));
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
             StringBuilder sblabel = new StringBuilder(label, 4096);
             StringBuilder sbcallback = new StringBuilder(callback, 4096);
@@ -13249,6 +15095,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiGameListMenuCtrl_getRowCount(string guigamelistmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_getRowCount'" + string.Format("\"{0}\" ", guigamelistmenuctrl));
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiGameListMenuCtrl_getRowCount(sbguigamelistmenuctrl);
@@ -13262,6 +15110,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiGameListMenuCtrl_getRowLabel(string guigamelistmenuctrl, int row)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_getRowLabel'" + string.Format("\"{0}\" \"{1}\" ", guigamelistmenuctrl, row));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
 
@@ -13276,6 +15126,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiGameListMenuCtrl_getSelectedRow(string guigamelistmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_getSelectedRow'" + string.Format("\"{0}\" ", guigamelistmenuctrl));
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiGameListMenuCtrl_getSelectedRow(sbguigamelistmenuctrl);
@@ -13289,6 +15141,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiGameListMenuCtrl_isRowEnabled(string guigamelistmenuctrl, int row)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_isRowEnabled'" + string.Format("\"{0}\" \"{1}\" ", guigamelistmenuctrl, row));
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiGameListMenuCtrl_isRowEnabled(sbguigamelistmenuctrl, row) >= 1;
@@ -13302,6 +15156,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGameListMenuCtrl_setRowEnabled(string guigamelistmenuctrl, int row, bool enabled)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_setRowEnabled'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guigamelistmenuctrl, row, enabled));
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiGameListMenuCtrl_setRowEnabled(sbguigamelistmenuctrl, row, enabled);
@@ -13315,6 +15171,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGameListMenuCtrl_setRowLabel(string guigamelistmenuctrl, int row, string label)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_setRowLabel'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guigamelistmenuctrl, row, label));
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
             StringBuilder sblabel = new StringBuilder(label, 4096);
 
@@ -13328,6 +15186,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGameListMenuCtrl_setSelected(string guigamelistmenuctrl, int row)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListMenuCtrl_setSelected'" + string.Format("\"{0}\" \"{1}\" ", guigamelistmenuctrl, row));
             StringBuilder sbguigamelistmenuctrl = new StringBuilder(guigamelistmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiGameListMenuCtrl_setSelected(sbguigamelistmenuctrl, row);
@@ -13346,6 +15206,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGameListOptionsCtrl_addRow(string guigamelistoptionsctrl, string label, string options, bool wrapOptions, string callback, int icon, int yPad, bool enabled)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListOptionsCtrl_addRow'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" ", guigamelistoptionsctrl, label, options, wrapOptions, callback, icon, yPad, enabled));
             StringBuilder sbguigamelistoptionsctrl = new StringBuilder(guigamelistoptionsctrl, 1024);
             StringBuilder sblabel = new StringBuilder(label, 4096);
             StringBuilder sboptions = new StringBuilder(options, 4096);
@@ -13362,6 +15224,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiGameListOptionsCtrl_getCurrentOption(string guigamelistoptionsctrl, int row)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListOptionsCtrl_getCurrentOption'" + string.Format("\"{0}\" \"{1}\" ", guigamelistoptionsctrl, row));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguigamelistoptionsctrl = new StringBuilder(guigamelistoptionsctrl, 1024);
 
@@ -13378,6 +15242,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiGameListOptionsCtrl_selectOption(string guigamelistoptionsctrl, int row, string option)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListOptionsCtrl_selectOption'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guigamelistoptionsctrl, row, option));
             StringBuilder sbguigamelistoptionsctrl = new StringBuilder(guigamelistoptionsctrl, 1024);
             StringBuilder sboption = new StringBuilder(option, 4096);
 
@@ -13392,6 +15258,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGameListOptionsCtrl_setOptions(string guigamelistoptionsctrl, int row, string optionsList)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGameListOptionsCtrl_setOptions'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guigamelistoptionsctrl, row, optionsList));
             StringBuilder sbguigamelistoptionsctrl = new StringBuilder(guigamelistoptionsctrl, 1024);
             StringBuilder sboptionsList = new StringBuilder(optionsList, 4096);
 
@@ -13404,6 +15272,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiGradientCtrl_getColor(string guigradientctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGradientCtrl_getColor'" + string.Format("\"{0}\" \"{1}\" ", guigradientctrl, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguigradientctrl = new StringBuilder(guigradientctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -13418,6 +15288,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiGradientCtrl_getColorCount(string guigradientctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGradientCtrl_getColorCount'" + string.Format("\"{0}\" ", guigradientctrl));
             StringBuilder sbguigradientctrl = new StringBuilder(guigradientctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiGradientCtrl_getColorCount(sbguigradientctrl);
@@ -13437,6 +15309,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGraphCtrl_addAutoPlot(string guigraphctrl, int plotId, string variable, int updateFrequency)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGraphCtrl_addAutoPlot'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guigraphctrl, plotId, variable, updateFrequency));
             StringBuilder sbguigraphctrl = new StringBuilder(guigraphctrl, 1024);
             StringBuilder sbvariable = new StringBuilder(variable, 4096);
 
@@ -13454,6 +15328,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGraphCtrl_addDatum(string guigraphctrl, int plotId, float value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGraphCtrl_addDatum'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guigraphctrl, plotId, value));
             StringBuilder sbguigraphctrl = new StringBuilder(guigraphctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiGraphCtrl_addDatum(sbguigraphctrl, plotId, value);
@@ -13468,6 +15344,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiGraphCtrl_getDatum(string guigraphctrl, int plotId, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGraphCtrl_getDatum'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guigraphctrl, plotId, index));
             StringBuilder sbguigraphctrl = new StringBuilder(guigraphctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiGraphCtrl_getDatum(sbguigraphctrl, plotId, index);
@@ -13480,6 +15358,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGraphCtrl_removeAutoPlot(string guigraphctrl, int plotId)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGraphCtrl_removeAutoPlot'" + string.Format("\"{0}\" \"{1}\" ", guigraphctrl, plotId));
             StringBuilder sbguigraphctrl = new StringBuilder(guigraphctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiGraphCtrl_removeAutoPlot(sbguigraphctrl, plotId);
@@ -13494,6 +15374,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiGraphCtrl_setGraphType(string guigraphctrl, int plotId, int graphType)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiGraphCtrl_setGraphType'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guigraphctrl, plotId, graphType));
             StringBuilder sbguigraphctrl = new StringBuilder(guigraphctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiGraphCtrl_setGraphType(sbguigraphctrl, plotId, graphType);
@@ -13514,6 +15396,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiIconButtonCtrl_setBitmap(string guiiconbuttonctrl, string buttonFilename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiIconButtonCtrl_setBitmap'" + string.Format("\"{0}\" \"{1}\" ", guiiconbuttonctrl, buttonFilename));
             StringBuilder sbguiiconbuttonctrl = new StringBuilder(guiiconbuttonctrl, 1024);
             StringBuilder sbbuttonFilename = new StringBuilder(buttonFilename, 4096);
 
@@ -13532,6 +15416,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiImageList_clear(string guiimagelist)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiImageList_clear'" + string.Format("\"{0}\" ", guiimagelist));
             StringBuilder sbguiimagelist = new StringBuilder(guiimagelist, 1024);
 
             return SafeNativeMethods.mwle_fnGuiImageList_clear(sbguiimagelist) >= 1;
@@ -13549,6 +15435,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiImageList_count(string guiimagelist)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiImageList_count'" + string.Format("\"{0}\" ", guiimagelist));
             StringBuilder sbguiimagelist = new StringBuilder(guiimagelist, 1024);
 
             return SafeNativeMethods.mwle_fnGuiImageList_count(sbguiimagelist);
@@ -13569,6 +15457,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiImageList_getImage(string guiimagelist, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiImageList_getImage'" + string.Format("\"{0}\" \"{1}\" ", guiimagelist, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiimagelist = new StringBuilder(guiimagelist, 1024);
 
@@ -13591,6 +15481,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiImageList_getIndex(string guiimagelist, string imagePath)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiImageList_getIndex'" + string.Format("\"{0}\" \"{1}\" ", guiimagelist, imagePath));
             StringBuilder sbguiimagelist = new StringBuilder(guiimagelist, 1024);
             StringBuilder sbimagePath = new StringBuilder(imagePath, 4096);
 
@@ -13612,6 +15504,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiImageList_insert(string guiimagelist, string imagePath)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiImageList_insert'" + string.Format("\"{0}\" \"{1}\" ", guiimagelist, imagePath));
             StringBuilder sbguiimagelist = new StringBuilder(guiimagelist, 1024);
             StringBuilder sbimagePath = new StringBuilder(imagePath, 4096);
 
@@ -13633,6 +15527,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiImageList_remove(string guiimagelist, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiImageList_remove'" + string.Format("\"{0}\" \"{1}\" ", guiimagelist, index));
             StringBuilder sbguiimagelist = new StringBuilder(guiimagelist, 1024);
 
             return SafeNativeMethods.mwle_fnGuiImageList_remove(sbguiimagelist, index) >= 1;
@@ -13644,6 +15540,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspector_addInspect(string guiinspector, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_addInspect'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiinspector, a2, a3));
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -13657,6 +15555,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspector_apply(string guiinspector)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_apply'" + string.Format("\"{0}\" ", guiinspector));
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
 
             SafeNativeMethods.mwle_fnGuiInspector_apply(sbguiinspector);
@@ -13668,6 +15568,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiInspector_getInspectObject(string guiinspector, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_getInspectObject'" + string.Format("\"{0}\" \"{1}\" ", guiinspector, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -13682,6 +15584,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiInspector_getNumInspectObjects(string guiinspector)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_getNumInspectObjects'" + string.Format("\"{0}\" ", guiinspector));
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
 
             return SafeNativeMethods.mwle_fnGuiInspector_getNumInspectObjects(sbguiinspector);
@@ -13693,6 +15597,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspector_inspect(string guiinspector, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_inspect'" + string.Format("\"{0}\" \"{1}\" ", guiinspector, a2));
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -13705,6 +15611,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspector_refresh(string guiinspector)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_refresh'" + string.Format("\"{0}\" ", guiinspector));
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
 
             SafeNativeMethods.mwle_fnGuiInspector_refresh(sbguiinspector);
@@ -13716,6 +15624,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspector_removeInspect(string guiinspector, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_removeInspect'" + string.Format("\"{0}\" \"{1}\" ", guiinspector, a2));
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -13728,6 +15638,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspector_setName(string guiinspector, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_setName'" + string.Format("\"{0}\" \"{1}\" ", guiinspector, a2));
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -13741,6 +15653,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspector_setObjectField(string guiinspector, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspector_setObjectField'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiinspector, a2, a3));
             StringBuilder sbguiinspector = new StringBuilder(guiinspector, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -13754,6 +15668,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspectorDynamicField_renameField(string guiinspectordynamicfield, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorDynamicField_renameField'" + string.Format("\"{0}\" \"{1}\" ", guiinspectordynamicfield, a2));
             StringBuilder sbguiinspectordynamicfield = new StringBuilder(guiinspectordynamicfield, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -13766,6 +15682,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspectorDynamicGroup_addDynamicField(string guiinspectordynamicgroup)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorDynamicGroup_addDynamicField'" + string.Format("\"{0}\" ", guiinspectordynamicgroup));
             StringBuilder sbguiinspectordynamicgroup = new StringBuilder(guiinspectordynamicgroup, 1024);
 
             SafeNativeMethods.mwle_fnGuiInspectorDynamicGroup_addDynamicField(sbguiinspectordynamicgroup);
@@ -13777,6 +15695,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiInspectorDynamicGroup_inspectGroup(string guiinspectordynamicgroup)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorDynamicGroup_inspectGroup'" + string.Format("\"{0}\" ", guiinspectordynamicgroup));
             StringBuilder sbguiinspectordynamicgroup = new StringBuilder(guiinspectordynamicgroup, 1024);
 
             return SafeNativeMethods.mwle_fnGuiInspectorDynamicGroup_inspectGroup(sbguiinspectordynamicgroup) >= 1;
@@ -13788,6 +15708,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspectorDynamicGroup_removeDynamicField(string guiinspectordynamicgroup, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorDynamicGroup_removeDynamicField'" + string.Format("\"{0}\" \"{1}\" ", guiinspectordynamicgroup, a2));
             StringBuilder sbguiinspectordynamicgroup = new StringBuilder(guiinspectordynamicgroup, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -13800,6 +15722,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspectorField_apply(string guiinspectorfield, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorField_apply'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiinspectorfield, a2, a3));
             StringBuilder sbguiinspectorfield = new StringBuilder(guiinspectorfield, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -13813,6 +15737,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspectorField_applyWithoutUndo(string guiinspectorfield, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorField_applyWithoutUndo'" + string.Format("\"{0}\" \"{1}\" ", guiinspectorfield, a2));
             StringBuilder sbguiinspectorfield = new StringBuilder(guiinspectorfield, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -13825,6 +15751,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiInspectorField_getData(string guiinspectorfield)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorField_getData'" + string.Format("\"{0}\" ", guiinspectorfield));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiinspectorfield = new StringBuilder(guiinspectorfield, 1024);
 
@@ -13838,6 +15766,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiInspectorField_getInspectedFieldName(string guiinspectorfield)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorField_getInspectedFieldName'" + string.Format("\"{0}\" ", guiinspectorfield));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiinspectorfield = new StringBuilder(guiinspectorfield, 1024);
 
@@ -13851,6 +15781,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiInspectorField_getInspectedFieldType(string guiinspectorfield)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorField_getInspectedFieldType'" + string.Format("\"{0}\" ", guiinspectorfield));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiinspectorfield = new StringBuilder(guiinspectorfield, 1024);
 
@@ -13864,6 +15796,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiInspectorField_getInspector(string guiinspectorfield)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorField_getInspector'" + string.Format("\"{0}\" ", guiinspectorfield));
             StringBuilder sbguiinspectorfield = new StringBuilder(guiinspectorfield, 1024);
 
             return SafeNativeMethods.mwle_fnGuiInspectorField_getInspector(sbguiinspectorfield);
@@ -13875,6 +15809,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspectorField_reset(string guiinspectorfield)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorField_reset'" + string.Format("\"{0}\" ", guiinspectorfield));
             StringBuilder sbguiinspectorfield = new StringBuilder(guiinspectorfield, 1024);
 
             SafeNativeMethods.mwle_fnGuiInspectorField_reset(sbguiinspectorfield);
@@ -13886,6 +15822,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspectorTypeBitMask32_applyBit(string guiinspectortypebitmask32)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorTypeBitMask32_applyBit'" + string.Format("\"{0}\" ", guiinspectortypebitmask32));
             StringBuilder sbguiinspectortypebitmask32 = new StringBuilder(guiinspectortypebitmask32, 1024);
 
             SafeNativeMethods.mwle_fnGuiInspectorTypeBitMask32_applyBit(sbguiinspectortypebitmask32);
@@ -13897,6 +15835,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiInspectorTypeFileName_apply(string guiinspectortypefilename, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiInspectorTypeFileName_apply'" + string.Format("\"{0}\" \"{1}\" ", guiinspectortypefilename, a2));
             StringBuilder sbguiinspectortypefilename = new StringBuilder(guiinspectortypefilename, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -13918,6 +15858,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_addFilteredItem(string guilistboxctrl, string newItem)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_addFilteredItem'" + string.Format("\"{0}\" \"{1}\" ", guilistboxctrl, newItem));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
             StringBuilder sbnewItem = new StringBuilder(newItem, 4096);
 
@@ -13944,6 +15886,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiListBoxCtrl_addItem(string guilistboxctrl, string newItem, string color)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_addItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guilistboxctrl, newItem, color));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
             StringBuilder sbnewItem = new StringBuilder(newItem, 4096);
             StringBuilder sbcolor = new StringBuilder(color, 4096);
@@ -13965,6 +15909,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_clearItemColor(string guilistboxctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_clearItemColor'" + string.Format("\"{0}\" \"{1}\" ", guilistboxctrl, index));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_clearItemColor(sbguilistboxctrl, index);
@@ -13981,6 +15927,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_clearItems(string guilistboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_clearItems'" + string.Format("\"{0}\" ", guilistboxctrl));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_clearItems(sbguilistboxctrl);
@@ -13998,6 +15946,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_clearSelection(string guilistboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_clearSelection'" + string.Format("\"{0}\" ", guilistboxctrl));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_clearSelection(sbguilistboxctrl);
@@ -14017,6 +15967,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_deleteItem(string guilistboxctrl, int itemIndex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_deleteItem'" + string.Format("\"{0}\" \"{1}\" ", guilistboxctrl, itemIndex));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_deleteItem(sbguilistboxctrl, itemIndex);
@@ -14033,6 +15985,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_doMirror(string guilistboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_doMirror'" + string.Format("\"{0}\" ", guilistboxctrl));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_doMirror(sbguilistboxctrl);
@@ -14056,6 +16010,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiListBoxCtrl_findItemText(string guilistboxctrl, string findText, bool bCaseSensitive)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_findItemText'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guilistboxctrl, findText, bCaseSensitive));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
             StringBuilder sbfindText = new StringBuilder(findText, 4096);
 
@@ -14074,6 +16030,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiListBoxCtrl_getItemCount(string guilistboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_getItemCount'" + string.Format("\"{0}\" ", guilistboxctrl));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiListBoxCtrl_getItemCount(sbguilistboxctrl);
@@ -14094,6 +16052,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiListBoxCtrl_getItemObject(string guilistboxctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_getItemObject'" + string.Format("\"{0}\" \"{1}\" ", guilistboxctrl, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
@@ -14116,6 +16076,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiListBoxCtrl_getItemText(string guilistboxctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_getItemText'" + string.Format("\"{0}\" \"{1}\" ", guilistboxctrl, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
@@ -14135,6 +16097,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiListBoxCtrl_getLastClickItem(string guilistboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_getLastClickItem'" + string.Format("\"{0}\" ", guilistboxctrl));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiListBoxCtrl_getLastClickItem(sbguilistboxctrl);
@@ -14152,6 +16116,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiListBoxCtrl_getSelCount(string guilistboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_getSelCount'" + string.Format("\"{0}\" ", guilistboxctrl));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiListBoxCtrl_getSelCount(sbguilistboxctrl);
@@ -14169,6 +16135,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiListBoxCtrl_getSelectedItem(string guilistboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_getSelectedItem'" + string.Format("\"{0}\" ", guilistboxctrl));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiListBoxCtrl_getSelectedItem(sbguilistboxctrl);
@@ -14186,6 +16154,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiListBoxCtrl_getSelectedItems(string guilistboxctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_getSelectedItems'" + string.Format("\"{0}\" ", guilistboxctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
@@ -14211,6 +16181,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_insertItem(string guilistboxctrl, string text, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_insertItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guilistboxctrl, text, index));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -14231,6 +16203,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_removeFilteredItem(string guilistboxctrl, string itemName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_removeFilteredItem'" + string.Format("\"{0}\" \"{1}\" ", guilistboxctrl, itemName));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
             StringBuilder sbitemName = new StringBuilder(itemName, 4096);
 
@@ -14251,6 +16225,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_setCurSel(string guilistboxctrl, int indexId)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_setCurSel'" + string.Format("\"{0}\" \"{1}\" ", guilistboxctrl, indexId));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_setCurSel(sbguilistboxctrl, indexId);
@@ -14273,6 +16249,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_setCurSelRange(string guilistboxctrl, int indexStart, int indexStop)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_setCurSelRange'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guilistboxctrl, indexStart, indexStop));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_setCurSelRange(sbguilistboxctrl, indexStart, indexStop);
@@ -14295,6 +16273,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_setItemColor(string guilistboxctrl, int index, string color)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_setItemColor'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guilistboxctrl, index, color));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
             StringBuilder sbcolor = new StringBuilder(color, 1024);
 
@@ -14318,6 +16298,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_setItemText(string guilistboxctrl, int index, string newtext)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_setItemText'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guilistboxctrl, index, newtext));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
             StringBuilder sbnewtext = new StringBuilder(newtext, 4096);
 
@@ -14341,6 +16323,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_setItemTooltip(string guilistboxctrl, int index, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_setItemTooltip'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guilistboxctrl, index, text));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -14361,6 +16345,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_setMultipleSelection(string guilistboxctrl, bool allowMultSelections)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_setMultipleSelection'" + string.Format("\"{0}\" \"{1}\" ", guilistboxctrl, allowMultSelections));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_setMultipleSelection(sbguilistboxctrl, allowMultSelections);
@@ -14384,6 +16370,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiListBoxCtrl_setSelected(string guilistboxctrl, int index, bool setSelected)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiListBoxCtrl_setSelected'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guilistboxctrl, index, setSelected));
             StringBuilder sbguilistboxctrl = new StringBuilder(guilistboxctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiListBoxCtrl_setSelected(sbguilistboxctrl, index, setSelected);
@@ -14396,6 +16384,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiMaterialCtrl_setMaterial(string guimaterialctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMaterialCtrl_setMaterial'" + string.Format("\"{0}\" \"{1}\" ", guimaterialctrl, a2));
             StringBuilder sbguimaterialctrl = new StringBuilder(guimaterialctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -14408,6 +16398,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMaterialPreview_deleteModel(string guimaterialpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMaterialPreview_deleteModel'" + string.Format("\"{0}\" ", guimaterialpreview));
             StringBuilder sbguimaterialpreview = new StringBuilder(guimaterialpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiMaterialPreview_deleteModel(sbguimaterialpreview);
@@ -14419,6 +16411,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMaterialPreview_reset(string guimaterialpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMaterialPreview_reset'" + string.Format("\"{0}\" ", guimaterialpreview));
             StringBuilder sbguimaterialpreview = new StringBuilder(guimaterialpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiMaterialPreview_reset(sbguimaterialpreview);
@@ -14430,6 +16424,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMaterialPreview_setAmbientLightColor(string guimaterialpreview, string color)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMaterialPreview_setAmbientLightColor'" + string.Format("\"{0}\" \"{1}\" ", guimaterialpreview, color));
             StringBuilder sbguimaterialpreview = new StringBuilder(guimaterialpreview, 1024);
             StringBuilder sbcolor = new StringBuilder(color, 1024);
 
@@ -14442,6 +16438,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMaterialPreview_setLightColor(string guimaterialpreview, string color)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMaterialPreview_setLightColor'" + string.Format("\"{0}\" \"{1}\" ", guimaterialpreview, color));
             StringBuilder sbguimaterialpreview = new StringBuilder(guimaterialpreview, 1024);
             StringBuilder sbcolor = new StringBuilder(color, 1024);
 
@@ -14455,6 +16453,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMaterialPreview_setModel(string guimaterialpreview, string shapeName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMaterialPreview_setModel'" + string.Format("\"{0}\" \"{1}\" ", guimaterialpreview, shapeName));
             StringBuilder sbguimaterialpreview = new StringBuilder(guimaterialpreview, 1024);
             StringBuilder sbshapeName = new StringBuilder(shapeName, 4096);
 
@@ -14469,6 +16469,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMaterialPreview_setOrbitDistance(string guimaterialpreview, float distance)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMaterialPreview_setOrbitDistance'" + string.Format("\"{0}\" \"{1}\" ", guimaterialpreview, distance));
             StringBuilder sbguimaterialpreview = new StringBuilder(guimaterialpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiMaterialPreview_setOrbitDistance(sbguimaterialpreview, distance);
@@ -14491,6 +16493,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_addMenu(string guimenubar, string menuText, int menuId)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_addMenu'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guimenubar, menuText, menuId));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuText = new StringBuilder(menuText, 4096);
 
@@ -14524,6 +16528,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_addMenuItem(string guimenubar, string targetMenu, string menuItemText, int menuItemId, string accelerator, int checkGroup)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_addMenuItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" ", guimenubar, targetMenu, menuItemText, menuItemId, accelerator, checkGroup));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbtargetMenu = new StringBuilder(targetMenu, 4096);
             StringBuilder sbmenuItemText = new StringBuilder(menuItemText, 4096);
@@ -14561,6 +16567,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_addSubmenuItem(string guimenubar, string menuTarget, string menuItem, string submenuItemText, int submenuItemId, string accelerator, int checkGroup)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_addSubmenuItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" ", guimenubar, menuTarget, menuItem, submenuItemText, submenuItemId, accelerator, checkGroup));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItem = new StringBuilder(menuItem, 4096);
@@ -14584,6 +16592,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_clearMenuItems(string guimenubar, string menuTarget)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_clearMenuItems'" + string.Format("\"{0}\" \"{1}\" ", guimenubar, menuTarget));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
 
@@ -14601,6 +16611,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_clearMenus(string guimenubar, int param1, int param2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_clearMenus'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guimenubar, param1, param2));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
 
             SafeNativeMethods.mwle_fnGuiMenuBar_clearMenus(sbguimenubar, param1, param2);
@@ -14623,6 +16635,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_clearSubmenuItems(string guimenubar, string menuTarget, string menuItem)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_clearSubmenuItems'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guimenubar, menuTarget, menuItem));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItem = new StringBuilder(menuItem, 4096);
@@ -14644,6 +16658,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_removeMenu(string guimenubar, string menuTarget)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_removeMenu'" + string.Format("\"{0}\" \"{1}\" ", guimenubar, menuTarget));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
 
@@ -14667,6 +16683,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_removeMenuItem(string guimenubar, string menuTarget, string menuItemTarget)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_removeMenuItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guimenubar, menuTarget, menuItemTarget));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItemTarget = new StringBuilder(menuItemTarget, 4096);
@@ -14688,6 +16706,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setCheckmarkBitmapIndex(string guimenubar, int bitmapindex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setCheckmarkBitmapIndex'" + string.Format("\"{0}\" \"{1}\" ", guimenubar, bitmapindex));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
 
             SafeNativeMethods.mwle_fnGuiMenuBar_setCheckmarkBitmapIndex(sbguimenubar, bitmapindex);
@@ -14716,6 +16736,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuBitmapIndex(string guimenubar, string menuTarget, int bitmapindex, bool bitmaponly, bool drawborder)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuBitmapIndex'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guimenubar, menuTarget, bitmapindex, bitmaponly, drawborder));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
 
@@ -14742,6 +16764,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuItemBitmap(string guimenubar, string menuTarget, string menuItemTarget, int bitmapIndex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuItemBitmap'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guimenubar, menuTarget, menuItemTarget, bitmapIndex));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItemTarget = new StringBuilder(menuItemTarget, 4096);
@@ -14765,6 +16789,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuItemChecked(string guimenubar, string menuTarget, string menuItemTarget, bool xchecked)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuItemChecked'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guimenubar, menuTarget, menuItemTarget, xchecked));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItemTarget = new StringBuilder(menuItemTarget, 4096);
@@ -14794,6 +16820,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuItemEnable(string guimenubar, string menuTarget, string menuItemTarget, bool enabled)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuItemEnable'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guimenubar, menuTarget, menuItemTarget, enabled));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItemTarget = new StringBuilder(menuItemTarget, 4096);
@@ -14821,6 +16849,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuItemSubmenuState(string guimenubar, string menuTarget, string menuItem, bool isSubmenu)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuItemSubmenuState'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guimenubar, menuTarget, menuItem, isSubmenu));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItem = new StringBuilder(menuItem, 4096);
@@ -14848,6 +16878,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuItemText(string guimenubar, string menuTarget, string menuItemTarget, string newMenuItemText)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuItemText'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guimenubar, menuTarget, menuItemTarget, newMenuItemText));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItemTarget = new StringBuilder(menuItemTarget, 4096);
@@ -14877,6 +16909,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuItemVisible(string guimenubar, string menuTarget, string menuItemTarget, bool isVisible)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuItemVisible'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guimenubar, menuTarget, menuItemTarget, isVisible));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItemTarget = new StringBuilder(menuItemTarget, 4096);
@@ -14905,6 +16939,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuMargins(string guimenubar, int horizontalMargin, int verticalMargin, int bitmapToTextSpacing)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuMargins'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guimenubar, horizontalMargin, verticalMargin, bitmapToTextSpacing));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
 
             SafeNativeMethods.mwle_fnGuiMenuBar_setMenuMargins(sbguimenubar, horizontalMargin, verticalMargin, bitmapToTextSpacing);
@@ -14927,6 +16963,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuText(string guimenubar, string menuTarget, string newMenuText)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuText'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guimenubar, menuTarget, newMenuText));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbnewMenuText = new StringBuilder(newMenuText, 4096);
@@ -14951,6 +16989,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setMenuVisible(string guimenubar, string menuTarget, bool visible)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setMenuVisible'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guimenubar, menuTarget, visible));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
 
@@ -14983,6 +17023,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMenuBar_setSubmenuItemChecked(string guimenubar, string menuTarget, string menuItemTarget, string submenuItemText, bool xchecked)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMenuBar_setSubmenuItemChecked'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guimenubar, menuTarget, menuItemTarget, submenuItemText, xchecked));
             StringBuilder sbguimenubar = new StringBuilder(guimenubar, 1024);
             StringBuilder sbmenuTarget = new StringBuilder(menuTarget, 4096);
             StringBuilder sbmenuItemTarget = new StringBuilder(menuItemTarget, 4096);
@@ -15009,6 +17051,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiMessageVectorCtrl_attach(string guimessagevectorctrl, string item)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMessageVectorCtrl_attach'" + string.Format("\"{0}\" \"{1}\" ", guimessagevectorctrl, item));
             StringBuilder sbguimessagevectorctrl = new StringBuilder(guimessagevectorctrl, 1024);
             StringBuilder sbitem = new StringBuilder(item, 1024);
 
@@ -15031,6 +17075,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMessageVectorCtrl_detach(string guimessagevectorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMessageVectorCtrl_detach'" + string.Format("\"{0}\" ", guimessagevectorctrl));
             StringBuilder sbguimessagevectorctrl = new StringBuilder(guimessagevectorctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiMessageVectorCtrl_detach(sbguimessagevectorctrl);
@@ -15042,6 +17088,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMissionAreaCtrl_setMissionArea(string guimissionareactrl, string area)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMissionAreaCtrl_setMissionArea'" + string.Format("\"{0}\" \"{1}\" ", guimissionareactrl, area));
             StringBuilder sbguimissionareactrl = new StringBuilder(guimissionareactrl, 1024);
             StringBuilder sbarea = new StringBuilder(area, 1024);
 
@@ -15054,6 +17102,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMissionAreaCtrl_updateTerrain(string guimissionareactrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMissionAreaCtrl_updateTerrain'" + string.Format("\"{0}\" ", guimissionareactrl));
             StringBuilder sbguimissionareactrl = new StringBuilder(guimissionareactrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiMissionAreaCtrl_updateTerrain(sbguimissionareactrl);
@@ -15076,6 +17126,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMLTextCtrl_addText(string guimltextctrl, string text, bool reformat)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_addText'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guimltextctrl, text, reformat));
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -15097,6 +17149,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMLTextCtrl_forceReflow(string guimltextctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_forceReflow'" + string.Format("\"{0}\" ", guimltextctrl));
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiMLTextCtrl_forceReflow(sbguimltextctrl);
@@ -15114,6 +17168,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiMLTextCtrl_getText(string guimltextctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_getText'" + string.Format("\"{0}\" ", guimltextctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
 
@@ -15132,6 +17188,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMLTextCtrl_scrollToBottom(string guimltextctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_scrollToBottom'" + string.Format("\"{0}\" ", guimltextctrl));
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiMLTextCtrl_scrollToBottom(sbguimltextctrl);
@@ -15152,6 +17210,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMLTextCtrl_scrollToTag(string guimltextctrl, int tagID)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_scrollToTag'" + string.Format("\"{0}\" \"{1}\" ", guimltextctrl, tagID));
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiMLTextCtrl_scrollToTag(sbguimltextctrl, tagID);
@@ -15168,6 +17228,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMLTextCtrl_scrollToTop(string guimltextctrl, int param1, int param2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_scrollToTop'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guimltextctrl, param1, param2));
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiMLTextCtrl_scrollToTop(sbguimltextctrl, param1, param2);
@@ -15187,6 +17249,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMLTextCtrl_setAlpha(string guimltextctrl, float alphaVal)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_setAlpha'" + string.Format("\"{0}\" \"{1}\" ", guimltextctrl, alphaVal));
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiMLTextCtrl_setAlpha(sbguimltextctrl, alphaVal);
@@ -15207,6 +17271,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiMLTextCtrl_setCursorPosition(string guimltextctrl, int newPos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_setCursorPosition'" + string.Format("\"{0}\" \"{1}\" ", guimltextctrl, newPos));
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiMLTextCtrl_setCursorPosition(sbguimltextctrl, newPos) >= 1;
@@ -15226,6 +17292,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiMLTextCtrl_setText(string guimltextctrl, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiMLTextCtrl_setText'" + string.Format("\"{0}\" \"{1}\" ", guimltextctrl, text));
             StringBuilder sbguimltextctrl = new StringBuilder(guimltextctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -15244,6 +17312,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiObjectView_getCameraSpeed(string guiobjectview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_getCameraSpeed'" + string.Format("\"{0}\" ", guiobjectview));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
 
             return SafeNativeMethods.mwle_fnGuiObjectView_getCameraSpeed(sbguiobjectview);
@@ -15261,6 +17331,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiObjectView_getModel(string guiobjectview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_getModel'" + string.Format("\"{0}\" ", guiobjectview));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
 
@@ -15280,6 +17352,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiObjectView_getMountedModel(string guiobjectview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_getMountedModel'" + string.Format("\"{0}\" ", guiobjectview));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
 
@@ -15299,6 +17373,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiObjectView_getMountSkin(string guiobjectview, int param1, int param2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_getMountSkin'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiobjectview, param1, param2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
 
@@ -15318,6 +17394,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiObjectView_getOrbitDistance(string guiobjectview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_getOrbitDistance'" + string.Format("\"{0}\" ", guiobjectview));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
 
             return SafeNativeMethods.mwle_fnGuiObjectView_getOrbitDistance(sbguiobjectview);
@@ -15335,6 +17413,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiObjectView_getSkin(string guiobjectview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_getSkin'" + string.Format("\"{0}\" ", guiobjectview));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
 
@@ -15356,6 +17436,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setCameraSpeed(string guiobjectview, float factor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setCameraSpeed'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, factor));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
 
             SafeNativeMethods.mwle_fnGuiObjectView_setCameraSpeed(sbguiobjectview, factor);
@@ -15375,6 +17457,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setLightAmbient(string guiobjectview, string color)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setLightAmbient'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, color));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbcolor = new StringBuilder(color, 1024);
 
@@ -15395,6 +17479,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setLightColor(string guiobjectview, string color)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setLightColor'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, color));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbcolor = new StringBuilder(color, 1024);
 
@@ -15415,6 +17501,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setLightDirection(string guiobjectview, string direction)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setLightDirection'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, direction));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbdirection = new StringBuilder(direction, 1024);
 
@@ -15435,6 +17523,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setModel(string guiobjectview, string shapeName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setModel'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, shapeName));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbshapeName = new StringBuilder(shapeName, 4096);
 
@@ -15461,6 +17551,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setMount(string guiobjectview, string shapeName, string mountNodeIndexOrName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setMount'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiobjectview, shapeName, mountNodeIndexOrName));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbshapeName = new StringBuilder(shapeName, 4096);
             StringBuilder sbmountNodeIndexOrName = new StringBuilder(mountNodeIndexOrName, 4096);
@@ -15482,6 +17574,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setMountedModel(string guiobjectview, string shapeName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setMountedModel'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, shapeName));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbshapeName = new StringBuilder(shapeName, 4096);
 
@@ -15502,6 +17596,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setMountSkin(string guiobjectview, string skinName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setMountSkin'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, skinName));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbskinName = new StringBuilder(skinName, 4096);
 
@@ -15523,6 +17619,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setOrbitDistance(string guiobjectview, float distance)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setOrbitDistance'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, distance));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
 
             SafeNativeMethods.mwle_fnGuiObjectView_setOrbitDistance(sbguiobjectview, distance);
@@ -15544,6 +17642,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setSeq(string guiobjectview, string indexOrName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setSeq'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, indexOrName));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbindexOrName = new StringBuilder(indexOrName, 4096);
 
@@ -15564,6 +17664,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiObjectView_setSkin(string guiobjectview, string skinName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiObjectView_setSkin'" + string.Format("\"{0}\" \"{1}\" ", guiobjectview, skinName));
             StringBuilder sbguiobjectview = new StringBuilder(guiobjectview, 1024);
             StringBuilder sbskinName = new StringBuilder(skinName, 4096);
 
@@ -15577,6 +17679,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPaneControl_setCollapsed(string guipanecontrol, bool collapse)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPaneControl_setCollapsed'" + string.Format("\"{0}\" \"{1}\" ", guipanecontrol, collapse));
             StringBuilder sbguipanecontrol = new StringBuilder(guipanecontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiPaneControl_setCollapsed(sbguipanecontrol, collapse);
@@ -15590,6 +17694,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_addPlotPoint(string guiparticlegraphctrl, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_addPlotPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guiparticlegraphctrl, a2, a3, a4, a5));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15612,6 +17718,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_changePlotPoint(string guiparticlegraphctrl, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_changePlotPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guiparticlegraphctrl, a2, a3, a4, a5));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15631,6 +17739,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_clearAllGraphs(string guiparticlegraphctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_clearAllGraphs'" + string.Format("\"{0}\" ", guiparticlegraphctrl));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiParticleGraphCtrl_clearAllGraphs(sbguiparticlegraphctrl);
@@ -15644,6 +17754,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_clearGraph(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_clearGraph'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -15658,6 +17770,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_getGraphColor(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_getGraphColor'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15674,6 +17788,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_getGraphMax(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_getGraphMax'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15690,6 +17806,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_getGraphMin(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_getGraphMin'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15706,6 +17824,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_getGraphName(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_getGraphName'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15724,6 +17844,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_getPlotIndex(string guiparticlegraphctrl, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_getPlotIndex'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guiparticlegraphctrl, a2, a3, a4));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15742,6 +17864,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_getPlotPoint(string guiparticlegraphctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_getPlotPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiparticlegraphctrl, a2, a3));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15759,6 +17883,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_getSelectedPlot(string guiparticlegraphctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_getSelectedPlot'" + string.Format("\"{0}\" ", guiparticlegraphctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
 
@@ -15774,6 +17900,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_getSelectedPoint(string guiparticlegraphctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_getSelectedPoint'" + string.Format("\"{0}\" ", guiparticlegraphctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
 
@@ -15792,6 +17920,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_insertPlotPoint(string guiparticlegraphctrl, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_insertPlotPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guiparticlegraphctrl, a2, a3, a4, a5));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -15808,6 +17938,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiParticleGraphCtrl_isExistingPoint(string guiparticlegraphctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_isExistingPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiparticlegraphctrl, a2, a3));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -15825,6 +17957,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_resetSelectedPoint(string guiparticlegraphctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_resetSelectedPoint'" + string.Format("\"{0}\" ", guiparticlegraphctrl));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiParticleGraphCtrl_resetSelectedPoint(sbguiparticlegraphctrl);
@@ -15839,6 +17973,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setAutoGraphMax(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setAutoGraphMax'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -15853,6 +17989,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setAutoRemove(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setAutoRemove'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -15867,6 +18005,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setGraphHidden(string guiparticlegraphctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setGraphHidden'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiparticlegraphctrl, a2, a3));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -15884,6 +18024,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setGraphMax(string guiparticlegraphctrl, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setGraphMax'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guiparticlegraphctrl, a2, a3, a4));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -15902,6 +18044,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setGraphMaxX(string guiparticlegraphctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setGraphMaxX'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiparticlegraphctrl, a2, a3));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -15919,6 +18063,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setGraphMaxY(string guiparticlegraphctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setGraphMaxY'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiparticlegraphctrl, a2, a3));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -15936,6 +18082,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setGraphMin(string guiparticlegraphctrl, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setGraphMin'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guiparticlegraphctrl, a2, a3, a4));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -15954,6 +18102,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setGraphMinX(string guiparticlegraphctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setGraphMinX'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiparticlegraphctrl, a2, a3));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -15971,6 +18121,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setGraphMinY(string guiparticlegraphctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setGraphMinY'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiparticlegraphctrl, a2, a3));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -15988,6 +18140,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setGraphName(string guiparticlegraphctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setGraphName'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiparticlegraphctrl, a2, a3));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16003,6 +18157,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setPointXMovementClamped(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setPointXMovementClamped'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16017,6 +18173,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setRenderAll(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setRenderAll'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16031,6 +18189,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setRenderGraphTooltip(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setRenderGraphTooltip'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16045,6 +18205,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setSelectedPlot(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setSelectedPlot'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16059,6 +18221,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiParticleGraphCtrl_setSelectedPoint(string guiparticlegraphctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiParticleGraphCtrl_setSelectedPoint'" + string.Format("\"{0}\" \"{1}\" ", guiparticlegraphctrl, a2));
             StringBuilder sbguiparticlegraphctrl = new StringBuilder(guiparticlegraphctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16071,6 +18235,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_add(string guipopupmenuctrl, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_add'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guipopupmenuctrl, a2, a3, a4));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16085,6 +18251,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_addScheme(string guipopupmenuctrl, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_addScheme'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guipopupmenuctrl, a2, a3, a4, a5));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16100,6 +18268,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_changeTextById(string guipopupmenuctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_changeTextById'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guipopupmenuctrl, a2, a3));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16113,6 +18283,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_clear(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_clear'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrl_clear(sbguipopupmenuctrl);
@@ -16124,6 +18296,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_clearEntry(string guipopupmenuctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_clearEntry'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrl, a2));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16137,6 +18311,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiPopUpMenuCtrl_findText(string guipopupmenuctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_findText'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrl, a2));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16149,6 +18325,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_forceClose(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_forceClose'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrl_forceClose(sbguipopupmenuctrl);
@@ -16160,6 +18338,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_forceOnAction(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_forceOnAction'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrl_forceOnAction(sbguipopupmenuctrl);
@@ -16171,6 +18351,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiPopUpMenuCtrl_getSelected(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_getSelected'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiPopUpMenuCtrl_getSelected(sbguipopupmenuctrl);
@@ -16182,6 +18364,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiPopUpMenuCtrl_getText(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_getText'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
@@ -16195,6 +18379,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiPopUpMenuCtrl_getTextById(string guipopupmenuctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_getTextById'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrl, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -16209,6 +18395,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_replaceText(string guipopupmenuctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_replaceText'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrl, a2));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16224,6 +18412,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_setEnumContent(string guipopupmenuctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_setEnumContent'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guipopupmenuctrl, a2, a3));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16237,6 +18427,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_setFirstSelected(string guipopupmenuctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_setFirstSelected'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrl, a2));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16249,6 +18441,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_setNoneSelected(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_setNoneSelected'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrl_setNoneSelected(sbguipopupmenuctrl);
@@ -16260,6 +18454,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_setSelected(string guipopupmenuctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_setSelected'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guipopupmenuctrl, a2, a3));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16273,6 +18469,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiPopUpMenuCtrl_size(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_size'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiPopUpMenuCtrl_size(sbguipopupmenuctrl);
@@ -16284,6 +18482,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_sort(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_sort'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrl_sort(sbguipopupmenuctrl);
@@ -16295,6 +18495,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrl_sortID(string guipopupmenuctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrl_sortID'" + string.Format("\"{0}\" ", guipopupmenuctrl));
             StringBuilder sbguipopupmenuctrl = new StringBuilder(guipopupmenuctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrl_sortID(sbguipopupmenuctrl);
@@ -16306,6 +18508,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_add(string guipopupmenuctrlex, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_add'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guipopupmenuctrlex, a2, a3, a4));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16324,6 +18528,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_addCategory(string guipopupmenuctrlex, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_addCategory'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, text));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -16340,6 +18546,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_addScheme(string guipopupmenuctrlex, int id, string fontColor, string fontColorHL, string fontColorSEL)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_addScheme'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guipopupmenuctrlex, id, fontColor, fontColorHL, fontColorSEL));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sbfontColor = new StringBuilder(fontColor, 1024);
             StringBuilder sbfontColorHL = new StringBuilder(fontColorHL, 1024);
@@ -16354,6 +18562,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_clear(string guipopupmenuctrlex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_clear'" + string.Format("\"{0}\" ", guipopupmenuctrlex));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrlEx_clear(sbguipopupmenuctrlex);
@@ -16365,6 +18575,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_clearEntry(string guipopupmenuctrlex, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_clearEntry'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, a2));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16380,6 +18592,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiPopUpMenuCtrlEx_findText(string guipopupmenuctrlex, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_findText'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, a2));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16392,6 +18606,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_forceClose(string guipopupmenuctrlex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_forceClose'" + string.Format("\"{0}\" ", guipopupmenuctrlex));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrlEx_forceClose(sbguipopupmenuctrlex);
@@ -16403,6 +18619,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_forceOnAction(string guipopupmenuctrlex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_forceOnAction'" + string.Format("\"{0}\" ", guipopupmenuctrlex));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrlEx_forceOnAction(sbguipopupmenuctrlex);
@@ -16417,6 +18635,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiPopUpMenuCtrlEx_getColorById(string guipopupmenuctrlex, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_getColorById'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -16432,6 +18652,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiPopUpMenuCtrlEx_getSelected(string guipopupmenuctrlex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_getSelected'" + string.Format("\"{0}\" ", guipopupmenuctrlex));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
             return SafeNativeMethods.mwle_fnGuiPopUpMenuCtrlEx_getSelected(sbguipopupmenuctrlex);
@@ -16454,6 +18676,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiPopUpMenuCtrlEx_getText(string guipopupmenuctrlex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_getText'" + string.Format("\"{0}\" ", guipopupmenuctrlex));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
@@ -16469,6 +18693,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiPopUpMenuCtrlEx_getTextById(string guipopupmenuctrlex, int id)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_getTextById'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, id));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
@@ -16484,6 +18710,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_replaceText(string guipopupmenuctrlex, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_replaceText'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, a2));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16501,6 +18729,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_setEnumContent(string guipopupmenuctrlex, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_setEnumContent'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guipopupmenuctrlex, a2, a3));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16515,6 +18745,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_setFirstSelected(string guipopupmenuctrlex, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_setFirstSelected'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, a2));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16527,6 +18759,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_setNoneSelected(string guipopupmenuctrlex, int param)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_setNoneSelected'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, param));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrlEx_setNoneSelected(sbguipopupmenuctrlex, param);
@@ -16539,6 +18773,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_setSelected(string guipopupmenuctrlex, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_setSelected'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guipopupmenuctrlex, a2, a3));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -16553,6 +18789,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_setText(string guipopupmenuctrlex, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_setText'" + string.Format("\"{0}\" \"{1}\" ", guipopupmenuctrlex, text));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -16567,6 +18805,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiPopUpMenuCtrlEx_size(string guipopupmenuctrlex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_size'" + string.Format("\"{0}\" ", guipopupmenuctrlex));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
             return SafeNativeMethods.mwle_fnGuiPopUpMenuCtrlEx_size(sbguipopupmenuctrlex);
@@ -16578,6 +18818,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_sort(string guipopupmenuctrlex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_sort'" + string.Format("\"{0}\" ", guipopupmenuctrlex));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrlEx_sort(sbguipopupmenuctrlex);
@@ -16589,6 +18831,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiPopUpMenuCtrlEx_sortID(string guipopupmenuctrlex)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiPopUpMenuCtrlEx_sortID'" + string.Format("\"{0}\" ", guipopupmenuctrlex));
             StringBuilder sbguipopupmenuctrlex = new StringBuilder(guipopupmenuctrlex, 1024);
 
             SafeNativeMethods.mwle_fnGuiPopUpMenuCtrlEx_sortID(sbguipopupmenuctrlex);
@@ -16603,6 +18847,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiProgressBitmapCtrl_setBitmap(string guiprogressbitmapctrl, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiProgressBitmapCtrl_setBitmap'" + string.Format("\"{0}\" \"{1}\" ", guiprogressbitmapctrl, filename));
             StringBuilder sbguiprogressbitmapctrl = new StringBuilder(guiprogressbitmapctrl, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -16615,6 +18861,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRoadEditorCtrl_deleteNode(string guiroadeditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_deleteNode'" + string.Format("\"{0}\" ", guiroadeditorctrl));
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRoadEditorCtrl_deleteNode(sbguiroadeditorctrl);
@@ -16626,6 +18874,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRoadEditorCtrl_deleteRoad(string guiroadeditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_deleteRoad'" + string.Format("\"{0}\" ", guiroadeditorctrl));
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRoadEditorCtrl_deleteRoad(sbguiroadeditorctrl);
@@ -16637,6 +18887,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiRoadEditorCtrl_getMode(string guiroadeditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_getMode'" + string.Format("\"{0}\" ", guiroadeditorctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
 
@@ -16650,6 +18902,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiRoadEditorCtrl_getNodePosition(string guiroadeditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_getNodePosition'" + string.Format("\"{0}\" ", guiroadeditorctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
 
@@ -16663,6 +18917,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiRoadEditorCtrl_getNodeWidth(string guiroadeditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_getNodeWidth'" + string.Format("\"{0}\" ", guiroadeditorctrl));
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiRoadEditorCtrl_getNodeWidth(sbguiroadeditorctrl);
@@ -16674,6 +18930,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiRoadEditorCtrl_getSelectedNode(string guiroadeditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_getSelectedNode'" + string.Format("\"{0}\" ", guiroadeditorctrl));
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiRoadEditorCtrl_getSelectedNode(sbguiroadeditorctrl);
@@ -16685,6 +18943,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiRoadEditorCtrl_getSelectedRoad(string guiroadeditorctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_getSelectedRoad'" + string.Format("\"{0}\" ", guiroadeditorctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
 
@@ -16698,6 +18958,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRoadEditorCtrl_setNodePosition(string guiroadeditorctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_setNodePosition'" + string.Format("\"{0}\" \"{1}\" ", guiroadeditorctrl, a2));
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16710,6 +18972,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRoadEditorCtrl_setNodeWidth(string guiroadeditorctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_setNodeWidth'" + string.Format("\"{0}\" \"{1}\" ", guiroadeditorctrl, a2));
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16722,6 +18986,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRoadEditorCtrl_setSelectedRoad(string guiroadeditorctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRoadEditorCtrl_setSelectedRoad'" + string.Format("\"{0}\" \"{1}\" ", guiroadeditorctrl, a2));
             StringBuilder sbguiroadeditorctrl = new StringBuilder(guiroadeditorctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -16735,6 +19001,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRolloutCtrl_collapse(string guirolloutctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRolloutCtrl_collapse'" + string.Format("\"{0}\" ", guirolloutctrl));
             StringBuilder sbguirolloutctrl = new StringBuilder(guirolloutctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRolloutCtrl_collapse(sbguirolloutctrl);
@@ -16747,6 +19015,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRolloutCtrl_expand(string guirolloutctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRolloutCtrl_expand'" + string.Format("\"{0}\" ", guirolloutctrl));
             StringBuilder sbguirolloutctrl = new StringBuilder(guirolloutctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRolloutCtrl_expand(sbguirolloutctrl);
@@ -16758,6 +19028,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRolloutCtrl_instantCollapse(string guirolloutctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRolloutCtrl_instantCollapse'" + string.Format("\"{0}\" ", guirolloutctrl));
             StringBuilder sbguirolloutctrl = new StringBuilder(guirolloutctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRolloutCtrl_instantCollapse(sbguirolloutctrl);
@@ -16769,6 +19041,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRolloutCtrl_instantExpand(string guirolloutctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRolloutCtrl_instantExpand'" + string.Format("\"{0}\" ", guirolloutctrl));
             StringBuilder sbguirolloutctrl = new StringBuilder(guirolloutctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRolloutCtrl_instantExpand(sbguirolloutctrl);
@@ -16781,6 +19055,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiRolloutCtrl_isExpanded(string guirolloutctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRolloutCtrl_isExpanded'" + string.Format("\"{0}\" ", guirolloutctrl));
             StringBuilder sbguirolloutctrl = new StringBuilder(guirolloutctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiRolloutCtrl_isExpanded(sbguirolloutctrl) >= 1;
@@ -16793,6 +19069,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRolloutCtrl_sizeToContents(string guirolloutctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRolloutCtrl_sizeToContents'" + string.Format("\"{0}\" ", guirolloutctrl));
             StringBuilder sbguirolloutctrl = new StringBuilder(guirolloutctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRolloutCtrl_sizeToContents(sbguirolloutctrl);
@@ -16805,6 +19083,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRolloutCtrl_toggleCollapse(string guirolloutctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRolloutCtrl_toggleCollapse'" + string.Format("\"{0}\" ", guirolloutctrl));
             StringBuilder sbguirolloutctrl = new StringBuilder(guirolloutctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRolloutCtrl_toggleCollapse(sbguirolloutctrl);
@@ -16819,6 +19099,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiRolloutCtrl_toggleExpanded(string guirolloutctrl, bool instantly)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiRolloutCtrl_toggleExpanded'" + string.Format("\"{0}\" \"{1}\" ", guirolloutctrl, instantly));
             StringBuilder sbguirolloutctrl = new StringBuilder(guirolloutctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiRolloutCtrl_toggleExpanded(sbguirolloutctrl, instantly);
@@ -16830,6 +19112,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiScrollCtrl_computeSizes(string guiscrollctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiScrollCtrl_computeSizes'" + string.Format("\"{0}\" ", guiscrollctrl));
             StringBuilder sbguiscrollctrl = new StringBuilder(guiscrollctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiScrollCtrl_computeSizes(sbguiscrollctrl);
@@ -16842,6 +19126,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiScrollCtrl_getScrollPosition(string guiscrollctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiScrollCtrl_getScrollPosition'" + string.Format("\"{0}\" ", guiscrollctrl));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguiscrollctrl = new StringBuilder(guiscrollctrl, 1024);
 
@@ -16856,6 +19142,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiScrollCtrl_getScrollPositionX(string guiscrollctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiScrollCtrl_getScrollPositionX'" + string.Format("\"{0}\" ", guiscrollctrl));
             StringBuilder sbguiscrollctrl = new StringBuilder(guiscrollctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiScrollCtrl_getScrollPositionX(sbguiscrollctrl);
@@ -16868,6 +19156,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiScrollCtrl_getScrollPositionY(string guiscrollctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiScrollCtrl_getScrollPositionY'" + string.Format("\"{0}\" ", guiscrollctrl));
             StringBuilder sbguiscrollctrl = new StringBuilder(guiscrollctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiScrollCtrl_getScrollPositionY(sbguiscrollctrl);
@@ -16879,6 +19169,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiScrollCtrl_scrollToBottom(string guiscrollctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiScrollCtrl_scrollToBottom'" + string.Format("\"{0}\" ", guiscrollctrl));
             StringBuilder sbguiscrollctrl = new StringBuilder(guiscrollctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiScrollCtrl_scrollToBottom(sbguiscrollctrl);
@@ -16891,6 +19183,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiScrollCtrl_scrollToObject(string guiscrollctrl, string control)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiScrollCtrl_scrollToObject'" + string.Format("\"{0}\" \"{1}\" ", guiscrollctrl, control));
             StringBuilder sbguiscrollctrl = new StringBuilder(guiscrollctrl, 1024);
             StringBuilder sbcontrol = new StringBuilder(control, 1024);
 
@@ -16903,6 +19197,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiScrollCtrl_scrollToTop(string guiscrollctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiScrollCtrl_scrollToTop'" + string.Format("\"{0}\" ", guiscrollctrl));
             StringBuilder sbguiscrollctrl = new StringBuilder(guiscrollctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiScrollCtrl_scrollToTop(sbguiscrollctrl);
@@ -16916,6 +19212,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiScrollCtrl_setScrollPosition(string guiscrollctrl, int x, int y)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiScrollCtrl_setScrollPosition'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guiscrollctrl, x, y));
             StringBuilder sbguiscrollctrl = new StringBuilder(guiscrollctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiScrollCtrl_setScrollPosition(sbguiscrollctrl, x, y);
@@ -16927,6 +19225,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_addThread(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_addThread'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_addThread(sbguishapeedpreview);
@@ -16939,6 +19239,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiShapeEdPreview_computeShapeBounds(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_computeShapeBounds'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
@@ -16955,6 +19257,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_exportToCollada(string guishapeedpreview, string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_exportToCollada'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, path));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbpath = new StringBuilder(path, 4096);
 
@@ -16967,6 +19271,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_fitToShape(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_fitToShape'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_fitToShape(sbguishapeedpreview);
@@ -16978,6 +19284,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiShapeEdPreview_getMeshHidden(string guishapeedpreview, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_getMeshHidden'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, name));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -16992,6 +19300,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiShapeEdPreview_getMountThreadDir(string guishapeedpreview, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_getMountThreadDir'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, slot));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             return SafeNativeMethods.mwle_fnGuiShapeEdPreview_getMountThreadDir(sbguishapeedpreview, slot);
@@ -17005,6 +19315,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiShapeEdPreview_getMountThreadPos(string guishapeedpreview, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_getMountThreadPos'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, slot));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             return SafeNativeMethods.mwle_fnGuiShapeEdPreview_getMountThreadPos(sbguishapeedpreview, slot);
@@ -17018,6 +19330,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiShapeEdPreview_getMountThreadSequence(string guishapeedpreview, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_getMountThreadSequence'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, slot));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
@@ -17032,6 +19346,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiShapeEdPreview_getThreadCount(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_getThreadCount'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             return SafeNativeMethods.mwle_fnGuiShapeEdPreview_getThreadCount(sbguishapeedpreview);
@@ -17043,6 +19359,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiShapeEdPreview_getThreadSequence(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_getThreadSequence'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
@@ -17060,6 +19378,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiShapeEdPreview_mountShape(string guishapeedpreview, string shapePath, string nodeName, string type, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_mountShape'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guishapeedpreview, shapePath, nodeName, type, slot));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbshapePath = new StringBuilder(shapePath, 4096);
             StringBuilder sbnodeName = new StringBuilder(nodeName, 4096);
@@ -17074,6 +19394,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_refreshShape(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_refreshShape'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_refreshShape(sbguishapeedpreview);
@@ -17085,6 +19407,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_refreshThreadSequences(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_refreshThreadSequences'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_refreshThreadSequences(sbguishapeedpreview);
@@ -17097,6 +19421,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_removeThread(string guishapeedpreview, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_removeThread'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, slot));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_removeThread(sbguishapeedpreview, slot);
@@ -17108,6 +19434,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setAllMeshesHidden(string guishapeedpreview, bool hidden)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setAllMeshesHidden'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, hidden));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_setAllMeshesHidden(sbguishapeedpreview, hidden);
@@ -17119,6 +19447,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setMeshHidden(string guishapeedpreview, string name, bool hidden)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setMeshHidden'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guishapeedpreview, name, hidden));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -17133,6 +19463,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiShapeEdPreview_setModel(string guishapeedpreview, string shapePath)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setModel'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, shapePath));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbshapePath = new StringBuilder(shapePath, 4096);
 
@@ -17147,6 +19479,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setMountNode(string guishapeedpreview, int slot, string nodeName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setMountNode'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guishapeedpreview, slot, nodeName));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbnodeName = new StringBuilder(nodeName, 4096);
 
@@ -17161,6 +19495,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setMountThreadDir(string guishapeedpreview, int slot, float dir)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setMountThreadDir'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guishapeedpreview, slot, dir));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_setMountThreadDir(sbguishapeedpreview, slot, dir);
@@ -17174,6 +19510,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setMountThreadPos(string guishapeedpreview, int slot, float pos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setMountThreadPos'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guishapeedpreview, slot, pos));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_setMountThreadPos(sbguishapeedpreview, slot, pos);
@@ -17187,6 +19525,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setMountThreadSequence(string guishapeedpreview, int slot, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setMountThreadSequence'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guishapeedpreview, slot, name));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -17200,6 +19540,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setOrbitPos(string guishapeedpreview, string pos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setOrbitPos'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, pos));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
 
@@ -17216,6 +19558,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setThreadSequence(string guishapeedpreview, string name, float duration, float pos, bool play)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setThreadSequence'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guishapeedpreview, name, duration, pos, play));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -17229,6 +19573,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_setTimeScale(string guishapeedpreview, float scale)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_setTimeScale'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, scale));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_setTimeScale(sbguishapeedpreview, scale);
@@ -17240,6 +19586,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_unmountAll(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_unmountAll'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_unmountAll(sbguishapeedpreview);
@@ -17252,6 +19600,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_unmountShape(string guishapeedpreview, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_unmountShape'" + string.Format("\"{0}\" \"{1}\" ", guishapeedpreview, slot));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_unmountShape(sbguishapeedpreview, slot);
@@ -17263,6 +19613,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiShapeEdPreview_updateNodeTransforms(string guishapeedpreview)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiShapeEdPreview_updateNodeTransforms'" + string.Format("\"{0}\" ", guishapeedpreview));
             StringBuilder sbguishapeedpreview = new StringBuilder(guishapeedpreview, 1024);
 
             SafeNativeMethods.mwle_fnGuiShapeEdPreview_updateNodeTransforms(sbguishapeedpreview);
@@ -17275,6 +19627,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiSliderCtrl_getValue(string guisliderctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiSliderCtrl_getValue'" + string.Format("\"{0}\" ", guisliderctrl));
             StringBuilder sbguisliderctrl = new StringBuilder(guisliderctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiSliderCtrl_getValue(sbguisliderctrl);
@@ -17288,6 +19642,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiSliderCtrl_isThumbBeingDragged(string guisliderctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiSliderCtrl_isThumbBeingDragged'" + string.Format("\"{0}\" ", guisliderctrl));
             StringBuilder sbguisliderctrl = new StringBuilder(guisliderctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiSliderCtrl_isThumbBeingDragged(sbguisliderctrl) >= 1;
@@ -17301,6 +19657,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiSliderCtrl_setValue(string guisliderctrl, float pos, bool doCallback)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiSliderCtrl_setValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guisliderctrl, pos, doCallback));
             StringBuilder sbguisliderctrl = new StringBuilder(guisliderctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiSliderCtrl_setValue(sbguisliderctrl, pos, doCallback);
@@ -17318,6 +19676,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiStackControl_freeze(string guistackcontrol, bool freeze)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiStackControl_freeze'" + string.Format("\"{0}\" \"{1}\" ", guistackcontrol, freeze));
             StringBuilder sbguistackcontrol = new StringBuilder(guistackcontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiStackControl_freeze(sbguistackcontrol, freeze);
@@ -17329,6 +19689,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiStackControl_isFrozen(string guistackcontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiStackControl_isFrozen'" + string.Format("\"{0}\" ", guistackcontrol));
             StringBuilder sbguistackcontrol = new StringBuilder(guistackcontrol, 1024);
 
             return SafeNativeMethods.mwle_fnGuiStackControl_isFrozen(sbguistackcontrol) >= 1;
@@ -17340,6 +19702,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiStackControl_updateStack(string guistackcontrol)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiStackControl_updateStack'" + string.Format("\"{0}\" ", guistackcontrol));
             StringBuilder sbguistackcontrol = new StringBuilder(guistackcontrol, 1024);
 
             SafeNativeMethods.mwle_fnGuiStackControl_updateStack(sbguistackcontrol);
@@ -17354,6 +19718,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiSwatchButtonCtrl_setColor(string guiswatchbuttonctrl, string newColor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiSwatchButtonCtrl_setColor'" + string.Format("\"{0}\" \"{1}\" ", guiswatchbuttonctrl, newColor));
             StringBuilder sbguiswatchbuttonctrl = new StringBuilder(guiswatchbuttonctrl, 1024);
             StringBuilder sbnewColor = new StringBuilder(newColor, 4096);
 
@@ -17368,6 +19734,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTabBookCtrl_addPage(string guitabbookctrl, string title)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTabBookCtrl_addPage'" + string.Format("\"{0}\" \"{1}\" ", guitabbookctrl, title));
             StringBuilder sbguitabbookctrl = new StringBuilder(guitabbookctrl, 1024);
             StringBuilder sbtitle = new StringBuilder(title, 4096);
 
@@ -17381,6 +19749,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTabBookCtrl_getSelectedPage(string guitabbookctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTabBookCtrl_getSelectedPage'" + string.Format("\"{0}\" ", guitabbookctrl));
             StringBuilder sbguitabbookctrl = new StringBuilder(guitabbookctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTabBookCtrl_getSelectedPage(sbguitabbookctrl);
@@ -17393,6 +19763,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTabBookCtrl_selectPage(string guitabbookctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTabBookCtrl_selectPage'" + string.Format("\"{0}\" \"{1}\" ", guitabbookctrl, index));
             StringBuilder sbguitabbookctrl = new StringBuilder(guitabbookctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTabBookCtrl_selectPage(sbguitabbookctrl, index);
@@ -17404,6 +19776,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTabPageCtrl_select(string guitabpagectrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTabPageCtrl_select'" + string.Format("\"{0}\" ", guitabpagectrl));
             StringBuilder sbguitabpagectrl = new StringBuilder(guitabpagectrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTabPageCtrl_select(sbguitabpagectrl);
@@ -17423,6 +19797,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextCtrl_setText(string guitextctrl, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextCtrl_setText'" + string.Format("\"{0}\" \"{1}\" ", guitextctrl, text));
             StringBuilder sbguitextctrl = new StringBuilder(guitextctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -17442,6 +19818,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextCtrl_setTextID(string guitextctrl, string textID)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextCtrl_setTextID'" + string.Format("\"{0}\" \"{1}\" ", guitextctrl, textID));
             StringBuilder sbguitextctrl = new StringBuilder(guitextctrl, 1024);
             StringBuilder sbtextID = new StringBuilder(textID, 4096);
 
@@ -17459,6 +19837,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextEditCtrl_clearSelectedText(string guitexteditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextEditCtrl_clearSelectedText'" + string.Format("\"{0}\" ", guitexteditctrl));
             StringBuilder sbguitexteditctrl = new StringBuilder(guitexteditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextEditCtrl_clearSelectedText(sbguitexteditctrl);
@@ -17475,6 +19855,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextEditCtrl_forceValidateText(string guitexteditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextEditCtrl_forceValidateText'" + string.Format("\"{0}\" ", guitexteditctrl));
             StringBuilder sbguitexteditctrl = new StringBuilder(guitexteditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextEditCtrl_forceValidateText(sbguitexteditctrl);
@@ -17492,6 +19874,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTextEditCtrl_getCursorPos(string guitexteditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextEditCtrl_getCursorPos'" + string.Format("\"{0}\" ", guitexteditctrl));
             StringBuilder sbguitexteditctrl = new StringBuilder(guitexteditctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTextEditCtrl_getCursorPos(sbguitexteditctrl);
@@ -17509,6 +19893,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTextEditCtrl_getText(string guitexteditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextEditCtrl_getText'" + string.Format("\"{0}\" ", guitexteditctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitexteditctrl = new StringBuilder(guitexteditctrl, 1024);
 
@@ -17528,6 +19914,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTextEditCtrl_isAllTextSelected(string guitexteditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextEditCtrl_isAllTextSelected'" + string.Format("\"{0}\" ", guitexteditctrl));
             StringBuilder sbguitexteditctrl = new StringBuilder(guitexteditctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTextEditCtrl_isAllTextSelected(sbguitexteditctrl) >= 1;
@@ -17544,6 +19932,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextEditCtrl_selectAllText(string guitexteditctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextEditCtrl_selectAllText'" + string.Format("\"{0}\" ", guitexteditctrl));
             StringBuilder sbguitexteditctrl = new StringBuilder(guitexteditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextEditCtrl_selectAllText(sbguitexteditctrl);
@@ -17563,6 +19953,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextEditCtrl_setCursorPos(string guitexteditctrl, int position)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextEditCtrl_setCursorPos'" + string.Format("\"{0}\" \"{1}\" ", guitexteditctrl, position));
             StringBuilder sbguitexteditctrl = new StringBuilder(guitexteditctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextEditCtrl_setCursorPos(sbguitexteditctrl, position);
@@ -17582,6 +19974,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextEditCtrl_setText(string guitexteditctrl, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextEditCtrl_setText'" + string.Format("\"{0}\" \"{1}\" ", guitexteditctrl, text));
             StringBuilder sbguitexteditctrl = new StringBuilder(guitexteditctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -17611,6 +20005,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTextListCtrl_addRow(string guitextlistctrl, int id, string text, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_addRow'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guitextlistctrl, id, text, index));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -17628,6 +20024,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_clear(string guitextlistctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_clear'" + string.Format("\"{0}\" ", guitextlistctrl));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_clear(sbguitextlistctrl);
@@ -17644,6 +20042,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_clearSelection(string guitextlistctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_clearSelection'" + string.Format("\"{0}\" ", guitextlistctrl));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_clearSelection(sbguitextlistctrl);
@@ -17664,6 +20064,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTextListCtrl_findTextIndex(string guitextlistctrl, string needle)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_findTextIndex'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, needle));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
             StringBuilder sbneedle = new StringBuilder(needle, 4096);
 
@@ -17685,6 +20087,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTextListCtrl_getRowId(string guitextlistctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_getRowId'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, index));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTextListCtrl_getRowId(sbguitextlistctrl, index);
@@ -17704,6 +20108,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTextListCtrl_getRowNumById(string guitextlistctrl, int id)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_getRowNumById'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, id));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTextListCtrl_getRowNumById(sbguitextlistctrl, id);
@@ -17724,6 +20130,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTextListCtrl_getRowText(string guitextlistctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_getRowText'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
@@ -17745,6 +20153,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTextListCtrl_getRowTextById(string guitextlistctrl, int id)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_getRowTextById'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, id));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
@@ -17764,6 +20174,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTextListCtrl_getSelectedId(string guitextlistctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_getSelectedId'" + string.Format("\"{0}\" ", guitextlistctrl));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTextListCtrl_getSelectedId(sbguitextlistctrl);
@@ -17781,6 +20193,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTextListCtrl_getSelectedRow(string guitextlistctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_getSelectedRow'" + string.Format("\"{0}\" ", guitextlistctrl));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTextListCtrl_getSelectedRow(sbguitextlistctrl);
@@ -17801,6 +20215,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTextListCtrl_isRowActive(string guitextlistctrl, int rowNum)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_isRowActive'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, rowNum));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTextListCtrl_isRowActive(sbguitextlistctrl, rowNum) >= 1;
@@ -17820,6 +20236,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_removeRow(string guitextlistctrl, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_removeRow'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, index));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_removeRow(sbguitextlistctrl, index);
@@ -17839,6 +20257,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_removeRowById(string guitextlistctrl, int id)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_removeRowById'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, id));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_removeRowById(sbguitextlistctrl, id);
@@ -17856,6 +20276,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTextListCtrl_rowCount(string guitextlistctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_rowCount'" + string.Format("\"{0}\" ", guitextlistctrl));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTextListCtrl_rowCount(sbguitextlistctrl);
@@ -17875,6 +20297,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_scrollVisible(string guitextlistctrl, int rowNum)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_scrollVisible'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, rowNum));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_scrollVisible(sbguitextlistctrl, rowNum);
@@ -17897,6 +20321,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_setRowActive(string guitextlistctrl, int rowNum, bool active)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_setRowActive'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitextlistctrl, rowNum, active));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_setRowActive(sbguitextlistctrl, rowNum, active);
@@ -17919,6 +20345,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_setRowById(string guitextlistctrl, int id, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_setRowById'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitextlistctrl, id, text));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -17939,6 +20367,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_setSelectedById(string guitextlistctrl, int id)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_setSelectedById'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, id));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_setSelectedById(sbguitextlistctrl, id);
@@ -17957,6 +20387,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_setSelectedRow(string guitextlistctrl, int rowNum)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_setSelectedRow'" + string.Format("\"{0}\" \"{1}\" ", guitextlistctrl, rowNum));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_setSelectedRow(sbguitextlistctrl, rowNum);
@@ -17979,6 +20411,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_sort(string guitextlistctrl, int columnId, bool increasing)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_sort'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitextlistctrl, columnId, increasing));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_sort(sbguitextlistctrl, columnId, increasing);
@@ -18002,6 +20436,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTextListCtrl_sortNumerical(string guitextlistctrl, int columnID, bool increasing)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTextListCtrl_sortNumerical'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitextlistctrl, columnID, increasing));
             StringBuilder sbguitextlistctrl = new StringBuilder(guitextlistctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTextListCtrl_sortNumerical(sbguitextlistctrl, columnID, increasing);
@@ -18014,6 +20450,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiTheoraCtrl_getCurrentTime(string guitheoractrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTheoraCtrl_getCurrentTime'" + string.Format("\"{0}\" ", guitheoractrl));
             StringBuilder sbguitheoractrl = new StringBuilder(guitheoractrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTheoraCtrl_getCurrentTime(sbguitheoractrl);
@@ -18026,6 +20464,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTheoraCtrl_isPlaybackDone(string guitheoractrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTheoraCtrl_isPlaybackDone'" + string.Format("\"{0}\" ", guitheoractrl));
             StringBuilder sbguitheoractrl = new StringBuilder(guitheoractrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTheoraCtrl_isPlaybackDone(sbguitheoractrl) >= 1;
@@ -18038,6 +20478,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTheoraCtrl_pause(string guitheoractrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTheoraCtrl_pause'" + string.Format("\"{0}\" ", guitheoractrl));
             StringBuilder sbguitheoractrl = new StringBuilder(guitheoractrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTheoraCtrl_pause(sbguitheoractrl);
@@ -18049,6 +20491,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTheoraCtrl_play(string guitheoractrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTheoraCtrl_play'" + string.Format("\"{0}\" ", guitheoractrl));
             StringBuilder sbguitheoractrl = new StringBuilder(guitheoractrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTheoraCtrl_play(sbguitheoractrl);
@@ -18062,6 +20506,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTheoraCtrl_setFile(string guitheoractrl, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTheoraCtrl_setFile'" + string.Format("\"{0}\" \"{1}\" ", guitheoractrl, filename));
             StringBuilder sbguitheoractrl = new StringBuilder(guitheoractrl, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
 
@@ -18075,6 +20521,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTheoraCtrl_stop(string guitheoractrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTheoraCtrl_stop'" + string.Format("\"{0}\" ", guitheoractrl));
             StringBuilder sbguitheoractrl = new StringBuilder(guitheoractrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTheoraCtrl_stop(sbguitheoractrl);
@@ -18086,6 +20534,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTickCtrl_setProcessTicks(string guitickctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTickCtrl_setProcessTicks'" + string.Format("\"{0}\" \"{1}\" ", guitickctrl, a2));
             StringBuilder sbguitickctrl = new StringBuilder(guitickctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18098,6 +20548,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiToolboxButtonCtrl_setHoverBitmap(string guitoolboxbuttonctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiToolboxButtonCtrl_setHoverBitmap'" + string.Format("\"{0}\" \"{1}\" ", guitoolboxbuttonctrl, a2));
             StringBuilder sbguitoolboxbuttonctrl = new StringBuilder(guitoolboxbuttonctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18110,6 +20562,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiToolboxButtonCtrl_setLoweredBitmap(string guitoolboxbuttonctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiToolboxButtonCtrl_setLoweredBitmap'" + string.Format("\"{0}\" \"{1}\" ", guitoolboxbuttonctrl, a2));
             StringBuilder sbguitoolboxbuttonctrl = new StringBuilder(guitoolboxbuttonctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18122,6 +20576,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiToolboxButtonCtrl_setNormalBitmap(string guitoolboxbuttonctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiToolboxButtonCtrl_setNormalBitmap'" + string.Format("\"{0}\" \"{1}\" ", guitoolboxbuttonctrl, a2));
             StringBuilder sbguitoolboxbuttonctrl = new StringBuilder(guitoolboxbuttonctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18134,6 +20590,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_addChildSelectionByValue(string guitreeviewctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_addChildSelectionByValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, a2, a3));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18151,6 +20609,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_addSelection(string guitreeviewctrl, int id, bool isLastSelection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_addSelection'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, id, isLastSelection));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_addSelection(sbguitreeviewctrl, id, isLastSelection);
@@ -18162,6 +20622,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTreeViewCtrl_buildIconTable(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_buildIconTable'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18174,6 +20636,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_buildVisibleTree(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_buildVisibleTree'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18186,6 +20650,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_cancelRename(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_cancelRename'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_cancelRename(sbguitreeviewctrl);
@@ -18197,6 +20663,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_clear(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_clear'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_clear(sbguitreeviewctrl);
@@ -18210,6 +20678,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_clearFilterText(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_clearFilterText'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_clearFilterText(sbguitreeviewctrl);
@@ -18221,6 +20691,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_clearSelection(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_clearSelection'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_clearSelection(sbguitreeviewctrl);
@@ -18232,6 +20704,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_deleteSelection(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_deleteSelection'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_deleteSelection(sbguitreeviewctrl);
@@ -18243,6 +20717,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTreeViewCtrl_editItem(string guitreeviewctrl, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_editItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guitreeviewctrl, a2, a3, a4));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18257,6 +20733,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTreeViewCtrl_expandItem(string guitreeviewctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_expandItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, a2, a3));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18274,6 +20752,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_findChildItemByName(string guitreeviewctrl, int parentId, string childName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_findChildItemByName'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, parentId, childName));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sbchildName = new StringBuilder(childName, 4096);
 
@@ -18288,6 +20768,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_findItemByName(string guitreeviewctrl, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_findItemByName'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, text));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -18300,6 +20782,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_findItemByObjectId(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_findItemByObjectId'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18314,6 +20798,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_findItemByValue(string guitreeviewctrl, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_findItemByValue'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, value));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
 
@@ -18326,6 +20812,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getChild(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getChild'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18342,6 +20830,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTreeViewCtrl_getFilterText(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getFilterText'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
@@ -18355,6 +20845,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getFirstRootItem(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getFirstRootItem'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTreeViewCtrl_getFirstRootItem(sbguitreeviewctrl);
@@ -18366,6 +20858,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getItemCount(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getItemCount'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTreeViewCtrl_getItemCount(sbguitreeviewctrl);
@@ -18377,6 +20871,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTreeViewCtrl_getItemText(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getItemText'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -18391,6 +20887,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTreeViewCtrl_getItemValue(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getItemValue'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -18405,6 +20903,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getNextSibling(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getNextSibling'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18417,6 +20917,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getParent(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getParent'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18429,6 +20931,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getPrevSibling(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getPrevSibling'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18441,6 +20945,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getSelectedItem(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getSelectedItem'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18453,6 +20959,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTreeViewCtrl_getSelectedItemList(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getSelectedItemList'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
@@ -18466,6 +20974,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getSelectedItemsCount(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getSelectedItemsCount'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTreeViewCtrl_getSelectedItemsCount(sbguitreeviewctrl);
@@ -18477,6 +20987,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_getSelectedObject(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getSelectedObject'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18490,6 +21002,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTreeViewCtrl_getSelectedObjectList(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getSelectedObjectList'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
@@ -18503,6 +21017,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTreeViewCtrl_getTextToRoot(string guitreeviewctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_getTextToRoot'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, a2, a3));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -18519,6 +21035,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_hideSelection(string guitreeviewctrl, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_hideSelection'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, state));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_hideSelection(sbguitreeviewctrl, state);
@@ -18538,6 +21056,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_insertItem(string guitreeviewctrl, int parentId, string text, string value, string icon, int normalImage, int expandedImage)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_insertItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" ", guitreeviewctrl, parentId, text, value, icon, normalImage, expandedImage));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -18554,6 +21074,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTreeViewCtrl_isItemSelected(string guitreeviewctrl, int id)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_isItemSelected'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, id));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTreeViewCtrl_isItemSelected(sbguitreeviewctrl, id) >= 1;
@@ -18565,6 +21087,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTreeViewCtrl_isParentItem(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_isParentItem'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18579,6 +21103,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_lockSelection(string guitreeviewctrl, bool xlock)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_lockSelection'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, xlock));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_lockSelection(sbguitreeviewctrl, xlock);
@@ -18590,6 +21116,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTreeViewCtrl_markItem(string guitreeviewctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_markItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, a2, a3));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18603,6 +21131,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_moveItemDown(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_moveItemDown'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18615,6 +21145,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_moveItemUp(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_moveItemUp'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18627,6 +21159,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_onRenameValidate(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_onRenameValidate'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_onRenameValidate(sbguitreeviewctrl);
@@ -18638,6 +21172,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_open(string guitreeviewctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_open'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, a2, a3));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18651,6 +21187,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_removeAllChildren(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_removeAllChildren'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18663,6 +21201,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_removeChildSelectionByValue(string guitreeviewctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_removeChildSelectionByValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, a2, a3));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18676,6 +21216,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTreeViewCtrl_removeItem(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_removeItem'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18688,6 +21230,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_removeSelection(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_removeSelection'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18700,6 +21244,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_scrollVisible(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_scrollVisible'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18712,6 +21258,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnGuiTreeViewCtrl_scrollVisibleByObjectId(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_scrollVisibleByObjectId'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18724,6 +21272,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnGuiTreeViewCtrl_selectItem(string guitreeviewctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_selectItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, a2, a3));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18737,6 +21287,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_setDebug(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_setDebug'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18753,6 +21305,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_setFilterText(string guitreeviewctrl, string pattern)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_setFilterText'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, pattern));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sbpattern = new StringBuilder(pattern, 4096);
 
@@ -18765,6 +21319,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_setItemImages(string guitreeviewctrl, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_setItemImages'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", guitreeviewctrl, a2, a3, a4));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18779,6 +21335,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_setItemTooltip(string guitreeviewctrl, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_setItemTooltip'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", guitreeviewctrl, a2, a3));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18792,6 +21350,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_showItemRenameCtrl(string guitreeviewctrl, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_showItemRenameCtrl'" + string.Format("\"{0}\" \"{1}\" ", guitreeviewctrl, a2));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18804,6 +21364,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_sort(string guitreeviewctrl, string a2, string a3, string a4, string a5)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_sort'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", guitreeviewctrl, a2, a3, a4, a5));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -18819,6 +21381,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_toggleHideSelection(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_toggleHideSelection'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_toggleHideSelection(sbguitreeviewctrl);
@@ -18830,6 +21394,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiTreeViewCtrl_toggleLockSelection(string guitreeviewctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTreeViewCtrl_toggleLockSelection'" + string.Format("\"{0}\" ", guitreeviewctrl));
             StringBuilder sbguitreeviewctrl = new StringBuilder(guitreeviewctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiTreeViewCtrl_toggleLockSelection(sbguitreeviewctrl);
@@ -18843,6 +21409,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnGuiTSCtrl_calculateViewDistance(string guitsctrl, float radius)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTSCtrl_calculateViewDistance'" + string.Format("\"{0}\" \"{1}\" ", guitsctrl, radius));
             StringBuilder sbguitsctrl = new StringBuilder(guitsctrl, 1024);
 
             return SafeNativeMethods.mwle_fnGuiTSCtrl_calculateViewDistance(sbguitsctrl, radius);
@@ -18855,6 +21423,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTSCtrl_getWorldToScreenScale(string guitsctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTSCtrl_getWorldToScreenScale'" + string.Format("\"{0}\" ", guitsctrl));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguitsctrl = new StringBuilder(guitsctrl, 1024);
 
@@ -18870,6 +21440,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTSCtrl_project(string guitsctrl, string worldPosition)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTSCtrl_project'" + string.Format("\"{0}\" \"{1}\" ", guitsctrl, worldPosition));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguitsctrl = new StringBuilder(guitsctrl, 1024);
             StringBuilder sbworldPosition = new StringBuilder(worldPosition, 1024);
@@ -18887,6 +21459,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnGuiTSCtrl_unproject(string guitsctrl, string screenPosition)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiTSCtrl_unproject'" + string.Format("\"{0}\" \"{1}\" ", guitsctrl, screenPosition));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbguitsctrl = new StringBuilder(guitsctrl, 1024);
             StringBuilder sbscreenPosition = new StringBuilder(screenPosition, 1024);
@@ -18901,6 +21475,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiVariableInspector_loadVars(string guivariableinspector, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiVariableInspector_loadVars'" + string.Format("\"{0}\" \"{1}\" ", guivariableinspector, a2));
             StringBuilder sbguivariableinspector = new StringBuilder(guivariableinspector, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -18913,6 +21489,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiWindowCtrl_attachTo(string guiwindowctrl, string window)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiWindowCtrl_attachTo'" + string.Format("\"{0}\" \"{1}\" ", guiwindowctrl, window));
             StringBuilder sbguiwindowctrl = new StringBuilder(guiwindowctrl, 1024);
             StringBuilder sbwindow = new StringBuilder(window, 1024);
 
@@ -18925,6 +21503,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiWindowCtrl_selectWindow(string guiwindowctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiWindowCtrl_selectWindow'" + string.Format("\"{0}\" ", guiwindowctrl));
             StringBuilder sbguiwindowctrl = new StringBuilder(guiwindowctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiWindowCtrl_selectWindow(sbguiwindowctrl);
@@ -18936,6 +21516,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiWindowCtrl_setCollapseGroup(string guiwindowctrl, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiWindowCtrl_setCollapseGroup'" + string.Format("\"{0}\" \"{1}\" ", guiwindowctrl, state));
             StringBuilder sbguiwindowctrl = new StringBuilder(guiwindowctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiWindowCtrl_setCollapseGroup(sbguiwindowctrl, state);
@@ -18947,6 +21529,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnGuiWindowCtrl_toggleCollapseGroup(string guiwindowctrl)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnGuiWindowCtrl_toggleCollapseGroup'" + string.Format("\"{0}\" ", guiwindowctrl));
             StringBuilder sbguiwindowctrl = new StringBuilder(guiwindowctrl, 1024);
 
             SafeNativeMethods.mwle_fnGuiWindowCtrl_toggleCollapseGroup(sbguiwindowctrl);
@@ -18978,6 +21562,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnHTTPObject_get(string httpobject, string Address, string requirstURI, string query)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnHTTPObject_get'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", httpobject, Address, requirstURI, query));
             StringBuilder sbhttpobject = new StringBuilder(httpobject, 1024);
             StringBuilder sbAddress = new StringBuilder(Address, 4096);
             StringBuilder sbrequirstURI = new StringBuilder(requirstURI, 4096);
@@ -19015,6 +21601,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnHTTPObject_post(string httpobject, string Address, string requirstURI, string query, string post)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnHTTPObject_post'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", httpobject, Address, requirstURI, query, post));
             StringBuilder sbhttpobject = new StringBuilder(httpobject, 1024);
             StringBuilder sbAddress = new StringBuilder(Address, 4096);
             StringBuilder sbrequirstURI = new StringBuilder(requirstURI, 4096);
@@ -19046,6 +21634,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnInteriorInstance_changeMaterial(string interiorinstance, string mapTo, string oldMat, string newMat)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnInteriorInstance_changeMaterial'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", interiorinstance, mapTo, oldMat, newMat));
             StringBuilder sbinteriorinstance = new StringBuilder(interiorinstance, 1024);
             StringBuilder sbmapTo = new StringBuilder(mapTo, 4096);
             StringBuilder sboldMat = new StringBuilder(oldMat, 1024);
@@ -19067,6 +21657,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnInteriorInstance_exportToCollada(string interiorinstance, bool bakeTransform)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnInteriorInstance_exportToCollada'" + string.Format("\"{0}\" \"{1}\" ", interiorinstance, bakeTransform));
             StringBuilder sbinteriorinstance = new StringBuilder(interiorinstance, 1024);
 
             SafeNativeMethods.mwle_fnInteriorInstance_exportToCollada(sbinteriorinstance, bakeTransform);
@@ -19085,6 +21677,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnInteriorInstance_getModelFile(string interiorinstance)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnInteriorInstance_getModelFile'" + string.Format("\"{0}\" ", interiorinstance));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbinteriorinstance = new StringBuilder(interiorinstance, 1024);
 
@@ -19103,6 +21697,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnInteriorInstance_getNumDetailLevels(string interiorinstance)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnInteriorInstance_getNumDetailLevels'" + string.Format("\"{0}\" ", interiorinstance));
             StringBuilder sbinteriorinstance = new StringBuilder(interiorinstance, 1024);
 
             return SafeNativeMethods.mwle_fnInteriorInstance_getNumDetailLevels(sbinteriorinstance);
@@ -19124,6 +21720,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnInteriorInstance_getTargetCount(string interiorinstance, uint detailLevel)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnInteriorInstance_getTargetCount'" + string.Format("\"{0}\" \"{1}\" ", interiorinstance, detailLevel));
             StringBuilder sbinteriorinstance = new StringBuilder(interiorinstance, 1024);
 
             return SafeNativeMethods.mwle_fnInteriorInstance_getTargetCount(sbinteriorinstance, detailLevel);
@@ -19146,6 +21744,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnInteriorInstance_getTargetName(string interiorinstance, int detailLevel, int targetNum)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnInteriorInstance_getTargetName'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", interiorinstance, detailLevel, targetNum));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbinteriorinstance = new StringBuilder(interiorinstance, 1024);
 
@@ -19169,6 +21769,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnInteriorInstance_setAlarmMode(string interiorinstance, string alarmMode)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnInteriorInstance_setAlarmMode'" + string.Format("\"{0}\" \"{1}\" ", interiorinstance, alarmMode));
             StringBuilder sbinteriorinstance = new StringBuilder(interiorinstance, 1024);
             StringBuilder sbalarmMode = new StringBuilder(alarmMode, 4096);
 
@@ -19187,6 +21789,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnInteriorInstance_setDetailLevel(string interiorinstance, int level)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnInteriorInstance_setDetailLevel'" + string.Format("\"{0}\" \"{1}\" ", interiorinstance, level));
             StringBuilder sbinteriorinstance = new StringBuilder(interiorinstance, 1024);
 
             SafeNativeMethods.mwle_fnInteriorInstance_setDetailLevel(sbinteriorinstance, level);
@@ -19205,6 +21809,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnItem_getLastStickyNormal(string item)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnItem_getLastStickyNormal'" + string.Format("\"{0}\" ", item));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbitem = new StringBuilder(item, 1024);
 
@@ -19225,6 +21831,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnItem_getLastStickyPos(string item)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnItem_getLastStickyPos'" + string.Format("\"{0}\" ", item));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbitem = new StringBuilder(item, 1024);
 
@@ -19244,6 +21852,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnItem_isAtRest(string item)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnItem_isAtRest'" + string.Format("\"{0}\" ", item));
             StringBuilder sbitem = new StringBuilder(item, 1024);
 
             return SafeNativeMethods.mwle_fnItem_isAtRest(sbitem) >= 1;
@@ -19262,6 +21872,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnItem_isRotating(string item)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnItem_isRotating'" + string.Format("\"{0}\" ", item));
             StringBuilder sbitem = new StringBuilder(item, 1024);
 
             return SafeNativeMethods.mwle_fnItem_isRotating(sbitem) >= 1;
@@ -19280,6 +21892,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnItem_isStatic(string item)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnItem_isStatic'" + string.Format("\"{0}\" ", item));
             StringBuilder sbitem = new StringBuilder(item, 1024);
 
             return SafeNativeMethods.mwle_fnItem_isStatic(sbitem) >= 1;
@@ -19306,6 +21920,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnItem_setCollisionTimeout(string item, int ignoreColObj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnItem_setCollisionTimeout'" + string.Format("\"{0}\" \"{1}\" ", item, ignoreColObj));
             StringBuilder sbitem = new StringBuilder(item, 1024);
 
             return SafeNativeMethods.mwle_fnItem_setCollisionTimeout(sbitem, ignoreColObj) >= 1;
@@ -19323,6 +21939,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnLangTable_addLanguage(string langtable, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLangTable_addLanguage'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", langtable, a2, a3));
             StringBuilder sblangtable = new StringBuilder(langtable, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -19338,6 +21956,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnLangTable_getCurrentLanguage(string langtable)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLangTable_getCurrentLanguage'" + string.Format("\"{0}\" ", langtable));
             StringBuilder sblangtable = new StringBuilder(langtable, 1024);
 
             return SafeNativeMethods.mwle_fnLangTable_getCurrentLanguage(sblangtable);
@@ -19352,6 +21972,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnLangTable_getLangName(string langtable, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLangTable_getLangName'" + string.Format("\"{0}\" \"{1}\" ", langtable, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sblangtable = new StringBuilder(langtable, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -19368,6 +21990,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnLangTable_getNumLang(string langtable)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLangTable_getNumLang'" + string.Format("\"{0}\" ", langtable));
             StringBuilder sblangtable = new StringBuilder(langtable, 1024);
 
             return SafeNativeMethods.mwle_fnLangTable_getNumLang(sblangtable);
@@ -19385,6 +22009,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnLangTable_getString(string langtable, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLangTable_getString'" + string.Format("\"{0}\" \"{1}\" ", langtable, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sblangtable = new StringBuilder(langtable, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -19402,6 +22028,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLangTable_setCurrentLanguage(string langtable, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLangTable_setCurrentLanguage'" + string.Format("\"{0}\" \"{1}\" ", langtable, a2));
             StringBuilder sblangtable = new StringBuilder(langtable, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -19416,6 +22044,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLangTable_setDefaultLanguage(string langtable, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLangTable_setDefaultLanguage'" + string.Format("\"{0}\" \"{1}\" ", langtable, a2));
             StringBuilder sblangtable = new StringBuilder(langtable, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -19428,6 +22058,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLightBase_pauseAnimation(string lightbase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLightBase_pauseAnimation'" + string.Format("\"{0}\" ", lightbase));
             StringBuilder sblightbase = new StringBuilder(lightbase, 1024);
 
             SafeNativeMethods.mwle_fnLightBase_pauseAnimation(sblightbase);
@@ -19442,6 +22074,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLightBase_playAnimation(string lightbase, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLightBase_playAnimation'" + string.Format("\"{0}\" \"{1}\" ", lightbase, a2));
             StringBuilder sblightbase = new StringBuilder(lightbase, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -19465,6 +22099,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLightBase_setLightEnabled(string lightbase, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLightBase_setLightEnabled'" + string.Format("\"{0}\" \"{1}\" ", lightbase, state));
             StringBuilder sblightbase = new StringBuilder(lightbase, 1024);
 
             SafeNativeMethods.mwle_fnLightBase_setLightEnabled(sblightbase, state);
@@ -19490,6 +22126,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLightDescription_apply(string lightdescription)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLightDescription_apply'" + string.Format("\"{0}\" ", lightdescription));
             StringBuilder sblightdescription = new StringBuilder(lightdescription, 1024);
 
             SafeNativeMethods.mwle_fnLightDescription_apply(sblightdescription);
@@ -19503,6 +22141,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLightFlareData_apply(string lightflaredata)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLightFlareData_apply'" + string.Format("\"{0}\" ", lightflaredata));
             StringBuilder sblightflaredata = new StringBuilder(lightflaredata, 1024);
 
             SafeNativeMethods.mwle_fnLightFlareData_apply(sblightflaredata);
@@ -19515,6 +22155,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLightning_strikeObject(string lightning, int id)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLightning_strikeObject'" + string.Format("\"{0}\" \"{1}\" ", lightning, id));
             StringBuilder sblightning = new StringBuilder(lightning, 1024);
 
             SafeNativeMethods.mwle_fnLightning_strikeObject(sblightning, id);
@@ -19531,6 +22173,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLightning_strikeRandomPoint(string lightning)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLightning_strikeRandomPoint'" + string.Format("\"{0}\" ", lightning));
             StringBuilder sblightning = new StringBuilder(lightning, 1024);
 
             SafeNativeMethods.mwle_fnLightning_strikeRandomPoint(sblightning);
@@ -19548,6 +22192,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnLightning_warningFlashes(string lightning)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnLightning_warningFlashes'" + string.Format("\"{0}\" ", lightning));
             StringBuilder sblightning = new StringBuilder(lightning, 1024);
 
             SafeNativeMethods.mwle_fnLightning_warningFlashes(sblightning);
@@ -19560,6 +22206,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMaterial_dumpInstances(string material)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMaterial_dumpInstances'" + string.Format("\"{0}\" ", material));
             StringBuilder sbmaterial = new StringBuilder(material, 1024);
 
             SafeNativeMethods.mwle_fnMaterial_dumpInstances(sbmaterial);
@@ -19572,6 +22220,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMaterial_flush(string material)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMaterial_flush'" + string.Format("\"{0}\" ", material));
             StringBuilder sbmaterial = new StringBuilder(material, 1024);
 
             SafeNativeMethods.mwle_fnMaterial_flush(sbmaterial);
@@ -19583,6 +22233,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnMaterial_getAnimFlags(string material, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMaterial_getAnimFlags'" + string.Format("\"{0}\" \"{1}\" ", material, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbmaterial = new StringBuilder(material, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -19597,6 +22249,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnMaterial_getFilename(string material)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMaterial_getFilename'" + string.Format("\"{0}\" ", material));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbmaterial = new StringBuilder(material, 1024);
 
@@ -19611,6 +22265,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnMaterial_isAutoGenerated(string material)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMaterial_isAutoGenerated'" + string.Format("\"{0}\" ", material));
             StringBuilder sbmaterial = new StringBuilder(material, 1024);
 
             return SafeNativeMethods.mwle_fnMaterial_isAutoGenerated(sbmaterial) >= 1;
@@ -19623,6 +22279,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMaterial_reload(string material)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMaterial_reload'" + string.Format("\"{0}\" ", material));
             StringBuilder sbmaterial = new StringBuilder(material, 1024);
 
             SafeNativeMethods.mwle_fnMaterial_reload(sbmaterial);
@@ -19635,6 +22293,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMaterial_setAutoGenerated(string material, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMaterial_setAutoGenerated'" + string.Format("\"{0}\" \"{1}\" ", material, a2));
             StringBuilder sbmaterial = new StringBuilder(material, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -19647,6 +22307,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMECreateUndoAction_addObject(string mecreateundoaction, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMECreateUndoAction_addObject'" + string.Format("\"{0}\" \"{1}\" ", mecreateundoaction, a2));
             StringBuilder sbmecreateundoaction = new StringBuilder(mecreateundoaction, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -19659,6 +22321,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMEDeleteUndoAction_deleteObject(string medeleteundoaction, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMEDeleteUndoAction_deleteObject'" + string.Format("\"{0}\" \"{1}\" ", medeleteundoaction, a2));
             StringBuilder sbmedeleteundoaction = new StringBuilder(medeleteundoaction, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -19671,6 +22335,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMenuBar_attachToCanvas(string menubar, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMenuBar_attachToCanvas'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", menubar, a2, a3));
             StringBuilder sbmenubar = new StringBuilder(menubar, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -19684,6 +22350,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMenuBar_insert(string menubar, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMenuBar_insert'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", menubar, a2, a3));
             StringBuilder sbmenubar = new StringBuilder(menubar, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -19697,6 +22365,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMenuBar_removeFromCanvas(string menubar)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMenuBar_removeFromCanvas'" + string.Format("\"{0}\" ", menubar));
             StringBuilder sbmenubar = new StringBuilder(menubar, 1024);
 
             SafeNativeMethods.mwle_fnMenuBar_removeFromCanvas(sbmenubar);
@@ -19711,6 +22381,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMeshRoad_postApply(string meshroad)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMeshRoad_postApply'" + string.Format("\"{0}\" ", meshroad));
             StringBuilder sbmeshroad = new StringBuilder(meshroad, 1024);
 
             SafeNativeMethods.mwle_fnMeshRoad_postApply(sbmeshroad);
@@ -19724,6 +22396,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMeshRoad_regenerate(string meshroad)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMeshRoad_regenerate'" + string.Format("\"{0}\" ", meshroad));
             StringBuilder sbmeshroad = new StringBuilder(meshroad, 1024);
 
             SafeNativeMethods.mwle_fnMeshRoad_regenerate(sbmeshroad);
@@ -19737,6 +22411,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMeshRoad_setNodeDepth(string meshroad, int idx, float meters)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMeshRoad_setNodeDepth'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", meshroad, idx, meters));
             StringBuilder sbmeshroad = new StringBuilder(meshroad, 1024);
 
             SafeNativeMethods.mwle_fnMeshRoad_setNodeDepth(sbmeshroad, idx, meters);
@@ -19748,6 +22424,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMessage_addReference(string message)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessage_addReference'" + string.Format("\"{0}\" ", message));
             StringBuilder sbmessage = new StringBuilder(message, 1024);
 
             SafeNativeMethods.mwle_fnMessage_addReference(sbmessage);
@@ -19759,6 +22437,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMessage_freeReference(string message)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessage_freeReference'" + string.Format("\"{0}\" ", message));
             StringBuilder sbmessage = new StringBuilder(message, 1024);
 
             SafeNativeMethods.mwle_fnMessage_freeReference(sbmessage);
@@ -19770,6 +22450,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnMessage_getType(string message)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessage_getType'" + string.Format("\"{0}\" ", message));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbmessage = new StringBuilder(message, 1024);
 
@@ -19786,6 +22468,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMessageVector_clear(string messagevector)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_clear'" + string.Format("\"{0}\" ", messagevector));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
             SafeNativeMethods.mwle_fnMessageVector_clear(sbmessagevector);
@@ -19803,6 +22487,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnMessageVector_deleteLine(string messagevector, int deletePos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_deleteLine'" + string.Format("\"{0}\" \"{1}\" ", messagevector, deletePos));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
             return SafeNativeMethods.mwle_fnMessageVector_deleteLine(sbmessagevector, deletePos) >= 1;
@@ -19816,6 +22502,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMessageVector_dump(string messagevector, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_dump'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", messagevector, a2, a3));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -19836,6 +22524,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnMessageVector_getLineIndexByTag(string messagevector, int tag)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_getLineIndexByTag'" + string.Format("\"{0}\" \"{1}\" ", messagevector, tag));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
             return SafeNativeMethods.mwle_fnMessageVector_getLineIndexByTag(sbmessagevector, tag);
@@ -19859,6 +22549,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnMessageVector_getLineTag(string messagevector, int pos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_getLineTag'" + string.Format("\"{0}\" \"{1}\" ", messagevector, pos));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
             return SafeNativeMethods.mwle_fnMessageVector_getLineTag(sbmessagevector, pos);
@@ -19877,6 +22569,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnMessageVector_getLineText(string messagevector, int pos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_getLineText'" + string.Format("\"{0}\" \"{1}\" ", messagevector, pos));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
@@ -19897,6 +22591,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnMessageVector_getLineTextByTag(string messagevector, int tag)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_getLineTextByTag'" + string.Format("\"{0}\" \"{1}\" ", messagevector, tag));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
@@ -19915,6 +22611,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnMessageVector_getNumLines(string messagevector)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_getNumLines'" + string.Format("\"{0}\" ", messagevector));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
             return SafeNativeMethods.mwle_fnMessageVector_getNumLines(sbmessagevector);
@@ -19933,6 +22631,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnMessageVector_insertLine(string messagevector, int insertPos, string msg, int tag)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_insertLine'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", messagevector, insertPos, msg, tag));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
             StringBuilder sbmsg = new StringBuilder(msg, 4096);
 
@@ -19949,6 +22649,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnMessageVector_popBackLine(string messagevector)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_popBackLine'" + string.Format("\"{0}\" ", messagevector));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
             return SafeNativeMethods.mwle_fnMessageVector_popBackLine(sbmessagevector) >= 1;
@@ -19964,6 +22666,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnMessageVector_popFrontLine(string messagevector)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_popFrontLine'" + string.Format("\"{0}\" ", messagevector));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
 
             return SafeNativeMethods.mwle_fnMessageVector_popFrontLine(sbmessagevector) >= 1;
@@ -19981,6 +22685,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMessageVector_pushBackLine(string messagevector, string msg, int tag)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_pushBackLine'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", messagevector, msg, tag));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
             StringBuilder sbmsg = new StringBuilder(msg, 4096);
 
@@ -19999,6 +22705,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMessageVector_pushFrontLine(string messagevector, string msg, int tag)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMessageVector_pushFrontLine'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", messagevector, msg, tag));
             StringBuilder sbmessagevector = new StringBuilder(messagevector, 1024);
             StringBuilder sbmsg = new StringBuilder(msg, 4096);
 
@@ -20011,6 +22719,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnMissionArea_getArea(string missionarea)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMissionArea_getArea'" + string.Format("\"{0}\" ", missionarea));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbmissionarea = new StringBuilder(missionarea, 1024);
 
@@ -20027,6 +22737,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMissionArea_postApply(string missionarea)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMissionArea_postApply'" + string.Format("\"{0}\" ", missionarea));
             StringBuilder sbmissionarea = new StringBuilder(missionarea, 1024);
 
             SafeNativeMethods.mwle_fnMissionArea_postApply(sbmissionarea);
@@ -20044,6 +22756,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnMissionArea_setArea(string missionarea, int x, int y, int width, int height)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnMissionArea_setArea'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", missionarea, x, y, width, height));
             StringBuilder sbmissionarea = new StringBuilder(missionarea, 1024);
 
             SafeNativeMethods.mwle_fnMissionArea_setArea(sbmissionarea, x, y, width, height);
@@ -20062,6 +22776,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnNetConnection_checkMaxRate(string netconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_checkMaxRate'" + string.Format("\"{0}\" ", netconnection));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             SafeNativeMethods.mwle_fnNetConnection_checkMaxRate(sbnetconnection);
@@ -20092,6 +22808,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnNetConnection_clearPaths(string netconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_clearPaths'" + string.Format("\"{0}\" ", netconnection));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             SafeNativeMethods.mwle_fnNetConnection_clearPaths(sbnetconnection);
@@ -20118,6 +22836,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnNetConnection_connect(string netconnection, string remoteAddress)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_connect'" + string.Format("\"{0}\" \"{1}\" ", netconnection, remoteAddress));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
             StringBuilder sbremoteAddress = new StringBuilder(remoteAddress, 4096);
 
@@ -20135,6 +22855,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnNetConnection_connectLocal(string netconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_connectLocal'" + string.Format("\"{0}\" ", netconnection));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
@@ -20153,6 +22875,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnNetConnection_getAddress(string netconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_getAddress'" + string.Format("\"{0}\" ", netconnection));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
@@ -20174,6 +22898,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetConnection_getGhostID(string netconnection, int realID)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_getGhostID'" + string.Format("\"{0}\" \"{1}\" ", netconnection, realID));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             return SafeNativeMethods.mwle_fnNetConnection_getGhostID(sbnetconnection, realID);
@@ -20187,6 +22913,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetConnection_getGhostsActive(string netconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_getGhostsActive'" + string.Format("\"{0}\" ", netconnection));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             return SafeNativeMethods.mwle_fnNetConnection_getGhostsActive(sbnetconnection);
@@ -20200,6 +22928,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetConnection_getPacketLoss(string netconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_getPacketLoss'" + string.Format("\"{0}\" ", netconnection));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             return SafeNativeMethods.mwle_fnNetConnection_getPacketLoss(sbnetconnection);
@@ -20215,6 +22945,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetConnection_getPing(string netconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_getPing'" + string.Format("\"{0}\" ", netconnection));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             return SafeNativeMethods.mwle_fnNetConnection_getPing(sbnetconnection);
@@ -20239,6 +22971,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetConnection_resolveGhostID(string netconnection, int ghostID)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_resolveGhostID'" + string.Format("\"{0}\" \"{1}\" ", netconnection, ghostID));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             return SafeNativeMethods.mwle_fnNetConnection_resolveGhostID(sbnetconnection, ghostID);
@@ -20263,6 +22997,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetConnection_resolveObjectFromGhostIndex(string netconnection, int ghostID)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_resolveObjectFromGhostIndex'" + string.Format("\"{0}\" \"{1}\" ", netconnection, ghostID));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             return SafeNativeMethods.mwle_fnNetConnection_resolveObjectFromGhostIndex(sbnetconnection, ghostID);
@@ -20278,6 +23014,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnNetConnection_setSimulatedNetParams(string netconnection, float packetLoss, int delay)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_setSimulatedNetParams'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", netconnection, packetLoss, delay));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             SafeNativeMethods.mwle_fnNetConnection_setSimulatedNetParams(sbnetconnection, packetLoss, delay);
@@ -20325,6 +23063,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnNetConnection_transmitPaths(string netconnection)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetConnection_transmitPaths'" + string.Format("\"{0}\" ", netconnection));
             StringBuilder sbnetconnection = new StringBuilder(netconnection, 1024);
 
             SafeNativeMethods.mwle_fnNetConnection_transmitPaths(sbnetconnection);
@@ -20340,6 +23080,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnNetObject_clearScopeToClient(string netobject, string client)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetObject_clearScopeToClient'" + string.Format("\"{0}\" \"{1}\" ", netobject, client));
             StringBuilder sbnetobject = new StringBuilder(netobject, 1024);
             StringBuilder sbclient = new StringBuilder(client, 1024);
 
@@ -20366,6 +23108,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetObject_getClientObject(string netobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetObject_getClientObject'" + string.Format("\"{0}\" ", netobject));
             StringBuilder sbnetobject = new StringBuilder(netobject, 1024);
 
             return SafeNativeMethods.mwle_fnNetObject_getClientObject(sbnetobject);
@@ -20383,6 +23127,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetObject_getGhostID(string netobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetObject_getGhostID'" + string.Format("\"{0}\" ", netobject));
             StringBuilder sbnetobject = new StringBuilder(netobject, 1024);
 
             return SafeNativeMethods.mwle_fnNetObject_getGhostID(sbnetobject);
@@ -20407,6 +23153,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnNetObject_getServerObject(string netobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetObject_getServerObject'" + string.Format("\"{0}\" ", netobject));
             StringBuilder sbnetobject = new StringBuilder(netobject, 1024);
 
             return SafeNativeMethods.mwle_fnNetObject_getServerObject(sbnetobject);
@@ -20419,6 +23167,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnNetObject_isClientObject(string netobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetObject_isClientObject'" + string.Format("\"{0}\" ", netobject));
             StringBuilder sbnetobject = new StringBuilder(netobject, 1024);
 
             return SafeNativeMethods.mwle_fnNetObject_isClientObject(sbnetobject) >= 1;
@@ -20431,6 +23181,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnNetObject_isServerObject(string netobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetObject_isServerObject'" + string.Format("\"{0}\" ", netobject));
             StringBuilder sbnetobject = new StringBuilder(netobject, 1024);
 
             return SafeNativeMethods.mwle_fnNetObject_isServerObject(sbnetobject) >= 1;
@@ -20463,6 +23215,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnNetObject_scopeToClient(string netobject, string client)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetObject_scopeToClient'" + string.Format("\"{0}\" \"{1}\" ", netobject, client));
             StringBuilder sbnetobject = new StringBuilder(netobject, 1024);
             StringBuilder sbclient = new StringBuilder(client, 1024);
 
@@ -20479,6 +23233,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnNetObject_setScopeAlways(string netobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnNetObject_setScopeAlways'" + string.Format("\"{0}\" ", netobject));
             StringBuilder sbnetobject = new StringBuilder(netobject, 1024);
 
             SafeNativeMethods.mwle_fnNetObject_setScopeAlways(sbnetobject);
@@ -20498,6 +23254,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnParticleData_reload(string particledata)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnParticleData_reload'" + string.Format("\"{0}\" ", particledata));
             StringBuilder sbparticledata = new StringBuilder(particledata, 1024);
 
             SafeNativeMethods.mwle_fnParticleData_reload(sbparticledata);
@@ -20517,6 +23275,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnParticleEmitterData_reload(string particleemitterdata)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnParticleEmitterData_reload'" + string.Format("\"{0}\" ", particleemitterdata));
             StringBuilder sbparticleemitterdata = new StringBuilder(particleemitterdata, 1024);
 
             SafeNativeMethods.mwle_fnParticleEmitterData_reload(sbparticleemitterdata);
@@ -20529,6 +23289,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnParticleEmitterNode_setActive(string particleemitternode, bool active)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnParticleEmitterNode_setActive'" + string.Format("\"{0}\" \"{1}\" ", particleemitternode, active));
             StringBuilder sbparticleemitternode = new StringBuilder(particleemitternode, 1024);
 
             SafeNativeMethods.mwle_fnParticleEmitterNode_setActive(sbparticleemitternode, active);
@@ -20545,6 +23307,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnParticleEmitterNode_setEmitterDataBlock(string particleemitternode, string emitterDatablock)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnParticleEmitterNode_setEmitterDataBlock'" + string.Format("\"{0}\" \"{1}\" ", particleemitternode, emitterDatablock));
             StringBuilder sbparticleemitternode = new StringBuilder(particleemitternode, 1024);
             StringBuilder sbemitterDatablock = new StringBuilder(emitterDatablock, 1024);
 
@@ -20561,6 +23325,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathCamera_popFront(string pathcamera)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathCamera_popFront'" + string.Format("\"{0}\" ", pathcamera));
             StringBuilder sbpathcamera = new StringBuilder(pathcamera, 1024);
 
             SafeNativeMethods.mwle_fnPathCamera_popFront(sbpathcamera);
@@ -20589,6 +23355,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathCamera_pushBack(string pathcamera, string transform, float speed, string type, string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathCamera_pushBack'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", pathcamera, transform, speed, type, path));
             StringBuilder sbpathcamera = new StringBuilder(pathcamera, 1024);
             StringBuilder sbtransform = new StringBuilder(transform, 1024);
             StringBuilder sbtype = new StringBuilder(type, 4096);
@@ -20620,6 +23388,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathCamera_pushFront(string pathcamera, string transform, float speed, string type, string path)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathCamera_pushFront'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", pathcamera, transform, speed, type, path));
             StringBuilder sbpathcamera = new StringBuilder(pathcamera, 1024);
             StringBuilder sbtransform = new StringBuilder(transform, 1024);
             StringBuilder sbtype = new StringBuilder(type, 4096);
@@ -20646,6 +23416,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathCamera_reset(string pathcamera, float speed)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathCamera_reset'" + string.Format("\"{0}\" \"{1}\" ", pathcamera, speed));
             StringBuilder sbpathcamera = new StringBuilder(pathcamera, 1024);
 
             SafeNativeMethods.mwle_fnPathCamera_reset(sbpathcamera, speed);
@@ -20664,6 +23436,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathCamera_setPosition(string pathcamera, float position)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathCamera_setPosition'" + string.Format("\"{0}\" \"{1}\" ", pathcamera, position));
             StringBuilder sbpathcamera = new StringBuilder(pathcamera, 1024);
 
             SafeNativeMethods.mwle_fnPathCamera_setPosition(sbpathcamera, position);
@@ -20684,6 +23458,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathCamera_setState(string pathcamera, string newState)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathCamera_setState'" + string.Format("\"{0}\" \"{1}\" ", pathcamera, newState));
             StringBuilder sbpathcamera = new StringBuilder(pathcamera, 1024);
             StringBuilder sbnewState = new StringBuilder(newState, 4096);
 
@@ -20706,6 +23482,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathCamera_setTarget(string pathcamera, float position)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathCamera_setTarget'" + string.Format("\"{0}\" \"{1}\" ", pathcamera, position));
             StringBuilder sbpathcamera = new StringBuilder(pathcamera, 1024);
 
             SafeNativeMethods.mwle_fnPathCamera_setTarget(sbpathcamera, position);
@@ -20717,6 +23495,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathedInterior_setPathPosition(string pathedinterior, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathedInterior_setPathPosition'" + string.Format("\"{0}\" \"{1}\" ", pathedinterior, a2));
             StringBuilder sbpathedinterior = new StringBuilder(pathedinterior, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -20729,6 +23509,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPathedInterior_setTargetPosition(string pathedinterior, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPathedInterior_setTargetPosition'" + string.Format("\"{0}\" \"{1}\" ", pathedinterior, a2));
             StringBuilder sbpathedinterior = new StringBuilder(pathedinterior, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -20742,6 +23524,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPersistenceManager_clearAll(string persistencemanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_clearAll'" + string.Format("\"{0}\" ", persistencemanager));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
 
             SafeNativeMethods.mwle_fnPersistenceManager_clearAll(sbpersistencemanager);
@@ -20754,6 +23538,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPersistenceManager_deleteObjectsFromFile(string persistencemanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_deleteObjectsFromFile'" + string.Format("\"{0}\" \"{1}\" ", persistencemanager, a2));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -20767,6 +23553,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnPersistenceManager_getDirtyObject(string persistencemanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_getDirtyObject'" + string.Format("\"{0}\" \"{1}\" ", persistencemanager, a2));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -20780,6 +23568,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnPersistenceManager_getDirtyObjectCount(string persistencemanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_getDirtyObjectCount'" + string.Format("\"{0}\" ", persistencemanager));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
 
             return SafeNativeMethods.mwle_fnPersistenceManager_getDirtyObjectCount(sbpersistencemanager);
@@ -20792,6 +23582,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPersistenceManager_hasDirty(string persistencemanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_hasDirty'" + string.Format("\"{0}\" ", persistencemanager));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
 
             return SafeNativeMethods.mwle_fnPersistenceManager_hasDirty(sbpersistencemanager) >= 1;
@@ -20804,6 +23596,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPersistenceManager_isDirty(string persistencemanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_isDirty'" + string.Format("\"{0}\" \"{1}\" ", persistencemanager, a2));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -20817,6 +23611,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPersistenceManager_listDirty(string persistencemanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_listDirty'" + string.Format("\"{0}\" ", persistencemanager));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
 
             SafeNativeMethods.mwle_fnPersistenceManager_listDirty(sbpersistencemanager);
@@ -20829,6 +23625,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPersistenceManager_removeDirty(string persistencemanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_removeDirty'" + string.Format("\"{0}\" \"{1}\" ", persistencemanager, a2));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -20842,6 +23640,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPersistenceManager_removeField(string persistencemanager, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_removeField'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", persistencemanager, a2, a3));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -20857,6 +23657,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPersistenceManager_removeObjectFromFile(string persistencemanager, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_removeObjectFromFile'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", persistencemanager, a2, a3));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -20871,6 +23673,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPersistenceManager_saveDirty(string persistencemanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_saveDirty'" + string.Format("\"{0}\" ", persistencemanager));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
 
             return SafeNativeMethods.mwle_fnPersistenceManager_saveDirty(sbpersistencemanager) >= 1;
@@ -20883,6 +23687,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPersistenceManager_saveDirtyObject(string persistencemanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_saveDirtyObject'" + string.Format("\"{0}\" \"{1}\" ", persistencemanager, a2));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -20896,6 +23702,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPersistenceManager_setDirty(string persistencemanager, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPersistenceManager_setDirty'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", persistencemanager, a2, a3));
             StringBuilder sbpersistencemanager = new StringBuilder(persistencemanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -20915,6 +23723,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPhysicalZone_activate(string physicalzone)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicalZone_activate'" + string.Format("\"{0}\" ", physicalzone));
             StringBuilder sbphysicalzone = new StringBuilder(physicalzone, 1024);
 
             SafeNativeMethods.mwle_fnPhysicalZone_activate(sbphysicalzone);
@@ -20932,6 +23742,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPhysicalZone_deactivate(string physicalzone)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicalZone_deactivate'" + string.Format("\"{0}\" ", physicalzone));
             StringBuilder sbphysicalzone = new StringBuilder(physicalzone, 1024);
 
             SafeNativeMethods.mwle_fnPhysicalZone_deactivate(sbphysicalzone);
@@ -20947,6 +23759,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPhysicsDebrisData_preload(string physicsdebrisdata)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicsDebrisData_preload'" + string.Format("\"{0}\" ", physicsdebrisdata));
             StringBuilder sbphysicsdebrisdata = new StringBuilder(physicsdebrisdata, 1024);
 
             SafeNativeMethods.mwle_fnPhysicsDebrisData_preload(sbphysicsdebrisdata);
@@ -20964,6 +23778,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPhysicsForce_attach(string physicsforce, string start, string direction, float maxDist)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicsForce_attach'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", physicsforce, start, direction, maxDist));
             StringBuilder sbphysicsforce = new StringBuilder(physicsforce, 1024);
             StringBuilder sbstart = new StringBuilder(start, 1024);
             StringBuilder sbdirection = new StringBuilder(direction, 1024);
@@ -20980,6 +23796,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPhysicsForce_detach(string physicsforce, string force)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicsForce_detach'" + string.Format("\"{0}\" \"{1}\" ", physicsforce, force));
             StringBuilder sbphysicsforce = new StringBuilder(physicsforce, 1024);
             StringBuilder sbforce = new StringBuilder(force, 1024);
 
@@ -20993,6 +23811,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPhysicsForce_isAttached(string physicsforce)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicsForce_isAttached'" + string.Format("\"{0}\" ", physicsforce));
             StringBuilder sbphysicsforce = new StringBuilder(physicsforce, 1024);
 
             return SafeNativeMethods.mwle_fnPhysicsForce_isAttached(sbphysicsforce) >= 1;
@@ -21008,6 +23828,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPhysicsShape_destroy(string physicsshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicsShape_destroy'" + string.Format("\"{0}\" ", physicsshape));
             StringBuilder sbphysicsshape = new StringBuilder(physicsshape, 1024);
 
             SafeNativeMethods.mwle_fnPhysicsShape_destroy(sbphysicsshape);
@@ -21019,6 +23841,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPhysicsShape_isDestroyed(string physicsshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicsShape_isDestroyed'" + string.Format("\"{0}\" ", physicsshape));
             StringBuilder sbphysicsshape = new StringBuilder(physicsshape, 1024);
 
             return SafeNativeMethods.mwle_fnPhysicsShape_isDestroyed(sbphysicsshape) >= 1;
@@ -21033,6 +23857,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPhysicsShape_restore(string physicsshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPhysicsShape_restore'" + string.Format("\"{0}\" ", physicsshape));
             StringBuilder sbphysicsshape = new StringBuilder(physicsshape, 1024);
 
             SafeNativeMethods.mwle_fnPhysicsShape_restore(sbphysicsshape);
@@ -21055,6 +23881,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPlayer_allowAllPoses(string player)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_allowAllPoses'" + string.Format("\"{0}\" ", player));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             SafeNativeMethods.mwle_fnPlayer_allowAllPoses(sbplayer);
@@ -21071,6 +23899,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPlayer_allowCrouching(string player, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_allowCrouching'" + string.Format("\"{0}\" \"{1}\" ", player, state));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             SafeNativeMethods.mwle_fnPlayer_allowCrouching(sbplayer, state);
@@ -21087,6 +23917,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPlayer_allowJetJumping(string player, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_allowJetJumping'" + string.Format("\"{0}\" \"{1}\" ", player, state));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             SafeNativeMethods.mwle_fnPlayer_allowJetJumping(sbplayer, state);
@@ -21103,6 +23935,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPlayer_allowJumping(string player, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_allowJumping'" + string.Format("\"{0}\" \"{1}\" ", player, state));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             SafeNativeMethods.mwle_fnPlayer_allowJumping(sbplayer, state);
@@ -21119,6 +23953,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPlayer_allowProne(string player, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_allowProne'" + string.Format("\"{0}\" \"{1}\" ", player, state));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             SafeNativeMethods.mwle_fnPlayer_allowProne(sbplayer, state);
@@ -21135,6 +23971,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPlayer_allowSprinting(string player, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_allowSprinting'" + string.Format("\"{0}\" \"{1}\" ", player, state));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             SafeNativeMethods.mwle_fnPlayer_allowSprinting(sbplayer, state);
@@ -21151,6 +23989,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPlayer_allowSwimming(string player, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_allowSwimming'" + string.Format("\"{0}\" \"{1}\" ", player, state));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             SafeNativeMethods.mwle_fnPlayer_allowSwimming(sbplayer, state);
@@ -21175,6 +24015,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPlayer_checkDismountPoint(string player, string oldPos, string pos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_checkDismountPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", player, oldPos, pos));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
             StringBuilder sboldPos = new StringBuilder(oldPos, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
@@ -21203,6 +24045,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPlayer_clearControlObject(string player)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_clearControlObject'" + string.Format("\"{0}\" ", player));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             SafeNativeMethods.mwle_fnPlayer_clearControlObject(sbplayer);
@@ -21218,6 +24062,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnPlayer_getControlObject(string player)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_getControlObject'" + string.Format("\"{0}\" ", player));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             return SafeNativeMethods.mwle_fnPlayer_getControlObject(sbplayer);
@@ -21280,6 +24126,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnPlayer_getDamageLocation(string player, string pos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_getDamageLocation'" + string.Format("\"{0}\" \"{1}\" ", player, pos));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbplayer = new StringBuilder(player, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
@@ -21295,6 +24143,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnPlayer_getNumDeathAnimations(string player)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_getNumDeathAnimations'" + string.Format("\"{0}\" ", player));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
             return SafeNativeMethods.mwle_fnPlayer_getNumDeathAnimations(sbplayer);
@@ -21315,6 +24165,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnPlayer_getPose(string player)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_getPose'" + string.Format("\"{0}\" ", player));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
@@ -21336,6 +24188,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnPlayer_getState(string player)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_getState'" + string.Format("\"{0}\" ", player));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbplayer = new StringBuilder(player, 1024);
 
@@ -21399,6 +24253,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPlayer_setActionThread(string player, string name, bool hold, bool fsp)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_setActionThread'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", player, name, hold, fsp));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -21415,6 +24271,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPlayer_setArmThread(string player, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_setArmThread'" + string.Format("\"{0}\" \"{1}\" ", player, name));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -21442,6 +24300,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPlayer_setControlObject(string player, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPlayer_setControlObject'" + string.Format("\"{0}\" \"{1}\" ", player, obj));
             StringBuilder sbplayer = new StringBuilder(player, 1024);
             StringBuilder sbobj = new StringBuilder(obj, 1024);
 
@@ -21454,6 +24314,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPopupMenu_attachToMenuBar(string popupmenu, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_attachToMenuBar'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", popupmenu, a2, a3, a4));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -21468,6 +24330,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPopupMenu_checkItem(string popupmenu, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_checkItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", popupmenu, a2, a3));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -21481,6 +24345,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPopupMenu_checkRadioItem(string popupmenu, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_checkRadioItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", popupmenu, a2, a3, a4));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -21495,6 +24361,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPopupMenu_enableItem(string popupmenu, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_enableItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", popupmenu, a2, a3));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -21508,6 +24376,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnPopupMenu_getItemCount(string popupmenu)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_getItemCount'" + string.Format("\"{0}\" ", popupmenu));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
 
             return SafeNativeMethods.mwle_fnPopupMenu_getItemCount(sbpopupmenu);
@@ -21519,6 +24389,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnPopupMenu_insertItem(string popupmenu, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_insertItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", popupmenu, a2, a3, a4));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -21533,6 +24405,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnPopupMenu_insertSubMenu(string popupmenu, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_insertSubMenu'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", popupmenu, a2, a3, a4));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -21547,6 +24421,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPopupMenu_isItemChecked(string popupmenu, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_isItemChecked'" + string.Format("\"{0}\" \"{1}\" ", popupmenu, a2));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -21559,6 +24435,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPopupMenu_removeFromMenuBar(string popupmenu)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_removeFromMenuBar'" + string.Format("\"{0}\" ", popupmenu));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
 
             SafeNativeMethods.mwle_fnPopupMenu_removeFromMenuBar(sbpopupmenu);
@@ -21570,6 +24448,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPopupMenu_removeItem(string popupmenu, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_removeItem'" + string.Format("\"{0}\" \"{1}\" ", popupmenu, a2));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -21582,6 +24462,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPopupMenu_setItem(string popupmenu, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_setItem'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", popupmenu, a2, a3, a4));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -21596,6 +24478,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPopupMenu_showPopup(string popupmenu, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPopupMenu_showPopup'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", popupmenu, a2, a3, a4));
             StringBuilder sbpopupmenu = new StringBuilder(popupmenu, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -21611,6 +24495,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPortal_isExteriorPortal(string portal)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPortal_isExteriorPortal'" + string.Format("\"{0}\" ", portal));
             StringBuilder sbportal = new StringBuilder(portal, 1024);
 
             return SafeNativeMethods.mwle_fnPortal_isExteriorPortal(sbportal) >= 1;
@@ -21623,6 +24509,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPortal_isInteriorPortal(string portal)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPortal_isInteriorPortal'" + string.Format("\"{0}\" ", portal));
             StringBuilder sbportal = new StringBuilder(portal, 1024);
 
             return SafeNativeMethods.mwle_fnPortal_isInteriorPortal(sbportal) >= 1;
@@ -21634,6 +24522,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPostEffect_clearShaderMacros(string posteffect)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_clearShaderMacros'" + string.Format("\"{0}\" ", posteffect));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
 
             SafeNativeMethods.mwle_fnPostEffect_clearShaderMacros(sbposteffect);
@@ -21645,6 +24535,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPostEffect_disable(string posteffect)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_disable'" + string.Format("\"{0}\" ", posteffect));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
 
             SafeNativeMethods.mwle_fnPostEffect_disable(sbposteffect);
@@ -21657,6 +24549,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnPostEffect_dumpShaderDisassembly(string posteffect)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_dumpShaderDisassembly'" + string.Format("\"{0}\" ", posteffect));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
 
@@ -21670,6 +24564,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPostEffect_enable(string posteffect)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_enable'" + string.Format("\"{0}\" ", posteffect));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
 
             SafeNativeMethods.mwle_fnPostEffect_enable(sbposteffect);
@@ -21681,6 +24577,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnPostEffect_getAspectRatio(string posteffect)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_getAspectRatio'" + string.Format("\"{0}\" ", posteffect));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
 
             return SafeNativeMethods.mwle_fnPostEffect_getAspectRatio(sbposteffect);
@@ -21692,6 +24590,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPostEffect_GetEnabled(string posteffect)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_GetEnabled'" + string.Format("\"{0}\" ", posteffect));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
 
             return SafeNativeMethods.mwle_fnPostEffect_GetEnabled(sbposteffect) >= 1;
@@ -21703,6 +24603,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPostEffect_reload(string posteffect)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_reload'" + string.Format("\"{0}\" ", posteffect));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
 
             SafeNativeMethods.mwle_fnPostEffect_reload(sbposteffect);
@@ -21715,6 +24617,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPostEffect_removeShaderMacro(string posteffect, string key)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_removeShaderMacro'" + string.Format("\"{0}\" \"{1}\" ", posteffect, key));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
 
@@ -21742,6 +24646,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPostEffect_setShaderConst(string posteffect, string name, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_setShaderConst'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", posteffect, name, value));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -21770,6 +24676,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPostEffect_setShaderMacro(string posteffect, string key, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_setShaderMacro'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", posteffect, key, value));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
             StringBuilder sbkey = new StringBuilder(key, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -21787,6 +24695,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPostEffect_setTexture(string posteffect, int index, string filePath)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_setTexture'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", posteffect, index, filePath));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
             StringBuilder sbfilePath = new StringBuilder(filePath, 4096);
 
@@ -21800,6 +24710,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnPostEffect_toggle(string posteffect)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPostEffect_toggle'" + string.Format("\"{0}\" ", posteffect));
             StringBuilder sbposteffect = new StringBuilder(posteffect, 1024);
 
             return SafeNativeMethods.mwle_fnPostEffect_toggle(sbposteffect) >= 1;
@@ -21823,6 +24735,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPrecipitation_modifyStorm(string precipitation, float percentage, float seconds)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPrecipitation_modifyStorm'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", precipitation, percentage, seconds));
             StringBuilder sbprecipitation = new StringBuilder(precipitation, 1024);
 
             SafeNativeMethods.mwle_fnPrecipitation_modifyStorm(sbprecipitation, percentage, seconds);
@@ -21843,6 +24757,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPrecipitation_setPercentage(string precipitation, float percentage)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPrecipitation_setPercentage'" + string.Format("\"{0}\" \"{1}\" ", precipitation, percentage));
             StringBuilder sbprecipitation = new StringBuilder(precipitation, 1024);
 
             SafeNativeMethods.mwle_fnPrecipitation_setPercentage(sbprecipitation, percentage);
@@ -21864,6 +24780,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnPrecipitation_setTurbulence(string precipitation, float max, float speed, float seconds)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnPrecipitation_setTurbulence'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", precipitation, max, speed, seconds));
             StringBuilder sbprecipitation = new StringBuilder(precipitation, 1024);
 
             SafeNativeMethods.mwle_fnPrecipitation_setTurbulence(sbprecipitation, max, speed, seconds);
@@ -21886,6 +24804,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnProjectile_presimulate(string projectile, float seconds)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnProjectile_presimulate'" + string.Format("\"{0}\" \"{1}\" ", projectile, seconds));
             StringBuilder sbprojectile = new StringBuilder(projectile, 1024);
 
             SafeNativeMethods.mwle_fnProjectile_presimulate(sbprojectile, seconds);
@@ -21897,6 +24817,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnProximityMine_explode(string proximitymine)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnProximityMine_explode'" + string.Format("\"{0}\" ", proximitymine));
             StringBuilder sbproximitymine = new StringBuilder(proximitymine, 1024);
 
             SafeNativeMethods.mwle_fnProximityMine_explode(sbproximitymine);
@@ -21908,6 +24830,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnRenderBinManager_getBinType(string renderbinmanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderBinManager_getBinType'" + string.Format("\"{0}\" ", renderbinmanager));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbrenderbinmanager = new StringBuilder(renderbinmanager, 1024);
 
@@ -21921,6 +24845,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRenderMeshExample_postApply(string rendermeshexample)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderMeshExample_postApply'" + string.Format("\"{0}\" ", rendermeshexample));
             StringBuilder sbrendermeshexample = new StringBuilder(rendermeshexample, 1024);
 
             SafeNativeMethods.mwle_fnRenderMeshExample_postApply(sbrendermeshexample);
@@ -21932,6 +24858,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRenderPassManager_addManager(string renderpassmanager, string renderBin)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderPassManager_addManager'" + string.Format("\"{0}\" \"{1}\" ", renderpassmanager, renderBin));
             StringBuilder sbrenderpassmanager = new StringBuilder(renderpassmanager, 1024);
             StringBuilder sbrenderBin = new StringBuilder(renderBin, 1024);
 
@@ -21944,6 +24872,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnRenderPassManager_getManager(string renderpassmanager, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderPassManager_getManager'" + string.Format("\"{0}\" \"{1}\" ", renderpassmanager, index));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbrenderpassmanager = new StringBuilder(renderpassmanager, 1024);
 
@@ -21957,6 +24887,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnRenderPassManager_getManagerCount(string renderpassmanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderPassManager_getManagerCount'" + string.Format("\"{0}\" ", renderpassmanager));
             StringBuilder sbrenderpassmanager = new StringBuilder(renderpassmanager, 1024);
 
             return SafeNativeMethods.mwle_fnRenderPassManager_getManagerCount(sbrenderpassmanager);
@@ -21968,6 +24900,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRenderPassManager_removeManager(string renderpassmanager, string renderBin)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderPassManager_removeManager'" + string.Format("\"{0}\" \"{1}\" ", renderpassmanager, renderBin));
             StringBuilder sbrenderpassmanager = new StringBuilder(renderpassmanager, 1024);
             StringBuilder sbrenderBin = new StringBuilder(renderBin, 1024);
 
@@ -21980,6 +24914,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRenderPassStateToken_disable(string renderpassstatetoken)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderPassStateToken_disable'" + string.Format("\"{0}\" ", renderpassstatetoken));
             StringBuilder sbrenderpassstatetoken = new StringBuilder(renderpassstatetoken, 1024);
 
             SafeNativeMethods.mwle_fnRenderPassStateToken_disable(sbrenderpassstatetoken);
@@ -21991,6 +24927,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRenderPassStateToken_enable(string renderpassstatetoken)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderPassStateToken_enable'" + string.Format("\"{0}\" ", renderpassstatetoken));
             StringBuilder sbrenderpassstatetoken = new StringBuilder(renderpassstatetoken, 1024);
 
             SafeNativeMethods.mwle_fnRenderPassStateToken_enable(sbrenderpassstatetoken);
@@ -22002,6 +24940,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRenderPassStateToken_toggle(string renderpassstatetoken)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRenderPassStateToken_toggle'" + string.Format("\"{0}\" ", renderpassstatetoken));
             StringBuilder sbrenderpassstatetoken = new StringBuilder(renderpassstatetoken, 1024);
 
             SafeNativeMethods.mwle_fnRenderPassStateToken_toggle(sbrenderpassstatetoken);
@@ -22021,6 +24961,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRigidShape_freezeSim(string rigidshape, bool isFrozen)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRigidShape_freezeSim'" + string.Format("\"{0}\" \"{1}\" ", rigidshape, isFrozen));
             StringBuilder sbrigidshape = new StringBuilder(rigidshape, 1024);
 
             SafeNativeMethods.mwle_fnRigidShape_freezeSim(sbrigidshape, isFrozen);
@@ -22037,6 +24979,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRigidShape_reset(string rigidshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRigidShape_reset'" + string.Format("\"{0}\" ", rigidshape));
             StringBuilder sbrigidshape = new StringBuilder(rigidshape, 1024);
 
             SafeNativeMethods.mwle_fnRigidShape_reset(sbrigidshape);
@@ -22050,6 +24994,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRiver_regenerate(string river)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRiver_regenerate'" + string.Format("\"{0}\" ", river));
             StringBuilder sbriver = new StringBuilder(river, 1024);
 
             SafeNativeMethods.mwle_fnRiver_regenerate(sbriver);
@@ -22063,6 +25009,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRiver_setBatchSize(string river, float meters)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRiver_setBatchSize'" + string.Format("\"{0}\" \"{1}\" ", river, meters));
             StringBuilder sbriver = new StringBuilder(river, 1024);
 
             SafeNativeMethods.mwle_fnRiver_setBatchSize(sbriver, meters);
@@ -22076,6 +25024,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRiver_setMaxDivisionSize(string river, float meters)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRiver_setMaxDivisionSize'" + string.Format("\"{0}\" \"{1}\" ", river, meters));
             StringBuilder sbriver = new StringBuilder(river, 1024);
 
             SafeNativeMethods.mwle_fnRiver_setMaxDivisionSize(sbriver, meters);
@@ -22089,6 +25039,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRiver_setMetersPerSegment(string river, float meters)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRiver_setMetersPerSegment'" + string.Format("\"{0}\" \"{1}\" ", river, meters));
             StringBuilder sbriver = new StringBuilder(river, 1024);
 
             SafeNativeMethods.mwle_fnRiver_setMetersPerSegment(sbriver, meters);
@@ -22102,6 +25054,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnRiver_setNodeDepth(string river, int idx, float meters)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnRiver_setNodeDepth'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", river, idx, meters));
             StringBuilder sbriver = new StringBuilder(river, 1024);
 
             SafeNativeMethods.mwle_fnRiver_setNodeDepth(sbriver, idx, meters);
@@ -22114,6 +25068,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnScatterSky_applyChanges(string scattersky)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnScatterSky_applyChanges'" + string.Format("\"{0}\" ", scattersky));
             StringBuilder sbscattersky = new StringBuilder(scattersky, 1024);
 
             SafeNativeMethods.mwle_fnScatterSky_applyChanges(sbscattersky);
@@ -22127,6 +25083,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getEulerRotation(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getEulerRotation'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22142,6 +25100,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getForwardVector(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getForwardVector'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22156,6 +25116,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getInverseTransform(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getInverseTransform'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22171,6 +25133,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSceneObject_getMountedObject(string sceneobject, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getMountedObject'" + string.Format("\"{0}\" \"{1}\" ", sceneobject, slot));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             return SafeNativeMethods.mwle_fnSceneObject_getMountedObject(sbsceneobject, slot);
@@ -22183,6 +25147,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSceneObject_getMountedObjectCount(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getMountedObjectCount'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             return SafeNativeMethods.mwle_fnSceneObject_getMountedObjectCount(sbsceneobject);
@@ -22196,6 +25162,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSceneObject_getMountedObjectNode(string sceneobject, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getMountedObjectNode'" + string.Format("\"{0}\" \"{1}\" ", sceneobject, slot));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             return SafeNativeMethods.mwle_fnSceneObject_getMountedObjectNode(sbsceneobject, slot);
@@ -22209,6 +25177,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSceneObject_getMountNodeObject(string sceneobject, int node)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getMountNodeObject'" + string.Format("\"{0}\" \"{1}\" ", sceneobject, node));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             return SafeNativeMethods.mwle_fnSceneObject_getMountNodeObject(sbsceneobject, node);
@@ -22222,6 +25192,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getObjectBox(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getObjectBox'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22236,6 +25208,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSceneObject_getObjectMount(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getObjectMount'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             return SafeNativeMethods.mwle_fnSceneObject_getObjectMount(sbsceneobject);
@@ -22248,6 +25222,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getPosition(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getPosition'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22263,6 +25239,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getRightVector(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getRightVector'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22277,6 +25255,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getScale(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getScale'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22291,6 +25271,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getTransform(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getTransform'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22305,6 +25287,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSceneObject_getType(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getType'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             return SafeNativeMethods.mwle_fnSceneObject_getType(sbsceneobject);
@@ -22318,6 +25302,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getUpVector(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getUpVector'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22333,6 +25319,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getWorldBox(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getWorldBox'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22347,6 +25335,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSceneObject_getWorldBoxCenter(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_getWorldBoxCenter'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
@@ -22363,6 +25353,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSceneObject_isGlobalBounds(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_isGlobalBounds'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             return SafeNativeMethods.mwle_fnSceneObject_isGlobalBounds(sbsceneobject) >= 1;
@@ -22375,6 +25367,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSceneObject_isMounted(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_isMounted'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             return SafeNativeMethods.mwle_fnSceneObject_isMounted(sbsceneobject) >= 1;
@@ -22391,6 +25385,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSceneObject_mountObject(string sceneobject, string objB, int slot, string txfm)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_mountObject'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", sceneobject, objB, slot, txfm));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
             StringBuilder sbobjB = new StringBuilder(objB, 1024);
             StringBuilder sbtxfm = new StringBuilder(txfm, 1024);
@@ -22405,6 +25401,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSceneObject_setScale(string sceneobject, string scale)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_setScale'" + string.Format("\"{0}\" \"{1}\" ", sceneobject, scale));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
             StringBuilder sbscale = new StringBuilder(scale, 1024);
 
@@ -22418,6 +25416,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSceneObject_setTransform(string sceneobject, string txfm)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_setTransform'" + string.Format("\"{0}\" \"{1}\" ", sceneobject, txfm));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
             StringBuilder sbtxfm = new StringBuilder(txfm, 1024);
 
@@ -22430,6 +25430,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSceneObject_unmount(string sceneobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_unmount'" + string.Format("\"{0}\" ", sceneobject));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
 
             SafeNativeMethods.mwle_fnSceneObject_unmount(sbsceneobject);
@@ -22444,6 +25446,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSceneObject_unmountObject(string sceneobject, string target)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSceneObject_unmountObject'" + string.Format("\"{0}\" \"{1}\" ", sceneobject, target));
             StringBuilder sbsceneobject = new StringBuilder(sceneobject, 1024);
             StringBuilder sbtarget = new StringBuilder(target, 1024);
 
@@ -22456,6 +25460,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSettings_beginGroup(string settings, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_beginGroup'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", settings, a2, a3));
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -22469,6 +25475,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSettings_clearGroups(string settings)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_clearGroups'" + string.Format("\"{0}\" ", settings));
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
 
             SafeNativeMethods.mwle_fnSettings_clearGroups(sbsettings);
@@ -22480,6 +25488,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSettings_endGroup(string settings)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_endGroup'" + string.Format("\"{0}\" ", settings));
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
 
             SafeNativeMethods.mwle_fnSettings_endGroup(sbsettings);
@@ -22491,6 +25501,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSettings_findFirstValue(string settings, string a2, string a3, string a4)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_findFirstValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", settings, a2, a3, a4));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -22507,6 +25519,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSettings_findNextValue(string settings)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_findNextValue'" + string.Format("\"{0}\" ", settings));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
 
@@ -22520,6 +25534,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSettings_getCurrentGroups(string settings)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_getCurrentGroups'" + string.Format("\"{0}\" ", settings));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
 
@@ -22533,6 +25549,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSettings_read(string settings)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_read'" + string.Format("\"{0}\" ", settings));
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
 
             return SafeNativeMethods.mwle_fnSettings_read(sbsettings) >= 1;
@@ -22544,6 +25562,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSettings_remove(string settings, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_remove'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", settings, a2, a3));
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -22557,6 +25577,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSettings_setDefaultValue(string settings, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_setDefaultValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", settings, a2, a3));
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -22570,6 +25592,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSettings_setValue(string settings, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_setValue'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", settings, a2, a3));
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -22583,6 +25607,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSettings_value(string settings, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_value'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", settings, a2, a3));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -22598,6 +25624,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSettings_write(string settings)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSettings_write'" + string.Format("\"{0}\" ", settings));
             StringBuilder sbsettings = new StringBuilder(settings, 1024);
 
             return SafeNativeMethods.mwle_fnSettings_write(sbsettings) >= 1;
@@ -22611,6 +25639,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSFXController_getCurrentSlot(string sfxcontroller)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXController_getCurrentSlot'" + string.Format("\"{0}\" ", sfxcontroller));
             StringBuilder sbsfxcontroller = new StringBuilder(sfxcontroller, 1024);
 
             return SafeNativeMethods.mwle_fnSFXController_getCurrentSlot(sbsfxcontroller);
@@ -22623,6 +25653,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXController_setCurrentSlot(string sfxcontroller, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXController_setCurrentSlot'" + string.Format("\"{0}\" \"{1}\" ", sfxcontroller, index));
             StringBuilder sbsfxcontroller = new StringBuilder(sfxcontroller, 1024);
 
             SafeNativeMethods.mwle_fnSFXController_setCurrentSlot(sbsfxcontroller, index);
@@ -22637,6 +25669,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSFXEmitter_getSource(string sfxemitter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXEmitter_getSource'" + string.Format("\"{0}\" ", sfxemitter));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsfxemitter = new StringBuilder(sfxemitter, 1024);
 
@@ -22651,6 +25685,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXEmitter_play(string sfxemitter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXEmitter_play'" + string.Format("\"{0}\" ", sfxemitter));
             StringBuilder sbsfxemitter = new StringBuilder(sfxemitter, 1024);
 
             SafeNativeMethods.mwle_fnSFXEmitter_play(sbsfxemitter);
@@ -22663,6 +25699,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXEmitter_stop(string sfxemitter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXEmitter_stop'" + string.Format("\"{0}\" ", sfxemitter));
             StringBuilder sbsfxemitter = new StringBuilder(sfxemitter, 1024);
 
             SafeNativeMethods.mwle_fnSFXEmitter_stop(sbsfxemitter);
@@ -22675,6 +25713,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSFXParameter_getParameterName(string sfxparameter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXParameter_getParameterName'" + string.Format("\"{0}\" ", sfxparameter));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsfxparameter = new StringBuilder(sfxparameter, 1024);
 
@@ -22689,6 +25729,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXParameter_reset(string sfxparameter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXParameter_reset'" + string.Format("\"{0}\" ", sfxparameter));
             StringBuilder sbsfxparameter = new StringBuilder(sfxparameter, 1024);
 
             SafeNativeMethods.mwle_fnSFXParameter_reset(sbsfxparameter);
@@ -22701,6 +25743,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSFXProfile_getSoundDuration(string sfxprofile)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXProfile_getSoundDuration'" + string.Format("\"{0}\" ", sfxprofile));
             StringBuilder sbsfxprofile = new StringBuilder(sfxprofile, 1024);
 
             return SafeNativeMethods.mwle_fnSFXProfile_getSoundDuration(sbsfxprofile);
@@ -22714,6 +25758,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSFXSound_getDuration(string sfxsound)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSound_getDuration'" + string.Format("\"{0}\" ", sfxsound));
             StringBuilder sbsfxsound = new StringBuilder(sfxsound, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSound_getDuration(sbsfxsound);
@@ -22726,6 +25772,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSFXSound_getPosition(string sfxsound)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSound_getPosition'" + string.Format("\"{0}\" ", sfxsound));
             StringBuilder sbsfxsound = new StringBuilder(sfxsound, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSound_getPosition(sbsfxsound);
@@ -22741,6 +25789,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSFXSound_isReady(string sfxsound)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSound_isReady'" + string.Format("\"{0}\" ", sfxsound));
             StringBuilder sbsfxsound = new StringBuilder(sfxsound, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSound_isReady(sbsfxsound) >= 1;
@@ -22755,6 +25805,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSound_setPosition(string sfxsound, float position)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSound_setPosition'" + string.Format("\"{0}\" \"{1}\" ", sfxsound, position));
             StringBuilder sbsfxsound = new StringBuilder(sfxsound, 1024);
 
             SafeNativeMethods.mwle_fnSFXSound_setPosition(sbsfxsound, position);
@@ -22790,6 +25842,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_addMarker(string sfxsource, string name, float pos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_addMarker'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", sfxsource, name, pos));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
             StringBuilder sbname = new StringBuilder(name, 1024);
 
@@ -22805,6 +25859,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_addParameter(string sfxsource, string parameter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_addParameter'" + string.Format("\"{0}\" \"{1}\" ", sfxsource, parameter));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
             StringBuilder sbparameter = new StringBuilder(parameter, 1024);
 
@@ -22821,6 +25877,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSFXSource_getAttenuatedVolume(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_getAttenuatedVolume'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_getAttenuatedVolume(sbsfxsource);
@@ -22836,6 +25894,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSFXSource_getFadeInTime(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_getFadeInTime'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_getFadeInTime(sbsfxsource);
@@ -22851,6 +25911,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSFXSource_getFadeOutTime(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_getFadeOutTime'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_getFadeOutTime(sbsfxsource);
@@ -22871,6 +25933,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSFXSource_getParameter(string sfxsource, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_getParameter'" + string.Format("\"{0}\" \"{1}\" ", sfxsource, index));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
@@ -22893,6 +25957,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSFXSource_getParameterCount(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_getParameterCount'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_getParameterCount(sbsfxsource);
@@ -22908,6 +25974,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSFXSource_getPitch(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_getPitch'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_getPitch(sbsfxsource);
@@ -22920,6 +25988,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSFXSource_getStatus(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_getStatus'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_getStatus(sbsfxsource);
@@ -22937,6 +26007,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSFXSource_getVolume(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_getVolume'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_getVolume(sbsfxsource);
@@ -22952,6 +26024,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSFXSource_isPaused(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_isPaused'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_isPaused(sbsfxsource) >= 1;
@@ -22967,6 +26041,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSFXSource_isPlaying(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_isPlaying'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_isPlaying(sbsfxsource) >= 1;
@@ -22982,6 +26058,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSFXSource_isStopped(string sfxsource)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_isStopped'" + string.Format("\"{0}\" ", sfxsource));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             return SafeNativeMethods.mwle_fnSFXSource_isStopped(sbsfxsource) >= 1;
@@ -22998,6 +26076,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_pause(string sfxsource, float fadeOutTime)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_pause'" + string.Format("\"{0}\" \"{1}\" ", sfxsource, fadeOutTime));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             SafeNativeMethods.mwle_fnSFXSource_pause(sbsfxsource, fadeOutTime);
@@ -23014,6 +26094,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_play(string sfxsource, float fadeInTime)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_play'" + string.Format("\"{0}\" \"{1}\" ", sfxsource, fadeInTime));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             SafeNativeMethods.mwle_fnSFXSource_play(sbsfxsource, fadeInTime);
@@ -23028,6 +26110,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_removeParameter(string sfxsource, string parameter)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_removeParameter'" + string.Format("\"{0}\" \"{1}\" ", sfxsource, parameter));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
             StringBuilder sbparameter = new StringBuilder(parameter, 1024);
 
@@ -23044,6 +26128,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_setCone(string sfxsource, float innerAngle, float outerAngle, float outsideVolume)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_setCone'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", sfxsource, innerAngle, outerAngle, outsideVolume));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             SafeNativeMethods.mwle_fnSFXSource_setCone(sbsfxsource, innerAngle, outerAngle, outsideVolume);
@@ -23060,6 +26146,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_setFadeTimes(string sfxsource, float fadeInTime, float fadeOutTime)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_setFadeTimes'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", sfxsource, fadeInTime, fadeOutTime));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             SafeNativeMethods.mwle_fnSFXSource_setFadeTimes(sbsfxsource, fadeInTime, fadeOutTime);
@@ -23075,6 +26163,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_setPitch(string sfxsource, float pitch)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_setPitch'" + string.Format("\"{0}\" \"{1}\" ", sfxsource, pitch));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             SafeNativeMethods.mwle_fnSFXSource_setPitch(sbsfxsource, pitch);
@@ -23089,6 +26179,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_setTransform(string sfxsource, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_setTransform'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", sfxsource, a2, a3));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -23107,6 +26199,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_setVolume(string sfxsource, float volume)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_setVolume'" + string.Format("\"{0}\" \"{1}\" ", sfxsource, volume));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             SafeNativeMethods.mwle_fnSFXSource_setVolume(sbsfxsource, volume);
@@ -23123,6 +26217,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXSource_stop(string sfxsource, float fadeOutTime)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXSource_stop'" + string.Format("\"{0}\" \"{1}\" ", sfxsource, fadeOutTime));
             StringBuilder sbsfxsource = new StringBuilder(sfxsource, 1024);
 
             SafeNativeMethods.mwle_fnSFXSource_stop(sbsfxsource, fadeOutTime);
@@ -23137,6 +26233,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXState_activate(string sfxstate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXState_activate'" + string.Format("\"{0}\" ", sfxstate));
             StringBuilder sbsfxstate = new StringBuilder(sfxstate, 1024);
 
             SafeNativeMethods.mwle_fnSFXState_activate(sbsfxstate);
@@ -23151,6 +26249,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXState_deactivate(string sfxstate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXState_deactivate'" + string.Format("\"{0}\" ", sfxstate));
             StringBuilder sbsfxstate = new StringBuilder(sfxstate, 1024);
 
             SafeNativeMethods.mwle_fnSFXState_deactivate(sbsfxstate);
@@ -23164,6 +26264,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXState_disable(string sfxstate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXState_disable'" + string.Format("\"{0}\" ", sfxstate));
             StringBuilder sbsfxstate = new StringBuilder(sfxstate, 1024);
 
             SafeNativeMethods.mwle_fnSFXState_disable(sbsfxstate);
@@ -23178,6 +26280,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSFXState_enable(string sfxstate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXState_enable'" + string.Format("\"{0}\" ", sfxstate));
             StringBuilder sbsfxstate = new StringBuilder(sfxstate, 1024);
 
             SafeNativeMethods.mwle_fnSFXState_enable(sbsfxstate);
@@ -23192,6 +26296,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSFXState_isActive(string sfxstate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXState_isActive'" + string.Format("\"{0}\" ", sfxstate));
             StringBuilder sbsfxstate = new StringBuilder(sfxstate, 1024);
 
             return SafeNativeMethods.mwle_fnSFXState_isActive(sbsfxstate) >= 1;
@@ -23206,6 +26312,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSFXState_isDisabled(string sfxstate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSFXState_isDisabled'" + string.Format("\"{0}\" ", sfxstate));
             StringBuilder sbsfxstate = new StringBuilder(sfxstate, 1024);
 
             return SafeNativeMethods.mwle_fnSFXState_isDisabled(sbsfxstate) >= 1;
@@ -23222,6 +26330,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShaderData_reload(string shaderdata)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShaderData_reload'" + string.Format("\"{0}\" ", shaderdata));
             StringBuilder sbshaderdata = new StringBuilder(shaderdata, 1024);
 
             SafeNativeMethods.mwle_fnShaderData_reload(sbshaderdata);
@@ -23235,6 +26345,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_applyDamage(string shapebase, float amount)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_applyDamage'" + string.Format("\"{0}\" \"{1}\" ", shapebase, amount));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_applyDamage(sbshapebase, amount);
@@ -23250,6 +26362,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_applyImpulse(string shapebase, string pos, string vec)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_applyImpulse'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, pos, vec));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
             StringBuilder sbvec = new StringBuilder(vec, 1024);
@@ -23268,6 +26382,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_applyRepair(string shapebase, float amount)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_applyRepair'" + string.Format("\"{0}\" \"{1}\" ", shapebase, amount));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_applyRepair(sbshapebase, amount);
@@ -23282,6 +26398,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_canCloak(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_canCloak'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_canCloak(sbshapebase) >= 1;
@@ -23309,6 +26427,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_changeMaterial(string shapebase, string mapTo, string oldMat, string newMat)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_changeMaterial'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", shapebase, mapTo, oldMat, newMat));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbmapTo = new StringBuilder(mapTo, 4096);
             StringBuilder sboldMat = new StringBuilder(oldMat, 1024);
@@ -23328,6 +26448,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_destroyThread(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_destroyThread'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_destroyThread(sbshapebase, slot) >= 1;
@@ -23341,6 +26463,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_dumpMeshVisibility(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_dumpMeshVisibility'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_dumpMeshVisibility(sbshapebase);
@@ -23356,6 +26480,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getAIRepairPoint(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getAIRepairPoint'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23371,6 +26497,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getCameraFov(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getCameraFov'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getCameraFov(sbshapebase);
@@ -23389,6 +26517,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_getControllingClient(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getControllingClient'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getControllingClient(sbshapebase);
@@ -23403,6 +26533,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_getControllingObject(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getControllingObject'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getControllingObject(sbshapebase);
@@ -23418,6 +26550,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getDamageFlash(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getDamageFlash'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getDamageFlash(sbshapebase);
@@ -23433,6 +26567,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getDamageLevel(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getDamageLevel'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getDamageLevel(sbshapebase);
@@ -23448,6 +26584,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getDamagePercent(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getDamagePercent'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getDamagePercent(sbshapebase);
@@ -23463,6 +26601,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getDamageState(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getDamageState'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23478,6 +26618,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getDefaultCameraFov(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getDefaultCameraFov'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getDefaultCameraFov(sbshapebase);
@@ -23493,6 +26635,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getEnergyLevel(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getEnergyLevel'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getEnergyLevel(sbshapebase);
@@ -23507,6 +26651,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getEnergyPercent(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getEnergyPercent'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getEnergyPercent(sbshapebase);
@@ -23527,6 +26673,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getEyePoint(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getEyePoint'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23549,6 +26697,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getEyeTransform(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getEyeTransform'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23571,6 +26721,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getEyeVector(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getEyeVector'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23587,6 +26739,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_getImageAltTrigger(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageAltTrigger'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getImageAltTrigger(sbshapebase, slot) >= 1;
@@ -23601,6 +26755,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_getImageAmmo(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageAmmo'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getImageAmmo(sbshapebase, slot) >= 1;
@@ -23616,6 +26772,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_getImageGenericTrigger(string shapebase, int slot, int trigger)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageGenericTrigger'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, trigger));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getImageGenericTrigger(sbshapebase, slot, trigger) >= 1;
@@ -23630,6 +26788,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_getImageLoaded(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageLoaded'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getImageLoaded(sbshapebase, slot) >= 1;
@@ -23644,6 +26804,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getImageScriptAnimPrefix(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageScriptAnimPrefix'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23661,6 +26823,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_getImageSkinTag(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageSkinTag'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getImageSkinTag(sbshapebase, slot);
@@ -23675,6 +26839,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getImageState(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageState'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23691,6 +26857,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_getImageTarget(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageTarget'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getImageTarget(sbshapebase, slot) >= 1;
@@ -23705,6 +26873,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_getImageTrigger(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getImageTrigger'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getImageTrigger(sbshapebase, slot) >= 1;
@@ -23727,6 +26897,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getLookAtPoint(string shapebase, float distance, int typeMask)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getLookAtPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, distance, typeMask));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23741,6 +26913,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getMaxDamage(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getMaxDamage'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getMaxDamage(sbshapebase);
@@ -23754,6 +26928,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getModelFile(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getModelFile'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23771,6 +26947,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_getMountedImage(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getMountedImage'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getMountedImage(sbshapebase, slot);
@@ -23787,6 +26965,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_getMountSlot(string shapebase, string image)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getMountSlot'" + string.Format("\"{0}\" \"{1}\" ", shapebase, image));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbimage = new StringBuilder(image, 1024);
 
@@ -23806,6 +26986,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getMuzzlePoint(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getMuzzlePoint'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23831,6 +27013,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getMuzzleVector(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getMuzzleVector'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23856,6 +27040,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_getPendingImage(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getPendingImage'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getPendingImage(sbshapebase, slot);
@@ -23871,6 +27057,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getRechargeRate(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getRechargeRate'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getRechargeRate(sbshapebase);
@@ -23886,6 +27074,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getRepairRate(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getRepairRate'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getRepairRate(sbshapebase);
@@ -23904,6 +27094,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getShapeName(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getShapeName'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23922,6 +27114,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getSkinName(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getSkinName'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23938,6 +27132,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getSlotTransform(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getSlotTransform'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23955,6 +27151,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_getTargetCount(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getTargetCount'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getTargetCount(sbshapebase);
@@ -23971,6 +27169,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getTargetName(string shapebase, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getTargetName'" + string.Format("\"{0}\" \"{1}\" ", shapebase, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -23986,6 +27186,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBase_getVelocity(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getVelocity'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
@@ -24002,6 +27204,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_getVisibleDistance(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getVisibleDistance'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getVisibleDistance(sbshapebase);
@@ -24017,6 +27221,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnShapeBase_getWhiteOut(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_getWhiteOut'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_getWhiteOut(sbshapebase);
@@ -24032,6 +27238,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_hasImageState(string shapebase, int slot, string state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_hasImageState'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, state));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbstate = new StringBuilder(state, 4096);
 
@@ -24048,6 +27256,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_isCloaked(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_isCloaked'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_isCloaked(sbshapebase) >= 1;
@@ -24064,6 +27274,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_isDestroyed(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_isDestroyed'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_isDestroyed(sbshapebase) >= 1;
@@ -24080,6 +27292,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_isDisabled(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_isDisabled'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_isDisabled(sbshapebase) >= 1;
@@ -24096,6 +27310,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_isEnabled(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_isEnabled'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_isEnabled(sbshapebase) >= 1;
@@ -24108,6 +27324,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_isHidden(string shapebase)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_isHidden'" + string.Format("\"{0}\" ", shapebase));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_isHidden(sbshapebase) >= 1;
@@ -24122,6 +27340,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_isImageFiring(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_isImageFiring'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_isImageFiring(sbshapebase, slot) >= 1;
@@ -24136,6 +27356,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_isImageMounted(string shapebase, string image)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_isImageMounted'" + string.Format("\"{0}\" \"{1}\" ", shapebase, image));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbimage = new StringBuilder(image, 1024);
 
@@ -24166,6 +27388,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_mountImage(string shapebase, string image, int slot, bool loaded, string skinTag)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_mountImage'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", shapebase, image, slot, loaded, skinTag));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbimage = new StringBuilder(image, 1024);
             StringBuilder sbskinTag = new StringBuilder(skinTag, 4096);
@@ -24186,6 +27410,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_pauseThread(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_pauseThread'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_pauseThread(sbshapebase, slot) >= 1;
@@ -24202,6 +27428,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_playAudio(string shapebase, int slot, string track)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_playAudio'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, track));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbtrack = new StringBuilder(track, 1024);
 
@@ -24234,6 +27462,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_playThread(string shapebase, int slot, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_playThread'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, name));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -24251,6 +27481,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setAllMeshesHidden(string shapebase, bool hide)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setAllMeshesHidden'" + string.Format("\"{0}\" \"{1}\" ", shapebase, hide));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setAllMeshesHidden(sbshapebase, hide);
@@ -24264,6 +27496,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setCameraFov(string shapebase, float fov)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setCameraFov'" + string.Format("\"{0}\" \"{1}\" ", shapebase, fov));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setCameraFov(sbshapebase, fov);
@@ -24281,6 +27515,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setCloaked(string shapebase, bool cloak)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setCloaked'" + string.Format("\"{0}\" \"{1}\" ", shapebase, cloak));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setCloaked(sbshapebase, cloak);
@@ -24301,6 +27537,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setDamageFlash(string shapebase, float level)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setDamageFlash'" + string.Format("\"{0}\" \"{1}\" ", shapebase, level));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setDamageFlash(sbshapebase, level);
@@ -24317,6 +27555,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setDamageLevel(string shapebase, float level)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setDamageLevel'" + string.Format("\"{0}\" \"{1}\" ", shapebase, level));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setDamageLevel(sbshapebase, level);
@@ -24333,6 +27573,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setDamageState(string shapebase, string state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setDamageState'" + string.Format("\"{0}\" \"{1}\" ", shapebase, state));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbstate = new StringBuilder(state, 4096);
 
@@ -24354,6 +27596,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setDamageVector(string shapebase, string vec)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setDamageVector'" + string.Format("\"{0}\" \"{1}\" ", shapebase, vec));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbvec = new StringBuilder(vec, 1024);
 
@@ -24371,6 +27615,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setEnergyLevel(string shapebase, float level)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setEnergyLevel'" + string.Format("\"{0}\" \"{1}\" ", shapebase, level));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setEnergyLevel(sbshapebase, level);
@@ -24384,6 +27630,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setHidden(string shapebase, bool show)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setHidden'" + string.Format("\"{0}\" \"{1}\" ", shapebase, show));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setHidden(sbshapebase, show);
@@ -24399,6 +27647,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setImageAltTrigger(string shapebase, int slot, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setImageAltTrigger'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, state));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setImageAltTrigger(sbshapebase, slot, state) >= 1;
@@ -24414,6 +27664,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setImageAmmo(string shapebase, int slot, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setImageAmmo'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, state));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setImageAmmo(sbshapebase, slot, state) >= 1;
@@ -24430,6 +27682,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnShapeBase_setImageGenericTrigger(string shapebase, int slot, int trigger, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setImageGenericTrigger'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", shapebase, slot, trigger, state));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setImageGenericTrigger(sbshapebase, slot, trigger, state);
@@ -24445,6 +27699,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setImageLoaded(string shapebase, int slot, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setImageLoaded'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, state));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setImageLoaded(sbshapebase, slot, state) >= 1;
@@ -24461,6 +27717,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setImageScriptAnimPrefix(string shapebase, int slot, string prefix)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setImageScriptAnimPrefix'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, prefix));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbprefix = new StringBuilder(prefix, 4096);
 
@@ -24477,6 +27735,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setImageTarget(string shapebase, int slot, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setImageTarget'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, state));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setImageTarget(sbshapebase, slot, state) >= 1;
@@ -24492,6 +27752,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setImageTrigger(string shapebase, int slot, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setImageTrigger'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, state));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setImageTrigger(sbshapebase, slot, state) >= 1;
@@ -24509,6 +27771,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setInvincibleMode(string shapebase, float time, float speed)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setInvincibleMode'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, time, speed));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setInvincibleMode(sbshapebase, time, speed);
@@ -24523,6 +27787,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setMeshHidden(string shapebase, string name, bool hide)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setMeshHidden'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, name, hide));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -24542,6 +27808,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setRechargeRate(string shapebase, float rate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setRechargeRate'" + string.Format("\"{0}\" \"{1}\" ", shapebase, rate));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setRechargeRate(sbshapebase, rate);
@@ -24562,6 +27830,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setRepairRate(string shapebase, float rate)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setRepairRate'" + string.Format("\"{0}\" \"{1}\" ", shapebase, rate));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setRepairRate(sbshapebase, rate);
@@ -24580,6 +27850,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setShapeName(string shapebase, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setShapeName'" + string.Format("\"{0}\" \"{1}\" ", shapebase, name));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -24600,6 +27872,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setSkinName(string shapebase, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setSkinName'" + string.Format("\"{0}\" \"{1}\" ", shapebase, name));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -24618,6 +27892,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setThreadDir(string shapebase, int slot, bool fwd)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setThreadDir'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, fwd));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setThreadDir(sbshapebase, slot, fwd) >= 1;
@@ -24635,6 +27911,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setThreadPosition(string shapebase, int slot, float pos)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setThreadPosition'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, pos));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setThreadPosition(sbshapebase, slot, pos) >= 1;
@@ -24652,6 +27930,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setThreadTimeScale(string shapebase, int slot, float scale)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setThreadTimeScale'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebase, slot, scale));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_setThreadTimeScale(sbshapebase, slot, scale) >= 1;
@@ -24666,6 +27946,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_setVelocity(string shapebase, string vel)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setVelocity'" + string.Format("\"{0}\" \"{1}\" ", shapebase, vel));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
             StringBuilder sbvel = new StringBuilder(vel, 1024);
 
@@ -24681,6 +27963,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setVisibleDistance(string shapebase, int dist)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setVisibleDistance'" + string.Format("\"{0}\" \"{1}\" ", shapebase, dist));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setVisibleDistance(sbshapebase, dist);
@@ -24701,6 +27985,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_setWhiteOut(string shapebase, float level)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_setWhiteOut'" + string.Format("\"{0}\" \"{1}\" ", shapebase, level));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_setWhiteOut(sbshapebase, level);
@@ -24725,6 +28011,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnShapeBase_startFade(string shapebase, int time, int delay, bool fadeOut)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_startFade'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", shapebase, time, delay, fadeOut));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             SafeNativeMethods.mwle_fnShapeBase_startFade(sbshapebase, time, delay, fadeOut);
@@ -24741,6 +28029,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_stopAudio(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_stopAudio'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_stopAudio(sbshapebase, slot) >= 1;
@@ -24759,6 +28049,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_stopThread(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_stopThread'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_stopThread(sbshapebase, slot) >= 1;
@@ -24775,6 +28067,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBase_unmountImage(string shapebase, int slot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBase_unmountImage'" + string.Format("\"{0}\" \"{1}\" ", shapebase, slot));
             StringBuilder sbshapebase = new StringBuilder(shapebase, 1024);
 
             return SafeNativeMethods.mwle_fnShapeBase_unmountImage(sbshapebase, slot) >= 1;
@@ -24795,6 +28089,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnShapeBaseData_checkDeployPos(string shapebasedata, string txfm)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBaseData_checkDeployPos'" + string.Format("\"{0}\" \"{1}\" ", shapebasedata, txfm));
             StringBuilder sbshapebasedata = new StringBuilder(shapebasedata, 1024);
             StringBuilder sbtxfm = new StringBuilder(txfm, 1024);
 
@@ -24810,6 +28106,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnShapeBaseData_getDeployTransform(string shapebasedata, string pos, string normal)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnShapeBaseData_getDeployTransform'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", shapebasedata, pos, normal));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbshapebasedata = new StringBuilder(shapebasedata, 1024);
             StringBuilder sbpos = new StringBuilder(pos, 1024);
@@ -24828,6 +28126,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimComponent_addComponents(string simcomponent, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19, string a20, string a21, string a22, string a23, string a24, string a25, string a26, string a27, string a28, string a29, string a30, string a31, string a32, string a33, string a34, string a35, string a36, string a37, string a38, string a39, string a40, string a41, string a42, string a43, string a44, string a45, string a46, string a47, string a48, string a49, string a50, string a51, string a52, string a53, string a54, string a55, string a56, string a57, string a58, string a59, string a60, string a61, string a62, string a63)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimComponent_addComponents'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" \"{19}\" \"{20}\" \"{21}\" \"{22}\" \"{23}\" \"{24}\" \"{25}\" \"{26}\" \"{27}\" \"{28}\" \"{29}\" \"{30}\" \"{31}\" \"{32}\" \"{33}\" \"{34}\" \"{35}\" \"{36}\" \"{37}\" \"{38}\" \"{39}\" \"{40}\" \"{41}\" \"{42}\" \"{43}\" \"{44}\" \"{45}\" \"{46}\" \"{47}\" \"{48}\" \"{49}\" \"{50}\" \"{51}\" \"{52}\" \"{53}\" \"{54}\" \"{55}\" \"{56}\" \"{57}\" \"{58}\" \"{59}\" \"{60}\" \"{61}\" \"{62}\" ", simcomponent, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63));
             StringBuilder sbsimcomponent = new StringBuilder(simcomponent, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -24903,6 +28203,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSimComponent_getComponent(string simcomponent, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimComponent_getComponent'" + string.Format("\"{0}\" \"{1}\" ", simcomponent, a2));
             StringBuilder sbsimcomponent = new StringBuilder(simcomponent, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -24916,6 +28218,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSimComponent_getComponentCount(string simcomponent)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimComponent_getComponentCount'" + string.Format("\"{0}\" ", simcomponent));
             StringBuilder sbsimcomponent = new StringBuilder(simcomponent, 1024);
 
             return SafeNativeMethods.mwle_fnSimComponent_getComponentCount(sbsimcomponent);
@@ -24928,6 +28232,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimComponent_getIsTemplate(string simcomponent)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimComponent_getIsTemplate'" + string.Format("\"{0}\" ", simcomponent));
             StringBuilder sbsimcomponent = new StringBuilder(simcomponent, 1024);
 
             return SafeNativeMethods.mwle_fnSimComponent_getIsTemplate(sbsimcomponent) >= 1;
@@ -24940,6 +28246,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimComponent_isEnabled(string simcomponent)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimComponent_isEnabled'" + string.Format("\"{0}\" ", simcomponent));
             StringBuilder sbsimcomponent = new StringBuilder(simcomponent, 1024);
 
             return SafeNativeMethods.mwle_fnSimComponent_isEnabled(sbsimcomponent) >= 1;
@@ -24954,6 +28262,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimComponent_removeComponents(string simcomponent, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19, string a20, string a21, string a22, string a23, string a24, string a25, string a26, string a27, string a28, string a29, string a30, string a31, string a32, string a33, string a34, string a35, string a36, string a37, string a38, string a39, string a40, string a41, string a42, string a43, string a44, string a45, string a46, string a47, string a48, string a49, string a50, string a51, string a52, string a53, string a54, string a55, string a56, string a57, string a58, string a59, string a60, string a61, string a62, string a63)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimComponent_removeComponents'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" \"{19}\" \"{20}\" \"{21}\" \"{22}\" \"{23}\" \"{24}\" \"{25}\" \"{26}\" \"{27}\" \"{28}\" \"{29}\" \"{30}\" \"{31}\" \"{32}\" \"{33}\" \"{34}\" \"{35}\" \"{36}\" \"{37}\" \"{38}\" \"{39}\" \"{40}\" \"{41}\" \"{42}\" \"{43}\" \"{44}\" \"{45}\" \"{46}\" \"{47}\" \"{48}\" \"{49}\" \"{50}\" \"{51}\" \"{52}\" \"{53}\" \"{54}\" \"{55}\" \"{56}\" \"{57}\" \"{58}\" \"{59}\" \"{60}\" \"{61}\" \"{62}\" ", simcomponent, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63));
             StringBuilder sbsimcomponent = new StringBuilder(simcomponent, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -25029,6 +28339,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimComponent_setEnabled(string simcomponent, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimComponent_setEnabled'" + string.Format("\"{0}\" \"{1}\" ", simcomponent, a2));
             StringBuilder sbsimcomponent = new StringBuilder(simcomponent, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -25043,6 +28355,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimComponent_setIsTemplate(string simcomponent, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimComponent_setIsTemplate'" + string.Format("\"{0}\" \"{1}\" ", simcomponent, a2));
             StringBuilder sbsimcomponent = new StringBuilder(simcomponent, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -25055,6 +28369,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_assignPersistentId(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_assignPersistentId'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fnSimObject_assignPersistentId(sbsimobject);
@@ -25069,6 +28385,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimObject_call(string simobject, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_call'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", simobject, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -25101,6 +28419,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimObject_clone(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_clone'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -25115,6 +28435,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimObject_deepClone(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_deepClone'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -25129,6 +28451,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_dump(string simobject, bool detailed)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_dump'" + string.Format("\"{0}\" \"{1}\" ", simobject, detailed));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fnSimObject_dump(sbsimobject, detailed);
@@ -25140,6 +28464,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_dumpGroupHierarchy(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_dumpGroupHierarchy'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fnSimObject_dumpGroupHierarchy(sbsimobject);
@@ -25152,6 +28478,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimObject_getDebugInfo(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_getDebugInfo'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -25167,6 +28495,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimObject_getGroup(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_getGroup'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -25182,6 +28512,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSimObject_getId(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_getId'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fnSimObject_getId(sbsimobject);
@@ -25194,6 +28526,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimObject_getInternalName(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_getInternalName'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -25208,6 +28542,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimObject_getName(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_getName'" + string.Format("\"{0}\" ", simobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
@@ -25223,6 +28559,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimObject_isChildOfGroup(string simobject, string group)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_isChildOfGroup'" + string.Format("\"{0}\" \"{1}\" ", simobject, group));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbgroup = new StringBuilder(group, 1024);
 
@@ -25236,6 +28574,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimObject_isEditorOnly(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_isEditorOnly'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fnSimObject_isEditorOnly(sbsimobject) >= 1;
@@ -25248,6 +28588,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimObject_isNameChangeAllowed(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_isNameChangeAllowed'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fnSimObject_isNameChangeAllowed(sbsimobject) >= 1;
@@ -25260,6 +28602,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimObject_isSelected(string simobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_isSelected'" + string.Format("\"{0}\" ", simobject));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             return SafeNativeMethods.mwle_fnSimObject_isSelected(sbsimobject) >= 1;
@@ -25275,6 +28619,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSimObject_schedule(string simobject, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_schedule'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", simobject, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -25305,6 +28651,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_setEditorOnly(string simobject, bool value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_setEditorOnly'" + string.Format("\"{0}\" \"{1}\" ", simobject, value));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fnSimObject_setEditorOnly(sbsimobject, value);
@@ -25317,6 +28665,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_setHidden(string simobject, bool value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_setHidden'" + string.Format("\"{0}\" \"{1}\" ", simobject, value));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fnSimObject_setHidden(sbsimobject, value);
@@ -25329,6 +28679,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_setInternalName(string simobject, string newInternalName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_setInternalName'" + string.Format("\"{0}\" \"{1}\" ", simobject, newInternalName));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbnewInternalName = new StringBuilder(newInternalName, 4096);
 
@@ -25342,6 +28694,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_setIsSelected(string simobject, bool state)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_setIsSelected'" + string.Format("\"{0}\" \"{1}\" ", simobject, state));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fnSimObject_setIsSelected(sbsimobject, state);
@@ -25354,6 +28708,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_setLocked(string simobject, bool value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_setLocked'" + string.Format("\"{0}\" \"{1}\" ", simobject, value));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fnSimObject_setLocked(sbsimobject, value);
@@ -25367,6 +28723,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_setName(string simobject, string newName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_setName'" + string.Format("\"{0}\" \"{1}\" ", simobject, newName));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
             StringBuilder sbnewName = new StringBuilder(newName, 4096);
 
@@ -25380,6 +28738,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimObject_setNameChangeAllowed(string simobject, bool value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimObject_setNameChangeAllowed'" + string.Format("\"{0}\" \"{1}\" ", simobject, value));
             StringBuilder sbsimobject = new StringBuilder(simobject, 1024);
 
             SafeNativeMethods.mwle_fnSimObject_setNameChangeAllowed(sbsimobject, value);
@@ -25391,6 +28751,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimPersistSet_resolvePersistentIds(string simpersistset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimPersistSet_resolvePersistentIds'" + string.Format("\"{0}\" ", simpersistset));
             StringBuilder sbsimpersistset = new StringBuilder(simpersistset, 1024);
 
             SafeNativeMethods.mwle_fnSimPersistSet_resolvePersistentIds(sbsimpersistset);
@@ -25402,6 +28764,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimResponseCurve_addPoint(string simresponsecurve, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimResponseCurve_addPoint'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", simresponsecurve, a2, a3));
             StringBuilder sbsimresponsecurve = new StringBuilder(simresponsecurve, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -25415,6 +28779,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimResponseCurve_clear(string simresponsecurve)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimResponseCurve_clear'" + string.Format("\"{0}\" ", simresponsecurve));
             StringBuilder sbsimresponsecurve = new StringBuilder(simresponsecurve, 1024);
 
             SafeNativeMethods.mwle_fnSimResponseCurve_clear(sbsimresponsecurve);
@@ -25426,6 +28792,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSimResponseCurve_getValue(string simresponsecurve, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimResponseCurve_getValue'" + string.Format("\"{0}\" \"{1}\" ", simresponsecurve, a2));
             StringBuilder sbsimresponsecurve = new StringBuilder(simresponsecurve, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -25440,6 +28808,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimSet_acceptsAsChild(string simset, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_acceptsAsChild'" + string.Format("\"{0}\" \"{1}\" ", simset, obj));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sbobj = new StringBuilder(obj, 1024);
 
@@ -25454,6 +28824,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_add(string simset, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_add'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", simset, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -25484,6 +28856,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_bringToFront(string simset, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_bringToFront'" + string.Format("\"{0}\" \"{1}\" ", simset, obj));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sbobj = new StringBuilder(obj, 1024);
 
@@ -25501,6 +28875,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_callOnChildren(string simset, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_callOnChildren'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", simset, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -25535,6 +28911,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_callOnChildrenNoRecurse(string simset, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_callOnChildrenNoRecurse'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", simset, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -25564,6 +28942,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_clear(string simset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_clear'" + string.Format("\"{0}\" ", simset));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
 
             SafeNativeMethods.mwle_fnSimSet_clear(sbsimset);
@@ -25575,6 +28955,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_deleteAllObjects(string simset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_deleteAllObjects'" + string.Format("\"{0}\" ", simset));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
 
             SafeNativeMethods.mwle_fnSimSet_deleteAllObjects(sbsimset);
@@ -25589,6 +28971,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimSet_findObjectByInternalName(string simset, string internalName, bool searchChildren)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_findObjectByInternalName'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", simset, internalName, searchChildren));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sbinternalName = new StringBuilder(internalName, 4096);
@@ -25604,6 +28988,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSimSet_getCount(string simset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_getCount'" + string.Format("\"{0}\" ", simset));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
 
             return SafeNativeMethods.mwle_fnSimSet_getCount(sbsimset);
@@ -25616,6 +29002,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSimSet_getFullCount(string simset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_getFullCount'" + string.Format("\"{0}\" ", simset));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
 
             return SafeNativeMethods.mwle_fnSimSet_getFullCount(sbsimset);
@@ -25629,6 +29017,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimSet_getObject(string simset, uint index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_getObject'" + string.Format("\"{0}\" \"{1}\" ", simset, index));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
 
@@ -25644,6 +29034,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSimSet_getObjectIndex(string simset, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_getObjectIndex'" + string.Format("\"{0}\" \"{1}\" ", simset, obj));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sbobj = new StringBuilder(obj, 1024);
 
@@ -25657,6 +29049,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimSet_getRandom(string simset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_getRandom'" + string.Format("\"{0}\" ", simset));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
 
@@ -25672,6 +29066,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimSet_isMember(string simset, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_isMember'" + string.Format("\"{0}\" \"{1}\" ", simset, obj));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sbobj = new StringBuilder(obj, 1024);
 
@@ -25684,6 +29080,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_listObjects(string simset)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_listObjects'" + string.Format("\"{0}\" ", simset));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
 
             SafeNativeMethods.mwle_fnSimSet_listObjects(sbsimset);
@@ -25696,6 +29094,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_pushToBack(string simset, string obj)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_pushToBack'" + string.Format("\"{0}\" \"{1}\" ", simset, obj));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sbobj = new StringBuilder(obj, 1024);
 
@@ -25710,6 +29110,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_remove(string simset, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_remove'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", simset, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -25741,6 +29143,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_reorderChild(string simset, string child1, string child2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_reorderChild'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", simset, child1, child2));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sbchild1 = new StringBuilder(child1, 1024);
             StringBuilder sbchild2 = new StringBuilder(child2, 1024);
@@ -25755,6 +29159,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimSet_sort(string simset, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimSet_sort'" + string.Format("\"{0}\" \"{1}\" ", simset, a2));
             StringBuilder sbsimset = new StringBuilder(simset, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -25783,6 +29189,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_addComment(string simxmldocument, string comment)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_addComment'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, comment));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbcomment = new StringBuilder(comment, 4096);
 
@@ -25821,6 +29229,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_addData(string simxmldocument, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_addData'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, text));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -25849,6 +29259,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_addHeader(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_addHeader'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
             SafeNativeMethods.mwle_fnSimXMLDocument_addHeader(sbsimxmldocument);
@@ -25869,6 +29281,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_addNewElement(string simxmldocument, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_addNewElement'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, name));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -25906,6 +29320,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_addText(string simxmldocument, string text)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_addText'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, text));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbtext = new StringBuilder(text, 4096);
 
@@ -25920,6 +29336,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_attribute(string simxmldocument, string attributeName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_attribute'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, attributeName));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbattributeName = new StringBuilder(attributeName, 4096);
@@ -25936,6 +29354,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimXMLDocument_attributeExists(string simxmldocument, string attributeName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_attributeExists'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, attributeName));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbattributeName = new StringBuilder(attributeName, 4096);
 
@@ -25952,6 +29372,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnSimXMLDocument_attributeF32(string simxmldocument, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_attributeF32'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, a2));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -25968,6 +29390,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSimXMLDocument_attributeS32(string simxmldocument, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_attributeS32'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, a2));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -25984,6 +29408,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_clear(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_clear'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
             SafeNativeMethods.mwle_fnSimXMLDocument_clear(sbsimxmldocument);
@@ -25995,6 +29421,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_clearError(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_clearError'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
             SafeNativeMethods.mwle_fnSimXMLDocument_clearError(sbsimxmldocument);
@@ -26008,6 +29436,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_elementValue(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_elementValue'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26025,6 +29455,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_firstAttribute(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_firstAttribute'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26069,6 +29501,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_getData(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_getData'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26083,6 +29517,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_getErrorDesc(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_getErrorDesc'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26126,6 +29562,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_getText(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_getText'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26143,6 +29581,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_lastAttribute(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_lastAttribute'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26159,6 +29599,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimXMLDocument_loadFile(string simxmldocument, string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_loadFile'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, fileName));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -26175,6 +29617,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_nextAttribute(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_nextAttribute'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26190,6 +29634,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimXMLDocument_nextSiblingElement(string simxmldocument, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_nextSiblingElement'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, name));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -26204,6 +29650,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_parse(string simxmldocument, string xmlString)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_parse'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, xmlString));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbxmlString = new StringBuilder(xmlString, 4096);
 
@@ -26216,6 +29664,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_popElement(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_popElement'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
             SafeNativeMethods.mwle_fnSimXMLDocument_popElement(sbsimxmldocument);
@@ -26231,6 +29681,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_prevAttribute(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_prevAttribute'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26246,6 +29698,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimXMLDocument_pushChildElement(string simxmldocument, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_pushChildElement'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, index));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
             return SafeNativeMethods.mwle_fnSimXMLDocument_pushChildElement(sbsimxmldocument, index) >= 1;
@@ -26278,6 +29732,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimXMLDocument_pushFirstChildElement(string simxmldocument, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_pushFirstChildElement'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, name));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -26298,6 +29754,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_pushNewElement(string simxmldocument, string name)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_pushNewElement'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, name));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbname = new StringBuilder(name, 4096);
 
@@ -26320,6 +29778,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnSimXMLDocument_readComment(string simxmldocument, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_readComment'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
@@ -26343,6 +29803,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_removeText(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_removeText'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
             SafeNativeMethods.mwle_fnSimXMLDocument_removeText(sbsimxmldocument);
@@ -26358,6 +29820,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_reset(string simxmldocument)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_reset'" + string.Format("\"{0}\" ", simxmldocument));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
 
             SafeNativeMethods.mwle_fnSimXMLDocument_reset(sbsimxmldocument);
@@ -26371,6 +29835,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnSimXMLDocument_saveFile(string simxmldocument, string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_saveFile'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, fileName));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -26385,6 +29851,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_setAttribute(string simxmldocument, string attributeName, string value)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_setAttribute'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", simxmldocument, attributeName, value));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbattributeName = new StringBuilder(attributeName, 4096);
             StringBuilder sbvalue = new StringBuilder(value, 4096);
@@ -26399,6 +29867,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSimXMLDocument_setObjectAttributes(string simxmldocument, string objectID)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSimXMLDocument_setObjectAttributes'" + string.Format("\"{0}\" \"{1}\" ", simxmldocument, objectID));
             StringBuilder sbsimxmldocument = new StringBuilder(simxmldocument, 1024);
             StringBuilder sbobjectID = new StringBuilder(objectID, 4096);
 
@@ -26411,6 +29881,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSkyBox_postApply(string skybox)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSkyBox_postApply'" + string.Format("\"{0}\" ", skybox));
             StringBuilder sbskybox = new StringBuilder(skybox, 1024);
 
             SafeNativeMethods.mwle_fnSkyBox_postApply(sbskybox);
@@ -26426,6 +29898,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnSpawnSphere_spawnObject(string spawnsphere, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSpawnSphere_spawnObject'" + string.Format("\"{0}\" \"{1}\" ", spawnsphere, a2));
             StringBuilder sbspawnsphere = new StringBuilder(spawnsphere, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -26438,6 +29912,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnStaticShape_getPoweredState(string staticshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStaticShape_getPoweredState'" + string.Format("\"{0}\" ", staticshape));
             StringBuilder sbstaticshape = new StringBuilder(staticshape, 1024);
 
             return SafeNativeMethods.mwle_fnStaticShape_getPoweredState(sbstaticshape) >= 1;
@@ -26450,6 +29926,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnStaticShape_setPoweredState(string staticshape, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStaticShape_setPoweredState'" + string.Format("\"{0}\" \"{1}\" ", staticshape, a2));
             StringBuilder sbstaticshape = new StringBuilder(staticshape, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -26464,6 +29942,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnStreamObject_copyFrom(string streamobject, string other)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_copyFrom'" + string.Format("\"{0}\" \"{1}\" ", streamobject, other));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
             StringBuilder sbother = new StringBuilder(other, 1024);
 
@@ -26504,6 +29984,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnStreamObject_getPosition(string streamobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_getPosition'" + string.Format("\"{0}\" ", streamobject));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
             return SafeNativeMethods.mwle_fnStreamObject_getPosition(sbstreamobject);
@@ -26543,6 +30025,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnStreamObject_getStatus(string streamobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_getStatus'" + string.Format("\"{0}\" ", streamobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
@@ -26578,6 +30062,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnStreamObject_getStreamSize(string streamobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_getStreamSize'" + string.Format("\"{0}\" ", streamobject));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
             return SafeNativeMethods.mwle_fnStreamObject_getStreamSize(sbstreamobject);
@@ -26613,6 +30099,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnStreamObject_isEOF(string streamobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_isEOF'" + string.Format("\"{0}\" ", streamobject));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
             return SafeNativeMethods.mwle_fnStreamObject_isEOF(sbstreamobject) >= 1;
@@ -26648,6 +30136,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnStreamObject_isEOS(string streamobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_isEOS'" + string.Format("\"{0}\" ", streamobject));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
             return SafeNativeMethods.mwle_fnStreamObject_isEOS(sbstreamobject) >= 1;
@@ -26681,6 +30171,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnStreamObject_readLine(string streamobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_readLine'" + string.Format("\"{0}\" ", streamobject));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
@@ -26701,6 +30193,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnStreamObject_readLongString(string streamobject, int maxLength)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_readLongString'" + string.Format("\"{0}\" \"{1}\" ", streamobject, maxLength));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
@@ -26720,6 +30214,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnStreamObject_readString(string streamobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_readString'" + string.Format("\"{0}\" ", streamobject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
@@ -26741,6 +30237,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnStreamObject_readSTString(string streamobject, bool caseSensitive)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_readSTString'" + string.Format("\"{0}\" \"{1}\" ", streamobject, caseSensitive));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
@@ -26781,6 +30279,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnStreamObject_setPosition(string streamobject, int newPosition)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_setPosition'" + string.Format("\"{0}\" \"{1}\" ", streamobject, newPosition));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
 
             return SafeNativeMethods.mwle_fnStreamObject_setPosition(sbstreamobject, newPosition) >= 1;
@@ -26813,6 +30313,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnStreamObject_writeLine(string streamobject, string line)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_writeLine'" + string.Format("\"{0}\" \"{1}\" ", streamobject, line));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
             StringBuilder sbline = new StringBuilder(line, 4096);
 
@@ -26832,6 +30334,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnStreamObject_writeLongString(string streamobject, int maxLength, string xstring)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_writeLongString'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", streamobject, maxLength, xstring));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
             StringBuilder sbxstring = new StringBuilder(xstring, 4096);
 
@@ -26852,6 +30356,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnStreamObject_writeString(string streamobject, string xstring, int maxLength)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnStreamObject_writeString'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", streamobject, xstring, maxLength));
             StringBuilder sbstreamobject = new StringBuilder(streamobject, 1024);
             StringBuilder sbxstring = new StringBuilder(xstring, 4096);
 
@@ -26864,6 +30370,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSun_animate(string sun, string a2, string a3, string a4, string a5, string a6)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSun_animate'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" ", sun, a2, a3, a4, a5, a6));
             StringBuilder sbsun = new StringBuilder(sun, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -26880,6 +30388,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnSun_apply(string sun)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnSun_apply'" + string.Format("\"{0}\" ", sun));
             StringBuilder sbsun = new StringBuilder(sun, 1024);
 
             SafeNativeMethods.mwle_fnSun_apply(sbsun);
@@ -26901,6 +30411,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTCPObject_connect(string tcpobject, string address)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTCPObject_connect'" + string.Format("\"{0}\" \"{1}\" ", tcpobject, address));
             StringBuilder sbtcpobject = new StringBuilder(tcpobject, 1024);
             StringBuilder sbaddress = new StringBuilder(address, 4096);
 
@@ -26918,6 +30430,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTCPObject_disconnect(string tcpobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTCPObject_disconnect'" + string.Format("\"{0}\" ", tcpobject));
             StringBuilder sbtcpobject = new StringBuilder(tcpobject, 1024);
 
             SafeNativeMethods.mwle_fnTCPObject_disconnect(sbtcpobject);
@@ -26955,6 +30469,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTCPObject_listen(string tcpobject, int port)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTCPObject_listen'" + string.Format("\"{0}\" \"{1}\" ", tcpobject, port));
             StringBuilder sbtcpobject = new StringBuilder(tcpobject, 1024);
 
             SafeNativeMethods.mwle_fnTCPObject_listen(sbtcpobject, port);
@@ -26981,6 +30497,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTCPObject_send(string tcpobject, string data)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTCPObject_send'" + string.Format("\"{0}\" \"{1}\" ", tcpobject, data));
             StringBuilder sbtcpobject = new StringBuilder(tcpobject, 1024);
             StringBuilder sbdata = new StringBuilder(data, 4096);
 
@@ -26997,6 +30515,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnTerrainBlock_save(string terrainblock, string fileName)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTerrainBlock_save'" + string.Format("\"{0}\" \"{1}\" ", terrainblock, fileName));
             StringBuilder sbterrainblock = new StringBuilder(terrainblock, 1024);
             StringBuilder sbfileName = new StringBuilder(fileName, 4096);
 
@@ -27009,6 +30529,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTimeOfDay_addTimeOfDayEvent(string timeofday, float elevation, string identifier)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTimeOfDay_addTimeOfDayEvent'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", timeofday, elevation, identifier));
             StringBuilder sbtimeofday = new StringBuilder(timeofday, 1024);
             StringBuilder sbidentifier = new StringBuilder(identifier, 4096);
 
@@ -27021,6 +30543,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTimeOfDay_animate(string timeofday, float elevation, float degreesPerSecond)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTimeOfDay_animate'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", timeofday, elevation, degreesPerSecond));
             StringBuilder sbtimeofday = new StringBuilder(timeofday, 1024);
 
             SafeNativeMethods.mwle_fnTimeOfDay_animate(sbtimeofday, elevation, degreesPerSecond);
@@ -27032,6 +30556,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTimeOfDay_setDayLength(string timeofday, float seconds)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTimeOfDay_setDayLength'" + string.Format("\"{0}\" \"{1}\" ", timeofday, seconds));
             StringBuilder sbtimeofday = new StringBuilder(timeofday, 1024);
 
             SafeNativeMethods.mwle_fnTimeOfDay_setDayLength(sbtimeofday, seconds);
@@ -27043,6 +30569,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTimeOfDay_setPlay(string timeofday, bool enabled)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTimeOfDay_setPlay'" + string.Format("\"{0}\" \"{1}\" ", timeofday, enabled));
             StringBuilder sbtimeofday = new StringBuilder(timeofday, 1024);
 
             SafeNativeMethods.mwle_fnTimeOfDay_setPlay(sbtimeofday, enabled);
@@ -27054,6 +30582,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTimeOfDay_setTimeOfDay(string timeofday, float time)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTimeOfDay_setTimeOfDay'" + string.Format("\"{0}\" \"{1}\" ", timeofday, time));
             StringBuilder sbtimeofday = new StringBuilder(timeofday, 1024);
 
             SafeNativeMethods.mwle_fnTimeOfDay_setTimeOfDay(sbtimeofday, time);
@@ -27066,6 +30596,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnTrigger_getNumObjects(string trigger)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTrigger_getNumObjects'" + string.Format("\"{0}\" ", trigger));
             StringBuilder sbtrigger = new StringBuilder(trigger, 1024);
 
             return SafeNativeMethods.mwle_fnTrigger_getNumObjects(sbtrigger);
@@ -27080,6 +30612,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnTrigger_getObject(string trigger, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTrigger_getObject'" + string.Format("\"{0}\" \"{1}\" ", trigger, index));
             StringBuilder sbtrigger = new StringBuilder(trigger, 1024);
 
             return SafeNativeMethods.mwle_fnTrigger_getObject(sbtrigger, index);
@@ -27108,6 +30642,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTSStatic_changeMaterial(string tsstatic, string mapTo, string oldMat, string newMat)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTSStatic_changeMaterial'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", tsstatic, mapTo, oldMat, newMat));
             StringBuilder sbtsstatic = new StringBuilder(tsstatic, 1024);
             StringBuilder sbmapTo = new StringBuilder(mapTo, 4096);
             StringBuilder sboldMat = new StringBuilder(oldMat, 1024);
@@ -27129,6 +30665,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnTSStatic_getModelFile(string tsstatic)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTSStatic_getModelFile'" + string.Format("\"{0}\" ", tsstatic));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtsstatic = new StringBuilder(tsstatic, 1024);
 
@@ -27144,6 +30682,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnTSStatic_getTargetCount(string tsstatic)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTSStatic_getTargetCount'" + string.Format("\"{0}\" ", tsstatic));
             StringBuilder sbtsstatic = new StringBuilder(tsstatic, 1024);
 
             return SafeNativeMethods.mwle_fnTSStatic_getTargetCount(sbtsstatic);
@@ -27158,6 +30698,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnTSStatic_getTargetName(string tsstatic, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTSStatic_getTargetName'" + string.Format("\"{0}\" \"{1}\" ", tsstatic, index));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbtsstatic = new StringBuilder(tsstatic, 1024);
 
@@ -27172,6 +30714,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnTurretShape_doRespawn(string turretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTurretShape_doRespawn'" + string.Format("\"{0}\" ", turretshape));
             StringBuilder sbturretshape = new StringBuilder(turretshape, 1024);
 
             return SafeNativeMethods.mwle_fnTurretShape_doRespawn(sbturretshape) >= 1;
@@ -27184,6 +30728,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnTurretShape_getAllowManualFire(string turretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTurretShape_getAllowManualFire'" + string.Format("\"{0}\" ", turretshape));
             StringBuilder sbturretshape = new StringBuilder(turretshape, 1024);
 
             return SafeNativeMethods.mwle_fnTurretShape_getAllowManualFire(sbturretshape) >= 1;
@@ -27196,6 +30742,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnTurretShape_getAllowManualRotation(string turretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTurretShape_getAllowManualRotation'" + string.Format("\"{0}\" ", turretshape));
             StringBuilder sbturretshape = new StringBuilder(turretshape, 1024);
 
             return SafeNativeMethods.mwle_fnTurretShape_getAllowManualRotation(sbturretshape) >= 1;
@@ -27214,6 +30762,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnTurretShape_getState(string turretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTurretShape_getState'" + string.Format("\"{0}\" ", turretshape));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbturretshape = new StringBuilder(turretshape, 1024);
 
@@ -27229,6 +30779,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnTurretShape_getTurretEulerRotation(string turretshape)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTurretShape_getTurretEulerRotation'" + string.Format("\"{0}\" ", turretshape));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbturretshape = new StringBuilder(turretshape, 1024);
 
@@ -27243,6 +30795,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTurretShape_setAllowManualFire(string turretshape, bool allow)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTurretShape_setAllowManualFire'" + string.Format("\"{0}\" \"{1}\" ", turretshape, allow));
             StringBuilder sbturretshape = new StringBuilder(turretshape, 1024);
 
             SafeNativeMethods.mwle_fnTurretShape_setAllowManualFire(sbturretshape, allow);
@@ -27255,6 +30809,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTurretShape_setAllowManualRotation(string turretshape, bool allow)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTurretShape_setAllowManualRotation'" + string.Format("\"{0}\" \"{1}\" ", turretshape, allow));
             StringBuilder sbturretshape = new StringBuilder(turretshape, 1024);
 
             SafeNativeMethods.mwle_fnTurretShape_setAllowManualRotation(sbturretshape, allow);
@@ -27268,6 +30824,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnTurretShape_setTurretEulerRotation(string turretshape, string rot)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnTurretShape_setTurretEulerRotation'" + string.Format("\"{0}\" \"{1}\" ", turretshape, rot));
             StringBuilder sbturretshape = new StringBuilder(turretshape, 1024);
             StringBuilder sbrot = new StringBuilder(rot, 1024);
 
@@ -27280,6 +30838,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnUndoAction_addToManager(string undoaction, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoAction_addToManager'" + string.Format("\"{0}\" \"{1}\" ", undoaction, a2));
             StringBuilder sbundoaction = new StringBuilder(undoaction, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27292,6 +30852,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnUndoAction_redo(string undoaction)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoAction_redo'" + string.Format("\"{0}\" ", undoaction));
             StringBuilder sbundoaction = new StringBuilder(undoaction, 1024);
 
             SafeNativeMethods.mwle_fnUndoAction_redo(sbundoaction);
@@ -27303,6 +30865,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnUndoAction_undo(string undoaction)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoAction_undo'" + string.Format("\"{0}\" ", undoaction));
             StringBuilder sbundoaction = new StringBuilder(undoaction, 1024);
 
             SafeNativeMethods.mwle_fnUndoAction_undo(sbundoaction);
@@ -27314,6 +30878,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnUndoManager_clearAll(string undomanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_clearAll'" + string.Format("\"{0}\" ", undomanager));
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
 
             SafeNativeMethods.mwle_fnUndoManager_clearAll(sbundomanager);
@@ -27325,6 +30891,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnUndoManager_getNextRedoName(string undomanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_getNextRedoName'" + string.Format("\"{0}\" ", undomanager));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
 
@@ -27338,6 +30906,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnUndoManager_getNextUndoName(string undomanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_getNextUndoName'" + string.Format("\"{0}\" ", undomanager));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
 
@@ -27351,6 +30921,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnUndoManager_getRedoAction(string undomanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_getRedoAction'" + string.Format("\"{0}\" \"{1}\" ", undomanager, a2));
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27363,6 +30935,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnUndoManager_getRedoCount(string undomanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_getRedoCount'" + string.Format("\"{0}\" ", undomanager));
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
 
             return SafeNativeMethods.mwle_fnUndoManager_getRedoCount(sbundomanager);
@@ -27374,6 +30948,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnUndoManager_getRedoName(string undomanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_getRedoName'" + string.Format("\"{0}\" \"{1}\" ", undomanager, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -27388,6 +30964,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnUndoManager_getUndoAction(string undomanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_getUndoAction'" + string.Format("\"{0}\" \"{1}\" ", undomanager, a2));
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27400,6 +30978,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnUndoManager_getUndoCount(string undomanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_getUndoCount'" + string.Format("\"{0}\" ", undomanager));
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
 
             return SafeNativeMethods.mwle_fnUndoManager_getUndoCount(sbundomanager);
@@ -27411,6 +30991,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnUndoManager_getUndoName(string undomanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_getUndoName'" + string.Format("\"{0}\" \"{1}\" ", undomanager, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -27425,6 +31007,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnUndoManager_popCompound(string undomanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_popCompound'" + string.Format("\"{0}\" \"{1}\" ", undomanager, a2));
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27437,6 +31021,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnUndoManager_pushCompound(string undomanager, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_pushCompound'" + string.Format("\"{0}\" \"{1}\" ", undomanager, a2));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
@@ -27451,6 +31037,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnUndoManager_redo(string undomanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_redo'" + string.Format("\"{0}\" ", undomanager));
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
 
             SafeNativeMethods.mwle_fnUndoManager_redo(sbundomanager);
@@ -27462,6 +31050,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnUndoManager_undo(string undomanager)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnUndoManager_undo'" + string.Format("\"{0}\" ", undomanager));
             StringBuilder sbundomanager = new StringBuilder(undomanager, 1024);
 
             SafeNativeMethods.mwle_fnUndoManager_undo(sbundomanager);
@@ -27474,6 +31064,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnWheeledVehicle_getWheelCount(string wheeledvehicle)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWheeledVehicle_getWheelCount'" + string.Format("\"{0}\" ", wheeledvehicle));
             StringBuilder sbwheeledvehicle = new StringBuilder(wheeledvehicle, 1024);
 
             return SafeNativeMethods.mwle_fnWheeledVehicle_getWheelCount(sbwheeledvehicle);
@@ -27490,6 +31082,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnWheeledVehicle_setWheelPowered(string wheeledvehicle, int wheel, bool powered)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWheeledVehicle_setWheelPowered'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", wheeledvehicle, wheel, powered));
             StringBuilder sbwheeledvehicle = new StringBuilder(wheeledvehicle, 1024);
 
             return SafeNativeMethods.mwle_fnWheeledVehicle_setWheelPowered(sbwheeledvehicle, wheel, powered) >= 1;
@@ -27507,6 +31101,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnWheeledVehicle_setWheelSpring(string wheeledvehicle, int wheel, string spring)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWheeledVehicle_setWheelSpring'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", wheeledvehicle, wheel, spring));
             StringBuilder sbwheeledvehicle = new StringBuilder(wheeledvehicle, 1024);
             StringBuilder sbspring = new StringBuilder(spring, 1024);
 
@@ -27527,6 +31123,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnWheeledVehicle_setWheelSteering(string wheeledvehicle, int wheel, float steering)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWheeledVehicle_setWheelSteering'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", wheeledvehicle, wheel, steering));
             StringBuilder sbwheeledvehicle = new StringBuilder(wheeledvehicle, 1024);
 
             return SafeNativeMethods.mwle_fnWheeledVehicle_setWheelSteering(sbwheeledvehicle, wheel, steering) >= 1;
@@ -27544,6 +31142,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnWheeledVehicle_setWheelTire(string wheeledvehicle, int wheel, string tire)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWheeledVehicle_setWheelTire'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", wheeledvehicle, wheel, tire));
             StringBuilder sbwheeledvehicle = new StringBuilder(wheeledvehicle, 1024);
             StringBuilder sbtire = new StringBuilder(tire, 1024);
 
@@ -27556,6 +31156,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_addUndoState(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_addUndoState'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_addUndoState(sbworldeditor);
@@ -27568,6 +31170,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_alignByAxis(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_alignByAxis'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27581,6 +31185,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_alignByBounds(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_alignByBounds'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27593,6 +31199,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnWorldEditor_canPasteSelection(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_canPasteSelection'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_canPasteSelection(sbworldeditor) >= 1;
@@ -27604,6 +31212,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_clearIgnoreList(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_clearIgnoreList'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_clearIgnoreList(sbworldeditor);
@@ -27615,6 +31225,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_clearSelection(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_clearSelection'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_clearSelection(sbworldeditor);
@@ -27627,6 +31239,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_colladaExportSelection(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_colladaExportSelection'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27639,6 +31253,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_copySelection(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_copySelection'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_copySelection(sbworldeditor);
@@ -27650,6 +31266,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnWorldEditor_createConvexShapeFrom(string worldeditor, string polyObject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_createConvexShapeFrom'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, polyObject));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sbpolyObject = new StringBuilder(polyObject, 1024);
@@ -27664,6 +31282,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnWorldEditor_createPolyhedralObject(string worldeditor, string className, string geometryProvider)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_createPolyhedralObject'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", worldeditor, className, geometryProvider));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sbclassName = new StringBuilder(className, 4096);
@@ -27679,6 +31299,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_cutSelection(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_cutSelection'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_cutSelection(sbworldeditor);
@@ -27690,6 +31312,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_dropSelection(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_dropSelection'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27702,6 +31326,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_explodeSelectedPrefab(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_explodeSelectedPrefab'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_explodeSelectedPrefab(sbworldeditor);
@@ -27713,6 +31339,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnWorldEditor_getActiveSelection(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getActiveSelection'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_getActiveSelection(sbworldeditor);
@@ -27724,6 +31352,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnWorldEditor_getSelectedObject(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSelectedObject'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27736,6 +31366,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnWorldEditor_getSelectionCentroid(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSelectionCentroid'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
@@ -27749,6 +31381,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnWorldEditor_getSelectionExtent(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSelectionExtent'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder returnbuff = new StringBuilder(4096);
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
@@ -27762,6 +31396,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnWorldEditor_getSelectionRadius(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSelectionRadius'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_getSelectionRadius(sbworldeditor);
@@ -27773,6 +31409,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnWorldEditor_getSelectionSize(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSelectionSize'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_getSelectionSize(sbworldeditor);
@@ -27785,6 +31423,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnWorldEditor_getSoftSnap(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSoftSnap'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_getSoftSnap(sbworldeditor) >= 1;
@@ -27796,6 +31436,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnWorldEditor_getSoftSnapAlignment(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSoftSnapAlignment'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_getSoftSnapAlignment(sbworldeditor);
@@ -27808,6 +31450,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnWorldEditor_getSoftSnapBackfaceTolerance(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSoftSnapBackfaceTolerance'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_getSoftSnapBackfaceTolerance(sbworldeditor);
@@ -27820,6 +31464,8 @@ namespace WinterLeaf
         /// </summary>
         internal float fnWorldEditor_getSoftSnapSize(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getSoftSnapSize'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_getSoftSnapSize(sbworldeditor);
@@ -27831,6 +31477,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnWorldEditor_getTerrainSnapAlignment(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_getTerrainSnapAlignment'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             return SafeNativeMethods.mwle_fnWorldEditor_getTerrainSnapAlignment(sbworldeditor);
@@ -27842,6 +31490,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_hideObject(string worldeditor, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_hideObject'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", worldeditor, a2, a3));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -27855,6 +31505,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_hideSelection(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_hideSelection'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27867,6 +31519,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_ignoreObjClass(string worldeditor, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12, string a13, string a14, string a15, string a16, string a17, string a18, string a19)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_ignoreObjClass'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" \"{12}\" \"{13}\" \"{14}\" \"{15}\" \"{16}\" \"{17}\" \"{18}\" ", worldeditor, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -27896,6 +31550,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_invalidateSelectionCentroid(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_invalidateSelectionCentroid'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_invalidateSelectionCentroid(sbworldeditor);
@@ -27907,6 +31563,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_lockSelection(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_lockSelection'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27919,6 +31577,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_makeSelectionPrefab(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_makeSelectionPrefab'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27931,6 +31591,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_mountRelative(string worldeditor, string a2, string a3)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_mountRelative'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", worldeditor, a2, a3));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -27944,6 +31606,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_pasteSelection(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_pasteSelection'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_pasteSelection(sbworldeditor);
@@ -27955,6 +31619,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_redirectConsole(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_redirectConsole'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -27967,6 +31633,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_resetSelectedRotation(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_resetSelectedRotation'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_resetSelectedRotation(sbworldeditor);
@@ -27978,6 +31646,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_resetSelectedScale(string worldeditor)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_resetSelectedScale'" + string.Format("\"{0}\" ", worldeditor));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_resetSelectedScale(sbworldeditor);
@@ -27989,6 +31659,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_selectObject(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_selectObject'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28001,6 +31673,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_setActiveSelection(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_setActiveSelection'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28014,6 +31688,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_setSoftSnap(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_setSoftSnap'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28026,6 +31702,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_setSoftSnapAlignment(string worldeditor, int type)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_setSoftSnapAlignment'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, type));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_setSoftSnapAlignment(sbworldeditor, type);
@@ -28038,6 +31716,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_setSoftSnapBackfaceTolerance(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_setSoftSnapBackfaceTolerance'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28051,6 +31731,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_setSoftSnapSize(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_setSoftSnapSize'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28063,6 +31745,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_setTerrainSnapAlignment(string worldeditor, int alignment)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_setTerrainSnapAlignment'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, alignment));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
 
             SafeNativeMethods.mwle_fnWorldEditor_setTerrainSnapAlignment(sbworldeditor, alignment);
@@ -28075,6 +31759,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_softSnapDebugRender(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_softSnapDebugRender'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28088,6 +31774,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_softSnapRender(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_softSnapRender'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28101,6 +31789,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_softSnapRenderTriangle(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_softSnapRenderTriangle'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28114,6 +31804,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_softSnapSizeByBounds(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_softSnapSizeByBounds'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28127,6 +31819,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_transformSelection(string worldeditor, string a2, string a3, string a4, string a5, string a6, string a7, string a8, string a9, string a10, string a11, string a12)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_transformSelection'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\" \"{11}\" ", worldeditor, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
             StringBuilder sba3 = new StringBuilder(a3, 4096);
@@ -28149,6 +31843,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnWorldEditor_unselectObject(string worldeditor, string a2)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnWorldEditor_unselectObject'" + string.Format("\"{0}\" \"{1}\" ", worldeditor, a2));
             StringBuilder sbworldeditor = new StringBuilder(worldeditor, 1024);
             StringBuilder sba2 = new StringBuilder(a2, 4096);
 
@@ -28167,6 +31863,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnZipObject_addFile(string zipobject, string filename, string pathInZip, bool replace)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_addFile'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" ", zipobject, filename, pathInZip, replace));
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
             StringBuilder sbpathInZip = new StringBuilder(pathInZip, 4096);
@@ -28181,6 +31879,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnZipObject_closeArchive(string zipobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_closeArchive'" + string.Format("\"{0}\" ", zipobject));
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
 
             SafeNativeMethods.mwle_fnZipObject_closeArchive(sbzipobject);
@@ -28195,6 +31895,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnZipObject_closeFile(string zipobject, string stream)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_closeFile'" + string.Format("\"{0}\" \"{1}\" ", zipobject, stream));
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
             StringBuilder sbstream = new StringBuilder(stream, 1024);
 
@@ -28218,6 +31920,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnZipObject_deleteFile(string zipobject, string pathInZip)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_deleteFile'" + string.Format("\"{0}\" \"{1}\" ", zipobject, pathInZip));
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
             StringBuilder sbpathInZip = new StringBuilder(pathInZip, 4096);
 
@@ -28233,6 +31937,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnZipObject_extractFile(string zipobject, string pathInZip, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_extractFile'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", zipobject, pathInZip, filename));
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
             StringBuilder sbpathInZip = new StringBuilder(pathInZip, 4096);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
@@ -28260,6 +31966,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnZipObject_getFileEntry(string zipobject, int index)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_getFileEntry'" + string.Format("\"{0}\" \"{1}\" ", zipobject, index));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
 
@@ -28285,6 +31993,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnZipObject_getFileEntryCount(string zipobject)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_getFileEntryCount'" + string.Format("\"{0}\" ", zipobject));
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
 
             return SafeNativeMethods.mwle_fnZipObject_getFileEntryCount(sbzipobject);
@@ -28311,6 +32021,8 @@ namespace WinterLeaf
         /// </summary>
         internal bool fnZipObject_openArchive(string zipobject, string filename, string accessMode)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_openArchive'" + string.Format("\"{0}\" \"{1}\" \"{2}\" ", zipobject, filename, accessMode));
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
             StringBuilder sbaccessMode = new StringBuilder(accessMode, 4096);
@@ -28334,6 +32046,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnZipObject_openFileForRead(string zipobject, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_openFileForRead'" + string.Format("\"{0}\" \"{1}\" ", zipobject, filename));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
@@ -28358,6 +32072,8 @@ namespace WinterLeaf
         /// </summary>
         internal string fnZipObject_openFileForWrite(string zipobject, string filename)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZipObject_openFileForWrite'" + string.Format("\"{0}\" \"{1}\" ", zipobject, filename));
             StringBuilder returnbuff = new StringBuilder(1024);
             StringBuilder sbzipobject = new StringBuilder(zipobject, 1024);
             StringBuilder sbfilename = new StringBuilder(filename, 4096);
@@ -28375,6 +32091,8 @@ namespace WinterLeaf
         /// </summary>
         internal void fnZone_dumpZoneState(string zone, bool updateFirst)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZone_dumpZoneState'" + string.Format("\"{0}\" \"{1}\" ", zone, updateFirst));
             StringBuilder sbzone = new StringBuilder(zone, 1024);
 
             SafeNativeMethods.mwle_fnZone_dumpZoneState(sbzone, updateFirst);
@@ -28387,6 +32105,8 @@ namespace WinterLeaf
         /// </summary>
         internal int fnZone_getZoneId(string zone)
             {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnZone_getZoneId'" + string.Format("\"{0}\" ", zone));
             StringBuilder sbzone = new StringBuilder(zone, 1024);
 
             return SafeNativeMethods.mwle_fnZone_getZoneId(sbzone);

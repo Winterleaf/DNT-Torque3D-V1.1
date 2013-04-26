@@ -94,8 +94,13 @@ namespace WinterLeaf.Containers
     /// Used to hold the CSharp equiv of the RectSpacingI torque class.
     /// </summary>
     [TypeConverter(typeof (RectSpacingIConverter))]
-    public sealed class RectSpacingI : IConvertible
+    public sealed class RectSpacingI : Notifier, IConvertible
         {
+        private int _bottom;
+        private int _left;
+        private int _right;
+        private int _top;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,22 +134,54 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
-        public int left { get; set; }
+        public int left
+            {
+            get { return _left; }
+            set
+                {
+                _left = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public int top { get; set; }
+        public int top
+            {
+            get { return _top; }
+            set
+                {
+                _top = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public int bottom { get; set; }
+        public int bottom
+            {
+            get { return _bottom; }
+            set
+                {
+                _bottom = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public int right { get; set; }
+        public int right
+            {
+            get { return _right; }
+            set
+                {
+                _right = value;
+                Notify(AsString());
+                }
+            }
 
         #region IConvertible Members
 
@@ -302,6 +339,14 @@ namespace WinterLeaf.Containers
             }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~RectSpacingI()
+            {
+            this.DetachAllEvents();
+            }
 
         /// <summary>
         /// 

@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercofxFoliageReplicator))]
     public class cofxFoliageReplicator : coSceneObject
         {
+        private ColorF _PlacementColour;
+
         /// <summary>
         /// 
         /// </summary>
@@ -445,7 +447,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF PlacementColour
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".PlacementColour").AsColorF(); }
+            get
+                {
+                if (_PlacementColour != null)
+                    _PlacementColour.DetachAllEvents();
+                _PlacementColour = dnTorque.self.GetVar(_mSimObjectId + ".PlacementColour").AsColorF();
+                _PlacementColour.OnChangeNotification += _PlacementColour_OnChangeNotification;
+                return _PlacementColour;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".PlacementColour", value.AsString()); }
             }
 
@@ -663,6 +672,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator cofxFoliageReplicator(uint ts)
             {
             return new cofxFoliageReplicator(ts);
+            }
+
+        private void _PlacementColour_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".PlacementColour", e.NewValue);
             }
         }
     }

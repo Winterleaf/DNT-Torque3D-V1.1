@@ -103,7 +103,7 @@ namespace WinterLeaf.Containers
     /// The CSharp equiv to the TransformF torque class.
     /// </summary>
     [TypeConverter(typeof (TransformFConverter))]
-    public sealed class TransformF : IConvertible
+    public sealed class TransformF : Notifier, IConvertible
         {
         /// <summary>
         /// 
@@ -136,6 +136,10 @@ namespace WinterLeaf.Containers
         /// <param name="m_empty"></param>
         public TransformF(bool m_empty)
             {
+            mPosition = new Point3F("0 0 0 ");
+            mOrientation = new Point3F("0 0 0 ");
+            mPosition.OnChangeNotification += __OnChangeNotification;
+            mOrientation.OnChangeNotification += __OnChangeNotification;
             isempty = true;
             }
 
@@ -146,6 +150,8 @@ namespace WinterLeaf.Containers
             {
             mPosition = new Point3F("0 0 0 ");
             mOrientation = new Point3F("0 0 0 ");
+            mPosition.OnChangeNotification += __OnChangeNotification;
+            mOrientation.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -160,10 +166,19 @@ namespace WinterLeaf.Containers
                 mPosition = new Point3F(parts[0].AsFloat(), parts[1].AsFloat(), parts[2].AsFloat());
                 mOrientation = new Point3F();
                 }
-            if (parts.GetUpperBound(0) != 6)
+
+
+            if (parts.GetUpperBound(0) <= 6)
+                {
+                mPosition.OnChangeNotification += __OnChangeNotification;
+                mOrientation.OnChangeNotification += __OnChangeNotification;
                 return;
+                }
             mOrientation = new Point3F(parts[3].AsFloat(), parts[4].AsFloat(), parts[5].AsFloat());
             mAngle = parts[6].AsFloat();
+
+            mPosition.OnChangeNotification += __OnChangeNotification;
+            mOrientation.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -176,6 +191,8 @@ namespace WinterLeaf.Containers
             {
             mPosition = new Point3F(x, y, z);
             mOrientation = new Point3F("0 0 0 ");
+            mPosition.OnChangeNotification += __OnChangeNotification;
+            mOrientation.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -193,6 +210,8 @@ namespace WinterLeaf.Containers
             mPosition = new Point3F(x, y, z);
             mOrientation = new Point3F(axis_x, axis_y, axis_z);
             mAngle = angle;
+            mPosition.OnChangeNotification += __OnChangeNotification;
+            mOrientation.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -202,8 +221,11 @@ namespace WinterLeaf.Containers
         public TransformF(Point3F p)
             {
             mPosition = p;
+            mPosition.DetachAllEvents();
             mOrientation = new Point3F();
             mAngle = 0;
+            mPosition.OnChangeNotification += __OnChangeNotification;
+            mOrientation.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -212,7 +234,13 @@ namespace WinterLeaf.Containers
         public Point3F MPosition
             {
             get { return mPosition; }
-            set { mPosition = value; }
+            set
+                {
+                mPosition = value;
+                mPosition.DetachAllEvents();
+                mPosition.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -221,7 +249,13 @@ namespace WinterLeaf.Containers
         public Point3F MOrientation
             {
             get { return mOrientation; }
-            set { mOrientation = value; }
+            set
+                {
+                mOrientation = value;
+                mOrientation.DetachAllEvents();
+                mOrientation.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -230,7 +264,11 @@ namespace WinterLeaf.Containers
         public float MAngle
             {
             get { return mAngle; }
-            set { mAngle = value; }
+            set
+                {
+                mAngle = value;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -393,12 +431,24 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
+        ~TransformF()
+            {
+            this.DetachAllEvents();
+            }
+
+        private void __OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            if (e.NewValue != "")
+                Notify(AsString());
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public override string ToString()
             {
-            if (!isempty)
-                return string.Format("{0} {1} {2} {3} {4} {5} {6}", mPosition.x.AsString(), mPosition.y.AsString(), mPosition.z.AsString(), mOrientation.x.AsString(), mOrientation.y.AsString(), mOrientation.z.AsString(), mAngle.AsString());
-            return "";
+            return AsString();
             }
 
         /// <summary>
@@ -407,7 +457,7 @@ namespace WinterLeaf.Containers
         /// <returns></returns>
         public string AsString()
             {
-            if (!isempty)
+            if (((object) mPosition) != null && ((object) mOrientation) != null && !isempty)
                 return string.Format("{0} {1} {2} {3} {4} {5} {6}", mPosition.x.AsString(), mPosition.y.AsString(), mPosition.z.AsString(), mOrientation.x.AsString(), mOrientation.y.AsString(), mOrientation.z.AsString(), mAngle.AsString());
             return "";
             }

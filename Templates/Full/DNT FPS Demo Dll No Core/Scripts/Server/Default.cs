@@ -83,7 +83,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             // The network port is also defined by the client, this value 
             // overrides pref::net::port for dedicated servers
-            iGlobal["$Pref::Server::Port"] = 28003;
+            iGlobal["$Pref::Server::Port"] = 28000;
 
             // If the password is set, clients must provide it in order
             // to connect to the server
@@ -129,7 +129,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 Util.exec("./scripts/server/prefs.cs", false, false);
 
             iGlobal["$pref::Net::PacketRateToClient"] = 32;
-            iGlobal["$pref::Net::PacketSize"] = 200;
+            iGlobal["$pref::Net::PacketSize"] = 400;
             }
         }
     }

@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiEaseViewCtrl))]
     public class coGuiEaseViewCtrl : coGuiControl
         {
+        private ColorF _axisColor;
+        private EaseF _ease;
+        private ColorF _easeColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +133,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF axisColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".axisColor").AsColorF(); }
+            get
+                {
+                if (_axisColor != null)
+                    _axisColor.DetachAllEvents();
+                _axisColor = dnTorque.self.GetVar(_mSimObjectId + ".axisColor").AsColorF();
+                _axisColor.OnChangeNotification += _axisColor_OnChangeNotification;
+                return _axisColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".axisColor", value.AsString()); }
             }
 
@@ -138,7 +149,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public EaseF ease
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ease").AsEaseF(); }
+            get
+                {
+                if (_ease != null)
+                    _ease.DetachAllEvents();
+                _ease = dnTorque.self.GetVar(_mSimObjectId + ".ease").AsEaseF();
+                _ease.OnChangeNotification += _ease_OnChangeNotification;
+                return _ease;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ease", value.AsString()); }
             }
 
@@ -147,7 +165,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF easeColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".easeColor").AsColorF(); }
+            get
+                {
+                if (_easeColor != null)
+                    _easeColor.DetachAllEvents();
+                _easeColor = dnTorque.self.GetVar(_mSimObjectId + ".easeColor").AsColorF();
+                _easeColor.OnChangeNotification += _easeColor_OnChangeNotification;
+                return _easeColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".easeColor", value.AsString()); }
             }
 
@@ -267,6 +292,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiEaseViewCtrl(uint ts)
             {
             return new coGuiEaseViewCtrl(ts);
+            }
+
+        private void _axisColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".axisColor", e.NewValue);
+            }
+
+        private void _ease_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ease", e.NewValue);
+            }
+
+        private void _easeColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".easeColor", e.NewValue);
             }
         }
     }

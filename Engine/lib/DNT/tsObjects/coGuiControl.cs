@@ -101,6 +101,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiControl))]
     public class coGuiControl : coSimGroup
         {
+        private Point2I _extent;
+        private Point2I _minExtent;
+        private Point2I _position;
+
         /// <summary>
         /// 
         /// </summary>
@@ -167,7 +171,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I extent
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".extent").AsPoint2I(); }
+            get
+                {
+                if (_extent != null)
+                    _extent.DetachAllEvents();
+                _extent = dnTorque.self.GetVar(_mSimObjectId + ".extent").AsPoint2I();
+                _extent.OnChangeNotification += _extent_OnChangeNotification;
+                return _extent;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".extent", value.AsString()); }
             }
 
@@ -212,7 +223,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I minExtent
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".minExtent").AsPoint2I(); }
+            get
+                {
+                if (_minExtent != null)
+                    _minExtent.DetachAllEvents();
+                _minExtent = dnTorque.self.GetVar(_mSimObjectId + ".minExtent").AsPoint2I();
+                _minExtent.OnChangeNotification += _minExtent_OnChangeNotification;
+                return _minExtent;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".minExtent", value.AsString()); }
             }
 
@@ -221,7 +239,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I position
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".position").AsPoint2I(); }
+            get
+                {
+                if (_position != null)
+                    _position.DetachAllEvents();
+                _position = dnTorque.self.GetVar(_mSimObjectId + ".position").AsPoint2I();
+                _position.OnChangeNotification += _position_OnChangeNotification;
+                return _position;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".position", value.AsString()); }
             }
 
@@ -385,6 +410,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiControl(uint ts)
             {
             return new coGuiControl(ts);
+            }
+
+        private void _extent_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".extent", e.NewValue);
+            }
+
+        private void _minExtent_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".minExtent", e.NewValue);
+            }
+
+        private void _position_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".position", e.NewValue);
             }
 
         /// <summary>

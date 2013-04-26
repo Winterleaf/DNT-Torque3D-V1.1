@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiMissionAreaCtrl))]
     public class coGuiMissionAreaCtrl : coGuiBitmapCtrl
         {
+        private ColorI _cameraColor;
+        private ColorI _missionBoundsColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +132,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI cameraColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraColor").AsColorI(); }
+            get
+                {
+                if (_cameraColor != null)
+                    _cameraColor.DetachAllEvents();
+                _cameraColor = dnTorque.self.GetVar(_mSimObjectId + ".cameraColor").AsColorI();
+                _cameraColor.OnChangeNotification += _cameraColor_OnChangeNotification;
+                return _cameraColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".cameraColor", value.AsString()); }
             }
 
@@ -147,7 +157,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI missionBoundsColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".missionBoundsColor").AsColorI(); }
+            get
+                {
+                if (_missionBoundsColor != null)
+                    _missionBoundsColor.DetachAllEvents();
+                _missionBoundsColor = dnTorque.self.GetVar(_mSimObjectId + ".missionBoundsColor").AsColorI();
+                _missionBoundsColor.OnChangeNotification += _missionBoundsColor_OnChangeNotification;
+                return _missionBoundsColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".missionBoundsColor", value.AsString()); }
             }
 
@@ -267,6 +284,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiMissionAreaCtrl(uint ts)
             {
             return new coGuiMissionAreaCtrl(ts);
+            }
+
+        private void _cameraColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".cameraColor", e.NewValue);
+            }
+
+        private void _missionBoundsColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".missionBoundsColor", e.NewValue);
             }
 
         /// <summary>

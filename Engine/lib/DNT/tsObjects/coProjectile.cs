@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoProjectile))]
     public class coProjectile : coGameBase
         {
+        private Point3F _initialPosition;
+        private Point3F _initialVelocity;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +132,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F initialPosition
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".initialPosition").AsPoint3F(); }
+            get
+                {
+                if (_initialPosition != null)
+                    _initialPosition.DetachAllEvents();
+                _initialPosition = dnTorque.self.GetVar(_mSimObjectId + ".initialPosition").AsPoint3F();
+                _initialPosition.OnChangeNotification += _initialPosition_OnChangeNotification;
+                return _initialPosition;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".initialPosition", value.AsString()); }
             }
 
@@ -138,7 +148,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F initialVelocity
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".initialVelocity").AsPoint3F(); }
+            get
+                {
+                if (_initialVelocity != null)
+                    _initialVelocity.DetachAllEvents();
+                _initialVelocity = dnTorque.self.GetVar(_mSimObjectId + ".initialVelocity").AsPoint3F();
+                _initialVelocity.OnChangeNotification += _initialVelocity_OnChangeNotification;
+                return _initialVelocity;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".initialVelocity", value.AsString()); }
             }
 
@@ -267,6 +284,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coProjectile(uint ts)
             {
             return new coProjectile(ts);
+            }
+
+        private void _initialPosition_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".initialPosition", e.NewValue);
+            }
+
+        private void _initialVelocity_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".initialVelocity", e.NewValue);
             }
 
         /// <summary>

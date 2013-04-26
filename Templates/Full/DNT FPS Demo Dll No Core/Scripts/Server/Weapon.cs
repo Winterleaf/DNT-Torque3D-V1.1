@@ -143,14 +143,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             coGameConnection client = player["client"];
 
             string ammoName = "";
-            try
-                {
-                ammoName = ((coItemData) thisobj["ammo"]).getName();
-                }
-            catch (Exception)
-                {
-                console.warn("Unable to find ammo '" + thisobj["ammo"] + "' for '" + thisobj.getName() + "'.");
-                }
+            ammoName = ((coItemData) thisobj["ammo"]).getName();
 
 
             int currentammo = 0;
@@ -466,7 +459,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // if we're not empty put the remaining bullets from the current clip
             // in to the player's "pocket".
 
-            if (! ((coItem) thisobj["clip"]).isObject())
+            if (!((coItem) thisobj["clip"]).isObject())
                 return;
             // Commenting out this line will use a "hard clip" system, where
             // A player will lose any ammo currently in the gun when reloading.

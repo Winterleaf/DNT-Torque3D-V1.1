@@ -101,6 +101,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoItemData))]
     public class coItemData : coShapeBaseData
         {
+        private ColorF _lightColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -158,7 +160,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF lightColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF(); }
+            get
+                {
+                if (_lightColor != null)
+                    _lightColor.DetachAllEvents();
+                _lightColor = dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF();
+                _lightColor.OnChangeNotification += _lightColor_OnChangeNotification;
+                return _lightColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".lightColor", value.AsString()); }
             }
 
@@ -331,6 +340,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coItemData(uint ts)
             {
             return new coItemData(ts);
+            }
+
+        private void _lightColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".lightColor", e.NewValue);
             }
         }
     }

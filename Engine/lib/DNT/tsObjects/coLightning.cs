@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoLightning))]
     public class coLightning : coGameBase
         {
+        private ColorF _color;
+        private ColorF _fadeColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -147,7 +150,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF color
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF(); }
+            get
+                {
+                if (_color != null)
+                    _color.DetachAllEvents();
+                _color = dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF();
+                _color.OnChangeNotification += _color_OnChangeNotification;
+                return _color;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString()); }
             }
 
@@ -156,7 +166,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF fadeColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeColor").AsColorF(); }
+            get
+                {
+                if (_fadeColor != null)
+                    _fadeColor.DetachAllEvents();
+                _fadeColor = dnTorque.self.GetVar(_mSimObjectId + ".fadeColor").AsColorF();
+                _fadeColor.OnChangeNotification += _fadeColor_OnChangeNotification;
+                return _fadeColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fadeColor", value.AsString()); }
             }
 
@@ -303,6 +320,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coLightning(uint ts)
             {
             return new coLightning(ts);
+            }
+
+        private void _color_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".color", e.NewValue);
+            }
+
+        private void _fadeColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fadeColor", e.NewValue);
             }
 
         /// <summary>

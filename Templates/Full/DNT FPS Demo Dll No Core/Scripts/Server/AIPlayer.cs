@@ -162,6 +162,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                             }
                         m_thoughtqueue.Remove(item);
                         if (console.isObject(item.Player_id))
+                            // new coAIPlayer(item.Player_id).schedule("0", "think", item.Player_id);
                             AIPlayerThink(new coAIPlayer(item.Player_id), item.Player_id);
                         }
                 if (!nosleep)
@@ -225,6 +226,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             t.MPosition.z += r.Next(0, 200);
             aiPlayer.setTransform(t);
             m_thoughtqueue.Add(new AIInterval(DateTime.Now.AddMilliseconds(500), aiPlayer));
+            //AIPlayerThink(aiPlayer, aiPlayer);
+            //aiPlayer.schedule("100", "think", aiPlayer);
             aiscreated++;
             }
 
@@ -284,10 +287,18 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "DemoPlayer", "damage", "(%this, %obj, %sourceObject, %position, %damage, %damageType)", 6, 2400, false)]
         public void DemoPlayerDamage(coPlayerData datablock, coAIPlayer npc, string position, coPlayer sourceobject, float damage, string damageType)
             {
-            if (!console.isObject(npc) || npc.getState() == "Dead" || damage == 0)
+            if (!npc.isObject())
+                return;
+            if (npc.getState() == "Dead")
+                return;
+            if (damage == 0.0)
                 return;
 
+
             npc.applyDamage(damage);
+
+            if (npc.getState() == "Dead")
+                return;
 
             Point3F ejectvel = npc.getVelocity();
 
@@ -308,6 +319,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 currentpos.x += r.Next(-50, 50);
                 currentpos.y += r.Next(-50, 50);
                 }
+
 
             npc.setMoveDestination(currentpos, false);
             }
@@ -568,26 +580,34 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             }
 
         [Torque_Decorations.TorqueCallBack("", "AIPlayer", "think", "(%this,%t)", 2, 2500, false)]
-        public void AIPlayerThink(coAIPlayer npc, string ai)
+        public void AIPlayerThink(coAIPlayer npc, coAIPlayer ai)
             {
-            if ((npc.getState() == "Dead") || !console.isObject(npc))
+            if (!npc.isObject())
                 return;
+            if (npc.getState() == "Dead")
+                return;
+
 
             int nextdelay = AIPlayerCheckForEnemy(npc) ? 500 : 250;
             m_thoughtqueue.Add(new AIInterval(DateTime.Now.AddMilliseconds(nextdelay), npc));
+            // if (npc.isObject())
+
+            //npc.schedule(nextdelay.AsString(), "think", npc);
             }
 
-
+        [Torque_Decorations.TorqueCallBack("", "AIPlayer", "CheckForEnemy", "(%this,%t)", 2, 2500, false)]
         public bool AIPlayerCheckForEnemy(coAIPlayer npc)
             {
-            coPlayer nearestplayer = AIPlayergetNearestPlayerTarget(npc);
+            if (!npc.isObject())
+                return false;
+            int nearestplayer = AIPlayergetNearestPlayerTarget(npc);
             if (nearestplayer != -1)
                 {
                 float dist = AIPlayergetTargetDistance(npc, nearestplayer);
                 if (dist < 30)
                     {
-                    TransformF t = nearestplayer.getTransform();
-                    npc.setAimObject(nearestplayer);
+                    TransformF t = ((coPlayer) nearestplayer).getTransform();
+                    npc.setAimObject(nearestplayer.AsString());
                     string currentweapon = new coSimObject(npc.getMountedImage(0))["name"];
 
                     if (dist > 25)
@@ -623,7 +643,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     if (dist < 10)
                         npc.stop();
                     else
-                        npc.setMoveDestination(new Point3F(t.AsString()), false);
+                        npc.setMoveDestination(t.MPosition, false);
                     return false;
                     }
                 return false;

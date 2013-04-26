@@ -100,6 +100,15 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoWaterObject))]
     public class coWaterObject : coSceneObject
         {
+        private ColorI _baseColor;
+        private Point2F _foamDir;
+        private Point2F _foamTexScale;
+        private Point2F _rippleDir;
+        private Point2F _rippleTexScale;
+        private ColorF _specularColor;
+        private ColorI _underwaterColor;
+        private Point2F _waveDir;
+
         /// <summary>
         /// 
         /// </summary>
@@ -130,7 +139,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI baseColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorI(); }
+            get
+                {
+                if (_baseColor != null)
+                    _baseColor.DetachAllEvents();
+                _baseColor = dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorI();
+                _baseColor.OnChangeNotification += _baseColor_OnChangeNotification;
+                return _baseColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString()); }
             }
 
@@ -229,7 +245,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F foamDir
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamDir").AsPoint2F(); }
+            get
+                {
+                if (_foamDir != null)
+                    _foamDir.DetachAllEvents();
+                _foamDir = dnTorque.self.GetVar(_mSimObjectId + ".foamDir").AsPoint2F();
+                _foamDir.OnChangeNotification += _foamDir_OnChangeNotification;
+                return _foamDir;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".foamDir", value.AsString()); }
             }
 
@@ -283,7 +306,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F foamTexScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".foamTexScale").AsPoint2F(); }
+            get
+                {
+                if (_foamTexScale != null)
+                    _foamTexScale.DetachAllEvents();
+                _foamTexScale = dnTorque.self.GetVar(_mSimObjectId + ".foamTexScale").AsPoint2F();
+                _foamTexScale.OnChangeNotification += _foamTexScale_OnChangeNotification;
+                return _foamTexScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".foamTexScale", value.AsString()); }
             }
 
@@ -409,7 +439,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F rippleDir
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".rippleDir").AsPoint2F(); }
+            get
+                {
+                if (_rippleDir != null)
+                    _rippleDir.DetachAllEvents();
+                _rippleDir = dnTorque.self.GetVar(_mSimObjectId + ".rippleDir").AsPoint2F();
+                _rippleDir.OnChangeNotification += _rippleDir_OnChangeNotification;
+                return _rippleDir;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".rippleDir", value.AsString()); }
             }
 
@@ -445,7 +482,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F rippleTexScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".rippleTexScale").AsPoint2F(); }
+            get
+                {
+                if (_rippleTexScale != null)
+                    _rippleTexScale.DetachAllEvents();
+                _rippleTexScale = dnTorque.self.GetVar(_mSimObjectId + ".rippleTexScale").AsPoint2F();
+                _rippleTexScale.OnChangeNotification += _rippleTexScale_OnChangeNotification;
+                return _rippleTexScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".rippleTexScale", value.AsString()); }
             }
 
@@ -463,7 +507,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF specularColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".specularColor").AsColorF(); }
+            get
+                {
+                if (_specularColor != null)
+                    _specularColor.DetachAllEvents();
+                _specularColor = dnTorque.self.GetVar(_mSimObjectId + ".specularColor").AsColorF();
+                _specularColor.OnChangeNotification += _specularColor_OnChangeNotification;
+                return _specularColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".specularColor", value.AsString()); }
             }
 
@@ -481,7 +532,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI underwaterColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".underwaterColor").AsColorI(); }
+            get
+                {
+                if (_underwaterColor != null)
+                    _underwaterColor.DetachAllEvents();
+                _underwaterColor = dnTorque.self.GetVar(_mSimObjectId + ".underwaterColor").AsColorI();
+                _underwaterColor.OnChangeNotification += _underwaterColor_OnChangeNotification;
+                return _underwaterColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".underwaterColor", value.AsString()); }
             }
 
@@ -526,7 +584,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F waveDir
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".waveDir").AsPoint2F(); }
+            get
+                {
+                if (_waveDir != null)
+                    _waveDir.DetachAllEvents();
+                _waveDir = dnTorque.self.GetVar(_mSimObjectId + ".waveDir").AsPoint2F();
+                _waveDir.OnChangeNotification += _waveDir_OnChangeNotification;
+                return _waveDir;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".waveDir", value.AsString()); }
             }
 
@@ -672,6 +737,46 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coWaterObject(uint ts)
             {
             return new coWaterObject(ts);
+            }
+
+        private void _baseColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".baseColor", e.NewValue);
+            }
+
+        private void _foamDir_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".foamDir", e.NewValue);
+            }
+
+        private void _foamTexScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".foamTexScale", e.NewValue);
+            }
+
+        private void _rippleDir_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".rippleDir", e.NewValue);
+            }
+
+        private void _rippleTexScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".rippleTexScale", e.NewValue);
+            }
+
+        private void _specularColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".specularColor", e.NewValue);
+            }
+
+        private void _underwaterColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".underwaterColor", e.NewValue);
+            }
+
+        private void _waveDir_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".waveDir", e.NewValue);
             }
         }
     }

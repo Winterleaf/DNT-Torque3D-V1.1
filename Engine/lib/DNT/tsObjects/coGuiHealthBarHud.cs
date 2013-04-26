@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiHealthBarHud))]
     public class coGuiHealthBarHud : coGuiControl
         {
+        private ColorF _damageFillColor;
+        private ColorF _fillColor;
+        private ColorF _frameColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +133,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF damageFillColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageFillColor").AsColorF(); }
+            get
+                {
+                if (_damageFillColor != null)
+                    _damageFillColor.DetachAllEvents();
+                _damageFillColor = dnTorque.self.GetVar(_mSimObjectId + ".damageFillColor").AsColorF();
+                _damageFillColor.OnChangeNotification += _damageFillColor_OnChangeNotification;
+                return _damageFillColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".damageFillColor", value.AsString()); }
             }
 
@@ -147,7 +158,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF fillColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF(); }
+            get
+                {
+                if (_fillColor != null)
+                    _fillColor.DetachAllEvents();
+                _fillColor = dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF();
+                _fillColor.OnChangeNotification += _fillColor_OnChangeNotification;
+                return _fillColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString()); }
             }
 
@@ -156,7 +174,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF frameColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF(); }
+            get
+                {
+                if (_frameColor != null)
+                    _frameColor.DetachAllEvents();
+                _frameColor = dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF();
+                _frameColor.OnChangeNotification += _frameColor_OnChangeNotification;
+                return _frameColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString()); }
             }
 
@@ -303,6 +328,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiHealthBarHud(uint ts)
             {
             return new coGuiHealthBarHud(ts);
+            }
+
+        private void _damageFillColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".damageFillColor", e.NewValue);
+            }
+
+        private void _fillColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fillColor", e.NewValue);
+            }
+
+        private void _frameColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".frameColor", e.NewValue);
             }
         }
     }

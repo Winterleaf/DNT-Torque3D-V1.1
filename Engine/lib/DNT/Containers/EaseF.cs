@@ -93,7 +93,7 @@ namespace WinterLeaf.Containers
     /// EaseF Implementation
     /// </summary>
     [TypeConverter(typeof (EaseFIConverter))]
-    public class EaseF : IConvertible
+    public class EaseF : Notifier, IConvertible
         {
         private int _mDirection;
         private int _mParam1;
@@ -164,7 +164,11 @@ namespace WinterLeaf.Containers
         public int mDirection
             {
             get { return _mDirection; }
-            set { _mDirection = value; }
+            set
+                {
+                _mDirection = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -173,7 +177,11 @@ namespace WinterLeaf.Containers
         public int mType
             {
             get { return _mType; }
-            set { _mType = value; }
+            set
+                {
+                _mType = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -182,7 +190,11 @@ namespace WinterLeaf.Containers
         public int mParam1
             {
             get { return _mParam1; }
-            set { _mParam1 = value; }
+            set
+                {
+                _mParam1 = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -191,7 +203,11 @@ namespace WinterLeaf.Containers
         public int mParam2
             {
             get { return _mParam2; }
-            set { _mParam2 = value; }
+            set
+                {
+                _mParam2 = value;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -354,6 +370,14 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
+        ~EaseF()
+            {
+            this.DetachAllEvents();
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public string AsString()
             {
@@ -367,7 +391,7 @@ namespace WinterLeaf.Containers
         /// 
         public override string ToString()
             {
-            return string.Format("{0} {1} {2} {3} ", _mDirection, _mType, _mParam1, _mParam2);
+            return AsString();
             }
         }
     }

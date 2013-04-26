@@ -103,13 +103,6 @@ PhysicalZone::PhysicalZone()
 
    mConvexList = new Convex;
    mActive = true;
-
-
-   /*dSscanf(argv[0], "%g %g %g %g %g %g %g %g %g %g %g %g",
-                         &origin.x, &origin.y, &origin.z,
-                         &vecs[0].x, &vecs[0].y, &vecs[0].z,
-                         &vecs[1].x, &vecs[1].y, &vecs[1].z,
-                         &vecs[2].x, &vecs[2].y, &vecs[2].z);*/
 }
 
 PhysicalZone::~PhysicalZone()

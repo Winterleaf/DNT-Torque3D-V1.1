@@ -100,6 +100,11 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiGameListMenuProfile))]
     public class coGuiGameListMenuProfile : coGuiControlProfile
         {
+        private Point2I _hitAreaLowerRight;
+        private Point2I _hitAreaUpperLeft;
+        private Point2I _iconOffset;
+        private Point2I _rowSize;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +134,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I hitAreaLowerRight
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".hitAreaLowerRight").AsPoint2I(); }
+            get
+                {
+                if (_hitAreaLowerRight != null)
+                    _hitAreaLowerRight.DetachAllEvents();
+                _hitAreaLowerRight = dnTorque.self.GetVar(_mSimObjectId + ".hitAreaLowerRight").AsPoint2I();
+                _hitAreaLowerRight.OnChangeNotification += _hitAreaLowerRight_OnChangeNotification;
+                return _hitAreaLowerRight;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".hitAreaLowerRight", value.AsString()); }
             }
 
@@ -138,7 +150,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I hitAreaUpperLeft
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".hitAreaUpperLeft").AsPoint2I(); }
+            get
+                {
+                if (_hitAreaUpperLeft != null)
+                    _hitAreaUpperLeft.DetachAllEvents();
+                _hitAreaUpperLeft = dnTorque.self.GetVar(_mSimObjectId + ".hitAreaUpperLeft").AsPoint2I();
+                _hitAreaUpperLeft.OnChangeNotification += _hitAreaUpperLeft_OnChangeNotification;
+                return _hitAreaUpperLeft;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".hitAreaUpperLeft", value.AsString()); }
             }
 
@@ -147,7 +166,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I iconOffset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".iconOffset").AsPoint2I(); }
+            get
+                {
+                if (_iconOffset != null)
+                    _iconOffset.DetachAllEvents();
+                _iconOffset = dnTorque.self.GetVar(_mSimObjectId + ".iconOffset").AsPoint2I();
+                _iconOffset.OnChangeNotification += _iconOffset_OnChangeNotification;
+                return _iconOffset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".iconOffset", value.AsString()); }
             }
 
@@ -156,7 +182,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I rowSize
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".rowSize").AsPoint2I(); }
+            get
+                {
+                if (_rowSize != null)
+                    _rowSize.DetachAllEvents();
+                _rowSize = dnTorque.self.GetVar(_mSimObjectId + ".rowSize").AsPoint2I();
+                _rowSize.OnChangeNotification += _rowSize_OnChangeNotification;
+                return _rowSize;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".rowSize", value.AsString()); }
             }
 
@@ -267,6 +300,26 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiGameListMenuProfile(uint ts)
             {
             return new coGuiGameListMenuProfile(ts);
+            }
+
+        private void _hitAreaLowerRight_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".hitAreaLowerRight", e.NewValue);
+            }
+
+        private void _hitAreaUpperLeft_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".hitAreaUpperLeft", e.NewValue);
+            }
+
+        private void _iconOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".iconOffset", e.NewValue);
+            }
+
+        private void _rowSize_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".rowSize", e.NewValue);
             }
         }
     }

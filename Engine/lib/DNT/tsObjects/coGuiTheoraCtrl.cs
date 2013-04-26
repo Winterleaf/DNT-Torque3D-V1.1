@@ -101,6 +101,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiTheoraCtrl))]
     public class coGuiTheoraCtrl : coGuiControl
         {
+        private ColorI _backgroundColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -130,7 +132,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI backgroundColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".backgroundColor").AsColorI(); }
+            get
+                {
+                if (_backgroundColor != null)
+                    _backgroundColor.DetachAllEvents();
+                _backgroundColor = dnTorque.self.GetVar(_mSimObjectId + ".backgroundColor").AsColorI();
+                _backgroundColor.OnChangeNotification += _backgroundColor_OnChangeNotification;
+                return _backgroundColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".backgroundColor", value.AsString()); }
             }
 
@@ -295,6 +304,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiTheoraCtrl(uint ts)
             {
             return new coGuiTheoraCtrl(ts);
+            }
+
+        private void _backgroundColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".backgroundColor", e.NewValue);
             }
 
         /// <summary>

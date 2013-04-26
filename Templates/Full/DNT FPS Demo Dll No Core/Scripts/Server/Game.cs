@@ -350,7 +350,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "GameConnection", "onDeath", "%client, %sourceObject, %sourceClient, %damageType, %damLoc", 5, 51, false)]
         public void GameConnectionOnDeath(coGameConnection client, coPlayer sourceobject, coGameConnection sourceclient, string damagetype, string damloc)
             {
-            if (client != "")
+            if (client.isObject())
                 {
                 if (client["ownedTurrets"] == "")
                     client["ownedTurrets"] = new Torque_Class_Helper("SimSet").Create().AsString();
@@ -470,33 +470,30 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void GameConnectionSetAmmoAmountHud(coGameConnection client, int amount, int amountinClips)
             {
             if (console.isObject(client))
-                {
                 console.commandToClient(client, "SetAmmoAmountHud", new[] {amount.AsString(), amountinClips.AsString()});
-                }
             }
 
         [Torque_Decorations.TorqueCallBack("", "GameConnection", "RefreshWeaponHud", "(%client, %amount, %preview, %ret, %zoomRet, %amountInClips)", 6, 51, false)]
         public void GameConnectionRefreshWeaponHud(coGameConnection client, int amount, string preview, string ret, string zoomRet, int amountInClips)
             {
-            console.commandToClient(client, "RefreshWeaponHud", new[] {amount.AsString(), preview, ret, zoomRet, amountInClips.AsString()});
+            if (console.isObject(client))
+                console.commandToClient(client, "RefreshWeaponHud", new[] {amount.AsString(), preview, ret, zoomRet, amountInClips.AsString()});
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sendMsgClientKilled_Impact", "(%msgType, %client, %sourceClient, %damLoc )", 4, 51, false)]
         public void SendMsgClientKilledImpact(string msgtype, coGameConnection client, string sourceclient, string damloc)
             {
             if (console.isObject(client))
-                {
+
                 MessageAll(msgtype, "%1 fell to his death!", client["playerName"]); // console.GetVarString(string.Format("{0}.playerName", client)));
-                }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sendMsgClientKilled_Suicide", "(%msgType, %client, %sourceClient, %damLoc )", 4, 51, false)]
         public void SendMsgClientKilledSuicide(string msgtype, coGameConnection client, string sourceclient, string damloc)
             {
             if (console.isObject(client))
-                {
+
                 MessageAll(msgtype, "%1 takes his own life!", client["playerName"]);
-                }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sendMsgClientKilled_Default", "(%msgType, %client, %sourceClient, %damLoc )", 4, 51, false)]

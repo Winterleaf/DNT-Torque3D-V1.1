@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiObjectView))]
     public class coGuiObjectView : coGuiTSCtrl
         {
+        private ColorF _lightAmbient;
+        private ColorF _lightColor;
+        private Point3F _lightDirection;
+
         /// <summary>
         /// 
         /// </summary>
@@ -148,7 +152,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF lightAmbient
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightAmbient").AsColorF(); }
+            get
+                {
+                if (_lightAmbient != null)
+                    _lightAmbient.DetachAllEvents();
+                _lightAmbient = dnTorque.self.GetVar(_mSimObjectId + ".lightAmbient").AsColorF();
+                _lightAmbient.OnChangeNotification += _lightAmbient_OnChangeNotification;
+                return _lightAmbient;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".lightAmbient", value.AsString()); }
             }
 
@@ -157,7 +168,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF lightColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF(); }
+            get
+                {
+                if (_lightColor != null)
+                    _lightColor.DetachAllEvents();
+                _lightColor = dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF();
+                _lightColor.OnChangeNotification += _lightColor_OnChangeNotification;
+                return _lightColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".lightColor", value.AsString()); }
             }
 
@@ -166,7 +184,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F lightDirection
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightDirection").AsPoint3F(); }
+            get
+                {
+                if (_lightDirection != null)
+                    _lightDirection.DetachAllEvents();
+                _lightDirection = dnTorque.self.GetVar(_mSimObjectId + ".lightDirection").AsPoint3F();
+                _lightDirection.OnChangeNotification += _lightDirection_OnChangeNotification;
+                return _lightDirection;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".lightDirection", value.AsString()); }
             }
 
@@ -348,6 +373,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiObjectView(uint ts)
             {
             return new coGuiObjectView(ts);
+            }
+
+        private void _lightAmbient_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".lightAmbient", e.NewValue);
+            }
+
+        private void _lightColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".lightColor", e.NewValue);
+            }
+
+        private void _lightDirection_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".lightDirection", e.NewValue);
             }
 
         /// <summary>

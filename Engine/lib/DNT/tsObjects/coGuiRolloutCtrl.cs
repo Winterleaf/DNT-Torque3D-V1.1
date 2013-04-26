@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiRolloutCtrl))]
     public class coGuiRolloutCtrl : coGuiControl
         {
+        private RectI _margin;
+
         /// <summary>
         /// 
         /// </summary>
@@ -183,7 +185,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public RectI margin
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".margin").AsRectI(); }
+            get
+                {
+                if (_margin != null)
+                    _margin.DetachAllEvents();
+                _margin = dnTorque.self.GetVar(_mSimObjectId + ".margin").AsRectI();
+                _margin.OnChangeNotification += _margin_OnChangeNotification;
+                return _margin;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".margin", value.AsString()); }
             }
 
@@ -294,6 +303,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiRolloutCtrl(uint ts)
             {
             return new coGuiRolloutCtrl(ts);
+            }
+
+        private void _margin_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".margin", e.NewValue);
             }
 
         /// <summary>

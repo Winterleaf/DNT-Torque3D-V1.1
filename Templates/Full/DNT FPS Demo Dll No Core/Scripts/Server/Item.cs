@@ -160,14 +160,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 }
             ShapeBaseShapeBaseIncInventory(player, new coItemData(datablock.getName()), count);
 
-            try
-                {
-                coGameConnection client = player["client"];
+
+            coGameConnection client = player["client"];
+            if (client.isObject())
                 MessageClient(client, "MsgItemPickup", console.ColorEncode(@"\c0You picked up %1"), datablock["pickupName"]);
-                }
-            catch (Exception)
-                {
-                }
+
 
             // If the item is a static respawn item, then go ahead and
             // respawn it, otherwise remove it from the world.

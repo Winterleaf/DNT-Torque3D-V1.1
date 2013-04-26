@@ -93,10 +93,10 @@ namespace WinterLeaf.Containers
     /// Container for AngAxisF
     /// </summary>
     [TypeConverter(typeof (AngAxisFIConverter))]
-    public class AngAxisF : IConvertible
+    public class AngAxisF : Notifier, IConvertible
         {
         private float _mAngle;
-        private Point3F _mAxis = new Point3F(0, 0, 0);
+        private Point3F _mAxis;
 
         /// <summary>
         /// Constructor From String
@@ -105,6 +105,8 @@ namespace WinterLeaf.Containers
         public AngAxisF(string angaxisf)
             {
             string[] fl = angaxisf.Split(' ');
+            _mAxis = new Point3F(0, 0, 0);
+            _mAxis.OnChangeNotification += _mAxis_OnChangeNotification;
             _mAxis.x = fl[0].AsFloat();
             _mAxis.y = fl[1].AsFloat();
             _mAxis.z = fl[2].AsFloat();
@@ -119,6 +121,8 @@ namespace WinterLeaf.Containers
         public AngAxisF(Point3F axis, float angle)
             {
             _mAxis = axis;
+            _mAxis.DetachAllEvents();
+            _mAxis.OnChangeNotification += _mAxis_OnChangeNotification;
             _mAngle = angle;
             }
 
@@ -131,9 +135,8 @@ namespace WinterLeaf.Containers
         /// <param name="angle"></param>
         public AngAxisF(float x, float y, float z, float angle)
             {
-            _mAxis.x = x;
-            _mAxis.y = y;
-            _mAxis.z = z;
+            _mAxis = new Point3F(x, y, z);
+            _mAxis.OnChangeNotification += _mAxis_OnChangeNotification;
             _mAngle = angle;
             }
 
@@ -143,7 +146,13 @@ namespace WinterLeaf.Containers
         public Point3F mAxis
             {
             get { return _mAxis; }
-            set { _mAxis = value; }
+            set
+                {
+                _mAxis = value;
+                _mAxis.DetachAllEvents();
+                _mAxis.OnChangeNotification += _mAxis_OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -152,7 +161,11 @@ namespace WinterLeaf.Containers
         public float mAngle
             {
             get { return _mAngle; }
-            set { _mAngle = value; }
+            set
+                {
+                _mAngle = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -161,7 +174,11 @@ namespace WinterLeaf.Containers
         public float x
             {
             get { return _mAxis.x; }
-            set { _mAxis.x = value; }
+            set
+                {
+                _mAxis.x = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -170,7 +187,11 @@ namespace WinterLeaf.Containers
         public float y
             {
             get { return _mAxis.y; }
-            set { _mAxis.y = value; }
+            set
+                {
+                _mAxis.y = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -179,7 +200,11 @@ namespace WinterLeaf.Containers
         public float z
             {
             get { return _mAxis.z; }
-            set { _mAxis.z = value; }
+            set
+                {
+                _mAxis.z = value;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -342,10 +367,23 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
+        ~AngAxisF()
+            {
+            this.DetachAllEvents();
+            }
+
+        private void _mAxis_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            Notify(AsString());
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public string AsString()
             {
-            return string.Format("{0} {1} {2} {3} ", _mAxis.x, _mAxis.y, _mAxis.z, _mAngle);
+            return ((object) mAxis) != null ? string.Format("{0} {1} {2} {3} ", _mAxis.x, _mAxis.y, _mAxis.z, _mAngle) : "";
             }
 
         /// <summary>
@@ -355,7 +393,7 @@ namespace WinterLeaf.Containers
         /// 
         public override string ToString()
             {
-            return string.Format("{0} {1} {2} {3} ", _mAxis.x, _mAxis.y, _mAxis.z, _mAngle);
+            return AsString();
             }
         }
     }

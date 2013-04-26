@@ -101,6 +101,15 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoSFXPlayList))]
     public class coSFXPlayList : coSFXTrack
         {
+        private Point2F _delayTimeInVariance;
+        private Point2F _delayTimeOutVariance;
+        private Point2F _fadeTimeInVariance;
+        private Point2F _fadeTimeOutVariance;
+        private Point2F _maxDistanceVariance;
+        private Point2F _pitchScaleVariance;
+        private Point2F _referenceDistanceVariance;
+        private Point2F _volumeScaleVariance;
+
         /// <summary>
         /// 
         /// </summary>
@@ -140,7 +149,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F delayTimeInVariance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeInVariance").AsPoint2F(); }
+            get
+                {
+                if (_delayTimeInVariance != null)
+                    _delayTimeInVariance.DetachAllEvents();
+                _delayTimeInVariance = dnTorque.self.GetVar(_mSimObjectId + ".delayTimeInVariance").AsPoint2F();
+                _delayTimeInVariance.OnChangeNotification += _delayTimeInVariance_OnChangeNotification;
+                return _delayTimeInVariance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".delayTimeInVariance", value.AsString()); }
             }
 
@@ -158,7 +174,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F delayTimeOutVariance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".delayTimeOutVariance").AsPoint2F(); }
+            get
+                {
+                if (_delayTimeOutVariance != null)
+                    _delayTimeOutVariance.DetachAllEvents();
+                _delayTimeOutVariance = dnTorque.self.GetVar(_mSimObjectId + ".delayTimeOutVariance").AsPoint2F();
+                _delayTimeOutVariance.OnChangeNotification += _delayTimeOutVariance_OnChangeNotification;
+                return _delayTimeOutVariance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".delayTimeOutVariance", value.AsString()); }
             }
 
@@ -176,7 +199,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F fadeTimeInVariance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeInVariance").AsPoint2F(); }
+            get
+                {
+                if (_fadeTimeInVariance != null)
+                    _fadeTimeInVariance.DetachAllEvents();
+                _fadeTimeInVariance = dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeInVariance").AsPoint2F();
+                _fadeTimeInVariance.OnChangeNotification += _fadeTimeInVariance_OnChangeNotification;
+                return _fadeTimeInVariance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeInVariance", value.AsString()); }
             }
 
@@ -194,7 +224,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F fadeTimeOutVariance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeOutVariance").AsPoint2F(); }
+            get
+                {
+                if (_fadeTimeOutVariance != null)
+                    _fadeTimeOutVariance.DetachAllEvents();
+                _fadeTimeOutVariance = dnTorque.self.GetVar(_mSimObjectId + ".fadeTimeOutVariance").AsPoint2F();
+                _fadeTimeOutVariance.OnChangeNotification += _fadeTimeOutVariance_OnChangeNotification;
+                return _fadeTimeOutVariance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeOutVariance", value.AsString()); }
             }
 
@@ -221,7 +258,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F maxDistanceVariance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxDistanceVariance").AsPoint2F(); }
+            get
+                {
+                if (_maxDistanceVariance != null)
+                    _maxDistanceVariance.DetachAllEvents();
+                _maxDistanceVariance = dnTorque.self.GetVar(_mSimObjectId + ".maxDistanceVariance").AsPoint2F();
+                _maxDistanceVariance.OnChangeNotification += _maxDistanceVariance_OnChangeNotification;
+                return _maxDistanceVariance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".maxDistanceVariance", value.AsString()); }
             }
 
@@ -248,7 +292,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F pitchScaleVariance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".pitchScaleVariance").AsPoint2F(); }
+            get
+                {
+                if (_pitchScaleVariance != null)
+                    _pitchScaleVariance.DetachAllEvents();
+                _pitchScaleVariance = dnTorque.self.GetVar(_mSimObjectId + ".pitchScaleVariance").AsPoint2F();
+                _pitchScaleVariance.OnChangeNotification += _pitchScaleVariance_OnChangeNotification;
+                return _pitchScaleVariance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".pitchScaleVariance", value.AsString()); }
             }
 
@@ -275,7 +326,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F referenceDistanceVariance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".referenceDistanceVariance").AsPoint2F(); }
+            get
+                {
+                if (_referenceDistanceVariance != null)
+                    _referenceDistanceVariance.DetachAllEvents();
+                _referenceDistanceVariance = dnTorque.self.GetVar(_mSimObjectId + ".referenceDistanceVariance").AsPoint2F();
+                _referenceDistanceVariance.OnChangeNotification += _referenceDistanceVariance_OnChangeNotification;
+                return _referenceDistanceVariance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".referenceDistanceVariance", value.AsString()); }
             }
 
@@ -365,7 +423,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F volumeScaleVariance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".volumeScaleVariance").AsPoint2F(); }
+            get
+                {
+                if (_volumeScaleVariance != null)
+                    _volumeScaleVariance.DetachAllEvents();
+                _volumeScaleVariance = dnTorque.self.GetVar(_mSimObjectId + ".volumeScaleVariance").AsPoint2F();
+                _volumeScaleVariance.OnChangeNotification += _volumeScaleVariance_OnChangeNotification;
+                return _volumeScaleVariance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".volumeScaleVariance", value.AsString()); }
             }
 
@@ -475,6 +540,46 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coSFXPlayList(uint ts)
             {
             return new coSFXPlayList(ts);
+            }
+
+        private void _delayTimeInVariance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".delayTimeInVariance", e.NewValue);
+            }
+
+        private void _delayTimeOutVariance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".delayTimeOutVariance", e.NewValue);
+            }
+
+        private void _fadeTimeInVariance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeInVariance", e.NewValue);
+            }
+
+        private void _fadeTimeOutVariance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fadeTimeOutVariance", e.NewValue);
+            }
+
+        private void _maxDistanceVariance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".maxDistanceVariance", e.NewValue);
+            }
+
+        private void _pitchScaleVariance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".pitchScaleVariance", e.NewValue);
+            }
+
+        private void _referenceDistanceVariance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".referenceDistanceVariance", e.NewValue);
+            }
+
+        private void _volumeScaleVariance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".volumeScaleVariance", e.NewValue);
             }
         }
     }

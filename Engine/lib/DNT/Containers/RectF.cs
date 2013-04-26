@@ -93,10 +93,10 @@ namespace WinterLeaf.Containers
     /// RectF Container
     /// </summary>
     [TypeConverter(typeof (RectFIConverter))]
-    public class RectF : IConvertible
+    public class RectF : Notifier, IConvertible
         {
-        private Point2F _mExtent = new Point2F(0, 0);
-        private Point2F _mPoint = new Point2F(0, 0);
+        private Point2F _mExtent; // = new Point2F(0, 0);
+        private Point2F _mPoint; // = new Point2F(0, 0);
 
         /// <summary>
         /// Creates RectF from string
@@ -105,10 +105,10 @@ namespace WinterLeaf.Containers
         public RectF(string r)
             {
             string[] vals = r.Split(' ');
-            _mPoint.x = vals[0].AsFloat();
-            _mPoint.y = vals[1].AsFloat();
-            _mExtent.x = vals[2].AsFloat();
-            _mExtent.y = vals[3].AsFloat();
+            _mExtent = new Point2F(vals[2].AsFloat(), vals[3].AsFloat());
+            _mPoint = new Point2F(vals[0].AsFloat(), vals[1].AsFloat());
+            _mExtent.OnChangeNotification += __OnChangeNotification;
+            _mPoint.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -119,7 +119,11 @@ namespace WinterLeaf.Containers
         public RectF(Point2F point, Point2F extent)
             {
             _mPoint = point;
+            _mPoint.DetachAllEvents();
             _mExtent = extent;
+            _mExtent.DetachAllEvents();
+            _mExtent.OnChangeNotification += __OnChangeNotification;
+            _mPoint.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -128,7 +132,13 @@ namespace WinterLeaf.Containers
         public Point2F mPoint
             {
             get { return _mPoint; }
-            set { _mPoint = value; }
+            set
+                {
+                _mPoint = value;
+                _mPoint.DetachAllEvents();
+                _mPoint.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -137,7 +147,13 @@ namespace WinterLeaf.Containers
         public Point2F mExtent
             {
             get { return _mExtent; }
-            set { _mExtent = value; }
+            set
+                {
+                _mExtent = value;
+                _mExtent.DetachAllEvents();
+                _mExtent.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -300,10 +316,26 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
+        ~RectF()
+            {
+            this.DetachAllEvents();
+            }
+
+        private void __OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            Notify(AsString());
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public string AsString()
             {
-            return string.Format("{0} {1} {2} {3} ", _mPoint.x.AsString(), _mPoint.y.AsString(), _mExtent.x.AsString(), _mExtent.y.AsString());
+            if (((mPoint) != null) && (mExtent) != null)
+                return string.Format("{0} {1} {2} {3} ", _mPoint.x.AsString(), _mPoint.y.AsString(), _mExtent.x.AsString(), _mExtent.y.AsString());
+            else
+                return "";
             }
 
         /// <summary>
@@ -313,7 +345,7 @@ namespace WinterLeaf.Containers
         /// 
         public override string ToString()
             {
-            return string.Format("{0} {1} {2} {3} ", _mPoint.x.AsString(), _mPoint.y.AsString(), _mExtent.x.AsString(), _mExtent.y.AsString());
+            return AsString();
             }
         }
     }

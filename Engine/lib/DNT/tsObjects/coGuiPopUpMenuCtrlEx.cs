@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiPopUpMenuCtrlEx))]
     public class coGuiPopUpMenuCtrlEx : coGuiTextCtrl
         {
+        private Point2I _bitmapBounds;
+
         /// <summary>
         /// 
         /// </summary>
@@ -138,7 +140,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I bitmapBounds
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".bitmapBounds").AsPoint2I(); }
+            get
+                {
+                if (_bitmapBounds != null)
+                    _bitmapBounds.DetachAllEvents();
+                _bitmapBounds = dnTorque.self.GetVar(_mSimObjectId + ".bitmapBounds").AsPoint2I();
+                _bitmapBounds.OnChangeNotification += _bitmapBounds_OnChangeNotification;
+                return _bitmapBounds;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".bitmapBounds", value.AsString()); }
             }
 
@@ -285,6 +294,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiPopUpMenuCtrlEx(uint ts)
             {
             return new coGuiPopUpMenuCtrlEx(ts);
+            }
+
+        private void _bitmapBounds_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".bitmapBounds", e.NewValue);
             }
 
         /// <summary>

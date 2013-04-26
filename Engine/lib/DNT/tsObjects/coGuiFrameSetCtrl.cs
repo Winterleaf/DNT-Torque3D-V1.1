@@ -101,6 +101,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiFrameSetCtrl))]
     public class coGuiFrameSetCtrl : coGuiContainer
         {
+        private ColorI _borderColor;
+        private VectorInt _columns;
+        private VectorInt _rows;
+
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +143,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI borderColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderColor").AsColorI(); }
+            get
+                {
+                if (_borderColor != null)
+                    _borderColor.DetachAllEvents();
+                _borderColor = dnTorque.self.GetVar(_mSimObjectId + ".borderColor").AsColorI();
+                _borderColor.OnChangeNotification += _borderColor_OnChangeNotification;
+                return _borderColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".borderColor", value.AsString()); }
             }
 
@@ -175,7 +186,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public VectorInt columns
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".columns").AsVectorInt(); }
+            get
+                {
+                if (_columns != null)
+                    _columns.DetachAllEvents();
+                _columns = dnTorque.self.GetVar(_mSimObjectId + ".columns").AsVectorInt();
+                _columns.OnChangeNotification += _columns_OnChangeNotification;
+                return _columns;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".columns", value.AsString()); }
             }
 
@@ -193,7 +211,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public VectorInt rows
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".rows").AsVectorInt(); }
+            get
+                {
+                if (_rows != null)
+                    _rows.DetachAllEvents();
+                _rows = dnTorque.self.GetVar(_mSimObjectId + ".rows").AsVectorInt();
+                _rows.OnChangeNotification += _rows_OnChangeNotification;
+                return _rows;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".rows", value.AsString()); }
             }
 
@@ -304,6 +329,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiFrameSetCtrl(uint ts)
             {
             return new coGuiFrameSetCtrl(ts);
+            }
+
+        private void _borderColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".borderColor", e.NewValue);
+            }
+
+        private void _columns_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".columns", e.NewValue);
+            }
+
+        private void _rows_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".rows", e.NewValue);
             }
 
         /// <summary>

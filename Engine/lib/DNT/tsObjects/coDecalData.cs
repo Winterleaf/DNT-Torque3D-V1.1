@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoDecalData))]
     public class coDecalData : coSimDataBlock
         {
+        private RectF _textureCoords;
+
         /// <summary>
         /// 
         /// </summary>
@@ -247,7 +249,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public RectF textureCoords
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureCoords").AsRectF(); }
+            get
+                {
+                if (_textureCoords != null)
+                    _textureCoords.DetachAllEvents();
+                _textureCoords = dnTorque.self.GetVar(_mSimObjectId + ".textureCoords").AsRectF();
+                _textureCoords.OnChangeNotification += _textureCoords_OnChangeNotification;
+                return _textureCoords;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".textureCoords", value.AsString()); }
             }
 
@@ -357,6 +366,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coDecalData(uint ts)
             {
             return new coDecalData(ts);
+            }
+
+        private void _textureCoords_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".textureCoords", e.NewValue);
             }
 
         /// <summary>

@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiTextListCtrl))]
     public class coGuiTextListCtrl : coGuiArrayCtrl
         {
+        private VectorInt _columns;
+
         /// <summary>
         /// 
         /// </summary>
@@ -138,7 +140,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public VectorInt columns
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".columns").AsVectorInt(); }
+            get
+                {
+                if (_columns != null)
+                    _columns.DetachAllEvents();
+                _columns = dnTorque.self.GetVar(_mSimObjectId + ".columns").AsVectorInt();
+                _columns.OnChangeNotification += _columns_OnChangeNotification;
+                return _columns;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".columns", value.AsString()); }
             }
 
@@ -258,6 +267,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiTextListCtrl(uint ts)
             {
             return new coGuiTextListCtrl(ts);
+            }
+
+        private void _columns_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".columns", e.NewValue);
             }
 
         /// <summary>

@@ -241,10 +241,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "loadLoadingGui", "(%displayText)", 1, 2000, false)]
         public void LoadLoadingGui(string displayText)
             {
-            new coGuiCanvas("Canvas").setContent("LoadingGui");
-            new coGuiControl("LoadingProgress").setValue("1");
-            new coGuiControl("LoadingProgressTxt").setValue(displayText != "" ? displayText : "WAITING FOR SERVER... shouldn't take long....");
-            new coGuiCanvas("Canvas").repaint(0);
+            ((coGuiCanvas) "Canvas").setContent("LoadingGui");
+            ((coGuiControl) "LoadingProgress").setValue("1");
+            ((coGuiControl) "LoadingProgressTxt").setValue(displayText != "" ? displayText : "WAITING FOR SERVER... shouldn't take long....");
+            ((coGuiCanvas) "Canvas").repaint(0);
             }
         }
     }

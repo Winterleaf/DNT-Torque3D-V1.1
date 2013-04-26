@@ -101,6 +101,16 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoWorldEditor))]
     public class coWorldEditor : coEditTSCtrl
         {
+        private ColorI _dragRectColor;
+        private ColorI _faceSelectColor;
+        private ColorI _objMouseOverColor;
+        private ColorI _objMouseOverSelectColor;
+        private ColorI _objSelectColor;
+        private ColorI _objectTextColor;
+        private ColorI _popupBackgroundColor;
+        private ColorI _popupTextColor;
+        private ColorI _selectionBoxColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -149,7 +159,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI dragRectColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".dragRectColor").AsColorI(); }
+            get
+                {
+                if (_dragRectColor != null)
+                    _dragRectColor.DetachAllEvents();
+                _dragRectColor = dnTorque.self.GetVar(_mSimObjectId + ".dragRectColor").AsColorI();
+                _dragRectColor.OnChangeNotification += _dragRectColor_OnChangeNotification;
+                return _dragRectColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".dragRectColor", value.AsString()); }
             }
 
@@ -203,7 +220,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI faceSelectColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".faceSelectColor").AsColorI(); }
+            get
+                {
+                if (_faceSelectColor != null)
+                    _faceSelectColor.DetachAllEvents();
+                _faceSelectColor = dnTorque.self.GetVar(_mSimObjectId + ".faceSelectColor").AsColorI();
+                _faceSelectColor.OnChangeNotification += _faceSelectColor_OnChangeNotification;
+                return _faceSelectColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".faceSelectColor", value.AsString()); }
             }
 
@@ -275,7 +299,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI objectTextColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".objectTextColor").AsColorI(); }
+            get
+                {
+                if (_objectTextColor != null)
+                    _objectTextColor.DetachAllEvents();
+                _objectTextColor = dnTorque.self.GetVar(_mSimObjectId + ".objectTextColor").AsColorI();
+                _objectTextColor.OnChangeNotification += _objectTextColor_OnChangeNotification;
+                return _objectTextColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".objectTextColor", value.AsString()); }
             }
 
@@ -284,7 +315,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI objMouseOverColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".objMouseOverColor").AsColorI(); }
+            get
+                {
+                if (_objMouseOverColor != null)
+                    _objMouseOverColor.DetachAllEvents();
+                _objMouseOverColor = dnTorque.self.GetVar(_mSimObjectId + ".objMouseOverColor").AsColorI();
+                _objMouseOverColor.OnChangeNotification += _objMouseOverColor_OnChangeNotification;
+                return _objMouseOverColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".objMouseOverColor", value.AsString()); }
             }
 
@@ -293,7 +331,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI objMouseOverSelectColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".objMouseOverSelectColor").AsColorI(); }
+            get
+                {
+                if (_objMouseOverSelectColor != null)
+                    _objMouseOverSelectColor.DetachAllEvents();
+                _objMouseOverSelectColor = dnTorque.self.GetVar(_mSimObjectId + ".objMouseOverSelectColor").AsColorI();
+                _objMouseOverSelectColor.OnChangeNotification += _objMouseOverSelectColor_OnChangeNotification;
+                return _objMouseOverSelectColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".objMouseOverSelectColor", value.AsString()); }
             }
 
@@ -302,7 +347,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI objSelectColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".objSelectColor").AsColorI(); }
+            get
+                {
+                if (_objSelectColor != null)
+                    _objSelectColor.DetachAllEvents();
+                _objSelectColor = dnTorque.self.GetVar(_mSimObjectId + ".objSelectColor").AsColorI();
+                _objSelectColor.OnChangeNotification += _objSelectColor_OnChangeNotification;
+                return _objSelectColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".objSelectColor", value.AsString()); }
             }
 
@@ -320,7 +372,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI popupBackgroundColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".popupBackgroundColor").AsColorI(); }
+            get
+                {
+                if (_popupBackgroundColor != null)
+                    _popupBackgroundColor.DetachAllEvents();
+                _popupBackgroundColor = dnTorque.self.GetVar(_mSimObjectId + ".popupBackgroundColor").AsColorI();
+                _popupBackgroundColor.OnChangeNotification += _popupBackgroundColor_OnChangeNotification;
+                return _popupBackgroundColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".popupBackgroundColor", value.AsString()); }
             }
 
@@ -329,7 +388,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI popupTextColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".popupTextColor").AsColorI(); }
+            get
+                {
+                if (_popupTextColor != null)
+                    _popupTextColor.DetachAllEvents();
+                _popupTextColor = dnTorque.self.GetVar(_mSimObjectId + ".popupTextColor").AsColorI();
+                _popupTextColor.OnChangeNotification += _popupTextColor_OnChangeNotification;
+                return _popupTextColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".popupTextColor", value.AsString()); }
             }
 
@@ -383,7 +449,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI selectionBoxColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".selectionBoxColor").AsColorI(); }
+            get
+                {
+                if (_selectionBoxColor != null)
+                    _selectionBoxColor.DetachAllEvents();
+                _selectionBoxColor = dnTorque.self.GetVar(_mSimObjectId + ".selectionBoxColor").AsColorI();
+                _selectionBoxColor.OnChangeNotification += _selectionBoxColor_OnChangeNotification;
+                return _selectionBoxColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".selectionBoxColor", value.AsString()); }
             }
 
@@ -529,6 +602,51 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coWorldEditor(uint ts)
             {
             return new coWorldEditor(ts);
+            }
+
+        private void _dragRectColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".dragRectColor", e.NewValue);
+            }
+
+        private void _faceSelectColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".faceSelectColor", e.NewValue);
+            }
+
+        private void _objectTextColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".objectTextColor", e.NewValue);
+            }
+
+        private void _objMouseOverColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".objMouseOverColor", e.NewValue);
+            }
+
+        private void _objMouseOverSelectColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".objMouseOverSelectColor", e.NewValue);
+            }
+
+        private void _objSelectColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".objSelectColor", e.NewValue);
+            }
+
+        private void _popupBackgroundColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".popupBackgroundColor", e.NewValue);
+            }
+
+        private void _popupTextColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".popupTextColor", e.NewValue);
+            }
+
+        private void _selectionBoxColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".selectionBoxColor", e.NewValue);
             }
 
         /// <summary>

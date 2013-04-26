@@ -93,8 +93,11 @@ namespace WinterLeaf.Containers
     /// Used to hold the CSharp Equiv of the Point2F class.
     /// </summary>
     [TypeConverter(typeof (Point2FIConverter))]
-    public sealed class Point2F : IConvertible
+    public sealed class Point2F : Notifier, IConvertible
         {
+        private float _x;
+        private float _y;
+
         /// <summary>
         /// 
         /// </summary>
@@ -122,12 +125,28 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
-        public float x { get; set; }
+        public float x
+            {
+            get { return _x; }
+            set
+                {
+                _x = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public float y { get; set; }
+        public float y
+            {
+            get { return _y; }
+            set
+                {
+                _y = value;
+                Notify(AsString());
+                }
+            }
 
         #region IConvertible Members
 
@@ -285,6 +304,14 @@ namespace WinterLeaf.Containers
             }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~Point2F()
+            {
+            this.DetachAllEvents();
+            }
 
         /// <summary>
         /// 

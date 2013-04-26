@@ -136,14 +136,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "ProxMine", "onInventory", "( %this, %obj, %amount )", 3, 2300, false)]
         public void ProxMineOnInventory(coProximityMine thisobj, coPlayer player, int amount)
             {
-            try
-                {
-                coGameConnection client = new coGameConnection(player["client"]);
+            coGameConnection client = new coGameConnection(player["client"]);
+            if (client.isObject())
                 GameConnectionSetAmmoAmountHud(client, 1, amount);
-                }
-            catch (Exception)
-                {
-                }
             if ((amount == 0) && player.isMethod("getMountSlot"))
                 ShapeBaseCycleWeapon(player, "prev");
             }

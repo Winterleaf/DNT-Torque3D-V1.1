@@ -106,7 +106,7 @@ namespace WinterLeaf.Containers
     /// Supports Vectors of Ints
     /// </summary>
     [TypeConverter(typeof (VectorIntIConverter))]
-    public class VectorInt : IConvertible
+    public class VectorInt : Notifier, IConvertible
         {
         private List<int> _mData = new List<int>();
 
@@ -142,7 +142,11 @@ namespace WinterLeaf.Containers
         public int[] vector
             {
             get { return _mData.ToArray(); }
-            set { _mData = value.ToList(); }
+            set
+                {
+                _mData = value.ToList();
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -151,7 +155,11 @@ namespace WinterLeaf.Containers
         public List<int> list
             {
             get { return _mData; }
-            set { _mData = value; }
+            set
+                {
+                _mData = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -162,7 +170,11 @@ namespace WinterLeaf.Containers
         public int this[int index]
             {
             get { return _mData[index]; }
-            set { _mData[index] = value; }
+            set
+                {
+                _mData[index] = value;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -325,6 +337,14 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
+        ~VectorInt()
+            {
+            this.DetachAllEvents();
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public override string ToString()
             {
@@ -396,7 +416,7 @@ namespace WinterLeaf.Containers
     /// 
     /// </summary>
     [TypeConverter(typeof (VectorFloatIConverter))]
-    public class VectorFloat : IConvertible
+    public class VectorFloat : Notifier, IConvertible
         {
         private List<float> _mData = new List<float>();
 
@@ -432,7 +452,11 @@ namespace WinterLeaf.Containers
         public float[] vector
             {
             get { return _mData.ToArray(); }
-            set { _mData = value.ToList(); }
+            set
+                {
+                _mData = value.ToList();
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -441,7 +465,11 @@ namespace WinterLeaf.Containers
         public List<float> list
             {
             get { return _mData; }
-            set { _mData = value; }
+            set
+                {
+                _mData = value;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -600,6 +628,14 @@ namespace WinterLeaf.Containers
             }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~VectorFloat()
+            {
+            this.DetachAllEvents();
+            }
 
         /// <summary>
         /// 
@@ -675,7 +711,7 @@ namespace WinterLeaf.Containers
     /// 
     /// </summary>
     [TypeConverter(typeof (VectorBoolIConverter))]
-    public class VectorBool : IConvertible
+    public class VectorBool : Notifier, IConvertible
         {
         private List<bool> _mData = new List<bool>();
 
@@ -709,7 +745,11 @@ namespace WinterLeaf.Containers
         public bool[] vector
             {
             get { return _mData.ToArray(); }
-            set { _mData = value.ToList(); }
+            set
+                {
+                _mData = value.ToList();
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -718,7 +758,11 @@ namespace WinterLeaf.Containers
         public List<bool> list
             {
             get { return _mData; }
-            set { _mData = value; }
+            set
+                {
+                _mData = value;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -877,6 +921,14 @@ namespace WinterLeaf.Containers
             }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~VectorBool()
+            {
+            this.DetachAllEvents();
+            }
 
         /// <summary>
         /// 

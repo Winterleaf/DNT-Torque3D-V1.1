@@ -101,6 +101,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiGraphCtrl))]
     public class coGuiGraphCtrl : coGuiControl
         {
+        private ColorF _plotColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +141,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF plotColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".plotColor").AsColorF(); }
+            get
+                {
+                if (_plotColor != null)
+                    _plotColor.DetachAllEvents();
+                _plotColor = dnTorque.self.GetVar(_mSimObjectId + ".plotColor").AsColorF();
+                _plotColor.OnChangeNotification += _plotColor_OnChangeNotification;
+                return _plotColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".plotColor", value.AsString()); }
             }
 
@@ -277,6 +286,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiGraphCtrl(uint ts)
             {
             return new coGuiGraphCtrl(ts);
+            }
+
+        private void _plotColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".plotColor", e.NewValue);
             }
 
         /// <summary>

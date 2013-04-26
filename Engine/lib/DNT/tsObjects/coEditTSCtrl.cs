@@ -100,6 +100,14 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoEditTSCtrl))]
     public class coEditTSCtrl : coGuiTSCtrl
         {
+        private ColorI _consoleFillColor;
+        private ColorI _consoleFrameColor;
+        private ColorI _gridColor;
+        private ColorI _gridMinorTickColor;
+        private ColorI _gridOriginColor;
+        private ColorI _missionAreaFillColor;
+        private ColorI _missionAreaFrameColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -166,7 +174,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI consoleFillColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".consoleFillColor").AsColorI(); }
+            get
+                {
+                if (_consoleFillColor != null)
+                    _consoleFillColor.DetachAllEvents();
+                _consoleFillColor = dnTorque.self.GetVar(_mSimObjectId + ".consoleFillColor").AsColorI();
+                _consoleFillColor.OnChangeNotification += _consoleFillColor_OnChangeNotification;
+                return _consoleFillColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".consoleFillColor", value.AsString()); }
             }
 
@@ -175,7 +190,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI consoleFrameColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".consoleFrameColor").AsColorI(); }
+            get
+                {
+                if (_consoleFrameColor != null)
+                    _consoleFrameColor.DetachAllEvents();
+                _consoleFrameColor = dnTorque.self.GetVar(_mSimObjectId + ".consoleFrameColor").AsColorI();
+                _consoleFrameColor.OnChangeNotification += _consoleFrameColor_OnChangeNotification;
+                return _consoleFrameColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".consoleFrameColor", value.AsString()); }
             }
 
@@ -211,7 +233,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI gridColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridColor").AsColorI(); }
+            get
+                {
+                if (_gridColor != null)
+                    _gridColor.DetachAllEvents();
+                _gridColor = dnTorque.self.GetVar(_mSimObjectId + ".gridColor").AsColorI();
+                _gridColor.OnChangeNotification += _gridColor_OnChangeNotification;
+                return _gridColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".gridColor", value.AsString()); }
             }
 
@@ -220,7 +249,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI gridMinorTickColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridMinorTickColor").AsColorI(); }
+            get
+                {
+                if (_gridMinorTickColor != null)
+                    _gridMinorTickColor.DetachAllEvents();
+                _gridMinorTickColor = dnTorque.self.GetVar(_mSimObjectId + ".gridMinorTickColor").AsColorI();
+                _gridMinorTickColor.OnChangeNotification += _gridMinorTickColor_OnChangeNotification;
+                return _gridMinorTickColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".gridMinorTickColor", value.AsString()); }
             }
 
@@ -229,7 +265,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI gridOriginColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridOriginColor").AsColorI(); }
+            get
+                {
+                if (_gridOriginColor != null)
+                    _gridOriginColor.DetachAllEvents();
+                _gridOriginColor = dnTorque.self.GetVar(_mSimObjectId + ".gridOriginColor").AsColorI();
+                _gridOriginColor.OnChangeNotification += _gridOriginColor_OnChangeNotification;
+                return _gridOriginColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".gridOriginColor", value.AsString()); }
             }
 
@@ -247,7 +290,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI missionAreaFillColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".missionAreaFillColor").AsColorI(); }
+            get
+                {
+                if (_missionAreaFillColor != null)
+                    _missionAreaFillColor.DetachAllEvents();
+                _missionAreaFillColor = dnTorque.self.GetVar(_mSimObjectId + ".missionAreaFillColor").AsColorI();
+                _missionAreaFillColor.OnChangeNotification += _missionAreaFillColor_OnChangeNotification;
+                return _missionAreaFillColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".missionAreaFillColor", value.AsString()); }
             }
 
@@ -256,7 +306,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI missionAreaFrameColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".missionAreaFrameColor").AsColorI(); }
+            get
+                {
+                if (_missionAreaFrameColor != null)
+                    _missionAreaFrameColor.DetachAllEvents();
+                _missionAreaFrameColor = dnTorque.self.GetVar(_mSimObjectId + ".missionAreaFrameColor").AsColorI();
+                _missionAreaFrameColor.OnChangeNotification += _missionAreaFrameColor_OnChangeNotification;
+                return _missionAreaFrameColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".missionAreaFrameColor", value.AsString()); }
             }
 
@@ -402,6 +459,41 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coEditTSCtrl(uint ts)
             {
             return new coEditTSCtrl(ts);
+            }
+
+        private void _consoleFillColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".consoleFillColor", e.NewValue);
+            }
+
+        private void _consoleFrameColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".consoleFrameColor", e.NewValue);
+            }
+
+        private void _gridColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".gridColor", e.NewValue);
+            }
+
+        private void _gridMinorTickColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".gridMinorTickColor", e.NewValue);
+            }
+
+        private void _gridOriginColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".gridOriginColor", e.NewValue);
+            }
+
+        private void _missionAreaFillColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".missionAreaFillColor", e.NewValue);
+            }
+
+        private void _missionAreaFrameColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".missionAreaFrameColor", e.NewValue);
             }
 
         /// <summary>

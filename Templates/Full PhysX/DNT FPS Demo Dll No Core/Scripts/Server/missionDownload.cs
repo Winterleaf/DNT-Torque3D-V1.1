@@ -71,7 +71,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 GameConnectionOnClientEnterGame(client);
             else
                 {
-                console.commandToClient(client, "MissionStartPhase1", new[] {sGlobal["$missionSequence"], sGlobal["$Server::MissionFile"], sGlobal["MissionGroup.musicTrack"]});
+                if (console.isObject(client))
+                    console.commandToClient(client, "MissionStartPhase1", new[] {sGlobal["$missionSequence"], sGlobal["$Server::MissionFile"], sGlobal["MissionGroup.musicTrack"]});
                 console.print("*** Sending mission load to client: " + sGlobal["$Server::MissionFile"]);
                 }
             }
@@ -107,7 +108,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 return;
             thisobj["currentPhase"] = "1.5";
             // On to the next phase
-            console.commandToClient(thisobj, "MissionStartPhase2", new[] {sGlobal["$missionSequence"], sGlobal["$Server::MissionFile"]});
+            if (console.isObject(thisobj))
+                console.commandToClient(thisobj, "MissionStartPhase2", new[] {sGlobal["$missionSequence"], sGlobal["$Server::MissionFile"]});
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdMissionStartPhase2Ack", "(%client, %seq, %playerDB)", 3, 14000, false)]

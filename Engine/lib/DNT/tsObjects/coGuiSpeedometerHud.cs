@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiSpeedometerHud))]
     public class coGuiSpeedometerHud : coGuiBitmapCtrl
         {
+        private Point2F _center;
+        private ColorF _color;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +132,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F center
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".center").AsPoint2F(); }
+            get
+                {
+                if (_center != null)
+                    _center.DetachAllEvents();
+                _center = dnTorque.self.GetVar(_mSimObjectId + ".center").AsPoint2F();
+                _center.OnChangeNotification += _center_OnChangeNotification;
+                return _center;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".center", value.AsString()); }
             }
 
@@ -138,7 +148,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF color
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF(); }
+            get
+                {
+                if (_color != null)
+                    _color.DetachAllEvents();
+                _color = dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF();
+                _color.OnChangeNotification += _color_OnChangeNotification;
+                return _color;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString()); }
             }
 
@@ -303,6 +320,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiSpeedometerHud(uint ts)
             {
             return new coGuiSpeedometerHud(ts);
+            }
+
+        private void _center_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".center", e.NewValue);
+            }
+
+        private void _color_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".color", e.NewValue);
             }
         }
     }

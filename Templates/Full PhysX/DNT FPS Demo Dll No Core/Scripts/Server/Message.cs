@@ -139,8 +139,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "chatMessageClient", "%client, %sender, %voiceTag, %voicePitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10 ", 15, 11000, false)]
         public void ChatMessageClient(coGameConnection client, coGameConnection sender, string voiceTag, string voicePitch, string msgString, string a1 = "", string a2 = "", string a3 = "", string a4 = "", string a5 = "", string a6 = "", string a7 = "", string a8 = "", string a9 = "", string a10 = "")
             {
-            if (!client["muted[" + sender + "]"].AsBool())
-                console.commandToClient(client, "ChatMessage", new string[] {sender, voiceTag, voicePitch, console.addTaggedString(msgString), a1, a2, a3, a4, a5, a6, a7, a8, a9, a10});
+            if (console.isObject(client))
+                if (!client["muted[" + sender + "]"].AsBool())
+                    console.commandToClient(client, "ChatMessage", new string[] {sender, voiceTag, voicePitch, console.addTaggedString(msgString), a1, a2, a3, a4, a5, a6, a7, a8, a9, a10});
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "chatMessageTeam", " %sender, %team, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10", 13, 11000, false)]
@@ -186,16 +187,22 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 tmsgstring = (byte) msgstring[0] == (byte) 1 ? msgstring : console.addTaggedString(msgstring);
 
             //console.error("Sending " + client + " message '" + console.getTaggedString(function) + "' - ' " + console.getTaggedString(tmsgtype) + "' - '" + tmsgstring + "'");
-            console.commandToClient(client, function, new[] {tmsgtype, tmsgstring, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13});
+            if (console.isObject(client))
+                console.commandToClient(client, function, new[] {tmsgtype, tmsgstring, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13});
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "messageAll", "", 15, 11000, false)]
         public void MessageAll(string msgtype, string msgstring, string a1 = "", string a2 = "", string a3 = "", string a4 = "", string a5 = "", string a6 = "", string a7 = "", string a8 = "", string a9 = "", string a10 = "", string a11 = "", string a12 = "", string a13 = "")
             {
-            foreach (coGameConnection clientid in ClientGroup.Where(clientid => clientid != 0))
+            foreach (coGameConnection clientid in ClientGroup)
                 {
                 MessageClient(clientid, msgtype, msgstring, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13);
                 }
+
+            //foreach (coGameConnection clientid in ClientGroup.Where(clientid => clientid != 0))
+            //    {
+            //    MessageClient(clientid, msgtype, msgstring, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13);
+            //    }
             }
         }
     }

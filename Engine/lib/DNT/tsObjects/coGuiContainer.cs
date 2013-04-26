@@ -101,6 +101,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiContainer))]
     public class coGuiContainer : coGuiControl
         {
+        private RectSpacingI _margin;
+        private RectSpacingI _padding;
+
         /// <summary>
         /// 
         /// </summary>
@@ -175,7 +178,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public RectSpacingI margin
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".margin").AsRectSpacingI(); }
+            get
+                {
+                if (_margin != null)
+                    _margin.DetachAllEvents();
+                _margin = dnTorque.self.GetVar(_mSimObjectId + ".margin").AsRectSpacingI();
+                _margin.OnChangeNotification += _margin_OnChangeNotification;
+                return _margin;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".margin", value.AsString()); }
             }
 
@@ -184,7 +194,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public RectSpacingI padding
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".padding").AsRectSpacingI(); }
+            get
+                {
+                if (_padding != null)
+                    _padding.DetachAllEvents();
+                _padding = dnTorque.self.GetVar(_mSimObjectId + ".padding").AsRectSpacingI();
+                _padding.OnChangeNotification += _padding_OnChangeNotification;
+                return _padding;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".padding", value.AsString()); }
             }
 
@@ -295,6 +312,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiContainer(uint ts)
             {
             return new coGuiContainer(ts);
+            }
+
+        private void _margin_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".margin", e.NewValue);
+            }
+
+        private void _padding_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".padding", e.NewValue);
             }
         }
     }

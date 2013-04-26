@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiControlArrayControl))]
     public class coGuiControlArrayControl : coGuiControl
         {
+        private VectorInt _colSizes;
+
         /// <summary>
         /// 
         /// </summary>
@@ -138,7 +140,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public VectorInt colSizes
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".colSizes").AsVectorInt(); }
+            get
+                {
+                if (_colSizes != null)
+                    _colSizes.DetachAllEvents();
+                _colSizes = dnTorque.self.GetVar(_mSimObjectId + ".colSizes").AsVectorInt();
+                _colSizes.OnChangeNotification += _colSizes_OnChangeNotification;
+                return _colSizes;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".colSizes", value.AsString()); }
             }
 
@@ -276,6 +285,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiControlArrayControl(uint ts)
             {
             return new coGuiControlArrayControl(ts);
+            }
+
+        private void _colSizes_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".colSizes", e.NewValue);
             }
         }
     }

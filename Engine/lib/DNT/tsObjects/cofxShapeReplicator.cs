@@ -100,6 +100,13 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercofxShapeReplicator))]
     public class cofxShapeReplicator : coSceneObject
         {
+        private ColorF _PlacementColour;
+        private Point3F _ShapeRotateMax;
+        private Point3F _ShapeRotateMin;
+        private Point3F _ShapeScaleMax;
+        private Point3F _ShapeScaleMin;
+        private Point3F _TerrainAlignment;
+
         /// <summary>
         /// 
         /// </summary>
@@ -265,7 +272,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF PlacementColour
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".PlacementColour").AsColorF(); }
+            get
+                {
+                if (_PlacementColour != null)
+                    _PlacementColour.DetachAllEvents();
+                _PlacementColour = dnTorque.self.GetVar(_mSimObjectId + ".PlacementColour").AsColorF();
+                _PlacementColour.OnChangeNotification += _PlacementColour_OnChangeNotification;
+                return _PlacementColour;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".PlacementColour", value.AsString()); }
             }
 
@@ -310,7 +324,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F ShapeRotateMax
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeRotateMax").AsPoint3F(); }
+            get
+                {
+                if (_ShapeRotateMax != null)
+                    _ShapeRotateMax.DetachAllEvents();
+                _ShapeRotateMax = dnTorque.self.GetVar(_mSimObjectId + ".ShapeRotateMax").AsPoint3F();
+                _ShapeRotateMax.OnChangeNotification += _ShapeRotateMax_OnChangeNotification;
+                return _ShapeRotateMax;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeRotateMax", value.AsString()); }
             }
 
@@ -319,7 +340,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F ShapeRotateMin
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeRotateMin").AsPoint3F(); }
+            get
+                {
+                if (_ShapeRotateMin != null)
+                    _ShapeRotateMin.DetachAllEvents();
+                _ShapeRotateMin = dnTorque.self.GetVar(_mSimObjectId + ".ShapeRotateMin").AsPoint3F();
+                _ShapeRotateMin.OnChangeNotification += _ShapeRotateMin_OnChangeNotification;
+                return _ShapeRotateMin;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeRotateMin", value.AsString()); }
             }
 
@@ -328,7 +356,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F ShapeScaleMax
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeScaleMax").AsPoint3F(); }
+            get
+                {
+                if (_ShapeScaleMax != null)
+                    _ShapeScaleMax.DetachAllEvents();
+                _ShapeScaleMax = dnTorque.self.GetVar(_mSimObjectId + ".ShapeScaleMax").AsPoint3F();
+                _ShapeScaleMax.OnChangeNotification += _ShapeScaleMax_OnChangeNotification;
+                return _ShapeScaleMax;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeScaleMax", value.AsString()); }
             }
 
@@ -337,7 +372,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F ShapeScaleMin
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ShapeScaleMin").AsPoint3F(); }
+            get
+                {
+                if (_ShapeScaleMin != null)
+                    _ShapeScaleMin.DetachAllEvents();
+                _ShapeScaleMin = dnTorque.self.GetVar(_mSimObjectId + ".ShapeScaleMin").AsPoint3F();
+                _ShapeScaleMin.OnChangeNotification += _ShapeScaleMin_OnChangeNotification;
+                return _ShapeScaleMin;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ShapeScaleMin", value.AsString()); }
             }
 
@@ -355,7 +397,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F TerrainAlignment
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".TerrainAlignment").AsPoint3F(); }
+            get
+                {
+                if (_TerrainAlignment != null)
+                    _TerrainAlignment.DetachAllEvents();
+                _TerrainAlignment = dnTorque.self.GetVar(_mSimObjectId + ".TerrainAlignment").AsPoint3F();
+                _TerrainAlignment.OnChangeNotification += _TerrainAlignment_OnChangeNotification;
+                return _TerrainAlignment;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".TerrainAlignment", value.AsString()); }
             }
 
@@ -465,6 +514,36 @@ namespace WinterLeaf.tsObjects
         public static implicit operator cofxShapeReplicator(uint ts)
             {
             return new cofxShapeReplicator(ts);
+            }
+
+        private void _PlacementColour_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".PlacementColour", e.NewValue);
+            }
+
+        private void _ShapeRotateMax_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ShapeRotateMax", e.NewValue);
+            }
+
+        private void _ShapeRotateMin_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ShapeRotateMin", e.NewValue);
+            }
+
+        private void _ShapeScaleMax_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ShapeScaleMax", e.NewValue);
+            }
+
+        private void _ShapeScaleMin_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ShapeScaleMin", e.NewValue);
+            }
+
+        private void _TerrainAlignment_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".TerrainAlignment", e.NewValue);
             }
         }
     }

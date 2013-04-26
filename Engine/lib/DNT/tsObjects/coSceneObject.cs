@@ -100,6 +100,12 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoSceneObject))]
     public class coSceneObject : coNetObject
         {
+        private TransformF _mountPos;
+        private TransformF _mountRot;
+        private TransformF _position;
+        private TransformF _rotation;
+        private Point3F _scale;
+
         /// <summary>
         /// 
         /// </summary>
@@ -165,7 +171,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF mountPos
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".mountPos").AsTransformF(); }
+            get
+                {
+                if (_mountPos != null)
+                    _mountPos.DetachAllEvents();
+                _mountPos = dnTorque.self.GetVar(_mSimObjectId + ".mountPos").AsTransformF();
+                _mountPos.OnChangeNotification += _mountPos_OnChangeNotification;
+                return _mountPos;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".mountPos", value.AsString()); }
             }
 
@@ -174,7 +187,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF mountRot
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".mountRot").AsTransformF(); }
+            get
+                {
+                if (_mountRot != null)
+                    _mountRot.DetachAllEvents();
+                _mountRot = dnTorque.self.GetVar(_mSimObjectId + ".mountRot").AsTransformF();
+                _mountRot.OnChangeNotification += _mountRot_OnChangeNotification;
+                return _mountRot;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".mountRot", value.AsString()); }
             }
 
@@ -183,7 +203,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF position
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".position").AsTransformF(); }
+            get
+                {
+                if (_position != null)
+                    _position.DetachAllEvents();
+                _position = dnTorque.self.GetVar(_mSimObjectId + ".position").AsTransformF();
+                _position.OnChangeNotification += _position_OnChangeNotification;
+                return _position;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".position", value.AsString()); }
             }
 
@@ -192,7 +219,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF rotation
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotation").AsTransformF(); }
+            get
+                {
+                if (_rotation != null)
+                    _rotation.DetachAllEvents();
+                _rotation = dnTorque.self.GetVar(_mSimObjectId + ".rotation").AsTransformF();
+                _rotation.OnChangeNotification += _rotation_OnChangeNotification;
+                return _rotation;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".rotation", value.AsString()); }
             }
 
@@ -201,7 +235,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F scale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F(); }
+            get
+                {
+                if (_scale != null)
+                    _scale.DetachAllEvents();
+                _scale = dnTorque.self.GetVar(_mSimObjectId + ".scale").AsPoint3F();
+                _scale.OnChangeNotification += _scale_OnChangeNotification;
+                return _scale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".scale", value.AsString()); }
             }
 
@@ -312,6 +353,31 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coSceneObject(uint ts)
             {
             return new coSceneObject(ts);
+            }
+
+        private void _mountPos_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".mountPos", e.NewValue);
+            }
+
+        private void _mountRot_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".mountRot", e.NewValue);
+            }
+
+        private void _position_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".position", e.NewValue);
+            }
+
+        private void _rotation_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".rotation", e.NewValue);
+            }
+
+        private void _scale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".scale", e.NewValue);
             }
 
         /// <summary>

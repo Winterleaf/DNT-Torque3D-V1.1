@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiClockHud))]
     public class coGuiClockHud : coGuiControl
         {
+        private ColorF _fillColor;
+        private ColorF _frameColor;
+        private ColorF _textColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +133,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF fillColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF(); }
+            get
+                {
+                if (_fillColor != null)
+                    _fillColor.DetachAllEvents();
+                _fillColor = dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorF();
+                _fillColor.OnChangeNotification += _fillColor_OnChangeNotification;
+                return _fillColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString()); }
             }
 
@@ -138,7 +149,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF frameColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF(); }
+            get
+                {
+                if (_frameColor != null)
+                    _frameColor.DetachAllEvents();
+                _frameColor = dnTorque.self.GetVar(_mSimObjectId + ".frameColor").AsColorF();
+                _frameColor.OnChangeNotification += _frameColor_OnChangeNotification;
+                return _frameColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".frameColor", value.AsString()); }
             }
 
@@ -165,7 +183,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF textColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".textColor").AsColorF(); }
+            get
+                {
+                if (_textColor != null)
+                    _textColor.DetachAllEvents();
+                _textColor = dnTorque.self.GetVar(_mSimObjectId + ".textColor").AsColorF();
+                _textColor.OnChangeNotification += _textColor_OnChangeNotification;
+                return _textColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".textColor", value.AsString()); }
             }
 
@@ -276,6 +301,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiClockHud(uint ts)
             {
             return new coGuiClockHud(ts);
+            }
+
+        private void _fillColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fillColor", e.NewValue);
+            }
+
+        private void _frameColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".frameColor", e.NewValue);
+            }
+
+        private void _textColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".textColor", e.NewValue);
             }
         }
     }

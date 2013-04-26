@@ -101,6 +101,17 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoMaterial))]
     public class coMaterial : coBaseMaterialDefinition
         {
+        private Point2I _cellIndex;
+        private Point2I _cellLayout;
+        private ColorF _colorMultiply;
+        private Point2F _detailScale;
+        private ColorF _diffuseColor;
+        private ColorF _effectColor;
+        private Point2F _rotPivotOffset;
+        private Point2F _scrollDir;
+        private ColorF _specular;
+        private ColorF _subSurfaceColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -194,7 +205,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I cellIndex
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".cellIndex").AsPoint2I(); }
+            get
+                {
+                if (_cellIndex != null)
+                    _cellIndex.DetachAllEvents();
+                _cellIndex = dnTorque.self.GetVar(_mSimObjectId + ".cellIndex").AsPoint2I();
+                _cellIndex.OnChangeNotification += _cellIndex_OnChangeNotification;
+                return _cellIndex;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".cellIndex", value.AsString()); }
             }
 
@@ -203,7 +221,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I cellLayout
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".cellLayout").AsPoint2I(); }
+            get
+                {
+                if (_cellLayout != null)
+                    _cellLayout.DetachAllEvents();
+                _cellLayout = dnTorque.self.GetVar(_mSimObjectId + ".cellLayout").AsPoint2I();
+                _cellLayout.OnChangeNotification += _cellLayout_OnChangeNotification;
+                return _cellLayout;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".cellLayout", value.AsString()); }
             }
 
@@ -221,7 +246,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF colorMultiply
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".colorMultiply").AsColorF(); }
+            get
+                {
+                if (_colorMultiply != null)
+                    _colorMultiply.DetachAllEvents();
+                _colorMultiply = dnTorque.self.GetVar(_mSimObjectId + ".colorMultiply").AsColorF();
+                _colorMultiply.OnChangeNotification += _colorMultiply_OnChangeNotification;
+                return _colorMultiply;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".colorMultiply", value.AsString()); }
             }
 
@@ -284,7 +316,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F detailScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".detailScale").AsPoint2F(); }
+            get
+                {
+                if (_detailScale != null)
+                    _detailScale.DetachAllEvents();
+                _detailScale = dnTorque.self.GetVar(_mSimObjectId + ".detailScale").AsPoint2F();
+                _detailScale.OnChangeNotification += _detailScale_OnChangeNotification;
+                return _detailScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".detailScale", value.AsString()); }
             }
 
@@ -302,7 +341,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF diffuseColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".diffuseColor").AsColorF(); }
+            get
+                {
+                if (_diffuseColor != null)
+                    _diffuseColor.DetachAllEvents();
+                _diffuseColor = dnTorque.self.GetVar(_mSimObjectId + ".diffuseColor").AsColorF();
+                _diffuseColor.OnChangeNotification += _diffuseColor_OnChangeNotification;
+                return _diffuseColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".diffuseColor", value.AsString()); }
             }
 
@@ -347,7 +393,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF effectColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".effectColor").AsColorF(); }
+            get
+                {
+                if (_effectColor != null)
+                    _effectColor.DetachAllEvents();
+                _effectColor = dnTorque.self.GetVar(_mSimObjectId + ".effectColor").AsColorF();
+                _effectColor.OnChangeNotification += _effectColor_OnChangeNotification;
+                return _effectColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".effectColor", value.AsString()); }
             }
 
@@ -509,7 +562,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F rotPivotOffset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotPivotOffset").AsPoint2F(); }
+            get
+                {
+                if (_rotPivotOffset != null)
+                    _rotPivotOffset.DetachAllEvents();
+                _rotPivotOffset = dnTorque.self.GetVar(_mSimObjectId + ".rotPivotOffset").AsPoint2F();
+                _rotPivotOffset.OnChangeNotification += _rotPivotOffset_OnChangeNotification;
+                return _rotPivotOffset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".rotPivotOffset", value.AsString()); }
             }
 
@@ -527,7 +587,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F scrollDir
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".scrollDir").AsPoint2F(); }
+            get
+                {
+                if (_scrollDir != null)
+                    _scrollDir.DetachAllEvents();
+                _scrollDir = dnTorque.self.GetVar(_mSimObjectId + ".scrollDir").AsPoint2F();
+                _scrollDir.OnChangeNotification += _scrollDir_OnChangeNotification;
+                return _scrollDir;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".scrollDir", value.AsString()); }
             }
 
@@ -581,7 +648,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF specular
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".specular").AsColorF(); }
+            get
+                {
+                if (_specular != null)
+                    _specular.DetachAllEvents();
+                _specular = dnTorque.self.GetVar(_mSimObjectId + ".specular").AsColorF();
+                _specular.OnChangeNotification += _specular_OnChangeNotification;
+                return _specular;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".specular", value.AsString()); }
             }
 
@@ -617,7 +691,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF subSurfaceColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".subSurfaceColor").AsColorF(); }
+            get
+                {
+                if (_subSurfaceColor != null)
+                    _subSurfaceColor.DetachAllEvents();
+                _subSurfaceColor = dnTorque.self.GetVar(_mSimObjectId + ".subSurfaceColor").AsColorF();
+                _subSurfaceColor.OnChangeNotification += _subSurfaceColor_OnChangeNotification;
+                return _subSurfaceColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".subSurfaceColor", value.AsString()); }
             }
 
@@ -826,6 +907,56 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coMaterial(uint ts)
             {
             return new coMaterial(ts);
+            }
+
+        private void _cellIndex_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".cellIndex", e.NewValue);
+            }
+
+        private void _cellLayout_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".cellLayout", e.NewValue);
+            }
+
+        private void _colorMultiply_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".colorMultiply", e.NewValue);
+            }
+
+        private void _detailScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".detailScale", e.NewValue);
+            }
+
+        private void _diffuseColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".diffuseColor", e.NewValue);
+            }
+
+        private void _effectColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".effectColor", e.NewValue);
+            }
+
+        private void _rotPivotOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".rotPivotOffset", e.NewValue);
+            }
+
+        private void _scrollDir_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".scrollDir", e.NewValue);
+            }
+
+        private void _specular_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".specular", e.NewValue);
+            }
+
+        private void _subSurfaceColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".subSurfaceColor", e.NewValue);
             }
 
         /// <summary>

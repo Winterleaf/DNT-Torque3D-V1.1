@@ -93,8 +93,13 @@ namespace WinterLeaf.Containers
     /// Used to hold the CSharp equiv of the ColorF torque class.
     /// </summary>
     [TypeConverter(typeof (ColorFIConverter))]
-    public sealed class ColorF : IConvertible
+    public sealed class ColorF : Notifier, IConvertible
         {
+        private float _alpha;
+        private float _blue;
+        private float _green;
+        private float _red;
+
         /// <summary>
         /// 
         /// </summary>
@@ -128,22 +133,54 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
-        public float Red { get; set; }
+        public float Red
+            {
+            get { return _red; }
+            set
+                {
+                _red = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public float Green { get; set; }
+        public float Green
+            {
+            get { return _green; }
+            set
+                {
+                _green = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public float Blue { get; set; }
+        public float Blue
+            {
+            get { return _blue; }
+            set
+                {
+                _blue = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public float Alpha { get; set; }
+        public float Alpha
+            {
+            get { return _alpha; }
+            set
+                {
+                _alpha = value;
+                Notify(AsString());
+                }
+            }
 
         #region IConvertible Members
 
@@ -301,6 +338,14 @@ namespace WinterLeaf.Containers
             }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~ColorF()
+            {
+            this.DetachAllEvents();
+            }
 
         /// <summary>
         /// 

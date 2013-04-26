@@ -101,6 +101,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiGradientCtrl))]
     public class coGuiGradientCtrl : coGuiControl
         {
+        private ColorF _baseColor;
+        private ColorF _pickColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +142,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF baseColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorF(); }
+            get
+                {
+                if (_baseColor != null)
+                    _baseColor.DetachAllEvents();
+                _baseColor = dnTorque.self.GetVar(_mSimObjectId + ".baseColor").AsColorF();
+                _baseColor.OnChangeNotification += _baseColor_OnChangeNotification;
+                return _baseColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".baseColor", value.AsString()); }
             }
 
@@ -157,7 +167,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF pickColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".pickColor").AsColorF(); }
+            get
+                {
+                if (_pickColor != null)
+                    _pickColor.DetachAllEvents();
+                _pickColor = dnTorque.self.GetVar(_mSimObjectId + ".pickColor").AsColorF();
+                _pickColor.OnChangeNotification += _pickColor_OnChangeNotification;
+                return _pickColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".pickColor", value.AsString()); }
             }
 
@@ -286,6 +303,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiGradientCtrl(uint ts)
             {
             return new coGuiGradientCtrl(ts);
+            }
+
+        private void _baseColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".baseColor", e.NewValue);
+            }
+
+        private void _pickColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".pickColor", e.NewValue);
             }
 
         /// <summary>

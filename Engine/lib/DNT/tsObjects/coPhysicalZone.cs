@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoPhysicalZone))]
     public class coPhysicalZone : coSceneObject
         {
+        private Point3F _appliedForce;
+        private Polyhedron _polyhedron;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +132,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F appliedForce
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".appliedForce").AsPoint3F(); }
+            get
+                {
+                if (_appliedForce != null)
+                    _appliedForce.DetachAllEvents();
+                _appliedForce = dnTorque.self.GetVar(_mSimObjectId + ".appliedForce").AsPoint3F();
+                _appliedForce.OnChangeNotification += _appliedForce_OnChangeNotification;
+                return _appliedForce;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".appliedForce", value.AsString()); }
             }
 
@@ -147,7 +157,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Polyhedron polyhedron
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".polyhedron").AsPolyhedron(); }
+            get
+                {
+                if (_polyhedron != null)
+                    _polyhedron.DetachAllEvents();
+                _polyhedron = dnTorque.self.GetVar(_mSimObjectId + ".polyhedron").AsPolyhedron();
+                _polyhedron.OnChangeNotification += _polyhedron_OnChangeNotification;
+                return _polyhedron;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".polyhedron", value.AsString()); }
             }
 
@@ -267,6 +284,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coPhysicalZone(uint ts)
             {
             return new coPhysicalZone(ts);
+            }
+
+        private void _appliedForce_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".appliedForce", e.NewValue);
+            }
+
+        private void _polyhedron_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".polyhedron", e.NewValue);
             }
 
         /// <summary>

@@ -101,6 +101,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoLevelInfo))]
     public class coLevelInfo : coNetObject
         {
+        private EaseF _ambientLightBlendCurve;
+        private ColorI _canvasClearColor;
+        private ColorF _fogColor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -140,7 +144,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public EaseF ambientLightBlendCurve
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambientLightBlendCurve").AsEaseF(); }
+            get
+                {
+                if (_ambientLightBlendCurve != null)
+                    _ambientLightBlendCurve.DetachAllEvents();
+                _ambientLightBlendCurve = dnTorque.self.GetVar(_mSimObjectId + ".ambientLightBlendCurve").AsEaseF();
+                _ambientLightBlendCurve.OnChangeNotification += _ambientLightBlendCurve_OnChangeNotification;
+                return _ambientLightBlendCurve;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ambientLightBlendCurve", value.AsString()); }
             }
 
@@ -158,7 +169,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI canvasClearColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".canvasClearColor").AsColorI(); }
+            get
+                {
+                if (_canvasClearColor != null)
+                    _canvasClearColor.DetachAllEvents();
+                _canvasClearColor = dnTorque.self.GetVar(_mSimObjectId + ".canvasClearColor").AsColorI();
+                _canvasClearColor.OnChangeNotification += _canvasClearColor_OnChangeNotification;
+                return _canvasClearColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".canvasClearColor", value.AsString()); }
             }
 
@@ -185,7 +203,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF fogColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fogColor").AsColorF(); }
+            get
+                {
+                if (_fogColor != null)
+                    _fogColor.DetachAllEvents();
+                _fogColor = dnTorque.self.GetVar(_mSimObjectId + ".fogColor").AsColorF();
+                _fogColor.OnChangeNotification += _fogColor_OnChangeNotification;
+                return _fogColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fogColor", value.AsString()); }
             }
 
@@ -358,6 +383,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coLevelInfo(uint ts)
             {
             return new coLevelInfo(ts);
+            }
+
+        private void _ambientLightBlendCurve_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ambientLightBlendCurve", e.NewValue);
+            }
+
+        private void _canvasClearColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".canvasClearColor", e.NewValue);
+            }
+
+        private void _fogColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fogColor", e.NewValue);
             }
         }
     }

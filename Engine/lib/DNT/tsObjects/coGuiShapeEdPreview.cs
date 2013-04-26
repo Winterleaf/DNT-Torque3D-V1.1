@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiShapeEdPreview))]
     public class coGuiShapeEdPreview : coEditTSCtrl
         {
+        private Point2I _gridDimension;
+        private ColorI _sunAmbient;
+        private ColorI _sunDiffuse;
+
         /// <summary>
         /// 
         /// </summary>
@@ -202,7 +206,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I gridDimension
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".gridDimension").AsPoint2I(); }
+            get
+                {
+                if (_gridDimension != null)
+                    _gridDimension.DetachAllEvents();
+                _gridDimension = dnTorque.self.GetVar(_mSimObjectId + ".gridDimension").AsPoint2I();
+                _gridDimension.OnChangeNotification += _gridDimension_OnChangeNotification;
+                return _gridDimension;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".gridDimension", value.AsString()); }
             }
 
@@ -355,7 +366,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI sunAmbient
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".sunAmbient").AsColorI(); }
+            get
+                {
+                if (_sunAmbient != null)
+                    _sunAmbient.DetachAllEvents();
+                _sunAmbient = dnTorque.self.GetVar(_mSimObjectId + ".sunAmbient").AsColorI();
+                _sunAmbient.OnChangeNotification += _sunAmbient_OnChangeNotification;
+                return _sunAmbient;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".sunAmbient", value.AsString()); }
             }
 
@@ -382,7 +400,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI sunDiffuse
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".sunDiffuse").AsColorI(); }
+            get
+                {
+                if (_sunDiffuse != null)
+                    _sunDiffuse.DetachAllEvents();
+                _sunDiffuse = dnTorque.self.GetVar(_mSimObjectId + ".sunDiffuse").AsColorI();
+                _sunDiffuse.OnChangeNotification += _sunDiffuse_OnChangeNotification;
+                return _sunDiffuse;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".sunDiffuse", value.AsString()); }
             }
 
@@ -519,6 +544,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiShapeEdPreview(uint ts)
             {
             return new coGuiShapeEdPreview(ts);
+            }
+
+        private void _gridDimension_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".gridDimension", e.NewValue);
+            }
+
+        private void _sunAmbient_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".sunAmbient", e.NewValue);
+            }
+
+        private void _sunDiffuse_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".sunDiffuse", e.NewValue);
             }
 
         /// <summary>

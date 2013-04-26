@@ -93,7 +93,7 @@ namespace WinterLeaf.Containers
     /// Point4F Container
     /// </summary>
     [TypeConverter(typeof (Point4FIConverter))]
-    public class Point4F : IConvertible
+    public class Point4F : Notifier, IConvertible
         {
         private float _mW;
         private float _mX;
@@ -134,7 +134,11 @@ namespace WinterLeaf.Containers
         public float X
             {
             get { return _mX; }
-            set { _mX = value; }
+            set
+                {
+                _mX = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -143,7 +147,11 @@ namespace WinterLeaf.Containers
         public float Y
             {
             get { return _mY; }
-            set { _mY = value; }
+            set
+                {
+                _mY = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -152,7 +160,11 @@ namespace WinterLeaf.Containers
         public float Z
             {
             get { return _mZ; }
-            set { _mZ = value; }
+            set
+                {
+                _mZ = value;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -161,7 +173,11 @@ namespace WinterLeaf.Containers
         public float W
             {
             get { return _mW; }
-            set { _mW = value; }
+            set
+                {
+                _mW = value;
+                Notify(AsString());
+                }
             }
 
         #region IConvertible Members
@@ -320,6 +336,14 @@ namespace WinterLeaf.Containers
             }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~Point4F()
+            {
+            this.DetachAllEvents();
+            }
 
         /// <summary>
         /// 

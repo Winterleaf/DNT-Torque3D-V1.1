@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoVehicleBlocker))]
     public class coVehicleBlocker : coSceneObject
         {
+        private Point3F _dimensions;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +131,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F dimensions
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".dimensions").AsPoint3F(); }
+            get
+                {
+                if (_dimensions != null)
+                    _dimensions.DetachAllEvents();
+                _dimensions = dnTorque.self.GetVar(_mSimObjectId + ".dimensions").AsPoint3F();
+                _dimensions.OnChangeNotification += _dimensions_OnChangeNotification;
+                return _dimensions;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".dimensions", value.AsString()); }
             }
 
@@ -240,6 +249,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coVehicleBlocker(uint ts)
             {
             return new coVehicleBlocker(ts);
+            }
+
+        private void _dimensions_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".dimensions", e.NewValue);
             }
         }
     }

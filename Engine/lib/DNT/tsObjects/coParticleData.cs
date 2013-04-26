@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoParticleData))]
     public class coParticleData : coSimDataBlock
         {
+        private Point2I _animTexTiling;
+        private ColorF _colors;
+        private Point2F _textureCoords;
+
         /// <summary>
         /// 
         /// </summary>
@@ -157,7 +161,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I animTexTiling
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".animTexTiling").AsPoint2I(); }
+            get
+                {
+                if (_animTexTiling != null)
+                    _animTexTiling.DetachAllEvents();
+                _animTexTiling = dnTorque.self.GetVar(_mSimObjectId + ".animTexTiling").AsPoint2I();
+                _animTexTiling.OnChangeNotification += _animTexTiling_OnChangeNotification;
+                return _animTexTiling;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".animTexTiling", value.AsString()); }
             }
 
@@ -166,7 +177,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF colors
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".colors").AsColorF(); }
+            get
+                {
+                if (_colors != null)
+                    _colors.DetachAllEvents();
+                _colors = dnTorque.self.GetVar(_mSimObjectId + ".colors").AsColorF();
+                _colors.OnChangeNotification += _colors_OnChangeNotification;
+                return _colors;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".colors", value.AsString()); }
             }
 
@@ -274,7 +292,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F textureCoords
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureCoords").AsPoint2F(); }
+            get
+                {
+                if (_textureCoords != null)
+                    _textureCoords.DetachAllEvents();
+                _textureCoords = dnTorque.self.GetVar(_mSimObjectId + ".textureCoords").AsPoint2F();
+                _textureCoords.OnChangeNotification += _textureCoords_OnChangeNotification;
+                return _textureCoords;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".textureCoords", value.AsString()); }
             }
 
@@ -420,6 +445,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coParticleData(uint ts)
             {
             return new coParticleData(ts);
+            }
+
+        private void _animTexTiling_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".animTexTiling", e.NewValue);
+            }
+
+        private void _colors_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".colors", e.NewValue);
+            }
+
+        private void _textureCoords_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".textureCoords", e.NewValue);
             }
 
         /// <summary>

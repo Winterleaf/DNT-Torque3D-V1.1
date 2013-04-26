@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoPathedInterior))]
     public class coPathedInterior : coGameBase
         {
+        private TransformF _basePosition;
+        private TransformF _baseRotation;
+        private Point3F _baseScale;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +133,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF basePosition
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".basePosition").AsTransformF(); }
+            get
+                {
+                if (_basePosition != null)
+                    _basePosition.DetachAllEvents();
+                _basePosition = dnTorque.self.GetVar(_mSimObjectId + ".basePosition").AsTransformF();
+                _basePosition.OnChangeNotification += _basePosition_OnChangeNotification;
+                return _basePosition;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".basePosition", value.AsString()); }
             }
 
@@ -138,7 +149,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF baseRotation
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseRotation").AsTransformF(); }
+            get
+                {
+                if (_baseRotation != null)
+                    _baseRotation.DetachAllEvents();
+                _baseRotation = dnTorque.self.GetVar(_mSimObjectId + ".baseRotation").AsTransformF();
+                _baseRotation.OnChangeNotification += _baseRotation_OnChangeNotification;
+                return _baseRotation;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".baseRotation", value.AsString()); }
             }
 
@@ -147,7 +165,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F baseScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".baseScale").AsPoint3F(); }
+            get
+                {
+                if (_baseScale != null)
+                    _baseScale.DetachAllEvents();
+                _baseScale = dnTorque.self.GetVar(_mSimObjectId + ".baseScale").AsPoint3F();
+                _baseScale.OnChangeNotification += _baseScale_OnChangeNotification;
+                return _baseScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".baseScale", value.AsString()); }
             }
 
@@ -276,6 +301,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coPathedInterior(uint ts)
             {
             return new coPathedInterior(ts);
+            }
+
+        private void _basePosition_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".basePosition", e.NewValue);
+            }
+
+        private void _baseRotation_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".baseRotation", e.NewValue);
+            }
+
+        private void _baseScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".baseScale", e.NewValue);
             }
 
         /// <summary>

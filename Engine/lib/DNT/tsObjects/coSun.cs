@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoSun))]
     public class coSun : coSceneObject
         {
+        private ColorF _ambient;
+        private ColorF _color;
+        private ColorF _coronaTint;
+
         /// <summary>
         /// 
         /// </summary>
@@ -130,7 +134,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF ambient
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambient").AsColorF(); }
+            get
+                {
+                if (_ambient != null)
+                    _ambient.DetachAllEvents();
+                _ambient = dnTorque.self.GetVar(_mSimObjectId + ".ambient").AsColorF();
+                _ambient.OnChangeNotification += _ambient_OnChangeNotification;
+                return _ambient;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ambient", value.AsString()); }
             }
 
@@ -166,7 +177,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF color
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF(); }
+            get
+                {
+                if (_color != null)
+                    _color.DetachAllEvents();
+                _color = dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF();
+                _color.OnChangeNotification += _color_OnChangeNotification;
+                return _color;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString()); }
             }
 
@@ -202,7 +220,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF coronaTint
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".coronaTint").AsColorF(); }
+            get
+                {
+                if (_coronaTint != null)
+                    _coronaTint.DetachAllEvents();
+                _coronaTint = dnTorque.self.GetVar(_mSimObjectId + ".coronaTint").AsColorF();
+                _coronaTint.OnChangeNotification += _coronaTint_OnChangeNotification;
+                return _coronaTint;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".coronaTint", value.AsString()); }
             }
 
@@ -348,6 +373,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coSun(uint ts)
             {
             return new coSun(ts);
+            }
+
+        private void _ambient_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ambient", e.NewValue);
+            }
+
+        private void _color_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".color", e.NewValue);
+            }
+
+        private void _coronaTint_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".coronaTint", e.NewValue);
             }
 
         /// <summary>

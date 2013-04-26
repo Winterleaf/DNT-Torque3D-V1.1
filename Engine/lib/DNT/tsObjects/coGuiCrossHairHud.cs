@@ -100,6 +100,11 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiCrossHairHud))]
     public class coGuiCrossHairHud : coGuiBitmapCtrl
         {
+        private ColorF _damageFillColor;
+        private ColorF _damageFrameColor;
+        private Point2I _damageOffset;
+        private Point2I _damageRect;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +134,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF damageFillColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageFillColor").AsColorF(); }
+            get
+                {
+                if (_damageFillColor != null)
+                    _damageFillColor.DetachAllEvents();
+                _damageFillColor = dnTorque.self.GetVar(_mSimObjectId + ".damageFillColor").AsColorF();
+                _damageFillColor.OnChangeNotification += _damageFillColor_OnChangeNotification;
+                return _damageFillColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".damageFillColor", value.AsString()); }
             }
 
@@ -138,7 +150,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF damageFrameColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageFrameColor").AsColorF(); }
+            get
+                {
+                if (_damageFrameColor != null)
+                    _damageFrameColor.DetachAllEvents();
+                _damageFrameColor = dnTorque.self.GetVar(_mSimObjectId + ".damageFrameColor").AsColorF();
+                _damageFrameColor.OnChangeNotification += _damageFrameColor_OnChangeNotification;
+                return _damageFrameColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".damageFrameColor", value.AsString()); }
             }
 
@@ -147,7 +166,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I damageOffset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageOffset").AsPoint2I(); }
+            get
+                {
+                if (_damageOffset != null)
+                    _damageOffset.DetachAllEvents();
+                _damageOffset = dnTorque.self.GetVar(_mSimObjectId + ".damageOffset").AsPoint2I();
+                _damageOffset.OnChangeNotification += _damageOffset_OnChangeNotification;
+                return _damageOffset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".damageOffset", value.AsString()); }
             }
 
@@ -156,7 +182,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I damageRect
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageRect").AsPoint2I(); }
+            get
+                {
+                if (_damageRect != null)
+                    _damageRect.DetachAllEvents();
+                _damageRect = dnTorque.self.GetVar(_mSimObjectId + ".damageRect").AsPoint2I();
+                _damageRect.OnChangeNotification += _damageRect_OnChangeNotification;
+                return _damageRect;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".damageRect", value.AsString()); }
             }
 
@@ -267,6 +300,26 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiCrossHairHud(uint ts)
             {
             return new coGuiCrossHairHud(ts);
+            }
+
+        private void _damageFillColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".damageFillColor", e.NewValue);
+            }
+
+        private void _damageFrameColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".damageFrameColor", e.NewValue);
+            }
+
+        private void _damageOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".damageOffset", e.NewValue);
+            }
+
+        private void _damageRect_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".damageRect", e.NewValue);
             }
         }
     }

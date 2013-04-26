@@ -101,6 +101,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiIconButtonCtrl))]
     public class coGuiIconButtonCtrl : coGuiButtonCtrl
         {
+        private Point2I _buttonMargin;
+
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +141,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I buttonMargin
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".buttonMargin").AsPoint2I(); }
+            get
+                {
+                if (_buttonMargin != null)
+                    _buttonMargin.DetachAllEvents();
+                _buttonMargin = dnTorque.self.GetVar(_mSimObjectId + ".buttonMargin").AsPoint2I();
+                _buttonMargin.OnChangeNotification += _buttonMargin_OnChangeNotification;
+                return _buttonMargin;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".buttonMargin", value.AsString()); }
             }
 
@@ -304,6 +313,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiIconButtonCtrl(uint ts)
             {
             return new coGuiIconButtonCtrl(ts);
+            }
+
+        private void _buttonMargin_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".buttonMargin", e.NewValue);
             }
 
         /// <summary>

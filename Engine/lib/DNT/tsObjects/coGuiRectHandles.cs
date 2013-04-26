@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiRectHandles))]
     public class coGuiRectHandles : coGuiControl
         {
+        private ColorI _handleColor;
+        private RectF _handleRect;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +132,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI handleColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".handleColor").AsColorI(); }
+            get
+                {
+                if (_handleColor != null)
+                    _handleColor.DetachAllEvents();
+                _handleColor = dnTorque.self.GetVar(_mSimObjectId + ".handleColor").AsColorI();
+                _handleColor.OnChangeNotification += _handleColor_OnChangeNotification;
+                return _handleColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".handleColor", value.AsString()); }
             }
 
@@ -138,7 +148,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public RectF handleRect
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".handleRect").AsRectF(); }
+            get
+                {
+                if (_handleRect != null)
+                    _handleRect.DetachAllEvents();
+                _handleRect = dnTorque.self.GetVar(_mSimObjectId + ".handleRect").AsRectF();
+                _handleRect.OnChangeNotification += _handleRect_OnChangeNotification;
+                return _handleRect;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".handleRect", value.AsString()); }
             }
 
@@ -267,6 +284,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiRectHandles(uint ts)
             {
             return new coGuiRectHandles(ts);
+            }
+
+        private void _handleColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".handleColor", e.NewValue);
+            }
+
+        private void _handleRect_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".handleRect", e.NewValue);
             }
         }
     }

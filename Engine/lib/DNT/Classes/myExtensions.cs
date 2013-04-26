@@ -458,9 +458,9 @@ namespace WinterLeaf.Classes
             {
             if (value.Trim() == "")
                 return 0;
-            if (value == "false")
+            if (value.ToLower() == "false")
                 return 0;
-            if (value == "true")
+            if (value.ToLower() == "true")
                 return 1;
             if (value == "")
                 return 0;

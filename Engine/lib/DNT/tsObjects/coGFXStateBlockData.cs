@@ -101,6 +101,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGFXStateBlockData))]
     public class coGFXStateBlockData : coSimObject
         {
+        private ColorI _textureFactor;
+
         /// <summary>
         /// 
         /// </summary>
@@ -428,7 +430,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI textureFactor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".textureFactor").AsColorI(); }
+            get
+                {
+                if (_textureFactor != null)
+                    _textureFactor.DetachAllEvents();
+                _textureFactor = dnTorque.self.GetVar(_mSimObjectId + ".textureFactor").AsColorI();
+                _textureFactor.OnChangeNotification += _textureFactor_OnChangeNotification;
+                return _textureFactor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".textureFactor", value.AsString()); }
             }
 
@@ -601,6 +610,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGFXStateBlockData(uint ts)
             {
             return new coGFXStateBlockData(ts);
+            }
+
+        private void _textureFactor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".textureFactor", e.NewValue);
             }
         }
     }

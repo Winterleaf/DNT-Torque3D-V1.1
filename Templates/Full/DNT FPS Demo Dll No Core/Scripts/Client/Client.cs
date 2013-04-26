@@ -119,12 +119,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "clientCmdSetDamageDirection", "(%direction)", 1, 6000, false)]
         public void ClientCmdSetDamageDirection(string direction)
             {
-            new coGuiControl("DamageHUD").findObjectByInternalName("damage_" + direction, true);
-
-            coGuiBitmapCtrl ctrl = ((coGuiControl) "DamageHUD").findObjectByInternalName("damage_" + direction, true);
-
-            if (!console.isObject(ctrl))
+            coGuiControl DamageHUD = "DamageHUD";
+            if (!DamageHUD.isObject())
                 return;
+            coGuiBitmapCtrl ctrl = DamageHUD.findObjectByInternalName("damage_" + direction, true);
+            if (!ctrl.isObject())
+                return;
+
             Util._cancelAll(ctrl);
             ctrl.setVisible(true);
             ctrl.schedule("500", "setVisible", "false");

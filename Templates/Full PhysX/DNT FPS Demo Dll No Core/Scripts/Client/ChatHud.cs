@@ -140,7 +140,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onChatMessage", "(%message, %voice, %pitch)", 3, 4000, false)]
-        public string OnChatMessage(string message, string voice, string pitch)
+        public void OnChatMessage(string message, string voice, string pitch)
             {
             // XXX Client objects on the server must have voiceTag and voicePitch
             // fields for values to be passed in for %voice and %pitch... in
@@ -159,13 +159,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             if (message.Trim() != "")
                 ChatHudAddLine("ChatHud", message);
-
-
-            return string.Empty;
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onServerMessage", "(%message)", 1, 4000, false)]
-        public string OnServerMessage(string message)
+        public void OnServerMessage(string message)
             {
             string wavStart = PlayMessageSound(message, "", "");
             if (wavStart.AsInt() != -1)
@@ -173,8 +170,6 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             if (message.Trim() != "")
                 ChatHudAddLine("ChatHud", message);
-
-            return string.Empty;
             }
 
 
@@ -182,15 +177,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         // MainChatHud methods
         //-----------------------------------------------------------------------------
         [Torque_Decorations.TorqueCallBack("", "MainChatHud", "onServerMessage", "(%this)", 1, 4000, false)]
-        public string MainChatHudOnServerMessage(string thisobj)
+        public void MainChatHudOnServerMessage(string thisobj)
             {
             // set the chat hud to the users pref
             MainChatHudSetChatHudLength(thisobj, console.GetVarString("$Pref::ChatHudLength"));
-            return string.Empty;
             }
 
         [Torque_Decorations.TorqueCallBack("", "MainChatHud", "setChatHudLength", "( %this, %length )", 2, 4000, false)]
-        public string MainChatHudSetChatHudLength(string thisobj, string length)
+        public void MainChatHudSetChatHudLength(string thisobj, string length)
             {
             int textheight = console.GetVarInt("ChatHud.Profile.fontSize") + console.GetVarInt("ChatHud.lineSpacing");
             if (textheight <= 0)
@@ -202,14 +196,15 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             int chatMargin = Util.getWord(console.GetVarString("OuterChatHud.extent"), 1).AsInt() - Util.getWord(console.GetVarString("ChatScrollHud.Extent"), 1).AsInt() + 2*console.GetVarInt("ChatScrollHud.profile.borderThickness");
 
 
-            console.Call("OuterChatHud", "setExtent", new[] {Util.firstWord(console.GetVarString("OuterChatHud.extent")), (lengthInPixels + chatMargin).AsString()});
-            console.Call("ChatScrollHud", "scrollToBottom");
+            coGuiBitmapBorderCtrl OuterChatHud = "OuterChatHud";
+            coGuiScrollCtrl ChatScrollHud = "ChatScrollHud";
+            OuterChatHud.setExtent(Util.firstWord(OuterChatHud["extent"]), (lengthInPixels + chatMargin).AsString());
+            ChatScrollHud.scrollToBottom();
             ((coGuiControl) "ChatPageDown").setVisible(false);
-            return string.Empty;
             }
 
         [Torque_Decorations.TorqueCallBack("", "MainChatHud", "nextChatHudLen", "( %this)", 1, 4000, false)]
-        public string MainChatHudNextChatHudLen(string thisobj)
+        public void MainChatHudNextChatHudLen(string thisobj)
             {
             int len = console.GetVarInt("$pref::ChatHudLength");
             len++;
@@ -217,7 +212,6 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 len = 1;
             console.Call(thisobj, "setChatHudLength", new[] {len.AsString()});
             console.SetVar("$pref::ChatHudLength", len);
-            return string.Empty;
             }
 
         //-----------------------------------------------------------------------------

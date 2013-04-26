@@ -126,7 +126,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void onActivateBasicLM()
             {
             // If HDR is enabled... enable the special format token.
-            if ((sGlobal["$platform"] == "macos") || new coPostEffect("HDRPostFx").isEnabled)
+            if ((sGlobal["$platform"] == "macos") || new coPostEffect("HDRPostFx").GetEnabled())
                 new coGFXStateBlockData("AL_FormatToken").call("enable");
             // Create render pass for projected shadow.
 

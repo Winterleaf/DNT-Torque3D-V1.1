@@ -905,10 +905,13 @@ namespace WinterLeaf
                 //So to prevent corruption, only allow async functions to make calls back to Torque when it is
                 //in an idle state, i.e. not "Ticking".  This way there is no way to calls can enter the same Torque
                 //function at the same time and cause memory corruption.
+
                 lock (tick)
                     {
+                    // System.Console.WriteLine("TickStart");
                     if (SafeNativeMethods.mtorque_enginetick() != 1)
                         _mStopTorque = true;
+                    //System.Console.WriteLine("TickEND");
                     }
                 }
             SafeNativeMethods.mtorque_enginesignalshutdown();

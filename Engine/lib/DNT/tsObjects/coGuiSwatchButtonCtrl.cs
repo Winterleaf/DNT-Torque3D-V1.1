@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiSwatchButtonCtrl))]
     public class coGuiSwatchButtonCtrl : coGuiButtonBaseCtrl
         {
+        private ColorF _color;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +131,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF color
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF(); }
+            get
+                {
+                if (_color != null)
+                    _color.DetachAllEvents();
+                _color = dnTorque.self.GetVar(_mSimObjectId + ".color").AsColorF();
+                _color.OnChangeNotification += _color_OnChangeNotification;
+                return _color;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".color", value.AsString()); }
             }
 
@@ -240,6 +249,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiSwatchButtonCtrl(uint ts)
             {
             return new coGuiSwatchButtonCtrl(ts);
+            }
+
+        private void _color_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".color", e.NewValue);
             }
 
         /// <summary>

@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiTextEditSliderCtrl))]
     public class coGuiTextEditSliderCtrl : coGuiTextEditCtrl
         {
+        private Point2F _range;
+
         /// <summary>
         /// 
         /// </summary>
@@ -156,7 +158,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F range
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".range").AsPoint2F(); }
+            get
+                {
+                if (_range != null)
+                    _range.DetachAllEvents();
+                _range = dnTorque.self.GetVar(_mSimObjectId + ".range").AsPoint2F();
+                _range.OnChangeNotification += _range_OnChangeNotification;
+                return _range;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".range", value.AsString()); }
             }
 
@@ -267,6 +276,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiTextEditSliderCtrl(uint ts)
             {
             return new coGuiTextEditSliderCtrl(ts);
+            }
+
+        private void _range_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".range", e.NewValue);
             }
         }
     }

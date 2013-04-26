@@ -100,6 +100,9 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoBasicClouds))]
     public class coBasicClouds : coSceneObject
         {
+        private Point2F _texDirection;
+        private Point2F _texOffset;
+
         /// <summary>
         /// 
         /// </summary>
@@ -147,7 +150,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F texDirection
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".texDirection").AsPoint2F(); }
+            get
+                {
+                if (_texDirection != null)
+                    _texDirection.DetachAllEvents();
+                _texDirection = dnTorque.self.GetVar(_mSimObjectId + ".texDirection").AsPoint2F();
+                _texDirection.OnChangeNotification += _texDirection_OnChangeNotification;
+                return _texDirection;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".texDirection", value.AsString()); }
             }
 
@@ -156,7 +166,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2F texOffset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".texOffset").AsPoint2F(); }
+            get
+                {
+                if (_texOffset != null)
+                    _texOffset.DetachAllEvents();
+                _texOffset = dnTorque.self.GetVar(_mSimObjectId + ".texOffset").AsPoint2F();
+                _texOffset.OnChangeNotification += _texOffset_OnChangeNotification;
+                return _texOffset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".texOffset", value.AsString()); }
             }
 
@@ -294,6 +311,16 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coBasicClouds(uint ts)
             {
             return new coBasicClouds(ts);
+            }
+
+        private void _texDirection_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".texDirection", e.NewValue);
+            }
+
+        private void _texOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".texOffset", e.NewValue);
             }
         }
     }

@@ -93,24 +93,32 @@ namespace WinterLeaf.Containers
     /// Polyhedron Container
     /// </summary>
     [TypeConverter(typeof (PolyhedronIConverter))]
-    public class Polyhedron : TypeConverter
+    public class Polyhedron : Notifier, IConvertible
         {
         /// <summary>
         /// Initializes a new instance of the Polyhedron class.
         /// </summary>
-        private Point3F _mOrigin = new Point3F();
+        private Point3F _mOrigin; // = new Point3F();
 
-        private Point3F _mVector1 = new Point3F(0, 0, 0);
+        private Point3F _mVector1; // = new Point3F(0, 0, 0);
 
-        private Point3F _mVector2 = new Point3F(0, 0, 0);
+        private Point3F _mVector2; // = new Point3F(0, 0, 0);
 
-        private Point3F _mVector3 = new Point3F(0, 0, 0);
+        private Point3F _mVector3; // = new Point3F(0, 0, 0);
 
         /// <summary>
         /// Constructor
         /// </summary>
         public Polyhedron()
             {
+            _mOrigin = new Point3F();
+            _mOrigin.OnChangeNotification += __OnChangeNotification;
+            _mVector1 = new Point3F();
+            _mVector1.OnChangeNotification += __OnChangeNotification;
+            _mVector2 = new Point3F();
+            _mVector2.OnChangeNotification += __OnChangeNotification;
+            _mVector3 = new Point3F();
+            _mVector3.OnChangeNotification += __OnChangeNotification;
             }
 
         /// <summary>
@@ -122,18 +130,26 @@ namespace WinterLeaf.Containers
             string[] pa = poly.Split(',');
             if (pa.Length >= 11)
                 {
+                _mOrigin = new Point3F();
                 mOrigin.x = pa[0].AsFloat();
                 mOrigin.y = pa[1].AsFloat();
                 mOrigin.z = pa[2].AsFloat();
+                _mVector1 = new Point3F();
                 mVector1.x = pa[3].AsFloat();
                 mVector1.y = pa[4].AsFloat();
                 mVector1.z = pa[5].AsFloat();
+                _mVector2 = new Point3F();
                 mVector2.x = pa[6].AsFloat();
                 mVector2.y = pa[7].AsFloat();
                 mVector2.z = pa[8].AsFloat();
+                _mVector3 = new Point3F();
                 mVector3.x = pa[9].AsFloat();
                 mVector3.y = pa[10].AsFloat();
                 mVector3.z = pa[11].AsFloat();
+                _mOrigin.OnChangeNotification += __OnChangeNotification;
+                _mVector1.OnChangeNotification += __OnChangeNotification;
+                _mVector2.OnChangeNotification += __OnChangeNotification;
+                _mVector3.OnChangeNotification += __OnChangeNotification;
                 }
             else
                 {
@@ -148,7 +164,13 @@ namespace WinterLeaf.Containers
         public Point3F mVector1
             {
             get { return _mVector1; }
-            set { _mVector1 = value; }
+            set
+                {
+                _mVector1 = value;
+                _mVector1.DetachAllEvents();
+                _mVector1.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -157,7 +179,13 @@ namespace WinterLeaf.Containers
         public Point3F mVector2
             {
             get { return _mVector2; }
-            set { _mVector2 = value; }
+            set
+                {
+                _mVector2 = value;
+                _mVector2.DetachAllEvents();
+                _mVector2.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -166,7 +194,13 @@ namespace WinterLeaf.Containers
         public Point3F mVector3
             {
             get { return _mVector3; }
-            set { _mVector3 = value; }
+            set
+                {
+                _mVector3 = value;
+                _mVector3.DetachAllEvents();
+                _mVector3.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
             }
 
         /// <summary>
@@ -175,7 +209,184 @@ namespace WinterLeaf.Containers
         public Point3F mOrigin
             {
             get { return _mOrigin; }
-            set { _mOrigin = value; }
+            set
+                {
+                _mOrigin = value;
+                _mOrigin.DetachAllEvents();
+                _mOrigin.OnChangeNotification += __OnChangeNotification;
+                Notify(AsString());
+                }
+            }
+
+        #region IConvertible Members
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public TypeCode GetTypeCode()
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public bool ToBoolean(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public char ToChar(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public sbyte ToSByte(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public byte ToByte(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public short ToInt16(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public ushort ToUInt16(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public int ToInt32(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public uint ToUInt32(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public long ToInt64(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public ulong ToUInt64(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public float ToSingle(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public double ToDouble(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public decimal ToDecimal(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public DateTime ToDateTime(IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        /// <summary>
+        /// Converts to string
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
+        public string ToString(IFormatProvider provider)
+            {
+            return AsString();
+            }
+
+        /// <summary>
+        /// NotImplementedException
+        /// </summary>
+        /// <returns></returns>
+        public object ToType(Type conversionType, IFormatProvider provider)
+            {
+            throw new NotImplementedException();
+            }
+
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~Polyhedron()
+            {
+            this.DetachAllEvents();
+            }
+
+        private void __OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            Notify(AsString());
             }
 
         /// <summary>
@@ -184,7 +395,7 @@ namespace WinterLeaf.Containers
         /// <returns></returns>
         public override string ToString()
             {
-            return mOrigin.x.AsString() + " " + mOrigin.y.AsString() + " " + mOrigin.z.AsString() + " " + mVector1.x.AsString() + " " + mVector1.y.AsString() + " " + mVector1.z.AsString() + " " + mVector2.x.AsString() + " " + mVector2.y.AsString() + " " + mVector2.z.AsString() + " " + mVector3.x.AsString() + " " + mVector3.y.AsString() + " " + mVector3.z.AsString() + " ";
+            return AsString();
             }
 
         /// <summary>
@@ -193,7 +404,9 @@ namespace WinterLeaf.Containers
         /// <returns></returns>
         public string AsString()
             {
-            return mOrigin.x.AsString() + " " + mOrigin.y.AsString() + " " + mOrigin.z.AsString() + " " + mVector1.y.AsString() + " " + mVector1.z.AsString() + " " + mVector2.x.AsString() + " " + mVector2.y.AsString() + " " + mVector2.z.AsString() + " " + mVector3.x.AsString() + " " + mVector3.y.AsString() + " " + mVector3.z.AsString() + " ";
+            if ((((object) mOrigin) != null) && (((object) mVector1) != null) && (((object) mVector2) != null) && (((object) mVector3) != null))
+                return mOrigin.x.AsString() + " " + mOrigin.y.AsString() + " " + mOrigin.z.AsString() + " " + mVector1.x.AsString() + " " + mVector1.y.AsString() + " " + mVector1.z.AsString() + " " + mVector2.x.AsString() + " " + mVector2.y.AsString() + " " + mVector2.z.AsString() + " " + mVector3.x.AsString() + " " + mVector3.y.AsString() + " " + mVector3.z.AsString() + " ";
+            return "";
             }
         }
     }

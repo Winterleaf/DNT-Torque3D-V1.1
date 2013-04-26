@@ -101,6 +101,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoParticleEmitterData))]
     public class coParticleEmitterData : coGameBaseData
         {
+        private Point3F _alignDirection;
+
         /// <summary>
         /// 
         /// </summary>
@@ -131,7 +133,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F alignDirection
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".alignDirection").AsPoint3F(); }
+            get
+                {
+                if (_alignDirection != null)
+                    _alignDirection.DetachAllEvents();
+                _alignDirection = dnTorque.self.GetVar(_mSimObjectId + ".alignDirection").AsPoint3F();
+                _alignDirection.OnChangeNotification += _alignDirection_OnChangeNotification;
+                return _alignDirection;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".alignDirection", value.AsString()); }
             }
 
@@ -475,6 +484,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coParticleEmitterData(uint ts)
             {
             return new coParticleEmitterData(ts);
+            }
+
+        private void _alignDirection_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".alignDirection", e.NewValue);
             }
 
         /// <summary>

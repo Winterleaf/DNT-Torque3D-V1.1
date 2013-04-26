@@ -100,6 +100,13 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoPlayerData))]
     public class coPlayerData : coShapeBaseData
         {
+        private Point3F _boundingBox;
+        private Point3F _crouchBoundingBox;
+        private Point3F _groundImpactShakeAmp;
+        private Point3F _groundImpactShakeFreq;
+        private Point3F _proneBoundingBox;
+        private Point3F _swimBoundingBox;
+
         /// <summary>
         /// 
         /// </summary>
@@ -148,7 +155,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F boundingBox
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".boundingBox").AsPoint3F(); }
+            get
+                {
+                if (_boundingBox != null)
+                    _boundingBox.DetachAllEvents();
+                _boundingBox = dnTorque.self.GetVar(_mSimObjectId + ".boundingBox").AsPoint3F();
+                _boundingBox.OnChangeNotification += _boundingBox_OnChangeNotification;
+                return _boundingBox;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".boundingBox", value.AsString()); }
             }
 
@@ -220,7 +234,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F crouchBoundingBox
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".crouchBoundingBox").AsPoint3F(); }
+            get
+                {
+                if (_crouchBoundingBox != null)
+                    _crouchBoundingBox.DetachAllEvents();
+                _crouchBoundingBox = dnTorque.self.GetVar(_mSimObjectId + ".crouchBoundingBox").AsPoint3F();
+                _crouchBoundingBox.OnChangeNotification += _crouchBoundingBox_OnChangeNotification;
+                return _crouchBoundingBox;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".crouchBoundingBox", value.AsString()); }
             }
 
@@ -418,7 +439,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F groundImpactShakeAmp
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeAmp").AsPoint3F(); }
+            get
+                {
+                if (_groundImpactShakeAmp != null)
+                    _groundImpactShakeAmp.DetachAllEvents();
+                _groundImpactShakeAmp = dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeAmp").AsPoint3F();
+                _groundImpactShakeAmp.OnChangeNotification += _groundImpactShakeAmp_OnChangeNotification;
+                return _groundImpactShakeAmp;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeAmp", value.AsString()); }
             }
 
@@ -445,7 +473,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F groundImpactShakeFreq
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeFreq").AsPoint3F(); }
+            get
+                {
+                if (_groundImpactShakeFreq != null)
+                    _groundImpactShakeFreq.DetachAllEvents();
+                _groundImpactShakeFreq = dnTorque.self.GetVar(_mSimObjectId + ".groundImpactShakeFreq").AsPoint3F();
+                _groundImpactShakeFreq.OnChangeNotification += _groundImpactShakeFreq_OnChangeNotification;
+                return _groundImpactShakeFreq;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeFreq", value.AsString()); }
             }
 
@@ -958,7 +993,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F proneBoundingBox
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".proneBoundingBox").AsPoint3F(); }
+            get
+                {
+                if (_proneBoundingBox != null)
+                    _proneBoundingBox.DetachAllEvents();
+                _proneBoundingBox = dnTorque.self.GetVar(_mSimObjectId + ".proneBoundingBox").AsPoint3F();
+                _proneBoundingBox.OnChangeNotification += _proneBoundingBox_OnChangeNotification;
+                return _proneBoundingBox;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".proneBoundingBox", value.AsString()); }
             }
 
@@ -1147,7 +1189,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F swimBoundingBox
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".swimBoundingBox").AsPoint3F(); }
+            get
+                {
+                if (_swimBoundingBox != null)
+                    _swimBoundingBox.DetachAllEvents();
+                _swimBoundingBox = dnTorque.self.GetVar(_mSimObjectId + ".swimBoundingBox").AsPoint3F();
+                _swimBoundingBox.OnChangeNotification += _swimBoundingBox_OnChangeNotification;
+                return _swimBoundingBox;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".swimBoundingBox", value.AsString()); }
             }
 
@@ -1311,6 +1360,36 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coPlayerData(uint ts)
             {
             return new coPlayerData(ts);
+            }
+
+        private void _boundingBox_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".boundingBox", e.NewValue);
+            }
+
+        private void _crouchBoundingBox_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".crouchBoundingBox", e.NewValue);
+            }
+
+        private void _groundImpactShakeAmp_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeAmp", e.NewValue);
+            }
+
+        private void _groundImpactShakeFreq_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".groundImpactShakeFreq", e.NewValue);
+            }
+
+        private void _proneBoundingBox_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".proneBoundingBox", e.NewValue);
+            }
+
+        private void _swimBoundingBox_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".swimBoundingBox", e.NewValue);
             }
         }
     }

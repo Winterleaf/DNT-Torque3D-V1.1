@@ -94,14 +94,16 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "toggleShadowViz", "", 0, 62932, false)]
         public void toggleShadowViz()
             {
-            if (console.Call("AL_ShadowVizOverlayCtrl", "isAwake").AsBool())
+            coGuiControl AL_ShadowVizOverlayCtrl = "AL_ShadowVizOverlayCtrl";
+
+            if (AL_ShadowVizOverlayCtrl.isAwake())
                 {
                 Util._setShadowVizLight("0");
-                ((coGuiCanvas) "Canvas").popDialog("AL_ShadowVizOverlayCtrl");
+                ((coGuiCanvas) "Canvas").popDialog(AL_ShadowVizOverlayCtrl);
                 }
             else
                 {
-                ((coGuiCanvas) "Canvas").pushDialog("AL_ShadowVizOverlayCtrl", "100");
+                ((coGuiCanvas) "Canvas").pushDialog(AL_ShadowVizOverlayCtrl, "100");
                 _setShadowVizLight(console.Call("EWorldEditor", "getSelectedObject", new[] {"0"}), false);
                 }
             }
@@ -109,9 +111,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "_setShadowVizLight", "%light, %force", 2, 62933, false)]
         public void _setShadowVizLight(string light, bool force)
             {
-            if (!console.Call("AL_ShadowVizOverlayCtrl", "isAwake").AsBool())
+            coGuiControl AL_ShadowVizOverlayCtrl = "AL_ShadowVizOverlayCtrl";
+
+
+            if (!AL_ShadowVizOverlayCtrl.isAwake())
                 return;
-            if (console.Call("AL_ShadowVizOverlayCtrl", "isLocked").AsBool() && !force)
+            if (AL_ShadowVizOverlayCtrl.call("isLocked").AsBool() && !force)
                 return;
 
             string sizeAndAspect = "";
@@ -120,20 +125,22 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 string clientLight = serverToClientObject(new coNetObject(light)); //console.Call("serverToClientObject", new string[] { light });
                 sizeAndAspect = Util._setShadowVizLight(clientLight);
                 }
-            console.Call(((coSimSet) "AL_ShadowVizOverlayCtrl").findObjectByInternalName("MatCtrl", true), "setMaterial", new[] {"AL_ShadowVisualizeMaterial"});
+            console.Call(AL_ShadowVizOverlayCtrl.findObjectByInternalName("MatCtrl", true), "setMaterial", new[] {"AL_ShadowVisualizeMaterial"});
             string text = "ShadowViz";
             if (console.isObject(light))
                 text = text + ":" + sizeAndAspect.Split(' ')[0] + " x " + sizeAndAspect.Split(' ')[1];
 
-            console.SetVar(((coSimSet) "AL_ShadowVizOverlayCtrl").findObjectByInternalName("WindowCtrl", true), text);
+            console.SetVar(AL_ShadowVizOverlayCtrl.findObjectByInternalName("WindowCtrl", true), text);
             }
 
 
         [Torque_Decorations.TorqueCallBack("", "", "showShadowVizForLight", "%light", 1, 62934, false)]
         public void showShadowVizForLight(string light)
             {
-            if (!console.Call("AL_ShadowVizOverlayCtrl", "isAwake").AsBool())
-                ((coGuiCanvas) "Canvas").pushDialog("AL_ShadowVizOverlayCtrl", "100");
+            coGuiControl AL_ShadowVizOverlayCtrl = "AL_ShadowVizOverlayCtrl";
+
+            if (!AL_ShadowVizOverlayCtrl.isAwake())
+                ((coGuiCanvas) "Canvas").pushDialog(AL_ShadowVizOverlayCtrl, "100");
 
             _setShadowVizLight(light, true);
             }

@@ -100,6 +100,13 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoScatterSky))]
     public class coScatterSky : coSceneObject
         {
+        private ColorF _ambientScale;
+        private ColorF _fogScale;
+        private ColorF _moonLightColor;
+        private ColorF _nightColor;
+        private ColorF _nightFogColor;
+        private ColorF _sunScale;
+
         /// <summary>
         /// 
         /// </summary>
@@ -130,7 +137,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF ambientScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".ambientScale").AsColorF(); }
+            get
+                {
+                if (_ambientScale != null)
+                    _ambientScale.DetachAllEvents();
+                _ambientScale = dnTorque.self.GetVar(_mSimObjectId + ".ambientScale").AsColorF();
+                _ambientScale.OnChangeNotification += _ambientScale_OnChangeNotification;
+                return _ambientScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".ambientScale", value.AsString()); }
             }
 
@@ -202,7 +216,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF fogScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fogScale").AsColorF(); }
+            get
+                {
+                if (_fogScale != null)
+                    _fogScale.DetachAllEvents();
+                _fogScale = dnTorque.self.GetVar(_mSimObjectId + ".fogScale").AsColorF();
+                _fogScale.OnChangeNotification += _fogScale_OnChangeNotification;
+                return _fogScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fogScale", value.AsString()); }
             }
 
@@ -247,7 +268,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF moonLightColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".moonLightColor").AsColorF(); }
+            get
+                {
+                if (_moonLightColor != null)
+                    _moonLightColor.DetachAllEvents();
+                _moonLightColor = dnTorque.self.GetVar(_mSimObjectId + ".moonLightColor").AsColorF();
+                _moonLightColor.OnChangeNotification += _moonLightColor_OnChangeNotification;
+                return _moonLightColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".moonLightColor", value.AsString()); }
             }
 
@@ -274,7 +302,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF nightColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".nightColor").AsColorF(); }
+            get
+                {
+                if (_nightColor != null)
+                    _nightColor.DetachAllEvents();
+                _nightColor = dnTorque.self.GetVar(_mSimObjectId + ".nightColor").AsColorF();
+                _nightColor.OnChangeNotification += _nightColor_OnChangeNotification;
+                return _nightColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".nightColor", value.AsString()); }
             }
 
@@ -292,7 +327,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF nightFogColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".nightFogColor").AsColorF(); }
+            get
+                {
+                if (_nightFogColor != null)
+                    _nightFogColor.DetachAllEvents();
+                _nightFogColor = dnTorque.self.GetVar(_mSimObjectId + ".nightFogColor").AsColorF();
+                _nightFogColor.OnChangeNotification += _nightFogColor_OnChangeNotification;
+                return _nightFogColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".nightFogColor", value.AsString()); }
             }
 
@@ -319,7 +361,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF sunScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".sunScale").AsColorF(); }
+            get
+                {
+                if (_sunScale != null)
+                    _sunScale.DetachAllEvents();
+                _sunScale = dnTorque.self.GetVar(_mSimObjectId + ".sunScale").AsColorF();
+                _sunScale.OnChangeNotification += _sunScale_OnChangeNotification;
+                return _sunScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".sunScale", value.AsString()); }
             }
 
@@ -438,6 +487,36 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coScatterSky(uint ts)
             {
             return new coScatterSky(ts);
+            }
+
+        private void _ambientScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".ambientScale", e.NewValue);
+            }
+
+        private void _fogScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fogScale", e.NewValue);
+            }
+
+        private void _moonLightColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".moonLightColor", e.NewValue);
+            }
+
+        private void _nightColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".nightColor", e.NewValue);
+            }
+
+        private void _nightFogColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".nightFogColor", e.NewValue);
+            }
+
+        private void _sunScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".sunScale", e.NewValue);
             }
 
         /// <summary>

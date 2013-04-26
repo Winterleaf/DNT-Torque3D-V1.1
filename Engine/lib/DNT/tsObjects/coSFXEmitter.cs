@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoSFXEmitter))]
     public class coSFXEmitter : coSceneObject
         {
+        private Point3F _scatterDistance;
+
         /// <summary>
         /// 
         /// </summary>
@@ -247,7 +249,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F scatterDistance
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".scatterDistance").AsPoint3F(); }
+            get
+                {
+                if (_scatterDistance != null)
+                    _scatterDistance.DetachAllEvents();
+                _scatterDistance = dnTorque.self.GetVar(_mSimObjectId + ".scatterDistance").AsPoint3F();
+                _scatterDistance.OnChangeNotification += _scatterDistance_OnChangeNotification;
+                return _scatterDistance;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".scatterDistance", value.AsString()); }
             }
 
@@ -393,6 +402,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coSFXEmitter(uint ts)
             {
             return new coSFXEmitter(ts);
+            }
+
+        private void _scatterDistance_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".scatterDistance", e.NewValue);
             }
 
         /// <summary>

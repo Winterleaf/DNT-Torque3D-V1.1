@@ -94,12 +94,16 @@ namespace WinterLeaf.Containers
     /// Used to hold the CSharp equiv of the Point3F class.
     /// </summary>
     [TypeConverter(typeof (Point3FIConverter))]
-    public sealed class Point3F : IConvertible
+    public sealed class Point3F : Notifier, IConvertible
         {
         /// <summary>
         /// 
         /// </summary>
         private const double POINT_EPSILON = (1e-4);
+
+        private float _x;
+        private float _y;
+        private float _z;
 
         /// <summary>
         /// 
@@ -182,17 +186,41 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
-        public float x { get; set; }
+        public float x
+            {
+            get { return _x; }
+            set
+                {
+                _x = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public float y { get; set; }
+        public float y
+            {
+            get { return _y; }
+            set
+                {
+                _y = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public float z { get; set; }
+        public float z
+            {
+            get { return _z; }
+            set
+                {
+                _z = value;
+                Notify(AsString());
+                }
+            }
 
         #region IConvertible Members
 
@@ -354,6 +382,14 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
+        ~Point3F()
+            {
+            this.DetachAllEvents();
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
             {
@@ -430,6 +466,8 @@ namespace WinterLeaf.Containers
         /// <returns></returns>
         public static bool operator ==(Point3F x, Point3F _test)
             {
+            if (((object) _test) == null)
+                return false;
             return (x.x == _test.x) && (x.y == _test.y) && (x.z == _test.z);
             }
 

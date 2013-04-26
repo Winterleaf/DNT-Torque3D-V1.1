@@ -101,6 +101,25 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiControlProfile))]
     public class coGuiControlProfile : coSimObject
         {
+        private ColorI _bevelColorHL;
+        private ColorI _bevelColorLL;
+        private ColorI _borderColor;
+        private ColorI _borderColorHL;
+        private ColorI _borderColorNA;
+        private ColorI _cursorColor;
+        private ColorI _fillColor;
+        private ColorI _fillColorHL;
+        private ColorI _fillColorNA;
+        private ColorI _fillColorSEL;
+        private ColorI _fontColor;
+        private ColorI _fontColorHL;
+        private ColorI _fontColorLink;
+        private ColorI _fontColorLinkHL;
+        private ColorI _fontColorNA;
+        private ColorI _fontColorSEL;
+        private ColorI _fontColors;
+        private Point2I _textOffset;
+
         /// <summary>
         /// 
         /// </summary>
@@ -149,7 +168,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI bevelColorHL
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".bevelColorHL").AsColorI(); }
+            get
+                {
+                if (_bevelColorHL != null)
+                    _bevelColorHL.DetachAllEvents();
+                _bevelColorHL = dnTorque.self.GetVar(_mSimObjectId + ".bevelColorHL").AsColorI();
+                _bevelColorHL.OnChangeNotification += _bevelColorHL_OnChangeNotification;
+                return _bevelColorHL;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".bevelColorHL", value.AsString()); }
             }
 
@@ -158,7 +184,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI bevelColorLL
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".bevelColorLL").AsColorI(); }
+            get
+                {
+                if (_bevelColorLL != null)
+                    _bevelColorLL.DetachAllEvents();
+                _bevelColorLL = dnTorque.self.GetVar(_mSimObjectId + ".bevelColorLL").AsColorI();
+                _bevelColorLL.OnChangeNotification += _bevelColorLL_OnChangeNotification;
+                return _bevelColorLL;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".bevelColorLL", value.AsString()); }
             }
 
@@ -185,7 +218,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI borderColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderColor").AsColorI(); }
+            get
+                {
+                if (_borderColor != null)
+                    _borderColor.DetachAllEvents();
+                _borderColor = dnTorque.self.GetVar(_mSimObjectId + ".borderColor").AsColorI();
+                _borderColor.OnChangeNotification += _borderColor_OnChangeNotification;
+                return _borderColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".borderColor", value.AsString()); }
             }
 
@@ -194,7 +234,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI borderColorHL
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderColorHL").AsColorI(); }
+            get
+                {
+                if (_borderColorHL != null)
+                    _borderColorHL.DetachAllEvents();
+                _borderColorHL = dnTorque.self.GetVar(_mSimObjectId + ".borderColorHL").AsColorI();
+                _borderColorHL.OnChangeNotification += _borderColorHL_OnChangeNotification;
+                return _borderColorHL;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".borderColorHL", value.AsString()); }
             }
 
@@ -203,7 +250,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI borderColorNA
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".borderColorNA").AsColorI(); }
+            get
+                {
+                if (_borderColorNA != null)
+                    _borderColorNA.DetachAllEvents();
+                _borderColorNA = dnTorque.self.GetVar(_mSimObjectId + ".borderColorNA").AsColorI();
+                _borderColorNA.OnChangeNotification += _borderColorNA_OnChangeNotification;
+                return _borderColorNA;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".borderColorNA", value.AsString()); }
             }
 
@@ -239,7 +293,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI cursorColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".cursorColor").AsColorI(); }
+            get
+                {
+                if (_cursorColor != null)
+                    _cursorColor.DetachAllEvents();
+                _cursorColor = dnTorque.self.GetVar(_mSimObjectId + ".cursorColor").AsColorI();
+                _cursorColor.OnChangeNotification += _cursorColor_OnChangeNotification;
+                return _cursorColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".cursorColor", value.AsString()); }
             }
 
@@ -248,7 +309,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fillColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorI(); }
+            get
+                {
+                if (_fillColor != null)
+                    _fillColor.DetachAllEvents();
+                _fillColor = dnTorque.self.GetVar(_mSimObjectId + ".fillColor").AsColorI();
+                _fillColor.OnChangeNotification += _fillColor_OnChangeNotification;
+                return _fillColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fillColor", value.AsString()); }
             }
 
@@ -257,7 +325,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fillColorHL
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColorHL").AsColorI(); }
+            get
+                {
+                if (_fillColorHL != null)
+                    _fillColorHL.DetachAllEvents();
+                _fillColorHL = dnTorque.self.GetVar(_mSimObjectId + ".fillColorHL").AsColorI();
+                _fillColorHL.OnChangeNotification += _fillColorHL_OnChangeNotification;
+                return _fillColorHL;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fillColorHL", value.AsString()); }
             }
 
@@ -266,7 +341,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fillColorNA
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColorNA").AsColorI(); }
+            get
+                {
+                if (_fillColorNA != null)
+                    _fillColorNA.DetachAllEvents();
+                _fillColorNA = dnTorque.self.GetVar(_mSimObjectId + ".fillColorNA").AsColorI();
+                _fillColorNA.OnChangeNotification += _fillColorNA_OnChangeNotification;
+                return _fillColorNA;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fillColorNA", value.AsString()); }
             }
 
@@ -275,7 +357,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fillColorSEL
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fillColorSEL").AsColorI(); }
+            get
+                {
+                if (_fillColorSEL != null)
+                    _fillColorSEL.DetachAllEvents();
+                _fillColorSEL = dnTorque.self.GetVar(_mSimObjectId + ".fillColorSEL").AsColorI();
+                _fillColorSEL.OnChangeNotification += _fillColorSEL_OnChangeNotification;
+                return _fillColorSEL;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fillColorSEL", value.AsString()); }
             }
 
@@ -293,7 +382,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fontColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColor").AsColorI(); }
+            get
+                {
+                if (_fontColor != null)
+                    _fontColor.DetachAllEvents();
+                _fontColor = dnTorque.self.GetVar(_mSimObjectId + ".fontColor").AsColorI();
+                _fontColor.OnChangeNotification += _fontColor_OnChangeNotification;
+                return _fontColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fontColor", value.AsString()); }
             }
 
@@ -302,7 +398,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fontColorHL
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorHL").AsColorI(); }
+            get
+                {
+                if (_fontColorHL != null)
+                    _fontColorHL.DetachAllEvents();
+                _fontColorHL = dnTorque.self.GetVar(_mSimObjectId + ".fontColorHL").AsColorI();
+                _fontColorHL.OnChangeNotification += _fontColorHL_OnChangeNotification;
+                return _fontColorHL;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorHL", value.AsString()); }
             }
 
@@ -311,7 +414,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fontColorLink
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorLink").AsColorI(); }
+            get
+                {
+                if (_fontColorLink != null)
+                    _fontColorLink.DetachAllEvents();
+                _fontColorLink = dnTorque.self.GetVar(_mSimObjectId + ".fontColorLink").AsColorI();
+                _fontColorLink.OnChangeNotification += _fontColorLink_OnChangeNotification;
+                return _fontColorLink;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorLink", value.AsString()); }
             }
 
@@ -320,7 +430,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fontColorLinkHL
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorLinkHL").AsColorI(); }
+            get
+                {
+                if (_fontColorLinkHL != null)
+                    _fontColorLinkHL.DetachAllEvents();
+                _fontColorLinkHL = dnTorque.self.GetVar(_mSimObjectId + ".fontColorLinkHL").AsColorI();
+                _fontColorLinkHL.OnChangeNotification += _fontColorLinkHL_OnChangeNotification;
+                return _fontColorLinkHL;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorLinkHL", value.AsString()); }
             }
 
@@ -329,7 +446,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fontColorNA
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorNA").AsColorI(); }
+            get
+                {
+                if (_fontColorNA != null)
+                    _fontColorNA.DetachAllEvents();
+                _fontColorNA = dnTorque.self.GetVar(_mSimObjectId + ".fontColorNA").AsColorI();
+                _fontColorNA.OnChangeNotification += _fontColorNA_OnChangeNotification;
+                return _fontColorNA;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorNA", value.AsString()); }
             }
 
@@ -338,7 +462,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fontColors
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColors").AsColorI(); }
+            get
+                {
+                if (_fontColors != null)
+                    _fontColors.DetachAllEvents();
+                _fontColors = dnTorque.self.GetVar(_mSimObjectId + ".fontColors").AsColorI();
+                _fontColors.OnChangeNotification += _fontColors_OnChangeNotification;
+                return _fontColors;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fontColors", value.AsString()); }
             }
 
@@ -347,7 +478,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorI fontColorSEL
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fontColorSEL").AsColorI(); }
+            get
+                {
+                if (_fontColorSEL != null)
+                    _fontColorSEL.DetachAllEvents();
+                _fontColorSEL = dnTorque.self.GetVar(_mSimObjectId + ".fontColorSEL").AsColorI();
+                _fontColorSEL.OnChangeNotification += _fontColorSEL_OnChangeNotification;
+                return _fontColorSEL;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fontColorSEL", value.AsString()); }
             }
 
@@ -473,7 +611,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point2I textOffset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".textOffset").AsPoint2I(); }
+            get
+                {
+                if (_textOffset != null)
+                    _textOffset.DetachAllEvents();
+                _textOffset = dnTorque.self.GetVar(_mSimObjectId + ".textOffset").AsPoint2I();
+                _textOffset.OnChangeNotification += _textOffset_OnChangeNotification;
+                return _textOffset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".textOffset", value.AsString()); }
             }
 
@@ -583,6 +728,96 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiControlProfile(uint ts)
             {
             return new coGuiControlProfile(ts);
+            }
+
+        private void _bevelColorHL_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".bevelColorHL", e.NewValue);
+            }
+
+        private void _bevelColorLL_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".bevelColorLL", e.NewValue);
+            }
+
+        private void _borderColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".borderColor", e.NewValue);
+            }
+
+        private void _borderColorHL_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".borderColorHL", e.NewValue);
+            }
+
+        private void _borderColorNA_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".borderColorNA", e.NewValue);
+            }
+
+        private void _cursorColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".cursorColor", e.NewValue);
+            }
+
+        private void _fillColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fillColor", e.NewValue);
+            }
+
+        private void _fillColorHL_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fillColorHL", e.NewValue);
+            }
+
+        private void _fillColorNA_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fillColorNA", e.NewValue);
+            }
+
+        private void _fillColorSEL_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fillColorSEL", e.NewValue);
+            }
+
+        private void _fontColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fontColor", e.NewValue);
+            }
+
+        private void _fontColorHL_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fontColorHL", e.NewValue);
+            }
+
+        private void _fontColorLink_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fontColorLink", e.NewValue);
+            }
+
+        private void _fontColorLinkHL_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fontColorLinkHL", e.NewValue);
+            }
+
+        private void _fontColorNA_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fontColorNA", e.NewValue);
+            }
+
+        private void _fontColors_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fontColors", e.NewValue);
+            }
+
+        private void _fontColorSEL_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fontColorSEL", e.NewValue);
+            }
+
+        private void _textOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".textOffset", e.NewValue);
             }
 
         /// <summary>

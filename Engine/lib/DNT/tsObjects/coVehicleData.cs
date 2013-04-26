@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoVehicleData))]
     public class coVehicleData : coShapeBaseData
         {
+        private Point3F _damageEmitterOffset;
+        private Point3F _massBox;
+        private Point3F _massCenter;
+
         /// <summary>
         /// 
         /// </summary>
@@ -229,7 +233,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F damageEmitterOffset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".damageEmitterOffset").AsPoint3F(); }
+            get
+                {
+                if (_damageEmitterOffset != null)
+                    _damageEmitterOffset.DetachAllEvents();
+                _damageEmitterOffset = dnTorque.self.GetVar(_mSimObjectId + ".damageEmitterOffset").AsPoint3F();
+                _damageEmitterOffset.OnChangeNotification += _damageEmitterOffset_OnChangeNotification;
+                return _damageEmitterOffset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".damageEmitterOffset", value.AsString()); }
             }
 
@@ -364,7 +375,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F massBox
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".massBox").AsPoint3F(); }
+            get
+                {
+                if (_massBox != null)
+                    _massBox.DetachAllEvents();
+                _massBox = dnTorque.self.GetVar(_mSimObjectId + ".massBox").AsPoint3F();
+                _massBox.OnChangeNotification += _massBox_OnChangeNotification;
+                return _massBox;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".massBox", value.AsString()); }
             }
 
@@ -373,7 +391,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F massCenter
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".massCenter").AsPoint3F(); }
+            get
+                {
+                if (_massCenter != null)
+                    _massCenter.DetachAllEvents();
+                _massCenter = dnTorque.self.GetVar(_mSimObjectId + ".massCenter").AsPoint3F();
+                _massCenter.OnChangeNotification += _massCenter_OnChangeNotification;
+                return _massCenter;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".massCenter", value.AsString()); }
             }
 
@@ -627,6 +652,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coVehicleData(uint ts)
             {
             return new coVehicleData(ts);
+            }
+
+        private void _damageEmitterOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".damageEmitterOffset", e.NewValue);
+            }
+
+        private void _massBox_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".massBox", e.NewValue);
+            }
+
+        private void _massCenter_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".massCenter", e.NewValue);
             }
         }
     }

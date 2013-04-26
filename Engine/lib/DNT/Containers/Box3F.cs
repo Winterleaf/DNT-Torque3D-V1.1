@@ -93,8 +93,11 @@ namespace WinterLeaf.Containers
     /// Used to hold the CSharp Equiv of the Box3F Torque Class.
     /// </summary>
     [TypeConverter(typeof (Box3FIConverter))]
-    public sealed class Box3F : IConvertible
+    public sealed class Box3F : Notifier, IConvertible
         {
+        private Point3F _maxExtents;
+        private Point3F _minExtents;
+
         /// <summary>
         /// 
         /// </summary>
@@ -106,6 +109,10 @@ namespace WinterLeaf.Containers
                 return;
             minExtents = new Point3F(parts[0].AsFloat(), parts[1].AsFloat(), parts[2].AsFloat());
             maxExtents = new Point3F(parts[3].AsFloat(), parts[4].AsFloat(), parts[5].AsFloat());
+            minExtents.OnChangeNotification += minExtents_OnChangeNotification;
+
+
+            maxExtents.OnChangeNotification += minExtents_OnChangeNotification;
             }
 
         /// <summary>
@@ -120,7 +127,9 @@ namespace WinterLeaf.Containers
         public Box3F(float minExtens_x, float minExtens_y, float minExtens_z, float maxExtens_x, float maxExtens_y, float maxExtens_z)
             {
             minExtents = new Point3F(minExtens_x, minExtens_y, minExtens_z);
+            minExtents.OnChangeNotification += minExtents_OnChangeNotification;
             maxExtents = new Point3F(maxExtens_x, maxExtens_y, maxExtens_z);
+            maxExtents.OnChangeNotification += minExtents_OnChangeNotification;
             }
 
         /// <summary>
@@ -129,18 +138,41 @@ namespace WinterLeaf.Containers
         public Box3F()
             {
             minExtents = new Point3F();
+            minExtents.OnChangeNotification += minExtents_OnChangeNotification;
             maxExtents = new Point3F();
+            maxExtents.OnChangeNotification += minExtents_OnChangeNotification;
             }
 
         /// <summary>
         /// 
         /// </summary>
-        public Point3F minExtents { get; set; }
+        public Point3F minExtents
+            {
+            get { return _minExtents; }
+            set
+                {
+                _minExtents = value;
+                _minExtents.DetachAllEvents();
+                _minExtents.OnChangeNotification += minExtents_OnChangeNotification;
+                Notify(AsString());
+                }
+            }
+
 
         /// <summary>
         /// 
         /// </summary>
-        public Point3F maxExtents { get; set; }
+        public Point3F maxExtents
+            {
+            get { return _maxExtents; }
+            set
+                {
+                _maxExtents = value;
+                _maxExtents.DetachAllEvents();
+                _maxExtents.OnChangeNotification += minExtents_OnChangeNotification;
+                Notify(AsString());
+                }
+            }
 
         #region IConvertible Members
 
@@ -302,10 +334,26 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
+        ~Box3F()
+            {
+            this.DetachAllEvents();
+            }
+
+        private void minExtents_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            Notify(AsString());
+            }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public string AsString()
             {
-            return string.Format("{0} {1} {2} {3} {4} {5} ", minExtents.x.AsString(), minExtents.y.AsString(), minExtents.z.AsString(), maxExtents.x.AsString(), maxExtents.y.AsString(), maxExtents.z.AsString());
+            if ((((object) _minExtents) != null) && (((object) _maxExtents) != null))
+                return string.Format("{0} {1} {2} {3} {4} {5} ", minExtents.x.AsString(), minExtents.y.AsString(), minExtents.z.AsString(), maxExtents.x.AsString(), maxExtents.y.AsString(), maxExtents.z.AsString());
+
+            return "";
             }
 
         /// <summary>
@@ -314,7 +362,7 @@ namespace WinterLeaf.Containers
         /// <returns></returns>
         public override string ToString()
             {
-            return string.Format("{0} {1} {2} {3} {4} {5} ", minExtents.x.AsString(), minExtents.y.AsString(), minExtents.z.AsString(), maxExtents.x.AsString(), maxExtents.y.AsString(), maxExtents.z.AsString());
+            return AsString();
             }
         }
     }

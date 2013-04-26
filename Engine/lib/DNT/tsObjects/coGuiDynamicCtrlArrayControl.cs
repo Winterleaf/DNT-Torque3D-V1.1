@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiDynamicCtrlArrayControl))]
     public class coGuiDynamicCtrlArrayControl : coGuiControl
         {
+        private RectSpacingI _padding;
+
         /// <summary>
         /// 
         /// </summary>
@@ -193,7 +195,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public RectSpacingI padding
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".padding").AsRectSpacingI(); }
+            get
+                {
+                if (_padding != null)
+                    _padding.DetachAllEvents();
+                _padding = dnTorque.self.GetVar(_mSimObjectId + ".padding").AsRectSpacingI();
+                _padding.OnChangeNotification += _padding_OnChangeNotification;
+                return _padding;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".padding", value.AsString()); }
             }
 
@@ -330,6 +339,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiDynamicCtrlArrayControl(uint ts)
             {
             return new coGuiDynamicCtrlArrayControl(ts);
+            }
+
+        private void _padding_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".padding", e.NewValue);
             }
 
         /// <summary>

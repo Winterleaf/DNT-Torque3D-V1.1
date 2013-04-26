@@ -101,6 +101,15 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoShapeBaseImageData))]
     public class coShapeBaseImageData : coGameBaseData
         {
+        private Point3F _camShakeAmp;
+        private Point3F _camShakeFreq;
+        private TransformF _eyeOffset;
+        private TransformF _eyeRotation;
+        private ColorF _lightColor;
+        private TransformF _offset;
+        private TransformF _rotation;
+        private Point3F _shellExitDir;
+
         /// <summary>
         /// 
         /// </summary>
@@ -158,7 +167,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F camShakeAmp
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeAmp").AsPoint3F(); }
+            get
+                {
+                if (_camShakeAmp != null)
+                    _camShakeAmp.DetachAllEvents();
+                _camShakeAmp = dnTorque.self.GetVar(_mSimObjectId + ".camShakeAmp").AsPoint3F();
+                _camShakeAmp.OnChangeNotification += _camShakeAmp_OnChangeNotification;
+                return _camShakeAmp;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeAmp", value.AsString()); }
             }
 
@@ -167,7 +183,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F camShakeFreq
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeFreq").AsPoint3F(); }
+            get
+                {
+                if (_camShakeFreq != null)
+                    _camShakeFreq.DetachAllEvents();
+                _camShakeFreq = dnTorque.self.GetVar(_mSimObjectId + ".camShakeFreq").AsPoint3F();
+                _camShakeFreq.OnChangeNotification += _camShakeFreq_OnChangeNotification;
+                return _camShakeFreq;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeFreq", value.AsString()); }
             }
 
@@ -230,7 +253,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF eyeOffset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".eyeOffset").AsTransformF(); }
+            get
+                {
+                if (_eyeOffset != null)
+                    _eyeOffset.DetachAllEvents();
+                _eyeOffset = dnTorque.self.GetVar(_mSimObjectId + ".eyeOffset").AsTransformF();
+                _eyeOffset.OnChangeNotification += _eyeOffset_OnChangeNotification;
+                return _eyeOffset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".eyeOffset", value.AsString()); }
             }
 
@@ -239,7 +269,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF eyeRotation
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".eyeRotation").AsTransformF(); }
+            get
+                {
+                if (_eyeRotation != null)
+                    _eyeRotation.DetachAllEvents();
+                _eyeRotation = dnTorque.self.GetVar(_mSimObjectId + ".eyeRotation").AsTransformF();
+                _eyeRotation.OnChangeNotification += _eyeRotation_OnChangeNotification;
+                return _eyeRotation;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".eyeRotation", value.AsString()); }
             }
 
@@ -284,7 +321,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF lightColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF(); }
+            get
+                {
+                if (_lightColor != null)
+                    _lightColor.DetachAllEvents();
+                _lightColor = dnTorque.self.GetVar(_mSimObjectId + ".lightColor").AsColorF();
+                _lightColor.OnChangeNotification += _lightColor_OnChangeNotification;
+                return _lightColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".lightColor", value.AsString()); }
             }
 
@@ -356,7 +400,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF offset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".offset").AsTransformF(); }
+            get
+                {
+                if (_offset != null)
+                    _offset.DetachAllEvents();
+                _offset = dnTorque.self.GetVar(_mSimObjectId + ".offset").AsTransformF();
+                _offset.OnChangeNotification += _offset_OnChangeNotification;
+                return _offset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".offset", value.AsString()); }
             }
 
@@ -374,7 +425,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TransformF rotation
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".rotation").AsTransformF(); }
+            get
+                {
+                if (_rotation != null)
+                    _rotation.DetachAllEvents();
+                _rotation = dnTorque.self.GetVar(_mSimObjectId + ".rotation").AsTransformF();
+                _rotation.OnChangeNotification += _rotation_OnChangeNotification;
+                return _rotation;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".rotation", value.AsString()); }
             }
 
@@ -419,7 +477,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F shellExitDir
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".shellExitDir").AsPoint3F(); }
+            get
+                {
+                if (_shellExitDir != null)
+                    _shellExitDir.DetachAllEvents();
+                _shellExitDir = dnTorque.self.GetVar(_mSimObjectId + ".shellExitDir").AsPoint3F();
+                _shellExitDir.OnChangeNotification += _shellExitDir_OnChangeNotification;
+                return _shellExitDir;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".shellExitDir", value.AsString()); }
             }
 
@@ -1042,6 +1107,46 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coShapeBaseImageData(uint ts)
             {
             return new coShapeBaseImageData(ts);
+            }
+
+        private void _camShakeAmp_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".camShakeAmp", e.NewValue);
+            }
+
+        private void _camShakeFreq_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".camShakeFreq", e.NewValue);
+            }
+
+        private void _eyeOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".eyeOffset", e.NewValue);
+            }
+
+        private void _eyeRotation_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".eyeRotation", e.NewValue);
+            }
+
+        private void _lightColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".lightColor", e.NewValue);
+            }
+
+        private void _offset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".offset", e.NewValue);
+            }
+
+        private void _rotation_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".rotation", e.NewValue);
+            }
+
+        private void _shellExitDir_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".shellExitDir", e.NewValue);
             }
         }
     }

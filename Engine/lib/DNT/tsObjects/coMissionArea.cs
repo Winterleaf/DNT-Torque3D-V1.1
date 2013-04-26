@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoMissionArea))]
     public class coMissionArea : coNetObject
         {
+        private RectI _area;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +131,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public RectI area
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".area").AsRectI(); }
+            get
+                {
+                if (_area != null)
+                    _area.DetachAllEvents();
+                _area = dnTorque.self.GetVar(_mSimObjectId + ".area").AsRectI();
+                _area.OnChangeNotification += _area_OnChangeNotification;
+                return _area;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".area", value.AsString()); }
             }
 
@@ -258,6 +267,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coMissionArea(uint ts)
             {
             return new coMissionArea(ts);
+            }
+
+        private void _area_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".area", e.NewValue);
             }
 
         /// <summary>

@@ -100,6 +100,13 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoExplosionData))]
     public class coExplosionData : coGameBaseData
         {
+        private Point3F _camShakeAmp;
+        private Point3F _camShakeFreq;
+        private Point3F _explosionScale;
+        private ColorF _lightEndColor;
+        private ColorF _lightStartColor;
+        private Point3F _sizes;
+
         /// <summary>
         /// 
         /// </summary>
@@ -130,7 +137,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F camShakeAmp
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeAmp").AsPoint3F(); }
+            get
+                {
+                if (_camShakeAmp != null)
+                    _camShakeAmp.DetachAllEvents();
+                _camShakeAmp = dnTorque.self.GetVar(_mSimObjectId + ".camShakeAmp").AsPoint3F();
+                _camShakeAmp.OnChangeNotification += _camShakeAmp_OnChangeNotification;
+                return _camShakeAmp;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeAmp", value.AsString()); }
             }
 
@@ -157,7 +171,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F camShakeFreq
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".camShakeFreq").AsPoint3F(); }
+            get
+                {
+                if (_camShakeFreq != null)
+                    _camShakeFreq.DetachAllEvents();
+                _camShakeFreq = dnTorque.self.GetVar(_mSimObjectId + ".camShakeFreq").AsPoint3F();
+                _camShakeFreq.OnChangeNotification += _camShakeFreq_OnChangeNotification;
+                return _camShakeFreq;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".camShakeFreq", value.AsString()); }
             }
 
@@ -283,7 +304,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F explosionScale
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".explosionScale").AsPoint3F(); }
+            get
+                {
+                if (_explosionScale != null)
+                    _explosionScale.DetachAllEvents();
+                _explosionScale = dnTorque.self.GetVar(_mSimObjectId + ".explosionScale").AsPoint3F();
+                _explosionScale.OnChangeNotification += _explosionScale_OnChangeNotification;
+                return _explosionScale;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".explosionScale", value.AsString()); }
             }
 
@@ -337,7 +365,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF lightEndColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightEndColor").AsColorF(); }
+            get
+                {
+                if (_lightEndColor != null)
+                    _lightEndColor.DetachAllEvents();
+                _lightEndColor = dnTorque.self.GetVar(_mSimObjectId + ".lightEndColor").AsColorF();
+                _lightEndColor.OnChangeNotification += _lightEndColor_OnChangeNotification;
+                return _lightEndColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".lightEndColor", value.AsString()); }
             }
 
@@ -373,7 +408,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF lightStartColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".lightStartColor").AsColorF(); }
+            get
+                {
+                if (_lightStartColor != null)
+                    _lightStartColor.DetachAllEvents();
+                _lightStartColor = dnTorque.self.GetVar(_mSimObjectId + ".lightStartColor").AsColorF();
+                _lightStartColor.OnChangeNotification += _lightStartColor_OnChangeNotification;
+                return _lightStartColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".lightStartColor", value.AsString()); }
             }
 
@@ -445,7 +487,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F sizes
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".sizes").AsPoint3F(); }
+            get
+                {
+                if (_sizes != null)
+                    _sizes.DetachAllEvents();
+                _sizes = dnTorque.self.GetVar(_mSimObjectId + ".sizes").AsPoint3F();
+                _sizes.OnChangeNotification += _sizes_OnChangeNotification;
+                return _sizes;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".sizes", value.AsString()); }
             }
 
@@ -582,6 +631,36 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coExplosionData(uint ts)
             {
             return new coExplosionData(ts);
+            }
+
+        private void _camShakeAmp_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".camShakeAmp", e.NewValue);
+            }
+
+        private void _camShakeFreq_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".camShakeFreq", e.NewValue);
+            }
+
+        private void _explosionScale_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".explosionScale", e.NewValue);
+            }
+
+        private void _lightEndColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".lightEndColor", e.NewValue);
+            }
+
+        private void _lightStartColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".lightStartColor", e.NewValue);
+            }
+
+        private void _sizes_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".sizes", e.NewValue);
             }
         }
     }

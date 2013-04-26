@@ -2987,6 +2987,9 @@ void ShapeBase::updateImageState(U32 imageSlot,F32 dt)
 TICKAGAIN:
 
    ShapeBaseImageData::StateData& stateData = *image.state;
+   
+   if( dt < 0.001)
+	   dt = 0.001; 
 
    if ( image.delayTime > dt )
       elapsed = dt;

@@ -100,6 +100,10 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoGuiFadeinBitmapCtrl))]
     public class coGuiFadeinBitmapCtrl : coGuiBitmapCtrl
         {
+        private ColorF _fadeColor;
+        private EaseF _fadeInEase;
+        private EaseF _fadeOutEase;
+
         /// <summary>
         /// 
         /// </summary>
@@ -138,7 +142,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF fadeColor
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeColor").AsColorF(); }
+            get
+                {
+                if (_fadeColor != null)
+                    _fadeColor.DetachAllEvents();
+                _fadeColor = dnTorque.self.GetVar(_mSimObjectId + ".fadeColor").AsColorF();
+                _fadeColor.OnChangeNotification += _fadeColor_OnChangeNotification;
+                return _fadeColor;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fadeColor", value.AsString()); }
             }
 
@@ -147,7 +158,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public EaseF fadeInEase
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeInEase").AsEaseF(); }
+            get
+                {
+                if (_fadeInEase != null)
+                    _fadeInEase.DetachAllEvents();
+                _fadeInEase = dnTorque.self.GetVar(_mSimObjectId + ".fadeInEase").AsEaseF();
+                _fadeInEase.OnChangeNotification += _fadeInEase_OnChangeNotification;
+                return _fadeInEase;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fadeInEase", value.AsString()); }
             }
 
@@ -165,7 +183,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public EaseF fadeOutEase
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".fadeOutEase").AsEaseF(); }
+            get
+                {
+                if (_fadeOutEase != null)
+                    _fadeOutEase.DetachAllEvents();
+                _fadeOutEase = dnTorque.self.GetVar(_mSimObjectId + ".fadeOutEase").AsEaseF();
+                _fadeOutEase.OnChangeNotification += _fadeOutEase_OnChangeNotification;
+                return _fadeOutEase;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".fadeOutEase", value.AsString()); }
             }
 
@@ -294,6 +319,21 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coGuiFadeinBitmapCtrl(uint ts)
             {
             return new coGuiFadeinBitmapCtrl(ts);
+            }
+
+        private void _fadeColor_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fadeColor", e.NewValue);
+            }
+
+        private void _fadeInEase_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fadeInEase", e.NewValue);
+            }
+
+        private void _fadeOutEase_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".fadeOutEase", e.NewValue);
             }
         }
     }

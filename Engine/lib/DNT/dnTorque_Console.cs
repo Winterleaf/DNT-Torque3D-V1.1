@@ -117,9 +117,9 @@ namespace WinterLeaf
 
             // lock (_evallock)
                 {
-                string varnam = "$IReallyUniqueForthisWorkAround12365412v";
+                string varnam = "%t";
 
-                SetVar(varnam, "0");
+                //SetVar(varnam, "0");
 
                 bool dovalcatch = false;
 
@@ -137,7 +137,7 @@ namespace WinterLeaf
 
                 if (dovalcatch)
                     {
-                    script = varnam + "=" + script;
+                    script = varnam + "=" + script + ";return %t;";
 
                     try
                         {
@@ -150,7 +150,7 @@ namespace WinterLeaf
 
                             SafeNativeMethods.mConsoleCall(s, r, Debugging);
 
-                            result = GetVar(varnam);
+                            result = r.ToString(); // GetVar(varnam);
                             }
                         }
                     catch (Exception err)
@@ -1181,6 +1181,7 @@ namespace WinterLeaf
 
         internal void SetVar(string variable, string value)
             {
+            //System.Console.WriteLine("Setting Variable '" + variable + "' to value '" + value +"'");
             _SetVar(variable, value);
             }
 

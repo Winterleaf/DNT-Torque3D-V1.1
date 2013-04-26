@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoPrecipitation))]
     public class coPrecipitation : coGameBase
         {
+        private ColorF _glowIntensity;
+
         /// <summary>
         /// 
         /// </summary>
@@ -211,7 +213,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public ColorF glowIntensity
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".glowIntensity").AsColorF(); }
+            get
+                {
+                if (_glowIntensity != null)
+                    _glowIntensity.DetachAllEvents();
+                _glowIntensity = dnTorque.self.GetVar(_mSimObjectId + ".glowIntensity").AsColorF();
+                _glowIntensity.OnChangeNotification += _glowIntensity_OnChangeNotification;
+                return _glowIntensity;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".glowIntensity", value.AsString()); }
             }
 
@@ -474,6 +483,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coPrecipitation(uint ts)
             {
             return new coPrecipitation(ts);
+            }
+
+        private void _glowIntensity_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".glowIntensity", e.NewValue);
             }
 
         /// <summary>

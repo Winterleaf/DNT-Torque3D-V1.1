@@ -94,8 +94,13 @@ namespace WinterLeaf.Containers
     /// </summary>
     /// 
     [TypeConverter(typeof (ColorIIConverter))]
-    public sealed class ColorI : IConvertible
+    public sealed class ColorI : Notifier, IConvertible
         {
+        private byte _alpha;
+        private byte _blue;
+        private byte _green;
+        private byte _red;
+
         /// <summary>
         /// 
         /// </summary>
@@ -129,22 +134,54 @@ namespace WinterLeaf.Containers
         /// <summary>
         /// 
         /// </summary>
-        public byte Red { get; set; }
+        public byte Red
+            {
+            get { return _red; }
+            set
+                {
+                _red = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte Green { get; set; }
+        public byte Green
+            {
+            get { return _green; }
+            set
+                {
+                _green = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte Blue { get; set; }
+        public byte Blue
+            {
+            get { return _blue; }
+            set
+                {
+                _blue = value;
+                Notify(AsString());
+                }
+            }
 
         /// <summary>
         /// 
         /// </summary>
-        public byte Alpha { get; set; }
+        public byte Alpha
+            {
+            get { return _alpha; }
+            set
+                {
+                _alpha = value;
+                Notify(AsString());
+                }
+            }
 
         #region IConvertible Members
 
@@ -302,6 +339,14 @@ namespace WinterLeaf.Containers
             }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~ColorI()
+            {
+            this.DetachAllEvents();
+            }
 
         /// <summary>
         /// 

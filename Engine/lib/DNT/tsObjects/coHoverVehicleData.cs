@@ -100,6 +100,8 @@ namespace WinterLeaf.tsObjects
     [TypeConverter(typeof (tsObjectConvertercoHoverVehicleData))]
     public class coHoverVehicleData : coVehicleData
         {
+        private Point3F _dustTrailOffset;
+
         /// <summary>
         /// 
         /// </summary>
@@ -175,7 +177,14 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public Point3F dustTrailOffset
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".dustTrailOffset").AsPoint3F(); }
+            get
+                {
+                if (_dustTrailOffset != null)
+                    _dustTrailOffset.DetachAllEvents();
+                _dustTrailOffset = dnTorque.self.GetVar(_mSimObjectId + ".dustTrailOffset").AsPoint3F();
+                _dustTrailOffset.OnChangeNotification += _dustTrailOffset_OnChangeNotification;
+                return _dustTrailOffset;
+                }
             set { dnTorque.self.SetVar(_mSimObjectId + ".dustTrailOffset", value.AsString()); }
             }
 
@@ -483,6 +492,11 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coHoverVehicleData(uint ts)
             {
             return new coHoverVehicleData(ts);
+            }
+
+        private void _dustTrailOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".dustTrailOffset", e.NewValue);
             }
         }
     }
