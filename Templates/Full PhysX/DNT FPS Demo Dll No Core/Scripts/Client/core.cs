@@ -175,12 +175,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             {
             for (int i = 0; i < console.GetVarInt("$keybindCount"); i++)
                 {
-                string bindobj = console.GetVarString("$keybindMap[%i]");
-                if (!console.isObject(bindobj))
+                coActionMap bindobj = console.GetVarString("$keybindMap[%i]");
+                if (!bindobj.isObject())
                     continue;
                 string prefspath = console.Call("getPrefsPath", new[] {"bind.cs"});
-                console.Call(bindobj, "save", new[] {prefspath, i == 0 ? "false" : "true"});
-                console.Call(bindobj, "delete");
+
+                bindobj.save(prefspath, i != 0);
+                bindobj.delete();
                 }
             }
 
@@ -239,8 +240,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             Util.reloadTextures();
 
             loadCoreMaterials();
+            
+            Util._reInitMaterials();
 
-            console.Call("reInitMaterials");
             }
 
         //-----------------------------------------------------------------------------
@@ -285,7 +287,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             Util.reloadTextures();
 
             loadCoreMaterials();
-            console.Call("reInitMaterials");
+
+            Util._reInitMaterials();
+
             }
         }
     }

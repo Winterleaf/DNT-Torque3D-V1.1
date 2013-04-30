@@ -79,20 +79,18 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             Util._activateDirectInput();
 
             coGuiCanvas canvas = "canvas";
-            try
-                {
+
                 // Message hud dialog
                 coGuiControl MainChatHud = "MainChatHud";
+            if (MainChatHud.isObject())
+                {
                 coGuiMessageVectorCtrl chatHud = "chatHud";
                 canvas.pushDialog(MainChatHud);
-                chatHud.attach(new coMessageVector("HudMessageVector"));
-                }
-            catch (Exception)
-                {
+                chatHud.attach("HudMessageVector");
                 }
 
             // just update the action map here
-            new coActionMap("moveMap").push();
+            (( coActionMap)"moveMap").push();
 
 
             // hack city - these controls are floating around and need to be clamped
@@ -105,40 +103,33 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "PlayGui", "onSleep", "(this)", 1, 4900, false)]
         public void PlayGuiOnSleep(string thisobj)
             {
-            try
-                {
-                new coGuiCanvas("canvas").popDialog(new coGuiControl("MainChatHud"));
-                }
-            catch (Exception)
-                {
-                }
-            new coActionMap("moveMap").pop();
+            coGuiCanvas canvas = "canvas";
+            if (canvas.isObject())
+                canvas.popDialog("MainChatHud");
+            (( coActionMap)"moveMap").pop();
             }
 
         [Torque_Decorations.TorqueCallBack("", "PlayGui", "clearHud", "(this)", 1, 4900, false)]
         public void PlayGuiclearHud(coGameTSCtrl thisobj)
             {
-            try
-                {
-                new coGuiCanvas("canvas").popDialog(new coGuiControl("MainChatHud"));
-                }
-            catch (Exception)
-                {
-                }
+            coGuiCanvas canvas = "canvas";
+            if (canvas.isObject())
+                canvas.popDialog("MainChatHud");
+            
             while (thisobj.getCount() > 0)
-                new coSimObject(thisobj.getObject(0)).delete();
+                thisobj.getObject(0).delete();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "refreshBottomTextCtrl", "(this)", 0, 4900, false)]
         public void refreshBottomTextCtrl()
             {
-            new coGuiMLTextCtrl("BottomPrintText")["position"] = "0 0";
+            (( coGuiMLTextCtrl)"BottomPrintText")["position"] = "0 0";
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "refreshCenterTextCtrl", "(this)", 0, 4900, false)]
         public void refreshCenterTextCtrl()
             {
-            new coGuiMLTextCtrl("CenterPrintText")["position"] = "0 0";
+            (( coGuiMLTextCtrl)"CenterPrintText")["position"] = "0 0";
             }
         }
     }

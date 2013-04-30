@@ -103,7 +103,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coForestCreateUndoAction(string simobjectid) : base(simobjectid)
+        internal coForestCreateUndoAction(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coForestCreateUndoAction(uint simobjectid) : base(simobjectid)
+        internal coForestCreateUndoAction(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coForestCreateUndoAction(int simobjectid) : base(simobjectid)
+        internal coForestCreateUndoAction(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -177,6 +177,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coForestCreateUndoAction ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -197,6 +199,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coForestCreateUndoAction ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -218,6 +222,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coForestCreateUndoAction ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

@@ -107,7 +107,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGFXStateBlockData(string simobjectid) : base(simobjectid)
+        internal coGFXStateBlockData(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -115,7 +115,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGFXStateBlockData(uint simobjectid) : base(simobjectid)
+        internal coGFXStateBlockData(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -123,7 +123,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGFXStateBlockData(int simobjectid) : base(simobjectid)
+        internal coGFXStateBlockData(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -151,8 +151,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXCmpFunc alphaTestFunc
             {
-            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".alphaTestFunc")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaTestFunc", value.ToString()); }
+            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".alphaTestFunc").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".alphaTestFunc", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -178,8 +178,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXBlend blendDest
             {
-            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".blendDest")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".blendDest", value.ToString()); }
+            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".blendDest").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendDest", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -196,8 +196,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXBlendOp blendOp
             {
-            get { return (TypeGFXBlendOp) Enum.Parse(typeof (TypeGFXBlendOp), dnTorque.self.GetVar(_mSimObjectId + ".blendOp")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".blendOp", value.ToString()); }
+            get { return (TypeGFXBlendOp) Enum.Parse(typeof (TypeGFXBlendOp), dnTorque.self.GetVar(_mSimObjectId + ".blendOp").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendOp", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -205,8 +205,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXBlend blendSrc
             {
-            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".blendSrc")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".blendSrc", value.ToString()); }
+            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".blendSrc").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".blendSrc", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -268,8 +268,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXCullMode cullMode
             {
-            get { return (TypeGFXCullMode) Enum.Parse(typeof (TypeGFXCullMode), dnTorque.self.GetVar(_mSimObjectId + ".cullMode")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".cullMode", value.ToString()); }
+            get { return (TypeGFXCullMode) Enum.Parse(typeof (TypeGFXCullMode), dnTorque.self.GetVar(_mSimObjectId + ".cullMode").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cullMode", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -313,8 +313,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXBlend separateAlphaBlendDest
             {
-            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendDest")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendDest", value.ToString()); }
+            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendDest").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendDest", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -331,8 +331,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXBlendOp separateAlphaBlendOp
             {
-            get { return (TypeGFXBlendOp) Enum.Parse(typeof (TypeGFXBlendOp), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendOp")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendOp", value.ToString()); }
+            get { return (TypeGFXBlendOp) Enum.Parse(typeof (TypeGFXBlendOp), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendOp").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendOp", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -340,8 +340,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXBlend separateAlphaBlendSrc
             {
-            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendSrc")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendSrc", value.ToString()); }
+            get { return (TypeGFXBlend) Enum.Parse(typeof (TypeGFXBlend), dnTorque.self.GetVar(_mSimObjectId + ".separateAlphaBlendSrc").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".separateAlphaBlendSrc", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -367,8 +367,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXStencilOp stencilFailOp
             {
-            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilFailOp")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilFailOp", value.ToString()); }
+            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilFailOp").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilFailOp", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -376,8 +376,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXCmpFunc stencilFunc
             {
-            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".stencilFunc")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilFunc", value.ToString()); }
+            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".stencilFunc").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilFunc", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -394,8 +394,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXStencilOp stencilPassOp
             {
-            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilPassOp")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilPassOp", value.ToString()); }
+            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilPassOp").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilPassOp", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -421,8 +421,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXStencilOp stencilZFailOp
             {
-            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilZFailOp")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilZFailOp", value.ToString()); }
+            get { return (TypeGFXStencilOp) Enum.Parse(typeof (TypeGFXStencilOp), dnTorque.self.GetVar(_mSimObjectId + ".stencilZFailOp").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".stencilZFailOp", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -482,8 +482,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXCmpFunc zFunc
             {
-            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".zFunc")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".zFunc", value.ToString()); }
+            get { return (TypeGFXCmpFunc) Enum.Parse(typeof (TypeGFXCmpFunc), dnTorque.self.GetVar(_mSimObjectId + ".zFunc").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".zFunc", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -557,6 +557,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coGFXStateBlockData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -577,6 +579,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coGFXStateBlockData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -598,6 +602,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coGFXStateBlockData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

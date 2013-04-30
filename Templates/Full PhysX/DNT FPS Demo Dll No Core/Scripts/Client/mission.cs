@@ -77,7 +77,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // being dropped into the game.
             Util._physicsStartSimulation("client");
             // Start game audio effects channels.
-            new coSFXSource("AudioChannelEffects").play(-1);
+            (( coSFXSource)"AudioChannelEffects").play(-1);
             // Create client mission cleanup group.
             new Torque_Class_Helper("SimGroup", "ClientMissionCleanup").Create();
             bGlobal["$Client::missionRunning"] = true;
@@ -92,18 +92,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             Util._physicsStopSimulation("client");
             // Stop game audio effects channels.
 
-            new coSFXSource("AudioChannelEffects").stop(-1);
+            (( coSFXSource)"AudioChannelEffects").stop(-1);
 
             console.Call("decalManagerClear");
             // Delete client mission cleanup group. 
 
-            try
-                {
-                new coSimGroup("ClientMissionCleanup").delete();
-                }
-            catch (Exception)
-                {
-                }
+                (( coSimGroup)"ClientMissionCleanup").delete();
+            
             Util._clearClientPaths();
 
             bGlobal["$Client::missionRunning"] = false;
@@ -169,18 +164,16 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 return "false";
             // Show the loading screen immediately.
 
-            try
+            if (((coGuiChunkedBitmapCtrl)"LoadingGui").isObject())
                 {
                 //if it can't find the loading gui it will throw an exception and leave the try block.
-                new coGuiChunkedBitmapCtrl("LoadingGui");
-                new coGuiCanvas("Canvas").setContent("LoadingGui");
-                new coGuiProgressBitmapCtrl("LoadingProgress").setValue("1");
-                new coGuiTextCtrl("LoadingProgressTxt").setValue("LOADING MISSION FILE");
-                new coGuiCanvas("Canvas").repaint(0);
+                
+                ((coGuiCanvas)"Canvas").setContent("LoadingGui");
+                ((coGuiProgressBitmapCtrl)"LoadingProgress").setValue("1");
+                ((coGuiTextCtrl)"LoadingProgressTxt").setValue("LOADING MISSION FILE");
+                ((coGuiCanvas)"Canvas").repaint(0);
                 }
-            catch (Exception)
-                {
-                }
+            
 
             // Prepare and launch the server.
 

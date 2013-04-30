@@ -143,8 +143,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             canvas.setVideoMode(resX, resY, fs, bpp, rate, fsaa);
             // FXAA piggybacks on the FSAA setting in $pref::Video::mode.
 
-            if (console.isObject("FXAA_PostEffect"))
-                new coPostEffect("FXAA_PostEffect")["isEnabled"] = (fsaa.AsInt() > 0 ? true.AsString() : false.AsString());
+            coPostEffect FXAA_PostEffect = "FXAA_PostEffect";
+            if (FXAA_PostEffect.isObject())
+                FXAA_PostEffect.isEnabled = fsaa.AsInt() > 0;
+
+            //if (console.isObject("FXAA_PostEffect"))
+            //    new coPostEffect("FXAA_PostEffect")["isEnabled"] = (fsaa.AsInt() > 0 ? true.AsString() : false.AsString());
 
             if (bGlobal["$pref::Video::autoDetect"])
                 GraphicsQualityAutodetect();
@@ -174,8 +178,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "resetCanvas", "", 0, 22000, false)]
         public void resetCanvas()
             {
-            if (console.isObject("Canvas"))
-                ((coGuiCanvas) "Canvas").repaint(0);
+            coGuiCanvas Canvas = "Canvas";
+            if (Canvas.isObject())
+                Canvas.repaint(0);
+            //if (console.isObject("Canvas"))
+            //    ((coGuiCanvas) "Canvas").repaint(0);
             }
 
         //---------------------------------------------------------------------------------------------

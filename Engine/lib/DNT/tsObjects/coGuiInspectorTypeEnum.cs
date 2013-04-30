@@ -103,7 +103,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiInspectorTypeEnum(string simobjectid) : base(simobjectid)
+        internal coGuiInspectorTypeEnum(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiInspectorTypeEnum(uint simobjectid) : base(simobjectid)
+        internal coGuiInspectorTypeEnum(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiInspectorTypeEnum(int simobjectid) : base(simobjectid)
+        internal coGuiInspectorTypeEnum(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -177,6 +177,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coGuiInspectorTypeEnum ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -197,6 +199,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coGuiInspectorTypeEnum ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -218,6 +222,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coGuiInspectorTypeEnum ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

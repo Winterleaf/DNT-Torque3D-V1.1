@@ -64,29 +64,24 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdUse", "(%client, %data)", 2, 1200, false)]
         public void ServerCmdUse(coGameConnection client, coItem data)
             {
-            try
-                {
-                new coPlayer(client.getControlObject()).call("use", data);
-                }
-            catch (Exception)
-                {
-                }
+            if (((coPlayer)client.getControlObject()).isObject())
+                ((coPlayer)client.getControlObject()).call("use", data);
+
             }
 
         [Torque_Decorations.TorqueCallBack("", "ShapeBase", "use", "(%this, %data)", 2, 1200, false)]
         public bool ShapeBaseShapeBaseUse(coShapeBase thisobj, coItemData data)
             {
-            try
+
+            coGameConnection client = thisobj.getControllingClient();
+            if (client.isObject())
                 {
-                coGameConnection client = thisobj.getControllingClient();
                 double defaultfov = client.getControlCameraDefaultFov();
                 double fov = client.getControlCameraFov();
                 if (defaultfov != fov)
                     return false;
                 }
-            catch (Exception)
-                {
-                }
+
 
 
             if (ShapeBaseShapeBaseGetInventory(thisobj, data) > 0)
@@ -156,7 +151,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (data.isField("clip"))
                 return data["maxInventory"].AsInt();
 
-            return new coSimDataBlock(thisobj.getDataBlock())["maxInv[" + data.getName() + "]"].AsInt();
+            return (( coSimDataBlock)thisobj.getDataBlock())["maxInv[" + data.getName() + "]"].AsInt();
             }
 
         [Torque_Decorations.TorqueCallBack("", "ShapeBase", "incInventory", "(%this, %data,%amount)", 3, 1200, false)]
@@ -201,10 +196,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 if (console.isMethodInNamespace(data, "onInventory"))
                     data.call("onInventory", thisobj, value.AsString());
 
-                string datablock = console.getDatablock(thisobj).AsString();
+                //string datablock = console.getDatablock(thisobj).AsString();
 
-                if (console.isObject(new coSimDataBlock(thisobj.getDataBlock())) && console.isMethodInNamespace(new coSimDataBlock(thisobj.getDataBlock()), "onInventory"))
-                    new coSimDataBlock(thisobj.getDataBlock()).call("onInventory", data, value.AsString());
+                if (console.isObject((( coSimDataBlock)thisobj.getDataBlock())) && console.isMethodInNamespace((( coSimDataBlock)thisobj.getDataBlock()), "onInventory"))
+                    (( coSimDataBlock)thisobj.getDataBlock()).call("onInventory", data, value.AsString());
                 }
             return value;
             }
@@ -281,7 +276,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // The force value is hardcoded according to the current default
             // object mass and mission gravity (20m/s^2).
 
-            float throwforce = new coSimDataBlock(thisobj.getDataBlock())["throwForce"].AsFloat();
+            float throwforce = (( coSimDataBlock)thisobj.getDataBlock())["throwForce"].AsFloat();
             if (throwforce == 0)
                 throwforce = 20;
 
@@ -291,10 +286,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             Point3F vec = eye.vectorScale(throwforce);
 
             // Add a vertical component to give the object a better arc
-            double verticalForce = throwforce/2.0;
+            double verticalForce = throwforce / 2.0;
             float dot = Point3F.vectorDot(new Point3F("0 0 1"), eye);
             if (dot < 0)
-                dot = dot*-1;
+                dot = dot * -1;
 
             vec = vec + Point3F.vectorScale(new Point3F(string.Format("0 0 {0}", verticalForce)), 1 - dot);
             vec = vec + thisobj.getVelocity();
@@ -320,14 +315,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "ShapeBase", "getInventory", "(%this, %data)", 2, 1200, false)]
         public int ShapeBaseShapeBaseGetInventory(coShapeBase thisobj, coItemData data)
             {
-            try
-                {
-                return thisobj["inv[" + data.getName() + "]"].AsInt();
-                }
-            catch (Exception)
-                {
-                return 0;
-                }
+            return thisobj.isObject() ? thisobj["inv[" + data.getName() + "]"].AsInt() : 0;
             }
         }
     }

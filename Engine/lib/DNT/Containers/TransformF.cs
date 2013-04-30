@@ -160,13 +160,24 @@ namespace WinterLeaf.Containers
         /// <param name="transform"></param>
         public TransformF(string transform)
             {
+            if (transform.Trim() == "")
+                {
+                mPosition = new Point3F("0 0 0 ");
+                mOrientation = new Point3F("0 0 0 ");
+                mPosition.OnChangeNotification += __OnChangeNotification;
+                mOrientation.OnChangeNotification += __OnChangeNotification;
+                return;
+                }
             string[] parts = transform.Split(' ');
             if (parts.GetUpperBound(0) >= 2)
                 {
                 mPosition = new Point3F(parts[0].AsFloat(), parts[1].AsFloat(), parts[2].AsFloat());
                 mOrientation = new Point3F();
                 }
-
+            else
+                {
+                throw new Exception("NOT ENOUGH DATA TO INITIALIZE");
+                }
 
             if (parts.GetUpperBound(0) <= 6)
                 {

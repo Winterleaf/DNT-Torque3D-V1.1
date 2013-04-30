@@ -54,6 +54,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 using WinterLeaf.Containers;
+using WinterLeaf.tsObjects;
 
 #endregion
 
@@ -64,6 +65,59 @@ namespace WinterLeaf.Classes
     /// </summary>
     public static class MyExtensions
         {
+        /// <summary>
+        /// Checks if the string is an object in the engine.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool isObject(this string value)
+            {
+            if (value.Trim() == "")
+                return false;
+
+            if (value.Trim().Contains(" "))
+                return false;
+
+            return ((coSimObject) value).isObject();
+            }
+
+        /// <summary>
+        /// If it is a simobject, it will call delete.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static void delete(this string value)
+            {
+            if (value.Trim() == "")
+                return;
+
+            if (value.Trim().Contains(" "))
+                return;
+
+            if (value.isObject())
+                ((coSimObject) value).delete();
+            }
+
+        /// <summary>
+        /// If it is a simobject, it will call delete.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string getName(this string value)
+            {
+            if (value.Trim() == "")
+                return "";
+
+            if (value.Trim().Contains(" "))
+                return "";
+
+            if (value.isObject())
+                ((coSimObject) value).getName();
+
+            return "";
+            }
+
+
         /// <summary>
         /// Converts string to a Vector of Bools
         /// </summary>

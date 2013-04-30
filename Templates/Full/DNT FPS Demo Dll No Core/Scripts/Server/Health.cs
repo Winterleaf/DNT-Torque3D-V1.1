@@ -82,14 +82,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             healthkit_instance.call("schedulePop");
 
 
-            coGameConnection client = player["client"];
-            if (!client.isObject())
-                return;
-            using (BackgroundWorker bwr = new BackgroundWorker())
-                {
-                bwr.DoWork += bwr_UpdateHealth;
-                bwr.RunWorkerAsync(new HealthKitHelper(player, healthkit_instance));
-                }
+            //coGameConnection client = player["client"];
+            //if (!client.isObject())
+            //    return;
+            //using (BackgroundWorker bwr = new BackgroundWorker())
+            //    {
+            //    bwr.DoWork += bwr_UpdateHealth;
+            //    bwr.RunWorkerAsync(new HealthKitHelper(player, healthkit_instance));
+            //    }
 
             AudioServerPlay3D("HealthUseSound", player.getTransform());
             }
@@ -101,47 +101,47 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void bwr_UpdateHealth(object sender, DoWorkEventArgs e)
-            {
-            coPlayer player = new coPlayer(((HealthKitHelper) e.Argument).player);
+        //public void bwr_UpdateHealth(object sender, DoWorkEventArgs e)
+        //    {
+        //    coPlayer player = ((HealthKitHelper) e.Argument).player;
 
-            if (!player.isObject())
-                return;
-            // Would be better to add a onRepair() callback to shapeBase.cpp in order to
-            // prevent any excess/unneccesary schedules from this.  But for the time
-            // being....
+        //    if (!player.isObject())
+        //        return;
+        //    // Would be better to add a onRepair() callback to shapeBase.cpp in order to
+        //    // prevent any excess/unneccesary schedules from this.  But for the time
+        //    // being....
 
-            // This is just a rough timer to update the Health HUD every 250 ms.  From
-            // my tests a large health pack will fully heal a player from 10 health in
-            // 36 iterations (ie. 9 seconds).  If either the scheduling time, the repair
-            // amount, or the repair rate is changed then the healthTimer counter should
-            // be changed also.
-            for (int i = 0; i < 40; i++)
-                {
-                //Since this is happening out of process, we need prevent the torque
-                //engine from ticking while we do this.  If we don't the memory will
-                //get corrupt if two processes enter the Torque DLL at the same time.
-                //So we use a Monitor and lock an object which prevents an engine tick
-                //from occuring.
-                lock (m_ts.tick)
-                    {
-                    //update the player if he is alive.
-                    if (player.isObject() && player.getState() != "Dead")
-                        PlayerUpdateHealth(player);
-                    else
-                        //No reason to keep updating if they are dead.
-                        break;
-                    }
-                //Sleep for 250 milleseconds.
-                Thread.Sleep(250);
-                }
-            }
+        //    // This is just a rough timer to update the Health HUD every 250 ms.  From
+        //    // my tests a large health pack will fully heal a player from 10 health in
+        //    // 36 iterations (ie. 9 seconds).  If either the scheduling time, the repair
+        //    // amount, or the repair rate is changed then the healthTimer counter should
+        //    // be changed also.
+        //    for (int i = 0; i < 40; i++)
+        //        {
+        //        //Since this is happening out of process, we need prevent the torque
+        //        //engine from ticking while we do this.  If we don't the memory will
+        //        //get corrupt if two processes enter the Torque DLL at the same time.
+        //        //So we use a Monitor and lock an object which prevents an engine tick
+        //        //from occuring.
+        //        lock (m_ts.tick)
+        //            {
+        //            //update the player if he is alive.
+        //            if (player.isObject() && player.getState() != "Dead")
+        //                PlayerUpdateHealth(player);
+        //            else
+        //                //No reason to keep updating if they are dead.
+        //                break;
+        //            }
+        //        //Sleep for 250 milleseconds.
+        //        Thread.Sleep(250);
+        //        }
+        //    }
 
 
         [Torque_Decorations.TorqueCallBack("", "ShapeBase", "tossPatch", "(%this)", 1, 1500, false)]
         public string ShapeBaseTossPatch(coShapeBase thisobj)
             {
-            if (!console.isObject(thisobj))
+            if (!thisobj.isObject())
                 return string.Empty;
 
             coItem item = console.Call_Classname("ItemData", "CreateItem", new[] {"HealthKitPatch"});
@@ -150,7 +150,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             item["sourceObject"] = thisobj;
             item["static"] = false.AsString();
 
-            new coSimSet("MissionCleanup").pushToBack(item);
+            (( coSimSet)"MissionCleanup").pushToBack(item);
 
             Random r = new Random();
 

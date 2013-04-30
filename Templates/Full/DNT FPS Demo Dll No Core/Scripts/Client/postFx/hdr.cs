@@ -237,8 +237,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             if (minLuminace <= 0.0)
                 minLuminace = 0.00001;
 
-            new coPostEffect(thisobj.findObjectByInternalName("adaptLum", true)).setShaderConst("$g_fMinLuminace", minLuminace.AsString());
-            new coPostEffect(thisobj.findObjectByInternalName("finalLum", true)).setShaderConst("$adaptRate", sGlobal["$HDRPostFX::adaptRate"]);
+            ((coPostEffect)thisobj.findObjectByInternalName("adaptLum", true)).setShaderConst("$g_fMinLuminace", minLuminace.AsString());
+            ((coPostEffect)thisobj.findObjectByInternalName("finalLum", true)).setShaderConst("$adaptRate", sGlobal["$HDRPostFX::adaptRate"]);
 
             coPostEffect combinePass = thisobj.findObjectByInternalName("combinePass", true);
             combinePass.setShaderConst("$g_fEnableToneMapping", sGlobal["$HDRPostFX::enableToneMapping"]);
@@ -278,7 +278,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // HDR does it's own gamma calculation so 
             // disable this postFx.
 
-            new coPostEffect("GammaPostFX").disable();
+            ((coPostEffect)"GammaPostFX").disable();
 
             // Set the right global shader define for HDR.
             switch (format)
@@ -295,7 +295,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // Change the format of the offscreen surface
             // to an HDR compatible format.
 
-            new coSimObject("AL_FormatToken")["format"] = format.ToString();
+            (( coSimObject)"AL_FormatToken")["format"] = format.ToString();
 
             Util.setReflectFormat(format);
             // Reset the light manager which will ensure the new
@@ -310,11 +310,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void HDRPostFXonDisabled(string thisobj)
             {
             // Enable a special GammaCorrection PostFX when this is disabled.
-            new coPostEffect("GammaPostFX").enable();
+            (( coPostEffect)"GammaPostFX").enable();
 
             //%format = "GFXFormatR8G8B8A8";
             //AL_FormatToken.format = %format;
-            new coSimObject("AL_FormatToken")["format"] = "GFXFormatR8G8B8A8";
+            ((coSimObject)"AL_FormatToken")["format"] = "GFXFormatR8G8B8A8";
 
             // Restore the non-HDR offscreen surface format.
             //setReflectFormat( %format );

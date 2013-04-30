@@ -72,7 +72,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void ServerCmdNetSimulateLag(coGameConnection client, int msDelay, float packetLossPercent)
             {
             if (client["isAdmin"].AsBool())
-                client.setSimulatedNetParams((packetLossPercent/100.0f), msDelay);
+                client.setSimulatedNetParams((packetLossPercent / 100.0f), msDelay);
             }
 
         //----------------------------------------------------------------------------
@@ -94,12 +94,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             string control;
             if (client.getControlObject() == client["player"])
                 {
-                new coCamera(client["camera"]).setVelocity(new Point3F("0 0 0"));
+                ((coCamera)client["camera"]).setVelocity(new Point3F("0 0 0"));
                 control = client["camera"];
                 }
             else
                 {
-                new coCamera(client["player"]).setVelocity(new Point3F("0 0 0"));
+                ((coCamera)client["player"]).setVelocity(new Point3F("0 0 0"));
                 control = client["player"];
                 }
             client.setControlObject(control);
@@ -110,7 +110,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdSetEditorCameraPlayer", "(%client)", 1, 12000, false)]
         public void ServerCmdSetEditorCameraPlayer(coGameConnection client)
             {
-            new coPlayer(client["player"]).setVelocity(new Point3F("0 0 0"));
+            ((coPlayer)client["player"]).setVelocity(new Point3F("0 0 0"));
             client.setControlObject(client["player"]);
             client.setFirstPerson(true);
             bGlobal["$isFirstPersonVar"] = true;
@@ -120,7 +120,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdSetEditorCameraPlayerThird", "(%client)", 1, 12000, false)]
         public void ServerCmdSetEditorCameraPlayerThird(coGameConnection client)
             {
-            new coPlayer(client["player"]).setVelocity(new Point3F("0 0 0"));
+            ((coPlayer)client["player"]).setVelocity(new Point3F("0 0 0"));
             client.setControlObject(client["player"]);
             client.setFirstPerson(false);
             bGlobal["$isFirstPersonVar"] = false;
@@ -139,7 +139,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (!console.isObject(obj))
                 obj = client["player"];
 
-            obj.setTransform(new coCamera(client["Camera"]).getTransform());
+            obj.setTransform(((coCamera)client["Camera"]).getTransform());
             obj.setVelocity(new Point3F("0 0 0"));
             client.setControlObject(player);
             console.Call("clientCmdSyncEditorGui");
@@ -149,8 +149,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void ServerCmdDropCameraAtPlayer(coGameConnection client)
             {
             coPlayer player = client["player"];
-            new coCamera(client["camera"]).setTransform(player.getTransform());
-            new coCamera(client["camera"]).setVelocity(new Point3F("0 0 0"));
+            ((coCamera)client["camera"]).setTransform(player.getTransform());
+            ((coCamera)client["camera"]).setVelocity(new Point3F("0 0 0"));
             client.setControlObject(client["camera"]);
             console.Call("clientCmdSyncEditorGui");
             }
@@ -302,28 +302,28 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdSuicide", "(%client)", 1, 100, false)]
         public void ServerCmdSuicide(coGameConnection client)
             {
-            if (console.isObject(client))
+            if (client.isObject())
                 PlayerKill(client["player"], "Suicide");
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdPlayCel", "(%client,%anim)", 2, 100, false)]
         public void ServerCmdPlayCel(coGameConnection client, string anim)
             {
-            if (console.isObject(client))
+            if (client.isObject())
                 PlayerPlayCelAnimation(client["player"], anim);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdTestAnimation", "(%client,%anim)", 2, 100, false)]
         public void ServerCmdTestAnimation(coGameConnection client, string anim)
             {
-            if (console.isObject(client))
-                new coPlayer(client["player"]).call("playTestAnimation", anim);
+            if (client.isObject())
+                ((coPlayer)client["player"]).call("playTestAnimation", anim);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdPlayDeath", "(%client)", 1, 100, false)]
         public void ServerCmdPlayDeath(coGameConnection client, string anim)
             {
-            if (console.isObject(client))
+            if (client.isObject())
                 PlayerPlayDeathAnimation(client["player"]);
             }
 
@@ -332,13 +332,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             coPlayer player = client["player"];
 
-            if (!console.isObject(player) || (player.getState() == "Dead") || !Game_Running)
+            if (!player.isObject() || (player.getState() == "Dead") || !Game_Running)
                 return;
 
             coSimObject mountedimage = player.getMountedImage(iGlobal["$WeaponSlot"]);
             switch (data)
                 {
-                    case "Weapon":
+                case "Weapon":
                         {
                         if (mountedimage != "0")
                             {
@@ -347,20 +347,20 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                             }
                         }
                         break;
-                    case "Ammo":
-                        {
-                        if (mountedimage != "0")
+                case "Ammo":
                             {
-                            coSimObject item = mountedimage;
-                            if (item["ammo"] != "")
-                                ShapeBaseShapeBaseThrow(player, new coItemData(item["ammo"]));
+                            if (mountedimage != "0")
+                                {
+                                coSimObject item = mountedimage;
+                                if (item["ammo"] != "")
+                                    ShapeBaseShapeBaseThrow(player, item["ammo"]);
+                                }
                             }
-                        }
-                        break;
-                    default:
-                        if (ShapeBaseShapeBaseHasInventory(player, new coItemData(new coSimObject(data).getName())))
-                            ShapeBaseShapeBaseThrow(player, new coItemData(data));
-                        break;
+                            break;
+                default:
+                            if (ShapeBaseShapeBaseHasInventory(player, data.getName()))
+                                ShapeBaseShapeBaseThrow(player, data);
+                            break;
                 }
             }
 
@@ -368,14 +368,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdCycleWeapon", "(%client, %direction)", 2, 100, false)]
         public void ServerCmdCycleWeapon(coGameConnection client, string direction)
             {
-            ShapeBaseCycleWeapon(new coShapeBase(client.getControlObject()), direction);
+            ShapeBaseCycleWeapon(client.getControlObject(), direction);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdUnmountWeapon", "(%client)", 1, 100, false)]
         public void ServerCmdUnmountWeapon(coGameConnection client)
             {
-            ((coPlayer) client["player"]).unmountImage(iGlobal["$WeaponSlot"]);
-            //ShapeBase.unmountImage(client, iGlobal["$WeaponSlot"]);
+            ((coPlayer)client["player"]).unmountImage(iGlobal["$WeaponSlot"]);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdReloadWeapon", "(%client)", 1, 100, false)]

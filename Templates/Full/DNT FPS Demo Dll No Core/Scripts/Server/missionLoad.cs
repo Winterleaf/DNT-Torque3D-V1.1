@@ -113,7 +113,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             BuildLoadInfo(missionName);
 
             // Download mission info to the clients
-            foreach (coGameConnection client in ClientGroup.Where(client => !((coGameConnection) client).isAIControlled()))
+            foreach (coGameConnection client in ClientGroup.Where(client => !((coGameConnection)client).isAIControlled()))
                 SendLoadInfoToClient(client);
 
             // Now that we've sent the LevelInfo to the clients
@@ -156,7 +156,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 // Exec the mission.  The MissionGroup (loaded components) is added to the ServerGroup
                 Util.exec(console.GetVarString("$Server::MissionFile"), false, false);
 
-                if (!console.isObject("MissionGroup"))
+                if (!"MissionGroup".isObject())
                     Server__LoadFailMsg = "No 'MissionGroup' found in mission " + file;
                 }
             if (Server__LoadFailMsg != "")
@@ -168,13 +168,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 }
             // Set mission name.
 
-            try
-                {
-                sGlobal["$Server::MissionName"] = new coLevelInfo("theLevelInfo")["levelName"];
-                }
-            catch (Exception)
-                {
-                }
+
+            if (((coLevelInfo)"theLevelInfo").isObject())
+                sGlobal["$Server::MissionName"] = ((coLevelInfo)"theLevelInfo")["levelName"];
+
 
 
             // Mission cleanup group.  This is where run time components will reside.  The MissionCleanup
@@ -197,9 +194,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             // Start all the clients in the mission
             foreach (coGameConnection client in ClientGroup)
-                {
                 GameConnectionLoadMission(client);
-                }
+                
 
             onMissionLoaded();
             }
@@ -221,20 +217,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 client.resetGhosting();
                 client.clearPaths();
                 }
-            try
-                {
-                new coSimSet("MissionGroup").delete();
-                }
-            catch (Exception)
-                {
-                }
-            try
-                {
-                new coSimSet("MissionCleanup").delete();
-                }
-            catch (Exception)
-                {
-                }
+
+            if (((coSimSet)"MissionGroup").isObject())
+
+                ((coSimSet)"MissionGroup").delete();
+
+
+            if (((coSimSet)"MissionCleanup").isObject())
+                ((coSimSet)"MissionCleanup").delete();
 
 
             console.clearServerPaths();
@@ -247,13 +237,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             console.print("*** MISSION RESET");
             // Remove any temporary mission objects
 
-            try
-                {
-                new coSimSet("MissionCleanup").delete();
-                }
-            catch (Exception)
-                {
-                }
+
+            if (((coSimSet)"MissionCleanup").isObject())
+                ((coSimSet)"MissionCleanup").delete();
 
             sGlobal["$instantGroup"] = sGlobal["ServerGroup"];
 

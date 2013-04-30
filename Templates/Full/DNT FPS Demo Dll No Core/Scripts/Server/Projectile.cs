@@ -76,7 +76,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // Apply damage to the object all shape base objects
             if (datablock["directDamage"].AsFloat() > 0)
                 if ((console.getTypeMask(shapebase) & (uint) SceneObjectTypesAsUint.ShapeBaseObjectType) == (uint) SceneObjectTypesAsUint.ShapeBaseObjectType)
-                    ShapeBaseDamage(shapebase, new coShapeBase(projectile.ID), pos, datablock["directDamage"].AsFloat(), datablock["damageType"]);
+                    ShapeBaseDamage(shapebase,projectile.ID, pos, datablock["directDamage"].AsFloat(), datablock["damageType"]);
             }
 
         [Torque_Decorations.TorqueCallBack("", "ProjectileData", "onExplode", "(%data, %proj, %position, %mod)", 4, 1600, false)]

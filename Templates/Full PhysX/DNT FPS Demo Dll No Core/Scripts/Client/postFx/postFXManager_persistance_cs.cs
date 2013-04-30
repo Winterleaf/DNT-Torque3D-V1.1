@@ -51,6 +51,7 @@
 #region
 
 using WinterLeaf.Classes;
+using WinterLeaf.tsObjects;
 
 #endregion
 
@@ -76,6 +77,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "loadPresetFile", "", 0, 105010, false)]
         public void PostFXManagerloadPresetFile()
             {
+
             console.Call("getLoadFilename", new[] {console.GetVarString("$PostFXManager::fileFilter"), "PostFXManager::loadPresetHandler"});
             }
 
@@ -86,9 +88,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             if (console.Call("isScriptFile", new[] {filename}).AsBool())
                 {
                 filename = Util._expandFilename(filename);
-                console.Call("postVerbose", new[] {"% - PostFX Manager - Executing " + filename});
+                postVerbose("% - PostFX Manager - Executing " + filename);
+                //console.Call("postVerbose", new[] {"% - PostFX Manager - Executing " + filename});
                 Util.exec(filename, false, false);
-                console.Call("PostFXManager", "settingsApplyFromPreset");
+                PostFXManagersettingsApplyFromPreset("PostFXManager");
+
+                
+                //console.Call("PostFXManager", "settingsApplyFromPreset");
                 }
             }
 

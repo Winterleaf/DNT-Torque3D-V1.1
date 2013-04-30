@@ -109,7 +109,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiGameListMenuProfile(string simobjectid) : base(simobjectid)
+        internal coGuiGameListMenuProfile(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -117,7 +117,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiGameListMenuProfile(uint simobjectid) : base(simobjectid)
+        internal coGuiGameListMenuProfile(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -125,7 +125,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiGameListMenuProfile(int simobjectid) : base(simobjectid)
+        internal coGuiGameListMenuProfile(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -247,6 +247,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coGuiGameListMenuProfile ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -267,6 +269,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coGuiGameListMenuProfile ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -288,6 +292,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coGuiGameListMenuProfile ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

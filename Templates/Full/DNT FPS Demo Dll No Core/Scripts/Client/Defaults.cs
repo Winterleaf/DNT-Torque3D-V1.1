@@ -83,7 +83,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // game execution if they exist.
 
 
-            if (console.GetVarString("$platform") != "xenon")
+            if (sGlobal["$platform"] != "xenon")
                 {
                 if (Util.isFile("scripts/client/prefs.cs"))
                     Util.exec("scripts/client/prefs.cs", false, false);
@@ -115,7 +115,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "GraphicsQualityAutodetect", "", 0, 80300, false)]
         public string GraphicsQualityAutodetect()
             {
-            console.SetVar("$pref::Video::autoDetect", false);
+            bGlobal["$pref::Video::autoDetect"] = false;
             float shaderVer = Util.getPixelShaderVersion();
             bool intel = (Util.strstr(Util.strupr(Util.getDisplayDeviceInformation()), "INTEL") != -1) ? true : false;
 
@@ -125,15 +125,15 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "GraphicsQualityAutodetect_Apply", "%shaderVer, %intel, %videoMem ", 3, 80400, false)]
-        public string GraphicsQualityAutodetect_Apply(string shaderVer, string intel, string videoMem)
+        public string GraphicsQualityAutodetect_Apply(float shaderVer, bool intel, string videoMem)
             {
-            if (shaderVer.AsFloat() < 2.0)
+            if (shaderVer < 2.0)
                 {
                 return "Your video card does not meet the minimum requirment of shader model 2.0.";
                 }
-            if (shaderVer.AsFloat() < 3 || intel.AsBool())
+            if (shaderVer < 3 || intel)
                 {
-                if (shaderVer.AsFloat() > 2.0)
+                if (shaderVer > 2.0)
                     {
                     console.Call(((coSimSet) "MeshQualityGroup").findObjectByInternalName("Lowest", true), "apply");
                     console.Call(((coSimSet) "TextureQualityGroup").findObjectByInternalName("Lowest", true), "apply");
@@ -385,14 +385,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // The graphics quality groups are used by the options dialog to
             // control the state of the con.SetVar("$prefs.  You should overload these in
             // your game specific defaults.cs file if they need to be changed.
-            if (console.isObject("MeshQualityGroup"))
-                console.Call("MeshQualityGroup", "delete");
-            if (console.isObject("TextureQualityGroup"))
-                console.Call("TextureQualityGroup", "delete");
-            if (console.isObject("LightingQualityGroup"))
-                console.Call("LightingQualityGroup", "delete");
-            if (console.isObject("ShaderQualityGroup"))
-                console.Call("ShaderQualityGroup", "delete");
+            if ("MeshQualityGroup".isObject())
+                "MeshQualityGroup".delete();
+            if ("TextureQualityGroup".isObject())
+                "TextureQualityGroup".delete();
+            if ("LightingQualityGroup".isObject())
+                "LightingQualityGroup".delete();
+            if ("ShaderQualityGroup".isObject())
+                "ShaderQualityGroup".delete();
 
             //Nested objects... no support yet.
             console.Eval(@"

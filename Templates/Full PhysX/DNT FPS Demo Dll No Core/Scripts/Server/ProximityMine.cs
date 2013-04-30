@@ -136,7 +136,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "ProxMine", "onInventory", "( %this, %obj, %amount )", 3, 2300, false)]
         public void ProxMineOnInventory(coProximityMine thisobj, coPlayer player, int amount)
             {
-            coGameConnection client = new coGameConnection(player["client"]);
+            coGameConnection client = player["client"];
             if (client.isObject())
                 GameConnectionSetAmmoAmountHud(client, 1, amount);
             if ((amount == 0) && player.isMethod("getMountSlot"))
@@ -147,7 +147,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void ProxMineImageOnMount(coProximityMineData thisobj, coPlayer player, int slot)
             {
             player.setImageAmmo(slot, true);
-            int numofmines = ShapeBaseShapeBaseGetInventory(player, new coItemData((thisobj["item"])));
+            int numofmines = ShapeBaseShapeBaseGetInventory(player, (thisobj["item"]));
 
             string previewImage = thisobj["item.previewImage"];
             string reticle = thisobj["item.reticle"];

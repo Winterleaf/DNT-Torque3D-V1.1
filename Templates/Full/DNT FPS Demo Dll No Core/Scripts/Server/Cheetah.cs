@@ -65,7 +65,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void CheetahCarOnAdd(coWheeledVehicleData datablock, coWheeledVehicle vehicle, string nameSpaceDepth)
             {
             int nsd = (nameSpaceDepth.AsInt() + 1);
-            console.ParentExecute(datablock, "onAdd", nsd, new string[] {datablock, vehicle.ID});
+            console.ParentExecute(datablock, "onAdd", nsd, new string[] { datablock, vehicle.ID });
             vehicle.setWheelTire(0, "CheetahCarTire");
             vehicle.setWheelTire(1, "CheetahCarTire");
             vehicle.setWheelTire(2, "CheetahCarTireRear");
@@ -114,8 +114,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             tc.Props.Add("splitFadeDistances", @"""10 20 30 40""");
 
 
-            vehicle["rightBrakeLight"] = new coPointLight(tc.Create());
-            vehicle["leftBrakeLight"] = new coPointLight(tc.Create());
+            vehicle["rightBrakeLight"] = ((coPointLight)tc.Create());
+            vehicle["leftBrakeLight"] = ((coPointLight)tc.Create());
             vehicle["inv[BulletAmmo]"] = "1000";
 
             // Mount a ShapeBaseImageData
@@ -131,32 +131,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void CheetahCarOnRemove(coWheeledVehicleData datablock, coWheeledVehicle vehicle, string nameSpaceDepth)
             {
             int nsd = (nameSpaceDepth.AsInt() + 1);
-            console.ParentExecute(datablock, "onRemove", nsd, new[] {datablock.ID, vehicle.ID});
-
-            try
-                {
-                new coPointLight(vehicle["rightBrakeLight"]).delete();
-                }
-            catch (Exception)
-                {
-                console.warn("Failed to delete right brake light.");
-                }
-            try
-                {
-                new coPointLight(vehicle["leftBrakeLight"]).delete();
-                }
-            catch (Exception)
-                {
-                console.warn("Failed to delete left brake light.");
-                }
-            try
-                {
-                new coSimObject(vehicle["turret"]).delete();
-                }
-            catch (Exception)
-                {
-                console.warn("Failed to delete turret.");
-                }
+            console.ParentExecute(datablock, "onRemove", nsd, new[] { datablock.ID, vehicle.ID });
+            if ((vehicle["rightBrakeLight"]).isObject())
+                (vehicle["rightBrakeLight"]).delete();
+            if ((vehicle["leftBrakeLight"]).isObject())
+                (vehicle["leftBrakeLight"]).delete();
+            if ((vehicle["turret"]).isObject())
+                (vehicle["turret"]).delete();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "serverCmdtoggleBrakeLights", "(%client)", 1, 2800, false)]
@@ -170,13 +151,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             if (vehicle["rightBrakeLight.isEnabled"].AsBool())
                 {
-                new coPointLight(vehicle["rightBrakeLight"]).setLightEnabled(false);
-                new coPointLight(vehicle["leftBrakeLight"]).setLightEnabled(false);
+                ((coPointLight)vehicle["rightBrakeLight"]).setLightEnabled(false);
+                ((coPointLight)vehicle["leftBrakeLight"]).setLightEnabled(false);
                 }
             else
                 {
-                new coPointLight(vehicle["rightBrakeLight"]).setLightEnabled(true);
-                new coPointLight(vehicle["leftBrakeLight"]).setLightEnabled(true);
+                ((coPointLight)vehicle["rightBrakeLight"]).setLightEnabled(true);
+                ((coPointLight)vehicle["leftBrakeLight"]).setLightEnabled(true);
                 }
             }
 
@@ -188,12 +169,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // Pass trigger states on to TurretImage (to fire weapon)
             switch (index)
                 {
-                    case 0:
-                        vehicle.setImageTrigger(datablock["turretSlot"].AsInt(), state);
-                        break;
-                    case 1:
-                        vehicle.setImageAltTrigger(datablock["turretSlot"].AsInt(), state);
-                        break;
+                case 0:
+                    vehicle.setImageTrigger(datablock["turretSlot"].AsInt(), state);
+                    break;
+                case 1:
+                    vehicle.setImageAltTrigger(datablock["turretSlot"].AsInt(), state);
+                    break;
                 }
             }
 

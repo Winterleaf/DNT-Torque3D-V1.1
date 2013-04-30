@@ -104,7 +104,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coRenderFormatToken(string simobjectid) : base(simobjectid)
+        internal coRenderFormatToken(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -112,7 +112,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coRenderFormatToken(uint simobjectid) : base(simobjectid)
+        internal coRenderFormatToken(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -120,7 +120,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coRenderFormatToken(int simobjectid) : base(simobjectid)
+        internal coRenderFormatToken(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -147,8 +147,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXFormat depthFormat
             {
-            get { return (TypeGFXFormat) Enum.Parse(typeof (TypeGFXFormat), dnTorque.self.GetVar(_mSimObjectId + ".depthFormat")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".depthFormat", value.ToString()); }
+            get { return (TypeGFXFormat) Enum.Parse(typeof (TypeGFXFormat), dnTorque.self.GetVar(_mSimObjectId + ".depthFormat").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".depthFormat", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -156,8 +156,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeGFXFormat format
             {
-            get { return (TypeGFXFormat) Enum.Parse(typeof (TypeGFXFormat), dnTorque.self.GetVar(_mSimObjectId + ".format")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".format", value.ToString()); }
+            get { return (TypeGFXFormat) Enum.Parse(typeof (TypeGFXFormat), dnTorque.self.GetVar(_mSimObjectId + ".format").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".format", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -223,6 +223,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coRenderFormatToken ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -243,6 +245,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coRenderFormatToken ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -264,6 +268,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coRenderFormatToken ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

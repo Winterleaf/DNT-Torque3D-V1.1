@@ -27,6 +27,7 @@
 #include "math/mMatrix.h"
 #include "T3D/gameBase/moveManager.h"
 #include "console/engineAPI.h"
+#include "scene/sceneContainer.h"
 
 IMPLEMENT_CO_NETOBJECT_V1(AIPlayer);
 
@@ -463,9 +464,118 @@ void AIPlayer::throwCallback( const char *name )
 }
 
 
+void AIPlayer::AISearch(F32 fOV,F32 farDist,SimSet* ObjToSearch,SimSet* result)
+	{
+	if (ObjToSearch==0)
+		return;
+	if (result==0)
+		return;
+
+	//Box used for temporarily storing the object to compare's bounding box.
+	//This object is passed into a helper function "BoxToPlane" for using the
+	// half space test on the 6 planes of the view frustum
+	Box3F bounds;
+
+	//Camera vectors for easy use.
+	//The camera's up, right vector, and forward vector
+	Point3F up, right;
+
+	//Near & Far Plane distances from the camera
+	//float nearDist, 		farDist;
+
+	//Camera's Field of View
+	//float fOV;
+
+	//The four corners of the near distance plane
+	//These corners are used for generating the 4 side planes
+	Point3F pTR, pTL, pBR, pBL; 
+
+	//This variable will be used as the camera's position for generating the view frustum sides.
+	//It will also be used as the center of the near plane for finding the corners first.
+	Point3F pCP; 
+
+	//Four side planes to be created
+	PlaneF plTop;		//Top of view Frustum
+	PlaneF plBottom;	//Bottom of view Frustum
+	PlaneF plRight;		//Right side of view Frustum
+	PlaneF plLeft;		//Left side of view Frustum
+	PlaneF plNear;		//Near clipping plane
+	PlaneF plFar;		//Far clipping plane
+
+	//Amount to incriment to determine corners of near frustum
+	//These are based on the resolution of the screen and the distance of
+	// the near clipping plane.
+	float xAdd, yAdd;
+
+	F32 nearDist =1.0f;
+	yAdd = tan(fOV/2)*nearDist;
+	xAdd = yAdd*(4.0f/3.0f);
+
+	//Far Plane generation
+	Point3F pPos, pView;
+	MatrixF mTrans;
+	getCameraTransform(pPos, &mTrans);
+	pView = mTrans.getForwardVector();
+	pPos = mTrans.getPosition();
+	
+	pCP = pPos + (pView)*farDist;
+	plFar.set(pCP, (-1*pView));
+
+	//Near Plane generation
+	pCP = pPos + pView*nearDist;
+	plNear.set(pCP, pView);
+
+	//Getting the camera's orientation vectors
+	right = mTrans.getRightVector();
+	up = mTrans.getUpVector();
+
+	//4 corners of near Plane
+	pTR = pCP + (right*xAdd) + (up*yAdd);
+	pTL = pCP - (right*xAdd) + (up*yAdd);
+	pBR = pCP + (right*xAdd) - (up*yAdd);
+	pBL = pCP - (right*xAdd) - (up*yAdd);
+
+	//Finally set this to the camera position
+	pCP = pPos;
+
+	//Generate the side, top, and bottom planes
+	plLeft.set(pCP, pTL, pBL);
+	plTop.set(pCP, pTR, pTL);
+	plRight.set(pCP, pBR, pTR);
+	plBottom.set(pCP, pBL, pBR);
+
+	
+	for (int i = 0;i<ObjToSearch->size();i++)
+		{
+		SceneObject *object =dynamic_cast<SceneObject *>(ObjToSearch->at(i));
+		bounds = object->getWorldBox();
+		if(plNear.whichSide(bounds) < 0.0f)
+			continue;
+		if(plFar.whichSide(bounds) < 0.0f)
+			continue;
+		if(plLeft.whichSide(bounds) < 0.0f)
+			continue;
+		if(plRight.whichSide(bounds) < 0.0f)
+			continue;
+		if(plBottom.whichSide(bounds) < 0.0f)
+			continue;
+		if(plTop.whichSide(bounds) < 0.0f)
+			continue;
+
+		if (this!=object)
+			result->pushObject(object);
+		}
+	}
+
+
 // --------------------------------------------------------------------------------------------
 // Console Functions
 // --------------------------------------------------------------------------------------------
+DefineEngineMethod( AIPlayer, AISearchSimSet, void, (F32 fOV,F32 farDist,SimSet* ObjToSearch,SimSet* result ),,
+	"")
+	{
+	object->AISearch(fOV,farDist,ObjToSearch,result);
+	}
 
 DefineEngineMethod( AIPlayer, stop, void, ( ),,
    "@brief Tells the AIPlayer to stop moving.\n\n")

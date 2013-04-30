@@ -108,7 +108,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGizmoProfile(string simobjectid) : base(simobjectid)
+        internal coGizmoProfile(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -116,7 +116,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGizmoProfile(uint simobjectid) : base(simobjectid)
+        internal coGizmoProfile(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -124,7 +124,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGizmoProfile(int simobjectid) : base(simobjectid)
+        internal coGizmoProfile(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -376,6 +376,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coGizmoProfile ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -396,6 +398,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coGizmoProfile ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -417,6 +421,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coGizmoProfile ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

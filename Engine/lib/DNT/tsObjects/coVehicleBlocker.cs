@@ -106,7 +106,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coVehicleBlocker(string simobjectid) : base(simobjectid)
+        internal coVehicleBlocker(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -114,7 +114,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coVehicleBlocker(uint simobjectid) : base(simobjectid)
+        internal coVehicleBlocker(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -122,7 +122,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coVehicleBlocker(int simobjectid) : base(simobjectid)
+        internal coVehicleBlocker(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -196,6 +196,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coVehicleBlocker ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -216,6 +218,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coVehicleBlocker ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -237,6 +241,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coVehicleBlocker ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

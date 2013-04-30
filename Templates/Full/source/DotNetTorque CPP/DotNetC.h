@@ -998,6 +998,7 @@ extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIConnection_getTrigger(char
 extern "C" __declspec(dllexport) void  __cdecl wle_fnAIConnection_setFreeLook(char * x__object, char * x__a2);
 extern "C" __declspec(dllexport) void  __cdecl wle_fnAIConnection_setMove(char * x__object, char * x__a2, char * x__a3);
 extern "C" __declspec(dllexport) void  __cdecl wle_fnAIConnection_setTrigger(char * x__object, char * x__a2, char * x__a3);
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_AISearchSimSet(char * x__object, F32 fOV, F32 farDist, char * x__ObjToSearch, char * x__result);
 extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_clearAim(char * x__object);
 extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getAimLocation(char * x__object,  char* retval);
 extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_getAimObject(char * x__object);

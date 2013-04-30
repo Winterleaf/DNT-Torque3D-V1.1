@@ -72,62 +72,93 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.SetVar("$PostFXManager::PostFX::Enabled", bEnablePostFX);
             //if to enable the postFX, apply the ones that are enabled
 
-//           coPostEffect SSAOPostFx = new coPostEffect("SSAOPostFx");
+            coPostEffect SSAOPostFx = "SSAOPostFx";
+            coPostEffect HDRPostFX = "HDRPostFX";
+            coPostEffect LightRayPostFX = "LightRayPostFX";
+            coPostEffect DOFPostEffect = "DOFPostEffect";
 
             if (bEnablePostFX.AsBool())
                 {
-                console.Call("SSAOPostFx", bGlobal["$PostFXManager::PostFX::EnableSSAO"] ? "enable" : "disable");
-                console.Call("HDRPostFX", bGlobal["$PostFXManager::PostFX::EnableHDR"] ? "enable" : "disable");
-                console.Call("LightRayPostFX", bGlobal["$PostFXManager::PostFX::EnableLightRays"] ? "enable" : "disable");
-                console.Call("DOFPostEffect", bGlobal["$PostFXManager::PostFX::EnableDOF"] ? "enable" : "disable");
-                console.Call("postVerbose", new[] {"% - PostFX Manager - PostFX enabled"});
+                if (bGlobal["$PostFXManager::PostFX::EnableSSAO"])
+                    SSAOPostFx.enable();
+                else
+                    SSAOPostFx.disable();
+
+                if (bGlobal["$PostFXManager::PostFX::EnableHDR"])
+                    HDRPostFX.enable();
+                else
+                    HDRPostFX.disable();
+
+                if (bGlobal["$PostFXManager::PostFX::EnableLightRays"])
+                    LightRayPostFX.enable();
+                else
+                    LightRayPostFX.disable();
+
+                if (bGlobal["$PostFXManager::PostFX::EnableDOF"])
+                    DOFPostEffect.enable();
+                else
+                    DOFPostEffect.disable();
+
+                postVerbose("% - PostFX Manager - PostFX enabled");
+
+
+                //console.Call("SSAOPostFx", bGlobal["$PostFXManager::PostFX::EnableSSAO"] ? "enable" : "disable");
+                //console.Call("HDRPostFX", bGlobal["$PostFXManager::PostFX::EnableHDR"] ? "enable" : "disable");
+                //console.Call("LightRayPostFX", bGlobal["$PostFXManager::PostFX::EnableLightRays"] ? "enable" : "disable");
+                //console.Call("DOFPostEffect", bGlobal["$PostFXManager::PostFX::EnableDOF"] ? "enable" : "disable");
+                //console.Call("postVerbose", new[] { "% - PostFX Manager - PostFX enabled" });
                 }
             else
                 {
-                console.Call("SSAOPostFx", "disable");
-                console.Call("HDRPostFX", "disable");
-                console.Call("LightRayPostFX", "disable");
-                console.Call("DOFPostEffect", "disable");
-                console.Call("postVerbose", new[] {"% - PostFX Manager - PostFX disabled"});
+                SSAOPostFx.disable();
+                HDRPostFX.disable();
+                LightRayPostFX.disable();
+                DOFPostEffect.disable();
+                postVerbose("% - PostFX Manager - PostFX disabled");
+                //console.Call("SSAOPostFx", "disable");
+                //console.Call("HDRPostFX", "disable");
+                //console.Call("LightRayPostFX", "disable");
+                //console.Call("DOFPostEffect", "disable");
+                //console.Call("postVerbose", new[] { "% - PostFX Manager - PostFX disabled" });
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsEffectSetEnabled", "%this, %sName, %bEnable", 2, 104020, false)]
         public void PostFXManagersettingsEffectSetEnabled(string thisobj, string name, bool benabled)
             {
-            coPostEffect postEffect = new coPostEffect("0");
+            coPostEffect postEffect;
             //Determine the postFX to enable, and apply the boolean
-            if (name == "SSAO")
+            switch (name)
                 {
-                postEffect = "SSAOPostFx";
-                console.SetVar("$PostFXManager::PostFX::EnableSSAO", benabled);
-                }
-            else if (name == "HDR")
-                {
-                postEffect = "HDRPostFX";
-                console.SetVar("$PostFXManager::PostFX::EnableHDR", benabled);
-                }
-            else if (name == "LightRays")
-                {
-                postEffect = "LightRayPostFX";
-
-                console.SetVar("$PostFXManager::PostFX::EnableLightRays", benabled);
-                }
-            else if (name == "DOF")
-                {
-                postEffect = "DOFPostEffect";
-                console.SetVar("$PostFXManager::PostFX::EnableDOF", benabled);
+                case "SSAO":
+                    postEffect = "SSAOPostFx";
+                    bGlobal["$PostFXManager::PostFX::EnableSSAO"] = benabled;
+                    break;
+                case "HDR":
+                    postEffect = "HDRPostFX";
+                    bGlobal["$PostFXManager::PostFX::EnableHDR"] = benabled;
+                    break;
+                case "LightRays":
+                    postEffect = "LightRayPostFX";
+                    bGlobal["$PostFXManager::PostFX::EnableLightRays"] = benabled;
+                    break;
+                case "DOF":
+                    postEffect = "DOFPostEffect";
+                    bGlobal["$PostFXManager::PostFX::EnableDOF"] = benabled;
+                    break;
+                default:
+                    throw new Exception("UNKNOW POSTEFFECT");
                 }
             // Apply the change
             if (benabled)
                 {
                 postEffect.enable();
-                console.Call("postVerbose", new[] {"% - PostFX Manager - " + name + " enabled"});
+                postVerbose("% - PostFX Manager - " + name + " enabled");
                 }
             else
                 {
                 postEffect.disable();
-                console.Call("postVerbose", new[] {"% - PostFX Manager - " + name + " disable"});
+                postVerbose("% - PostFX Manager - " + name + " disable");
                 }
             }
 
@@ -135,60 +166,60 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void PostFXManagersettingsRefreshSSAO(string thisobj)
             {
             //Apply the enabled flag 
-            console.Call("ppOptionsEnableSSAO", "setValue", new[] {console.GetVarString("$PostFXManager::PostFX::EnableSSAO")});
+            console.Call("ppOptionsEnableSSAO", "setValue", new[] { console.GetVarString("$PostFXManager::PostFX::EnableSSAO") });
             //Add the items we need to display
             console.Call("ppOptionsSSAOQuality", "clear");
-            console.Call("ppOptionsSSAOQuality", "add", new[] {"Low", "0"});
-            console.Call("ppOptionsSSAOQuality", "add", new[] {"Medium", "1"});
-            console.Call("ppOptionsSSAOQuality", "add", new[] {"High", "2"});
+            console.Call("ppOptionsSSAOQuality", "add", new[] { "Low", "0" });
+            console.Call("ppOptionsSSAOQuality", "add", new[] { "Medium", "1" });
+            console.Call("ppOptionsSSAOQuality", "add", new[] { "High", "2" });
             //Set the selected, after adding the items!
 
-            console.Call("ppOptionsSSAOQuality", "setSelected", new[] {console.GetVarString("$SSAOPostFx::quality")});
+            console.Call("ppOptionsSSAOQuality", "setSelected", new[] { console.GetVarString("$SSAOPostFx::quality") });
             //SSAO - Set the values of the sliders, General Tab
 
-            console.Call("ppOptionsSSAOOverallStrength", "setValue", new[] {console.GetVarString("$SSAOPostFx::overallStrength")});
-            console.Call("ppOptionsSSAOBlurDepth", "setValue", new[] {console.GetVarString("$SSAOPostFx::blurDepthTol")});
-            console.Call("ppOptionsSSAOBlurNormal", "setValue", new[] {console.GetVarString("$SSAOPostFx::blurNormalTol")});
+            console.Call("ppOptionsSSAOOverallStrength", "setValue", new[] { console.GetVarString("$SSAOPostFx::overallStrength") });
+            console.Call("ppOptionsSSAOBlurDepth", "setValue", new[] { console.GetVarString("$SSAOPostFx::blurDepthTol") });
+            console.Call("ppOptionsSSAOBlurNormal", "setValue", new[] { console.GetVarString("$SSAOPostFx::blurNormalTol") });
             //SSAO - Set the values for the near tab
 
-            console.Call("ppOptionsSSAONearDepthMax", "setValue", new[] {console.GetVarString("$SSAOPostFx::sDepthMax")});
-            console.Call("ppOptionsSSAONearDepthMin", "setValue", new[] {console.GetVarString("$SSAOPostFx::sDepthMin")});
-            console.Call("ppOptionsSSAONearRadius", "setValue", new[] {console.GetVarString("$SSAOPostFx::sRadius")});
-            console.Call("ppOptionsSSAONearStrength", "setValue", new[] {console.GetVarString("$SSAOPostFx::sStrength")});
-            console.Call("ppOptionsSSAONearToleranceNormal", "setValue", new[] {console.GetVarString("$SSAOPostFx::sNormalTol")});
-            console.Call("ppOptionsSSAONearTolerancePower", "setValue", new[] {console.GetVarString("$SSAOPostFx::sNormalPow")});
+            console.Call("ppOptionsSSAONearDepthMax", "setValue", new[] { console.GetVarString("$SSAOPostFx::sDepthMax") });
+            console.Call("ppOptionsSSAONearDepthMin", "setValue", new[] { console.GetVarString("$SSAOPostFx::sDepthMin") });
+            console.Call("ppOptionsSSAONearRadius", "setValue", new[] { console.GetVarString("$SSAOPostFx::sRadius") });
+            console.Call("ppOptionsSSAONearStrength", "setValue", new[] { console.GetVarString("$SSAOPostFx::sStrength") });
+            console.Call("ppOptionsSSAONearToleranceNormal", "setValue", new[] { console.GetVarString("$SSAOPostFx::sNormalTol") });
+            console.Call("ppOptionsSSAONearTolerancePower", "setValue", new[] { console.GetVarString("$SSAOPostFx::sNormalPow") });
 
             //SSAO - Set the values for the far tab
-            console.Call("ppOptionsSSAOFarDepthMax", "setValue", new[] {console.GetVarString("$SSAOPostFx::lDepthMax")});
-            console.Call("ppOptionsSSAOFarDepthMin", "setValue", new[] {console.GetVarString("$SSAOPostFx::lDepthMin")});
-            console.Call("ppOptionsSSAOFarRadius", "setValue", new[] {console.GetVarString("$SSAOPostFx::lRadius")});
-            console.Call("ppOptionsSSAOFarStrength", "setValue", new[] {console.GetVarString("$SSAOPostFx::lStrength")});
-            console.Call("ppOptionsSSAOFarToleranceNormal", "setValue", new[] {console.GetVarString("$SSAOPostFx::lNormalTol")});
-            console.Call("ppOptionsSSAOFarTolerancePower", "setValue", new[] {console.GetVarString("$SSAOPostFx::lNormalPow")});
+            console.Call("ppOptionsSSAOFarDepthMax", "setValue", new[] { console.GetVarString("$SSAOPostFx::lDepthMax") });
+            console.Call("ppOptionsSSAOFarDepthMin", "setValue", new[] { console.GetVarString("$SSAOPostFx::lDepthMin") });
+            console.Call("ppOptionsSSAOFarRadius", "setValue", new[] { console.GetVarString("$SSAOPostFx::lRadius") });
+            console.Call("ppOptionsSSAOFarStrength", "setValue", new[] { console.GetVarString("$SSAOPostFx::lStrength") });
+            console.Call("ppOptionsSSAOFarToleranceNormal", "setValue", new[] { console.GetVarString("$SSAOPostFx::lNormalTol") });
+            console.Call("ppOptionsSSAOFarTolerancePower", "setValue", new[] { console.GetVarString("$SSAOPostFx::lNormalPow") });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsRefreshHDR", "%this", 1, 104040, false)]
         public void PostFXManagersettingsRefreshHDR(coSimSet thisobj)
             {
             //Apply the enabled flag 
-            console.Call("ppOptionsEnableHDR", "setValue", new[] {console.GetVarString("$PostFXManager::PostFX::EnableHDR")});
-            console.Call("ppOptionsHDRBloom", "setValue", new[] {console.GetVarString("$HDRPostFX::enableBloom")});
-            console.Call("ppOptionsHDRBloomBlurBrightPassThreshold", "setValue", new[] {console.GetVarString("$HDRPostFX::brightPassThreshold")});
-            console.Call("ppOptionsHDRBloomBlurMean", "setValue", new[] {console.GetVarString("$HDRPostFX::gaussMean")});
-            console.Call("ppOptionsHDRBloomBlurMultiplier", "setValue", new[] {console.GetVarString("$HDRPostFX::gaussMultiplier")});
-            console.Call("ppOptionsHDRBloomBlurStdDev", "setValue", new[] {console.GetVarString("$HDRPostFX::gaussStdDev")});
-            console.Call("ppOptionsHDRBrightnessAdaptRate", "setValue", new[] {console.GetVarString("$HDRPostFX::adaptRate")});
-            console.Call("ppOptionsHDREffectsBlueShift", "setValue", new[] {console.GetVarString("$HDRPostFX::enableBlueShift")});
+            console.Call("ppOptionsEnableHDR", "setValue", new[] { console.GetVarString("$PostFXManager::PostFX::EnableHDR") });
+            console.Call("ppOptionsHDRBloom", "setValue", new[] { console.GetVarString("$HDRPostFX::enableBloom") });
+            console.Call("ppOptionsHDRBloomBlurBrightPassThreshold", "setValue", new[] { console.GetVarString("$HDRPostFX::brightPassThreshold") });
+            console.Call("ppOptionsHDRBloomBlurMean", "setValue", new[] { console.GetVarString("$HDRPostFX::gaussMean") });
+            console.Call("ppOptionsHDRBloomBlurMultiplier", "setValue", new[] { console.GetVarString("$HDRPostFX::gaussMultiplier") });
+            console.Call("ppOptionsHDRBloomBlurStdDev", "setValue", new[] { console.GetVarString("$HDRPostFX::gaussStdDev") });
+            console.Call("ppOptionsHDRBrightnessAdaptRate", "setValue", new[] { console.GetVarString("$HDRPostFX::adaptRate") });
+            console.Call("ppOptionsHDREffectsBlueShift", "setValue", new[] { console.GetVarString("$HDRPostFX::enableBlueShift") });
 
 
             console.SetVar("ppOptionsHDREffectsBlueShiftColor.BaseColor", console.GetVarString("$HDRPostFX::blueShiftColor"));
             console.SetVar("ppOptionsHDREffectsBlueShiftColor.PickColor", console.GetVarString("$HDRPostFX::blueShiftColor"));
 
-            console.Call("ppOptionsHDRKeyValue", "setValue", new[] {console.GetVarString("$HDRPostFX::keyValue")});
-            console.Call("ppOptionsHDRMinLuminance", "setValue", new[] {console.GetVarString("$HDRPostFX::minLuminace")});
-            console.Call("ppOptionsHDRToneMapping", "setValue", new[] {console.GetVarString("$HDRPostFX::enableToneMapping")});
-            console.Call("ppOptionsHDRToneMappingAmount", "setValue", new[] {console.GetVarString("$HDRPostFX::enableToneMapping")});
-            console.Call("ppOptionsHDRWhiteCutoff", "setValue", new[] {console.GetVarString("$HDRPostFX::whiteCutoff")});
+            console.Call("ppOptionsHDRKeyValue", "setValue", new[] { console.GetVarString("$HDRPostFX::keyValue") });
+            console.Call("ppOptionsHDRMinLuminance", "setValue", new[] { console.GetVarString("$HDRPostFX::minLuminace") });
+            console.Call("ppOptionsHDRToneMapping", "setValue", new[] { console.GetVarString("$HDRPostFX::enableToneMapping") });
+            console.Call("ppOptionsHDRToneMappingAmount", "setValue", new[] { console.GetVarString("$HDRPostFX::enableToneMapping") });
+            console.Call("ppOptionsHDRWhiteCutoff", "setValue", new[] { console.GetVarString("$HDRPostFX::whiteCutoff") });
 
             console.SetVar(thisobj.findObjectByInternalName("ColorCorrectionFileName", true), console.GetVarString("$HDRPostFX::colorCorrectionRamp"));
             }
@@ -196,21 +227,21 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsRefreshLightrays", "%this", 1, 104050, false)]
         public void PostFXManagersettingsRefreshLightrays(string thisobj)
             {
-            console.Call("ppOptionsEnableLightRays", "setValue", new[] {console.GetVarString("$PostFXManager::PostFX::EnableLightRays")});
-            console.Call("ppOptionsLightRaysBrightScalar", "setValue", new[] {console.GetVarString("$LightRayPostFX::brightScalar")});
+            console.Call("ppOptionsEnableLightRays", "setValue", new[] { console.GetVarString("$PostFXManager::PostFX::EnableLightRays") });
+            console.Call("ppOptionsLightRaysBrightScalar", "setValue", new[] { console.GetVarString("$LightRayPostFX::brightScalar") });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsRefreshDOF", "%this", 1, 104060, false)]
         public void PostFXManagersettingsRefreshDOF(string thisobj)
             {
-            console.Call("ppOptionsEnableDOF", "setValue", new[] {console.GetVarString("$PostFXManager::PostFX::EnableDOF")});
-            console.Call("ppOptionsDOFEnableAutoFocus", "setValue", new[] {console.GetVarString("$DOFPostFx::EnableAutoFocus")});
-            console.Call("ppOptionsDOFFarBlurMinSlider", "setValue", new[] {console.GetVarString("$DOFPostFx::BlurMin")});
-            console.Call("ppOptionsDOFFarBlurMaxSlider", "setValue", new[] {console.GetVarString("$DOFPostFx::BlurMax")});
-            console.Call("ppOptionsDOFFocusRangeMinSlider", "setValue", new[] {console.GetVarString("$DOFPostFx::FocusRangeMin")});
-            console.Call("ppOptionsDOFFocusRangeMaxSlider", "setValue", new[] {console.GetVarString("$DOFPostFx::FocusRangeMax")});
-            console.Call("ppOptionsDOFBlurCurveNearSlider", "setValue", new[] {console.GetVarString("$DOFPostFx::BlurCurveNear")});
-            console.Call("ppOptionsDOFBlurCurveFarSlider", "setValue", new[] {console.GetVarString("$DOFPostFx::BlurCurveFar")});
+            console.Call("ppOptionsEnableDOF", "setValue", new[] { console.GetVarString("$PostFXManager::PostFX::EnableDOF") });
+            console.Call("ppOptionsDOFEnableAutoFocus", "setValue", new[] { console.GetVarString("$DOFPostFx::EnableAutoFocus") });
+            console.Call("ppOptionsDOFFarBlurMinSlider", "setValue", new[] { console.GetVarString("$DOFPostFx::BlurMin") });
+            console.Call("ppOptionsDOFFarBlurMaxSlider", "setValue", new[] { console.GetVarString("$DOFPostFx::BlurMax") });
+            console.Call("ppOptionsDOFFocusRangeMinSlider", "setValue", new[] { console.GetVarString("$DOFPostFx::FocusRangeMin") });
+            console.Call("ppOptionsDOFFocusRangeMaxSlider", "setValue", new[] { console.GetVarString("$DOFPostFx::FocusRangeMax") });
+            console.Call("ppOptionsDOFBlurCurveNearSlider", "setValue", new[] { console.GetVarString("$DOFPostFx::BlurCurveNear") });
+            console.Call("ppOptionsDOFBlurCurveFarSlider", "setValue", new[] { console.GetVarString("$DOFPostFx::BlurCurveFar") });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsRefreshAll", "%this", 1, 104070, false)]
@@ -229,15 +260,15 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.Call(thisobj, "settingsRefreshLightrays");
             console.Call(thisobj, "settingsRefreshDOF");
 
-            console.Call("ppOptionsEnable", "setValue", new[] {console.GetVarString("$PostFXManager::PostFX::Enabled")});
+            console.Call("ppOptionsEnable", "setValue", new[] { console.GetVarString("$PostFXManager::PostFX::Enabled") });
 
-            console.Call("postVerbose", new[] {"% - PostFX Manager - GUI values updated."});
+            console.Call("postVerbose", new[] { "% - PostFX Manager - GUI values updated." });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsApplyFromPreset", "%this", 1, 104070, false)]
         public void PostFXManagersettingsApplyFromPreset(string thisobj)
             {
-            console.Call("postVerbose", new[] {"% - PostFX Manager - Applying from preset"});
+            console.Call("postVerbose", new[] { "% - PostFX Manager - Applying from preset" });
 
 
             console.SetVar("$SSAOPostFx::blurDepthTol", console.GetVarString("$PostFXManager::Settings::SSAO::blurDepthTol"));
@@ -298,7 +329,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 console.SetVar("$PostFXManager::PostFX::EnableHDR", console.GetVarString("$PostFXManager::Settings::EnableHDR"));
                 console.SetVar("$PostFXManager::PostFX::EnableSSAO", console.GetVarString("$PostFXManager::Settings::EnabledSSAO"));
 
-                console.Call(thisobj, "settingsSetEnabled", new[] {"true"});
+                console.Call(thisobj, "settingsSetEnabled", new[] { "true" });
                 }
             //make sure we apply the correct settings to the DOF
             console.Call("ppOptionsUpdateDOFSettings");
@@ -331,7 +362,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.SetVar("$PostFXManager::Settings::SSAO::sRadius", console.GetVarString("$SSAOPostFx::sRadius"));
             console.SetVar("$PostFXManager::Settings::SSAO::sStrength", console.GetVarString("$SSAOPostFx::sStrength"));
 
-            console.Call("postVerbose", new[] {"% - PostFX Manager - Settings Saved - SSAO"});
+            console.Call("postVerbose", new[] { "% - PostFX Manager - Settings Saved - SSAO" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsApplyHDR", "%this", 1, 104080, false)]
@@ -350,14 +381,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.SetVar("$PostFXManager::Settings::HDR::minLuminace", console.GetVarString("$HDRPostFX::minLuminace"));
             console.SetVar("$PostFXManager::Settings::HDR::whiteCutoff", console.GetVarString("$HDRPostFX::whiteCutoff"));
             console.SetVar("$PostFXManager::Settings::ColorCorrectionRamp", console.GetVarString("$HDRPostFX::colorCorrectionRamp"));
-            console.Call("postVerbose", new[] {"% - PostFX Manager - Settings Saved - HDR"});
+            console.Call("postVerbose", new[] { "% - PostFX Manager - Settings Saved - HDR" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsApplyLightRays", "%this", 1, 104090, false)]
         public void PostFXManagersettingsApplyLightRays(string thisobj)
             {
             console.SetVar("$PostFXManager::Settings::LightRays::brightScalar", console.GetVarString("$LightRayPostFX::brightScalar"));
-            console.Call("postVerbose", new[] {"% - PostFX Manager - Settings Saved - Light Rays"});
+            console.Call("postVerbose", new[] { "% - PostFX Manager - Settings Saved - Light Rays" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsApplyDOF", "%this", 1, 104100, false)]
@@ -370,7 +401,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.SetVar("$PostFXManager::Settings::DOF::FocusRangeMax", console.GetVarString("$DOFPostFx::FocusRangeMax"));
             console.SetVar("$PostFXManager::Settings::DOF::BlurCurveNear", console.GetVarString("$DOFPostFx::BlurCurveNear"));
             console.SetVar("$PostFXManager::Settings::DOF::BlurCurveFar", console.GetVarString("$DOFPostFx::BlurCurveFar"));
-            console.Call("postVerbose", new[] {"% - PostFX Manager - Settings Saved - DOF"});
+            console.Call("postVerbose", new[] { "% - PostFX Manager - Settings Saved - DOF" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsApplyAll", "%this,%sFrom", 2, 104110, false)]
@@ -394,7 +425,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // DOF
             console.Call(thisobj, "settingsApplyDOF");
 
-            console.Call("postVerbose", new[] {"% - PostFX Manager - All Settings applied to $PostFXManager::Settings"});
+            console.Call("postVerbose", new[] { "% - PostFX Manager - All Settings applied to $PostFXManager::Settings" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "settingsApplyDefaultPreset", "%this", 1, 104120, false)]
@@ -406,7 +437,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             //it them checks to see if it's an object.
             //con.Eval("PostFXManager::loadPresetHandler($PostFXManager::defaultPreset);");
             //con.Call_Classname("PostFXManager", "loadPresetHandler", new string[] { con.GetVarString("$PostFXManager::defaultPreset") });
-            console.Call("PostFXManager", "loadPresetHandler", new[] {console.GetVarString("$PostFXManager::defaultPreset")});
+            console.Call("PostFXManager", "loadPresetHandler", new[] { console.GetVarString("$PostFXManager::defaultPreset") });
             }
         }
     }

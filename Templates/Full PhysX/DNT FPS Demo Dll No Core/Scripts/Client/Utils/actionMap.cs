@@ -62,7 +62,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "ActionMap", "copyBind", "( %this, %otherMap, %command )", 3, 53000, false)]
         public void ActionMapcopyBind(coActionMap thisobj, coActionMap otherMap, string command)
             {
-            if (Util._isObject(otherMap))
+            if (otherMap.isObject())
                 {
                 Util._error("ActionMap::copyBind - \"" + otherMap + "\" is not an object!");
                 return;
@@ -81,7 +81,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "ActionMap", "blockBind", "( %this, %otherMap, %command )", 3, 53000, false)]
         public void ActionMapblockBind(coActionMap thisobj, coActionMap othermap, string command)
             {
-            if (Util._isObject(othermap))
+            if (othermap.isObject())
                 {
                 Util._error("ActionMap::blockBind - \"" + othermap + "\" is not an object!");
                 return;

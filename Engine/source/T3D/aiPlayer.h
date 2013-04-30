@@ -89,6 +89,8 @@ public:
    void setMoveDestination( const Point3F &location, bool slowdown );
    Point3F getMoveDestination() const { return mMoveDestination; }
    void stopMove();
+
+   void AISearch(F32 fOV,F32 farDist,SimSet* ObjToSearch,SimSet* result);
 };
 
 #endif

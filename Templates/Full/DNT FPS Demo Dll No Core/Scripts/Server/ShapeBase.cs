@@ -93,7 +93,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // this is standard procedure for many built in callbacks.
 
 
-            if (console.isObject(shapebase))
+            if (shapebase.isObject())
                 {
                 coShapeBaseData datablock = shapebase.getDataBlock();
                 datablock.call("damage", shapebase, position.AsString(), sourceobject, damage.AsString(), damagetype);
@@ -136,7 +136,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         //-----------------------------------------------------------------------------
 
         [Torque_Decorations.TorqueCallBack("", "ShapeBaseData", "damage", "(%this, %obj, %position, %source, %amount, %damageType)", 6, 1300, false)]
-        public void ShapeBaseDataDamage(coShapeBaseData thisobj, coShapeBase obj, string position, coShapeBase source, float amount, string damageType)
+        public void ShapeBaseDataDamage(coShapeBaseData thisobj, coShapeBase obj, string position,  coShapeBase source, float amount, string damageType)
             {
             // Ignore damage by default. This empty method is here to
             // avoid console warnings.

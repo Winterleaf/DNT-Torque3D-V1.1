@@ -104,7 +104,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coTurretShape(string simobjectid) : base(simobjectid)
+        internal coTurretShape(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -112,7 +112,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coTurretShape(uint simobjectid) : base(simobjectid)
+        internal coTurretShape(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -120,7 +120,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coTurretShape(int simobjectid) : base(simobjectid)
+        internal coTurretShape(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -187,6 +187,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coTurretShape ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -207,6 +209,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coTurretShape ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -228,6 +232,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coTurretShape ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

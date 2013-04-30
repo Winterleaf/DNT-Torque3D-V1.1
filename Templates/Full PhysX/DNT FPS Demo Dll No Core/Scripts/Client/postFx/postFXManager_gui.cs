@@ -61,7 +61,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "postFXManager_Init", "", 0, 102000, true)]
         public void postFXManager_Init()
             {
-            if (!console.isObject("PostFXManager"))
+            if (!"PostFXManager".isObject())
                 Util.exec("art/postfx/postFXManager.gui", false, false);
             }
         }

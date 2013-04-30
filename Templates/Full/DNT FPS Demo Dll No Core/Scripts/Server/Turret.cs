@@ -64,8 +64,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "cs_init_TurretShapeData_vars", "", 0, 2900, true)]
         public void TurretShapeDataCsInitVars()
             {
-            iGlobal["$TurretShape::RespawnTime"] = (30*1000);
-            iGlobal["$TurretShape::DestroyedFadeDelay"] = 5*1000;
+            iGlobal["$TurretShape::RespawnTime"] = (30 * 1000);
+            iGlobal["$TurretShape::DestroyedFadeDelay"] = 5 * 1000;
             }
 
         [Torque_Decorations.TorqueCallBack("", "TurretShapeData", "onAdd", "(%this, %obj)", 2, 2900, false)]
@@ -85,18 +85,18 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 obj.setShapeName(thisobj["nameTag"]);
             for (int i = 0; i < thisobj["numWeaponMountPoints"].AsInt(); i++)
                 {
-                ShapeBaseShapeBaseIncInventory(obj, new coItemData(thisobj["weapon[" + i + "]"]), 1);
+                ShapeBaseShapeBaseIncInventory(obj, thisobj["weapon[" + i + "]"], 1);
 
-                coItemData weaponAmmo = thisobj["weaponAmmo[{" + i + "}]"];
+                coItemData weaponAmmo = thisobj["weaponAmmo[" + i + "]"];
 
 
-                string weaponAmmoAmount = thisobj["weaponAmmoAmount[{" + i + "}]"];
+                string weaponAmmoAmount = thisobj["weaponAmmoAmount[" + i + "]"];
                 ShapeBaseShapeBaseIncInventory(obj, weaponAmmo, weaponAmmoAmount.AsInt());
 
 
                 bool startLoaded = thisobj["startLoaded"].AsBool();
 
-                obj.mountImage(thisobj["weapon[{" + i + "}].Image"], i, startLoaded, "");
+                obj.mountImage(thisobj["weapon[" + i + "].Image"], i, startLoaded, "");
                 obj.setImageGenericTrigger(i, 0, false);
                 }
             if (thisobj["enterSequence"] != "")
@@ -124,7 +124,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 coPlayer passenger = obj.getMountNodeObject(i).AsString();
 
 
-                ((coTurretShapeData) passenger.getDataBlock()).call("doDismount", true.AsString());
+                ((coTurretShapeData)passenger.getDataBlock()).call("doDismount", true.AsString());
                 }
             }
 
@@ -138,7 +138,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             coTurretShape turretid = turret.Create();
 
             turretid.setTransform(transform);
-            ((coSimSet) "MissioinGroup").pushToBack(turretid);
+            ((coSimSet)"MissioinGroup").pushToBack(turretid);
             return turretid;
             }
 
@@ -153,8 +153,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // Update the numerical Health HUD
             coShapeBase mountedobject = turret.getObjectMount();
 
-            if (mountedobject != 0)
-                console.Call(mountedobject, "updateHealth");
+            //if (mountedobject != 0)
+            //    console.Call(mountedobject, "updateHealth");
             if (turret.getState() != "Dead")
                 return;
 
@@ -162,7 +162,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 {
                 coShapeBase player = turret.getMountNodeObject(i);
                 if (player != 0)
-                    console.Call(player, "killWithSource", new[] {"sourceobject", "InsideTurret"});
+                    console.Call(player, "killWithSource", new[] { "sourceobject", "InsideTurret" });
                 }
             }
 
@@ -186,7 +186,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             obj.schedule((destroydelay + 1000).AsString(), "delete");
 
             if (obj.call("doRespawn") != "")
-                ((coSimSet) "MissionGroup").schedule(sGlobal["$TurretShape::RespawnTime"], "respawnTurret", thisobj, console.GetClassName(obj), obj.getTransform().AsString(), true.AsString(), true.AsString());
+                ((coSimSet)"MissionGroup").schedule(sGlobal["$TurretShape::RespawnTime"], "respawnTurret", thisobj, console.GetClassName(obj), obj.getTransform().AsString(), true.AsString(), true.AsString());
             }
 
         [Torque_Decorations.TorqueCallBack("", "TurretShapeData", "onDisabled", "(%this, %obj, %lastState)", 3, 2900, false)]
@@ -233,7 +233,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // Play the entrance thread backwards for an exit
 
             turret.setThreadDir(et, false);
-            turret.setThreadPosition(et, (float) 1.0);
+            turret.setThreadPosition(et, (float)1.0);
             turret.playThread(et, "");
             }
 
@@ -286,7 +286,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "TurretShapeData", "onMount", "(%this, %turret, %player, %node)", 4, 2900, false)]
         public void TurretShapeDataOnMount(coTurretShapeData thisobj, coTurretShape turret, coShapeBase player, int node)
             {
-            ((coGameConnection) player["client"]).call("RefreshVehicleHud", turret, thisobj["reticle"], thisobj["zoomReticle"]);
+            ((coGameConnection)player["client"]).call("RefreshVehicleHud", turret, thisobj["reticle"], thisobj["zoomReticle"]);
             }
 
         [Torque_Decorations.TorqueCallBack("", "TurretShapeData", "onUnmount", "(%this, %turret, %player, %node)", 4, 2900, false)]
@@ -298,7 +298,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "TurretShape", "damage", "(%this, %sourceObject, %position, %damage, %damageType)", 5, 2900, false)]
         public void TurretShapeDataDamage(coTurretShape thisobj, coShapeBase sourceObject, TransformF position, float damage, string damagetype)
             {
-            ((coTurretShapeData) (thisobj.getDataBlock())).call("damage", thisobj, sourceObject, position.AsString(), damage.AsString(), damagetype);
+            ((coTurretShapeData)(thisobj.getDataBlock())).call("damage", thisobj, position.AsString(), sourceObject, damage.AsString(), damagetype);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sendMsgClientKilled_TurretDamage", "( %msgType, %client, %sourceClient, %damLoc )", 4, 2900, false)]
@@ -316,7 +316,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void AiTurretShapeDataOnAdd(coAITurretShapeData thisobj, coAITurretShape obj, string nameSpaceDepth)
             {
             int nsd = (nameSpaceDepth.AsInt() + 1);
-            console.ParentExecute(thisobj, "onAdd", nsd, new string[] {thisobj, obj});
+            console.ParentExecute(thisobj, "onAdd", nsd, new string[] { thisobj, obj });
             obj["mountable"] = false.AsString();
             }
 
@@ -346,31 +346,25 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             tc_obj.Props.Add("isAiControlled", "1");
 
             coAITurretShape obj = tc_obj.Create();
-            ((coSimSet) "MissionGroup").pushToBack(obj);
+            ((coSimSet)"MissionGroup").pushToBack(obj);
             obj.call("addToIgnoreList", user);
 
 
-            try
+            coGameConnection client = user["client"];
+            if (client.isObject())
                 {
-                coGameConnection client = user["client"];
-                if (client.isObject())
-                    {
-                    if (client["ownedTurrets"] == "")
-                        client["ownedTurrets"] = new Torque_Class_Helper("SimSet", "").Create().AsString();
+                if (client["ownedTurrets"] == "")
+                    client["ownedTurrets"] = new Torque_Class_Helper("SimSet", "").Create().AsString();
 
-                    coSimSet SimSet_id = client["ownedTurrets"];
-                    int countofitems = SimSet_id.getCount();
-                    for (uint i = 0; i < countofitems; i++)
-                        {
-                        coAITurretShape turret = SimSet_id.getObject(i);
-                        turret.call("addToIgnoreList", obj);
-                        obj.call("addToIgnoreList", turret);
-                        }
-                    SimSet_id.pushToBack(obj);
+                coSimSet SimSet_id = client["ownedTurrets"];
+                int countofitems = SimSet_id.getCount();
+                for (uint i = 0; i < countofitems; i++)
+                    {
+                    coAITurretShape turret = SimSet_id.getObject(i);
+                    turret.call("addToIgnoreList", obj);
+                    obj.call("addToIgnoreList", turret);
                     }
-                }
-            catch (Exception)
-                {
+                SimSet_id.pushToBack(obj);
                 }
 
             return obj;
@@ -389,7 +383,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 turret.setImageGenericTrigger(i, 0, true);
 
             int nsd = (nameSpaceDepth.AsInt());
-            console.ParentExecute(thisobj, "onDestroyed", nsd, new string[] {thisobj, turret, lastState});
+            console.ParentExecute(thisobj, "onDestroyed", nsd, new string[] { thisobj, turret, lastState });
             }
 
         [Torque_Decorations.TorqueCallBack("", "AITurretShapeData", "OnScanning", "(%this, %turret)", 2, 2900, false)]
@@ -438,13 +432,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "DeployableTurretWeapon", "onUse", "(%this, %obj)", 2, 2900, false)]
         public void DeployableTurretWeaponOnUse(coAITurretShapeData thisobj, coAITurretShape obj)
             {
-            console.Call_Classname("Weapon", "onUse", new string[] {thisobj, obj});
+            console.Call_Classname("Weapon", "onUse", new string[] { thisobj, obj });
             }
 
         [Torque_Decorations.TorqueCallBack("", "DeployableTurretWeapon", "onPickup", "(%this, %obj)", 4, 2900, false)]
         public void DeployableTurretWeaponOnPickup(coAITurretShapeData thisobj, coAITurretShape obj, string shape, string amount)
             {
-            console.Call_Classname("Weapon", "onPickup", new string[] {thisobj, obj, shape, amount});
+            console.Call_Classname("Weapon", "onPickup", new string[] { thisobj, obj, shape, amount });
             }
 
         [Torque_Decorations.TorqueCallBack("", "DeployableTurretWeapon", "onInventory", "(%this, %obj, %amount)", 3, 2900, false)]
@@ -471,7 +465,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
              */
             //error("Amount = " + amount);
             if (amount == 0 && obj.isMethod("getMountSlot"))
-                obj.call("cycleWeapon", new[] {"prev"});
+                obj.call("cycleWeapon", new[] { "prev" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "DeployableTurretWeaponImage", "onMount", "(%this, %obj, %slot)", 3, 2900, false)]
@@ -482,7 +476,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             int numTurrets = ShapeBaseShapeBaseGetInventory(obj, thisobj["item"]);
 
             if (obj["client"] != "" && obj["isAiControlled"].AsBool() == false)
-                ((coGameConnection) obj["client"]).call("RefreshWeaponHud", "1", thisobj["item.previewImage"], thisobj["item.reticle"], thisobj["item.zoomReticle"], numTurrets.AsString());
+                ((coGameConnection)obj["client"]).call("RefreshWeaponHud", "1", thisobj["item.previewImage"], thisobj["item.reticle"], thisobj["item.zoomReticle"], numTurrets.AsString());
             }
 
         [Torque_Decorations.TorqueCallBack("", "DeployableTurretWeaponImage", "onUnmount", "(%this, %obj, %slot)", 3, 2900, false)]
@@ -490,7 +484,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             //print("AI CONTROL 7");
             if (obj["client"] != "" && obj["isAiControlled"].AsBool() == false)
-                ((coGameConnection) obj["client"]).call("RefreshWeaponHud", "0");
+                ((coGameConnection)obj["client"]).call("RefreshWeaponHud", "0");
             }
 
         [Torque_Decorations.TorqueCallBack("", "DeployableTurretWeaponImage", "onFire", "(%this, %obj, %slot)", 3, 2900, false)]

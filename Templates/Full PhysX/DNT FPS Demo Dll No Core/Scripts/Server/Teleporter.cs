@@ -132,35 +132,26 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // Create our entrance effects on all clients.
 
 
-            try
-                {
-                coSimObject entranceeffect = entrance["entranceEffect"];
+
+            coSimObject entranceeffect = entrance["entranceEffect"];
+            if (entranceeffect.isObject())
                 foreach (coGameConnection client in ClientGroup)
                     {
                     if (console.isObject(client))
-                        console.commandToClient(client, "PlayTeleportEffect", new[] {entrance["position"], entranceeffect.getId().AsString()});
+                        console.commandToClient(client, "PlayTeleportEffect", new[] { entrance["position"], entranceeffect.getId().AsString() });
                     }
-                }
-            catch (Exception)
-                {
-                }
 
 
             TeleporterTriggerTeleportPlayer(thisobj, obj, exit);
             // Create our exit effects on all clients.
-            try
-                {
-                coSimObject exitEffect = entrance["exitEffect"];
+
+            coSimObject exitEffect = entrance["exitEffect"];
+            if (exitEffect.isObject())
                 foreach (coGameConnection client in ClientGroup)
                     {
                     if (console.isObject(client))
-                        console.commandToClient(client, "PlayTeleportEffect", new[] {entrance["position"], exitEffect.getId().AsString()});
+                        console.commandToClient(client, "PlayTeleportEffect", new[] { entrance["position"], exitEffect.getId().AsString() });
                     }
-                }
-            catch (Exception)
-                {
-                }
-
 
             // Record what time we last teleported so we can determine if enough
             // time has elapsed to teleport again
@@ -173,9 +164,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
 
             // Tell the client to play the 2D sound for the player that teleported.
-            if (((coSimObject) thisobj["teleportSound"]).isObject() && ((coGameConnection) obj["client"]).isObject())
+            if (((coSimObject)thisobj["teleportSound"]).isObject() && ((coGameConnection)obj["client"]).isObject())
                 {
-                ((coGameConnection) obj["client"]).play2D(thisobj["teleportSound"]);
+                ((coGameConnection)obj["client"]).play2D(thisobj["teleportSound"]);
                 //GameConnection.play2D(obj, thisobj["teleportSound"]);
                 }
             }
@@ -238,7 +229,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             // Get the bounding box of the player
 
-            Point3F boundingBoxSize = new Point3F(((coPlayerData) player.getDataBlock())["boundingBox"]);
+            Point3F boundingBoxSize = new Point3F(((coPlayerData)player.getDataBlock())["boundingBox"]);
             float radius = boundingBoxSize.x;
             float boxSizeY = boundingBoxSize.y;
             float boxSizeZ = boundingBoxSize.z;
@@ -250,13 +241,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 radius = boxSizeZ;
 
             Point3F position = exit.getTransform().MPosition; // new TransformF(con.getTransform(exit));
-            uint mask = (uint) SceneObjectTypesAsUint.PlayerObjectType;
+            uint mask = (uint)SceneObjectTypesAsUint.PlayerObjectType;
 
             // Check all objects within the found radius of the exit location, and telefrag
             // any players that meet the conditions.
 
             Dictionary<uint, float> r = console.initContainerRadiusSearch(position, radius, mask);
-            foreach (coShapeBase objectNearExit in r.Keys.Where(objectNearExit => ((coShapeBase) objectNearExit).isMemberOfClass("Player")).Where(objectNearExit => objectNearExit.AsString() != player))
+            foreach (coShapeBase objectNearExit in r.Keys.Where(objectNearExit => ((coShapeBase)objectNearExit).isMemberOfClass("Player")).Where(objectNearExit => objectNearExit.AsString() != player))
                 {
                 ShapeBaseDamage(objectNearExit, player, exit.getTransform().MPosition, 10000, "Telefrag");
                 }
@@ -270,7 +261,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // And kill any players
             for (int i = 0; i < objectsInExit; i++)
                 {
-                coShapeBase objectInTeleporter = console.Call(exit, "getObject", new[] {i.AsString()});
+                coShapeBase objectInTeleporter = console.Call(exit, "getObject", new[] { i.AsString() });
                 if (objectInTeleporter.isMemberOfClass("Player"))
                     continue;
                 // Avoid killing the player that is teleporting in the case of two

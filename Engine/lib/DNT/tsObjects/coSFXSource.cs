@@ -104,7 +104,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coSFXSource(string simobjectid) : base(simobjectid)
+        internal coSFXSource(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -112,7 +112,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coSFXSource(uint simobjectid) : base(simobjectid)
+        internal coSFXSource(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -120,7 +120,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coSFXSource(int simobjectid) : base(simobjectid)
+        internal coSFXSource(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -196,6 +196,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coSFXSource ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -216,6 +218,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coSFXSource ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -237,6 +241,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coSFXSource ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

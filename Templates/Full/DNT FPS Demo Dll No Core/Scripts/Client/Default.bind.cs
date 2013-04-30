@@ -75,363 +75,402 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "init_Default_Bind", "()", 0, 11000, true)]
         public void initDefaultBind()
             {
-            if (console.isObject("moveMap"))
-                console.Call("moveMap", "delete");
-
+            coActionMap moveMap = "moveMap";
+            if (moveMap.isObject())
+                moveMap.delete();
 
             new Torque_Class_Helper("ActionMap", "moveMap").Create();
 
             if (console.GetVarString("$Player::CurrentFOV") == "")
-                console.SetVar("$Player::CurrentFOV", console.GetVarFloat("$pref::Player::DefaultFOV")/(float) 2.0);
+                console.SetVar("$Player::CurrentFOV", console.GetVarFloat("$pref::Player::DefaultFOV") / (float)2.0);
 
             console.SetVar("$MFDebugRenderMode", 0);
 
-            if (console.isObject("vehicleMap"))
-                console.Call("vehicleMap", "delete");
+            coActionMap vehicleMap = "vehicleMap";
+            if (vehicleMap.isObject())
+                vehicleMap.delete();
+
             new Torque_Class_Helper("ActionMap", "vehicleMap").Create();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "escapeFromGame", "()", 0, 11001, false)]
-        public string escapeFromGame()
+        public void escapeFromGame()
             {
-            console.Call("MessageBoxYesNo", console.GetVarString("$Server::ServerType") == "SinglePlayer" ? new[] {"Exit", "Exit from this Mission?", "disconnect();", ""} : new[] {"Disconnect", "Disconnect from the server?", "disconnect();", ""});
-            return string.Empty;
+            console.Call("MessageBoxYesNo", console.GetVarString("$Server::ServerType") == "SinglePlayer" ? new[] { "Exit", "Exit from this Mission?", "disconnect();", "" } : new[] { "Disconnect", "Disconnect from the server?", "disconnect();", "" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "showPlayerList", "(val)", 1, 11001, false)]
-        public string showPlayerList(string val)
+        public void showPlayerList(bool val)
             {
-            if (val.AsBool())
-                PlayerListGuiToggle(new coGuiControl("PlayerListGui"));
-            return string.Empty;
+            if (val)
+                PlayerListGuiToggle("PlayerListGui");
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "showControlsHelp", "(val)", 1, 11001, false)]
-        public string showControlsHelp(string val)
+        public void showControlsHelp(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 console.Call("ControlsHelpDlg", "toggle");
-            return string.Empty;
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "hideHUDs", "(val)", 1, 11001, false)]
-        public string hideHUDs(string val)
+        public void hideHUDs(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 console.Call("HudlessPlayGui", "toggle");
-            return string.Empty;
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "doScreenShotHudless", "(val)", 1, 11001, false)]
-        public void doScreenShotHudless(string val)
+        public void doScreenShotHudless(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 {
-                ((coGuiCanvas) "canvas").setContent("HudlessPlayGui");
-                Util._schedule("10", "0", "doScreenShot", val);
+                ((coGuiCanvas)"canvas").setContent("HudlessPlayGui");
+                Util._schedule("10", "0", "doScreenShot", val.AsString());
                 }
             else
                 {
-                ((coGuiCanvas) "canvas").setContent("PlayGui");
+                ((coGuiCanvas)"canvas").setContent("PlayGui");
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "setSpeed", "(Speed)", 1, 11001, false)]
-        public void setSpeed(string speed)
+        public void setSpeed(int speed)
             {
             if (speed.AsBool())
-                movementSpeed = speed.AsInt();
+                movementSpeed = speed;
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "moveleft", "(val)", 1, 11001, false)]
-        public void moveleft(string val)
+        public void moveleft(int val)
             {
-            console.SetVar("$mvLeftAction", val.AsInt()*movementSpeed);
+            iGlobal["$mvLeftAction"] = val * movementSpeed;
+            //console.SetVar("$mvLeftAction", val.AsInt()*movementSpeed);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "moveright", "(val)", 1, 11001, false)]
-        public void moveright(string val)
+        public void moveright(int val)
             {
-            console.SetVar("$mvRightAction", val.AsInt()*movementSpeed);
+            //console.SetVar("$mvRightAction", val.AsInt()*movementSpeed);
+            iGlobal["$mvRightAction"] = val * movementSpeed;
             }
 
 
         [Torque_Decorations.TorqueCallBack("", "", "moveforward", "(val)", 1, 11001, false)]
-        public void moveforward(string val)
+        public void moveforward(int val)
             {
-            console.SetVar("$mvForwardAction", val.AsInt()*movementSpeed);
+            //console.SetVar("$mvForwardAction", val.AsInt() * movementSpeed);
+            iGlobal["$mvForwardAction"] = val * movementSpeed;
             }
 
 
         [Torque_Decorations.TorqueCallBack("", "", "movebackward", "(val)", 1, 11001, false)]
-        public void movebackward(string val)
+        public void movebackward(int val)
             {
-            console.SetVar("$mvBackwardAction", val.AsInt()*movementSpeed);
+            iGlobal["$mvBackwardAction"] = val * movementSpeed;
+            //console.SetVar("$mvBackwardAction", val.AsInt() * movementSpeed);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "moveup", "(val)", 1, 11001, false)]
-        public void moveup(string val)
+        public void moveup(int val)
             {
-            string obj = ((coGameConnection) "ServerConnection").getControlObject();
-            if (console.isInNamespaceHierarchy(obj, "Camera"))
-                console.SetVar("$mvUpAction", val.AsInt()*movementSpeed);
+            coSimObject obj = ((coGameConnection)"ServerConnection").getControlObject();
+            if (obj.isInNamespaceHierarchy("Camera"))
+                iGlobal["$mvUpAction"] = val * movementSpeed;
+            //console.SetVar("$mvUpAction", val.AsInt() * movementSpeed);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "movedown", "(val)", 1, 11001, false)]
-        public void movedown(string val)
+        public void movedown(int val)
             {
-            string obj = ((coGameConnection) "ServerConnection").getControlObject();
-            if (console.isInNamespaceHierarchy(obj, "Camera"))
-                console.SetVar("$mvDownAction", val.AsInt()*movementSpeed);
+            coSimObject obj = ((coGameConnection)"ServerConnection").getControlObject();
+            if (obj.isInNamespaceHierarchy("Camera"))
+                iGlobal["$mvDownAction"] = val * movementSpeed;
+            //console.SetVar("$mvDownAction", val.AsInt() * movementSpeed);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "turnLeft", "(val)", 1, 11001, false)]
-        public void turnLeft(string val)
+        public void turnLeft(bool val)
             {
-            console.SetVar("$mvYawRightSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
+            iGlobal["$mvYawRightSpeed"] = val ? iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
+            //console.SetVar("$mvYawRightSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "turnRight", "(val)", 1, 11001, false)]
-        public void turnRight(string val)
+        public void turnRight(bool val)
             {
-            console.SetVar("$mvYawLeftSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
+            //console.SetVar("$mvYawLeftSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
+            iGlobal["$mvYawLeftSpeed"] = val ? iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
             }
 
 
         [Torque_Decorations.TorqueCallBack("", "", "panUp", "(val)", 1, 11001, false)]
-        public void panUp(string val)
+        public void panUp(bool val)
             {
-            console.SetVar("$mvPitchDownSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
+            iGlobal["$mvPitchDownSpeed"] = val ? iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
+            //console.SetVar("$mvPitchDownSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "panDown", "(val)", 1, 11001, false)]
-        public void panDown(string val)
+        public void panDown(bool val)
             {
-            console.SetVar("$mvPitchUpSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
+            iGlobal["$mvPitchUpSpeed"] = val ? iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
+            //console.SetVar("$mvPitchUpSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "getMouseAdjustAmount", "(val)", 1, 11001, false)]
-        public string getMouseAdjustAmount(string val)
+        public float getMouseAdjustAmount(float val)
             {
-            return ((val.AsDouble()*(console.GetVarFloat("$cameraFov")/90.0)*0.01)*console.GetVarFloat("$pref::Input::LinkMouseSensitivity")).AsString();
+            return ((val * (fGlobal["$cameraFov"] / 90.0f) * 0.01f) * fGlobal["$pref::Input::LinkMouseSensitivity"]);
+            //return ((val.AsDouble() * (console.GetVarFloat("$cameraFov") / 90.0) * 0.01) * console.GetVarFloat("$pref::Input::LinkMouseSensitivity")).AsString();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "getGamepadAdjustAmount", "(val)", 1, 11001, false)]
-        public string getGamepadAdjustAmount(string val)
+        public float getGamepadAdjustAmount(float val)
             {
-            return ((val.AsFloat()*(console.GetVarFloat("$cameraFov")/90)*0.01)*10.0).AsString();
+            return ((val * (fGlobal["$cameraFov"] / 90.0f) * 0.01f) * 10.0f);
+            //return ((val.AsFloat() * (console.GetVarFloat("$cameraFov") / 90) * 0.01) * 10.0).AsString();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "yaw", "(val)", 1, 11001, false)]
-        public void yaw(string val)
+        public void yaw(float val)
             {
-            float yawAdj = getMouseAdjustAmount(val).AsFloat();
-            if (((coGameConnection) "ServerConnection").isControlObjectRotDampedCamera())
+            float yawAdj = getMouseAdjustAmount(val);
+            if (((coGameConnection)"ServerConnection").isControlObjectRotDampedCamera())
                 {
-                yawAdj = Util.mClamp(yawAdj, (-Util.m2Pi() + (float) 0.01), (Util.m2Pi() - (float) 0.01));
-                yawAdj *= (float) 0.5;
+                yawAdj = Util.mClamp(yawAdj, (-Util.m2Pi() + (float)0.01), (Util.m2Pi() - (float)0.01));
+                yawAdj *= (float)0.5;
                 }
-
-            console.SetVar("$mvYaw", console.GetVarFloat("$mvYaw") + yawAdj);
+            fGlobal["$mvYaw"] = fGlobal["$mvYaw"] + yawAdj;
+            //console.SetVar("$mvYaw", console.GetVarFloat("$mvYaw") + yawAdj);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "pitch", "(val)", 1, 11001, false)]
-        public void pitch(string val)
+        public void pitch(float val)
             {
-            float pitchAdj = getMouseAdjustAmount(val).AsFloat();
-            if (((coGameConnection) "ServerConnection").isControlObjectRotDampedCamera())
+            float pitchAdj = getMouseAdjustAmount(val);
+            if (((coGameConnection)"ServerConnection").isControlObjectRotDampedCamera())
                 {
-                pitchAdj = Util.mClamp(pitchAdj, (-Util.m2Pi() + (float) 0.01), (Util.m2Pi() - (float) 0.01));
-                pitchAdj *= (float) 0.5;
+                pitchAdj = Util.mClamp(pitchAdj, (-Util.m2Pi() + (float)0.01), (Util.m2Pi() - (float)0.01));
+                pitchAdj *= (float)0.5;
                 }
-
-            console.SetVar("$mvPitch", console.GetVarFloat("$mvPitch") + pitchAdj);
+            fGlobal["$mvPitch"] = fGlobal["$mvPitch"] + pitchAdj;
+            //console.SetVar("$mvPitch", console.GetVarFloat("$mvPitch") + pitchAdj);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "jump", "(val)", 1, 11001, false)]
         public void Jump(string val)
             {
-            console.SetVar("$mvTriggerCount2", console.GetVarInt("$mvTriggerCount2") + 1);
+            iGlobal["$mvTriggerCount2"] = iGlobal["$mvTriggerCount2"] + 1;
+            //console.SetVar("$mvTriggerCount2", console.GetVarInt("$mvTriggerCount2") + 1);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "gamePadMoveX", "(val)", 1, 11001, false)]
-        public void gamePadMoveX(string val)
+        public void gamePadMoveX(double val)
             {
-            if (val.AsInt() > 0)
+            if (val > 0)
                 {
-                console.SetVar("$mvRightAction", (val.AsDouble()*movementSpeed).AsString());
-                console.SetVar("$mvLeftAction", 0);
+                dGlobal["$mvRightAction"] = val * movementSpeed;
+                dGlobal["$mvLeftAction"] = 0;
+                //console.SetVar("$mvRightAction", (val * movementSpeed).AsString());
+                //console.SetVar("$mvLeftAction", 0);
                 }
             else
                 {
-                console.SetVar("$mvRightAction", 0);
-                console.SetVar("$mvLeftAction", (-val.AsDouble()*movementSpeed).AsString());
+                dGlobal["$mvRightAction"] = 0;
+                dGlobal["$mvLeftAction"] = -val * movementSpeed;
+                //console.SetVar("$mvRightAction", 0);
+                //console.SetVar("$mvLeftAction", (-val * movementSpeed).AsString());
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "gamePadMoveY", "(val)", 1, 11001, false)]
-        public void gamePadMoveY(string val)
+        public void gamePadMoveY(double val)
             {
-            if (val.AsInt() > 0)
+            if (val > 0)
                 {
-                console.SetVar("$mvForwardAction", val.AsDouble()*movementSpeed);
-                console.SetVar("$mvBackwardAction", 0);
+                dGlobal["$mvForwardAction"] = val * movementSpeed;
+                dGlobal["$mvBackwardAction"] = 0;
+                //console.SetVar("$mvForwardAction", val.AsDouble() * movementSpeed);
+                //console.SetVar("$mvBackwardAction", 0);
                 }
             else
                 {
-                console.SetVar("$mvForwardAction", 0);
-                console.SetVar("$mvBackwardAction", -val.AsDouble()*movementSpeed);
+                dGlobal["$mvForwardAction"] = 0;
+                //console.SetVar("$mvForwardAction", 0);
+                dGlobal["$mvBackwardAction"] = -val * movementSpeed;
+                //console.SetVar("$mvBackwardAction", -val.AsDouble() * movementSpeed);
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "gamepadYaw", "(val)", 1, 11001, false)]
-        public void gamepadYaw(string val)
+        public void gamepadYaw(float val)
             {
-            float yawAdj = getGamepadAdjustAmount(val).AsFloat();
-            if (((coGameConnection) "ServerConnection").isControlObjectRotDampedCamera())
+            float yawAdj = getGamepadAdjustAmount(val);
+            if (((coGameConnection)"ServerConnection").isControlObjectRotDampedCamera())
                 {
-                yawAdj = Util.mClamp(yawAdj, (float) (-Util.m2Pi() + 0.01), (float) (Util.m2Pi() - 0.01));
-                yawAdj *= (float) 0.5;
+                yawAdj = Util.mClamp(yawAdj, (float)(-Util.m2Pi() + 0.01), (float)(Util.m2Pi() - 0.01));
+                yawAdj *= (float)0.5;
                 }
 
             if (yawAdj > 0)
                 {
-                console.SetVar("$mvYawLeftSpeed", yawAdj);
-                console.SetVar("$mvYawRightSpeed", 0);
+                fGlobal["$mvYawLeftSpeed"] = yawAdj;
+                fGlobal["$mvYawRightSpeed"] = 0;
+                //console.SetVar("$mvYawLeftSpeed", yawAdj);
+                //console.SetVar("$mvYawRightSpeed", 0);
                 }
             else
                 {
-                console.SetVar("$mvYawLeftSpeed", 0);
-                console.SetVar("$mvYawRightSpeed", -yawAdj);
+                fGlobal["$mvYawLeftSpeed"] = 0;
+                //console.SetVar("$mvYawLeftSpeed", 0);
+                fGlobal["$mvYawRightSpeed"] = -yawAdj;
+                //console.SetVar("$mvYawRightSpeed", -yawAdj);
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "gamepadPitch", "(val)", 1, 11001, false)]
-        public void gamepadPitch(string val)
+        public void gamepadPitch(float val)
             {
-            float pitchAdj = getGamepadAdjustAmount(val).AsFloat();
-            if (((coGameConnection) "ServerConnection").isControlObjectRotDampedCamera())
+            float pitchAdj = getGamepadAdjustAmount(val);
+            if (((coGameConnection)"ServerConnection").isControlObjectRotDampedCamera())
                 {
-                pitchAdj = Util.mClamp(pitchAdj, (float) (-Util.m2Pi() + 0.01), (float) (Util.m2Pi() - 0.01));
-                pitchAdj *= (float) 0.5;
+                pitchAdj = Util.mClamp(pitchAdj, (float)(-Util.m2Pi() + 0.01), (float)(Util.m2Pi() - 0.01));
+                pitchAdj *= (float)0.5;
                 }
             if (pitchAdj > 0)
                 {
-                console.SetVar("$mvPitchDownSpeed", pitchAdj);
-                console.SetVar("$mvPitchUpSpeed", 0);
+                fGlobal["$mvPitchDownSpeed"] = pitchAdj;
+                fGlobal["$mvPitchUpSpeed"] = 0;
+                //console.SetVar("$mvPitchDownSpeed", pitchAdj);
+                //console.SetVar("$mvPitchUpSpeed", 0);
                 }
             else
                 {
-                console.SetVar("$mvPitchDownSpeed", 0);
-                console.SetVar("$mvPitchUpSpeed", -pitchAdj);
+                fGlobal["$mvPitchDownSpeed"] = 0;
+                fGlobal["$mvPitchUpSpeed"] = -pitchAdj;
+                //console.SetVar("$mvPitchDownSpeed", 0);
+                //console.SetVar("$mvPitchUpSpeed", -pitchAdj);
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "doCrouch", "(val)", 1, 11001, false)]
         public void doCrouch(string val)
             {
-            console.SetVar("$mvTriggerCount3", console.GetVarString("$mvTriggerCount3").AsInt() + 1);
+            iGlobal["$mvTriggerCount3"] += 1;
+            //console.SetVar("$mvTriggerCount3", console.GetVarString("$mvTriggerCount3").AsInt() + 1);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "doSprint", "(val)", 1, 11001, false)]
         public void doSprint(string val)
             {
-            console.SetVar("$mvTriggerCount5", console.GetVarString("$mvTriggerCount5").AsInt() + 1);
+            iGlobal["$mvTriggerCount5"] += 1;
+            //console.SetVar("$mvTriggerCount5", console.GetVarString("$mvTriggerCount5").AsInt() + 1);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "mouseFire", "(val)", 1, 11001, false)]
         public void mouseFire(string val)
             {
-            console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
+            iGlobal["$mvTriggerCount0"] += 1;
+            //console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "altTrigger", "(val)", 1, 11001, false)]
         public void altTrigger(string val)
             {
-            console.SetVar("$mvTriggerCount1", console.GetVarString("$mvTriggerCount1").AsInt() + 1);
+            iGlobal["$mvTriggerCount1"] += 1;
+            //console.SetVar("$mvTriggerCount1", console.GetVarString("$mvTriggerCount1").AsInt() + 1);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "gamepadFire", "(val)", 1, 11001, false)]
-        public void gamepadFire(string val)
+        public void gamepadFire(double val)
             {
-            if (val.AsDouble() > .1 && !console.GetVarBool("$gamepadFireTriggered"))
+            if (val > .1 && !console.GetVarBool("$gamepadFireTriggered"))
                 {
-                console.SetVar("$gamepadFireTriggered", true);
-                console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
+                bGlobal["$gamepadFireTriggered"] = true;
+                //console.SetVar("$gamepadFireTriggered", true);
+                //console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
                 }
             else
                 {
-                console.SetVar("$gamepadFireTriggered", false);
-                console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
+                bGlobal["$gamepadFireTriggered"] = false;
+                //console.SetVar("$gamepadFireTriggered", false);
+                //console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
                 }
+            iGlobal["$mvTriggerCount0"] += 1;
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "gamepadAltTrigger", "(val)", 1, 11001, false)]
-        public void gamepadAltTrigger(string val)
+        public void gamepadAltTrigger(double val)
             {
-            if (val.AsDouble() > .1 && !console.GetVarBool("$gamepadFireTriggered"))
+            if (val > .1 && !bGlobal["$gamepadFireTriggered"])
                 {
-                console.SetVar("$gamepadAltTriggerTriggered", true);
-                console.SetVar("$mvTriggerCount1", console.GetVarString("$mvTriggerCount1").AsInt() + 1);
+                bGlobal["$gamepadAltTriggerTriggered"] = true;
+//                console.SetVar("$gamepadAltTriggerTriggered", true);
                 }
             else
                 {
-                console.SetVar("$gamepadAltTriggerTriggered", false);
-                console.SetVar("$mvTriggerCount1", console.GetVarString("$mvTriggerCount1").AsInt() + 1);
+                bGlobal["$gamepadAltTriggerTriggered"] = false;
+                //console.SetVar("$gamepadAltTriggerTriggered", false);
                 }
+            iGlobal["$mvTriggerCount1"] += 1;
+            //console.SetVar("$mvTriggerCount1", console.GetVarString("$mvTriggerCount1").AsInt() + 1);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "toggleZoomFOV", "(val)", 0, 11001, false)]
         public void toggleZoomFOV()
             {
-            float cfov = console.GetVarFloat("$Player::CurrentFOV")/(float) 2.0;
+            float cfov = fGlobal["$Player::CurrentFOV"] / (float)2.0;
 
             console.SetVar("$Player::CurrentFOV", cfov);
+            fGlobal["$Player::CurrentFOV"] = cfov;
 
             if (cfov < 5)
                 resetCurrentFOV();
 
-            if (console.GetVarBool("ServerConnection.zoomed"))
+            if (((coGameConnection)"ServerConnection")["zoomed"].AsBool())
+                //console.GetVarBool("ServerConnection.zoomed"))
 
-                console.Call("setFov", new[] {cfov.AsString()});
+                console.Call("setFov", new[] { cfov.AsString() });
             else
-                console.Call("setFov", new[] {console.GetVarString("ServerConnection.getControlCameraDefaultFov()")});
+                console.Call("setFov", new[] { console.GetVarString("ServerConnection.getControlCameraDefaultFov()") });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "resetCurrentFOV", "()", 0, 11001, false)]
         public void resetCurrentFOV()
             {
-            console.SetVar("$Player::CurrentFOV", console.GetVarFloat("ServerConnection.getControlCameraDefaultFov")/(float) 2.0);
+            fGlobal["$Player::CurrentFOV"] = ((coGameConnection) "ServerConnection").getControlCameraDefaultFov()/2.0f;
+            //console.SetVar("$Player::CurrentFOV", console.GetVarFloat("ServerConnection.getControlCameraDefaultFov") / (float)2.0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "turnOffZoom", "()", 0, 11001, false)]
         public void turnOffZoom()
             {
             console.SetVar("ServerConnection.zoomed", false);
-            console.Call("setFov", new[] {((coGameConnection) "ServerConnection").getControlCameraDefaultFov().AsString()});
-            ((coGuiControl) "Reticle").setVisible(true);
-            ((coGuiControl) "zoomReticle").setVisible(false);
+            console.Call("setFov", new[] { ((coGameConnection)"ServerConnection").getControlCameraDefaultFov().AsString() });
+            ((coGuiControl)"Reticle").setVisible(true);
+            ((coGuiControl)"zoomReticle").setVisible(false);
 
 
             ppOptionsUpdateDOFSettings();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "setZoomFOV", "()", 1, 11001, false)]
-        public void setZoomFOV(string val)
+        public void setZoomFOV(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 toggleZoomFOV();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "toggleZoom", "()", 1, 11001, false)]
-        public void toggleZoom(string val)
+        public void toggleZoom(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 {
                 console.SetVar("ServerConnection.zoomed", true);
-                console.Call("setFov", new[] {console.GetVarString("$Player::CurrentFOV")});
-                ((coGuiControl) "Reticle").setVisible(false);
-                ((coGuiControl) "zoomReticle").setVisible(true);
+                console.Call("setFov", new[] { console.GetVarString("$Player::CurrentFOV") });
+                ((coGuiControl)"Reticle").setVisible(false);
+                ((coGuiControl)"zoomReticle").setVisible(true);
 
 
                 DOFPostEffectsetAutoFocus("DOFPostEffect", true);
@@ -439,154 +478,160 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
                 DOFPostEffectsetFocusParams("DOFPostEffect", 0.5f, 0.5f, 50f, 500f, -5f, 5f);
 
-                console.Call("DOFPostEffect", "enabled");
+                ((coPostEffect)"DOFPostEffect").enable();
+                //console.Call("DOFPostEffect", "enabled");
                 }
             else
                 turnOffZoom();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "mouseButtonZoom", "(val)", 1, 11001, false)]
-        public void mouseButtonZoom(string val)
+        public void mouseButtonZoom(bool val)
             {
             toggleZoom(val);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "toggleFreeLook", "(val)", 1, 11001, false)]
-        public void toggleFreeLook(string val)
+        public void toggleFreeLook(bool val)
             {
-            console.SetVar("$mvFreeLook", val.AsBool());
+            bGlobal["$mvFreeLook"] = val;
+            //console.SetVar("$mvFreeLook", val);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "toggleFirstPerson", "(val)", 1, 11001, false)]
-        public void toggleFirstPerson(string val)
+        public void toggleFirstPerson(bool val)
             {
-            if (val.AsBool())
-                ((coGameConnection) "ServerConnection").setFirstPerson(!((coGameConnection) "ServerConnection").isFirstPerson());
+            if (val)
+                {
+                coGameConnection ServerConnection = "ServerConnection";
+                ServerConnection.setFirstPerson(ServerConnection.isFirstPerson());
+                //((coGameConnection) "ServerConnection").setFirstPerson(!((coGameConnection) "ServerConnection").isFirstPerson());
+                }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "toggleCamera", "(val)", 1, 11001, false)]
-        public void toggleCamera(string val)
+        public void toggleCamera(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 console.commandToServer("ToggleCamera");
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "unmountWeapon", "(val)", 1, 11001, false)]
-        public void unmountWeapon(string val)
+        public void unmountWeapon(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 console.commandToServer("unmountWeapon");
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "throwWeapon", "(val)", 1, 11001, false)]
-        public void throwWeapon(string val)
+        public void throwWeapon(bool val)
             {
-            if (val.AsBool())
-                console.commandToServer("Throw", new[] {"Weapon"});
+            if (val)
+                console.commandToServer("Throw", new[] { "Weapon" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "tossAmmo", "(val)", 1, 11001, false)]
-        public void tossAmmo(string val)
+        public void tossAmmo(bool val)
             {
-            if (val.AsBool())
-                console.commandToServer("Throw", new[] {"Ammo"});
+            if (val)
+                console.commandToServer("Throw", new[] { "Ammo" });
             }
 
 
         [Torque_Decorations.TorqueCallBack("", "", "nextWeapon", "(val)", 1, 11001, false)]
-        public void nextWeapon(string val)
+        public void nextWeapon(bool val)
             {
-            if (val.AsBool())
-                console.commandToServer("cycleWeapon", new[] {"next"});
+            if (val)
+                console.commandToServer("cycleWeapon", new[] { "next" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "prevWeapon", "(val)", 1, 11001, false)]
-        public void prevWeapon(string val)
+        public void prevWeapon(bool val)
             {
-            if (val.AsBool())
-                console.commandToServer("cycleWeapon", new[] {"prev"});
+            if (val)
+                console.commandToServer("cycleWeapon", new[] { "prev" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "mouseWheelWeaponCycle", "(val)", 1, 11001, false)]
-        public void mouseWheelWeaponCycle(string val)
+        public void mouseWheelWeaponCycle(double val)
             {
-            if (val.AsDouble() < 0)
-                console.commandToServer("cycleWeapon", new[] {"next"});
-            else if (val.AsDouble() > 0)
-                console.commandToServer("cycleWeapon", new[] {"prev"});
+            if (val < 0)
+                console.commandToServer("cycleWeapon", new[] { "next" });
+            else if (val > 0)
+                console.commandToServer("cycleWeapon", new[] { "prev" });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "pageMessageHudUp", "(val)", 1, 11001, false)]
-        public void pageMessageHudUp(string val)
+        public void pageMessageHudUp(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 PageUpMessageHud();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "pageMessageHudDown", "(val)", 1, 11001, false)]
-        public void pageMessageHudDown(string val)
+        public void pageMessageHudDown(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 PageDownMessageHud();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "resizeMessageHud", "(val)", 1, 11001, false)]
-        public void resizeMessageHud(string val)
+        public void resizeMessageHud(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 CycleMessageHudSize();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "startRecordingDemo", "(val)", 1, 11001, false)]
-        public void startRecordingDemo(string val)
+        public void startRecordingDemo(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 StartDemoRecord();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "stopRecordingDemo", "(val)", 1, 11001, false)]
-        public void stopRecordingDemo(string val)
+        public void stopRecordingDemo(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 StopDemoRecord();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "dropCameraAtPlayer", "(val)", 1, 11001, false)]
-        public void dropCameraAtPlayer(string val)
+        public void dropCameraAtPlayer(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 console.commandToServer("dropCameraAtPlayer");
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "dropPlayerAtCamera", "(val)", 1, 11001, false)]
-        public void dropPlayerAtCamera(string val)
+        public void dropPlayerAtCamera(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 console.commandToServer("DropPlayerAtCamera");
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "bringUpOptions", "(val)", 1, 11001, false)]
-        public void bringUpOptions(string val)
+        public void bringUpOptions(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 {
-                //Util._lockMouse("false");
                 showCursor();
-                ((coGuiCanvas) "Canvas").pushDialog("OptionsDlg");
+                ((coGuiCanvas)"Canvas").pushDialog("OptionsDlg");
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "cycleDebugRenderMode", "(val)", 1, 11001, false)]
-        public void cycleDebugRenderMode(string val)
+        public void cycleDebugRenderMode(bool val)
             {
-            if (val.AsBool())
+            if (!val)
                 return;
-            console.SetVar("$MFDebugRenderMode", console.GetVarInt("$MFDebugRenderMode") + 1);
+            iGlobal["$MFDebugRenderMode"] += 1;
+            //console.SetVar("$MFDebugRenderMode", console.GetVarInt("$MFDebugRenderMode") + 1);
 
-            if (console.GetVarInt("$MFDebugRenderMode") > 16)
-                console.SetVar("$MFDebugRenderMode", 0);
-            if (console.GetVarInt("$MFDebugRenderMode") == 15)
-                console.SetVar("$MFDebugRenderMode", 16);
+            if (iGlobal["$MFDebugRenderMode"] > 16)
+                 iGlobal["$MFDebugRenderMode"]= 0;
+            if (iGlobal["$MFDebugRenderMode"] == 15)
+                 iGlobal["$MFDebugRenderMode"]= 16;
 
             Util.setInteriorRenderMode(console.GetVarInt("$MFDebugRenderMode"));
 
@@ -594,67 +639,67 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 return;
             string message = "Setting Interior debug render mode to ";
             string debugMode = "Unknown";
-            switch (console.GetVarInt("$MFDebugRenderMode"))
+            switch (iGlobal["$MFDebugRenderMode"])
                 {
-                    case 0:
-                        debugMode = "NormalRender";
-                        break;
-                    case 1:
-                        debugMode = "NormalRenderLines";
-                        break;
-                    case 2:
-                        debugMode = "ShowDetail";
-                        break;
-                    case 3:
-                        debugMode = "ShowAmbiguous";
-                        break;
-                    case 4:
-                        debugMode = "ShowOrphan";
-                        break;
-                    case 5:
-                        debugMode = "ShowLightmaps";
-                        break;
-                    case 6:
-                        debugMode = "ShowTexturesOnly";
-                        break;
-                    case 7:
-                        debugMode = "ShowPortalZones";
-                        break;
-                    case 8:
-                        debugMode = "ShowOutsideVisible";
-                        break;
-                    case 9:
-                        debugMode = "ShowCollisionFans";
-                        break;
-                    case 10:
-                        debugMode = "ShowStrips";
-                        break;
-                    case 11:
-                        debugMode = "ShowNullSurfaces";
-                        break;
-                    case 12:
-                        debugMode = "ShowLargeTextures";
-                        break;
-                    case 13:
-                        debugMode = "ShowHullSurfaces";
-                        break;
-                    case 14:
-                        debugMode = "ShowVehicleHullSurfaces";
-                        break;
-                    case 15:
-                        debugMode = "";
-                        break;
-                    case 16:
-                        debugMode = "ShowDetailLevel";
-                        break;
+                case 0:
+                    debugMode = "NormalRender";
+                    break;
+                case 1:
+                    debugMode = "NormalRenderLines";
+                    break;
+                case 2:
+                    debugMode = "ShowDetail";
+                    break;
+                case 3:
+                    debugMode = "ShowAmbiguous";
+                    break;
+                case 4:
+                    debugMode = "ShowOrphan";
+                    break;
+                case 5:
+                    debugMode = "ShowLightmaps";
+                    break;
+                case 6:
+                    debugMode = "ShowTexturesOnly";
+                    break;
+                case 7:
+                    debugMode = "ShowPortalZones";
+                    break;
+                case 8:
+                    debugMode = "ShowOutsideVisible";
+                    break;
+                case 9:
+                    debugMode = "ShowCollisionFans";
+                    break;
+                case 10:
+                    debugMode = "ShowStrips";
+                    break;
+                case 11:
+                    debugMode = "ShowNullSurfaces";
+                    break;
+                case 12:
+                    debugMode = "ShowLargeTextures";
+                    break;
+                case 13:
+                    debugMode = "ShowHullSurfaces";
+                    break;
+                case 14:
+                    debugMode = "ShowVehicleHullSurfaces";
+                    break;
+                case 15:
+                    debugMode = "";
+                    break;
+                case 16:
+                    debugMode = "ShowDetailLevel";
+                    break;
                 }
             ChatHudAddLine("ChatHud", message + debugMode);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "doProfile", "(val)", 1, 11001, false)]
-        public void doProfile(string val)
+        public void doProfile(bool val)
             {
-            if (val.AsBool())
+            if (val)
                 {
                 console.print("Starting profile session...");
                 Util.profilerReset();
@@ -671,7 +716,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "carjack", "()", 0, 11001, false)]
         public void carjack()
             {
-            coPlayer player = ((coGameConnection) "LocalClientConnection").getControlObject();
+            coPlayer player = ((coGameConnection)"LocalClientConnection").getControlObject();
             if (console.GetClassName(player) != "Player")
                 return;
             Point3F eyeVec = player.getEyeVector();
@@ -680,19 +725,19 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             Point3F endPos = startPos + eyeVec.vectorScale(1000);
 
-            coPlayer target = Util.containerRayCast(startPos, endPos, (uint) SceneObjectTypesAsUint.VehicleObjectType, "", false);
+            coPlayer target = Util.containerRayCast(startPos, endPos, (uint)SceneObjectTypesAsUint.VehicleObjectType, "", false);
             if (!target.isObject())
                 return;
             int mount = target.getMountNodeObject(0);
             if (mount.AsBool() && console.GetClassName(mount.AsString()) == "AIPlayer")
-                console.commandToServer("carUnmountObj", new[] {mount.AsString()});
+                console.commandToServer("carUnmountObj", new[] { mount.AsString() });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "getOut", "()", 0, 11001, false)]
         public void getOut()
             {
-            ((coActionMap) "vehicleMap").pop();
-            ((coActionMap) "moveMap").push();
+            ((coActionMap)"vehicleMap").pop();
+            ((coActionMap)"moveMap").push();
             console.commandToServer("dismountVehicle");
             }
 
@@ -706,7 +751,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void brake(string val)
             {
             console.commandToServer("toggleBrakeLights");
-            console.SetVar("$mvTriggerCount2", console.GetVarInt("$mvTriggerCount2") + 1);
+            iGlobal["$mvTriggerCount2"] += 1;
+            //console.SetVar("$mvTriggerCount2", console.GetVarInt("$mvTriggerCount2") + 1);
             }
 
 

@@ -10849,6 +10849,18 @@ const char** argv = &arguments[0];
 }
 }
 }
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_AISearchSimSet(char * x__object, F32 fOV, F32 farDist, char * x__ObjToSearch, char * x__result)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+SimSet* ObjToSearch; Sim::findObject(x__ObjToSearch, ObjToSearch ); 
+SimSet* result; Sim::findObject(x__result, result ); 
+{
+	object->AISearch(fOV,farDist,ObjToSearch,result);
+	}
+}
 extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_clearAim(char * x__object)
 {
 AIPlayer* object; Sim::findObject(x__object, object ); 

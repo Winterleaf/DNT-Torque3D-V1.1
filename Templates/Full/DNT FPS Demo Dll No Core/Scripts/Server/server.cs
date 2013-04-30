@@ -191,8 +191,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             onServerDestroyed();
 
             // Delete all the server objects
-            if (console.isObject("ServerGroup"))
-                ((coSimSet) "ServerGroup").delete();
+            if ("ServerGroup".isObject())
+                "ServerGroup".delete();
 
             // Delete all the connections:
             foreach (coGameConnection client in ClientGroup)

@@ -77,20 +77,20 @@ namespace DNT_FPS_Demo
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new main_window());
             //If we are running dedicated, there is no reason to show a form.
-            /*DialogResult result = MessageBox.Show("Launch Dedicated", "Dedicated?", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Launch Dedicated", "Dedicated?", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
                 {
                 dnt_torque = new dnTorque(IntPtr.Zero);
 #if DEBUG
-                dnt_torque.InitializeTorque(new[] {"-dedicated", "-mission", @"levels/Deathball_Desert.mis"}, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll", "FPS Example_DEBUG.dll");
+                dnt_torque.InitializeTorque(new[] {"-dedicated", "-mission", @"levels/Empty_Terrain.mis"}, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll", "<!!__PROJECTNAME__!!>_DEBUG.dll");
 #else
-                dnt_torque.InitializeTorque(new[] {"-dedicated", "-mission", @"levels/Deathball_Desert.mis"}, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll", "FPS Example.dll");
+                dnt_torque.InitializeTorque(new[] {"-dedicated", "-mission", @"levels/Empty_Terrain.mis"}, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll","<!!__PROJECTNAME__!!>_DEBUG.dll");
 #endif
                 }
             else
                 {
-*/
+
                 dnt_torque = new dnTorque(Process.GetCurrentProcess().Handle);
                 //Initialize Torque, pass a handle to this form into T3D so it knows where to rendor the screen to.
                 //If you don't do this, you can't pass the mouse and key strokes, w/out the mouse and keystrokes
@@ -101,8 +101,8 @@ namespace DNT_FPS_Demo
                 dnt_torque.InitializeTorque(new[] {""}, "DNT_FPS_Demo_Game_Dll.Scripts.Server.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Client.Main", "DNT_FPS_Demo_Game_Dll.Scripts.Main", "", "", "", Path.GetDirectoryName(Application.ExecutablePath) + "\\", @"DNT FPS Demo Game Dll.dll", "<!!__PROJECTNAME__!!>.dll");
 #endif
                 //Let's prepare the T3D display,
-/*                }
-*/
+                }
+
             dnt_torque.WindowIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             //Turn verbose debugging off.
             dnt_torque.Debugging = false;

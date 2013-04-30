@@ -72,7 +72,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 if (obj.isActive())
                     return obj;
                 }
-            return new coGuiControl("0");
+            return "";
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "initialize_AudioStates", "", 0, 28000, true)]

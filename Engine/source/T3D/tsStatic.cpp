@@ -126,8 +126,8 @@ ImplementEnumType( TSMeshType,
    "@ingroup gameObjects" )
    { TSStatic::None,          "None",           "No mesh data." },
    { TSStatic::Bounds,        "Bounds",         "Bounding box of the shape." },
-   { TSStatic::CollisionMesh, "CollisionMesh", "Specifically desingated \"collision\" meshes." },
-   { TSStatic::VisibleMesh,   "VisibleMesh",   "Rendered mesh polygons." },
+   { TSStatic::CollisionMesh, "Collision Mesh", "Specifically desingated \"collision\" meshes." },
+   { TSStatic::VisibleMesh,   "Visible Mesh",   "Rendered mesh polygons." },
 EndImplementEnumType;
 
 

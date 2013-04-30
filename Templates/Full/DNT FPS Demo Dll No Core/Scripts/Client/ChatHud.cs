@@ -107,10 +107,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             //wavSource = con.Call("ExpandFilename", new[] {wavFile});
             wavSource = Util._expandFilename(wavFile);
 
-            if (console.isObject(wavSource))
+            if (wavSource.isObject())
                 {
                     {
-                    int wavLengthMs = console.Call(wavSource, "getDuration").AsInt()*pitch.AsInt();
+                    int wavLengthMs = console.Call(wavSource, "getDuration").AsInt() * pitch.AsInt();
 
                     if (wavLengthMs == 0)
                         console.error(string.Format("** WAV file \"{0}\" is nonexistent or sound is zero-length **", wavFile));
@@ -122,7 +122,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                         console.SetVar("$ClientChatHandle[0]", wavSource);
 
                         if (pitch.AsInt() != 1)
-                            console.Call("$ClientChatHandle[0]", "setPitch", new[] {pitch});
+                            console.Call("$ClientChatHandle[0]", "setPitch", new[] { pitch });
 
                         console.Call("$ClientChatHandle[0]", "play");
                         }
@@ -188,30 +188,36 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             {
             int textheight = console.GetVarInt("ChatHud.Profile.fontSize") + console.GetVarInt("ChatHud.lineSpacing");
             if (textheight <= 0)
-                {
                 textheight = 12;
-                }
 
-            int lengthInPixels = console.GetVarInt("$outerChatLenY[" + length + "]")*textheight;
-            int chatMargin = Util.getWord(console.GetVarString("OuterChatHud.extent"), 1).AsInt() - Util.getWord(console.GetVarString("ChatScrollHud.Extent"), 1).AsInt() + 2*console.GetVarInt("ChatScrollHud.profile.borderThickness");
-
+            int lengthInPixels =iGlobal["$outerChatLenY[" + length + "]"] * textheight;
 
             coGuiBitmapBorderCtrl OuterChatHud = "OuterChatHud";
             coGuiScrollCtrl ChatScrollHud = "ChatScrollHud";
-            OuterChatHud.setExtent(Util.firstWord(OuterChatHud["extent"]), (lengthInPixels + chatMargin).AsString());
+
+            int chatMargin = OuterChatHud.extent.y - ChatScrollHud.extent.y + 2 * ChatScrollHud.profile.borderThickness;
+            //int y = Util.getWord(console.GetVarString("OuterChatHud.extent"), 1).AsInt() -
+            //    Util.getWord(console.GetVarString("ChatScrollHud.Extent"), 1).AsInt() 
+            //    + 2 * console.GetVarInt("ChatScrollHud.profile.borderThickness");
+
+
+
+            OuterChatHud.setExtent(OuterChatHud.extent.x.AsString(), (lengthInPixels + chatMargin).AsString());
+            //   Util.firstWord(OuterChatHud["extent"]), (lengthInPixels + chatMargin).AsString());
             ChatScrollHud.scrollToBottom();
-            ((coGuiControl) "ChatPageDown").setVisible(false);
+            ((coGuiControl)"ChatPageDown").setVisible(false);
             }
 
         [Torque_Decorations.TorqueCallBack("", "MainChatHud", "nextChatHudLen", "( %this)", 1, 4000, false)]
         public void MainChatHudNextChatHudLen(string thisobj)
             {
-            int len = console.GetVarInt("$pref::ChatHudLength");
+            int len =iGlobal["$pref::ChatHudLength"];
             len++;
             if (len == 4)
                 len = 1;
-            console.Call(thisobj, "setChatHudLength", new[] {len.AsString()});
-            console.SetVar("$pref::ChatHudLength", len);
+            console.Call(thisobj, "setChatHudLength", new[] { len.AsString() });
+            iGlobal["$pref::ChatHudLength"] = len;
+            //console.SetVar("$pref::ChatHudLength", len);
             }
 
         //-----------------------------------------------------------------------------
@@ -233,11 +239,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             //int chatScrollHeight = Util.getWord(con.GetVarString(string.Format("{0}.extent", scrollBox)), 1).AsInt() -
             //                       2 * con.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
 
-            int chatScrollHeight = console.GetVarString(string.Format("{0}.extent", scrollBox)).Split(' ')[1].AsInt() - 2*console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
+            int chatScrollHeight = console.GetVarString(string.Format("{0}.extent", scrollBox)).Split(' ')[1].AsInt() - 2 * console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
 
             int chatPosition = Util.getWord(console.GetVarString(string.Format("{0}.extent", thisobj)), 1).AsInt() - chatScrollHeight + Util.getWord(console.GetVarString(string.Format("{0}.position", thisobj)), 1).AsInt() - console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
 
-            int linesToScroll = (int) Math.Floor(((chatPosition)/((double) textHeight) + .5));
+            int linesToScroll = (int)Math.Floor(((chatPosition) / ((double)textHeight) + .5));
 
             string origPosition = "";
             if (linesToScroll > 0)
@@ -246,22 +252,22 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             //remove old messages from the top only if scrolled down all the way
             while (!console.Call("chatPageDown", "isVisible").AsBool() && console.Call("HudMessageVector", "getNumLines").AsBool() && (console.Call("HudMessageVector", "getNumLines").AsInt() >= console.GetVarInt("$pref::HudMessageLogSize")))
                 {
-                string tag = ((coMessageVector) "HudMessageVector").getLineTag(0).AsString();
+                string tag = ((coMessageVector)"HudMessageVector").getLineTag(0).AsString();
                 if (tag.AsInt() != 0)
                     console.Call(tag, "delete");
-                ((coMessageVector) "HudMessageVector").popFrontLine();
+                ((coMessageVector)"HudMessageVector").popFrontLine();
                 }
             //add the message...
-            ((coMessageVector) "HudMessageVector").pushBackLine(text, console.GetVarInt("$LastHudTarget"));
+            ((coMessageVector)"HudMessageVector").pushBackLine(text, console.GetVarInt("$LastHudTarget"));
             console.SetVar("$LastHudTarget", 0);
             //now that we've added the message, see if we need to reset the position
             if (linesToScroll > 0)
                 {
-                ((coGuiControl) "ChatPageDown").setVisible(true);
+                ((coGuiControl)"ChatPageDown").setVisible(true);
                 console.SetVar(thisobj + ".position", origPosition);
                 }
             else
-                ((coGuiControl) "ChatPageDown").setVisible(false);
+                ((coGuiControl)"ChatPageDown").setVisible(false);
             return string.Empty;
             }
 
@@ -277,17 +283,17 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             //int chatScrollHeight = Util.getWord(con.GetVarString(string.Format("{0}.extent", scrollBox)), 1).AsInt() -
             //                       2 * con.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
-            int chatScrollHeight = console.GetVarString(string.Format("{0}.extent", scrollBox)).Split(' ')[1].AsInt() - 2*console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
+            int chatScrollHeight = console.GetVarString(string.Format("{0}.extent", scrollBox)).Split(' ')[1].AsInt() - 2 * console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
             if (chatScrollHeight <= 0)
                 return string.Empty;
 
-            int pageLines = (int) Math.Floor(chatScrollHeight/(double) textHeight) - 1;
+            int pageLines = (int)Math.Floor(chatScrollHeight / (double)textHeight) - 1;
             if (pageLines <= 0)
                 pageLines = 1;
 
             // See how many lines we actually can scroll up:
-            int chatPosition = -1*console.GetVarString(string.Format("{0}.position", thisobj)).Split('0')[1].AsInt() - console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
-            int linesToScroll = (int) (Math.Floor(chatPosition/(double) textHeight) + .5);
+            int chatPosition = -1 * console.GetVarString(string.Format("{0}.position", thisobj)).Split('0')[1].AsInt() - console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
+            int linesToScroll = (int)(Math.Floor(chatPosition / (double)textHeight) + .5);
             if (linesToScroll <= 0)
                 return string.Empty;
 
@@ -297,9 +303,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             string position = console.GetVarString(thisobj + ".position");
 
             // Now set the position
-            console.SetVar(string.Format("{0}.position", thisobj), string.Format("{0} {1} {2}", position.Split(' ')[0], position.Split(' ')[1], (scrollLines*textHeight).AsString()));
+            console.SetVar(string.Format("{0}.position", thisobj), string.Format("{0} {1} {2}", position.Split(' ')[0], position.Split(' ')[1], (scrollLines * textHeight).AsString()));
             // Display the pageup icon
-            ((coGuiControl) "ChatPageDown").setVisible(true);
+            ((coGuiControl)"ChatPageDown").setVisible(true);
             return string.Empty;
             }
 
@@ -314,17 +320,17 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             //int chatScrollHeight = Util.getWord(con.GetVarString(string.Format("{0}.extent", scrollBox)), 1).AsInt() -
             //                       2 * con.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
-            int chatScrollHeight = console.GetVarString(string.Format("{0}.extent", scrollBox)).Split(' ')[1].AsInt() - 2*console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
+            int chatScrollHeight = console.GetVarString(string.Format("{0}.extent", scrollBox)).Split(' ')[1].AsInt() - 2 * console.GetVarInt(string.Format("{0}.profile.borderThickness", scrollBox));
             if (chatScrollHeight <= 0)
                 return string.Empty;
 
-            int pageLines = (int) Math.Floor(chatScrollHeight/(double) textHeight) - 1;
+            int pageLines = (int)Math.Floor(chatScrollHeight / (double)textHeight) - 1;
             if (pageLines <= 0)
                 pageLines = 1;
 
             int chatPosition = console.GetVarString(thisobj + ".extent").Split(' ')[1].AsInt() - chatScrollHeight + console.GetVarString(thisobj + ".position").Split(' ')[1].AsInt() - console.GetVarInt(scrollBox + ".profile.borderThickness");
 
-            int linesToScroll = (int) (Math.Floor(chatScrollHeight/(double) textHeight) + .5);
+            int linesToScroll = (int)(Math.Floor(chatScrollHeight / (double)textHeight) + .5);
             if (linesToScroll <= 0)
                 return string.Empty;
 
@@ -332,10 +338,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             // Now set the position
             string pos = console.GetVarString(thisobj + ".position");
-            console.SetVar(string.Format("{0}.position", thisobj), string.Format("{0} {1}", pos.Split(' ')[0], (pos.Split(' ')[1].AsInt() - (scrollLines*textHeight)).AsString()));
+            console.SetVar(string.Format("{0}.position", thisobj), string.Format("{0} {1}", pos.Split(' ')[0], (pos.Split(' ')[1].AsInt() - (scrollLines * textHeight)).AsString()));
 
             // See if we have should (still) display the pagedown icon
-            ((coGuiControl) "ChatPageDown").setVisible(scrollLines < linesToScroll ? true : false);
+            ((coGuiControl)"ChatPageDown").setVisible(scrollLines < linesToScroll ? true : false);
             return string.Empty;
             }
 
@@ -343,24 +349,21 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         // Support functions
         //-----------------------------------------------------------------------------
         [Torque_Decorations.TorqueCallBack("", "", "pageUpMessageHud", "()", 0, 4000, false)]
-        public string PageUpMessageHud()
+        public void PageUpMessageHud()
             {
             ChatHudPageUp("ChatHud");
-            return string.Empty;
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "pageDownMessageHud", "()", 0, 4000, false)]
-        public string PageDownMessageHud()
+        public void PageDownMessageHud()
             {
             ChatHudPageDown("ChatHud");
-            return string.Empty;
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "cycleMessageHudSize", "()", 0, 4000, false)]
-        public string CycleMessageHudSize()
+        public void CycleMessageHudSize()
             {
             MainChatHudNextChatHudLen("MainChatHud");
-            return string.Empty;
             }
         }
     }

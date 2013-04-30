@@ -104,7 +104,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coPhysicsForce(string simobjectid) : base(simobjectid)
+        internal coPhysicsForce(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -112,7 +112,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coPhysicsForce(uint simobjectid) : base(simobjectid)
+        internal coPhysicsForce(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -120,7 +120,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coPhysicsForce(int simobjectid) : base(simobjectid)
+        internal coPhysicsForce(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -178,6 +178,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coPhysicsForce ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -198,6 +200,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coPhysicsForce ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -219,6 +223,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coPhysicsForce ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

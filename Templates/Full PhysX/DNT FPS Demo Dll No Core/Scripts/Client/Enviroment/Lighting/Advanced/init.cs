@@ -66,13 +66,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 return;
             if (sGlobal["$platform"] == "xenon")
                 return;
-            new coRenderFormatToken("AL_FormatToken").enable();
+            (( coRenderFormatToken)"AL_FormatToken").enable();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onDeactivateAdvancedLM", "", 0, 67100, false)]
         public void onDeactivateAdvancedLM()
             {
-            new coRenderFormatToken("AL_FormatToken").disable();
+            (( coRenderFormatToken)"AL_FormatToken").disable();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "setAdvancedLighting", "", 0, 67200, false)]

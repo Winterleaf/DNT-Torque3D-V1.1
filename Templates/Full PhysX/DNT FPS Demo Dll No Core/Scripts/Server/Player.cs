@@ -76,7 +76,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "Player_Init_Globals", "", 0, 2400, true)]
         public void PlayerInitGlobals()
             {
-            iGlobal["$CorpseTimeoutValue"] = 45*1000;
+            iGlobal["$CorpseTimeoutValue"] = 45 * 1000;
             iGlobal["$PlayerDeathAnim::TorsoFrontFallForward"] = 1;
             iGlobal["$PlayerDeathAnim::TorsoFrontFallBack"] = 2;
             iGlobal["$PlayerDeathAnim::TorsoBackFallForward"] = 3;
@@ -96,7 +96,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             player["mountVehicle"] = true.AsString();
             player.setRechargeRate(datablock["rechargeRate"].AsFloat());
             player.setRepairRate(0);
-            player.schedule("50", "updateHealth");
+            //player.schedule("50", "updateHealth");
             }
 
         [Torque_Decorations.TorqueCallBack("", "Armor", "onRemove", "(%this, %obj)", 2, 2400, false)]
@@ -137,7 +137,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
                 if (player.getClassName() == "Player")
                     {
-                    console.commandToClient(new coGameConnection(player["client"]), console.addTaggedString("toggleVehicleMap"), new[] {"true"});
+                    console.commandToClient(player["client"], console.addTaggedString("toggleVehicleMap"), new[] { "true" });
                     }
                 }
             else
@@ -183,7 +183,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 TransformF rot = pos;
                 TransformF oldpos = pos.copy();
 
-                List<Point3F> vecs = new List<Point3F> {new Point3F(-1, 0, 0), new Point3F(0, 0, 1), new Point3F(0, 0, -1), new Point3F(1, 0, 0), new Point3F(0, -1, 0), new Point3F(0, 0, 0)};
+                List<Point3F> vecs = new List<Point3F> { new Point3F(-1, 0, 0), new Point3F(0, 0, 1), new Point3F(0, 0, -1), new Point3F(1, 0, 0), new Point3F(0, -1, 0), new Point3F(0, 0, 0) };
 
                 Point3F impulsevec = new Point3F(0, 0, 0);
 
@@ -228,13 +228,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 float vec = Point3F.vectorDot(vel, vel.normalizeSafe());
                 if (vec > 50)
                     {
-                    float scale = 50/vec;
+                    float scale = 50 / vec;
                     player.setVelocity(vel.vectorScale(scale));
                     }
                 }
             else
                 {
-                MessageClient(new coGameConnection(player["client"]), "msgUnmount", @"\c2Cannot exit %1 while moving.", console.GetVarString(vdb + ".nameTag"));
+                MessageClient(player["client"], "msgUnmount", @"\c2Cannot exit %1 while moving.", console.GetVarString(vdb + ".nameTag"));
                 }
             }
 
@@ -255,13 +255,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (!client.isObject())
                 return;
             //Mount Vehicle.
-            if ((console.getTypeMask(col) & (UInt32) SceneObjectTypesAsUint.GameBaseObjectType) != (UInt32) SceneObjectTypesAsUint.GameBaseObjectType)
+            if ((console.getTypeMask(col) & (UInt32)SceneObjectTypesAsUint.GameBaseObjectType) != (UInt32)SceneObjectTypesAsUint.GameBaseObjectType)
                 return;
             coVehicleData db = col.getDataBlock();
             if (((db.getClassName() == "WheeledVehicleData") || player["mountVehicle"].AsBool() || player.getState() == "Move" || col["mountable"].AsBool()))
                 return;
             // Only mount drivers for now.
-            ((coGameConnection) player["client"]).setFirstPerson(false);
+            ((coGameConnection)player["client"]).setFirstPerson(false);
             // For this specific example, only one person can fit
             // into a vehicle
             int mount = col.getMountNodeObject(0);
@@ -297,7 +297,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             const string location = "Body";
 
-            PlayerUpdateHealth(player);
+            //PlayerUpdateHealth(player);
 
             coGameConnection client = player["client"];
             //Only continue if it is a player, if it is an AI return.
@@ -307,7 +307,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             coGameConnection sourceClient = null;
             if (sourceobject != 0)
-                sourceClient = new coGameConnection(sourceobject["client"]);
+                sourceClient = sourceobject["client"];
 
 
             if (player.getDamageLevel() >= 99)
@@ -346,9 +346,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void ArmorOnDisabled(coPlayerData datablock, coPlayer player, string state)
             {
             player.setImageTrigger(0, false);
-            coItem item = (((coItemData) (player.getMountedImage(WeaponSlot)))["item"]);
+            coItem item = (((coItemData)(player.getMountedImage(WeaponSlot)))["item"]);
 
-            if (console.isObject(item))
+            if (item.isObject())
                 {
                 int amount = ShapeBaseShapeBaseGetInventory(player, (item["image.ammo"]));
 
@@ -362,8 +362,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             //If it's a player check.....
             coGameConnection client = player["client"];
-            if (console.isObject(client))
-                console.commandToClient(client, console.addTaggedString("toggleVehicleMap"), new[] {"false"});
+            if (client.isObject())
+                console.commandToClient(client, console.addTaggedString("toggleVehicleMap"), new[] { "false" });
 
             int ctov = iGlobal["$CorpseTimeoutValue"];
 
@@ -435,16 +435,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "Player", "isPilot", "(%this)", 1, 2400, false)]
         public bool PlayerIsPilot(coPlayer player)
             {
-            try
-                {
-                coVehicle vehicle = player.getObjectMount();
 
+            coVehicle vehicle = player.getObjectMount();
+            if (vehicle.isObject())
                 if (vehicle.getMountNodeObject(0) == player)
                     return true;
-                }
-            catch (Exception)
-                {
-                }
+
             return false;
             }
 
@@ -493,26 +489,26 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             player.playAudio(0, "PainCrySound");
             }
 
-        [Torque_Decorations.TorqueCallBack("", "Player", "updateHealth", "(%player)", 1, 2400, false)]
-        public void PlayerUpdateHealth(coPlayer player)
-            {
-            coGameConnection client = null;
+        //[Torque_Decorations.TorqueCallBack("", "Player", "updateHealth", "(%player)", 1, 2400, false)]
+        //public void PlayerUpdateHealth(coPlayer player)
+        //    {
+        //    coGameConnection client = null;
 
-            client = player["client"];
-            if (!client.isObject())
-                return;
+        //    client = player["client"];
+        //    if (!client.isObject())
+        //        return;
 
 
-            float maxDamage = ((coPlayerData) player.getDataBlock())["maxDamage"].AsFloat();
+        //    float maxDamage = ((coPlayerData)player.getDataBlock())["maxDamage"].AsFloat();
 
-            float damagelevel = player.getDamageLevel();
+        //    float damagelevel = player.getDamageLevel();
 
-            double curhealth = maxDamage - damagelevel;
+        //    double curhealth = maxDamage - damagelevel;
 
-            curhealth = Math.Ceiling(curhealth);
-            if (console.isObject(client))
-                console.commandToClient(client, console.addTaggedString("setNumericalHealthHUD"), new[] {((int) curhealth).AsString()});
-            }
+        //    curhealth = Math.Ceiling(curhealth);
+        //    if (client.isObject())
+        //        console.commandToClient(client, console.addTaggedString("setNumericalHealthHUD"), new[] { ((int)curhealth).AsString() });
+        //    }
 
         [Torque_Decorations.TorqueCallBack("", "Player", "setDamageDirection", "(%player, %sourceObject, %damagePos)", 3, 2400, false)]
         public void PlayerSetDamageDirection(coPlayer player, coPlayer sourceObject, TransformF damagePos)
@@ -563,7 +559,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 }
 
             if (console.isObject(client))
-                console.commandToClient(client, console.addTaggedString("setDamageDirection"), new[] {damagedirection});
+                console.commandToClient(client, console.addTaggedString("setDamageDirection"), new[] { damagedirection });
             }
 
         [Torque_Decorations.TorqueCallBack("", "Player", "use", "(%player, %data,nameSpaceDepth)", 3, 2400, false)]
@@ -572,7 +568,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (PlayerIsPilot(player))
                 return;
             int nsd = (nameSpaceDepth + 1);
-            console.ParentExecute(player, "use", nsd - 1, new string[] {player, data, nsd.AsString()});
+            console.ParentExecute(player, "use", nsd - 1, new string[] { player, data, nsd.AsString() });
             }
         }
     }

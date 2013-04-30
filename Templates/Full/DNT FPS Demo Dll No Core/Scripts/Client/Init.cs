@@ -192,7 +192,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 console.Call("connect", new[] {console.GetVarString("$JoinGameAddress"), "", console.GetVarString("$Pref::Player::Name")});
             else
                 {
-                new coGuiCanvas("Canvas").call("DefaultCursor");
+                ((coGuiCanvas)"Canvas").call("DefaultCursor");
                 loadStartup();
                 }
             }

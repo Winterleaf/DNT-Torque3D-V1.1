@@ -109,7 +109,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coLevelInfo(string simobjectid) : base(simobjectid)
+        internal coLevelInfo(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -117,7 +117,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coLevelInfo(uint simobjectid) : base(simobjectid)
+        internal coLevelInfo(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -125,7 +125,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coLevelInfo(int simobjectid) : base(simobjectid)
+        internal coLevelInfo(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -255,8 +255,8 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         public TypeSFXDistanceModel soundDistanceModel
             {
-            get { return (TypeSFXDistanceModel) Enum.Parse(typeof (TypeSFXDistanceModel), dnTorque.self.GetVar(_mSimObjectId + ".soundDistanceModel")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".soundDistanceModel", value.ToString()); }
+            get { return (TypeSFXDistanceModel) Enum.Parse(typeof (TypeSFXDistanceModel), dnTorque.self.GetVar(_mSimObjectId + ".soundDistanceModel").Replace(" ", "zz_zz")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".soundDistanceModel", value.ToString().Replace("zz_zz", " ")); }
             }
 
         /// <summary>
@@ -330,6 +330,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coLevelInfo ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -350,6 +352,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coLevelInfo ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -371,6 +375,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coLevelInfo ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

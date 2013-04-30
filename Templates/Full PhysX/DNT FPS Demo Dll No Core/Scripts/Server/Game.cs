@@ -82,7 +82,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
         public bool isScriptFileThenRun(string filename)
             {
-            if (console.Call("isScriptFile", new[] {filename}).AsBool())
+            if (console.Call("isScriptFile", new[] { filename }).AsBool())
                 {
                 Util.exec(filename, false, false);
                 return true;
@@ -179,30 +179,30 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             //string camera = console.GetVarString(thisobj + ".camera");
 
             // Set the control object to the default camera
-            if (!console.isObject(camera))
+            if (!camera.isObject())
                 {
                 camera = Util._spawnObject(Game__DefaultCameraClass, Game__DefaultCameraDataBlock);
                 client["camera"] = camera;
                 }
 
             // If we have a camera then set up some properties
-            if (!console.isObject(camera))
+            if (!camera.isObject())
                 return;
 
-            new coSimSet("MissionCleanup").pushToBack(camera);
+            ((coSimSet)"MissionCleanup").pushToBack(camera);
 
             camera.scopeToClient(client);
 
             client.setControlObject(camera);
 
-            if (!Util._isDefined(spawnPoint))
+            if (spawnPoint == "")
                 return;
 
             // Attempt to treat %spawnPoint as an object
 
 
             if (Util.getWordCount(spawnPoint) == 1 && console.isObject(spawnPoint))
-                camera.setTransform(new coMarker(spawnPoint).getTransform());
+                camera.setTransform(((coMarker)spawnPoint).getTransform());
             else
                 camera.setTransform(new TransformF(spawnPoint));
             }
@@ -219,7 +219,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             double result = simtime - starttime;
 
-            console.commandToClient(client, "SyncClock", new[] {result.AsString()});
+            console.commandToClient(client, "SyncClock", new[] { result.AsString() });
 
             // Find a spawn point for the camera
             // This function currently relies on some helper functions defined in
@@ -265,26 +265,20 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             if (SpawnPlayer(client, playerSpawnPoint, false))
 
-                GameConnectionLoadOut(client, new coPlayer(client["player"]));
+                GameConnectionLoadOut(client, client["player"]);
             }
 
         [Torque_Decorations.TorqueCallBack("", "GameConnection", "onClientLeaveGame", "%client", 1, 51, false)]
         public void GameConnectionOnClientLeaveGame(coGameConnection client)
             {
-            try
-                {
-                new coCamera(client["camera"]).delete();
-                }
-            catch (Exception)
-                {
-                }
-            try
-                {
-                new coPlayer(client["player"]).delete();
-                }
-            catch (Exception)
-                {
-                }
+
+            if (((coCamera)client["camera"]).isObject())
+                ((coCamera)client["camera"]).delete();
+
+
+            if (((coPlayer)client["player"]).isObject())
+                ((coPlayer)client["player"]).delete();
+
             }
 
 
@@ -297,30 +291,30 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             ShapeBaseClearWeaponCycle(player);
 
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("Ryder"), 1);
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("RyderClip"), ShapeBaseShapeBaseMaxInventory(player, new coItemData("RyderClip")));
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("RyderAmmo"), ShapeBaseShapeBaseMaxInventory(player, new coItemData("RyderAmmo")));
+            ShapeBaseShapeBaseSetInventory(player, "Ryder", 1);
+            ShapeBaseShapeBaseSetInventory(player, "RyderClip", ShapeBaseShapeBaseMaxInventory(player, "RyderClip"));
+            ShapeBaseShapeBaseSetInventory(player, "RyderAmmo", ShapeBaseShapeBaseMaxInventory(player, "RyderAmmo"));
 
             ShapeBaseAddToWeaponCycle(player, "Ryder");
 
 
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("Lurker"), 1);
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("LurkerClip"), ShapeBaseShapeBaseMaxInventory(player, new coItemData("LurkerClip")));
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("LurkerAmmo"), ShapeBaseShapeBaseMaxInventory(player, new coItemData("LurkerAmmo")));
+            ShapeBaseShapeBaseSetInventory(player, "Lurker", 1);
+            ShapeBaseShapeBaseSetInventory(player, "LurkerClip", ShapeBaseShapeBaseMaxInventory(player, "LurkerClip"));
+            ShapeBaseShapeBaseSetInventory(player, "LurkerAmmo", ShapeBaseShapeBaseMaxInventory(player, "LurkerAmmo"));
 
             ShapeBaseAddToWeaponCycle(player, "Lurker");
 
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("LurkerGrenadeLauncher"), 1);
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("LurkerGrenadeAmmo"), ShapeBaseShapeBaseMaxInventory(player, new coItemData("LurkerGrenadeAmmo")));
+            ShapeBaseShapeBaseSetInventory(player, "LurkerGrenadeLauncher", 1);
+            ShapeBaseShapeBaseSetInventory(player, "LurkerGrenadeAmmo", ShapeBaseShapeBaseMaxInventory(player, "LurkerGrenadeAmmo"));
 
             ShapeBaseAddToWeaponCycle(player, "LurkerGrenadeLauncher");
 
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("ProxMine"), ShapeBaseShapeBaseMaxInventory(player, new coItemData("ProxMine")));
+            ShapeBaseShapeBaseSetInventory(player, "ProxMine", ShapeBaseShapeBaseMaxInventory(player, "ProxMine"));
 
             ShapeBaseAddToWeaponCycle(player, "ProxMine");
 
 
-            ShapeBaseShapeBaseSetInventory(player, new coItemData("DeployableTurret"), ShapeBaseShapeBaseMaxInventory(player, new coItemData("DeployableTurret")));
+            ShapeBaseShapeBaseSetInventory(player, "DeployableTurret", ShapeBaseShapeBaseMaxInventory(player, "DeployableTurret"));
             ShapeBaseAddToWeaponCycle(player, "DeployableTurret");
 
 
@@ -359,9 +353,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
                 for (uint i = 0; i < simSet.getCount(); i++)
                     {
-                    ((coSimObject) simSet.getObject(i)).schedule("10", "delete");
+                    ((coSimObject)simSet.getObject(i)).schedule("10", "delete");
                     }
-                //SimObject.schedule(simSet.getObject(i), "10", "delete");
                 }
 
 
@@ -376,7 +369,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             // Update the numerical Health HUD
 
-            PlayerUpdateHealth(player);
+            //PlayerUpdateHealth(player);
 
 
             // Switch the client over to the death cam and unhook the player object.
@@ -401,7 +394,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 sendMsgFunction = "sendMsgClientKilled_Default";
                 }
 
-            console.Call(sendMsgFunction, new string[] {"MsgClientKilled", client, sourceclient, damloc});
+            console.Call(sendMsgFunction, new string[] { "MsgClientKilled", client, sourceclient, damloc });
             // Dole out points and check for win
             if ((damagetype == "Suicide") || (sourceclient == client))
                 {
@@ -470,14 +463,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void GameConnectionSetAmmoAmountHud(coGameConnection client, int amount, int amountinClips)
             {
             if (console.isObject(client))
-                console.commandToClient(client, "SetAmmoAmountHud", new[] {amount.AsString(), amountinClips.AsString()});
+                console.commandToClient(client, "SetAmmoAmountHud", new[] { amount.AsString(), amountinClips.AsString() });
             }
 
         [Torque_Decorations.TorqueCallBack("", "GameConnection", "RefreshWeaponHud", "(%client, %amount, %preview, %ret, %zoomRet, %amountInClips)", 6, 51, false)]
         public void GameConnectionRefreshWeaponHud(coGameConnection client, int amount, string preview, string ret, string zoomRet, int amountInClips)
             {
             if (console.isObject(client))
-                console.commandToClient(client, "RefreshWeaponHud", new[] {amount.AsString(), preview, ret, zoomRet, amountInClips.AsString()});
+                console.commandToClient(client, "RefreshWeaponHud", new[] { amount.AsString(), preview, ret, zoomRet, amountInClips.AsString() });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sendMsgClientKilled_Impact", "(%msgType, %client, %sourceClient, %damLoc )", 4, 51, false)]
@@ -519,29 +512,23 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "EditorIsActive", "()", 0, 51, false)]
         public bool EditorIsActive()
             {
-            try
-                {
-                //If they aren't objects they will throw an exception.
-                return new coGuiControl("EditorGui") == new coGuiCanvas("canvas");
-                }
-            catch (Exception)
-                {
+
+            if (!((coGuiControl)"EditorGui").isObject())
                 return false;
-                }
+
+            return ((coGuiControl)"EditorGui") == ((coGuiCanvas)"canvas");
+
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "GuiEditorIsActive", "()", 0, 51, false)]
         public bool GuiEditorIsActive()
             {
-            try
-                {
-                //If they aren't objects they will throw an exception.
-                return new coGuiControl("GuiEditorGui") == new coGuiCanvas("canvas");
-                }
-            catch (Exception)
-                {
+            if (!((coGuiControl)"GuiEditorGui").isObject())
                 return false;
-                }
+
+            return ((coGuiControl)"GuiEditorGui") == ((coGuiCanvas)"canvas");
+
+
             }
 
 
@@ -551,26 +538,16 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             coSimObject spawnpoint = null;
             String[] lspawngroups = spawnGroups.Split(' ');
 
-            for (int i = 0; i < lspawngroups.Count(); i++)
+            foreach (coSimSet group in lspawngroups)
                 {
-                try
-                    {
-                    coSimSet group = lspawngroups[i];
-                    spawnpoint = group.getRandom();
+                if (!group.isObject())
+                    continue;
+                spawnpoint = group.getRandom();
+                if (spawnpoint.isObject())
                     return spawnpoint;
-                    }
-                catch (Exception)
-                    {
-                    //If it gets here it didn't find the group and it goes to the next one.
-                    }
                 }
-            coSpawnSphere DefaultCameraSpawnSphere = null;
-            try
-                {
-                //Throws exception if it doesn't exist.
-                DefaultCameraSpawnSphere = "DefaultCameraSpawnSphere";
-                }
-            catch (Exception)
+            coSpawnSphere DefaultCameraSpawnSphere = "DefaultCameraSpawnSphere";
+            if (!DefaultCameraSpawnSphere.isObject())
                 {
                 Torque_Class_Helper spawn = new Torque_Class_Helper("SpawnSphere", "DefaultCameraSpawnSphere");
                 spawn.Props.Add("dataBlock", "SpawnSphereMarker");
@@ -578,7 +555,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 spawn.PropsAddString("spawnDatablock", Game__DefaultCameraDataBlock);
                 coSpawnSphere spawnobj = spawn.Create();
 
-                new coSimSet("MissionCleanup").pushToBack(spawnobj);
+                ((coSimSet)"MissionCleanup").pushToBack(spawnobj);
                 }
 
             return DefaultCameraSpawnSphere;
@@ -591,33 +568,28 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             String[] lspawngroups = spawnGroups.Split(' ');
 
 
-            for (int i = 0; i < lspawngroups.Count(); i++)
+            foreach (coSimSet group in lspawngroups)
                 {
-                try
-                    {
-                    coSimSet group = lspawngroups[i];
-                    spawnpoint = group.getRandom();
+                if (!group.isObject())
+                    continue;
+                spawnpoint = group.getRandom();
+                if (spawnpoint.isObject())
                     return spawnpoint;
-                    }
-                catch (Exception)
-                    {
-                    }
                 }
 
 
             coSpawnSphere DefaultPlayerSpawnSphere = null;
-            try
-                {
-                DefaultPlayerSpawnSphere = "DefaultPlayerSpawnSphere";
-                }
-            catch (Exception)
+
+            DefaultPlayerSpawnSphere = "DefaultPlayerSpawnSphere";
+
+            if (DefaultPlayerSpawnSphere.isObject())
                 {
                 Torque_Class_Helper spawn = new Torque_Class_Helper("SpawnSphere", "DefaultPlayerSpawnSphere");
                 spawn.Props.Add("dataBlock", "SpawnSphereMarker");
                 spawn.PropsAddString("spawnClass", Game__DefaultPlayerClass);
                 spawn.PropsAddString("spawnDatablock", Game__DefaultPlayerDataBlock);
                 coSpawnSphere spawnid = spawn.Create();
-                new coSimSet("MissionCleanup").pushToBack(spawnid);
+                ((coSimSet)"MissionCleanup").pushToBack(spawnid);
                 }
 
             return DefaultPlayerSpawnSphere;
@@ -629,13 +601,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             coPlayer player = client["player"];
 
 
-            if (console.isObject(player))
+            if (player.isObject())
                 {
                 console.error("Attempting to create a player for a client that already has one!");
                 return false;
                 }
 
-            if ((spawnpoint.Split(' ').GetUpperBound(0) == 0) && (console.isObject(spawnpoint)))
+            if ((spawnpoint.Split(' ').GetUpperBound(0) == 0) && (spawnpoint.isObject()))
                 {
                 // Attempt to treat %spawnPoint as an object
                 string spawnclass = Game__DefaultPlayerClass;
@@ -667,7 +639,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 if (console.isObject(player))
                     {
                     // Pick a location within the spawn sphere.
-                    player.setTransform(PointInSpawnSphere(player, new coSpawnSphere(spawnpoint)));
+                    player.setTransform(PointInSpawnSphere(player, ((coSpawnSphere)spawnpoint)));
                     }
                 else
                     {
@@ -676,11 +648,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     // to the "if (!isObject(%player))" check below.
                     if (console.GetVarString(spawndatablock).Trim() != "")
                         {
-                        console.Call("MessageBoxOK", new[] {"Spawn Player Failed", "Unable to create a player with class " + spawnclass + " and datablock " + spawndatablock + ".\n\nStarting as an Observer instead.", ""});
+                        console.Call("MessageBoxOK", new[] { "Spawn Player Failed", "Unable to create a player with class " + spawnclass + " and datablock " + spawndatablock + ".\n\nStarting as an Observer instead.", "" });
                         }
                     else
                         {
-                        console.Call("MessageBoxOK", new[] {"Spawn Player Failed", "Unable to create a player with class " + spawnclass + ".\n\nStarting as an Observer instead.", ""});
+                        console.Call("MessageBoxOK", new[] { "Spawn Player Failed", "Unable to create a player with class " + spawnclass + ".\n\nStarting as an Observer instead.", "" });
                         }
                     }
                 }
@@ -703,7 +675,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 return false;
                 }
 
-            new coSimSet("MissionCleanup").pushToBack(player);
+            ((coSimSet)"MissionCleanup").pushToBack(player);
             // Update the default camera to start with the player
 
 
@@ -719,17 +691,17 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 coSimSet turrets = client["ownedTurrets"];
                 for (uint i = 0; i < turrets.getCount(); i++)
                     {
-                    new coTurretShape(turrets.getObject(i)).call("addToIgnoreList", player);
+                    ((coTurretShape)turrets.getObject(i)).call("addToIgnoreList", player);
                     }
                 }
 
             player.setShapeName(client["playerName"]);
 
-            player.setEnergyLevel(new coPlayerData(player.getDataBlock())["maxEnergy"].AsFloat());
+            player.setEnergyLevel(((coPlayerData)player.getDataBlock())["maxEnergy"].AsFloat());
 
             if (client["skin"] != "")
                 {
-                string availableSkins = new coPlayerData(player.getDataBlock())["availableSkins"];
+                string availableSkins = ((coPlayerData)player.getDataBlock())["availableSkins"];
                 foreach (coGameConnection other in ClientGroup.Where(other => other != client))
                     {
                     availableSkins = availableSkins.Replace(console.GetVarString(other + ".skin"), " ");
@@ -761,6 +733,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 client.setControlObject(control);
                 }
 
+            int team = new Random().Next(1, 2);
+            AddObjectTo_MobSearchGroup(player, team);
+
+            MessageClient(client, "System", "Your on Team " + team);
+
             console.error(DateTime.Now + " --- PLAYER JOIN::Name '" + Util.StripMLControlChars(player.getShapeName()) + "'::ID '" + player + "'");
             return true;
             }
@@ -781,12 +758,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
                 Random r = new Random();
 
-                float angleY = (float) tMath.mDegToRad((r.NextDouble()*100)*tMath.M_2PI_F);
-                float angleXZ = (float) tMath.mDegToRad((r.NextDouble()*100)*tMath.M_2PI_F);
+                float angleY = (float)tMath.mDegToRad((r.NextDouble() * 100) * tMath.M_2PI_F);
+                float angleXZ = (float)tMath.mDegToRad((r.NextDouble() * 100) * tMath.M_2PI_F);
 
                 int radius = spawnSphere["radius"].AsInt();
-                spherLocationP3F.MPosition.x += (float) (Math.Cos(angleY)*Math.Sin(angleXZ)*(r.Next(radius*-1, radius)));
-                spherLocationP3F.MPosition.y += (float) (Math.Cos(angleXZ)*(r.Next(radius*-1, radius)));
+                spherLocationP3F.MPosition.x += (float)(Math.Cos(angleY) * Math.Sin(angleXZ) * (r.Next(radius * -1, radius)));
+                spherLocationP3F.MPosition.y += (float)(Math.Cos(angleXZ) * (r.Next(radius * -1, radius)));
                 spawnLocationFound = true;
 
                 // Now have to check that another object doesn't already exist at this spot.
@@ -794,14 +771,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 // clear.
 
 
-                TransformF boundingboxsize = new TransformF(new coSimDataBlock(objectToSpawn.getDataBlock())["boundingBox"]);
+                TransformF boundingboxsize = new TransformF(((coSimDataBlock)objectToSpawn.getDataBlock())["boundingBox"]);
                 float searchRadius = boundingboxsize.MPosition.x;
                 float boxSizeY = boundingboxsize.MPosition.y;
                 if (boxSizeY > searchRadius)
                     {
                     searchRadius = boxSizeY;
                     }
-                List<UInt32> objectsfound = console.ContainerRadiusSearch(spherLocationP3F.MPosition, searchRadius, (UInt32) SceneObjectTypesAsUint.PlayerObjectType, false);
+                List<UInt32> objectsfound = console.ContainerRadiusSearch(spherLocationP3F.MPosition, searchRadius, (UInt32)SceneObjectTypesAsUint.PlayerObjectType, false);
                 if (objectsfound.Count > 0)
                     spawnLocationFound = false;
 

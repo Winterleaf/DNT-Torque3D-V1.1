@@ -118,7 +118,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void WeaponOnPickup(coScriptObject thisobj, string obj, coShapeBase shape, int amount, int nameSpaceDepth)
             {
             int nsd = (nameSpaceDepth + 1);
-            if (!console.ParentExecute(thisobj, "onPickup", nsd, new string[] {thisobj, obj, shape, amount.AsString()}).AsBool())
+            if (!console.ParentExecute(thisobj, "onPickup", nsd, new string[] { thisobj, obj, shape, amount.AsString() }).AsBool())
                 return;
 
 
@@ -143,7 +143,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             coGameConnection client = player["client"];
 
             string ammoName = "";
-            ammoName = ((coItemData) thisobj["ammo"]).getName();
+            ammoName = ((coItemData)thisobj["ammo"]).getName();
 
 
             int currentammo = 0;
@@ -155,7 +155,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     player.setImageAmmo(slot, true);
                     currentammo = ShapeBaseShapeBaseGetInventory(player, thisobj["ammo"]);
                     }
-                else if (ShapeBaseShapeBaseGetInventory(player, new coItemData(thisobj["clip"])) > 0)
+                else if (ShapeBaseShapeBaseGetInventory(player, thisobj["clip"]) > 0)
                     {
                     ShapeBaseShapeBaseSetInventory(player, thisobj["ammo"], thisobj["ammo.maxInventory"].AsInt());
                     player.setImageAmmo(slot, true);
@@ -214,7 +214,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "WeaponImage", "onFire", "(%this, %obj, %slot)", 3, 1900, false)]
         public void WeaponImageOnFire(coScriptObject thisobj, coPlayer obj, int slot)
             {
-            if (!((coItem) thisobj["projectile"]).isObject())
+            if (!((coItem)thisobj["projectile"]).isObject())
                 {
                 console.error("WeaponImage::onFire() - Invalid projectile datablock");
                 return;
@@ -242,9 +242,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     // points in a circle
                     Random r = new Random();
                     TransformF matrix = new TransformF();
-                    matrix.MPosition.x = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["projectileSpread"].AsFloat());
-                    matrix.MPosition.y = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["projectileSpread"].AsFloat());
-                    matrix.MPosition.z = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["projectileSpread"].AsFloat());
+                    matrix.MPosition.x = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["projectileSpread"].AsFloat());
+                    matrix.MPosition.y = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["projectileSpread"].AsFloat());
+                    matrix.MPosition.z = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["projectileSpread"].AsFloat());
                     TransformF mat = math.MatrixCreateFromEuler(matrix);
 
                     muzzleVector = math.MatrixMulVector(mat, vec);
@@ -273,7 +273,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
                 coProjectile projectile = tch.Create();
 
-                ((coSimSet) "MissionCleanup").pushToBack(projectile);
+                ((coSimSet)"MissionCleanup").pushToBack(projectile);
                 }
             }
 
@@ -281,7 +281,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "WeaponImage", "onAltFire", "(%this, %obj, %slot)", 3, 1900, false)]
         public void WeaponImageonAltFire(coScriptObject thisobj, coPlayer obj, int slot)
             {
-            if (!((coItem) thisobj["projectile"]).isObject())
+            if (!thisobj["projectile"].isObject())
                 {
                 console.error("WeaponImage::onFire() - Invalid projectile datablock");
                 return;
@@ -309,9 +309,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     // points in a circle
                     Random r = new Random();
                     TransformF matrix = new TransformF();
-                    matrix.MPosition.x = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["altProjectileSpread"].AsFloat());
-                    matrix.MPosition.y = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["altProjectileSpread"].AsFloat());
-                    matrix.MPosition.z = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["altProjectileSpread"].AsFloat());
+                    matrix.MPosition.x = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["altProjectileSpread"].AsFloat());
+                    matrix.MPosition.y = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["altProjectileSpread"].AsFloat());
+                    matrix.MPosition.z = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["altProjectileSpread"].AsFloat());
                     TransformF mat = math.MatrixCreateFromEuler(matrix);
 
                     muzzleVector = math.MatrixMulVector(mat, vec);
@@ -326,7 +326,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 objectVelocity = objectVelocity.vectorScale(thisobj["altProjectile.velInheritFactor"].AsFloat());
                 Point3F muzzleVelocity = muzzleVector.MPosition + objectVelocity;
 
-                Torque_Class_Helper tch = new Torque_Class_Helper(((coItem) thisobj["altProjectileType"]).getName(), "");
+                Torque_Class_Helper tch = new Torque_Class_Helper(((coItem)thisobj["altProjectileType"]).getName(), "");
                 tch.Props.Add("dataBlock", thisobj["altProjectile"]);
                 tch.Props.Add("initialVelocity", '"' + muzzleVelocity.ToString() + '"');
                 tch.Props.Add("initialPosition", '"' + obj.getMuzzlePoint(slot).ToString() + '"');
@@ -336,7 +336,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 tch.Props.Add("sourceClass", obj.getClassName());
 
                 coItem projectile = tch.Create();
-                ((coSimSet) "MissionCleanup").pushToBack(projectile);
+                ((coSimSet)"MissionCleanup").pushToBack(projectile);
                 }
             }
 
@@ -349,7 +349,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "WeaponImage", "onWetFire", "(%this, %obj, %slot)", 3, 1900, false)]
         public void WeaponImageonWetFire(coScriptObject thisobj, coPlayer obj, int slot)
             {
-            if (!((coItem) thisobj["projectile"]).isObject())
+            if (!thisobj["projectile"].isObject())
                 {
                 console.error("WeaponImage::onFire() - Invalid projectile datablock");
                 return;
@@ -376,9 +376,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     // points in a circle
                     Random r = new Random();
                     TransformF matrix = new TransformF();
-                    matrix.MPosition.x = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["wetProjectileSpread"].AsFloat());
-                    matrix.MPosition.y = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["wetProjectileSpread"].AsFloat());
-                    matrix.MPosition.z = (float) ((r.NextDouble() - .5)*2*Math.PI*thisobj["wetProjectileSpread"].AsFloat());
+                    matrix.MPosition.x = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["wetProjectileSpread"].AsFloat());
+                    matrix.MPosition.y = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["wetProjectileSpread"].AsFloat());
+                    matrix.MPosition.z = (float)((r.NextDouble() - .5) * 2 * Math.PI * thisobj["wetProjectileSpread"].AsFloat());
                     TransformF mat = math.MatrixCreateFromEuler(matrix);
 
                     muzzleVector = math.MatrixMulVector(mat, vec);
@@ -398,15 +398,15 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
 
                 tch.Props.Add("dataBlock", thisobj["wetProjectile"]);
-                tch.Props.Add("initialVelocity", '"' + muzzleVelocity.ToString() + '"');
-                tch.Props.Add("initialPosition", '"' + obj.getMuzzlePoint(slot).ToString() + '"');
+                tch.Props.Add("initialVelocity", '"' + muzzleVelocity.AsString() + '"');
+                tch.Props.Add("initialPosition", '"' + obj.getMuzzlePoint(slot).AsString() + '"');
                 tch.Props.Add("sourceObject", obj);
                 tch.Props.Add("sourceSlot", slot.AsString());
                 tch.Props.Add("client", obj["client"]);
                 tch.Props.Add("sourceClass", obj.getClassName());
 
                 coItem projectile = tch.Create();
-                ((coSimSet) "MissionCleanup").pushToBack(projectile);
+                ((coSimSet)"MissionCleanup").pushToBack(projectile);
                 }
             }
 
@@ -423,7 +423,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "WeaponImage", "reloadAmmoClip", "(%this, %obj, %slot)", 3, 1900, false)]
         public void WeaponImageReloadAmmoClip(coItemData thisobj, coShapeBase obj, int slot)
             {
-            string ammoname = ((coItemData) thisobj["ammo"]).getName();
+            string ammoname = ((coItemData)thisobj["ammo"]).getName();
 
             if (thisobj != obj.getMountedImage(slot))
                 return;
@@ -440,10 +440,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 }
             else
                 {
-                int amountInPocket = obj["remaining" + ((coItem) thisobj["ammo"]).getName()].AsInt();
+                int amountInPocket = obj["remaining" + ((coItem)thisobj["ammo"]).getName()].AsInt();
                 if (amountInPocket > 0)
                     {
-                    obj["remaining" + ((coItem) thisobj["ammo"]).getName()] = "0";
+                    obj["remaining" + ((coItem)thisobj["ammo"]).getName()] = "0";
 
                     ShapeBaseShapeBaseSetInventory(obj, thisobj["ammo"], amountInPocket);
                     obj.setImageAmmo(slot, true);
@@ -459,7 +459,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // if we're not empty put the remaining bullets from the current clip
             // in to the player's "pocket".
 
-            if (!((coItem) thisobj["clip"]).isObject())
+            if (!thisobj["clip"].isObject())
                 return;
             // Commenting out this line will use a "hard clip" system, where
             // A player will lose any ammo currently in the gun when reloading.
@@ -505,7 +505,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             int nsd = nameSpaceDepth + 1;
 
-            if (!console.ParentExecute(thisobj, "onPickup", nsd, new string[] {thisobj, obj, shape, amount}).AsBool())
+            if (!console.ParentExecute(thisobj, "onPickup", nsd, new string[] { thisobj, obj, shape, amount }).AsBool())
                 return;
 
             AudioServerPlay3D("WeaponPickupSound", shape.getTransform());
@@ -522,33 +522,32 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
             int amountInClips = 0;
 
-            int currentAmmo = ShapeBaseShapeBaseGetInventory(shape, new coItemData(image["ammo"]));
-            //con.error(string.Format("Current Ammo is {0}", currentAmmo));
+            int currentAmmo = ShapeBaseShapeBaseGetInventory(shape, image["ammo"]);
 
             if (console.isObject(image["clip"]))
-                amountInClips = ShapeBaseShapeBaseGetInventory(shape, new coItemData(image["clip"]));
-            //con.debug(string.Format("Amount in clips is {0}", amountInClips));
+                amountInClips = ShapeBaseShapeBaseGetInventory(shape, image["clip"]);
+
             int t = console.GetVarInt(string.Format("{0}.ammo.maxInventory", image));
-            //con.debug(string.Format("Ammount per clip = {0}", t));
+
             amountInClips *= t;
-            //con.debug(string.Format("Amount of single shells in clips {0}", amountInClips));
+
             int amountloadedingun = console.GetVarInt(string.Format("{0}.remaining{1}", obj, console.GetVarString(string.Format("{0}.ammo", this))));
-            //con.debug(string.Format("Amount loaded in gun {0}", amountloadedingun));
+
             amountInClips += amountloadedingun;
-            //con.debug(string.Format("Amount in clips {0}", amountInClips));
+
 
 
             GameConnectionSetAmmoAmountHud(shape["client"], currentAmmo, amountInClips);
 
             if (outOfAmmo)
-                console.Call(image, "onClipEmpty", new string[] {shape, WeaponSlot.AsString()});
+                console.Call(image, "onClipEmpty", new string[] { shape, WeaponSlot.AsString() });
             }
 
         [Torque_Decorations.TorqueCallBack("", "Ammo", "onPickup", "(%this, %obj, %shape, %amount, %nameSpaceDepth)", 5, 1900, false)]
         public void AmmoOnPickup(string thisobj, string obj, coSceneObject shape, string amount, int nameSpaceDepth)
             {
             int nsd = nameSpaceDepth + 1;
-            if (console.ParentExecute(thisobj, "onPickup", nsd, new string[] {thisobj, obj, shape, amount}).AsBool())
+            if (console.ParentExecute(thisobj, "onPickup", nsd, new string[] { thisobj, obj, shape, amount }).AsBool())
                 AudioServerPlay3D("AmmoPickupSound", shape.getTransform());
             }
 
@@ -562,13 +561,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 if (image <= 0)
                     continue;
 
-                if (!console.isObject(image["ammo"]))
+                if (!image["ammo"].isObject())
                     continue;
                 if (console.Call(image["ammo"], "getID") != console.Call(thisobj, "getID"))
                     continue;
 
-                //if (!console.isObject(image["ammo"]) || console.Call(image[".ammo"], "getID") != console.Call(thisobj, "getID"))
-                //  continue;
 
                 player.setImageAmmo(i, amount != 0);
 
@@ -579,7 +576,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
                 int amountInClips;
 
-                if (((coItem) thisobj["clip"]).isObject())
+                if (thisobj["clip"].isObject())
                     {
                     amountInClips = ShapeBaseShapeBaseGetInventory(player, thisobj["clip"]);
 
@@ -628,25 +625,21 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // available weapons may be part of the cycle)
             int currentIndex = -1;
 
-            try
-                {
-                coItemData mountedimage = thisobj.getMountedImage(WeaponSlot);
 
-                if (mountedimage != 0)
+            coItemData mountedimage = thisobj.getMountedImage(WeaponSlot);
+
+            if (mountedimage.isObject())
+                {
+                string curWeapon = mountedimage["item"];
+                for (int i = 0; i < totalCycledWeapons; i++)
                     {
-                    string curWeapon = mountedimage["item"];
-                    for (int i = 0; i < totalCycledWeapons; i++)
-                        {
-                        if (thisobj["cycleWeapon[" + i + "]"] != curWeapon)
-                            continue;
-                        currentIndex = i;
-                        break;
-                        }
+                    if (thisobj["cycleWeapon[" + i + "]"] != curWeapon)
+                        continue;
+                    currentIndex = i;
+                    break;
                     }
                 }
-            catch (Exception)
-                {
-                }
+
 
 
             int nextIndex = 0;

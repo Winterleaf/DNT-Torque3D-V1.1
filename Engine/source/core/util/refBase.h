@@ -206,7 +206,7 @@ public:
    /// Decrements the reference count.
    void decRefCount()
    {
-      AssertFatal(mRefCount, "Decrementing a reference with refcount 0!");
+      AssertWarn(mRefCount, "Decrementing a reference with refcount 0!");
       if(!--mRefCount)
          destroySelf();
    }

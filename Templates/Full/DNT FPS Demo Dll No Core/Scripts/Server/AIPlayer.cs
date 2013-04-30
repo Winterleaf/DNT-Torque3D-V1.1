@@ -85,6 +85,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
     //-----------------------------------------------------------------------------
     public partial class Main : TorqueScriptTemplate
         {
+
+
+
         private readonly ConcurrentList<AIInterval> m_thoughtqueue = new ConcurrentList<AIInterval>();
         private readonly Random r = new Random();
         private int aiscreated;
@@ -98,7 +101,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             coAIPlayer npc = npcScriptObject.Create();
             if (npc != 0)
                 {
-                new coSimSet("MissionCleanup").pushToBack(npc);
+                ((coSimSet)"MissionCleanup").pushToBack(npc);
                 npc.setShapeName(name);
                 npc.setTransform(spawnpoint);
                 //                console.SetVar(npcID.ToString(), 1);
@@ -109,7 +112,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "DumpMC", "", 0, 2500, false)]
         public void DumpMC()
             {
-            console.error("Items in Missioncleaup are " + ((coSimSet) "MissionCleanup").getCount());
+            console.error("Items in Missioncleaup are " + ((coSimSet)"MissionCleanup").getCount());
             }
 
 
@@ -133,8 +136,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 coScriptObject MobRoot = new Torque_Class_Helper("ScriptObject", "Mob" + i.AsString()).Create().AsString();
                 MobRoot["player"] = "";
                 MobRoot["aiteam"] = team.AsString();
-                new coSimSet("rootgroup").pushToBack(MobRoot);
-                Util._schedule((i*100).AsString(), "0", "spawnAI", MobRoot);
+                ((coSimSet)"rootgroup").pushToBack(MobRoot);
+                Util._schedule((i * 100).AsString(), "0", "spawnAI", MobRoot);
                 }
             using (BackgroundWorker bwr_AIThought = new BackgroundWorker())
                 {
@@ -146,7 +149,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
         private void bwr_AIThought_DoWork(object sender, DoWorkEventArgs e)
             {
-            while (lastcount > 0)
+            while (lastcount > 0 && m_ts.IsRunning)
                 {
                 List<AIInterval> t = m_thoughtqueue.toArray().Where(item => item.Intervaltime < DateTime.Now).ToList();
                 int counter = 0;
@@ -155,18 +158,19 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                     foreach (AIInterval item in t)
                         {
                         counter++;
-                        if (counter > 5)
+                        if (counter > 3)
                             {
                             nosleep = true;
                             break;
                             }
                         m_thoughtqueue.Remove(item);
                         if (console.isObject(item.Player_id))
-                            // new coAIPlayer(item.Player_id).schedule("0", "think", item.Player_id);
-                            AIPlayerThink(new coAIPlayer(item.Player_id), item.Player_id);
+                            AIPlayerThink(item.Player_id, item.Player_id);
                         }
                 if (!nosleep)
                     Thread.Sleep(100);
+                else
+                    Thread.Sleep(32);
                 }
             }
 
@@ -176,7 +180,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             for (int i = 0; i < lastcount; i++)
                 {
                 coScriptObject mobholder = "Mob" + i.AsString();
-                new coAIPlayer(mobholder["player"]).delete();
+                mobholder["player"].delete();
                 mobholder.delete();
                 }
             lastcount = 0;
@@ -191,7 +195,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 return;
                 }
 
-            coAIPlayer aiPlayer = AiPlayerSpawnOnPath("Team" + aiManager["aiteam"], new coSimSet("MissionGroup/Paths/Path1"));
+            coAIPlayer aiPlayer = AiPlayerSpawnOnPath("Team" + aiManager["aiteam"], "MissionGroup/Paths/team" + aiManager["aiteam"] + "Path");
 
             if (aiPlayer == null)
                 {
@@ -207,29 +211,49 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 }
             //  m_ts.LogError("AIManager " + aiManager + " - Creating.");
 
-            aiPlayer.call("FollowPath", "MissionGroup/Paths/Path1", "-1");
+
+
+            aiPlayer.call("FollowPath", "MissionGroup/Paths/team" + aiManager["aiteam"] + "Path", "-1");
             aiPlayer.setMoveSpeed(0.8f);
             aiManager["player"] = aiPlayer;
             aiPlayer["aiManager"] = aiManager;
             aiPlayer["aiteam"] = aiManager["aiteam"];
 
-            ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("Lurker"), 1);
-            ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("LurkerClip"), 1000);
-            ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("LurkerAmmo"), 1000);
-            ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("LurkerGrenadeLauncher"), 1);
-            ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("LurkerGrenadeAmmo"), 10);
-            ShapeBaseShapeBaseSetInventory(aiPlayer, new coItemData("ProxMine"), 1);
+            ShapeBaseShapeBaseSetInventory(aiPlayer, "Lurker", 1);
+            ShapeBaseShapeBaseSetInventory(aiPlayer, "LurkerClip", 1000);
+            ShapeBaseShapeBaseSetInventory(aiPlayer, "LurkerAmmo", 1000);
+            ShapeBaseShapeBaseSetInventory(aiPlayer, "LurkerGrenadeLauncher", 1);
+            ShapeBaseShapeBaseSetInventory(aiPlayer, "LurkerGrenadeAmmo", 10);
+            ShapeBaseShapeBaseSetInventory(aiPlayer, "ProxMine", 5);
+            ShapeBaseShapeBaseSetInventory(aiPlayer, "DeployableTurret", 5);
+
+
             aiPlayer.mountImage("LurkerWeaponImage", 0, true, "");
 
 
             TransformF t = aiPlayer.getTransform();
             t.MPosition.z += r.Next(0, 200);
             aiPlayer.setTransform(t);
+
+            AddObjectTo_MobSearchGroup(aiPlayer, aiManager["aiteam"].AsInt());
+
             m_thoughtqueue.Add(new AIInterval(DateTime.Now.AddMilliseconds(500), aiPlayer));
             //AIPlayerThink(aiPlayer, aiPlayer);
             //aiPlayer.schedule("100", "think", aiPlayer);
             aiscreated++;
             }
+
+        public void AddObjectTo_MobSearchGroup(coPlayer obj, int team)
+            {
+            coSimSet MobSearchGroup = "MobSearchGroup_" + team;
+            if (!MobSearchGroup.isObject())
+                {
+                MobSearchGroup = new Torque_Class_Helper("SimSet", "MobSearchGroup_" + team).Create();
+                }
+            MobSearchGroup.add(obj);
+            }
+
+
 
         #region AIPlayer Datablock
 
@@ -238,11 +262,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             Util._cancelAll(npc);
             coScriptObject aimanager = null;
-            try
-                {
-                aimanager = npc["aiManager"];
-                }
-            catch (Exception)
+
+            aimanager = npc["aiManager"];
+            if (!aimanager.isObject())
                 {
                 console.error("Bad aiManager");
                 return;
@@ -250,21 +272,20 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             npc.setImageTarget(0, false);
 
 
-            try
+
+            coSimObject item = ((coSimObject)npc.getMountedImage(WeaponSlot))["item"];
+            if (item.isObject())
                 {
-                coSimObject item = new coSimObject(npc.getMountedImage(WeaponSlot))["item"];
                 //string item = console.GetVarString(ShapeBase.getMountedImage(npc, WeaponSlot).AsString() + ".item");
                 if (r.Next(1, 100) > 80)
                     {
-                    int amount = ShapeBaseShapeBaseGetInventory(npc, new coItemData(item["image.ammo"]));
+                    int amount = ShapeBaseShapeBaseGetInventory(npc, item["image.ammo"]);
 
                     if (amount.AsBool())
-                        ShapeBaseShapeBaseThrow(npc, new coItemData(item["image.clip"]), 1);
+                        ShapeBaseShapeBaseThrow(npc, item["image.clip"], 1);
                     }
                 }
-            catch (Exception)
-                {
-                }
+
             ShapeBaseTossPatch(npc);
             PlayerPlayDeathCry(npc);
             PlayerPlayDeathAnimation(npc);
@@ -387,7 +408,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             tch.Props.Add("dataBlock", "DemoPlayer");
             tch.Props.Add("path", "");
             coAIPlayer npc = tch.Create();
-            ((coSimSet) "MissionCleanup").pushToBack(npc);
+            ((coSimSet)"MissionCleanup").pushToBack(npc);
             npc.setShapeName(name);
             npc.setTransform(spawnPoint);
             return npc;
@@ -399,7 +420,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (!console.isObject(path))
                 return null;
 
-            coMarker node = path.getObject((uint) r.Next(0, path.getCount() - 1));
+            coMarker node = path.getObject((uint)r.Next(0, path.getCount() - 1));
 
             TransformF transform = node.getTransform();
             return AiPlayerSpawn(ainame, transform);
@@ -421,7 +442,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             else
                 npc["targetNode"] = node.AsString();
 
-            if (new coSimSet(npc["path"]) == path)
+            if (((coSimSet)npc["path"]) == path)
                 AiPlayerMoveToNode(npc, npc["currentNode"].AsUint());
 
             else
@@ -436,7 +457,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             uint targetnode = npc["targetNode"].AsUint();
             uint currentnode = npc["currentNode"].AsUint();
-            uint pathcount = (uint) new coSimSet(npc["path"]).getCount();
+            uint pathcount = (uint)((coSimSet)npc["path"]).getCount();
             if ((targetnode < 0) || (currentnode < targetnode))
                 AiPlayerMoveToNode(npc, currentnode < pathcount - 1 ? (currentnode + 1) : 0);
             else
@@ -448,8 +469,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         public void AiPlayerMoveToNode(coAIPlayer npc, uint index)
             {
             npc["currentNode"] = index.AsString();
-            new coSimSet(npc["path"]).getObject(index);
-            coMarker node = new coSimSet(npc["path"]).getObject(index);
+            ((coSimSet)npc["path"]).getObject(index);
+            coMarker node = ((coSimSet)npc["path"]).getObject(index);
             if (npc.getMoveDestination() != node.getTransform().MPosition)
                 npc.setMoveDestination(node.getTransform().MPosition, false);
             }
@@ -509,7 +530,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "AIPlayer", "wait", "(%this, %time)", 2, 2500, false)]
         public void AiPlayerWait(coAIPlayer npc, string time)
             {
-            npc.schedule((time.AsLong()*1000).AsString(), "nextTask");
+            npc.schedule((time.AsLong() * 1000).AsString(), "nextTask");
             }
 
         [Torque_Decorations.TorqueCallBack("", "AIPlayer", "done", "(%this, %time)", 2, 2500, false)]
@@ -545,21 +566,49 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (!console.isObject(npc))
                 return -1;
 
-            Point3F botpos = npc.getPosition();
-            Dictionary<uint, float> playersaround = console.initContainerRadiusSearch(new Point3F(botpos), 30, (uint) SceneObjectTypesAsUint.PlayerObjectType);
-            //I would convert this to a linq query, but since they are ordered by dist, and mostlikely I will
-            //want the first one or second one, I left it as a loop.
-            foreach (KeyValuePair<uint, float> keyValuePair in playersaround)
+            if ((npc["CurrentTarget"] != "") && (npc["CurrentTarget"] != "-1"))
                 {
-                if (!console.isObject(keyValuePair.Key.AsString()))
-                    continue;
-                if (((coPlayer) keyValuePair.Key.AsString()).getState() == "Dead")
-                    continue;
-                if (console.GetVarInt(keyValuePair.Key.AsString() + ".aiteam") == console.GetVarInt(npc + ".aiteam"))
-                    continue;
-                return (int) keyValuePair.Key;
+                if (npc["CurrentTarget"].isObject())
+                    if (((coPlayer)npc["CurrentTarget"]).getState() != "Dead")
+                        return npc["CurrentTarget"].AsInt();
                 }
-            return -1;
+
+
+            coSimSet MobSearchGroup;
+
+            if (npc["aiteam"] == "1")
+                MobSearchGroup = "MobSearchGroup_2";
+            else
+                MobSearchGroup = "MobSearchGroup_1";
+
+            coSimSet MobSearchGroupResult = "MobSearchGroupResult";
+            if (!MobSearchGroupResult.isObject())
+                MobSearchGroupResult = new Torque_Class_Helper("SimSet", "MobSearchGroupResult").Create();
+
+            npc.AISearchSimSet(180, 50, MobSearchGroup, MobSearchGroupResult);
+
+
+            int closesttarget = -1;
+            float closestdist = 51;
+
+            for (uint i = 0; i < MobSearchGroupResult.getCount(); i++)
+                {
+                coPlayer target = MobSearchGroupResult.getObject(i);
+                if (!target.isObject())
+                    continue;
+                if (target.getState() == "Dead")
+                    continue;
+                float dist = AIPlayergetTargetDistance(npc, target);
+                if (dist >= closestdist)
+                    continue;
+                closestdist = dist;
+                closesttarget = target;
+                }
+            MobSearchGroupResult.clear();
+
+            npc["CurrentTarget"] = closesttarget.AsString();
+
+            return closesttarget;
             }
 
         public float AIPlayergetTargetDistance(coAIPlayer npc, coPlayer target)
@@ -569,7 +618,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
 
         public bool AIPlayerplayerLOS(coAIPlayer npc, coPlayer target)
             {
-            const uint mask = (uint) (SceneObjectTypesAsUint.StaticObjectType | SceneObjectTypesAsUint.TerrainObjectType);
+            const uint mask = (uint)(SceneObjectTypesAsUint.StaticObjectType | SceneObjectTypesAsUint.TerrainObjectType);
 
             string collision = Util.containerRayCast(npc.getEyePoint(), target.getEyePoint(), mask, npc, true);
             if (collision == "0")
@@ -588,11 +637,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 return;
 
 
-            int nextdelay = AIPlayerCheckForEnemy(npc) ? 500 : 250;
+            int nextdelay = AIPlayerCheckForEnemy(npc) ? 1000 : 750;
             m_thoughtqueue.Add(new AIInterval(DateTime.Now.AddMilliseconds(nextdelay), npc));
-            // if (npc.isObject())
-
-            //npc.schedule(nextdelay.AsString(), "think", npc);
             }
 
         [Torque_Decorations.TorqueCallBack("", "AIPlayer", "CheckForEnemy", "(%this,%t)", 2, 2500, false)]
@@ -604,24 +650,35 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             if (nearestplayer != -1)
                 {
                 float dist = AIPlayergetTargetDistance(npc, nearestplayer);
+                TransformF t = ((coPlayer)nearestplayer).getTransform();
                 if (dist < 30)
                     {
-                    TransformF t = ((coPlayer) nearestplayer).getTransform();
+
                     npc.setAimObject(nearestplayer.AsString());
-                    string currentweapon = new coSimObject(npc.getMountedImage(0))["name"];
+                    string currentweapon = ((coSimObject)npc.getMountedImage(0))["name"];
 
                     if (dist > 25)
                         {
                         if (currentweapon != "LurkerGrenadeLauncherImage")
-                            if (ShapeBaseShapeBaseHasInventory(npc, new coItemData("LurkerGrenadeAmmo")))
+                            if (ShapeBaseShapeBaseHasInventory(npc, "LurkerGrenadeAmmo"))
                                 npc.mountImage("LurkerGrenadeLauncherImage", 0, true, "");
                             else if (currentweapon != "LurkerWeaponImage")
                                 npc.mountImage("LurkerWeaponImage", 0, true, "");
                         }
-                    else
+                    else if (dist > 10)
                         {
                         if (currentweapon != "LurkerWeaponImage")
                             npc.mountImage("LurkerWeaponImage", 0, true, "");
+                        }
+                    else
+                        {
+                        if (ShapeBaseShapeBaseHasInventory(npc, "ProxMine"))
+                            {
+                            ShapeBaseShapeBaseThrow(npc, "ProxMine", 1);
+                            }
+                        if (currentweapon != "LurkerWeaponImage")
+                            npc.mountImage("LurkerWeaponImage", 0, true, "");
+
                         }
 
                     npc["HoldAndFire"] = true.AsString();
@@ -646,7 +703,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                         npc.setMoveDestination(t.MPosition, false);
                     return false;
                     }
+
+                npc.setMoveDestination(t.MPosition, false);
                 return false;
+
+
                 }
             npc["HoldAndFire"] = false.AsString();
 

@@ -109,7 +109,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiHealthTextHud(string simobjectid) : base(simobjectid)
+        internal coGuiHealthTextHud(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -117,7 +117,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiHealthTextHud(uint simobjectid) : base(simobjectid)
+        internal coGuiHealthTextHud(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -125,7 +125,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiHealthTextHud(int simobjectid) : base(simobjectid)
+        internal coGuiHealthTextHud(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -310,6 +310,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coGuiHealthTextHud ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -330,6 +332,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coGuiHealthTextHud ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -351,6 +355,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coGuiHealthTextHud ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

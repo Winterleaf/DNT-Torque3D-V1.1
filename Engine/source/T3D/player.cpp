@@ -6004,8 +6004,6 @@ U32 Player::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
          stream->writeInt((S32)len, 13);
       }
       stream->writeFloat(mRot.z / M_2PI_F, 7);
-
-	  //Con::errorf("PreSend (x,z) %f,%f",mHead.x,mHead.z);
       stream->writeSignedFloat(mHead.x / mDataBlock->maxLookAngle, 6);
       stream->writeSignedFloat(mHead.z / mDataBlock->maxFreelookAngle, 6);
       delta.move.pack(stream);

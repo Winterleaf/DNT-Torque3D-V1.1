@@ -90,7 +90,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             //int ctrlExtent = MessageHud_Frame["extent"].Split(' ')[0].AsInt();
             int ctrlExtent = MessageHud_Frame.extent.x;
 
-            new coGuiCanvas("Canvas").pushDialog(thisobj);
+            ((coGuiCanvas)"Canvas").pushDialog(thisobj);
 
             MessageHud_Frame.position = windowPos;
             MessageHud_Frame.extent = windowExt;
@@ -115,14 +115,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             if (!thisobj.isVisible())
                 return;
 
-            new coGuiCanvas("Canvas").popDialog(thisobj);
+            (( coGuiCanvas)"Canvas").popDialog(thisobj);
             thisobj.setVisible(false);
 
 
             if (bGlobal["$enableDirectInput"])
                 console.Call("activateKeyboard");
 
-            new coGuiTextEditCtrl("MessageHud_Edit").setValue("");
+            (( coGuiTextEditCtrl)"MessageHud_Edit").setValue("");
             }
 
         [Torque_Decorations.TorqueCallBack("", "MessageHud", "toggleState", "(this)", 1, 5000, false)]

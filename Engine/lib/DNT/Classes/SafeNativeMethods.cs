@@ -1119,6 +1119,8 @@ namespace WinterLeaf.Classes
 
         internal static wle_fnAIConnection_setTrigger mwle_fnAIConnection_setTrigger;
 
+        internal static wle_fnAIPlayer_AISearchSimSet mwle_fnAIPlayer_AISearchSimSet;
+
         internal static wle_fnAIPlayer_clearAim mwle_fnAIPlayer_clearAim;
 
         internal static wle_fnAIPlayer_getAimLocation mwle_fnAIPlayer_getAimLocation;
@@ -4173,6 +4175,7 @@ namespace WinterLeaf.Classes
             mwle_fnAIConnection_setFreeLook = null;
             mwle_fnAIConnection_setMove = null;
             mwle_fnAIConnection_setTrigger = null;
+            mwle_fnAIPlayer_AISearchSimSet = null;
             mwle_fnAIPlayer_clearAim = null;
             mwle_fnAIPlayer_getAimLocation = null;
             mwle_fnAIPlayer_getAimObject = null;
@@ -5928,6 +5931,7 @@ namespace WinterLeaf.Classes
             mwle_fnAIConnection_setFreeLook = (wle_fnAIConnection_setFreeLook) Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIConnection_setFreeLook"), typeof (wle_fnAIConnection_setFreeLook));
             mwle_fnAIConnection_setMove = (wle_fnAIConnection_setMove) Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIConnection_setMove"), typeof (wle_fnAIConnection_setMove));
             mwle_fnAIConnection_setTrigger = (wle_fnAIConnection_setTrigger) Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIConnection_setTrigger"), typeof (wle_fnAIConnection_setTrigger));
+            mwle_fnAIPlayer_AISearchSimSet = (wle_fnAIPlayer_AISearchSimSet) Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_AISearchSimSet"), typeof (wle_fnAIPlayer_AISearchSimSet));
             mwle_fnAIPlayer_clearAim = (wle_fnAIPlayer_clearAim) Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_clearAim"), typeof (wle_fnAIPlayer_clearAim));
             mwle_fnAIPlayer_getAimLocation = (wle_fnAIPlayer_getAimLocation) Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_getAimLocation"), typeof (wle_fnAIPlayer_getAimLocation));
             mwle_fnAIPlayer_getAimObject = (wle_fnAIPlayer_getAimObject) Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_getAimObject"), typeof (wle_fnAIPlayer_getAimObject));
@@ -7361,6 +7365,13 @@ namespace WinterLeaf.Classes
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)]
         internal delegate void wle_fnAIConnection_setTrigger([MarshalAs(UnmanagedType.LPStr)] [In] StringBuilder aiconnection, [MarshalAs(UnmanagedType.LPStr)] [In] StringBuilder a2, [MarshalAs(UnmanagedType.LPStr)] [In] StringBuilder a3);
+
+        #endregion
+
+        #region Nested type: wle_fnAIPlayer_AISearchSimSet
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)]
+        internal delegate void wle_fnAIPlayer_AISearchSimSet([MarshalAs(UnmanagedType.LPStr)] [In] StringBuilder aiplayer, [In] float fOV, [In] float farDist, [MarshalAs(UnmanagedType.LPStr)] [In] StringBuilder ObjToSearch, [MarshalAs(UnmanagedType.LPStr)] [In] StringBuilder result);
 
         #endregion
 

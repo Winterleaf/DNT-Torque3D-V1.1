@@ -106,7 +106,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coDecalData(string simobjectid) : base(simobjectid)
+        internal coDecalData(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -114,7 +114,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coDecalData(uint simobjectid) : base(simobjectid)
+        internal coDecalData(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -122,7 +122,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coDecalData(int simobjectid) : base(simobjectid)
+        internal coDecalData(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -313,6 +313,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coDecalData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -333,6 +335,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coDecalData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -354,6 +358,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coDecalData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

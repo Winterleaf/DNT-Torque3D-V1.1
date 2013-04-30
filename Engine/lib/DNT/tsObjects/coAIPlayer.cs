@@ -1,4 +1,4 @@
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -104,7 +104,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coAIPlayer(string simobjectid) : base(simobjectid)
+        internal coAIPlayer(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -112,7 +112,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coAIPlayer(uint simobjectid) : base(simobjectid)
+        internal coAIPlayer(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -120,7 +120,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coAIPlayer(int simobjectid) : base(simobjectid)
+        internal coAIPlayer(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -205,6 +205,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coAIPlayer ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -225,6 +227,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coAIPlayer ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -246,6 +250,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coAIPlayer ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -258,6 +264,15 @@ namespace WinterLeaf.tsObjects
         public static implicit operator coAIPlayer(uint ts)
             {
             return new coAIPlayer(ts);
+            }
+
+        /// <summary>
+        /// )
+        /// 	
+        /// </summary>
+        public void AISearchSimSet(float fOV, float farDist, string ObjToSearch, string result)
+            {
+            TorqueScriptTemplate.m_ts.fnAIPlayer_AISearchSimSet(_mSimObjectId, fOV, farDist, ObjToSearch, result);
             }
 
         /// <summary>

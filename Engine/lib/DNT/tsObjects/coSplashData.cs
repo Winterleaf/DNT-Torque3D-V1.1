@@ -107,7 +107,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coSplashData(string simobjectid) : base(simobjectid)
+        internal coSplashData(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -115,7 +115,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coSplashData(uint simobjectid) : base(simobjectid)
+        internal coSplashData(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -123,7 +123,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coSplashData(int simobjectid) : base(simobjectid)
+        internal coSplashData(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -393,6 +393,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coSplashData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -413,6 +415,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coSplashData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -434,6 +438,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coSplashData ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

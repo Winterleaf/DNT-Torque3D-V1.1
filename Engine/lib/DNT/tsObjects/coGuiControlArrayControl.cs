@@ -106,7 +106,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiControlArrayControl(string simobjectid) : base(simobjectid)
+        internal coGuiControlArrayControl(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -114,7 +114,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiControlArrayControl(uint simobjectid) : base(simobjectid)
+        internal coGuiControlArrayControl(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -122,7 +122,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiControlArrayControl(int simobjectid) : base(simobjectid)
+        internal coGuiControlArrayControl(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -232,6 +232,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coGuiControlArrayControl ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -252,6 +254,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coGuiControlArrayControl ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -273,6 +277,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coGuiControlArrayControl ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

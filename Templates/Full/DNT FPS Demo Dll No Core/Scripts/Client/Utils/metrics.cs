@@ -216,12 +216,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 }
             if (metricsExpr != "")
                 {
-                new coGuiCanvas("Canvas").pushDialog("FrameOverlayGui", "1000");
-                new coGuiConsoleTextCtrl("TextOverlayControl").setValue(metricsExpr);
+                ((coGuiCanvas)"Canvas").pushDialog("FrameOverlayGui", "1000");
+                ((coGuiConsoleTextCtrl)"TextOverlayControl").setValue(metricsExpr);
                 }
             else
                 {
-                new coGuiCanvas("Canvas").popDialog("FrameOverlayGui");
+                ((coGuiCanvas)"Canvas").popDialog("FrameOverlayGui");
                 }
             }
         }

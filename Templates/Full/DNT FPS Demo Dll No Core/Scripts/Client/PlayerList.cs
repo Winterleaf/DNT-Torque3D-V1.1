@@ -147,22 +147,22 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "PlayerListGui", "remove", "(%this, %clientId)", 2, 3000, false)]
         public void PlayerListGuiRemove(string thisobj, coGameConnection clientID)
             {
-            new coGuiTextListCtrl("PlayerListGuiList").removeRowById(clientID);
+            (( coGuiTextListCtrl)"PlayerListGuiList").removeRowById(clientID);
             }
 
         [Torque_Decorations.TorqueCallBack("", "PlayerListGui", "toggle", "(%this)", 1, 3000, false)]
         public void PlayerListGuiToggle(coGuiControl thisobj)
             {
             if (thisobj.isAwake())
-                new coGuiCanvas("Canvas").popDialog(thisobj);
+                (( coGuiCanvas)"Canvas").popDialog(thisobj);
             else
-                new coGuiCanvas("Canvas").pushDialog(thisobj);
+                ((coGuiCanvas)"Canvas").pushDialog(thisobj);
             }
 
         [Torque_Decorations.TorqueCallBack("", "PlayerListGui", "clear", "(%this)", 1, 3000, false)]
         public void PlayerListGuiClear(string thisobj)
             {
-            new coGuiTextListCtrl("PlayerListGuiList").clear();
+            (( coGuiTextListCtrl)"PlayerListGuiList").clear();
             }
 
         [Torque_Decorations.TorqueCallBack("", "PlayerListGui", "zeroScores", "(%this)", 1, 3000, false)]

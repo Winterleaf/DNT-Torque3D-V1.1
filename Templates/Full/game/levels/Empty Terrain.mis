@@ -1,18 +1,26 @@
 //--- OBJECT WRITE BEGIN ---
 new SimGroup(MissionGroup) {
+   canSave = "1";
    canSaveDynamicFields = "1";
       enabled = "1";
 
    new LevelInfo(theLevelInfo) {
       nearClip = "0.1";
       visibleDistance = "2000";
+      visibleDistance_Ghost = "100";
       decalBias = "0.0015";
       fogColor = "1 1 0.6 1";
       fogDensity = "0.001";
       fogDensityOffset = "10";
       fogAtmosphereHeight = "100";
       canvasClearColor = "233 220 143 255";
+      ambientLightBlendPhase = "1";
+      ambientLightBlendCurve = "0 0 -1 -1";
       advancedLightmapSupport = "0";
+      soundAmbience = "AudioAmbienceDefault";
+      soundDistanceModel = "Linear";
+      canSave = "1";
+      canSaveDynamicFields = "1";
          desc0 = "An empty terrain ready to be populated with Torque objects.";
          LevelName = "Empty Terrain";
    };
@@ -22,18 +30,20 @@ new SimGroup(MissionGroup) {
       rayleighScattering = "0.0035";
       sunScale = "1 1 0.8 1";
       ambientScale = "0.5 0.5 0.4 1";
+      fogScale = "1 1 1 1";
       exposure = "0.85";
       azimuth = "84";
       elevation = "54";
+      moonAzimuth = "0";
+      moonElevation = "45";
       castShadows = "1";
       brightness = "1";
-      flareType = "SunFlareExample1";
       flareScale = "1";
       nightColor = "0.0196078 0.0117647 0.109804 1";
+      nightFogColor = "0.0196078 0.0117647 0.109804 1";
       moonEnabled = "1";
-      moonTexture = "core/art/skies/night/moon_wglow";
       moonScale = "0.3";
-      moonTint = "0.192157 0.192157 0.192157 1";
+      moonLightColor = "0.192157 0.192157 0.192157 1";
       useNightCubemap = "0";
       attenuationRatio = "0 1 1";
       shadowType = "PSSM";
@@ -51,40 +61,195 @@ new SimGroup(MissionGroup) {
       position = "0 0 0";
       rotation = "1 0 0 0";
       scale = "1 1 1";
+      canSave = "1";
       canSaveDynamicFields = "1";
+         moonTexture = "core/art/skies/night/moon_wglow";
+         moonTint = "0.192157 0.192157 0.192157 1";
          sunBrightness = "50";
    };
    new TerrainBlock(theTerrain) {
       terrainFile = "art/terrains/Empty Terrain_0.ter";
+      castShadows = "1";
       squareSize = "2";
-      tile = "0";
       baseTexSize = "1024";
+      lightMapSize = "256";
       screenError = "16";
       position = "-1024 -1024 179.978";
       rotation = "1 0 0 0";
-      scale = "1 1 1";
+      canSave = "1";
       canSaveDynamicFields = "1";
+         scale = "1 1 1";
+         tile = "0";
    };
    new SimGroup(PlayerDropPoints) {
+      canSave = "1";
       canSaveDynamicFields = "1";
          enabled = "1";
 
       new SpawnSphere() {
          autoSpawn = "0";
+         spawnTransform = "0";
          radius = "1";
          sphereWeight = "1";
          indoorWeight = "1";
          outdoorWeight = "1";
+         isAIControlled = "0";
          dataBlock = "SpawnSphereMarker";
-         position = "0 0 241.772";
+         position = "20 160 270";
          rotation = "1 0 0 0";
          scale = "1 1 1";
+         canSave = "1";
          canSaveDynamicFields = "1";
             enabled = "1";
             homingCount = "0";
             lockCount = "0";
-            TypeBool locked = "False";
       };
+   };
+   new SimGroup(Paths) {
+      canSave = "1";
+      canSaveDynamicFields = "1";
+
+      new Path(Team2Path) {
+         isLooping = "1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+
+         new Marker() {
+            seqNum = "0";
+            type = "Normal";
+            msToNext = "1000";
+            smoothingType = "Spline";
+            position = "-26 -370 250";
+            rotation = "1 0 0 0";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+         };
+         new Marker() {
+            seqNum = "1";
+            type = "Normal";
+            msToNext = "1000";
+            smoothingType = "Spline";
+            position = "220 -40 250";
+            rotation = "1 0 0 0";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+         };
+         new Marker() {
+            seqNum = "2";
+            type = "Normal";
+            msToNext = "1000";
+            smoothingType = "Spline";
+            position = "-156 170 240";
+            rotation = "1 0 0 0";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+         };
+         new Marker() {
+            seqNum = "3";
+            type = "Normal";
+            msToNext = "1000";
+            smoothingType = "Spline";
+            position = "142 235 240";
+            rotation = "1 0 0 0";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+         };
+      };
+      new Path(Team1Path) {
+         isLooping = "1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+
+         new Marker() {
+            seqNum = "0";
+            type = "Normal";
+            msToNext = "1000";
+            smoothingType = "Spline";
+            position = "-71 560 240";
+            rotation = "1 0 0 0";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+         };
+         new Marker() {
+            seqNum = "1";
+            type = "Normal";
+            msToNext = "1000";
+            smoothingType = "Spline";
+            position = "-210 60 250";
+            rotation = "1 0 0 0";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+         };
+         new Marker() {
+            seqNum = "2";
+            type = "Normal";
+            msToNext = "1000";
+            smoothingType = "Spline";
+            position = "297 -250 240";
+            rotation = "1 0 0 0";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+         };
+         new Marker() {
+            seqNum = "3";
+            type = "Normal";
+            msToNext = "1000";
+            smoothingType = "Spline";
+            position = "-170 70 240";
+            rotation = "1 0 0 0";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+         };
+      };
+   };
+   new Forest(theForest) {
+      position = "0 0 0";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+      dataFile = "levels/Empty Terrain2.forest";
+      lodReflectScalar = "2";
+   };
+   new TSStatic() {
+      shapeName = "art/shapes/rocks/boulder.dts";
+      playAmbient = "1";
+      meshCulling = "0";
+      originSort = "0";
+      collisionType = "Collision Mesh";
+      decalType = "Collision Mesh";
+      allowPlayerStep = "1";
+      renderNormals = "0";
+      forceDetail = "-1";
+      position = "24 221 233";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new TSStatic() {
+      shapeName = "art/shapes/station/station01.dts";
+      playAmbient = "1";
+      meshCulling = "0";
+      originSort = "0";
+      collisionType = "Visible Mesh";
+      decalType = "Visible Mesh";
+      allowPlayerStep = "1";
+      renderNormals = "0";
+      forceDetail = "-1";
+      position = "-4 160 233.13";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
    };
 };
 //--- OBJECT WRITE END ---

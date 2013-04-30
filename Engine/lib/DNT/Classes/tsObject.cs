@@ -116,7 +116,8 @@ namespace WinterLeaf.Classes
                     string old = simobjectid;
                     simobjectid = _mtst.console.GetObjectID(simobjectid).AsString();
                     if (simobjectid.AsInt() == 0)
-                        throw new Exception("Could not resolve object '" + old + "'.");
+                        dnTorque.self.Error("WARNING:: COULD NOT RESOLVE '" + old + "' to an object.");
+                    //throw new Exception("Could not resolve object '" + old + "'.");
                     }
                 }
 

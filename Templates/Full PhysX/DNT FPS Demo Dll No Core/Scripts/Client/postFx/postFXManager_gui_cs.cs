@@ -85,10 +85,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void ppOptionsEnableonAction(string thisobj)
             {
             coGuiCheckBoxCtrl ppOptionsEnable = "ppOptionsEnable";
-            if (ppOptionsEnable.getValue().AsBool())
-                PostFXManagersettingsSetEnabled(thisobj, true.AsString());
-            else
-                PostFXManagersettingsSetEnabled(thisobj, false.AsString());
+            PostFXManagersettingsSetEnabled(thisobj, ppOptionsEnable.getValue().AsBool() ? true.AsString() : false.AsString());
             }
 
         [Torque_Decorations.TorqueCallBack("", "PostFXManager", "getEnableResultFromControl", "%this, %control", 2, 103040, false)]
@@ -333,7 +330,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "ppOptionsHDREffectsBlueShiftColorBaseColor", "onAction", "%this", 1, 103390, false)]
         public void ppOptionsHDREffectsBlueShiftColorBaseColoronAction(coGuiColorPickerCtrl thisobj)
             {
-            new coGuiColorPickerCtrl("ppOptionsHDREffectsBlueShiftColorBlend")["baseColor"] = thisobj["PickColor"];
+            ((coGuiColorPickerCtrl)"ppOptionsHDREffectsBlueShiftColorBlend")["baseColor"] = thisobj["PickColor"];
             thisobj["toolTip"] = "Color Value : " + thisobj["PickColor"];
             }
 
@@ -423,9 +420,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void ppOptionsEnableHDRDebugonAction(coGuiCheckBoxCtrl thisobj)
             {
             if (thisobj.getValue().AsBool())
-                new coPostEffect("LuminanceVisPostFX").enable();
+                ((coPostEffect)"LuminanceVisPostFX").enable();
             else
-                new coPostEffect("LuminanceVisPostFX").disable();
+                ((coPostEffect)"LuminanceVisPostFX").disable();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "ppColorCorrection_selectFile", "", 0, 103510, false)]
@@ -446,9 +443,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             sGlobal["$HDRPostFX::colorCorrectionRamp"] = filename;
 
-            string s = new coGuiControl("PostFXManager").findObjectByInternalName("ColorCorrectionFileName", true).AsString() + ".text";
-
-            console.SetVar(s, filename);
+            coGuiTextEditCtrl ctrl = ((coGuiControl)"PostFXManager").findObjectByInternalName("ColorCorrectionFileName", true);
+            if (ctrl.isObject())
+                ctrl.text =filename;
             }
         }
     }

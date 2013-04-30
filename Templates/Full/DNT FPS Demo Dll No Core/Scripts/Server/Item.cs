@@ -80,8 +80,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
     {
     public partial class Main : TorqueScriptTemplate
         {
-        public int ItemPopTime = 90*1000;
-        public int ItemRespawnTime = 100*1000;
+        public int ItemPopTime = 90 * 1000;
+        public int ItemRespawnTime = 100 * 1000;
 
         [Torque_Decorations.TorqueCallBack("", "Item", "respawn", "(%this)", 1, 1400, false)]
         public void ItemRespawn(coItem item)
@@ -129,9 +129,9 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             tch.Props.Add("rotation", @"""0 0 1 " + (new Random().Next(0, 360)) + @"""");
             tch.Props.Add("count", amount.AsString());
 
-            coItem item = new coItem(tch.Create());
+            coItem item = tch.Create();
 
-            new coSimSet("MissionGroup").pushToBack(item);
+            ((coSimSet)"MissionGroup").pushToBack(item);
 
             ItemschedulePop(item);
             return item;
@@ -158,7 +158,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                         count = 1;
                     }
                 }
-            ShapeBaseShapeBaseIncInventory(player, new coItemData(datablock.getName()), count);
+            ShapeBaseShapeBaseIncInventory(player, (((coItemData)datablock).getName()), count);
 
 
             coGameConnection client = player["client"];
@@ -186,7 +186,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             tch.Props.Add("dataBlock", datablock);
             tch.Props.Add("static", "true");
             tch.Props.Add("rotate", "true");
-            return new coItem(tch.Create());
+            return tch.Create();
             }
         }
     }

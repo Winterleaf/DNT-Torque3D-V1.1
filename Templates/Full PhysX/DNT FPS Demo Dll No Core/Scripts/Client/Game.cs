@@ -77,19 +77,19 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "EditorIsActive", "()", 0, 0, false)]
         public bool EditorIsActive()
             {
-            return (console.isObject("EditorGui") && ((coGuiCanvas) "Canvas").getContent() == console.Call("EditorGui", "getId").AsInt());
+            return ("EditorGui".isObject() && ((coGuiCanvas)"Canvas").getContent() == console.Call("EditorGui", "getId").AsInt());
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "GuiEditorIsActive", "()", 0, 0, false)]
         public bool GuiEditorIsActive()
             {
-            return (console.isObject("GuiEditorGui") && ((coGuiCanvas) "Canvas").getContent() == console.Call("GuiEditorGui", "getId").AsInt());
+            return ("GuiEditorGui".isObject() && ((coGuiCanvas)"Canvas").getContent() == console.Call("GuiEditorGui", "getId").AsInt());
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "clientCmdGameEnd", "(%seq)", 1, 7000, false)]
         public void ClientCmdGameEnd(string endgamepause)
             {
-            sfxStopAll(new coSimSet(""));
+            sfxStopAll("");
 
             if (!EditorIsActive() && !GuiEditorIsActive())
                 {

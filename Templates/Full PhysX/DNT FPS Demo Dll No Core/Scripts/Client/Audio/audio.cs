@@ -96,12 +96,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             ts.Props.Add("description", "AudioChannel");
             ts.Create();
 
-            ((coSFXSource) "AudioChannelMaster").play(-1);
-            ((coSFXSource) "AudioChannelDefault").play(-1);
-            ((coSFXSource) "AudioChannelGui").play(-1);
-            ((coSFXSource) "AudioChannelMusic").play(-1);
-            ((coSFXSource) "AudioChannelMessages").play(-1);
-            ((coSFXSource) "AudioChannelEffects").stop(-1);
+            ((coSFXSource)"AudioChannelMaster").play(-1);
+            ((coSFXSource)"AudioChannelDefault").play(-1);
+            ((coSFXSource)"AudioChannelGui").play(-1);
+            ((coSFXSource)"AudioChannelMusic").play(-1);
+            ((coSFXSource)"AudioChannelMessages").play(-1);
+            ((coSFXSource)"AudioChannelEffects").stop(-1);
 
 
             //SFXSource.play("AudioChannelMaster", -1);
@@ -253,7 +253,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             // Restore channel volumes.
             for (int channel = 0; channel <= 8; channel++)
-                sfxSetChannelVolume(new coSimSet(channel), fGlobal["$pref::SFX::channelVolume[" + channel.AsString() + "]"]);
+                sfxSetChannelVolume(((coSimSet)channel), fGlobal["$pref::SFX::channelVolume[" + channel.AsString() + "]"]);
             return true;
             }
 
@@ -263,7 +263,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             fGlobal["$pref::SFX::masterVolume"] = sfxGetMasterVolume();
 
             for (int channel = 0; channel <= 8; channel++)
-                sGlobal["$pref::SFX::channelVolume[" + channel.AsString() + "]"] = console.Call("sfxGetChannelVolume", new[] {channel.AsString()});
+                sGlobal["$pref::SFX::channelVolume[" + channel.AsString() + "]"] = console.Call("sfxGetChannelVolume", new[] { channel.AsString() });
 
             // We're assuming here that a null info 
             // string means that no device is loaded.
@@ -279,20 +279,20 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 return "0";
             switch (providerA)
                 {
-                        // Always prefer FMOD over anything else.
-                    case "FMOD":
-                        return "1";
-                        // Prefer OpenAL over anything but FMOD.
-                    case "OpenAL":
-                        return providerB == "FMOD" ? "-1" : "1";
-                        // As long as the XAudio SFX provider still has issues,
-                        // choose stable DSound over it.
-                    case "DirectSound":
-                        return providerB == "FMOD" || providerB == "OpenAL" ? "-1" : "0";
-                    case "XAudio":
-                        return providerB == "FMOD" && providerB != "OpenAL" && providerB != "DirectSound" ? "1" : "-1";
-                    default:
-                        return "-1";
+                // Always prefer FMOD over anything else.
+                case "FMOD":
+                    return "1";
+                // Prefer OpenAL over anything but FMOD.
+                case "OpenAL":
+                    return providerB == "FMOD" ? "-1" : "1";
+                // As long as the XAudio SFX provider still has issues,
+                // choose stable DSound over it.
+                case "DirectSound":
+                    return providerB == "FMOD" || providerB == "OpenAL" ? "-1" : "0";
+                case "XAudio":
+                    return providerB == "FMOD" && providerB != "OpenAL" && providerB != "DirectSound" ? "1" : "-1";
+                default:
+                    return "-1";
                 }
             }
 
@@ -348,14 +348,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "sfxOldChannelToGroup", "(%channel)", 1, 21000, false)]
         public coSFXSource sfxOldChannelToGroup(coSimSet channel)
             {
-            return new coSFXSource(sGlobal["$AudioChannels[" + channel + "]"]);
+            return sGlobal["$AudioChannels[" + channel + "]"];
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxGroupToOldChannel", "(%group)", 1, 21000, false)]
         public string sfxGroupToOldChannel(string group)
             {
             string id = console.GetObjectID(group).AsString();
-            for (int i = 0;; i++)
+            for (int i = 0; ; i++)
                 if (!isGlobal["$AudioChannels[" + i.AsString() + "]"])
                     return "-1";
                 else if (sGlobal["$AudioChannels[" + i.AsString() + "]"] == id)
@@ -365,14 +365,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "sfxSetMasterVolume", "(%volume)", 1, 21000, false)]
         public void sfxSetMasterVolume(float volume)
             {
-            ((coSFXSource) "AudioChannelMaster").setVolume(volume);
+            ((coSFXSource)"AudioChannelMaster").setVolume(volume);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxGetMasterVolume", "()", 0, 21000, false)]
         public float sfxGetMasterVolume()
             {
             //return SFXSource.getVolume("AudioChannelMaster").AsString();
-            return ((coSFXSource) "AudioChannelMaster").getVolume();
+            return ((coSFXSource)"AudioChannelMaster").getVolume();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxStopAll", "(%channel)", 1, 21000, false)]
@@ -380,11 +380,11 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             {
             channel = sfxOldChannelToGroup(channel);
 
-            if (!console.isObject(channel))
+            if (!channel.isObject())
                 return;
 
             for (uint i = 0; i < channel.getCount(); i++)
-                ((coSFXSource) channel.getObject(i)).stop(-1);
+                ((coSFXSource)channel.getObject(i)).stop(-1);
             //SFXSource.stop(channel.getObject(i), -1);
             }
 
@@ -392,14 +392,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public string sfxGetChannelVolume(coSimSet channel)
             {
             coSFXSource obj = sfxOldChannelToGroup(channel);
-            return console.isObject(obj) ? obj.getVolume().AsString() : "0";
+            return obj.isObject() ? obj.getVolume().AsString() : "0";
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "sfxSetChannelVolume", "(%channel,%volume)", 2, 21000, false)]
         public void sfxSetChannelVolume(coSimSet channel, float volume)
             {
             coSFXSource obj = sfxOldChannelToGroup(channel);
-            if (console.isObject(obj))
+            if (obj.isObject())
                 obj.setVolume(volume);
             }
 
@@ -428,10 +428,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
                 //console.Call(source, "getGroup"));
                 throw new Exception("The find word function doesn't exists... wtf?");
-                if (channel != "" && console.Call("findWord", new string[] {channels, channel}).AsInt() == -1)
-                    continue;
-                //SFXSource.pause(source, -1);
-                pauseSet.pushToBack(source);
+                //if (channel != "" && console.Call("findWord", new string[] { channels, channel }).AsInt() == -1)
+                //    continue;
+                ////SFXSource.pause(source, -1);
+                //pauseSet.pushToBack(source);
                 }
             }
 
@@ -449,7 +449,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             if (!console.isObject(pauseSet))
                 pauseSet = sGlobal["SFXPausedSet"];
             for (uint i = 0; i < pauseSet.getCount(); i++)
-                ((coSFXSource) pauseSet.getObject(i)).play(-1);
+                ((coSFXSource)pauseSet.getObject(i)).play(-1);
             pauseSet.clear();
             }
         }

@@ -108,7 +108,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiContainer(string simobjectid) : base(simobjectid)
+        internal coGuiContainer(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -116,7 +116,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiContainer(uint simobjectid) : base(simobjectid)
+        internal coGuiContainer(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -124,7 +124,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiContainer(int simobjectid) : base(simobjectid)
+        internal coGuiContainer(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -259,6 +259,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coGuiContainer ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -279,6 +281,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coGuiContainer ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -300,6 +304,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coGuiContainer ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

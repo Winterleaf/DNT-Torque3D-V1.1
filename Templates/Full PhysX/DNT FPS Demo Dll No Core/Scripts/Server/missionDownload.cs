@@ -71,7 +71,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 GameConnectionOnClientEnterGame(client);
             else
                 {
-                if (console.isObject(client))
+                if (client.isObject())
                     console.commandToClient(client, "MissionStartPhase1", new[] {sGlobal["$missionSequence"], sGlobal["$Server::MissionFile"], sGlobal["MissionGroup.musicTrack"]});
                 console.print("*** Sending mission load to client: " + sGlobal["$Server::MissionFile"]);
                 }
@@ -108,7 +108,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
                 return;
             thisobj["currentPhase"] = "1.5";
             // On to the next phase
-            if (console.isObject(thisobj))
+            if (thisobj.isObject())
                 console.commandToClient(thisobj, "MissionStartPhase2", new[] {sGlobal["$missionSequence"], sGlobal["$Server::MissionFile"]});
             }
 

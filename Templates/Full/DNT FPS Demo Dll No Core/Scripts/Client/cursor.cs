@@ -71,7 +71,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             if (bGlobal["$cursorControlled"])
                 Util._lockMouse("false");
 
-            new coGuiCanvas("canvas").cursorOn();
+            ((coGuiCanvas)"canvas").cursorOn();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "hideCursor", "", 0, 23000, false)]
@@ -79,7 +79,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             {
             if (bGlobal["$cursorControlled"])
                 Util._lockMouse("true");
-            new coGuiCanvas("canvas").cursorOff();
+            ((coGuiCanvas)"canvas").cursorOff();
             }
 
         //---------------------------------------------------------------------------------------------

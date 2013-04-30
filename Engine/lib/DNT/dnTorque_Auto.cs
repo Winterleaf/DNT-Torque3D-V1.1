@@ -8864,6 +8864,21 @@ namespace WinterLeaf
             }
 
         /// <summary>
+        /// )
+        /// 	
+        /// </summary>
+        internal void fnAIPlayer_AISearchSimSet(string aiplayer, float fOV, float farDist, string ObjToSearch, string result)
+            {
+            if (Debugging)
+                System.Console.WriteLine("----------------->Extern Call 'fnAIPlayer_AISearchSimSet'" + string.Format("\"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\" ", aiplayer, fOV, farDist, ObjToSearch, result));
+            StringBuilder sbaiplayer = new StringBuilder(aiplayer, 1024);
+            StringBuilder sbObjToSearch = new StringBuilder(ObjToSearch, 1024);
+            StringBuilder sbresult = new StringBuilder(result, 1024);
+
+            SafeNativeMethods.mwle_fnAIPlayer_AISearchSimSet(sbaiplayer, fOV, farDist, sbObjToSearch, sbresult);
+            }
+
+        /// <summary>
         /// @brief Use this to stop aiming at an object or a point.
         ///    
         ///    @see setAimLocation()

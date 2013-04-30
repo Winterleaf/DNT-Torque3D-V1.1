@@ -126,8 +126,8 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void onActivateBasicLM()
             {
             // If HDR is enabled... enable the special format token.
-            if ((sGlobal["$platform"] == "macos") || new coPostEffect("HDRPostFx").GetEnabled())
-                new coGFXStateBlockData("AL_FormatToken").call("enable");
+            if ((sGlobal["$platform"] == "macos") || ((coPostEffect)"HDRPostFx").GetEnabled())
+                ((coGFXStateBlockData)"AL_FormatToken").call("enable");
             // Create render pass for projected shadow.
 
             coRenderPassManager BL_ProjectedShadowRPM = new Torque_Class_Helper("RenderPassManager", "BL_ProjectedShadowRPM").Create();
@@ -149,7 +149,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void onDeactivateBasicLM()
             {
             // Delete the pass manager which also deletes the bin.
-            new coRenderPassManager("BL_ProjectedShadowRPM").delete();
+            "BL_ProjectedShadowRPM".delete();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "setBasicLighting", "", 0, 65300, false)]

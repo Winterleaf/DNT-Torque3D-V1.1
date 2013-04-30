@@ -107,7 +107,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coPhysicalZone(string simobjectid) : base(simobjectid)
+        internal coPhysicalZone(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -115,7 +115,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coPhysicalZone(uint simobjectid) : base(simobjectid)
+        internal coPhysicalZone(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -123,7 +123,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coPhysicalZone(int simobjectid) : base(simobjectid)
+        internal coPhysicalZone(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -231,6 +231,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coPhysicalZone ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -251,6 +253,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coPhysicalZone ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -272,6 +276,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coPhysicalZone ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

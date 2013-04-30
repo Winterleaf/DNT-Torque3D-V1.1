@@ -122,7 +122,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             string sizeAndAspect = "";
             if (console.isObject(light))
                 {
-                string clientLight = serverToClientObject(new coNetObject(light)); //console.Call("serverToClientObject", new string[] { light });
+                string clientLight = serverToClientObject(light); //console.Call("serverToClientObject", new string[] { light });
                 sizeAndAspect = Util._setShadowVizLight(clientLight);
                 }
             console.Call(AL_ShadowVizOverlayCtrl.findObjectByInternalName("MatCtrl", true), "setMaterial", new[] {"AL_ShadowVisualizeMaterial"});
@@ -151,13 +151,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "lockShadowViz", "", 0, 62934, false)]
         public void lockShadowViz()
             {
-            console.SetVar("AL_ShadowVizOverlayCtrl.islocked", true);
+            ((coGuiControl) "AL_ShadowVizOverlayCtrl")["islocked"] = true.AsString();
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "unlockShadowViz", "", 0, 62935, false)]
         public void unlockShadowViz()
             {
-            console.SetVar("AL_ShadowVizOverlayCtrl.islocked", false);
+            ((coGuiControl)"AL_ShadowVizOverlayCtrl")["islocked"] = false.AsString();
             }
         }
     }

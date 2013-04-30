@@ -71,7 +71,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             Torque_Class_Helper tch = new Torque_Class_Helper("Item", "");
             tch.Props.Add("dataBlock", "Detonade");
             coSceneObject nade = tch.Create();
-            new coSimSet("MissionCleanUp").pushToBack(nade);
+            ((coSimSet)"MissionCleanUp").pushToBack(nade);
             nade.setTransform(obj.getTransform());
             nade["sourceObject"] = obj["SourceObject"];
             nade.schedule("50", "setDamageState", "Destroyed");
@@ -90,7 +90,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             // Make it ready
             obj["detonadeEnabled"] = true.AsString();
             int nsd = (nameSpaceDepth.AsInt() + 1);
-            console.ParentExecute(thisobj, "onMount", nsd, new string[] {thisobj, obj, slot});
+            console.ParentExecute(thisobj, "onMount", nsd, new string[] { thisobj, obj, slot });
             }
 
         [Torque_Decorations.TorqueCallBack("", "GrenadeLauncherImage", "onAltFire", "(%this, %obj, %slot)", 3, 2200, false)]

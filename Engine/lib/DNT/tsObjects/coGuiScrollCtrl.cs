@@ -107,7 +107,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiScrollCtrl(string simobjectid) : base(simobjectid)
+        internal coGuiScrollCtrl(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -115,7 +115,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiScrollCtrl(uint simobjectid) : base(simobjectid)
+        internal coGuiScrollCtrl(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -123,7 +123,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coGuiScrollCtrl(int simobjectid) : base(simobjectid)
+        internal coGuiScrollCtrl(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -260,6 +260,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator string(coGuiScrollCtrl ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -280,6 +282,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator int(coGuiScrollCtrl ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -301,6 +305,8 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public static implicit operator uint(coGuiScrollCtrl ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }

@@ -61,7 +61,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "clientCmdSyncEditorGui", "()", 0, 34000, false)]
         public void ClientCmdSyncEditorGui()
             {
-            if (console.isObject("EditorGui"))
+            if ("EditorGui".isObject())
                 console.Call("EditorGui", "syncCameraGui");
             }
         }

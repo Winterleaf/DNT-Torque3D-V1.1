@@ -51,6 +51,7 @@
 #region
 
 using WinterLeaf.Classes;
+using WinterLeaf.Containers;
 using WinterLeaf.tsObjects;
 
 #endregion
@@ -85,8 +86,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 iGlobal["$centerPrintActive"] = 1;
                 }
 
-            new coGuiMLTextCtrl("CenterPrintText").setText("<just:center>" + message);
-            centerPrintDlg["extent"] = Util.firstWord(centerPrintDlg["extent"]) + " " + sGlobal["$CenterPrintSizes[" + size + "]"];
+            ((coGuiMLTextCtrl)"CenterPrintText").setText("<just:center>" + message);
+            centerPrintDlg.extent.y = iGlobal["$CenterPrintSizes[" + size + "]"];
+
+            //centerPrintDlg["extent"] = Util.firstWord(centerPrintDlg["extent"]) + " " + sGlobal["$CenterPrintSizes[" + size + "]"];
 
             if (time.AsInt() > 0)
                 centerPrintDlg["removePrint"] = Util._schedule((time.AsInt()*1000).AsString(), "0", "clientCmdClearCenterPrint").AsString();
@@ -108,8 +111,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
                 iGlobal["$bottomPrintActive"] = 1;
                 }
 
-            new coGuiMLTextCtrl("bottomPrintText").setText("<just:center>" + message);
-            bottomPrintDlg["Extent"] = Util.firstWord(bottomPrintDlg["extent"]) + " " + sGlobal["$CenterPrintSizes[" + size + "]"];
+            ((coGuiMLTextCtrl)"bottomPrintText").setText("<just:center>" + message);
+
+            bottomPrintDlg.extent.y = iGlobal["$CenterPrintSizes[" + size + "]"];
+            //bottomPrintDlg["Extent"] = Util.firstWord(bottomPrintDlg["extent"]) + " " + sGlobal["$CenterPrintSizes[" + size + "]"];
 
 
             if (time.AsInt() > 0)
@@ -119,29 +124,36 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "BottomPrintText", "onResize", "%this, %width, %height", 3, 38000, false)]
         public void BottomPrintTextonResize(coGuiMLTextCtrl thisobj, string width, string height)
             {
-            thisobj["position"] = "0 0";
+            thisobj.position =new Point2I(0,0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "CenterPrintText", "onResize", "%this, %width, %height", 3, 38000, false)]
         public void CenterPrintTextOnResize(coGuiMLTextCtrl thisobj, string width, string height)
             {
-            thisobj["position"] = "0 0";
+            thisobj.position= new Point2I(0,0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "clientCmdClearCenterPrint", "", 0, 38000, false)]
         public void clientCmdClearCenterPrint()
             {
             iGlobal["$centerPrintActive"] = 0;
-            new coGuiMLTextCtrl("CenterPrintDlg")["visible"] = "0";
-            new coGuiMLTextCtrl("CenterPrintDlg")["removePrint"] = "";
+            coGuiMLTextCtrl CenterPrintDlg = "CenterPrintDlg";
+            CenterPrintDlg.visible = false;
+            CenterPrintDlg["removePrint"] = "";
+
+            //new coGuiMLTextCtrl("CenterPrintDlg")["visible"] = "0";
+            //new coGuiMLTextCtrl("CenterPrintDlg")["removePrint"] = "";
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "clientCmdClearBottomPrint", "", 0, 38000, false)]
         public void clientCmdClearBottomPrint()
             {
             iGlobal["$bottomPrintActive"] = 0;
-            new coGuiMLTextCtrl("BottomPrintDlg")["visible"] = "0";
-            new coGuiMLTextCtrl("BottomPrintDlg")["removePrint"] = "";
+            coGuiMLTextCtrl BottomPrintDlg = "BottomPrintDlg";
+            BottomPrintDlg.visible = false;
+            BottomPrintDlg["removePrint"] = "";
+            //new coGuiMLTextCtrl("BottomPrintDlg")["visible"] = "0";
+            //new coGuiMLTextCtrl("BottomPrintDlg")["removePrint"] = "";
             }
         }
     }

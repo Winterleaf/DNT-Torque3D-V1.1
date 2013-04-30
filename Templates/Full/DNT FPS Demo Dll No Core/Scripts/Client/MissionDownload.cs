@@ -109,57 +109,46 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             // Load the post effect presets for this mission.
             string path = "levels/" + Util.fileBase(missionName) + console.GetVarString("$PostFXManager::fileExtension");
 
-            if (console.Call("isScriptFile", new[] {path}).AsBool())
+            if (console.Call("isScriptFile", new[] { path }).AsBool())
                 PostFXManagerloadPresetHandler(path);
             else
                 PostFXManagersettingsApplyDefaultPreset("PostFXManager");
 
             // Close and clear the message hud (in case it's open)
-            try
-                {
-                new coGuiControl("MessageHud").call("close");
-                }
-            catch (Exception)
-                {
-                }
+
+            coGuiControl MessageHud = "MessageHud";
+            if (MessageHud.isObject())
+                MessageHud.call("close");
 
             // Reset the loading progress controls:
 
-            try
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (LoadingProgress.isObject())
                 {
-                new coGuiControl("LoadingProgress").setValue("0");
-                new coGuiTextCtrl("LoadingProgressTxt").setValue("LOADING DATABLOCKS");
-                new coGuiCanvas("canvas").repaint(0);
-                }
-            catch (Exception)
-                {
+                ((coGuiControl)"LoadingProgress").setValue("0");
+                ((coGuiTextCtrl)"LoadingProgressTxt").setValue("LOADING DATABLOCKS");
+                ((coGuiCanvas)"canvas").repaint(0);
                 }
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onPhase1Progress", "(%progress)", 1, 8000, false)]
         public void onPhase1Progress(string progress)
             {
-            try
-                {
-                new coGuiControl("LoadingProgress").setValue(progress);
-                new coGuiCanvas("canvas").repaint(33);
-                }
-            catch (Exception)
-                {
-                }
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (!LoadingProgress.isObject())
+                return;
+            LoadingProgress.setValue(progress);
+            ((coGuiCanvas)"canvas").repaint(33);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onPhase1Complete", "()", 0, 8000, false)]
         public void onPhase1Complete()
             {
-            try
-                {
-                new coGuiControl("LoadingProgress").setValue("1");
-                new coGuiCanvas("canvas").repaint(0);
-                }
-            catch (Exception)
-                {
-                }
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (!LoadingProgress.isObject())
+                return;
+            LoadingProgress.setValue("1");
+            ((coGuiCanvas)"canvas").repaint(33);
             }
 
 
@@ -169,55 +158,44 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "onMissionDownloadPhase2", "()", 0, 8000, false)]
         public void onMissionDownloadPhase2()
             {
-            try
-                {
-                new coGuiControl("LoadingProgress").setValue("0");
-                new coGuiTextCtrl("LoadingProgressTxt").setValue("LOADING OBJECTS");
-                new coGuiCanvas("canvas").repaint(0);
-                }
-            catch (Exception)
-                {
-                }
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (!LoadingProgress.isObject())
+                return;
+            LoadingProgress.setValue("0");
+            ((coGuiTextCtrl)"LoadingProgressTxt").setValue("LOADING OBJECTS");
+            ((coGuiCanvas)"canvas").repaint(0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onPhase2Progress", "(%progress)", 1, 8000, false)]
         public void onPhase2Progress(string progress)
             {
-            try
-                {
-                new coGuiControl("LoadingProgress").setValue(progress);
-                new coGuiCanvas("canvas").repaint(33);
-                }
-            catch (Exception)
-                {
-                }
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (!LoadingProgress.isObject())
+                return;
+            LoadingProgress.setValue(progress);
+            //((coGuiTextCtrl)"LoadingProgressTxt").setValue(progress);
+            ((coGuiCanvas)"canvas").repaint(33);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onPhase2Complete", "()", 0, 8000, false)]
         public void onPhase2Complete()
             {
-            try
-                {
-                new coGuiControl("LoadingProgress").setValue("1");
-                new coGuiCanvas("canvas").repaint(0);
-                }
-            catch (Exception)
-                {
-                }
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (!LoadingProgress.isObject())
+                return;
+            LoadingProgress.setValue("1");
+            ((coGuiCanvas)"canvas").repaint(0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onFileChunkReceived", "(%fileName, %ofs, %size)", 3, 8000, false)]
         public void onFileChunkReceived(string filename, string ofs, string size)
             {
-            try
-                {
-                new coGuiControl("LoadingProgress").setValue((ofs.AsDouble()/size.AsDouble()).ToString("0.0"));
-                new coGuiTextCtrl("LoadingProgressTxt").setValue("Downloading " + filename + ".... ");
-                new coGuiCanvas("canvas").repaint(0);
-                }
-            catch (Exception)
-                {
-                }
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (!LoadingProgress.isObject())
+                return;
+            LoadingProgress.setValue((ofs.AsDouble() / size.AsDouble()).ToString("0.0"));
+            ((coGuiTextCtrl)"LoadingProgressTxt").setValue("Downloading " + filename + ".... ");
+            ((coGuiCanvas)"canvas").repaint(0);
             }
 
         //----------------------------------------------------------------------------
@@ -227,42 +205,35 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "onMissionDownloadPhase3", "()", 0, 8000, false)]
         public void onMissionDownloadPhase3()
             {
-            try
-                {
-                new coGuiControl("LoadingProgress").setValue("0");
-                new coGuiTextCtrl("LoadingProgressTxt").setValue("LIGHTING MISSION");
-                new coGuiCanvas("canvas").repaint(0);
-                }
-            catch (Exception)
-                {
-                }
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (!LoadingProgress.isObject())
+                return;
+            LoadingProgress.setValue("0");
+            ((coGuiTextCtrl)"LoadingProgressTxt").setValue("LIGHTING MISSION");
+            ((coGuiCanvas)"canvas").repaint(0);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onPhase3Progress", "(%progress)", 1, 8000, false)]
         public void onPhase3Progress(string progress)
             {
-            try
-                {
-                new coGuiControl("LoadingProgress").setValue(progress);
-                new coGuiCanvas("canvas").repaint(33);
-                }
-            catch (Exception)
-                {
-                }
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (!LoadingProgress.isObject())
+                return;
+            LoadingProgress.setValue(progress);
+            ((coGuiCanvas)"canvas").repaint(33);
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onPhase3Complete", "()", 0, 8000, false)]
         public void onPhase3Complete()
             {
-            try
+            coGuiControl LoadingProgress = "LoadingProgress";
+            if (LoadingProgress.isObject())
                 {
-                new coGuiTextCtrl("LoadingProgressTxt").setValue("STARTING MISSION");
-                new coGuiControl("LoadingProgress").setValue("1");
-                new coGuiCanvas("canvas").repaint(0);
+                ((coGuiTextCtrl)"LoadingProgressTxt").setValue("STARTING MISSION");
+                LoadingProgress.setValue("1");
+                ((coGuiCanvas)"canvas").repaint(0);
                 }
-            catch (Exception)
-                {
-                }
+
             bGlobal["$lightingMission"] = false;
             }
 
@@ -281,7 +252,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
 
             coGuiChunkedBitmapCtrl LoadingGui = "LoadingGui";
-            if (new coGuiCanvas("canvas").getContent() != LoadingGui.getId())
+            if (((coGuiCanvas)"canvas").getContent() != LoadingGui.getId())
                 LoadLoadingGui("LOADING MISSION FILE " + mapname);
 
 
@@ -323,7 +294,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         [Torque_Decorations.TorqueCallBack("", "", "handleLoadFailedMessage", "( %msgType, %msgString ) ", 2, 8000, false)]
         public void handleLoadFailedMessage(string msgType, string msgString)
             {
-            console.Call("MessageBoxOk", new[] {"Mission Load Failed", msgString + "\r\nPress OK to return to the Main Menu", "disconnect();"});
+            console.Call("MessageBoxOk", new[] { "Mission Load Failed", msgString + "\r\nPress OK to return to the Main Menu", "disconnect();" });
             }
 
 
@@ -352,13 +323,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.print("*** Phase 1: Download Datablocks & Targets");
             onMissionDownloadPhase1(missionName, musicTrack);
             console.print("------------>MissionStartPhase1Ack");
-            console.commandToServer("MissionStartPhase1Ack", new[] {seq});
+            console.commandToServer("MissionStartPhase1Ack", new[] { seq });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onDataBlockObjectReceived", "(%index, %total)", 2, 52000, false)]
         public void onDataBlockObjectReceived(string index, string total)
             {
-            onPhase1Progress((index.AsDouble()/total.AsDouble()).AsString());
+            onPhase1Progress((index.AsDouble() / total.AsDouble()).AsString());
             }
 
         //----------------------------------------------------------------------------
@@ -371,7 +342,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             onPhase1Complete();
             console.print("*** Phase 2: Download Ghost Objects");
             onMissionDownloadPhase2();
-            console.commandToServer("MissionStartPhase2Ack", new[] {seq, sGlobal["$pref::Player:PlayerDB"]});
+            console.commandToServer("MissionStartPhase2Ack", new[] { seq, sGlobal["$pref::Player:PlayerDB"] });
             }
 
         [Torque_Decorations.TorqueCallBack("", "", "onGhostAlwaysStarted", "(%ghostCount)", 1, 52000, false)]
@@ -385,7 +356,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         public void onGhostAlwaysObjectReceived()
             {
             iGlobal["$ghostsRecvd"] = iGlobal["$ghostsRecvd"] + 1;
-            onPhase2Progress((fGlobal["$ghostsRecvd"]/fGlobal["$ghostCount"]).AsString());
+            onPhase2Progress((fGlobal["$ghostsRecvd"] / fGlobal["$ghostCount"]).AsString());
             }
 
         //----------------------------------------------------------------------------
@@ -399,7 +370,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             Util.StartClientReplication();
             Util.StartFoliageReplication();
             // Load the static mission decals.
-            console.Call("decalManagerLoad", new[] {missionName + ".decals"});
+            console.Call("decalManagerLoad", new[] { missionName + ".decals" });
             console.print("*** Phase 3: Mission Lighting");
             sGlobal["$MSeq"] = seq;
             sGlobal["$Client::MissionFile"] = missionName;
@@ -429,7 +400,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             onPhase3Complete();
             // The is also the end of the mission load cycle.
             onMissionDownloadComplete();
-            console.commandToServer("MissionStartPhase3Ack", new[] {console.GetVarString("$MSeq")});
+            console.commandToServer("MissionStartPhase3Ack", new[] { console.GetVarString("$MSeq") });
             }
 
         //----------------------------------------------------------------------------
@@ -442,7 +413,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             iGlobal["$pref::Net::PacketSize"] = 200;
             iGlobal["$platform::timeManagerProcessInterval"] = 1;
             coGameConnection conn = new Torque_Class_Helper("GameConnection", "ServerConnection").Create().AsString();
-            new coSimSet("rootgroup").pushToBack(conn);
+            ((coSimSet)"rootgroup").pushToBack(conn);
             conn.setConnectArgs(sGlobal["$pref::Player::Name"]);
             conn.setJoinPassword(sGlobal["$Client::Password"]);
             conn.connect(server);

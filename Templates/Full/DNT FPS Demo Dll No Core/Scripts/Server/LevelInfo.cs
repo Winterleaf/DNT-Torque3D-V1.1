@@ -76,14 +76,10 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
         [Torque_Decorations.TorqueCallBack("", "", "clearLoadInfo", "()", 0, 12200, false)]
         public void ClearLoadInfo()
             {
-            try
-                {
-                coLevelInfo thelevelinfo = "theLevelInfo";
+
+            coLevelInfo thelevelinfo = "theLevelInfo";
+            if (thelevelinfo.isObject())
                 thelevelinfo.delete();
-                }
-            catch (Exception)
-                {
-                }
             }
 
         //------------------------------------------------------------------------------

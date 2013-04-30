@@ -52,6 +52,7 @@
 
 using WinterLeaf;
 using WinterLeaf.Classes;
+using WinterLeaf.Containers;
 using WinterLeaf.tsObjects;
 
 #endregion
@@ -96,20 +97,21 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         //-----------------------------------------------------------------------------
         // Numerical Health Counter
         //-----------------------------------------------------------------------------
-        [Torque_Decorations.TorqueCallBack("", "", "clientCmdSetNumericalHealthHUD", "(%curHealth)", 1, 6000, false)]
-        public void ClientCmdSetNumericalHealthHud(string curHealth)
-            {
-            // Skip if the hud is missing.
-            if (!console.isObject("numericalHealthHUD"))
-                return;
+        //[Torque_Decorations.TorqueCallBack("", "", "clientCmdSetNumericalHealthHUD", "(%curHealth)", 1, 6000, false)]
+        //public void ClientCmdSetNumericalHealthHud(string curHealth)
+        //    {
+        //    coGuiTextCtrl numericalHealthHUD = "numericalHealthHUD";
+        //    // Skip if the hud is missing.
+        //    if (!numericalHealthHUD.isObject())
+        //        return;
 
 
-            // The server has sent us our current health, display it on the HUD
-            new coGuiTextCtrl("numericalHealthHUD").setText(curHealth);
+        //    // The server has sent us our current health, display it on the HUD
+        //    numericalHealthHUD.setText(curHealth);
 
-            // Ensure the HUD is set to visible while we have health / are alive
-            new coGuiControl("HealthHUD").setVisible(curHealth.AsBool() ? true : false);
-            }
+        //    // Ensure the HUD is set to visible while we have health / are alive
+        //    ((coGuiControl)"HealthHUD").setVisible(curHealth.AsBool() ? true : false);
+        //    }
 
 
         //-----------------------------------------------------------------------------
@@ -136,15 +138,14 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         // Teleporter visual effect
         //-----------------------------------------------------------------------------
         [Torque_Decorations.TorqueCallBack("", "", "clientCmdPlayTeleportEffect", "(%position, %effectDataBlock)", 2, 6000, false)]
-        public void ClientCmdPlayTeleportEffect(string position, string effectDataBlock)
+        public void ClientCmdPlayTeleportEffect(Point3F position, coSimDataBlock effectDataBlock)
             {
-            if (console.isObject(effectDataBlock))
-                {
-                Torque_Class_Helper tch = new Torque_Class_Helper("Explosion");
-                tch.Props.Add("position", '"' + position + '"');
-                tch.Props.Add("datablock", effectDataBlock);
-                tch.Create();
-                }
+            if (!effectDataBlock.isObject())
+                return;
+            Torque_Class_Helper tch = new Torque_Class_Helper("Explosion");
+            tch.Props.Add("position", '"' + position.AsString() + '"');
+            tch.Props.Add("datablock", effectDataBlock);
+            tch.Create();
             }
 
 
@@ -200,7 +201,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             else
                 {
                 WeaponHUD.setVisible(true);
-                new coGuiBitmapCtrl("PreviewImage").setBitmap("art/gui/weaponHud/" + preview);
+                ((coGuiBitmapCtrl)"PreviewImage").setBitmap("art/gui/weaponHud/" + preview);
                 }
 
             coGuiCrossHairHud Reticle = "Reticle";
@@ -215,7 +216,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
 
             coGuiCrossHairHud ZoomReticle = "ZoomReticle";
 
-            if (console.isObject("ZoomReticle"))
+            if ("ZoomReticle".isObject())
                 {
                 ZoomReticle.setBitmap(zoomret == "" ? "" : "art/gui/weaponHud/" + zoomret);
                 }
@@ -229,13 +230,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             {
             if (toggle.AsBool())
                 {
-                new coActionMap("moveMap").pop();
-                new coActionMap("vehicleMap").push();
+                ((coActionMap)"moveMap").pop();
+                ((coActionMap)"vehicleMap").push();
                 }
             else
                 {
-                new coActionMap("moveMap").push();
-                new coActionMap("vehicleMap").pop();
+                ((coActionMap)"moveMap").push();
+                ((coActionMap)"vehicleMap").pop();
                 }
             }
 
@@ -248,12 +249,12 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
         // %player = The player doing the mounting
         // %mounted = True if the turret was mounted, false if it was unmounted
         [Torque_Decorations.TorqueCallBack("", "", "turretMountCallback", "(%turret, %player, %mounted)", 3, 6000, false)]
-        public void TurretMountCallback(string turret, string player, string mounted)
+        public void TurretMountCallback(string turret, string player, bool mounted)
             {
-            if (mounted.AsBool())
-                new coActionMap("turretMap").push();
+            if (mounted)
+                ((coActionMap)"turretMap").push();
             else
-                new coActionMap("turretMap").pop();
+                ((coActionMap)"turretMap").pop();
             }
 
 
@@ -283,7 +284,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Client
             console.Eval(@"assert( isObject( ServerConnection ), ""serverToClientObject() - No server connection found!"" );      ");
 
             int ghostID = serverObject.getGhostID();
-            return ghostID == -1 ? "0" : new coGameConnection("ServerConnection").resolveGhostID(ghostID).AsString();
+            return ghostID == -1 ? "0" : ((coGameConnection)"ServerConnection").resolveGhostID(ghostID).AsString();
             }
 
         //----------------------------------------------------------------------------

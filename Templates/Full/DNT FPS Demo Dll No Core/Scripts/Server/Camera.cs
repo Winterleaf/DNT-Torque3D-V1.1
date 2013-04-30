@@ -87,7 +87,7 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             coSimDataBlock t = camera.getDataBlock();
             System.Console.WriteLine(t.getName());
-            console.Call_Classname(camera.getDataBlock().AsString(), "setMode", new string[] {camera, mode, arg1, arg2, arg3});
+            console.Call_Classname(camera.getDataBlock().AsString(), "setMode", new string[] { camera, mode, arg1, arg2, arg3 });
             // Punt this one over to our datablock
             }
 
@@ -104,15 +104,19 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             string mode = camera["mode"];
             switch (mode)
                 {
-                    case "Observer":
-                        // Do something interesting.
-                        break;
-                    case "Corpse":
-                        //Here is a winner... if you send the prepare too soon, it will crash out the client.  The GameConnectionOnControlObjectChange needs
-                        //time to run, and since it's still processing the first change (Switch to camera) this second change (Camera->player) will crash
-                        //out the client.
-                        GameConnectiOnPreparePlayer(client);
-                        break;
+                case "Observer":
+                    // Do something interesting.
+                    break;
+                case "Corpse":
+                    //Here is a winner... if you send the prepare too soon, it will crash out the client.  The GameConnectionOnControlObjectChange needs
+                    //time to run, and since it's still processing the first change (Switch to camera) this second change (Camera->player) will crash
+                    //out the client.
+                    //ServerCmdSetEditorCameraStandard(client);
+                    //ServerCmdDropCameraAtPlayer(client);
+                    camera.setFlyMode();
+                    client.setControlObject(camera);
+                    GameConnectiOnPreparePlayer(client);
+                    break;
                 }
             }
 
@@ -121,13 +125,13 @@ namespace DNT_FPS_Demo_Game_Dll.Scripts.Server
             {
             switch (mode)
                 {
-                    case "Observer":
-                        camera.setFlyMode();
-                        break;
-                    case "Corpse":
-                        camera.setOrbitMode(arg1, arg1.getTransform(), (float) 0.5, (float) 4.5, (float) 4.5, false, new Point3F(), false);
-                        camera["orbitObj"] = arg1;
-                        break;
+                case "Observer":
+                    camera.setFlyMode();
+                    break;
+                case "Corpse":
+                    camera.setOrbitMode(arg1, arg1.getTransform(), (float)0.5, (float)4.5, (float)4.5, false, new Point3F(), false);
+                    camera["orbitObj"] = arg1;
+                    break;
                 }
             camera["mode"] = mode;
             }

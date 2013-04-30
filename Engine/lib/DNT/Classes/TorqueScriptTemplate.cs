@@ -1,4 +1,4 @@
-// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -3174,6 +3174,15 @@ namespace WinterLeaf.Classes
             public AIPlayerObject(ref dnTorque ts)
                 {
                 m_ts = ts;
+                }
+
+            /// <summary>
+            /// )
+            /// 	
+            /// </summary>
+            public void AISearchSimSet(string aiplayer, float fOV, float farDist, string ObjToSearch, string result)
+                {
+                m_ts.fnAIPlayer_AISearchSimSet(aiplayer, fOV, farDist, ObjToSearch, result);
                 }
 
             /// <summary>
