@@ -1,4 +1,3 @@
-
 // Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
@@ -45,17 +44,17 @@
 // **********************************************************************************
 // 
 // Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
+// 
+// 
+// 
 
 #region
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Classes;
-using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 using System.ComponentModel;
-using System.Threading;
+using WinterLeaf.Classes;
+using WinterLeaf.Enums;
+
 #endregion
 
 namespace WinterLeaf.tsObjects
@@ -73,7 +72,7 @@ namespace WinterLeaf.tsObjects
         /// <returns></returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             {
-            return (typeof(string) == sourceType);
+            return (typeof (string) == sourceType);
             }
 
         /// <summary>
@@ -94,28 +93,117 @@ namespace WinterLeaf.tsObjects
             }
         }
 
-      
+
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(tsObjectConvertercoTurretShapeData))]
-    public class coTurretShapeData: coItemData
-{
+    [TypeConverter(typeof (tsObjectConvertercoTurretShapeData))]
+    public class coTurretShapeData : coItemData
+        {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-internal coTurretShapeData(string simobjectid) : base(simobjectid){ }
+        internal coTurretShapeData(string simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-internal coTurretShapeData(uint simobjectid): base(simobjectid){ }
+        internal coTurretShapeData(uint simobjectid) : base(simobjectid)
+            {
+            }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-internal coTurretShapeData(int simobjectid): base(simobjectid){ }
+        internal coTurretShapeData(int simobjectid) : base(simobjectid)
+            {
+            }
+
+        /// <summary>
+        /// Vertical (Z axis) height of the camera above the turret. 
+        /// </summary>
+        public float cameraOffset
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".cameraOffset").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".cameraOffset", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Degrees per second rotation.\n\n   A value of 0 means no rotation is allowed. A value less than 0 means the rotation is instantaneous.\n
+        /// </summary>
+        public float headingRate
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".headingRate").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".headingRate", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum number of degrees to rotate from center.\n\n   A value of 180 or more degrees indicates the turret may rotate completely around.\n
+        /// </summary>
+        public float maxHeading
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxHeading").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxHeading", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Maximum number of degrees to rotate up from straight ahead.\n\n
+        /// </summary>
+        public float maxPitch
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".maxPitch").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".maxPitch", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Minimum number of degrees to rotate down from straight ahead.\n\n
+        /// </summary>
+        public float minPitch
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".minPitch").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".minPitch", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Degrees per second rotation.\n\n   A value of 0 means no rotation is allowed. A value less than 0 means the rotation is instantaneous.\n
+        /// </summary>
+        public float pitchRate
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".pitchRate").AsFloat(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".pitchRate", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Does the turret's mounted weapon(s) start in a loaded state.\n\n   True indicates that all mounted weapons start in a loaded state.\n   @see ShapeBase::setImageLoaded()
+        /// </summary>
+        public bool startLoaded
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".startLoaded").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".startLoaded", value.AsString()); }
+            }
+
+        /// <summary>
+        /// @brief Set how the mounted weapons are linked and triggered.\n\n   ulliFireTogether: All weapons fire under trigger 0./li   liGroupedFire: Weapon mounts 0,2 fire under trigger 0, mounts 1,3 fire under trigger 1./li   liIndividualFire: Each weapon mount fires under its own trigger 0-3./li/ul\n   @see TurretShapeFireLinkType
+        /// </summary>
+        public TurretShapeData__FireLinkType weaponLinkType
+            {
+            get { return (TurretShapeData__FireLinkType) Enum.Parse(typeof (TurretShapeData__FireLinkType), dnTorque.self.GetVar(_mSimObjectId + ".weaponLinkType")); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".weaponLinkType", value.ToString()); }
+            }
+
+        /// <summary>
+        /// @brief Should the turret allow only z rotations.\n\n   True indicates that the turret may only be rotated on its z axis, just like the Item class.    This keeps the turret always upright regardless of the surface it lands on.\n
+        /// </summary>
+        public bool zRotOnly
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".zRotOnly").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".zRotOnly", value.AsString()); }
+            }
 
 
         /// <summary>
@@ -129,10 +217,9 @@ internal coTurretShapeData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-
-
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -140,16 +227,17 @@ internal coTurretShapeData(int simobjectid): base(simobjectid){ }
             {
             throw new NotImplementedException();
             }
-  /// <summary>
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
             {
-            
-            return (this._mSimObjectId ==(string)myReflections.ChangeType( obj,typeof(string)));
+            return (this._mSimObjectId == (string) myReflections.ChangeType(obj, typeof (string)));
             }
+
         /// <summary>
         /// 
         /// </summary>
@@ -161,19 +249,18 @@ internal coTurretShapeData(int simobjectid): base(simobjectid){ }
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-
             }
 
 
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( coTurretShapeData ts)
+        public static implicit operator string(coTurretShapeData ts)
             {
             if (object.ReferenceEquals(ts, null))
-                 return "0";
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -192,10 +279,10 @@ internal coTurretShapeData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( coTurretShapeData ts)
+        public static implicit operator int(coTurretShapeData ts)
             {
             if (object.ReferenceEquals(ts, null))
-                 return 0;
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -215,10 +302,10 @@ internal coTurretShapeData(int simobjectid): base(simobjectid){ }
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( coTurretShapeData ts)
+        public static implicit operator uint(coTurretShapeData ts)
             {
             if (object.ReferenceEquals(ts, null))
-                 return 0;
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -232,129 +319,5 @@ internal coTurretShapeData(int simobjectid): base(simobjectid){ }
             {
             return new coTurretShapeData(ts);
             }
-/// <summary>
-/// Vertical (Z axis) height of the camera above the turret. 
-/// </summary>
-public float cameraOffset
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".cameraOffset").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".cameraOffset", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Degrees per second rotation.\n\n   A value of 0 means no rotation is allowed. A value less than 0 means the rotation is instantaneous.\n
-/// </summary>
-public float headingRate
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".headingRate").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".headingRate", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Maximum number of degrees to rotate from center.\n\n   A value of 180 or more degrees indicates the turret may rotate completely around.\n
-/// </summary>
-public float maxHeading
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxHeading").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxHeading", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Maximum number of degrees to rotate up from straight ahead.\n\n
-/// </summary>
-public float maxPitch
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".maxPitch").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".maxPitch", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Minimum number of degrees to rotate down from straight ahead.\n\n
-/// </summary>
-public float minPitch
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".minPitch").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".minPitch", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Degrees per second rotation.\n\n   A value of 0 means no rotation is allowed. A value less than 0 means the rotation is instantaneous.\n
-/// </summary>
-public float pitchRate
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".pitchRate").AsFloat();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".pitchRate", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Does the turret's mounted weapon(s) start in a loaded state.\n\n   True indicates that all mounted weapons start in a loaded state.\n   @see ShapeBase::setImageLoaded()
-/// </summary>
-public bool startLoaded
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".startLoaded").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".startLoaded", value.AsString());
-          }
-       }
-/// <summary>
-/// @brief Set how the mounted weapons are linked and triggered.\n\n   ulliFireTogether: All weapons fire under trigger 0./li   liGroupedFire: Weapon mounts 0,2 fire under trigger 0, mounts 1,3 fire under trigger 1./li   liIndividualFire: Each weapon mount fires under its own trigger 0-3./li/ul\n   @see TurretShapeFireLinkType
-/// </summary>
-public TurretShapeData__FireLinkType weaponLinkType
-       {
-       get
-          {          return (TurretShapeData__FireLinkType)Enum.Parse(typeof(TurretShapeData__FireLinkType), dnTorque.self.GetVar(_mSimObjectId + ".weaponLinkType"));
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".weaponLinkType", value.ToString());
-          }
-       }
-/// <summary>
-/// @brief Should the turret allow only z rotations.\n\n   True indicates that the turret may only be rotated on its z axis, just like the Item class.    This keeps the turret always upright regardless of the surface it lands on.\n
-/// </summary>
-public bool zRotOnly
-       {
-       get
-          {
-          return dnTorque.self.GetVar(_mSimObjectId + ".zRotOnly").AsBool();
-          }
-       set
-          {
-          dnTorque.self.SetVar(_mSimObjectId + ".zRotOnly", value.AsString());
-          }
-       }
-}}
+        }
+    }
