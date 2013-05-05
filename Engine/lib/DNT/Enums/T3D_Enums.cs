@@ -128,6 +128,647 @@ namespace WinterLeaf.Enums
         };
 
     /// <summary>
+    /// TypeGFXBlend
+    /// </summary>
+    public enum TypeGFXBlend
+        {
+        /// <summary>
+        /// GFXBlendZero
+        /// </summary>
+        GFXBlendZero,
+
+        /// <summary>
+        /// GFXBlendOne
+        /// </summary>
+        GFXBlendOne,
+
+        /// <summary>
+        /// GFXBlendSrcColor
+        /// </summary>
+        GFXBlendSrcColor,
+
+        /// <summary>
+        /// GFXBlendInvSrcColor
+        /// </summary>
+        GFXBlendInvSrcColor,
+
+        /// <summary>
+        /// GFXBlendSrcAlpha
+        /// </summary>
+        GFXBlendSrcAlpha,
+
+        /// <summary>
+        /// GFXBlendInvSrcAlpha
+        /// </summary>
+        GFXBlendInvSrcAlpha,
+
+        /// <summary>
+        /// GFXBlendDestAlpha
+        /// </summary>
+        GFXBlendDestAlpha,
+
+        /// <summary>
+        /// GFXBlendInvDestAlpha
+        /// </summary>
+        GFXBlendInvDestAlpha,
+
+        /// <summary>
+        /// GFXBlendDestColor
+        /// </summary>
+        GFXBlendDestColor,
+
+        /// <summary>
+        /// GFXBlendInvDestColor
+        /// </summary>
+        GFXBlendInvDestColor,
+
+        /// <summary>
+        /// GFXBlendSrcAlphaSat
+        /// </summary>
+        GFXBlendSrcAlphaSat,
+        };
+
+    /// <summary>
+    /// TypeGFXCmpFunc
+    /// </summary>
+    public enum TypeGFXCmpFunc
+        {
+        /// <summary>
+        /// GFXCmpNever
+        /// </summary>
+        GFXCmpNever,
+
+        /// <summary>
+        /// GFXCmpLess
+        /// </summary>
+        GFXCmpLess,
+
+        /// <summary>
+        /// GFXCmpEqual
+        /// </summary>
+        GFXCmpEqual,
+
+        /// <summary>
+        /// GFXCmpLessEqual
+        /// </summary>
+        GFXCmpLessEqual,
+
+        /// <summary>
+        /// GFXCmpGreater
+        /// </summary>
+        GFXCmpGreater,
+
+        /// <summary>
+        /// GFXCmpNotEqual
+        /// </summary>
+        GFXCmpNotEqual,
+
+        /// <summary>
+        /// GFXCmpGreaterEqual
+        /// </summary>
+        GFXCmpGreaterEqual,
+
+        /// <summary>
+        /// GFXCmpAlways
+        /// </summary>
+        GFXCmpAlways,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureAddressMode
+    /// </summary>
+    public enum TypeGFXTextureAddressMode
+        {
+        /// <summary>
+        /// GFXAddressWrap
+        /// </summary>
+        GFXAddressWrap,
+
+        /// <summary>
+        /// GFXAddressMirror
+        /// </summary>
+        GFXAddressMirror,
+
+        /// <summary>
+        /// GFXAddressClamp
+        /// </summary>
+        GFXAddressClamp,
+
+        /// <summary>
+        /// GFXAddressBorder
+        /// </summary>
+        GFXAddressBorder,
+
+        /// <summary>
+        /// GFXAddressMirrorOnce
+        /// </summary>
+        GFXAddressMirrorOnce,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureFilterType
+    /// </summary>
+    public enum TypeGFXTextureFilterType
+        {
+        /// <summary>
+        /// GFXTextureFilterNone
+        /// </summary>
+        GFXTextureFilterNone,
+
+        /// <summary>
+        /// GFXTextureFilterPoint
+        /// </summary>
+        GFXTextureFilterPoint,
+
+        /// <summary>
+        /// GFXTextureFilterLinear
+        /// </summary>
+        GFXTextureFilterLinear,
+
+        /// <summary>
+        /// GFXTextureFilterAnisotropic
+        /// </summary>
+        GFXTextureFilterAnisotropic,
+
+        /// <summary>
+        /// GFXTextureFilterPyramidalQuad
+        /// </summary>
+        GFXTextureFilterPyramidalQuad,
+
+        /// <summary>
+        /// GFXTextureFilterGaussianQuad
+        /// </summary>
+        GFXTextureFilterGaussianQuad,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureOp
+    /// </summary>
+    public enum TypeGFXTextureOp
+        {
+        /// <summary>
+        /// GFXTOPDisable
+        /// </summary>
+        GFXTOPDisable,
+
+        /// <summary>
+        /// GFXTOPSelectARG1
+        /// </summary>
+        GFXTOPSelectARG1,
+
+        /// <summary>
+        /// GFXTOPSelectARG2
+        /// </summary>
+        GFXTOPSelectARG2,
+
+        /// <summary>
+        /// GFXTOPModulate
+        /// </summary>
+        GFXTOPModulate,
+
+        /// <summary>
+        /// GFXTOPModulate2X
+        /// </summary>
+        GFXTOPModulate2X,
+
+        /// <summary>
+        /// GFXTOPModulate4X
+        /// </summary>
+        GFXTOPModulate4X,
+
+        /// <summary>
+        /// GFXTOPAdd
+        /// </summary>
+        GFXTOPAdd,
+
+        /// <summary>
+        /// GFXTOPAddSigned
+        /// </summary>
+        GFXTOPAddSigned,
+
+        /// <summary>
+        /// GFXTOPAddSigned2X
+        /// </summary>
+        GFXTOPAddSigned2X,
+
+        /// <summary>
+        /// GFXTOPSubtract
+        /// </summary>
+        GFXTOPSubtract,
+
+        /// <summary>
+        /// GFXTOPAddSmooth
+        /// </summary>
+        GFXTOPAddSmooth,
+
+        /// <summary>
+        /// GFXTOPBlendDiffuseAlpha
+        /// </summary>
+        GFXTOPBlendDiffuseAlpha,
+
+        /// <summary>
+        /// GFXTOPBlendTextureAlpha
+        /// </summary>
+        GFXTOPBlendTextureAlpha,
+
+        /// <summary>
+        /// GFXTOPBlendFactorAlpha
+        /// </summary>
+        GFXTOPBlendFactorAlpha,
+
+        /// <summary>
+        /// GFXTOPBlendTextureAlphaPM
+        /// </summary>
+        GFXTOPBlendTextureAlphaPM,
+
+        /// <summary>
+        /// GFXTOPBlendCURRENTALPHA
+        /// </summary>
+        GFXTOPBlendCURRENTALPHA,
+
+        /// <summary>
+        /// GFXTOPPreModulate
+        /// </summary>
+        GFXTOPPreModulate,
+
+        /// <summary>
+        /// GFXTOPModulateAlphaAddColor
+        /// </summary>
+        GFXTOPModulateAlphaAddColor,
+
+        /// <summary>
+        /// GFXTOPModulateColorAddAlpha
+        /// </summary>
+        GFXTOPModulateColorAddAlpha,
+
+        /// <summary>
+        /// GFXTOPModulateInvAlphaAddColor
+        /// </summary>
+        GFXTOPModulateInvAlphaAddColor,
+
+        /// <summary>
+        /// GFXTOPModulateInvColorAddAlpha
+        /// </summary>
+        GFXTOPModulateInvColorAddAlpha,
+
+        /// <summary>
+        /// GFXTOPBumpEnvMap
+        /// </summary>
+        GFXTOPBumpEnvMap,
+
+        /// <summary>
+        /// GFXTOPBumpEnvMapLuminance
+        /// </summary>
+        GFXTOPBumpEnvMapLuminance,
+
+        /// <summary>
+        /// GFXTOPDotProduct3
+        /// </summary>
+        GFXTOPDotProduct3,
+
+        /// <summary>
+        /// GFXTOPLERP
+        /// </summary>
+        GFXTOPLERP,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureArgument
+    /// </summary>
+    public enum TypeGFXTextureArgument
+        {
+        /// <summary>
+        /// GFXTADiffuse
+        /// </summary>
+        GFXTADiffuse,
+
+        /// <summary>
+        /// GFXTACurrent
+        /// </summary>
+        GFXTACurrent,
+
+        /// <summary>
+        /// GFXTATexture
+        /// </summary>
+        GFXTATexture,
+
+        /// <summary>
+        /// GFXTATFactor
+        /// </summary>
+        GFXTATFactor,
+
+        /// <summary>
+        /// GFXTASpecular
+        /// </summary>
+        GFXTASpecular,
+
+        /// <summary>
+        /// GFXTATemp
+        /// </summary>
+        GFXTATemp,
+
+        /// <summary>
+        /// GFXTAConstant
+        /// </summary>
+        GFXTAConstant,
+
+        /// <summary>
+        /// OneMinus
+        /// </summary>
+        OneMinus,
+
+        /// <summary>
+        /// AlphaReplicate
+        /// </summary>
+        AlphaReplicate,
+        };
+
+    /// <summary>
+    /// TypeGFXTextureTransformFlags
+    /// </summary>
+    public enum TypeGFXTextureTransformFlags
+        {
+        /// <summary>
+        /// GFXTTFDisable
+        /// </summary>
+        GFXTTFDisable,
+
+        /// <summary>
+        /// GFXTTFFCoord1D
+        /// </summary>
+        GFXTTFFCoord1D,
+
+        /// <summary>
+        /// GFXTTFFCoord2D
+        /// </summary>
+        GFXTTFFCoord2D,
+
+        /// <summary>
+        /// GFXTTFFCoord3D
+        /// </summary>
+        GFXTTFFCoord3D,
+
+        /// <summary>
+        /// GFXTTFFCoord4D
+        /// </summary>
+        GFXTTFFCoord4D,
+
+        /// <summary>
+        /// GFXTTFProjected
+        /// </summary>
+        GFXTTFProjected,
+        };
+
+    /// <summary>
+    /// TypeGFXFormat
+    /// </summary>
+    public enum TypeGFXFormat
+        {
+        /// <summary>
+        /// GFXFormatR8G8B8
+        /// </summary>
+        GFXFormatR8G8B8,
+
+        /// <summary>
+        /// GFXFormatR8G8B8A8
+        /// </summary>
+        GFXFormatR8G8B8A8,
+
+        /// <summary>
+        /// GFXFormatR8G8B8X8
+        /// </summary>
+        GFXFormatR8G8B8X8,
+
+        /// <summary>
+        /// GFXFormatR32F
+        /// </summary>
+        GFXFormatR32F,
+
+        /// <summary>
+        /// GFXFormatR5G6B5
+        /// </summary>
+        GFXFormatR5G6B5,
+
+        /// <summary>
+        /// GFXFormatR5G5B5A1
+        /// </summary>
+        GFXFormatR5G5B5A1,
+
+        /// <summary>
+        /// GFXFormatR5G5B5X1
+        /// </summary>
+        GFXFormatR5G5B5X1,
+
+        /// <summary>
+        /// GFXFormatA4L4
+        /// </summary>
+        GFXFormatA4L4,
+
+        /// <summary>
+        /// GFXFormatA8L8
+        /// </summary>
+        GFXFormatA8L8,
+
+        /// <summary>
+        /// GFXFormatA8
+        /// </summary>
+        GFXFormatA8,
+
+        /// <summary>
+        /// GFXFormatL8
+        /// </summary>
+        GFXFormatL8,
+
+        /// <summary>
+        /// GFXFormatDXT1
+        /// </summary>
+        GFXFormatDXT1,
+
+        /// <summary>
+        /// GFXFormatDXT2
+        /// </summary>
+        GFXFormatDXT2,
+
+        /// <summary>
+        /// GFXFormatDXT3
+        /// </summary>
+        GFXFormatDXT3,
+
+        /// <summary>
+        /// GFXFormatDXT4
+        /// </summary>
+        GFXFormatDXT4,
+
+        /// <summary>
+        /// GFXFormatDXT5
+        /// </summary>
+        GFXFormatDXT5,
+
+        /// <summary>
+        /// GFXFormatD32
+        /// </summary>
+        GFXFormatD32,
+
+        /// <summary>
+        /// GFXFormatD24X8
+        /// </summary>
+        GFXFormatD24X8,
+
+        /// <summary>
+        /// GFXFormatD24S8
+        /// </summary>
+        GFXFormatD24S8,
+
+        /// <summary>
+        /// GFXFormatD24FS8
+        /// </summary>
+        GFXFormatD24FS8,
+
+        /// <summary>
+        /// GFXFormatD16
+        /// </summary>
+        GFXFormatD16,
+
+        /// <summary>
+        /// GFXFormatR32G32B32A32F
+        /// </summary>
+        GFXFormatR32G32B32A32F,
+
+        /// <summary>
+        /// GFXFormatR16G16B16A16F
+        /// </summary>
+        GFXFormatR16G16B16A16F,
+
+        /// <summary>
+        /// GFXFormatL16
+        /// </summary>
+        GFXFormatL16,
+
+        /// <summary>
+        /// GFXFormatR16G16B16A16
+        /// </summary>
+        GFXFormatR16G16B16A16,
+
+        /// <summary>
+        /// GFXFormatR16G16
+        /// </summary>
+        GFXFormatR16G16,
+
+        /// <summary>
+        /// GFXFormatR16F
+        /// </summary>
+        GFXFormatR16F,
+
+        /// <summary>
+        /// GFXFormatR16G16F
+        /// </summary>
+        GFXFormatR16G16F,
+
+        /// <summary>
+        /// GFXFormatR10G10B10A2
+        /// </summary>
+        GFXFormatR10G10B10A2,
+        };
+
+    /// <summary>
+    /// TypeGFXCullMode
+    /// </summary>
+    public enum TypeGFXCullMode
+        {
+        /// <summary>
+        /// GFXCullNone
+        /// </summary>
+        GFXCullNone,
+
+        /// <summary>
+        /// GFXCullCW
+        /// </summary>
+        GFXCullCW,
+
+        /// <summary>
+        /// GFXCullCCW
+        /// </summary>
+        GFXCullCCW,
+        };
+
+    /// <summary>
+    /// TypeGFXStencilOp
+    /// </summary>
+    public enum TypeGFXStencilOp
+        {
+        /// <summary>
+        /// GFXStencilOpKeep
+        /// </summary>
+        GFXStencilOpKeep,
+
+        /// <summary>
+        /// GFXStencilOpZero
+        /// </summary>
+        GFXStencilOpZero,
+
+        /// <summary>
+        /// GFXStencilOpReplace
+        /// </summary>
+        GFXStencilOpReplace,
+
+        /// <summary>
+        /// GFXStencilOpIncrSat
+        /// </summary>
+        GFXStencilOpIncrSat,
+
+        /// <summary>
+        /// GFXStencilOpDecrSat
+        /// </summary>
+        GFXStencilOpDecrSat,
+
+        /// <summary>
+        /// GFXStencilOpInvert
+        /// </summary>
+        GFXStencilOpInvert,
+
+        /// <summary>
+        /// GFXStencilOpIncr
+        /// </summary>
+        GFXStencilOpIncr,
+
+        /// <summary>
+        /// GFXStencilOpDecr
+        /// </summary>
+        GFXStencilOpDecr,
+        };
+
+    /// <summary>
+    /// TypeGFXBlendOp
+    /// </summary>
+    public enum TypeGFXBlendOp
+        {
+        /// <summary>
+        /// GFXBlendOpAdd
+        /// </summary>
+        GFXBlendOpAdd,
+
+        /// <summary>
+        /// GFXBlendOpSubtract
+        /// </summary>
+        GFXBlendOpSubtract,
+
+        /// <summary>
+        /// GFXBlendOpRevSubtract
+        /// </summary>
+        GFXBlendOpRevSubtract,
+
+        /// <summary>
+        /// GFXBlendOpMin
+        /// </summary>
+        GFXBlendOpMin,
+
+        /// <summary>
+        /// GFXBlendOpMax
+        /// </summary>
+        GFXBlendOpMax,
+        };
+
+    /// <summary>
     /// GFXTextureArgument
     /// </summary>
     public enum GFXTextureArgument
@@ -1451,6 +2092,22 @@ namespace WinterLeaf.Enums
         };
 
     /// <summary>
+    /// TypeSFXDistanceModel
+    /// </summary>
+    public enum TypeSFXDistanceModel
+        {
+        /// <summary>
+        /// Linear
+        /// </summary>
+        Linear,
+
+        /// <summary>
+        /// Logarithmic
+        /// </summary>
+        Logarithmic,
+        };
+
+    /// <summary>
     /// Item__LightType
     /// </summary>
     public enum Item__LightType
@@ -1638,6 +2295,32 @@ namespace WinterLeaf.Enums
         };
 
     /// <summary>
+    /// TypeTSMeshType
+    /// </summary>
+    public enum TypeTSMeshType
+        {
+        /// <summary>
+        /// None
+        /// </summary>
+        None,
+
+        /// <summary>
+        /// Bounds
+        /// </summary>
+        Bounds,
+
+        /// <summary>
+        /// Collisionzz_zzMesh
+        /// </summary>
+        Collisionzz_zzMesh,
+
+        /// <summary>
+        /// Visiblezz_zzMesh
+        /// </summary>
+        Visiblezz_zzMesh,
+        };
+
+    /// <summary>
     /// TurretShapeData__FireLinkType
     /// </summary>
     public enum TurretShapeData__FireLinkType
@@ -1687,698 +2370,5 @@ namespace WinterLeaf.Enums
         /// 
         /// </summary>
         NumLodTypes
-        };
-
-    /// <summary>
-    /// TypeGFXBlend
-    /// </summary>
-    public enum TypeGFXBlend
-        {
-        /// <summary>
-        /// GFXBlendZero
-        /// </summary>
-        GFXBlendZero,
-
-        /// <summary>
-        /// GFXBlendOne
-        /// </summary>
-        GFXBlendOne,
-
-        /// <summary>
-        /// GFXBlendSrcColor
-        /// </summary>
-        GFXBlendSrcColor,
-
-        /// <summary>
-        /// GFXBlendInvSrcColor
-        /// </summary>
-        GFXBlendInvSrcColor,
-
-        /// <summary>
-        /// GFXBlendSrcAlpha
-        /// </summary>
-        GFXBlendSrcAlpha,
-
-        /// <summary>
-        /// GFXBlendInvSrcAlpha
-        /// </summary>
-        GFXBlendInvSrcAlpha,
-
-        /// <summary>
-        /// GFXBlendDestAlpha
-        /// </summary>
-        GFXBlendDestAlpha,
-
-        /// <summary>
-        /// GFXBlendInvDestAlpha
-        /// </summary>
-        GFXBlendInvDestAlpha,
-
-        /// <summary>
-        /// GFXBlendDestColor
-        /// </summary>
-        GFXBlendDestColor,
-
-        /// <summary>
-        /// GFXBlendInvDestColor
-        /// </summary>
-        GFXBlendInvDestColor,
-
-        /// <summary>
-        /// GFXBlendSrcAlphaSat
-        /// </summary>
-        GFXBlendSrcAlphaSat,
-        };
-
-    /// <summary>
-    /// TypeGFXCmpFunc
-    /// </summary>
-    public enum TypeGFXCmpFunc
-        {
-        /// <summary>
-        /// GFXCmpNever
-        /// </summary>
-        GFXCmpNever,
-
-        /// <summary>
-        /// GFXCmpLess
-        /// </summary>
-        GFXCmpLess,
-
-        /// <summary>
-        /// GFXCmpEqual
-        /// </summary>
-        GFXCmpEqual,
-
-        /// <summary>
-        /// GFXCmpLessEqual
-        /// </summary>
-        GFXCmpLessEqual,
-
-        /// <summary>
-        /// GFXCmpGreater
-        /// </summary>
-        GFXCmpGreater,
-
-        /// <summary>
-        /// GFXCmpNotEqual
-        /// </summary>
-        GFXCmpNotEqual,
-
-        /// <summary>
-        /// GFXCmpGreaterEqual
-        /// </summary>
-        GFXCmpGreaterEqual,
-
-        /// <summary>
-        /// GFXCmpAlways
-        /// </summary>
-        GFXCmpAlways,
-        };
-
-    /// <summary>
-    /// TypeGFXTextureAddressMode
-    /// </summary>
-    public enum TypeGFXTextureAddressMode
-        {
-        /// <summary>
-        /// GFXAddressWrap
-        /// </summary>
-        GFXAddressWrap,
-
-        /// <summary>
-        /// GFXAddressMirror
-        /// </summary>
-        GFXAddressMirror,
-
-        /// <summary>
-        /// GFXAddressClamp
-        /// </summary>
-        GFXAddressClamp,
-
-        /// <summary>
-        /// GFXAddressBorder
-        /// </summary>
-        GFXAddressBorder,
-
-        /// <summary>
-        /// GFXAddressMirrorOnce
-        /// </summary>
-        GFXAddressMirrorOnce,
-        };
-
-    /// <summary>
-    /// TypeGFXTextureFilterType
-    /// </summary>
-    public enum TypeGFXTextureFilterType
-        {
-        /// <summary>
-        /// GFXTextureFilterNone
-        /// </summary>
-        GFXTextureFilterNone,
-
-        /// <summary>
-        /// GFXTextureFilterPoint
-        /// </summary>
-        GFXTextureFilterPoint,
-
-        /// <summary>
-        /// GFXTextureFilterLinear
-        /// </summary>
-        GFXTextureFilterLinear,
-
-        /// <summary>
-        /// GFXTextureFilterAnisotropic
-        /// </summary>
-        GFXTextureFilterAnisotropic,
-
-        /// <summary>
-        /// GFXTextureFilterPyramidalQuad
-        /// </summary>
-        GFXTextureFilterPyramidalQuad,
-
-        /// <summary>
-        /// GFXTextureFilterGaussianQuad
-        /// </summary>
-        GFXTextureFilterGaussianQuad,
-        };
-
-    /// <summary>
-    /// TypeGFXTextureOp
-    /// </summary>
-    public enum TypeGFXTextureOp
-        {
-        /// <summary>
-        /// GFXTOPDisable
-        /// </summary>
-        GFXTOPDisable,
-
-        /// <summary>
-        /// GFXTOPSelectARG1
-        /// </summary>
-        GFXTOPSelectARG1,
-
-        /// <summary>
-        /// GFXTOPSelectARG2
-        /// </summary>
-        GFXTOPSelectARG2,
-
-        /// <summary>
-        /// GFXTOPModulate
-        /// </summary>
-        GFXTOPModulate,
-
-        /// <summary>
-        /// GFXTOPModulate2X
-        /// </summary>
-        GFXTOPModulate2X,
-
-        /// <summary>
-        /// GFXTOPModulate4X
-        /// </summary>
-        GFXTOPModulate4X,
-
-        /// <summary>
-        /// GFXTOPAdd
-        /// </summary>
-        GFXTOPAdd,
-
-        /// <summary>
-        /// GFXTOPAddSigned
-        /// </summary>
-        GFXTOPAddSigned,
-
-        /// <summary>
-        /// GFXTOPAddSigned2X
-        /// </summary>
-        GFXTOPAddSigned2X,
-
-        /// <summary>
-        /// GFXTOPSubtract
-        /// </summary>
-        GFXTOPSubtract,
-
-        /// <summary>
-        /// GFXTOPAddSmooth
-        /// </summary>
-        GFXTOPAddSmooth,
-
-        /// <summary>
-        /// GFXTOPBlendDiffuseAlpha
-        /// </summary>
-        GFXTOPBlendDiffuseAlpha,
-
-        /// <summary>
-        /// GFXTOPBlendTextureAlpha
-        /// </summary>
-        GFXTOPBlendTextureAlpha,
-
-        /// <summary>
-        /// GFXTOPBlendFactorAlpha
-        /// </summary>
-        GFXTOPBlendFactorAlpha,
-
-        /// <summary>
-        /// GFXTOPBlendTextureAlphaPM
-        /// </summary>
-        GFXTOPBlendTextureAlphaPM,
-
-        /// <summary>
-        /// GFXTOPBlendCURRENTALPHA
-        /// </summary>
-        GFXTOPBlendCURRENTALPHA,
-
-        /// <summary>
-        /// GFXTOPPreModulate
-        /// </summary>
-        GFXTOPPreModulate,
-
-        /// <summary>
-        /// GFXTOPModulateAlphaAddColor
-        /// </summary>
-        GFXTOPModulateAlphaAddColor,
-
-        /// <summary>
-        /// GFXTOPModulateColorAddAlpha
-        /// </summary>
-        GFXTOPModulateColorAddAlpha,
-
-        /// <summary>
-        /// GFXTOPModulateInvAlphaAddColor
-        /// </summary>
-        GFXTOPModulateInvAlphaAddColor,
-
-        /// <summary>
-        /// GFXTOPModulateInvColorAddAlpha
-        /// </summary>
-        GFXTOPModulateInvColorAddAlpha,
-
-        /// <summary>
-        /// GFXTOPBumpEnvMap
-        /// </summary>
-        GFXTOPBumpEnvMap,
-
-        /// <summary>
-        /// GFXTOPBumpEnvMapLuminance
-        /// </summary>
-        GFXTOPBumpEnvMapLuminance,
-
-        /// <summary>
-        /// GFXTOPDotProduct3
-        /// </summary>
-        GFXTOPDotProduct3,
-
-        /// <summary>
-        /// GFXTOPLERP
-        /// </summary>
-        GFXTOPLERP,
-        };
-
-    /// <summary>
-    /// TypeGFXTextureArgument
-    /// </summary>
-    public enum TypeGFXTextureArgument
-        {
-        /// <summary>
-        /// GFXTADiffuse
-        /// </summary>
-        GFXTADiffuse,
-
-        /// <summary>
-        /// GFXTACurrent
-        /// </summary>
-        GFXTACurrent,
-
-        /// <summary>
-        /// GFXTATexture
-        /// </summary>
-        GFXTATexture,
-
-        /// <summary>
-        /// GFXTATFactor
-        /// </summary>
-        GFXTATFactor,
-
-        /// <summary>
-        /// GFXTASpecular
-        /// </summary>
-        GFXTASpecular,
-
-        /// <summary>
-        /// GFXTATemp
-        /// </summary>
-        GFXTATemp,
-
-        /// <summary>
-        /// GFXTAConstant
-        /// </summary>
-        GFXTAConstant,
-
-        /// <summary>
-        /// OneMinus
-        /// </summary>
-        OneMinus,
-
-        /// <summary>
-        /// AlphaReplicate
-        /// </summary>
-        AlphaReplicate,
-        };
-
-    /// <summary>
-    /// TypeGFXTextureTransformFlags
-    /// </summary>
-    public enum TypeGFXTextureTransformFlags
-        {
-        /// <summary>
-        /// GFXTTFDisable
-        /// </summary>
-        GFXTTFDisable,
-
-        /// <summary>
-        /// GFXTTFFCoord1D
-        /// </summary>
-        GFXTTFFCoord1D,
-
-        /// <summary>
-        /// GFXTTFFCoord2D
-        /// </summary>
-        GFXTTFFCoord2D,
-
-        /// <summary>
-        /// GFXTTFFCoord3D
-        /// </summary>
-        GFXTTFFCoord3D,
-
-        /// <summary>
-        /// GFXTTFFCoord4D
-        /// </summary>
-        GFXTTFFCoord4D,
-
-        /// <summary>
-        /// GFXTTFProjected
-        /// </summary>
-        GFXTTFProjected,
-        };
-
-    /// <summary>
-    /// TypeGFXFormat
-    /// </summary>
-    public enum TypeGFXFormat
-        {
-        /// <summary>
-        /// GFXFormatR8G8B8
-        /// </summary>
-        GFXFormatR8G8B8,
-
-        /// <summary>
-        /// GFXFormatR8G8B8A8
-        /// </summary>
-        GFXFormatR8G8B8A8,
-
-        /// <summary>
-        /// GFXFormatR8G8B8X8
-        /// </summary>
-        GFXFormatR8G8B8X8,
-
-        /// <summary>
-        /// GFXFormatR32F
-        /// </summary>
-        GFXFormatR32F,
-
-        /// <summary>
-        /// GFXFormatR5G6B5
-        /// </summary>
-        GFXFormatR5G6B5,
-
-        /// <summary>
-        /// GFXFormatR5G5B5A1
-        /// </summary>
-        GFXFormatR5G5B5A1,
-
-        /// <summary>
-        /// GFXFormatR5G5B5X1
-        /// </summary>
-        GFXFormatR5G5B5X1,
-
-        /// <summary>
-        /// GFXFormatA4L4
-        /// </summary>
-        GFXFormatA4L4,
-
-        /// <summary>
-        /// GFXFormatA8L8
-        /// </summary>
-        GFXFormatA8L8,
-
-        /// <summary>
-        /// GFXFormatA8
-        /// </summary>
-        GFXFormatA8,
-
-        /// <summary>
-        /// GFXFormatL8
-        /// </summary>
-        GFXFormatL8,
-
-        /// <summary>
-        /// GFXFormatDXT1
-        /// </summary>
-        GFXFormatDXT1,
-
-        /// <summary>
-        /// GFXFormatDXT2
-        /// </summary>
-        GFXFormatDXT2,
-
-        /// <summary>
-        /// GFXFormatDXT3
-        /// </summary>
-        GFXFormatDXT3,
-
-        /// <summary>
-        /// GFXFormatDXT4
-        /// </summary>
-        GFXFormatDXT4,
-
-        /// <summary>
-        /// GFXFormatDXT5
-        /// </summary>
-        GFXFormatDXT5,
-
-        /// <summary>
-        /// GFXFormatD32
-        /// </summary>
-        GFXFormatD32,
-
-        /// <summary>
-        /// GFXFormatD24X8
-        /// </summary>
-        GFXFormatD24X8,
-
-        /// <summary>
-        /// GFXFormatD24S8
-        /// </summary>
-        GFXFormatD24S8,
-
-        /// <summary>
-        /// GFXFormatD24FS8
-        /// </summary>
-        GFXFormatD24FS8,
-
-        /// <summary>
-        /// GFXFormatD16
-        /// </summary>
-        GFXFormatD16,
-
-        /// <summary>
-        /// GFXFormatR32G32B32A32F
-        /// </summary>
-        GFXFormatR32G32B32A32F,
-
-        /// <summary>
-        /// GFXFormatR16G16B16A16F
-        /// </summary>
-        GFXFormatR16G16B16A16F,
-
-        /// <summary>
-        /// GFXFormatL16
-        /// </summary>
-        GFXFormatL16,
-
-        /// <summary>
-        /// GFXFormatR16G16B16A16
-        /// </summary>
-        GFXFormatR16G16B16A16,
-
-        /// <summary>
-        /// GFXFormatR16G16
-        /// </summary>
-        GFXFormatR16G16,
-
-        /// <summary>
-        /// GFXFormatR16F
-        /// </summary>
-        GFXFormatR16F,
-
-        /// <summary>
-        /// GFXFormatR16G16F
-        /// </summary>
-        GFXFormatR16G16F,
-
-        /// <summary>
-        /// GFXFormatR10G10B10A2
-        /// </summary>
-        GFXFormatR10G10B10A2,
-        };
-
-    /// <summary>
-    /// TypeGFXCullMode
-    /// </summary>
-    public enum TypeGFXCullMode
-        {
-        /// <summary>
-        /// GFXCullNone
-        /// </summary>
-        GFXCullNone,
-
-        /// <summary>
-        /// GFXCullCW
-        /// </summary>
-        GFXCullCW,
-
-        /// <summary>
-        /// GFXCullCCW
-        /// </summary>
-        GFXCullCCW,
-        };
-
-    /// <summary>
-    /// TypeGFXStencilOp
-    /// </summary>
-    public enum TypeGFXStencilOp
-        {
-        /// <summary>
-        /// GFXStencilOpKeep
-        /// </summary>
-        GFXStencilOpKeep,
-
-        /// <summary>
-        /// GFXStencilOpZero
-        /// </summary>
-        GFXStencilOpZero,
-
-        /// <summary>
-        /// GFXStencilOpReplace
-        /// </summary>
-        GFXStencilOpReplace,
-
-        /// <summary>
-        /// GFXStencilOpIncrSat
-        /// </summary>
-        GFXStencilOpIncrSat,
-
-        /// <summary>
-        /// GFXStencilOpDecrSat
-        /// </summary>
-        GFXStencilOpDecrSat,
-
-        /// <summary>
-        /// GFXStencilOpInvert
-        /// </summary>
-        GFXStencilOpInvert,
-
-        /// <summary>
-        /// GFXStencilOpIncr
-        /// </summary>
-        GFXStencilOpIncr,
-
-        /// <summary>
-        /// GFXStencilOpDecr
-        /// </summary>
-        GFXStencilOpDecr,
-        };
-
-    /// <summary>
-    /// TypeGFXBlendOp
-    /// </summary>
-    public enum TypeGFXBlendOp
-        {
-        /// <summary>
-        /// GFXBlendOpAdd
-        /// </summary>
-        GFXBlendOpAdd,
-
-        /// <summary>
-        /// GFXBlendOpSubtract
-        /// </summary>
-        GFXBlendOpSubtract,
-
-        /// <summary>
-        /// GFXBlendOpRevSubtract
-        /// </summary>
-        GFXBlendOpRevSubtract,
-
-        /// <summary>
-        /// GFXBlendOpMin
-        /// </summary>
-        GFXBlendOpMin,
-
-        /// <summary>
-        /// GFXBlendOpMax
-        /// </summary>
-        GFXBlendOpMax,
-        };
-
-    /// <summary>
-    /// TypeSFXDistanceModel
-    /// </summary>
-    public enum TypeSFXDistanceModel
-        {
-        /// <summary>
-        /// Linear
-        /// </summary>
-        Linear,
-
-        /// <summary>
-        /// Logarithmic
-        /// </summary>
-        Logarithmic,
-        };
-
-    /// <summary>
-    /// PxClothAttachment
-    /// </summary>
-    public enum PxClothAttachment
-        {
-        /// <summary>
-        /// 
-        /// </summary>
-        };
-
-    /// <summary>
-    /// TypeTSMeshType
-    /// </summary>
-    public enum TypeTSMeshType
-        {
-        /// <summary>
-        /// None
-        /// </summary>
-        None,
-
-        /// <summary>
-        /// Bounds
-        /// </summary>
-        Bounds,
-
-        /// <summary>
-        /// Collisionzz_zzMesh
-        /// </summary>
-        Collisionzz_zzMesh,
-
-        /// <summary>
-        /// Visiblezz_zzMesh
-        /// </summary>
-        Visiblezz_zzMesh,
         };
     }

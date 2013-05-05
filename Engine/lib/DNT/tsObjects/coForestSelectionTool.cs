@@ -61,7 +61,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoSimpleComponentInterface : TypeConverter
+    internal class tsObjectConvertercoForestSelectionTool : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coSimpleComponentInterface(value as string);
+                return new coForestSelectionTool(value as string);
                 }
 
             return null;
@@ -96,14 +96,14 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoSimpleComponentInterface))]
-    public class coSimpleComponentInterface : coSimComponent
+    [TypeConverter(typeof (tsObjectConvertercoForestSelectionTool))]
+    public class coForestSelectionTool : coForestTool
         {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coSimpleComponentInterface(string simobjectid) : base(simobjectid)
+        internal coForestSelectionTool(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coSimpleComponentInterface(uint simobjectid) : base(simobjectid)
+        internal coForestSelectionTool(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coSimpleComponentInterface(int simobjectid) : base(simobjectid)
+        internal coForestSelectionTool(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -130,7 +130,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coSimpleComponentInterface ts, string simobjectid)
+        public static bool operator ==(coForestSelectionTool ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +162,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coSimpleComponentInterface ts, string simobjectid)
+        public static bool operator !=(coForestSelectionTool ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,7 +175,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coSimpleComponentInterface ts)
+        public static implicit operator string(coForestSelectionTool ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -187,9 +187,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coSimpleComponentInterface(string ts)
+        public static implicit operator coForestSelectionTool(string ts)
             {
-            return new coSimpleComponentInterface(ts);
+            return new coForestSelectionTool(ts);
             }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coSimpleComponentInterface ts)
+        public static implicit operator int(coForestSelectionTool ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -210,9 +210,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coSimpleComponentInterface(int ts)
+        public static implicit operator coForestSelectionTool(int ts)
             {
-            return new coSimpleComponentInterface(ts);
+            return new coForestSelectionTool(ts);
             }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coSimpleComponentInterface ts)
+        public static implicit operator uint(coForestSelectionTool ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -233,9 +233,63 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coSimpleComponentInterface(uint ts)
+        public static implicit operator coForestSelectionTool(uint ts)
             {
-            return new coSimpleComponentInterface(ts);
+            return new coForestSelectionTool(ts);
+            }
+
+        /// <summary>
+        /// ( ForestSelectionTool, clearSelection, void, 2, 2,  )
+        /// 
+        /// </summary>
+        public void clearSelection()
+            {
+            TorqueScriptTemplate.m_ts.fnForestSelectionTool_clearSelection(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( ForestSelectionTool, copySelection, void, 2, 2,  )
+        /// 
+        /// </summary>
+        public void copySelection()
+            {
+            TorqueScriptTemplate.m_ts.fnForestSelectionTool_copySelection(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( ForestSelectionTool, cutSelection, void, 2, 2,  )
+        /// 
+        /// </summary>
+        public void cutSelection()
+            {
+            TorqueScriptTemplate.m_ts.fnForestSelectionTool_cutSelection(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( ForestSelectionTool, deleteSelection, void, 2, 2,  )
+        /// 
+        /// </summary>
+        public void deleteSelection()
+            {
+            TorqueScriptTemplate.m_ts.fnForestSelectionTool_deleteSelection(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( ForestSelectionTool, getSelectionCount, S32, 2, 2,  )
+        /// 
+        /// </summary>
+        public int getSelectionCount()
+            {
+            return TorqueScriptTemplate.m_ts.fnForestSelectionTool_getSelectionCount(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( ForestSelectionTool, pasteSelection, void, 2, 2,  )
+        /// 
+        /// </summary>
+        public void pasteSelection()
+            {
+            TorqueScriptTemplate.m_ts.fnForestSelectionTool_pasteSelection(_mSimObjectId);
             }
         }
     }

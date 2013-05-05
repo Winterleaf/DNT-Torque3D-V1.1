@@ -61,7 +61,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoGroundCoverShaderConstHandles : TypeConverter
+    internal class tsObjectConvertercoGuiPopupTextListCtrl : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coGroundCoverShaderConstHandles(value as string);
+                return new coGuiPopupTextListCtrl(value as string);
                 }
 
             return null;
@@ -96,14 +96,14 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoGroundCoverShaderConstHandles))]
-    public class coGroundCoverShaderConstHandles : coSceneObject
+    [TypeConverter(typeof (tsObjectConvertercoGuiPopupTextListCtrl))]
+    public class coGuiPopupTextListCtrl : coGuiTextListCtrl
         {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coGroundCoverShaderConstHandles(string simobjectid) : base(simobjectid)
+        internal coGuiPopupTextListCtrl(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coGroundCoverShaderConstHandles(uint simobjectid) : base(simobjectid)
+        internal coGuiPopupTextListCtrl(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coGroundCoverShaderConstHandles(int simobjectid) : base(simobjectid)
+        internal coGuiPopupTextListCtrl(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -130,7 +130,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coGroundCoverShaderConstHandles ts, string simobjectid)
+        public static bool operator ==(coGuiPopupTextListCtrl ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +162,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coGroundCoverShaderConstHandles ts, string simobjectid)
+        public static bool operator !=(coGuiPopupTextListCtrl ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,7 +175,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coGroundCoverShaderConstHandles ts)
+        public static implicit operator string(coGuiPopupTextListCtrl ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -187,9 +187,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coGroundCoverShaderConstHandles(string ts)
+        public static implicit operator coGuiPopupTextListCtrl(string ts)
             {
-            return new coGroundCoverShaderConstHandles(ts);
+            return new coGuiPopupTextListCtrl(ts);
             }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coGroundCoverShaderConstHandles ts)
+        public static implicit operator int(coGuiPopupTextListCtrl ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -210,9 +210,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coGroundCoverShaderConstHandles(int ts)
+        public static implicit operator coGuiPopupTextListCtrl(int ts)
             {
-            return new coGroundCoverShaderConstHandles(ts);
+            return new coGuiPopupTextListCtrl(ts);
             }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coGroundCoverShaderConstHandles ts)
+        public static implicit operator uint(coGuiPopupTextListCtrl ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -233,9 +233,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coGroundCoverShaderConstHandles(uint ts)
+        public static implicit operator coGuiPopupTextListCtrl(uint ts)
             {
-            return new coGroundCoverShaderConstHandles(ts);
+            return new coGuiPopupTextListCtrl(ts);
             }
         }
     }

@@ -53,6 +53,7 @@
 using System;
 using System.ComponentModel;
 using WinterLeaf.Classes;
+using WinterLeaf.Containers;
 
 #endregion
 
@@ -61,7 +62,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoTerrainRenderInst : TypeConverter
+    internal class tsObjectConvertercoGuiCursor : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +86,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coTerrainRenderInst(value as string);
+                return new coGuiCursor(value as string);
                 }
 
             return null;
@@ -96,14 +97,17 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoTerrainRenderInst))]
-    public class coTerrainRenderInst : coRenderBinManager
+    [TypeConverter(typeof (tsObjectConvertercoGuiCursor))]
+    public class coGuiCursor : coSimObject
         {
+        private Point2I _hotSpot;
+        private Point2F _renderOffset;
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coTerrainRenderInst(string simobjectid) : base(simobjectid)
+        internal coGuiCursor(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +115,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coTerrainRenderInst(uint simobjectid) : base(simobjectid)
+        internal coGuiCursor(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,8 +123,49 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coTerrainRenderInst(int simobjectid) : base(simobjectid)
+        internal coGuiCursor(int simobjectid) : base(simobjectid)
             {
+            }
+
+        /// <summary>
+        /// File name of the bitmap for the cursor.
+        /// </summary>
+        public String bitmapName
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".bitmapName").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".bitmapName", value.AsString()); }
+            }
+
+        /// <summary>
+        /// The location of the cursor's hot spot (which pixel carries the click).
+        /// </summary>
+        public Point2I hotSpot
+            {
+            get
+                {
+                if (_hotSpot != null)
+                    _hotSpot.DetachAllEvents();
+                _hotSpot = dnTorque.self.GetVar(_mSimObjectId + ".hotSpot").AsPoint2I();
+                _hotSpot.OnChangeNotification += _hotSpot_OnChangeNotification;
+                return _hotSpot;
+                }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".hotSpot", value.AsString()); }
+            }
+
+        /// <summary>
+        /// Offset of the bitmap, where 0 signifies left edge of the bitmap, 1, the right. Similarly for the Y-component.
+        /// </summary>
+        public Point2F renderOffset
+            {
+            get
+                {
+                if (_renderOffset != null)
+                    _renderOffset.DetachAllEvents();
+                _renderOffset = dnTorque.self.GetVar(_mSimObjectId + ".renderOffset").AsPoint2F();
+                _renderOffset.OnChangeNotification += _renderOffset_OnChangeNotification;
+                return _renderOffset;
+                }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".renderOffset", value.AsString()); }
             }
 
 
@@ -130,7 +175,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coTerrainRenderInst ts, string simobjectid)
+        public static bool operator ==(coGuiCursor ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +207,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coTerrainRenderInst ts, string simobjectid)
+        public static bool operator !=(coGuiCursor ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,7 +220,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coTerrainRenderInst ts)
+        public static implicit operator string(coGuiCursor ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -187,9 +232,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coTerrainRenderInst(string ts)
+        public static implicit operator coGuiCursor(string ts)
             {
-            return new coTerrainRenderInst(ts);
+            return new coGuiCursor(ts);
             }
 
         /// <summary>
@@ -197,7 +242,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coTerrainRenderInst ts)
+        public static implicit operator int(coGuiCursor ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -210,9 +255,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coTerrainRenderInst(int ts)
+        public static implicit operator coGuiCursor(int ts)
             {
-            return new coTerrainRenderInst(ts);
+            return new coGuiCursor(ts);
             }
 
         /// <summary>
@@ -220,7 +265,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coTerrainRenderInst ts)
+        public static implicit operator uint(coGuiCursor ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -233,9 +278,19 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coTerrainRenderInst(uint ts)
+        public static implicit operator coGuiCursor(uint ts)
             {
-            return new coTerrainRenderInst(ts);
+            return new coGuiCursor(ts);
+            }
+
+        private void _hotSpot_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".hotSpot", e.NewValue);
+            }
+
+        private void _renderOffset_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+            {
+            dnTorque.self.SetVar(_mSimObjectId + ".renderOffset", e.NewValue);
             }
         }
     }

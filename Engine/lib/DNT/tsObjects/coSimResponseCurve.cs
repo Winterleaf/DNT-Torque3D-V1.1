@@ -61,7 +61,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoResponseCurveData : TypeConverter
+    internal class tsObjectConvertercoSimResponseCurve : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coResponseCurveData(value as string);
+                return new coSimResponseCurve(value as string);
                 }
 
             return null;
@@ -96,14 +96,14 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoResponseCurveData))]
-    public class coResponseCurveData : coSimDataBlock
+    [TypeConverter(typeof (tsObjectConvertercoSimResponseCurve))]
+    public class coSimResponseCurve : coSimObject
         {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coResponseCurveData(string simobjectid) : base(simobjectid)
+        internal coSimResponseCurve(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coResponseCurveData(uint simobjectid) : base(simobjectid)
+        internal coSimResponseCurve(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        public coResponseCurveData(int simobjectid) : base(simobjectid)
+        internal coSimResponseCurve(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -130,7 +130,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coResponseCurveData ts, string simobjectid)
+        public static bool operator ==(coSimResponseCurve ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +162,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coResponseCurveData ts, string simobjectid)
+        public static bool operator !=(coSimResponseCurve ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,8 +175,10 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coResponseCurveData ts)
+        public static implicit operator string(coSimResponseCurve ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return "0";
             return ts._mSimObjectId;
             }
 
@@ -185,9 +187,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coResponseCurveData(string ts)
+        public static implicit operator coSimResponseCurve(string ts)
             {
-            return new coResponseCurveData(ts);
+            return new coSimResponseCurve(ts);
             }
 
         /// <summary>
@@ -195,8 +197,10 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coResponseCurveData ts)
+        public static implicit operator int(coSimResponseCurve ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             int i;
             return int.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -206,9 +210,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coResponseCurveData(int ts)
+        public static implicit operator coSimResponseCurve(int ts)
             {
-            return new coResponseCurveData(ts);
+            return new coSimResponseCurve(ts);
             }
 
         /// <summary>
@@ -216,8 +220,10 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coResponseCurveData ts)
+        public static implicit operator uint(coSimResponseCurve ts)
             {
+            if (object.ReferenceEquals(ts, null))
+                return 0;
             uint i;
             return uint.TryParse(ts._mSimObjectId, out i) ? i : 0;
             }
@@ -227,9 +233,36 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coResponseCurveData(uint ts)
+        public static implicit operator coSimResponseCurve(uint ts)
             {
-            return new coResponseCurveData(ts);
+            return new coSimResponseCurve(ts);
+            }
+
+        /// <summary>
+        /// ( SimResponseCurve, addPoint, void, 4, 4, addPoint( F32 value, F32 time ) )
+        /// 
+        /// </summary>
+        public void addPoint(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnSimResponseCurve_addPoint(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( SimResponseCurve, clear, void, 2, 2, clear() )
+        /// 
+        /// </summary>
+        public void clear()
+            {
+            TorqueScriptTemplate.m_ts.fnSimResponseCurve_clear(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( SimResponseCurve, getValue, F32, 3, 3, getValue( F32 time ) )
+        /// 
+        /// </summary>
+        public float getValue(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnSimResponseCurve_getValue(_mSimObjectId, a2);
             }
         }
     }

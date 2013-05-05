@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
+// Copyright (C) 2012 Winterleaf Entertainment L,L,C.
 // 
 // THE SOFTW ARE IS PROVIDED ON AN “ AS IS” BASIS, WITHOUT W ARRANTY OF ANY KIND,
 // INCLUDING WITHOUT LIMIT ATION THE W ARRANTIES OF MERCHANT ABILITY, FITNESS
@@ -54,7 +54,6 @@ using System;
 using System.ComponentModel;
 using WinterLeaf.Classes;
 using WinterLeaf.Containers;
-using WinterLeaf.Enums;
 
 #endregion
 
@@ -63,7 +62,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoPxCloth : TypeConverter
+    internal class tsObjectConvertercoGuiFilterCtrl : TypeConverter
         {
         /// <summary>
         /// 
@@ -87,7 +86,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coPxCloth(value as string);
+                return new coGuiFilterCtrl(value as string);
                 }
 
             return null;
@@ -98,25 +97,17 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoPxCloth))]
-    public class coPxCloth : coGameBase
+    [TypeConverter(typeof (tsObjectConvertercoGuiFilterCtrl))]
+    public class coGuiFilterCtrl : coGuiControl
         {
-        private Point2I _samples;
-        private Point2F _size;
+        private VectorFloat _filter;
+        private Point2F _identity;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coPxCloth(string simobjectid) : base(simobjectid)
-            {
-            }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="simobjectid"></param>
-        internal coPxCloth(uint simobjectid) : base(simobjectid)
+        internal coGuiFilterCtrl(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -124,141 +115,68 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coPxCloth(int simobjectid) : base(simobjectid)
+        internal coGuiFilterCtrl(uint simobjectid) : base(simobjectid)
             {
             }
 
-
         /// <summary>
-        /// @brief Optional way to specify cloth verts that will be attached to the world position    it is created at.\n\n 
+        /// 
         /// </summary>
-        public PxClothAttachment attachments
+        /// <param name="simobjectid"></param>
+        internal coGuiFilterCtrl(int simobjectid) : base(simobjectid)
             {
-            get { return (PxClothAttachment) Enum.Parse(typeof (PxClothAttachment), dnTorque.self.GetVar(_mSimObjectId + ".attachments")); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".attachments", value.ToString()); }
             }
 
         /// <summary>
-        /// @brief Enables or disables bending resistance.\n\n   Set the bending resistance through PxCloth::bendingStiffness. 
+        /// Total number of control points in the spline curve. 
         /// </summary>
-        public bool bending
+        public int controlPoints
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".bending").AsBool(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".bending", value.AsString()); }
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".controlPoints").AsInt(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".controlPoints", value.AsString()); }
             }
 
         /// <summary>
-        /// @brief Bending stiffness of the cloth in the range 0 to 1.\n\n 
+        /// Vector of control points. 
         /// </summary>
-        public float bendingStiffness
-            {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".bendingStiffness").AsFloat(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".bendingStiffness", value.AsString()); }
-            }
-
-        /// <summary>
-        /// @brief Enable/disable damping of internal velocities.\n\n 
-        /// </summary>
-        public bool damping
-            {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".damping").AsBool(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".damping", value.AsString()); }
-            }
-
-        /// <summary>
-        /// @brief Spring damping of the cloth in the range 0 to 1.\n\n 
-        /// </summary>
-        public float dampingCoefficient
-            {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".dampingCoefficient").AsFloat(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".dampingCoefficient", value.AsString()); }
-            }
-
-        /// <summary>
-        /// @brief Density of the cloth (Mass per Area).\n\n 
-        /// </summary>
-        public float density
-            {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".density").AsFloat(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".density", value.AsString()); }
-            }
-
-        /// <summary>
-        /// @brief Friction coefficient in the range 0 to 1.\n\n	  Defines the damping of the velocities of cloth particles that are in contact. 
-        /// </summary>
-        public float friction
-            {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".friction").AsFloat(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".friction", value.AsString()); }
-            }
-
-        /// <summary>
-        /// @brief Name of the material to render.\n\n 
-        /// </summary>
-        public String material
-            {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".material").AsString(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".material", value.AsString()); }
-            }
-
-        /// <summary>
-        /// @brief The number of cloth vertices in width and length.\n\n   At least two verts should be defined.\n\n
-        /// </summary>
-        public Point2I samples
+        public VectorFloat filter
             {
             get
                 {
-                if (_samples != null)
-                    _samples.DetachAllEvents();
-                _samples = dnTorque.self.GetVar(_mSimObjectId + ".samples").AsPoint2I();
-                _samples.OnChangeNotification += _samples_OnChangeNotification;
-                return _samples;
+                if (_filter != null)
+                    _filter.DetachAllEvents();
+                _filter = dnTorque.self.GetVar(_mSimObjectId + ".filter").AsVectorFloat();
+                _filter.OnChangeNotification += _filter_OnChangeNotification;
+                return _filter;
                 }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".samples", value.AsString()); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".filter", value.AsString()); }
             }
 
         /// <summary>
-        /// @brief Enables or disables self-collision handling within a single piece of cloth.\n\n 
+        /// @internal
         /// </summary>
-        public bool selfCollision
-            {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".selfCollision").AsBool(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".selfCollision", value.AsString()); }
-            }
-
-        /// <summary>
-        /// @brief The width and height of the cloth.\n\n 
-        /// </summary>
-        public Point2F size
+        public Point2F identity
             {
             get
                 {
-                if (_size != null)
-                    _size.DetachAllEvents();
-                _size = dnTorque.self.GetVar(_mSimObjectId + ".size").AsPoint2F();
-                _size.OnChangeNotification += _size_OnChangeNotification;
-                return _size;
+                if (_identity != null)
+                    _identity.DetachAllEvents();
+                _identity = dnTorque.self.GetVar(_mSimObjectId + ".identity").AsPoint2F();
+                _identity.OnChangeNotification += _identity_OnChangeNotification;
+                return _identity;
                 }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".size", value.AsString()); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".identity", value.AsString()); }
             }
 
         /// <summary>
-        /// @brief Value representing how thick the cloth is.\n\n   The thickness is usually a fraction of the overall extent of the cloth and 	  should not be set to a value greater than that. A good value is the maximal 	  distance between two adjacent cloth particles in their rest pose. Visual 	  artifacts or collision problems may appear if the thickness is too small.\n\n 
+        /// @internal 
         /// </summary>
-        public float thickness
+        public bool showIdentity
             {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".thickness").AsFloat(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".thickness", value.AsString()); }
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".showIdentity").AsBool(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".showIdentity", value.AsString()); }
             }
 
-        /// <summary>
-        /// @brief Not supported in current release (according to PhysX docs).\n\n	  Enables or disables collision detection of cloth triangles against the scene. 	  If not set, only collisions of cloth particles are detected. If set,    collisions of cloth triangles are detected as well. 
-        /// </summary>
-        public bool triangleCollision
-            {
-            get { return dnTorque.self.GetVar(_mSimObjectId + ".triangleCollision").AsBool(); }
-            set { dnTorque.self.SetVar(_mSimObjectId + ".triangleCollision", value.AsString()); }
-            }
 
         /// <summary>
         /// 
@@ -266,7 +184,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coPxCloth ts, string simobjectid)
+        public static bool operator ==(coGuiFilterCtrl ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -298,7 +216,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coPxCloth ts, string simobjectid)
+        public static bool operator !=(coGuiFilterCtrl ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -311,7 +229,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coPxCloth ts)
+        public static implicit operator string(coGuiFilterCtrl ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -323,9 +241,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coPxCloth(string ts)
+        public static implicit operator coGuiFilterCtrl(string ts)
             {
-            return new coPxCloth(ts);
+            return new coGuiFilterCtrl(ts);
             }
 
         /// <summary>
@@ -333,7 +251,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coPxCloth ts)
+        public static implicit operator int(coGuiFilterCtrl ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -346,9 +264,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coPxCloth(int ts)
+        public static implicit operator coGuiFilterCtrl(int ts)
             {
-            return new coPxCloth(ts);
+            return new coGuiFilterCtrl(ts);
             }
 
         /// <summary>
@@ -356,7 +274,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coPxCloth ts)
+        public static implicit operator uint(coGuiFilterCtrl ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -369,19 +287,50 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coPxCloth(uint ts)
+        public static implicit operator coGuiFilterCtrl(uint ts)
             {
-            return new coPxCloth(ts);
+            return new coGuiFilterCtrl(ts);
             }
 
-        private void _samples_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+        private void _filter_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
             {
-            dnTorque.self.SetVar(_mSimObjectId + ".samples", e.NewValue);
+            dnTorque.self.SetVar(_mSimObjectId + ".filter", e.NewValue);
             }
 
-        private void _size_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
+        private void _identity_OnChangeNotification(object o, Notifier.ChangeNotificationEventArgs e)
             {
-            dnTorque.self.SetVar(_mSimObjectId + ".size", e.NewValue);
+            dnTorque.self.SetVar(_mSimObjectId + ".identity", e.NewValue);
+            }
+
+        /// <summary>
+        /// ( GuiFilterCtrl, getValue, const char*, 2, 2, Return a tuple containing all the values in the filter.
+        /// 			  @internal)
+        /// 
+        /// </summary>
+        public new string getValue()
+            {
+            return TorqueScriptTemplate.m_ts.fnGuiFilterCtrl_getValue(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiFilterCtrl, identity, void, 2, 2, Reset the filtering.
+        /// 			  @internal)
+        /// 
+        /// </summary>
+        public void identityX()
+            {
+            TorqueScriptTemplate.m_ts.fnGuiFilterCtrl_identity(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( GuiFilterCtrl, setValue, void, 3, 20, (f1, f2, ...)
+        ///               Reset the filter to use the specified points, spread equidistantly across the domain.
+        /// 			  @internal)
+        /// 
+        /// </summary>
+        public void setValue(string a2, string a3 = "", string a4 = "", string a5 = "", string a6 = "", string a7 = "", string a8 = "", string a9 = "", string a10 = "", string a11 = "", string a12 = "", string a13 = "", string a14 = "", string a15 = "", string a16 = "", string a17 = "", string a18 = "", string a19 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnGuiFilterCtrl_setValue(_mSimObjectId, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19);
             }
         }
     }

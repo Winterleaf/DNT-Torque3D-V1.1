@@ -61,7 +61,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoEventManagerListener : TypeConverter
+    internal class tsObjectConvertercoSimpleComponent : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coEventManagerListener(value as string);
+                return new coSimpleComponent(value as string);
                 }
 
             return null;
@@ -96,14 +96,14 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoEventManagerListener))]
-    public class coEventManagerListener : coSimObject
+    [TypeConverter(typeof (tsObjectConvertercoSimpleComponent))]
+    public class coSimpleComponent : coSimComponent
         {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coEventManagerListener(string simobjectid) : base(simobjectid)
+        internal coSimpleComponent(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coEventManagerListener(uint simobjectid) : base(simobjectid)
+        internal coSimpleComponent(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coEventManagerListener(int simobjectid) : base(simobjectid)
+        internal coSimpleComponent(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -130,7 +130,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coEventManagerListener ts, string simobjectid)
+        public static bool operator ==(coSimpleComponent ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +162,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coEventManagerListener ts, string simobjectid)
+        public static bool operator !=(coSimpleComponent ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,7 +175,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coEventManagerListener ts)
+        public static implicit operator string(coSimpleComponent ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -187,9 +187,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coEventManagerListener(string ts)
+        public static implicit operator coSimpleComponent(string ts)
             {
-            return new coEventManagerListener(ts);
+            return new coSimpleComponent(ts);
             }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coEventManagerListener ts)
+        public static implicit operator int(coSimpleComponent ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -210,9 +210,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coEventManagerListener(int ts)
+        public static implicit operator coSimpleComponent(int ts)
             {
-            return new coEventManagerListener(ts);
+            return new coSimpleComponent(ts);
             }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coEventManagerListener ts)
+        public static implicit operator uint(coSimpleComponent ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -233,9 +233,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coEventManagerListener(uint ts)
+        public static implicit operator coSimpleComponent(uint ts)
             {
-            return new coEventManagerListener(ts);
+            return new coSimpleComponent(ts);
             }
         }
     }

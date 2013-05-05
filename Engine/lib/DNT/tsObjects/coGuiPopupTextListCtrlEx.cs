@@ -61,7 +61,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoSelectAction : TypeConverter
+    internal class tsObjectConvertercoGuiPopupTextListCtrlEx : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coSelectAction(value as string);
+                return new coGuiPopupTextListCtrlEx(value as string);
                 }
 
             return null;
@@ -96,14 +96,14 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoSelectAction))]
-    public class coSelectAction : coUndoAction
+    [TypeConverter(typeof (tsObjectConvertercoGuiPopupTextListCtrlEx))]
+    public class coGuiPopupTextListCtrlEx : coGuiTextListCtrl
         {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coSelectAction(string simobjectid) : base(simobjectid)
+        internal coGuiPopupTextListCtrlEx(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coSelectAction(uint simobjectid) : base(simobjectid)
+        internal coGuiPopupTextListCtrlEx(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coSelectAction(int simobjectid) : base(simobjectid)
+        internal coGuiPopupTextListCtrlEx(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -130,7 +130,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coSelectAction ts, string simobjectid)
+        public static bool operator ==(coGuiPopupTextListCtrlEx ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +162,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coSelectAction ts, string simobjectid)
+        public static bool operator !=(coGuiPopupTextListCtrlEx ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,7 +175,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coSelectAction ts)
+        public static implicit operator string(coGuiPopupTextListCtrlEx ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -187,9 +187,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coSelectAction(string ts)
+        public static implicit operator coGuiPopupTextListCtrlEx(string ts)
             {
-            return new coSelectAction(ts);
+            return new coGuiPopupTextListCtrlEx(ts);
             }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coSelectAction ts)
+        public static implicit operator int(coGuiPopupTextListCtrlEx ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -210,9 +210,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coSelectAction(int ts)
+        public static implicit operator coGuiPopupTextListCtrlEx(int ts)
             {
-            return new coSelectAction(ts);
+            return new coGuiPopupTextListCtrlEx(ts);
             }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coSelectAction ts)
+        public static implicit operator uint(coGuiPopupTextListCtrlEx ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -233,9 +233,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coSelectAction(uint ts)
+        public static implicit operator coGuiPopupTextListCtrlEx(uint ts)
             {
-            return new coSelectAction(ts);
+            return new coGuiPopupTextListCtrlEx(ts);
             }
         }
     }

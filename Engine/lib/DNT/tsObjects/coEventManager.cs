@@ -61,7 +61,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoPxFluid : TypeConverter
+    internal class tsObjectConvertercoEventManager : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coPxFluid(value as string);
+                return new coEventManager(value as string);
                 }
 
             return null;
@@ -96,14 +96,14 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoPxFluid))]
-    public class coPxFluid : coSceneObject
+    [TypeConverter(typeof (tsObjectConvertercoEventManager))]
+    public class coEventManager : coSimObject
         {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coPxFluid(string simobjectid) : base(simobjectid)
+        internal coEventManager(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coPxFluid(uint simobjectid) : base(simobjectid)
+        internal coEventManager(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,8 +119,17 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coPxFluid(int simobjectid) : base(simobjectid)
+        internal coEventManager(int simobjectid) : base(simobjectid)
             {
+            }
+
+        /// <summary>
+        /// List of events currently waiting 
+        /// </summary>
+        public String queue
+            {
+            get { return dnTorque.self.GetVar(_mSimObjectId + ".queue").AsString(); }
+            set { dnTorque.self.SetVar(_mSimObjectId + ".queue", value.AsString()); }
             }
 
 
@@ -130,7 +139,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coPxFluid ts, string simobjectid)
+        public static bool operator ==(coEventManager ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +171,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coPxFluid ts, string simobjectid)
+        public static bool operator !=(coEventManager ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,7 +184,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coPxFluid ts)
+        public static implicit operator string(coEventManager ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -187,9 +196,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coPxFluid(string ts)
+        public static implicit operator coEventManager(string ts)
             {
-            return new coPxFluid(ts);
+            return new coEventManager(ts);
             }
 
         /// <summary>
@@ -197,7 +206,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coPxFluid ts)
+        public static implicit operator int(coEventManager ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -210,9 +219,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coPxFluid(int ts)
+        public static implicit operator coEventManager(int ts)
             {
-            return new coPxFluid(ts);
+            return new coEventManager(ts);
             }
 
         /// <summary>
@@ -220,7 +229,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coPxFluid ts)
+        public static implicit operator uint(coEventManager ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -233,9 +242,115 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coPxFluid(uint ts)
+        public static implicit operator coEventManager(uint ts)
             {
-            return new coPxFluid(ts);
+            return new coEventManager(ts);
+            }
+
+        /// <summary>
+        /// ( EventManager, dumpEvents, void, 2, 2, ()
+        ///               Print all registered events to the console. )
+        /// 
+        /// </summary>
+        public void dumpEvents()
+            {
+            TorqueScriptTemplate.m_ts.fnEventManager_dumpEvents(_mSimObjectId);
+            }
+
+        /// <summary>
+        /// ( EventManager, dumpSubscribers, void, 2, 3, ( String event )
+        ///               Print all subscribers to an event to the console.
+        ///               @param event The event whose subscribers are to be printed. If this parameter isn't specified, all events will be dumped. )
+        /// 
+        /// </summary>
+        public void dumpSubscribers(string a2 = "")
+            {
+            TorqueScriptTemplate.m_ts.fnEventManager_dumpSubscribers(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( EventManager, isRegisteredEvent, bool, 3, 3, ( String event )
+        ///               Check if an event is registered or not.
+        ///               @param event The event to check.
+        ///               @return Whether or not the event exists. )
+        /// 
+        /// </summary>
+        public bool isRegisteredEvent(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnEventManager_isRegisteredEvent(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( EventManager, postEvent, bool, 3, 4, ( String event, String data )
+        ///               ~Trigger an event.
+        ///               @param event The event to trigger.
+        ///               @param data The data associated with the event.
+        ///               @return Whether or not the event was dispatched successfully. )
+        /// 
+        /// </summary>
+        public bool postEvent(string a2, string a3 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnEventManager_postEvent(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( EventManager, registerEvent, bool, 3, 3, ( String event )
+        ///               Register an event with the event manager.
+        ///               @param event The event to register.
+        ///               @return Whether or not the event was registered successfully. )
+        /// 
+        /// </summary>
+        public bool registerEvent(string a2)
+            {
+            return TorqueScriptTemplate.m_ts.fnEventManager_registerEvent(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( EventManager, remove, void, 4, 4, ( SimObject listener, String event )
+        ///               Remove a listener from an event.
+        ///               @param listener The listener to remove.
+        ///               @param event The event to be removed from.)
+        /// 
+        /// </summary>
+        public void remove(string a2, string a3)
+            {
+            TorqueScriptTemplate.m_ts.fnEventManager_remove(_mSimObjectId, a2, a3);
+            }
+
+        /// <summary>
+        /// ( EventManager, removeAll, void, 3, 3, ( SimObject listener )
+        ///               Remove a listener from all events.
+        ///               @param listener The listener to remove.)
+        /// 
+        /// </summary>
+        public void removeAll(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnEventManager_removeAll(_mSimObjectId, a2);
+            }
+
+        /// <summary>
+        /// ( EventManager, subscribe, bool, 4, 5, ( SimObject listener, String event, String callback )
+        ///               Subscribe a listener to an event.
+        ///               @param listener The listener to subscribe.
+        ///               @param event The event to subscribe to.
+        ///               @param callback Optional method name to receive the event notification. If this is not specified, \"on[event]\" will be used.
+        ///               @return Whether or not the subscription was successful. )
+        /// 
+        /// </summary>
+        public bool subscribe(string a2, string a3, string a4 = "")
+            {
+            return TorqueScriptTemplate.m_ts.fnEventManager_subscribe(_mSimObjectId, a2, a3, a4);
+            }
+
+        /// <summary>
+        /// ( EventManager, unregisterEvent, void, 3, 3, ( String event )
+        ///               Remove an event from the EventManager.
+        ///               @param event The event to remove. )
+        /// 
+        /// </summary>
+        public void unregisterEvent(string a2)
+            {
+            TorqueScriptTemplate.m_ts.fnEventManager_unregisterEvent(_mSimObjectId, a2);
             }
         }
     }

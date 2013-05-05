@@ -61,7 +61,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoT3DSceneComponent : TypeConverter
+    internal class tsObjectConvertercoRenderTerrainMgr : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coT3DSceneComponent(value as string);
+                return new coRenderTerrainMgr(value as string);
                 }
 
             return null;
@@ -96,14 +96,14 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoT3DSceneComponent))]
-    public class coT3DSceneComponent : coSceneObject
+    [TypeConverter(typeof (tsObjectConvertercoRenderTerrainMgr))]
+    public class coRenderTerrainMgr : coRenderBinManager
         {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coT3DSceneComponent(string simobjectid) : base(simobjectid)
+        internal coRenderTerrainMgr(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coT3DSceneComponent(uint simobjectid) : base(simobjectid)
+        internal coRenderTerrainMgr(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coT3DSceneComponent(int simobjectid) : base(simobjectid)
+        internal coRenderTerrainMgr(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -130,7 +130,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coT3DSceneComponent ts, string simobjectid)
+        public static bool operator ==(coRenderTerrainMgr ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +162,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coT3DSceneComponent ts, string simobjectid)
+        public static bool operator !=(coRenderTerrainMgr ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,7 +175,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coT3DSceneComponent ts)
+        public static implicit operator string(coRenderTerrainMgr ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -187,9 +187,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coT3DSceneComponent(string ts)
+        public static implicit operator coRenderTerrainMgr(string ts)
             {
-            return new coT3DSceneComponent(ts);
+            return new coRenderTerrainMgr(ts);
             }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coT3DSceneComponent ts)
+        public static implicit operator int(coRenderTerrainMgr ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -210,9 +210,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coT3DSceneComponent(int ts)
+        public static implicit operator coRenderTerrainMgr(int ts)
             {
-            return new coT3DSceneComponent(ts);
+            return new coRenderTerrainMgr(ts);
             }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coT3DSceneComponent ts)
+        public static implicit operator uint(coRenderTerrainMgr ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -233,9 +233,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coT3DSceneComponent(uint ts)
+        public static implicit operator coRenderTerrainMgr(uint ts)
             {
-            return new coT3DSceneComponent(ts);
+            return new coRenderTerrainMgr(ts);
             }
         }
     }

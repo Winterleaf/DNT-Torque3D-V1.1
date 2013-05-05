@@ -61,7 +61,7 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    internal class tsObjectConvertercoGuiPopUpBackgroundCtrl : TypeConverter
+    internal class tsObjectConvertercoTerrainSmoothAction : TypeConverter
         {
         /// <summary>
         /// 
@@ -85,7 +85,7 @@ namespace WinterLeaf.tsObjects
             {
             if (value is string)
                 {
-                return new coGuiPopUpBackgroundCtrl(value as string);
+                return new coTerrainSmoothAction(value as string);
                 }
 
             return null;
@@ -96,14 +96,14 @@ namespace WinterLeaf.tsObjects
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (tsObjectConvertercoGuiPopUpBackgroundCtrl))]
-    public class coGuiPopUpBackgroundCtrl : coGuiTextListCtrl
+    [TypeConverter(typeof (tsObjectConvertercoTerrainSmoothAction))]
+    public class coTerrainSmoothAction : coUndoAction
         {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coGuiPopUpBackgroundCtrl(string simobjectid) : base(simobjectid)
+        internal coTerrainSmoothAction(string simobjectid) : base(simobjectid)
             {
             }
 
@@ -111,7 +111,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coGuiPopUpBackgroundCtrl(uint simobjectid) : base(simobjectid)
+        internal coTerrainSmoothAction(uint simobjectid) : base(simobjectid)
             {
             }
 
@@ -119,7 +119,7 @@ namespace WinterLeaf.tsObjects
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
-        internal coGuiPopUpBackgroundCtrl(int simobjectid) : base(simobjectid)
+        internal coTerrainSmoothAction(int simobjectid) : base(simobjectid)
             {
             }
 
@@ -130,7 +130,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==(coGuiPopUpBackgroundCtrl ts, string simobjectid)
+        public static bool operator ==(coTerrainSmoothAction ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return object.ReferenceEquals(simobjectid, null);
@@ -162,7 +162,7 @@ namespace WinterLeaf.tsObjects
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=(coGuiPopUpBackgroundCtrl ts, string simobjectid)
+        public static bool operator !=(coTerrainSmoothAction ts, string simobjectid)
             {
             if (object.ReferenceEquals(ts, null))
                 return !object.ReferenceEquals(simobjectid, null);
@@ -175,7 +175,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(coGuiPopUpBackgroundCtrl ts)
+        public static implicit operator string(coTerrainSmoothAction ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return "0";
@@ -187,9 +187,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coGuiPopUpBackgroundCtrl(string ts)
+        public static implicit operator coTerrainSmoothAction(string ts)
             {
-            return new coGuiPopUpBackgroundCtrl(ts);
+            return new coTerrainSmoothAction(ts);
             }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(coGuiPopUpBackgroundCtrl ts)
+        public static implicit operator int(coTerrainSmoothAction ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -210,9 +210,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coGuiPopUpBackgroundCtrl(int ts)
+        public static implicit operator coTerrainSmoothAction(int ts)
             {
-            return new coGuiPopUpBackgroundCtrl(ts);
+            return new coTerrainSmoothAction(ts);
             }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(coGuiPopUpBackgroundCtrl ts)
+        public static implicit operator uint(coTerrainSmoothAction ts)
             {
             if (object.ReferenceEquals(ts, null))
                 return 0;
@@ -233,9 +233,9 @@ namespace WinterLeaf.tsObjects
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator coGuiPopUpBackgroundCtrl(uint ts)
+        public static implicit operator coTerrainSmoothAction(uint ts)
             {
-            return new coGuiPopUpBackgroundCtrl(ts);
+            return new coTerrainSmoothAction(ts);
             }
         }
     }
