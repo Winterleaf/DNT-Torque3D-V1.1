@@ -1,8 +1,4 @@
-UNDER DEVELOPMENT
-=================
------------------
-
-DotNetTorque (DNT)
+DotNetTorque (DNT) for T3D MIT 2.0
 ==============
 
 Winterleaf Entertainment L.L.C.
